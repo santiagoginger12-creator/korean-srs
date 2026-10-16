@@ -1,0 +1,28 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "types": [
+      "node"
+    ],
+    "paths": {
+      "@ksrs/content": [
+        "./packages/content/src/index.ts"
+      ],
+      "@ksrs/answer-check": [
+        "./packages/answer-check/src/index.ts"
+      ],
+      "@ksrs/srs-engine": [
+        "./packages/srs-engine/src/index.ts"
+      ],
+      "@ksrs/test-support": [
+        "./packages/test-support/src/index.ts"
+      ]
+    }
+  },
+  "include": [
+    "packages/*/src",
+    "packages/*/test",
+    "packages/*/bin",
+    "scripts"
+  ]
+}

@@ -27,3 +27,13 @@ Append-only log of tradeoffs. Newest at the bottom.
 2. **Day boundary:** is a 4:00 a.m. local day rollover (for lesson caps and "today" stats) right for you, and should "today" follow the device's current timezone while you're in Seoul each summer? (Default if unanswered: 4:00 a.m., device timezone.)
 
 ---
+
+## Owner answers (2026-10-16)
+
+17. **D17: Public app repo + GitHub Pages.** The app repo is public (code + original seed content only). Review data lives in the private `ksrs-data` repo.
+18. **D18: Day rollover at 4:00 a.m. in the device's current timezone.** "Today" follows the owner to Seoul.
+
+## M1 (2026-10-16)
+
+19. **D19: Pure packages are dependency-free; tests use Node's built-in runner.** This session's network blocks the npm registry, so Vitest, Zod, fast-check, and ts-fsrs can't be installed. The engine, answer checker, and content schema are therefore written with zero runtime dependencies: plain TS types plus a hand-written validator, `node:test` via tsx, and a small seeded property-test helper. A script (`scripts/check-boundaries.ts`) enforces the §4 rules in place of dependency-cruiser. This is a net simplification for pure code. Zod and fast-check can be added later without API changes. **FSRS mode is deferred** behind the `Scheduler` interface until `ts-fsrs` can be installed.
+20. **D20: Optional `mnemonic` on all item kinds** (required for hanja), because item pages show mnemonics for vocab, grammar, and expressions too.
