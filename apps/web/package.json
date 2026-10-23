@@ -1,0 +1,23 @@
+{
+  "name": "@ksrs/web",
+  "private": true,
+  "version": "0.2.0",
+  "type": "module",
+  "description": "ksrs PWA (M2: lessons and reviews). Offline dev: run `npm run link-offline-deps` at the repo root instead of installing (D29).",
+  "scripts": {
+    "build": "tsx build.ts",
+    "dev": "tsx dev.ts",
+    "serve": "tsx serve.ts",
+    "test:e2e": "playwright test -c playwright.config.ts"
+  },
+  "dependencies": {
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.0",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "esbuild": "0.28.2"
+  }
+}

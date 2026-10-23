@@ -3,12 +3,17 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "typecheck": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json && tsc -p apps/web",
     "test": "tsx --test \"packages/*/test/**/*.test.ts\"",
     "boundaries": "tsx scripts/check-boundaries.ts",
     "validate-content": "tsx packages/content/bin/validate-content.ts",
     "check": "npm run typecheck && npm run boundaries && npm test && npm run validate-content",
-    "content:bundle": "tsx packages/content/bin/build-bundle.ts"
+    "content:bundle": "tsx packages/content/bin/build-bundle.ts",
+    "link-offline-deps": "node scripts/link-offline-deps.mjs",
+    "build:web": "tsx apps/web/build.ts",
+    "dev:web": "tsx apps/web/dev.ts",
+    "test:web": "tsx --test \"apps/web/test/**/*.test.ts\"",
+    "test:e2e": "npm run build:web && cd apps/web && node node_modules/playwright/cli.js test -c playwright.config.ts"
   },
   "devDependencies": {
     "typescript": "^5.6.0",

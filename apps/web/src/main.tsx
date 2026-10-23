@@ -1,0 +1,16 @@
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { App } from './App.tsx';
+import { registerSW } from './pwa/register.ts';
+import { store } from './state/store.ts';
+import './styles.css';
+
+declare const __BASE__: string;
+declare const __DEV__: boolean;
+
+void store.init();
+if (!__DEV__) registerSW(`${__BASE__}sw.js`, __BASE__);
+// Test/debug hook: read-only access to the store (no clock or write shortcuts).
+(window as unknown as { __ksrs?: unknown }).__ksrs = { store };
+
+createRoot(document.getElementById('root')!).render(<StrictMode><App /></StrictMode>);

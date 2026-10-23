@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "lib": ["ES2022", "DOM", "DOM.Iterable", "WebWorker.ImportScripts"],
+    "types": ["node"],
+    "typeRoots": ["../../node_modules/@types"],
+    "paths": {
+      "@ksrs/content": ["../../packages/content/src/index.ts"],
+      "@ksrs/answer-check": ["../../packages/answer-check/src/index.ts"],
+      "@ksrs/srs-engine": ["../../packages/srs-engine/src/index.ts"],
+      "react": ["./src/types/react-shim.d.ts"],
+      "react/jsx-runtime": ["./src/types/react-jsx-runtime-shim.d.ts"],
+      "react-dom/client": ["./src/types/react-dom-client-shim.d.ts"]
+    }
+  },
+  "include": ["src", "test"]
+}

@@ -1,0 +1,167 @@
+// Full item presentation per kind. Used by lesson teach pages and the item page.
+import { useState } from 'react';
+import type { Example, ExpressionItem, GrammarItem, HanjaItem, Item, VocabItem } from '@ksrs/content';
+import { headword, type ContentIndex } from '@ksrs/srs-engine';
+import { itemHref, KIND_KO, KIND_LABEL, REGISTER_LABEL } from '../state/format.ts';
+
+export function KindTag({ kind }: { kind: Item['kind'] }): JSX.Element {
+  return <span className={`kind-tag k-${kind}`}>{KIND_KO[kind]} · {KIND_LABEL[kind]}</span>;
+}
+
+export function NeedsReview({ item }: { item: Item }): JSX.Element | null {
+  if (!item.needs_review) return null;
+  return <span className="badge badge-warn" title="Flagged for owner review (D15)">needs review</span>;
+}
+
+export function ItemLink({ index, id }: { index: ContentIndex; id: string }): JSX.Element {
+  const it = index.byId.get(id);
+  return <a className={`item-link k-${it?.kind ?? 'vocab'}`} href={itemHref(id)}>{it ? headword(it) : id}</a>;
+}
+
+export function Examples({ examples, title = 'Examples' }: { examples: Example[]; title?: string }): JSX.Element | null {
+  const [showAll, setShowAll] = useState(false);
+  const [shown, setShown] = useState<Record<number, boolean>>({});
+  if (!examples.length) return null;
+  return (
+    <section className="section">
+      <div className="section-head">
+        <h3>{title}</h3>
+        <button type="button" className="btn-text" onClick={() => setShowAll((v) => !v)} aria-pressed={showAll}>
+          {showAll ? 'Hide English' : 'Show English'}
+        </button>
+      </div>
+      <ul className="examples">
+        {examples.map((ex, i) => (
+          <li key={i}>
+            <p className="ko" lang="ko">{ex.ko}{ex.register ? <span className="reg">{REGISTER_LABEL[ex.register] ?? ex.register}</span> : null}
+              {ex.needs_review ? <span className="badge badge-warn">needs review</span> : null}</p>
+            {showAll || shown[i]
+              ? <p className="en">{ex.en}</p>
+              : <button type="button" className="btn-reveal" onClick={() => setShown((s) => ({ ...s, [i]: true }))}>English</button>}
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+function Mnemonic({ text }: { text?: string }): JSX.Element | null {
+  if (!text) return null;
+  return <section className="section"><h3>Mnemonic</h3><p className="prose">{text}</p></section>;
+}
+
+export function HanjaDetails({ item, index }: { item: HanjaItem; index: ContentIndex }): JSX.Element {
+  const unlocks = index.vocabByHanja.get(item.id) ?? [];
+  return (
+    <div className="details">
+      <div className="hero hero-hanja">
+        <div className="hanja-glyph" lang="ko-Hani">{item.char}</div>
+        <div className="hun-eum" lang="ko"><span className="hun">{item.hun}</span> <span className="eum">{item.eum}</span></div>
+        <p className="meanings">{item.meanings.join(', ')}</p>
+      </div>
+      <Mnemonic text={item.mnemonic} />
+      {unlocks.length > 0 && (
+        <section className="section">
+          <h3>Unlocks</h3>
+          <p className="chips">{unlocks.map((id) => <ItemLink key={id} index={index} id={id} />)}</p>
+        </section>
+      )}
+    </div>
+  );
+}
+
+export function VocabDetails({ item, index }: { item: VocabItem; index: ContentIndex }): JSX.Element {
+  return (
+    <div className="details">
+      <div className="hero">
+        <div className="headword" lang="ko">{item.word}</div>
+        <p className="meanings">{item.meanings.join('; ')}</p>
+        <p className="meta"><span>{item.pos}</span><span>{REGISTER_LABEL[item.register] ?? item.register} ({item.register})</span></p>
+      </div>
+      {item.hanjaBreakdown && item.hanjaBreakdown.length > 0 && (
+        <section className="section">
+          <h3>Hanja</h3>
+          <ul className="breakdown">
+            {item.hanjaBreakdown.map((b, i) => {
+              const h = b.hanjaId ? index.byId.get(b.hanjaId) : undefined;
+              const body = (<><span className="hanja-small" lang="ko-Hani">{b.hanja}</span><span className="syl" lang="ko">{b.syllable}</span>
+                {h && h.kind === 'hanja' ? <span className="gloss">{h.hun} {h.eum} · {h.meanings[0]}</span> : null}</>);
+              return <li key={i}>{b.hanjaId && h ? <a href={itemHref(b.hanjaId)}>{body}</a> : body}</li>;
+            })}
+          </ul>
+        </section>
+      )}
+      <Mnemonic text={item.mnemonic} />
+      {item.collocations.length > 0 && (
+        <section className="section">
+          <h3>Collocations</h3>
+          <ul className="collocations">
+            {item.collocations.map((c, i) => <li key={i}><span className="ko" lang="ko">{c.ko}</span><span className="en">{c.en}</span></li>)}
+          </ul>
+        </section>
+      )}
+      <Examples examples={item.examples} />
+    </div>
+  );
+}
+
+export function GrammarDetails({ item, index }: { item: GrammarItem; index: ContentIndex }): JSX.Element {
+  return (
+    <div className="details">
+      <div className="hero">
+        <div className="headword" lang="ko">{item.pattern}</div>
+        <p className="meanings">{item.meaning}</p>
+      </div>
+      <section className="section">
+        <h3>Attachment</h3>
+        <div className="table-wrap">
+          <table className="attach">
+            <thead><tr><th>Stem</th><th>Final</th><th>Tense</th><th>Form</th><th>Example</th></tr></thead>
+            <tbody>
+              {item.attachment.map((a, i) => (
+                <tr key={i}><td>{a.stem}</td><td>{a.final ?? 'any'}</td><td>{a.tense}</td><td lang="ko">{a.form}</td><td lang="ko">{a.example}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section className="section"><h3>Nuance</h3><p className="prose">{item.nuance}</p></section>
+      {item.contrasts.length > 0 && (
+        <section className="section">
+          <h3>Contrasts</h3>
+          <ul className="contrasts">
+            {item.contrasts.map((c, i) => <li key={i}><ItemLink index={index} id={c.id} /> <span>{c.note}</span></li>)}
+          </ul>
+        </section>
+      )}
+      <Mnemonic text={item.mnemonic} />
+      <Examples examples={item.examples} />
+    </div>
+  );
+}
+
+export function ExpressionDetails({ item }: { item: ExpressionItem; index: ContentIndex }): JSX.Element {
+  return (
+    <div className="details">
+      <div className="hero">
+        <p className="subtype" lang="ko">{item.subtype}</p>
+        <div className="headword headword-long" lang="ko">{item.text}</div>
+        {item.hanjaText ? <p className="hanja-text" lang="ko-Hani">{item.hanjaText}</p> : null}
+        <p className="meanings">{item.meaning}</p>
+        <p className="literal"><span className="label">Literally</span> {item.literal}</p>
+      </div>
+      <section className="section"><h3>Usage</h3><p className="prose">{item.usage}</p></section>
+      <Mnemonic text={item.mnemonic} />
+      <Examples examples={item.examples} />
+    </div>
+  );
+}
+
+export function ItemDetails({ item, index }: { item: Item; index: ContentIndex }): JSX.Element {
+  switch (item.kind) {
+    case 'hanja': return <HanjaDetails item={item} index={index} />;
+    case 'vocab': return <VocabDetails item={item} index={index} />;
+    case 'grammar': return <GrammarDetails item={item} index={index} />;
+    case 'expression': return <ExpressionDetails item={item} index={index} />;
+  }
+}
