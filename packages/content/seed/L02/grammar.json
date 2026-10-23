@@ -1,0 +1,708 @@
+[
+  {
+    "id": "g:기에",
+    "kind": "grammar",
+    "level": 2,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["reason", "contrast-set:grounds"],
+    "mnemonic": "기 'the fact' + 에 'at': pointing at the fact that explains why.",
+    "pattern": "-기에",
+    "meaning": "because, since (a formal, mostly written way to give the reason that prompted something)",
+    "attachment": [
+      { "stem": "V/A", "final": "any", "tense": "present", "form": "V/A-기에", "example": "길이 막히기에" },
+      { "stem": "V/A", "final": "any", "tense": "past", "form": "V/A-았/었기에", "example": "미리 알렸기에" },
+      { "stem": "N이다", "final": "any", "tense": "present", "form": "N(이)기에", "example": "공휴일이기에" }
+    ],
+    "nuance": "Gives the reason or grounds, often a circumstance someone noticed or a premise for a judgment, in a formal or written tone. The main clause reports what was done or states a judgment; it cannot be a command or suggestion (for those, use -(으)니까 or -(으)니만큼). Also in the set frame -기에 망정이지 ('good thing that…, or else…'). In casual speech its counterpart is -길래.",
+    "contrasts": [
+      { "id": "g:길래", "note": "The colloquial counterpart, with the same ban on commands and suggestions." },
+      { "id": "g:니만큼", "note": "-(으)니만큼 also gives formal grounds, but it CAN lead into a request, command, or suggestion." }
+    ],
+    "examples": [
+      {
+        "ko": "사안이 워낙 중대하기에 위원회는 결정을 다음 회의로 미루었다.",
+        "en": "Given how serious the matter was, the committee put off its decision until the next meeting.",
+        "register": "written"
+      },
+      {
+        "ko": "미리 연락을 받았기에 망정이지, 하마터면 빈손으로 갈 뻔했다.",
+        "en": "Good thing I got word in advance, or I'd have shown up empty-handed.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": ["cloze", "nuance"],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "후보자의 해명이 앞뒤가 맞지 {{}} 위원들은 추가 자료를 요구했다.",
+          "en": "Because the nominee's explanation didn't add up, the committee members demanded more documents.",
+          "cue": "않다 + -기에",
+          "accepted": ["않기에"],
+          "nearMiss": [{ "answer": "않길래", "hint": "-길래 is colloquial; in this written report style the cue asks for -기에." }],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "동료들에게 내일 추우니 따뜻하게 입고 오라는 메시지를 보내려고 해요. (A message telling coworkers to dress warmly because it'll be cold tomorrow.)",
+          "options": [
+            { "text": "내일은 기온이 크게 떨어지니 따뜻하게 입고 오세요.", "correct": true, "why": "-(으)니 gives a reason and can lead into a request." },
+            {
+              "text": "내일은 기온이 크게 떨어지기에 따뜻하게 입고 오세요.",
+              "correct": false,
+              "why": "-기에 can't lead into a command or request; its main clause reports or judges."
+            },
+            { "text": "내일은 기온이 크게 떨어지길래 따뜻하게 입고 오세요.", "correct": false, "why": "-길래 has the same restriction, and it's colloquial besides." }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "g:길래",
+    "kind": "grammar",
+    "level": 2,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [{ "id": "g:기에", "require": "guru" }],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["reason", "contrast-set:grounds", "colloquial"],
+    "mnemonic": "Something caught your eye, and you reacted: 길래 is the 'I saw it, so…' ending.",
+    "pattern": "-길래",
+    "meaning": "since/because (I noticed that …), so I …; in questions, 'what happened that …?'",
+    "attachment": [
+      { "stem": "V/A", "final": "any", "tense": "present", "form": "V/A-길래", "example": "세일하길래" },
+      { "stem": "V/A", "final": "any", "tense": "past", "form": "V/A-았/었길래", "example": "전화가 왔길래" },
+      { "stem": "N이다", "final": "any", "tense": "present", "form": "N(이)길래", "example": "공짜길래" }
+    ],
+    "nuance": "The colloquial counterpart of -기에. The reason clause is typically something the speaker came across or noticed, often someone else's action or an outside situation, and the main clause is the speaker's reaction (세일하길래 하나 샀어). Like -기에, it can't lead into a command or suggestion, and a reason about the speaker's own state tends to sound odd (?내가 배고프길래). It is also very common in wondering questions: 뭘 했길래 이렇게 늦었어?, 얼마나 맛있길래 줄이 이렇게 길어?",
+    "contrasts": [
+      { "id": "g:기에", "note": "Same meaning in a formal, written register." },
+      { "id": "g:니만큼", "note": "-(으)니만큼 is formal and can lead into requests." }
+    ],
+    "examples": [
+      {
+        "ko": "편의점에 새로 나온 과자가 있길래 하나 사 왔어. 먹어 볼래?",
+        "en": "They had a new snack at the convenience store, so I picked one up. Want to try it?",
+        "register": "spoken"
+      },
+      { "ko": "대체 무슨 말을 했길래 걔가 저렇게 화가 났어?", "en": "What on earth did you say to make her that angry?", "register": "spoken" }
+    ],
+    "questionTypes": ["cloze", "nuance", "register"],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "퇴근길에 꽃집 앞을 지나는데 프리지어가 너무 {{}} 한 다발 샀어.",
+          "en": "I passed the florist on my way home, and the freesias were so pretty I bought a bunch.",
+          "cue": "예쁘다 + -길래",
+          "accepted": ["예쁘길래"],
+          "nearMiss": [{ "answer": "예쁘기에", "hint": "Grammatical, but bookish in casual talk; the cue asks for -길래." }],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "친구가 몹시 지쳐 보여서 무슨 일이 있었는지 궁금해요. (Your friend looks completely drained, and you wonder what happened.)",
+          "options": [
+            { "text": "어제 뭘 했길래 그렇게 피곤해 보여?", "correct": true, "why": "-길래 in a question asks what circumstance led to what you're seeing." },
+            {
+              "text": "어제 뭘 했으니까 그렇게 피곤해 보여?",
+              "correct": false,
+              "why": "-(으)니까 gives the speaker's own reason; it can't form a 'what happened that…?' question."
+            },
+            {
+              "text": "어제 뭘 한 바람에 그렇게 피곤해 보여?",
+              "correct": false,
+              "why": "-는 바람에 reports a known cause of a past mishap, takes only -는, and doesn't work in a wondering question."
+            }
+          ]
+        }
+      ],
+      "register": [
+        {
+          "id": "r1",
+          "from": "written",
+          "to": "spoken",
+          "source": "평소보다 길이 많이 막히기에 지하철로 갈아탔다.",
+          "accepted": ["평소보다 길이 많이 막히길래 지하철로 갈아탔어요.", "평소보다 길이 많이 막히길래 지하철로 갈아탔어.", "평소보다 길이 너무 막히길래 지하철로 갈아탔어요."],
+          "features": [
+            { "kind": "contains", "any": ["길래"], "scope": "all", "label": "Use the colloquial -길래, not written -기에" },
+            { "kind": "endsWith", "any": ["요", "어"], "label": "Use a spoken ending (-아/어 or -아/어요), not written -다" }
+          ],
+          "coreWords": ["평소", "길이", "막히길래", "지하철", "갈아탔"],
+          "particleTolerance": "loose",
+          "finalPunctOptional": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "g:니만큼",
+    "kind": "grammar",
+    "level": 2,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["reason", "contrast-set:grounds", "formal"],
+    "mnemonic": "-(으)니 'since' + 만큼 'to that degree': since it matters this much, act to match.",
+    "pattern": "-(으)니만큼",
+    "meaning": "since / given that … (so it is only fitting that …)",
+    "attachment": [
+      { "stem": "V/A", "final": "any", "tense": "present", "form": "V/A-(으)니만큼", "example": "중요하니만큼" },
+      { "stem": "V/A", "final": "any", "tense": "past", "form": "V/A-았/었으니만큼", "example": "약속했으니만큼" },
+      { "stem": "N이다", "final": "any", "tense": "present", "form": "N(이)니만큼", "example": "첫 행사니만큼" }
+    ],
+    "nuance": "States a premise from which the main clause follows as the fitting response or natural judgment: 'given that X, (naturally) Y'. Formal; common in speeches, notices, and editorials. Unlike -기에 and -길래, the main clause can be a request, command, or suggestion (중요한 회의이니만큼 늦지 마세요). Close to the 'since' sense of -(으)ㄴ/는 만큼.",
+    "contrasts": [
+      { "id": "g:기에", "note": "-기에 also gives formal grounds but can't lead into a request or command." },
+      { "id": "g:길래", "note": "-길래 is colloquial and can't lead into a request either." }
+    ],
+    "examples": [
+      {
+        "ko": "이번 결정은 회사의 미래가 걸린 문제이니만큼 신중하게 검토해야 한다.",
+        "en": "Since the company's future hinges on this decision, it has to be reviewed carefully.",
+        "register": "written"
+      },
+      { "ko": "오랜만에 모이는 자리니만큼 다들 시간 맞춰 와 주세요.", "en": "Since it's been a while since we all got together, please be on time.", "register": "neutral" }
+    ],
+    "questionTypes": ["cloze", "nuance", "register"],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "이번 행사에는 대표님이 직접 {{}} 복장에 각별히 신경 써 주세요.",
+          "en": "Since the CEO is attending this event in person, please take particular care with your attire.",
+          "cue": "참석하시다 + -(으)니만큼",
+          "accepted": ["참석하시니만큼"],
+          "nearMiss": [
+            { "answer": "참석하시기에", "hint": "-기에 can't lead into a request (-아/어 주세요); -(으)니만큼 can." },
+            { "answer": "참석하시니까", "hint": "Fine in everyday speech; the cue asks for the more formal -(으)니만큼." },
+            { "answer": "참석하시는 만큼", "hint": "Also natural (-는 만큼 'since', spaced); the cue asks for -(으)니만큼, written as one word." }
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "팀원들에게 중요한 발표가 있으니 조금 일찍 와 달라고 공지하려고 해요. (A note asking the team to come early because there's a key presentation.)",
+          "options": [
+            { "text": "중요한 발표가 있는 날이니만큼 조금 일찍 와 주세요.", "correct": true, "why": "-(으)니만큼 sets up a premise and can lead into a request." },
+            { "text": "중요한 발표가 있는 날이기에 조금 일찍 와 주세요.", "correct": false, "why": "-기에 can't be followed by a request or command." },
+            {
+              "text": "중요한 발표가 있는 날이길래 조금 일찍 와 주세요.",
+              "correct": false,
+              "why": "-길래 can't be followed by a request either, and it implies you just happened to notice the fact."
+            }
+          ]
+        }
+      ],
+      "register": [
+        {
+          "id": "r1",
+          "from": "haeyo",
+          "to": "hapsyo",
+          "source": "올해 마지막 회의니만큼 한 분도 빠짐없이 참석해 주세요.",
+          "accepted": ["올해 마지막 회의니만큼 한 분도 빠짐없이 참석해 주십시오.", "올해 마지막 회의이니만큼 한 분도 빠짐없이 참석해 주십시오.", "올해 마지막 회의니만큼 한 분도 빠짐없이 참석해 주시기 바랍니다."],
+          "features": [
+            { "kind": "endsWith", "any": ["십시오", "ㅂ니다"], "label": "Use a 합쇼체 request (-(으)십시오 or -시기 바랍니다)" },
+            { "kind": "contains", "any": ["만큼"], "scope": "all", "label": "Keep the -(으)니만큼 clause" }
+          ],
+          "coreWords": ["마지막", "회의", "만큼", "빠짐없이", "참석"],
+          "particleTolerance": "allomorph",
+          "finalPunctOptional": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "g:는-셈이다",
+    "kind": "grammar",
+    "level": 2,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["evaluation", "contrast-set:amounts-to"],
+    "mnemonic": "셈 = counting (셈하다): do the math, and this is what it comes to.",
+    "pattern": "-(으)ㄴ/는 셈이다",
+    "meaning": "it amounts to …; in effect …; you could say …",
+    "attachment": [
+      { "stem": "V", "final": "any", "tense": "present", "form": "V-는 셈이다", "example": "매일 출근하는 셈이다" },
+      { "stem": "V", "final": "any", "tense": "past", "form": "V-(으)ㄴ 셈이다", "example": "거의 다 끝낸 셈이다" },
+      { "stem": "A", "final": "any", "tense": "present", "form": "A-(으)ㄴ 셈이다", "example": "싼 셈이다" },
+      { "stem": "N이다", "final": "any", "tense": "present", "form": "N인 셈이다", "example": "공짜인 셈이다" }
+    ],
+    "nuance": "A conclusion reached by reckoning from the facts: add things up, or look at them a certain way, and this is what it comes to. Often with 결국, 사실상, or 거의. Related set phrases: 셈 치다 ('treat it as', 기부한 셈 치자) and 셈이 되다.",
+    "contrasts": [
+      { "id": "g:는-격이다", "note": "-(으)ㄴ/는 격이다 likens the situation to a typical, often proverbial scenario; -(으)ㄴ/는 셈이다 reckons from the facts." },
+      { "id": "g:거나-마찬가지다", "note": "-(으)ㄴ/는 거나 마찬가지다 asserts equivalence more bluntly and colloquially ('as good as')." }
+    ],
+    "examples": [
+      {
+        "ko": "한 달에 이틀밖에 못 쉬었으니 사실상 매일 출근한 셈이다.",
+        "en": "I only had two days off all month, so in effect I went to work every day.",
+        "register": "written"
+      },
+      { "ko": "할인 쿠폰까지 쓰면 반값에 산 셈이에요.", "en": "With the coupon on top, you've basically bought it at half price.", "register": "neutral" }
+    ],
+    "questionTypes": ["cloze", "nuance", "register"],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "열 명이 지원해서 아홉 명이 붙었으니 거의 다 {{}}.",
+          "en": "Ten applied and nine got in, so practically everyone passed.",
+          "cue": "붙다 (past) + -(으)ㄴ 셈이다",
+          "accepted": ["붙은 셈이다", "붙은 셈이야"],
+          "nearMiss": [
+            { "answer": "붙는 셈이다", "hint": "The results are already in: use the past form, 붙은 셈이다." },
+            { "answer": "붙은 거나 마찬가지다", "hint": "Also natural; the cue asks for -(으)ㄴ 셈이다." }
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "월세 팔십만 원에 관리비가 이십만 원이에요. 실제로 매달 얼마를 내는지 정리해서 말하려고 해요. (Rent plus building fees: you sum up what you actually pay each month.)",
+          "options": [
+            {
+              "text": "결국 한 달에 백만 원을 내는 셈이야.",
+              "correct": true,
+              "why": "-는 셈이다 states the result of a reckoning: add it up and that's what it comes to."
+            },
+            {
+              "text": "결국 한 달에 백만 원을 내기 십상이야.",
+              "correct": false,
+              "why": "-기 십상이다 warns that something bad is likely; it doesn't state a computed total."
+            },
+            {
+              "text": "결국 한 달에 백만 원을 내기 마련이야.",
+              "correct": false,
+              "why": "-기 마련이다 states a general truth about how things tend to go, not the result of this calculation."
+            }
+          ]
+        }
+      ],
+      "register": [
+        {
+          "id": "r1",
+          "from": "hae",
+          "to": "hapsyo",
+          "source": "이번 분기 목표는 거의 다 채운 셈이야.",
+          "accepted": ["이번 분기 목표는 거의 다 채운 셈입니다.", "이번 분기 목표를 거의 다 채운 셈입니다."],
+          "features": [
+            { "kind": "endsWith", "any": ["ㅂ니다"], "label": "Ending must be 합쇼체 (-ㅂ니다)" },
+            { "kind": "contains", "any": ["셈"], "scope": "all", "label": "Keep the -(으)ㄴ 셈이다 ending" }
+          ],
+          "coreWords": ["분기", "목표", "채운", "셈"],
+          "particleTolerance": "allomorph",
+          "finalPunctOptional": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "g:는-격이다",
+    "kind": "grammar",
+    "level": 2,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [{ "id": "g:는-셈이다", "require": "guru" }],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["evaluation", "contrast-set:amounts-to"],
+    "mnemonic": "格 = pattern: the situation fits a familiar pattern, usually one from a proverb.",
+    "pattern": "-(으)ㄴ/는 격이다",
+    "meaning": "it's like …; it's a case of … (likening the situation to a stock, often proverbial scenario)",
+    "attachment": [
+      { "stem": "V", "final": "any", "tense": "present", "form": "V-는 격이다", "example": "외양간 고치는 격이다" },
+      { "stem": "V", "final": "any", "tense": "past", "form": "V-(으)ㄴ 격이다", "example": "제 발등을 찍은 격이다" }
+    ],
+    "nuance": "Compares the present situation to a stock scenario, very often a proverb or idiom: 소 잃고 외양간 고치는 격이다, 계란으로 바위 치는 격이다, 제 발등을 찍은 격이다. The tone is usually critical or ironic; frequent in editorials and commentary. 격 (格) here means 'pattern, kind'.",
+    "contrasts": [
+      { "id": "g:는-셈이다", "note": "-(으)ㄴ/는 셈이다 reckons from the facts; -(으)ㄴ/는 격이다 holds up a figurative mirror." },
+      { "id": "g:거나-마찬가지다", "note": "A blunter, more colloquial claim of equivalence." }
+    ],
+    "examples": [
+      {
+        "ko": "사고가 난 뒤에야 안전 점검을 하겠다니, 소 잃고 외양간 고치는 격이다.",
+        "en": "Promising safety checks only after the accident: that's locking the barn after the horse has bolted.",
+        "register": "written"
+      },
+      {
+        "ko": "자기가 만든 규정 때문에 자기가 승진을 못 했으니, 제 발등을 제가 찍은 격이지.",
+        "en": "He couldn't get promoted because of a rule he wrote himself. He shot himself in the foot.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": ["cloze", "nuance"],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "거대 기업을 상대로 혼자 소송을 걸겠다니, 계란으로 바위 {{}}.",
+          "en": "Suing a giant corporation all on your own? That's like throwing an egg at a rock.",
+          "cue": "치다 + -는 격이다",
+          "accepted": ["치는 격이다", "치는 격이야"],
+          "nearMiss": [{ "answer": "치는 셈이다", "hint": "With a proverb as the comparison, the standard fit is -는 격이다; the cue asks for it." }],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "작은 스타트업이 대기업과 정면 승부를 하겠다고 해요. 무모해 보이는 상황을 속담에 빗대어 말하려면? (A tiny startup plans to take on a conglomerate head-on. You liken it to a proverb.)",
+          "options": [
+            { "text": "계란으로 바위 치는 격이네.", "correct": true, "why": "-는 격이다 likens the situation to a stock scenario, here the egg and the rock." },
+            {
+              "text": "계란으로 바위를 친 탓이네.",
+              "correct": false,
+              "why": "-(으)ㄴ 탓이다 blames a cause for a bad result that already happened; nothing has happened yet."
+            },
+            { "text": "계란으로 바위 치기 마련이네.", "correct": false, "why": "-기 마련이다 states a general tendency; it can't hold up a proverb as a comparison." }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "g:거나-마찬가지다",
+    "kind": "grammar",
+    "level": 2,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["evaluation", "contrast-set:amounts-to", "colloquial"],
+    "mnemonic": "거나 = 것이나 'it may as well be': two things side by side, with no difference worth mentioning.",
+    "pattern": "-(으)ㄴ/는 거나 마찬가지다",
+    "meaning": "is as good as …; is no different from …",
+    "attachment": [
+      { "stem": "V", "final": "any", "tense": "present", "form": "V-는 거나 마찬가지다", "example": "포기하는 거나 마찬가지다" },
+      { "stem": "V", "final": "any", "tense": "past", "form": "V-(으)ㄴ 거나 마찬가지다", "example": "다 끝난 거나 마찬가지다" },
+      { "stem": "N", "final": "any", "tense": "any", "form": "N(이)나 마찬가지다", "example": "가족이나 마찬가지다" }
+    ],
+    "nuance": "Asserts that one thing is, for practical purposes, the same as another: 'it's as good as …'. Colloquial in tone (거나 is short for 것이나) and often emphatic or slightly exaggerated: 도장만 안 찍었지 다 된 거나 마찬가지야. With nouns: N(이)나 마찬가지다. A common variant ends in 다름없다: -(으)ㄴ 거나 다름없다.",
+    "contrasts": [
+      { "id": "g:는-셈이다", "note": "-(으)ㄴ/는 셈이다 is a more measured reckoning, at home in writing." },
+      { "id": "g:는-격이다", "note": "-(으)ㄴ/는 격이다 compares with a figurative scenario rather than asserting equivalence." }
+    ],
+    "examples": [
+      { "ko": "결승골이 들어간 순간 우승한 거나 마찬가지였다.", "en": "The moment the winning goal went in, the title was as good as won.", "register": "written" },
+      { "ko": "그 선배는 나한테 친언니나 마찬가지야.", "en": "She's like a real big sister to me.", "register": "spoken" }
+    ],
+    "questionTypes": ["cloze", "nuance"],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "계약서에 도장만 안 찍었지 사실상 다 {{}}.",
+          "en": "We haven't stamped the contract yet, but it's as good as done.",
+          "cue": "되다 (past) + -(으)ㄴ 거나 마찬가지다 (반말)",
+          "accepted": ["된 거나 마찬가지야", "된 것이나 마찬가지야"],
+          "nearMiss": [{ "answer": "된 셈이야", "hint": "Close in meaning; the cue asks for -(으)ㄴ 거나 마찬가지다." }],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "어릴 때부터 같이 자란 이웃 언니를 소개하면서 가족이나 다름없다는 뜻을 전하려고 해요. (Introducing a neighbor you grew up with, you say she's practically family.)",
+          "options": [
+            { "text": "우리한테는 가족이나 마찬가지인 사람이야.", "correct": true, "why": "N(이)나 마찬가지다 asserts practical equivalence: she's as good as family." },
+            {
+              "text": "우리한테는 가족인 격인 사람이야.",
+              "correct": false,
+              "why": "-(으)ㄴ 격이다 likens a situation to a stock scenario; it can't say a person is like family, and the stacked modifier doesn't work."
+            },
+            {
+              "text": "우리한테는 가족이기 마련인 사람이야.",
+              "correct": false,
+              "why": "-기 마련이다 states a general tendency; 'bound to be family' makes no sense here."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "g:기-마련이다",
+    "kind": "grammar",
+    "level": 2,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["tendency", "contrast-set:inevitability"],
+    "mnemonic": "마련 = arrangement (as in 마련하다): it's all been arranged in advance. That's simply how things go.",
+    "pattern": "-기 마련이다",
+    "meaning": "is bound to …; naturally / inevitably …",
+    "attachment": [
+      { "stem": "V/A", "final": "any", "tense": "present", "form": "V/A-기 마련이다", "example": "실수하기 마련이다" },
+      { "stem": "V/A", "final": "any", "tense": "present", "form": "V/A-게 마련이다", "example": "지치게 마련이다" }
+    ],
+    "nuance": "States what naturally or inevitably happens as a general rule, not what happened in one case. The 기 clause stays in the present (*실수했기 마련이다), though the whole can be shifted to the past (-기 마련이었다). Neutral in tone; used to observe and to comfort (처음엔 누구나 실수하기 마련이에요). Variant: -게 마련이다.",
+    "contrasts": [
+      { "id": "g:는-법이다", "note": "-는 법이다 sounds more aphoristic, like a rule of life or a lesson, and is often admonishing." },
+      { "id": "g:기-십상이다", "note": "-기 십상이다 predicts that something (bad) is likely in a specific situation, often as a warning." }
+    ],
+    "examples": [
+      {
+        "ko": "아무리 친한 사이라도 오래 같이 살다 보면 부딪히기 마련이다.",
+        "en": "However close you are, live together long enough and you're bound to clash.",
+        "register": "written"
+      },
+      { "ko": "처음엔 누구나 헤매기 마련이니까 너무 걱정하지 마세요.", "en": "Everyone fumbles around at first, so don't worry too much.", "register": "neutral" }
+    ],
+    "questionTypes": ["cloze", "nuance", "register"],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "처음 맡은 일은 누구나 {{}}.",
+          "en": "Anyone is bound to be clumsy at a job they've just taken on.",
+          "cue": "서툴다 + -기 마련이다",
+          "accepted": ["서툴기 마련이다", "서툴게 마련이다", "서툴기 마련이야", "서툴기 마련이에요"],
+          "nearMiss": [{ "answer": "서툰 법이다", "hint": "Also natural; the cue asks for -기 마련이다." }],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "입사 첫 주에 실수를 한 후배를 위로하려고 해요. (You comfort a junior colleague who slipped up in their first week.)",
+          "options": [
+            { "text": "처음엔 누구나 실수하기 마련이에요.", "correct": true, "why": "A general truth offered as comfort: exactly what -기 마련이다 does." },
+            { "text": "처음엔 누구나 실수했기 마련이에요.", "correct": false, "why": "The 기 clause of -기 마련이다 doesn't take the past tense." },
+            { "text": "처음엔 누구나 실수하는 셈이에요.", "correct": false, "why": "-는 셈이다 reckons from the facts of one case; it doesn't state a general truth." }
+          ]
+        }
+      ],
+      "register": [
+        {
+          "id": "r1",
+          "from": "written",
+          "to": "haeyo",
+          "source": "소문은 퍼질수록 부풀려지기 마련이다.",
+          "accepted": ["소문은 퍼질수록 부풀려지기 마련이에요.", "소문은 퍼질수록 부풀려지기 마련이죠.", "소문은 퍼질수록 부풀려지게 마련이에요."],
+          "features": [
+            { "kind": "endsWith", "any": ["요"], "label": "Use 해요체 (-에요/-죠), not written -다" },
+            { "kind": "contains", "any": ["마련"], "scope": "all", "label": "Keep -기 마련이다" }
+          ],
+          "coreWords": ["소문", "퍼질수록", "부풀려지", "마련"],
+          "particleTolerance": "allomorph",
+          "finalPunctOptional": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "g:는-법이다",
+    "kind": "grammar",
+    "level": 2,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [{ "id": "g:기-마련이다", "require": "guru" }],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["tendency", "contrast-set:inevitability"],
+    "mnemonic": "法 = law: you're citing a law of nature, or at least of human nature.",
+    "pattern": "-는 법이다",
+    "meaning": "it's just the way things are that …; naturally … (stated as a rule of life)",
+    "attachment": [
+      { "stem": "V", "final": "any", "tense": "present", "form": "V-는 법이다", "example": "티가 나는 법이다" },
+      { "stem": "A", "final": "any", "tense": "present", "form": "A-(으)ㄴ 법이다", "example": "가까울수록 어려운 법이다" },
+      { "stem": "V", "final": "any", "tense": "present", "form": "V-는 법이 없다", "example": "약속에 늦는 법이 없다" }
+    ],
+    "nuance": "Presents something as a natural law or truism, with an aphoristic, sometimes admonishing tone: 노력하면 언젠가는 티가 나는 법이다. Common in advice from elders and in essays. The negative frame -는 법이 없다 means 'never does', describing a person's fixed habits (그는 약속에 늦는 법이 없다); -기 마련이다 has no such use.",
+    "contrasts": [
+      {
+        "id": "g:기-마련이다",
+        "note": "Similar 'naturally'; -기 마련이다 is plainer and more observational, -는 법이다 more aphoristic. Only -는 법이다 has the 'never does' frame."
+      },
+      { "id": "g:기-십상이다", "note": "-기 십상이다 predicts a likely (bad) outcome rather than stating a rule." }
+    ],
+    "examples": [
+      { "ko": "아무리 숨기려 해도 거짓말은 언젠가 드러나는 법이다.", "en": "However hard you try to hide it, a lie comes out in the end.", "register": "written" },
+      {
+        "ko": "그 선배는 아무리 바빠도 후배들 메시지에 답을 안 하는 법이 없어.",
+        "en": "However busy she is, she never fails to answer her juniors' messages.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": ["cloze", "nuance"],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "아무리 가까운 사이라도 돈 문제가 얽히면 {{}}.",
+          "en": "However close people are, once money gets involved they drift apart. That's how it goes.",
+          "cue": "멀어지다 + -는 법이다",
+          "accepted": ["멀어지는 법이다", "멀어지는 법이야"],
+          "nearMiss": [{ "answer": "멀어지기 마련이다", "hint": "Also natural; the cue asks for -는 법이다." }],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "동료가 십 년 동안 한 번도 지각한 적이 없다는 사실을 말하려고 해요. (You point out that a colleague hasn't been late once in ten years.)",
+          "options": [
+            { "text": "그 사람은 지각하는 법이 없어.", "correct": true, "why": "-는 법이 없다 describes a person who never does something, as a fixed habit." },
+            { "text": "그 사람은 지각하기 마련이 없어.", "correct": false, "why": "-기 마련이다 has no negative 'never does' frame; 마련이 없다 is ungrammatical here." },
+            {
+              "text": "그 사람은 지각하기 십상이 없어.",
+              "correct": false,
+              "why": "-기 십상이다 can't be negated this way, and it predicts a likely bad outcome rather than describing a habit."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "g:기-십상이다",
+    "kind": "grammar",
+    "level": 2,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["tendency", "contrast-set:inevitability", "warning"],
+    "mnemonic": "十常八九: eight or nine times out of ten, it goes wrong.",
+    "pattern": "-기 십상이다",
+    "meaning": "be liable to …; it's all too easy to … (a likely, usually unwanted outcome)",
+    "attachment": [{ "stem": "V/A", "final": "any", "tense": "present", "form": "V/A-기 십상이다", "example": "오해를 사기 십상이다" }],
+    "nuance": "Predicts that, under the stated condition, an almost always undesirable result is very likely. Typically follows a conditional or warning frame: -다가는/-(으)면 … -기 십상이다. From 십상팔구 (十常八九, 'eight or nine times out of ten'). Attached to a good outcome it sounds off, even sarcastic; for those, -기 마련이다 or plain -(으)ㄹ 것이다 fits.",
+    "contrasts": [
+      { "id": "g:기-마련이다", "note": "-기 마련이다 states a general truth, good or bad; -기 십상이다 warns of a likely bad result in a particular situation." },
+      { "id": "g:ㄹ세라", "note": "-(으)ㄹ세라 describes the precaution someone takes against such a feared outcome." }
+    ],
+    "examples": [
+      {
+        "ko": "계약서를 꼼꼼히 읽지 않고 서명했다가는 나중에 손해 보기 십상이다.",
+        "en": "Sign a contract without reading it carefully and you're liable to lose out later.",
+        "register": "written"
+      },
+      { "ko": "밤에 감정적으로 보낸 메시지는 오해를 사기 십상이야.", "en": "Emotional messages fired off late at night are all too easy to misread.", "register": "spoken" }
+    ],
+    "questionTypes": ["cloze", "nuance"],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "그렇게 매일 밤을 새우다가는 몸 {{}}.",
+          "en": "Keep pulling all-nighters like that and you're liable to wreck your health.",
+          "cue": "상하다 + -기 십상이다 (반말)",
+          "accepted": ["상하기 십상이야", "상하기 십상이다"],
+          "nearMiss": [{ "answer": "상하기 마련이야", "hint": "-기 마련이다 states a general truth; for a warning about a likely bad result, the cue asks for -기 십상이다." }],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "꾸준히 연습하면 결국 실력이 는다고 격려하려고 해요. (You encourage someone: keep practicing and you'll improve.)",
+          "options": [
+            { "text": "꾸준히 연습하면 실력은 늘기 마련이야.", "correct": true, "why": "-기 마련이다 states a natural result, good or bad, and suits encouragement." },
+            {
+              "text": "꾸준히 연습하면 실력이 늘기 십상이야.",
+              "correct": false,
+              "why": "-기 십상이다 is used almost exclusively for likely unwanted outcomes; attached to a good result like improving, it sounds off, even sarcastic."
+            },
+            {
+              "text": "꾸준히 연습하면 실력이 늘 지경이야.",
+              "correct": false,
+              "why": "-(으)ㄹ 지경이다 describes being pushed to an extreme (usually bad) state, not a natural payoff."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "g:ㄹ세라",
+    "kind": "grammar",
+    "level": 2,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": false,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["motive", "literary"],
+    "mnemonic": "Picture someone glancing over their shoulder mid-action: 누가 볼세라, lest anyone see.",
+    "pattern": "-(으)ㄹ세라",
+    "meaning": "for fear that …; lest …",
+    "attachment": [{ "stem": "V/A", "final": "any", "tense": "present", "form": "V/A-(으)ㄹ세라", "example": "놓칠세라" }],
+    "nuance": "Gives the anxious motive behind a precaution: the main clause is what someone does so that the feared thing won't happen (누가 볼세라 얼른 숨겼다). Literary in flavor, but alive in a handful of set uses: 누가 볼세라, 놓칠세라, and especially 뒤질세라 / 질세라 ('not to be outdone'). The everyday equivalent is -(으)ㄹ까 봐.",
+    "contrasts": [{ "id": "g:기-십상이다", "note": "-기 십상이다 says a bad outcome is likely; -(으)ㄹ세라 describes acting to head it off." }],
+    "examples": [
+      { "ko": "아이는 엄마 손을 놓칠세라 꼭 붙잡고 걸었다.", "en": "The child walked clutching his mother's hand, afraid of losing hold of it.", "register": "written" },
+      {
+        "ko": "한 업체가 가격을 내리자 경쟁사들도 질세라 할인 행사를 시작했다.",
+        "en": "When one company cut prices, its rivals, not to be outdone, launched sales of their own.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": ["cloze", "nuance"],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "그는 누가 {{}} 편지를 서둘러 서랍에 넣었다.",
+          "en": "He hurried the letter into the drawer, lest anyone see it.",
+          "cue": "보다 + -(으)ㄹ세라",
+          "accepted": ["볼세라"],
+          "nearMiss": [{ "answer": "볼까 봐", "hint": "Same idea and more everyday; the cue asks for the literary -(으)ㄹ세라." }],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "한 회사가 신제품을 내자 경쟁사도 뒤처지지 않으려고 곧바로 비슷한 제품을 냈어요. 기사 문장으로 쓰려면? (One firm launched a product, and its rival, not to be outdone, followed at once.)",
+          "options": [
+            { "text": "경쟁사도 이에 뒤질세라 비슷한 제품을 내놓았다.", "correct": true, "why": "뒤질세라 is the set use: acting so as not to fall behind." },
+            {
+              "text": "경쟁사도 이에 뒤지기 십상이라 비슷한 제품을 내놓았다.",
+              "correct": false,
+              "why": "-기 십상이다 predicts that falling behind is likely; it doesn't express the motive of not being outdone, and the sentence turns muddled."
+            },
+            {
+              "text": "경쟁사도 이에 뒤지는 바람에 비슷한 제품을 내놓았다.",
+              "correct": false,
+              "why": "-는 바람에 reports an unwanted cause that already happened: it says the rival did fall behind, the opposite of the point."
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

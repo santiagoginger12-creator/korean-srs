@@ -1,0 +1,296 @@
+[
+  {
+    "id": "x:도마-위에-오르다",
+    "kind": "expression",
+    "level": 2,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["관용구", "news"],
+    "mnemonic": "On the cutting board, everyone can see you, and someone is holding a knife.",
+    "subtype": "관용구",
+    "text": "도마 위에 오르다",
+    "meaning": "to come under public scrutiny or criticism; to become the subject of heated debate",
+    "literal": "to be put up on the cutting board",
+    "usage": "A staple of news and commentary: a policy, person, or practice 도마 위에 오르다 when it becomes the target of criticism or debate. Also 도마에 오르다, and the causative 도마 위에 올리다 ('put up for criticism').",
+    "examples": [
+      { "ko": "부실한 안전 관리가 국정 감사에서 도마 위에 올랐다.", "en": "Lax safety management came under fire at the parliamentary audit.", "register": "written" },
+      {
+        "ko": "연예인 사생활이 또 도마에 오르는 거 보니까 좀 씁쓸하더라.",
+        "en": "Seeing another celebrity's private life raked over left a bad taste in my mouth.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": ["meaning", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": [
+          "come under fire",
+          "come under scrutiny",
+          "come under criticism",
+          "be in the hot seat",
+          "be raked over the coals",
+          "become a target of criticism"
+        ]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "공공 기관의 과도한 성과급 지급 관행이 다시 {{}}.",
+          "en": "Public institutions' practice of paying excessive bonuses has come under fire again.",
+          "cue": "도마 위에 오르다 (past)",
+          "accepted": ["도마 위에 올랐다", "도마에 올랐다"],
+          "particleTolerance": "loose"
+        }
+      ]
+    }
+  },
+  {
+    "id": "x:물꼬를-트다",
+    "kind": "expression",
+    "level": 2,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["관용구", "negotiation", "news"],
+    "mnemonic": "Lift the little gate in the paddy dike, and the water starts to flow.",
+    "subtype": "관용구",
+    "text": "물꼬를 트다",
+    "meaning": "to open the way (for talks, exchange, or progress); to break the ice",
+    "literal": "to open the water gate of a rice paddy",
+    "usage": "For a first step that unblocks something larger: dialogue, trade, cooperation, a stalled negotiation. Common in diplomatic and business reporting: 대화의 물꼬를 트다, 협력의 물꼬를 트다.",
+    "examples": [
+      {
+        "ko": "두 정상의 짧은 통화가 꽉 막혀 있던 대화의 물꼬를 텄다.",
+        "en": "A brief phone call between the two leaders opened the way for long-stalled dialogue.",
+        "register": "written"
+      },
+      { "ko": "네가 먼저 연락해서 물꼬를 터 주면 걔도 마음을 열 거야.", "en": "If you reach out first and break the ice, she'll open up too.", "register": "spoken" }
+    ],
+    "questionTypes": ["meaning", "cloze"],
+    "questions": {
+      "meaning": { "accepted": ["open the way", "pave the way", "break the ice", "open a channel", "make a breakthrough", "get things flowing"] },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "이번 회담이 양국 관계 개선의 {{}} 계기가 될지 주목된다.",
+          "en": "All eyes are on whether these talks will open the way to better relations between the two countries.",
+          "cue": "물꼬를 트다 + -는",
+          "accepted": ["물꼬를 트는"],
+          "particleTolerance": "loose"
+        }
+      ]
+    }
+  },
+  {
+    "id": "x:귀가-얇다",
+    "kind": "expression",
+    "level": 2,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": false,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["관용구", "personality"],
+    "mnemonic": "Thin ears let every word straight through, with nothing to filter it.",
+    "subtype": "관용구",
+    "text": "귀가 얇다",
+    "meaning": "to be gullible; to be easily swayed by what others say",
+    "literal": "one's ears are thin",
+    "usage": "Describes a person's temperament, usually in an affectionately critical way. Common about shopping, investing, and decisions: 귀가 얇아서 광고만 보면 산다.",
+    "examples": [
+      {
+        "ko": "나는 귀가 얇아서 판매원 말만 들으면 필요 없는 것도 사게 된다.",
+        "en": "I'm so easily swayed that if a salesperson talks to me, I end up buying things I don't need.",
+        "register": "neutral"
+      },
+      {
+        "ko": "귀가 얇은 사람일수록 투자 사기의 표적이 되기 쉽다.",
+        "en": "The more gullible someone is, the more likely they are to be targeted by investment scams.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": ["meaning", "production"],
+    "questions": {
+      "meaning": { "accepted": ["gullible", "easily swayed", "easily persuaded", "credulous", "easily influenced", "suggestible"] },
+      "production": { "promptEn": "to be gullible; easily swayed by what others say (lit. thin ears)", "contextHint": "관용구", "accepted": ["귀가 얇다"] }
+    }
+  },
+  {
+    "id": "x:고육지책",
+    "kind": "expression",
+    "level": 2,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["사자성어", "hanja:策"],
+    "mnemonic": "苦 bitter + 肉 flesh + 之 of + 策 plan: a plan that begins by wounding yourself.",
+    "subtype": "사자성어",
+    "text": "고육지책",
+    "hanjaText": "苦肉之策",
+    "meaning": "a desperate measure that hurts oneself; a painful last resort",
+    "literal": "a plan of afflicting one's own flesh",
+    "usage": "For a costly or self-damaging step taken because nothing better is left: 고육지책으로 임금을 삭감하다. Neutral to sympathetic; common in business and policy news. Close to 궁여지책 (a makeshift way out of a tight corner), but 고육지책 stresses the self-inflicted pain.",
+    "examples": [
+      {
+        "ko": "적자가 계속되자 회사는 고육지책으로 임원 연봉부터 삭감했다.",
+        "en": "With losses mounting, the company took the painful step of cutting executive pay first.",
+        "register": "written"
+      },
+      {
+        "ko": "방학 동안 학원비를 감당하려고 고육지책으로 차를 팔았어요.",
+        "en": "To cover cram-school fees over the break, we took the drastic step of selling our car.",
+        "register": "neutral"
+      }
+    ],
+    "questionTypes": ["meaning", "production"],
+    "questions": {
+      "meaning": { "accepted": ["desperate measure", "last resort", "painful last resort", "drastic measure", "painful measure", "self sacrificing measure"] },
+      "production": { "promptEn": "a painful, self-sacrificing measure taken out of desperation", "contextHint": "사자성어", "accepted": ["고육지책"] }
+    }
+  },
+  {
+    "id": "x:전화위복",
+    "kind": "expression",
+    "level": 2,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["사자성어", "hanja:轉"],
+    "mnemonic": "轉 turn + 禍 misfortune + 爲 become + 福 fortune: the wheel turns, and bad becomes good.",
+    "subtype": "사자성어",
+    "text": "전화위복",
+    "hanjaText": "轉禍爲福",
+    "meaning": "a blessing in disguise; turning misfortune into good fortune",
+    "literal": "turn misfortune into fortune",
+    "usage": "Used looking back, when a setback led to something good, or hopefully, as encouragement: 이번 일을 전화위복의 계기로 삼자. Very common in speeches, sports, and everyday talk.",
+    "examples": [
+      {
+        "ko": "부상으로 시즌을 쉰 게 오히려 전화위복이 돼서 그는 기술을 완전히 새로 다듬었다.",
+        "en": "Sitting out the season injured turned out to be a blessing in disguise: he completely reworked his technique.",
+        "register": "written"
+      },
+      {
+        "ko": "떨어진 건 아쉽지만 이번 일을 전화위복의 계기로 삼자.",
+        "en": "It's a shame you didn't get in, but let's turn this into something good.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": ["meaning", "production"],
+    "questions": {
+      "meaning": {
+        "accepted": [
+          "blessing in disguise",
+          "turn misfortune into fortune",
+          "silver lining",
+          "turning misfortune into a blessing",
+          "every cloud has a silver lining"
+        ]
+      },
+      "production": { "promptEn": "a blessing in disguise; turning misfortune into good fortune", "contextHint": "사자성어", "accepted": ["전화위복"] }
+    }
+  },
+  {
+    "id": "x:아전인수",
+    "kind": "expression",
+    "level": 2,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["사자성어", "politics"],
+    "mnemonic": "我 my + 田 field + 引 draw + 水 water: everyone digs the channel toward their own paddy.",
+    "subtype": "사자성어",
+    "text": "아전인수",
+    "hanjaText": "我田引水",
+    "meaning": "interpreting or arguing everything to one's own advantage; self-serving spin",
+    "literal": "drawing water into one's own field",
+    "usage": "Critical. Typically about selective readings of data, laws, or events: 아전인수식 해석, 통계를 아전인수 격으로 해석하다. Frequent in political commentary.",
+    "examples": [
+      {
+        "ko": "여야 모두 같은 여론 조사 결과를 아전인수식으로 해석하며 자기들이 이겼다고 주장했다.",
+        "en": "Both parties spun the same poll in their own favor and claimed victory.",
+        "register": "written"
+      },
+      { "ko": "너 지금 회의록을 완전히 아전인수 격으로 해석하고 있잖아.", "en": "You're interpreting those minutes entirely to suit yourself.", "register": "spoken" }
+    ],
+    "questionTypes": ["meaning", "production"],
+    "questions": {
+      "meaning": {
+        "accepted": ["self serving interpretation", "self serving spin", "spin in one's favor", "interpret to one's own advantage", "cherry pick", "suit oneself"]
+      },
+      "production": {
+        "promptEn": "interpreting things to one's own advantage (lit. drawing water into one's own field)",
+        "contextHint": "사자성어",
+        "accepted": ["아전인수"]
+      }
+    }
+  },
+  {
+    "id": "x:언-발에-오줌-누기",
+    "kind": "expression",
+    "level": 2,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["속담", "policy"],
+    "mnemonic": "It feels warm for a second. Then it freezes, and the foot is worse off than before.",
+    "subtype": "속담",
+    "text": "언 발에 오줌 누기",
+    "meaning": "a stopgap that brings brief relief but makes things worse; a short-sighted quick fix",
+    "literal": "peeing on a frozen foot",
+    "usage": "Earthy but standard in news and policy debate, especially as 언 발에 오줌 누기식 대책 (stopgap measures). The warmth lasts a moment; then the foot freezes worse than before. Pairs naturally with 미봉책.",
+    "examples": [
+      {
+        "ko": "예산을 이리저리 돌려막는 건 언 발에 오줌 누기에 불과하다.",
+        "en": "Shuffling budget money around to plug holes is nothing but a short-sighted quick fix.",
+        "register": "written"
+      },
+      {
+        "ko": "대출로 카드값을 막는 건 언 발에 오줌 누기야. 지출부터 줄여야지.",
+        "en": "Paying off your card with a loan just makes things worse later. You've got to cut spending first.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": ["meaning", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": [
+          "stopgap that makes things worse",
+          "short sighted quick fix",
+          "temporary relief that backfires",
+          "a fix that backfires",
+          "makes things worse in the long run"
+        ]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "급한 불만 끄는 이번 대책은 언 발에 {{}}에 불과하다는 비판을 받고 있다.",
+          "en": "The measures, which only put out the immediate fire, are being criticized as a quick fix that will make things worse.",
+          "cue": "the act in the proverb",
+          "accepted": ["오줌 누기"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  }
+]

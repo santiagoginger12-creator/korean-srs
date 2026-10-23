@@ -31,5 +31,278 @@
         "accepted": ["발등에 불이 떨어지다", "발등에 불 떨어지다"]
       }
     }
+  },
+  {
+    "id": "x:총대를-메다",
+    "kind": "expression",
+    "level": 1,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["관용구", "workplace", "spelling"],
+    "mnemonic": "The rifle goes on one shoulder only. Whoever shoulders it leads the charge and draws the first shot.",
+    "subtype": "관용구",
+    "text": "총대를 메다",
+    "meaning": "to step up and take on a risky or thankless task on everyone's behalf; to stick one's neck out for the group",
+    "literal": "to shoulder the rifle",
+    "usage": "Workplace, politics, and group settings: someone volunteers (or gets pushed) to raise the complaint, take the blame, or do the dirty work everyone wants done but no one wants to front. Neutral to casual. The verb is 메다 (to shoulder), not 매다 (to tie), a classic spelling slip.",
+    "examples": [
+      {
+        "ko": "다들 불만은 많으면서 아무도 총대를 메려고 하지 않았다.",
+        "en": "Everyone had plenty of complaints, but no one was willing to stick their neck out.",
+        "register": "written"
+      },
+      { "ko": "이번엔 내가 총대 멜게. 대신 다음엔 네 차례야.", "en": "I'll take this one for the team. But next time it's your turn.", "register": "spoken" }
+    ],
+    "questionTypes": ["meaning", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": [
+          "bell the cat",
+          "take one for the team",
+          "stick one's neck out",
+          "take on a thankless task",
+          "take the heat",
+          "volunteer for the dirty work",
+          "step up for the group"
+        ]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "결국 막내가 {{}} 팀장에게 업무 분담 문제를 건의했다.",
+          "en": "In the end the most junior member stuck his neck out and raised the workload issue with the team lead.",
+          "cue": "총대를 메다 + -고",
+          "accepted": ["총대를 메고"],
+          "nearMiss": [{ "answer": "총대를 매고", "hint": "메다 (to shoulder) vs 매다 (to tie): it's 총대를 메다." }],
+          "particleTolerance": "loose"
+        }
+      ]
+    }
+  },
+  {
+    "id": "x:변죽을-울리다",
+    "kind": "expression",
+    "level": 1,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["관용구", "communication"],
+    "mnemonic": "Tap the rim and the whole drum hums, without your ever touching the middle.",
+    "subtype": "관용구",
+    "text": "변죽을 울리다",
+    "meaning": "to hint at something without saying it outright; to talk around the point",
+    "literal": "to strike the rim (of a drum)",
+    "usage": "Describes deliberately oblique talk: instead of hitting the center, you tap the edge and hope the point resonates. Usually critical, and very often as 변죽만 울리다 ('just talking around it'). Common in commentary: 핵심은 피하고 변죽만 울렸다.",
+    "examples": [
+      {
+        "ko": "그는 하고 싶은 말이 있는 듯 한참 변죽만 울리다가 결국 돈 얘기를 꺼냈다.",
+        "en": "He talked around it for ages as if he had something to say, and finally brought up money.",
+        "register": "written"
+      },
+      { "ko": "변죽 울리지 말고 본론부터 말해.", "en": "Stop dancing around it and get to the point.", "register": "spoken" }
+    ],
+    "questionTypes": ["meaning", "production"],
+    "questions": {
+      "meaning": {
+        "accepted": ["beat around the bush", "talk around the point", "hint indirectly", "drop hints", "dance around the issue", "skirt the issue", "hint at"]
+      },
+      "production": {
+        "promptEn": "to talk around the point instead of saying it outright (lit. strike the rim)",
+        "contextHint": "관용구",
+        "accepted": ["변죽을 울리다", "변죽만 울리다"]
+      }
+    }
+  },
+  {
+    "id": "x:환골탈태",
+    "kind": "expression",
+    "level": 1,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["사자성어", "hanja:換", "change"],
+    "mnemonic": "換 swap + 骨 bones + 奪 seize + 胎 womb: not a facelift but new bones and a new birth.",
+    "subtype": "사자성어",
+    "text": "환골탈태",
+    "hanjaText": "換骨奪胎",
+    "meaning": "a complete transformation for the better; a total makeover",
+    "literal": "to swap one's bones and take a new womb",
+    "usage": "Used of people, organizations, cities, products, or teams changed beyond recognition, almost always approvingly: 환골탈태하다, 환골탈태한 모습. Common in news, sports, and marketing copy.",
+    "examples": [
+      {
+        "ko": "만년 꼴찌였던 팀이 새 감독 아래에서 환골탈태했다.",
+        "en": "The perennial last-place team has been completely transformed under its new manager.",
+        "register": "written"
+      },
+      {
+        "ko": "낡은 공장 건물이 환골탈태해서 지금은 근사한 복합 문화 공간이 됐어요.",
+        "en": "The old factory building got a total makeover and is now a great arts complex.",
+        "register": "neutral"
+      }
+    ],
+    "questionTypes": ["meaning", "production"],
+    "questions": {
+      "meaning": {
+        "accepted": [
+          "complete transformation",
+          "total transformation",
+          "total makeover",
+          "complete makeover",
+          "transform completely",
+          "be reborn",
+          "metamorphosis",
+          "transformed beyond recognition"
+        ]
+      },
+      "production": { "promptEn": "a complete transformation for the better; a total makeover", "contextHint": "사자성어", "accepted": ["환골탈태"] }
+    }
+  },
+  {
+    "id": "x:동상이몽",
+    "kind": "expression",
+    "level": 1,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["사자성어", "relationships", "politics"],
+    "mnemonic": "同 same + 床 bed + 異 different + 夢 dreams: lying side by side, dreaming apart.",
+    "subtype": "사자성어",
+    "text": "동상이몽",
+    "hanjaText": "同床異夢",
+    "meaning": "sharing a common front while pursuing different goals; being on the same side with different agendas",
+    "literal": "same bed, different dreams",
+    "usage": "For partners, allies, coalitions, or couples who look united but want different things. Neutral to critical; common in political and business reporting.",
+    "examples": [
+      {
+        "ko": "두 회사는 합병을 발표했지만 속내는 동상이몽이었다.",
+        "en": "The two companies announced a merger, but privately each had its own agenda.",
+        "register": "written"
+      },
+      {
+        "ko": "결혼 준비를 하다 보니 우리 둘이 완전 동상이몽이었더라.",
+        "en": "Planning the wedding, we found we'd had completely different ideas all along.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": ["meaning", "production"],
+    "questions": {
+      "meaning": {
+        "accepted": ["same bed different dreams", "different agendas", "different goals", "hidden agendas", "at cross purposes", "united in appearance only"]
+      },
+      "production": { "promptEn": "outwardly together but with different aims (lit. same bed, different dreams)", "contextHint": "사자성어", "accepted": ["동상이몽"] }
+    }
+  },
+  {
+    "id": "x:가랑비에-옷-젖는-줄-모른다",
+    "kind": "expression",
+    "level": 1,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["속담", "money", "habits"],
+    "mnemonic": "Not a downpour; you'd run for cover. It's the drizzle you ignore that soaks you.",
+    "subtype": "속담",
+    "text": "가랑비에 옷 젖는 줄 모른다",
+    "meaning": "small things add up before you notice (spending, habits, losses)",
+    "literal": "you don't notice your clothes getting soaked in a drizzle",
+    "usage": "A warning, or a rueful realization, about small repeated costs or influences that accumulate: daily coffees, subscriptions, little lies, bad habits. Often shortened to 가랑비에 옷 젖듯, or quoted with -다더니.",
+    "examples": [
+      {
+        "ko": "구독 서비스를 하나둘 늘렸더니, 가랑비에 옷 젖는 줄 모른다고 매달 빠져나가는 돈이 꽤 된다.",
+        "en": "I added subscriptions one at a time, and true to the proverb, the money draining out each month has quietly added up.",
+        "register": "written"
+      },
+      {
+        "ko": "작은 거짓말도 가랑비에 옷 젖듯 쌓이면 신뢰를 잃게 돼.",
+        "en": "Even small lies, piling up like a drizzle soaking you through, will cost you trust.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": ["meaning", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": [
+          "small things add up",
+          "little things add up",
+          "small costs add up unnoticed",
+          "it adds up without you noticing",
+          "drip by drip",
+          "many a mickle makes a muckle"
+        ]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "{{}} 옷 젖는 줄 모른다더니, 커피값만 모아 보니 한 달에 이십만 원이 넘더라.",
+          "en": "Like the proverb says, a drizzle soaks you before you know it: my coffee alone came to over two hundred thousand won a month.",
+          "cue": "the kind of rain in the proverb + 에",
+          "accepted": ["가랑비에"],
+          "nearMiss": [{ "answer": "이슬비에", "hint": "Right idea, but the proverb uses 가랑비." }],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "x:사공이-많으면-배가-산으로-간다",
+    "kind": "expression",
+    "level": 1,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": false,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["속담", "workplace"],
+    "mnemonic": "Every rower steering their own way, and somehow the boat ends up on a hilltop.",
+    "subtype": "속담",
+    "text": "사공이 많으면 배가 산으로 간다",
+    "meaning": "too many people in charge leads to a mess; too many cooks spoil the broth",
+    "literal": "with too many boatmen, the boat goes up the mountain",
+    "usage": "Said when a project with too many decision-makers drifts off course. Often clipped to (배가) 산으로 간다, 'it's going off the rails', with the full proverb understood.",
+    "examples": [
+      {
+        "ko": "의견을 하나하나 다 반영하다 보니 사공이 많으면 배가 산으로 간다는 말이 딱 맞았다.",
+        "en": "We tried to include every opinion, and the proverb about too many boatmen proved exactly right.",
+        "register": "written"
+      },
+      {
+        "ko": "회의만 다섯 번 했는데 기획안이 점점 산으로 가고 있어.",
+        "en": "We've had five meetings and the proposal keeps drifting further off course.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": ["meaning", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": ["too many cooks spoil the broth", "too many cooks", "too many chiefs", "too many people in charge", "too many cooks spoil the soup", "too many cooks in the kitchen"]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "사공이 많으면 배가 {{}} 간다더니, 다들 한마디씩 거들다 보니 디자인이 엉망이 됐다.",
+          "en": "Too many boatmen and the boat ends up on a mountain: everyone chimed in, and the design became a mess.",
+          "cue": "where the boat ends up in the proverb",
+          "accepted": ["산으로"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
   }
 ]

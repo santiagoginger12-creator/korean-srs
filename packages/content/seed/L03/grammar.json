@@ -1,0 +1,700 @@
+[
+  {
+    "id": "g:ㄴ-나머지",
+    "kind": "grammar",
+    "level": 3,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["degree", "contrast-set:extremes"],
+    "mnemonic": "나머지 = the remainder: so much feeling that the overflow spills into an action.",
+    "pattern": "-(으)ㄴ 나머지",
+    "meaning": "so … that (as a result of too much …), usually with an unintended outcome",
+    "attachment": [
+      { "stem": "V", "final": "any", "tense": "past", "form": "V-(으)ㄴ 나머지", "example": "긴장한 나머지" },
+      { "stem": "A", "final": "any", "tense": "present", "form": "A-(으)ㄴ 나머지", "example": "기쁜 나머지" }
+    ],
+    "nuance": "An excess of some feeling or state (긴장, 당황, 흥분, 서두르다, 기쁘다) leads to a result the person usually didn't intend: 당황한 나머지 엉뚱한 대답을 했다. Both verbs and adjectives take -(으)ㄴ. The main clause reports what happened, so it can't be a command or suggestion. Slightly formal and common in narrative writing and news, but perfectly usable in speech.",
+    "contrasts": [
+      {
+        "id": "g:다-못해",
+        "note": "-다 못해 is about reaching a limit (참다못해, 'unable to hold back any longer') or spilling past one degree into another (짜다 못해 쓰다)."
+      },
+      { "id": "g:ㄹ-지경이다", "note": "-(으)ㄹ 지경이다 describes being on the verge of an extreme state, not an action that resulted." }
+    ],
+    "examples": [
+      {
+        "ko": "그녀는 흥분한 나머지 회의 중에 목소리를 높였다가 곧 사과했다.",
+        "en": "She got so worked up that she raised her voice in the meeting, then quickly apologized.",
+        "register": "written"
+      },
+      {
+        "ko": "합격 소식을 듣고 너무 기쁜 나머지 도서관 한복판에서 소리를 지르고 말았다.",
+        "en": "When I heard I'd passed, I was so happy I let out a shout right in the middle of the library.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": ["cloze", "nuance", "register"],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "첫 출근 날 너무 {{}} 사원증을 집에 두고 나왔다.",
+          "en": "On my first day at work I was in such a hurry that I left my ID badge at home.",
+          "cue": "서두르다 + -(으)ㄴ 나머지",
+          "accepted": ["서두른 나머지"],
+          "nearMiss": [
+            { "answer": "서두르는 나머지", "hint": "Always -(으)ㄴ: 서두른 나머지." },
+            { "answer": "서두르는 바람에", "hint": "Natural too; the cue asks for -(으)ㄴ 나머지, which pins the cause on the excess of hurry." }
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "결승골을 넣은 선수가 너무 기뻐서 유니폼을 벗어 던졌다가 경고를 받았어요. 기사 문장으로 쓰려면? (A player was so overjoyed at scoring the winner that he ripped off his jersey and got a yellow card.)",
+          "options": [
+            {
+              "text": "너무 기쁜 나머지 유니폼을 벗어 던졌다가 경고를 받았다.",
+              "correct": true,
+              "why": "An excess of joy leading to an unintended consequence: exactly what -(으)ㄴ 나머지 describes."
+            },
+            { "text": "너무 기쁘는 나머지 유니폼을 벗어 던졌다가 경고를 받았다.", "correct": false, "why": "Adjectives take -(으)ㄴ: 기쁜 나머지, never *기쁘는." },
+            {
+              "text": "너무 기쁜 나머지 다 같이 유니폼을 벗어 던지자.",
+              "correct": false,
+              "why": "-(으)ㄴ 나머지 reports a result that has already happened; it can't lead into a suggestion."
+            }
+          ]
+        }
+      ],
+      "register": [
+        {
+          "id": "r1",
+          "from": "written",
+          "to": "haeyo",
+          "source": "그는 당황한 나머지 엉뚱한 대답을 하고 말았다.",
+          "accepted": ["그 사람은 당황한 나머지 엉뚱한 대답을 하고 말았어요.", "그 사람은 당황한 나머지 엉뚱한 대답을 해 버렸어요.", "걔는 당황한 나머지 엉뚱한 대답을 하고 말았어요."],
+          "features": [
+            { "kind": "endsWith", "any": ["요"], "label": "Use 해요체, not written -다" },
+            { "kind": "notContains", "any": ["그는"], "scope": "all", "label": "그는 is written-only; say 그 사람은 (or 걔는)" }
+          ],
+          "coreWords": ["당황한", "나머지", "엉뚱한", "대답"],
+          "particleTolerance": "loose",
+          "finalPunctOptional": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "g:다-못해",
+    "kind": "grammar",
+    "level": 3,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [{ "id": "g:ㄴ-나머지", "require": "guru" }],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["degree", "contrast-set:extremes"],
+    "mnemonic": "못해 = 'couldn't (go on)': you tried to keep going, and you couldn't.",
+    "pattern": "-다(가) 못해",
+    "meaning": "(V) unable to keep … up any longer, finally …; (A) so … that it goes beyond into …",
+    "attachment": [
+      { "stem": "V", "final": "any", "tense": "present", "form": "V-다(가) 못해", "example": "기다리다 못해" },
+      { "stem": "A", "final": "any", "tense": "present", "form": "A-다 못해", "example": "지루하다 못해" }
+    ],
+    "nuance": "Two uses. With verbs of enduring or watching (참다, 견디다, 보다, 기다리다), the person held out as long as they could and then acted: 보다못해 한마디 했다 ('unable to stand by any longer'). With adjectives, a quality is pushed past its limit into a further, more extreme state: 하얗다 못해 창백하다, 지루하다 못해 졸리다. 참다못해 and 보다못해 are adverbs in 표준국어대사전 and are written closed up; elsewhere keep the space (기다리다 못해, 지루하다 못해).",
+    "contrasts": [
+      { "id": "g:ㄴ-나머지", "note": "-(으)ㄴ 나머지 is an excess of feeling causing an (unintended) action; -다 못해 is a limit of endurance reached." },
+      { "id": "g:ㄹ-지경이다", "note": "-(으)ㄹ 지경이다 is the verge of an extreme; -다 못해 has already crossed into it." }
+    ],
+    "examples": [
+      {
+        "ko": "층간 소음을 참다못해 결국 윗집 현관에 쪽지를 붙였다.",
+        "en": "Unable to put up with the noise from upstairs any longer, I finally stuck a note on their door.",
+        "register": "written"
+      },
+      { "ko": "그 영화는 지루하다 못해 고통스러울 지경이었다.", "en": "That film was beyond boring; it was practically painful.", "register": "neutral" }
+    ],
+    "questionTypes": ["cloze", "nuance"],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "후배가 혼자 끙끙대는 걸 {{}} 내가 대신 상사에게 말해 줬다.",
+          "en": "Unable to watch my junior struggle alone any longer, I spoke to our boss for her.",
+          "cue": "보다 + -다 못해",
+          "accepted": ["보다못해", "보다 못해"],
+          "nearMiss": [{ "answer": "본 나머지", "hint": "-(으)ㄴ 나머지 needs an excess of feeling; for 'couldn't stand by any longer', the set word is 보다못해." }],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "공사 소음이 몇 주째 이어지자 결국 관리실에 항의 전화를 했어요. (After weeks of construction noise, you finally called the building office to complain.)",
+          "options": [
+            { "text": "참다못해 관리실에 전화했어요.", "correct": true, "why": "-다 못해 with 참다: you held out as long as you could, then acted." },
+            {
+              "text": "참은 나머지 관리실에 전화했어요.",
+              "correct": false,
+              "why": "-(으)ㄴ 나머지 needs an excess of feeling (화가 난 나머지 would work); 'having endured' isn't such a state."
+            },
+            {
+              "text": "참는 바람에 관리실에 전화했어요.",
+              "correct": false,
+              "why": "-는 바람에 makes enduring the sudden cause of an unwanted result, which turns the logic upside down."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "g:ㄹ-지경이다",
+    "kind": "grammar",
+    "level": 3,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["degree", "contrast-set:extremes"],
+    "mnemonic": "地境 = a border: you're standing right at the border of losing it.",
+    "pattern": "-(으)ㄹ 지경이다",
+    "meaning": "to the point of …; on the verge of … (an extreme, usually bad state)",
+    "attachment": [
+      { "stem": "V/A", "final": "any", "tense": "future", "form": "V/A-(으)ㄹ 지경이다", "example": "미칠 지경이다" },
+      { "stem": "V", "final": "any", "tense": "future", "form": "V-(으)ㄹ 지경에 이르다", "example": "파산할 지경에 이르다" }
+    ],
+    "nuance": "Hyperbolic degree: things have gotten so bad that someone is on the verge of an extreme state (미칠 지경이다, 쓰러질 지경이다, 숨이 막힐 지경이다). Usually negative and often exaggerated for effect. The more formal frame is -(으)ㄹ 지경에 이르다 ('reach the point of'). 지경 (地境) is literally a boundary.",
+    "contrasts": [
+      { "id": "g:다-못해", "note": "-다 못해 has already crossed the line into the next state; -(으)ㄹ 지경이다 is right at the edge." },
+      { "id": "g:ㄴ-나머지", "note": "-(으)ㄴ 나머지 names the excess that caused an action." }
+    ],
+    "examples": [
+      { "ko": "요즘 야근이 너무 잦아서 쓰러질 지경이야.", "en": "I've been working late so often lately that I'm about to collapse.", "register": "spoken" },
+      {
+        "ko": "가뭄이 석 달째 이어지면서 농민들은 농사를 포기할 지경에 이르렀다.",
+        "en": "With the drought in its third month, farmers have reached the point of giving up on their crops.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": ["cloze", "nuance"],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "에어컨이 고장 난 사무실은 숨이 {{}}.",
+          "en": "With the air conditioner broken, the office was so stifling you could hardly breathe.",
+          "cue": "막히다 + -(으)ㄹ 지경이다 (past)",
+          "accepted": ["막힐 지경이었다", "막힐 지경이었어", "막힐 지경이었어요"],
+          "nearMiss": [
+            { "answer": "막힐 정도였다", "hint": "Similar meaning; the cue asks for -(으)ㄹ 지경이다." },
+            { "answer": "막혔을 지경이었다", "hint": "The clause before 지경 takes the plain -(으)ㄹ form; tense goes on 이다: 막힐 지경이었다." }
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "층간 소음 때문에 한 달째 잠을 못 자서 정신이 나갈 것 같다고 친구에게 하소연하려고 해요. (A month of sleepless nights from noisy neighbors: you feel you're losing your mind.)",
+          "options": [
+            {
+              "text": "한 달째 잠을 못 자서 미칠 지경이야.",
+              "correct": true,
+              "why": "-(으)ㄹ 지경이다 says you're on the verge of an extreme state: exactly the exasperation you mean."
+            },
+            { "text": "한 달째 잠을 못 자서 미치기 마련이야.", "correct": false, "why": "-기 마련이다 states a general truth; it can't describe your own current state." },
+            { "text": "한 달째 잠을 못 자서 미치는 셈이야.", "correct": false, "why": "-는 셈이다 is a reckoning ('it amounts to'), not an extreme of feeling." }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "g:어-버리다",
+    "kind": "grammar",
+    "level": 3,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["completion", "contrast-set:completion"],
+    "mnemonic": "버리다 = throw away: the action is done and tossed behind you, for better or worse.",
+    "pattern": "-아/어 버리다",
+    "meaning": "(do something) completely; end up … (with relief, regret, or decisiveness)",
+    "attachment": [{ "stem": "V", "final": "any", "tense": "any", "form": "V-아/어 버리다", "example": "먹어 버리다" }],
+    "nuance": "Marks an action as done and gone, colored by the speaker's feeling about it: regret (지갑을 잃어버렸다), relief at being rid of something (밀린 일을 다 끝내 버렸다), or brisk decisiveness (그냥 말해 버려). It is common in commands and suggestions (빨리 끝내 버리자) and very frequent in speech. As an auxiliary it may be spaced or attached (먹어 버리다 / 먹어버리다), and some compounds are single dictionary words (잊어버리다, 잃어버리다).",
+    "contrasts": [
+      {
+        "id": "g:고-말다",
+        "note": "-고 말다 stresses an outcome reached despite resistance (often regrettable) or a firm resolve; it isn't used for breezy commands or suggestions, where -아/어 버리다 is natural."
+      }
+    ],
+    "examples": [
+      {
+        "ko": "고민만 하다가 결국 마감 하루 전에 다 써 버렸다.",
+        "en": "After agonizing over it for ages, I ended up writing the whole thing the day before the deadline.",
+        "register": "neutral"
+      },
+      { "ko": "그렇게 신경 쓰이면 그냥 솔직하게 말해 버려.", "en": "If it's bothering you that much, just come out and say it.", "register": "spoken" }
+    ],
+    "questionTypes": ["cloze", "nuance"],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "마감이 내일이니까 오늘 밤에 다 {{}}.",
+          "en": "The deadline's tomorrow, so let's just get it all done tonight.",
+          "cue": "끝내다 + -아/어 버리다 (suggestion, -자)",
+          "accepted": ["끝내 버리자", "끝내버리자"],
+          "nearMiss": [
+            {
+              "answer": "끝내고 말자",
+              "hint": "Possible as a show of grim determination, but for a brisk 'let's just get it over with', the cue asks for -아/어 버리다."
+            }
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "망설이는 친구에게 고민 그만하고 그냥 지원하라고 등을 떠밀려고 해요. (You push a hesitant friend: stop overthinking and just apply!)",
+          "options": [
+            { "text": "고민 그만하고 그냥 지원해 버려!", "correct": true, "why": "-아/어 버리다 works in commands and adds a 'just do it and be done with it' push." },
+            {
+              "text": "고민 그만하고 그냥 지원하고 말아!",
+              "correct": false,
+              "why": "-고 말다 is about an outcome reached despite resistance, or one's own resolve. As a breezy 'just do it' push to someone else it sounds unnatural; its imperative turns up only in solemn exhortations (꼭 이기고 말아라)."
+            },
+            { "text": "고민 그만하고 그냥 지원하기 마련이야!", "correct": false, "why": "-기 마련이다 states a general truth; it can't push someone to act." }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "g:고-말다",
+    "kind": "grammar",
+    "level": 3,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [{ "id": "g:어-버리다", "require": "guru" }],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["completion", "contrast-set:completion"],
+    "mnemonic": "말다 = stop: the story stops at this ending, whether you wanted it or not.",
+    "pattern": "-고 말다",
+    "meaning": "end up … (despite efforts or wishes); with -겠다/-(으)ㄹ 거다, be determined to …",
+    "attachment": [
+      { "stem": "V", "final": "any", "tense": "past", "form": "V-고 말았다", "example": "울고 말았다" },
+      { "stem": "V", "final": "any", "tense": "future", "form": "V-고 말겠다 / V-고 말 거다", "example": "이기고 말겠다" }
+    ],
+    "nuance": "(1) An outcome reached at the end of a process, often against the person's wishes or efforts: 참으려 했지만 결국 울고 말았다. Typically past tense, often with 결국 or 끝내. (2) With -겠다 or -(으)ㄹ 거다, the speaker's firm resolve to bring something about: 이번에는 꼭 합격하고 말겠다. It doesn't work as a brisk 'just do it' command or suggestion; an imperative turns up only in solemn exhortations (꼭 이기고 말아라).",
+    "contrasts": [
+      {
+        "id": "g:어-버리다",
+        "note": "-아/어 버리다 adds relief, regret, or decisiveness to a completed act and works in commands; -고 말다 stresses the outcome after resistance, or a resolve."
+      }
+    ],
+    "examples": [
+      {
+        "ko": "몇 번이나 참았지만 결국 그 앞에서 울음을 터뜨리고 말았다.",
+        "en": "I held back again and again, but in the end I burst into tears in front of him.",
+        "register": "written"
+      },
+      { "ko": "이번 프로젝트는 무슨 일이 있어도 성공시키고 말 거야.", "en": "Whatever happens, I'm going to make this project succeed.", "register": "spoken" }
+    ],
+    "questionTypes": ["cloze", "nuance", "register"],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "그렇게 조심했는데도 회의 자료에 오타를 {{}}.",
+          "en": "Careful as I was, I still ended up leaving a typo in the meeting materials.",
+          "cue": "내다 + -고 말다 (past)",
+          "accepted": ["내고 말았다", "내고 말았어", "내고 말았어요"],
+          "nearMiss": [{ "answer": "내 버렸다", "hint": "Also natural; the cue asks for -고 말다, which stresses the outcome despite your care." }],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "올해 시험에 두 번 떨어진 친구가 다음엔 반드시 붙겠다고 각오를 다져요. (Your friend, having failed twice, vows to pass next time.)",
+          "options": [
+            { "text": "다음엔 무슨 일이 있어도 합격하고 말 거야.", "correct": true, "why": "-고 말 거다 expresses a firm resolve to reach the outcome." },
+            {
+              "text": "다음엔 무슨 일이 있어도 합격하고 말았어.",
+              "correct": false,
+              "why": "-고 말았다 reports an outcome already reached (use 1). A vow about next time needs the resolve form, -고 말 거다 or -고 말겠다."
+            },
+            { "text": "다음엔 무슨 일이 있어도 합격하기 십상이야.", "correct": false, "why": "-기 십상이다 predicts a likely bad outcome; it can't express resolve." }
+          ]
+        }
+      ],
+      "register": [
+        {
+          "id": "r1",
+          "from": "haeyo",
+          "to": "hapsyo",
+          "source": "여러 번 확인했는데도 결국 실수를 하고 말았어요.",
+          "accepted": ["여러 번 확인했는데도 결국 실수를 하고 말았습니다.", "여러 번 확인했음에도 결국 실수를 하고 말았습니다."],
+          "features": [
+            { "kind": "endsWith", "any": ["습니다"], "label": "Ending must be 합쇼체 (-습니다)" },
+            { "kind": "contains", "any": ["고 말"], "scope": "all", "label": "Keep the -고 말다 ending" }
+          ],
+          "coreWords": ["확인했", "결국", "실수", "말았"],
+          "particleTolerance": "allomorph",
+          "finalPunctOptional": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "g:다시피",
+    "kind": "grammar",
+    "level": 3,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["manner", "contrast-set:manner"],
+    "mnemonic": "-다시피 = '(just) as…': as you know, as you see, or as good as doing it.",
+    "pattern": "-다시피",
+    "meaning": "(1) as (you know / can see / heard); (2) in -다시피 하다, practically, all but",
+    "attachment": [
+      { "stem": "V", "final": "any", "tense": "present", "form": "V-(으시)다시피", "example": "아시다시피" },
+      { "stem": "V", "final": "any", "tense": "past", "form": "V-았/었다시피", "example": "말씀드렸다시피" },
+      { "stem": "V", "final": "any", "tense": "present", "form": "V-다시피 하다", "example": "살다시피 하다" }
+    ],
+    "nuance": "(1) With verbs of knowing and perceiving only (알다, 보다, 듣다, 말하다, 느끼다): 'as you know/see/heard', pointing to shared knowledge. Very common in presentations and announcements (보시다시피, 아시다시피, 말씀드렸다시피). (2) In -다시피 하다: doing something so much or so nearly that it practically amounts to it: 굶다시피 하다 ('all but starve'), 살다시피 하다 ('practically live somewhere'), 뛰다시피 걷다 ('half-run').",
+    "contrasts": [
+      { "id": "g:듯이", "note": "-듯이 makes a simile ('like, as if'); -다시피 points to shared knowledge or means 'practically'." },
+      { "id": "g:는-둥-마는-둥", "note": "Opposite ends: 굶다시피 하다 is 'practically didn't eat at all'; 먹는 둥 마는 둥 is 'barely ate, half-heartedly'." }
+    ],
+    "examples": [
+      { "ko": "보시다시피 올해 매출은 작년보다 크게 늘었습니다.", "en": "As you can see, sales this year rose sharply over last year.", "register": "formal" },
+      { "ko": "마감 주간에는 사무실에서 살다시피 했다.", "en": "During deadline week I practically lived at the office.", "register": "neutral" }
+    ],
+    "questionTypes": ["cloze", "nuance"],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "시험 기간에는 도서관에서 {{}} 했다.",
+          "en": "During exams I practically lived in the library.",
+          "cue": "살다 + -다시피 (하다)",
+          "accepted": ["살다시피"],
+          "nearMiss": [{ "answer": "사는 듯이", "hint": "-듯이 makes a simile; the set phrase for 'practically living there' is -다시피 하다." }],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "회의를 시작하며 모두가 이미 알고 있는 사실을 짚으려고 해요. (Opening a meeting, you point to something everyone already knows.)",
+          "options": [
+            { "text": "아시다시피 다음 주부터 새 시스템이 도입됩니다.", "correct": true, "why": "-다시피 with 알다 points to shared knowledge: 'as you know'." },
+            {
+              "text": "바쁘시다시피 다음 주부터 새 시스템이 도입됩니다.",
+              "correct": false,
+              "why": "The 'as you…' use of -다시피 works only with verbs of knowing or perceiving; 바쁘다 isn't one."
+            },
+            {
+              "text": "아시는 둥 마는 둥 다음 주부터 새 시스템이 도입됩니다.",
+              "correct": false,
+              "why": "-는 둥 마는 둥 describes doing something half-heartedly; it can't frame shared knowledge."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "g:듯이",
+    "kind": "grammar",
+    "level": 3,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["manner", "contrast-set:manner"],
+    "mnemonic": "듯 = semblance: it looks just like…",
+    "pattern": "-듯(이)",
+    "meaning": "like, as if; just as",
+    "attachment": [
+      { "stem": "V/A", "final": "any", "tense": "present", "form": "V/A-듯(이)", "example": "물 쓰듯(이)" },
+      { "stem": "V/A", "final": "any", "tense": "any", "form": "V/A-(으)ㄴ/는 듯(이), -다는 듯(이)", "example": "아무 일도 없었다는 듯이" }
+    ],
+    "nuance": "Two structures. Attached directly to a stem, -듯(이) draws a comparison of manner, often in set similes: 물 쓰듯 돈을 쓰다 ('spend money like water'), 밥 먹듯이 거짓말을 하다 ('lie as easily as eating'), 비 오듯 땀을 흘리다. After a modifier (-(으)ㄴ/는 듯이) or a quotation (-다는 듯이) it means 'as if', often about appearances: 아무 일도 없었다는 듯이 웃었다. The 이 is optional in both.",
+    "contrasts": [
+      { "id": "g:다시피", "note": "-다시피 never means 'as if'; it points to shared knowledge or means 'practically'." },
+      { "id": "g:는-양", "note": "-(으)ㄴ/는 양 also means 'as if' but often suggests a false or presumptuous pose, and it's more literary." }
+    ],
+    "examples": [
+      {
+        "ko": "월급날만 되면 돈을 물 쓰듯 쓰다가 월말에는 라면으로 버틴다.",
+        "en": "Every payday I spend money like water, and by the end of the month I'm living on ramen.",
+        "register": "neutral"
+      },
+      { "ko": "그는 아무 일도 없었다는 듯이 태연하게 자리에 앉았다.", "en": "He calmly took his seat as if nothing had happened.", "register": "written" }
+    ],
+    "questionTypes": ["cloze", "nuance"],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "그 사람은 거짓말을 밥 {{}} 해서 이제 아무도 안 믿어.",
+          "en": "He lies as easily as he eats, so now nobody believes him.",
+          "cue": "먹다 + -듯이",
+          "accepted": ["먹듯이", "먹듯"],
+          "nearMiss": [{ "answer": "먹다시피", "hint": "-다시피 means 'practically'; for the simile 'as easily as eating', the cue asks for -듯이." }],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "크게 다툰 다음 날, 동료가 전날 일은 전혀 없었던 것처럼 밝게 인사했어요. (The day after a big argument, your colleague greeted you brightly, as if nothing had happened.)",
+          "options": [
+            {
+              "text": "그는 아무 일도 없었다는 듯이 웃으며 인사했다.",
+              "correct": true,
+              "why": "-다는 듯이 means 'as if (it were the case that)': exactly the pretense described."
+            },
+            {
+              "text": "그는 아무 일도 없었다시피 웃으며 인사했다.",
+              "correct": false,
+              "why": "-다시피 never means 'as if'; it points to shared knowledge or means 'practically'."
+            },
+            {
+              "text": "그는 아무 일도 없기 마련이라 웃으며 인사했다.",
+              "correct": false,
+              "why": "-기 마련이다 states a general truth; it can't describe an appearance or a pretense."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "g:는-양",
+    "kind": "grammar",
+    "level": 3,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [{ "id": "g:듯이", "require": "guru" }],
+    "gating": false,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["manner", "contrast-set:manner", "literary"],
+    "mnemonic": "양 (樣) = appearance: all appearance, no substance.",
+    "pattern": "-(으)ㄴ/는 양 (하다)",
+    "meaning": "as if, pretending that (often a false or presumptuous pose)",
+    "attachment": [
+      { "stem": "V", "final": "any", "tense": "present", "form": "V-는 양", "example": "다 아는 양" },
+      { "stem": "V", "final": "any", "tense": "past", "form": "V-(으)ㄴ 양", "example": "사장이라도 된 양" },
+      { "stem": "N이다", "final": "any", "tense": "present", "form": "N인 양", "example": "전문가인 양" }
+    ],
+    "nuance": "Literary and written. Describes someone acting as if something were so, usually implying that it isn't, or that the pose is presumptuous: 자기가 사장이라도 된 양 지시를 내렸다. With 하다 it means 'to pretend' (모르는 양하다). It is mostly about people's poses and attitudes; literary prose can extend it to things (꽃잎이 춤추는 양 흩날렸다), but for an everyday 'looks like (rain)', -(으)ㄹ 듯하다 or -(으)ㄴ 것 같다 is the natural choice. (A separate pattern, -(으)ㄹ 양으로, means 'intending to'.)",
+    "contrasts": [{ "id": "g:듯이", "note": "-듯이 is the neutral 'as if, like'; -(으)ㄴ/는 양 adds a hint that the pose is false or presumptuous." }],
+    "examples": [
+      {
+        "ko": "입사 한 달 만에 그는 자기가 팀장이라도 된 양 지시를 내리기 시작했다.",
+        "en": "A month after joining, he started giving orders as if he were the team lead.",
+        "register": "written"
+      },
+      { "ko": "그녀는 아무것도 모르는 양 시치미를 뗐다.", "en": "She played dumb, as if she knew nothing at all.", "register": "written" }
+    ],
+    "questionTypes": ["cloze", "nuance"],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "그는 책 몇 권 읽은 걸로 그 분야의 {{}} 떠들어 댔다.",
+          "en": "On the strength of a few books, he held forth as if he were an expert in the field.",
+          "cue": "전문가이다 + -(으)ㄴ 양",
+          "accepted": ["전문가인 양"],
+          "nearMiss": [{ "answer": "전문가인 듯이", "hint": "Grammatical; the cue asks for -(으)ㄴ 양, which carries the sense that the pose is unearned." }],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "입사한 지 일주일 된 신입 사원이 회의에서 회사 사정을 다 아는 것처럼 굴며 선배들을 가르치려 들어요. 이 태도를 꼬집어 묘사하려면? (A new hire, one week in, lectures his seniors as if he knew the company inside out. You describe this pointedly.)",
+          "options": [
+            { "text": "그는 회사 사정을 다 아는 양 선배들을 가르치려 들었다.", "correct": true, "why": "-는 양 describes someone acting as if something were so, with a hint that the pose is unearned: exactly the presumption here." },
+            {
+              "text": "그는 회사 사정을 다 알다시피 선배들을 가르치려 들었다.",
+              "correct": false,
+              "why": "-다시피 points to shared knowledge ('as he knows') or means 'practically'; it can't describe a pose someone puts on."
+            },
+            { "text": "그는 회사 사정을 다 아는 둥 마는 둥 선배들을 가르치려 들었다.", "correct": false, "why": "-는 둥 마는 둥 describes doing something half-heartedly; it says nothing about putting on airs." }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "g:는-둥-마는-둥",
+    "kind": "grammar",
+    "level": 3,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["manner", "contrast-set:manner", "colloquial"],
+    "mnemonic": "둥 … 마는 둥: did they or didn't they? Even an onlooker can't tell.",
+    "pattern": "-는 둥 마는 둥 (하다)",
+    "meaning": "half-heartedly, barely (doing); as if one hardly did it at all",
+    "attachment": [
+      { "stem": "V", "final": "any", "tense": "present", "form": "V-는 둥 마는 둥 (하다)", "example": "먹는 둥 마는 둥" },
+      { "stem": "V", "final": "any", "tense": "past", "form": "V-(으)ㄴ 둥 만 둥 (하다)", "example": "들은 둥 만 둥" }
+    ],
+    "nuance": "Describes an action done so perfunctorily or distractedly that it barely counts: 아침을 먹는 둥 마는 둥 하고 나갔다, 인사를 하는 둥 마는 둥 했다. Colloquial and common in narrative; often mildly critical. A past-flavored variant, -(으)ㄴ 둥 만 둥, is also used (들은 둥 만 둥).",
+    "contrasts": [{ "id": "g:다시피", "note": "-다시피 하다 is 'practically did (it fully)'; -는 둥 마는 둥 is 'barely did it'." }],
+    "examples": [
+      { "ko": "늦잠을 자서 아침을 먹는 둥 마는 둥 하고 뛰어나갔다.", "en": "I overslept, so I barely touched breakfast and ran out the door.", "register": "neutral" },
+      { "ko": "내가 하는 말을 듣는 둥 마는 둥 하더니 휴대폰만 보더라.", "en": "He was only half listening to me and just kept looking at his phone.", "register": "spoken" }
+    ],
+    "questionTypes": ["cloze", "nuance"],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "회의 내내 그는 발표를 {{}} 하며 노트북만 들여다봤다.",
+          "en": "Throughout the meeting he barely listened to the presentation, staring at his laptop.",
+          "cue": "듣다 + -는 둥 마는 둥",
+          "accepted": ["듣는 둥 마는 둥"],
+          "nearMiss": [{ "answer": "듣다시피", "hint": "-다시피 하다 would mean he practically listened in full; here it's the opposite." }],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "동료가 실수를 하고 사과를 하긴 했는데, 건성으로 대충 하고 넘어갔어요. (Your colleague did apologize, but only perfunctorily.)",
+          "options": [
+            {
+              "text": "그 사람은 사과를 하는 둥 마는 둥 하고 넘어갔다.",
+              "correct": true,
+              "why": "-는 둥 마는 둥: he did apologize, but so half-heartedly it barely counted."
+            },
+            {
+              "text": "그 사람은 사과를 하기는커녕 오히려 화를 냈다.",
+              "correct": false,
+              "why": "-기는커녕 says he didn't apologize at all, which contradicts the situation."
+            },
+            {
+              "text": "그 사람은 사과를 하다시피 하고 넘어갔다.",
+              "correct": false,
+              "why": "-다시피 하다 means 'practically (fully) did', which overstates a perfunctory apology."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "g:느니-차라리",
+    "kind": "grammar",
+    "level": 3,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [{ "id": "g:ㄹ지언정", "require": "guru" }],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["choice", "contrast-set:concession"],
+    "mnemonic": "-느니 points at the option you're throwing out; 차라리 picks up the one you'll grudgingly keep.",
+    "pattern": "-느니 (차라리)",
+    "meaning": "rather than …, (I'd) sooner …",
+    "attachment": [{ "stem": "V", "final": "any", "tense": "present", "form": "V-느니 (차라리)", "example": "기다리느니 차라리" }],
+    "nuance": "Both options are bad; the speaker rejects the one marked with -느니 and picks the other as the lesser evil. Verbs only (plus 있다/없다). The main clause typically ends in -는 게 낫다, -겠다, or a suggestion, and 차라리 or 아예 often reinforces it. Common in speech and writing alike.",
+    "contrasts": [
+      { "id": "g:ㄹ지언정", "note": "The same choice from the other side: -(으)ㄹ지언정 marks the hardship accepted, -느니 the option rejected." },
+      { "id": "g:ㄹ망정", "note": "-(으)ㄹ망정 also marks the hardship accepted: 굶을망정 구걸은 안 한다 ≈ 구걸하느니 차라리 굶겠다." }
+    ],
+    "examples": [
+      {
+        "ko": "이렇게 줄 서서 한 시간을 기다리느니 차라리 다른 데 가서 먹자.",
+        "en": "Rather than wait an hour in this line, let's just go eat somewhere else.",
+        "register": "spoken"
+      },
+      {
+        "ko": "마음에도 없는 말로 위로하느니 아무 말도 안 하는 게 낫다고 생각했다.",
+        "en": "I thought saying nothing was better than offering comfort I didn't mean.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": ["cloze", "nuance", "register"],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "그 사람한테 부탁을 {{}} 차라리 내가 밤을 새우는 게 낫겠다.",
+          "en": "I'd sooner stay up all night than ask him for a favor.",
+          "cue": "하다 + -느니",
+          "accepted": ["하느니"],
+          "nearMiss": [{ "answer": "할지언정", "hint": "-(으)ㄹ지언정 attaches to the hardship you accept; asking him is the option you reject, so it takes -느니." }],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "그 친구 차를 얻어 타면 한 시간 내내 운전 자랑을 들어야 해요. 차라리 걸어가겠다고 말하려면? (Riding with him means an hour of bragging about his driving. You'd rather walk.)",
+          "options": [
+            {
+              "text": "그 사람 차를 타느니 차라리 걸어가겠어.",
+              "correct": true,
+              "why": "-느니 marks the rejected option (his car); 차라리 introduces the lesser evil you choose."
+            },
+            { "text": "차라리 걸어가느니 그 사람 차를 타겠어.", "correct": false, "why": "Grammatical, but reversed: it says you'd ride with him rather than walk." },
+            {
+              "text": "그 사람 차를 탈지언정 걸어가겠어.",
+              "correct": false,
+              "why": "-(으)ㄹ지언정 marks the hardship you accept, so this says you'd ride with him and still walk, which doesn't hang together."
+            }
+          ]
+        }
+      ],
+      "register": [
+        {
+          "id": "r1",
+          "from": "haeyo",
+          "to": "hapsyo",
+          "source": "어설프게 고치느니 차라리 처음부터 다시 만드는 게 나아요.",
+          "accepted": ["어설프게 고치느니 차라리 처음부터 다시 만드는 것이 낫습니다.", "어설프게 고치느니 차라리 처음부터 다시 만드는 게 낫습니다."],
+          "features": [
+            { "kind": "endsWith", "any": ["ㅂ니다", "습니다"], "label": "Ending must be 합쇼체 (-ㅂ니다/-습니다)" },
+            { "kind": "contains", "any": ["느니"], "scope": "all", "label": "Keep the -느니 clause" }
+          ],
+          "coreWords": ["어설프게", "고치느니", "처음부터", "만드는", "낫"],
+          "particleTolerance": "allomorph",
+          "finalPunctOptional": true
+        }
+      ]
+    }
+  }
+]

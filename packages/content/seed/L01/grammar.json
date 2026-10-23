@@ -127,7 +127,7 @@
     "unlockDeps": [{ "id": "g:는-바람에", "require": "guru" }],
     "gating": true,
     "source": { "kind": "original", "license": "original-owned" },
-    "needs_review": true,
+    "needs_review": false,
     "tags": ["cause", "contrast-set:unwanted-cause", "colloquial"],
     "mnemonic": "Picture yourself stuck in the thick of a noisy crowd: with all that going on, you couldn't do what you meant to.",
     "pattern": "-는 통에",
@@ -135,7 +135,7 @@
     "attachment": [
       { "stem": "V", "final": "any", "tense": "present", "form": "V-는 통에", "example": "옆집에서 공사하는 통에" }
     ],
-    "nuance": "통 here is the thick of things: the cause is a busy, noisy, or confused situation, often an ongoing one, that got in the way. The result is unwanted and has already happened, so no command or suggestion can follow. It is more colloquial than -는 바람에 and -(으)ㄴ/는 탓에 and often carries a note of irritation.",
+    "nuance": "통 here is the thick of things: the cause is a busy, noisy, or confused situation, often an ongoing one, that got in the way. The result is unwanted and has already happened, so no command or suggestion can follow. It is at home in everyday speech and often carries a note of irritation or exasperation.",
     "contrasts": [
       { "id": "g:는-바람에", "note": "Both take -는 and report an unwanted result. -는 바람에 is typically one sudden event (the bus stopped); -는 통에 is a whole messy scene (kids yelling, construction all day)." },
       { "id": "g:는-탓에", "note": "-(으)ㄴ/는 탓에 assigns blame to any cause; -는 통에 is specifically about commotion." }
@@ -157,6 +157,528 @@
             { "answer": "공사하는 바람에", "hint": "Grammatical, but the cue asks for -는 통에: an all-day racket is exactly the ongoing commotion -는 통에 describes." }
           ],
           "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "g:ㄹ뿐더러",
+    "kind": "grammar",
+    "level": 1,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["addition", "contrast-set:addition", "spelling"],
+    "mnemonic": "뿐 'only' + 더러 'what's more': not only that, there's more, all in one word.",
+    "pattern": "-(으)ㄹ뿐더러",
+    "meaning": "not only … but also; on top of that (adds a second point pulling the same way)",
+    "attachment": [
+      { "stem": "V/A", "final": "any", "tense": "present", "form": "V/A-(으)ㄹ뿐더러", "example": "값도 쌀뿐더러" },
+      { "stem": "V/A", "final": "any", "tense": "past", "form": "V/A-았/었을뿐더러", "example": "잠도 못 잤을뿐더러" },
+      { "stem": "N이다", "final": "any", "tense": "present", "form": "N일뿐더러", "example": "초보일뿐더러" }
+    ],
+    "nuance": "Adds a second fact in the same evaluative direction as the first: both points for, or both against. It is a single ending, so it is written attached (쌀뿐더러, not 쌀 뿐더러); compare -(으)ㄹ 뿐만 아니라, where 뿐 is a separate word and is spaced. Slightly formal: at home in writing, presentations, and careful speech. The second clause often carries 도 or 까지.",
+    "contrasts": [
+      { "id": "g:거니와", "note": "-거니와 does the same additive job but sounds literary, and it also has a set discourse use (다시 말하거니와)." },
+      { "id": "g:는-데다가", "note": "-(으)ㄴ/는 데다가 is the everyday spoken workhorse for piling up facts; -(으)ㄹ뿐더러 is a notch more formal." },
+      { "id": "g:기는커녕", "note": "-기는커녕 reverses direction: the expected thing didn't happen at all." }
+    ],
+    "examples": [
+      {
+        "ko": "새로 생긴 도서관은 시설이 좋을뿐더러 밤 열한 시까지 문을 연다.",
+        "en": "The new library not only has great facilities but is open until eleven at night.",
+        "register": "written"
+      },
+      { "ko": "그 방법은 시간이 오래 걸릴뿐더러 비용도 만만치 않아요.", "en": "That approach takes a long time, and it isn't cheap either.", "register": "neutral" }
+    ],
+    "questionTypes": ["cloze", "nuance", "register"],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "이 동네는 집값이 {{}} 출퇴근하기도 불편하다.",
+          "en": "Housing here is expensive, and on top of that the commute is a pain.",
+          "cue": "비싸다 + -(으)ㄹ뿐더러",
+          "accepted": ["비쌀뿐더러"],
+          "nearMiss": [
+            { "answer": "비싼 데다가", "hint": "Also natural, but the cue asks for -(으)ㄹ뿐더러." },
+            { "answer": "비싸거니와", "hint": "Grammatical but more literary; the cue asks for -(으)ㄹ뿐더러." }
+          ],
+          "particleTolerance": "none",
+          "spacingStrict": true
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "새로 이사한 집을 친구에게 자랑하려고 해요. (You're telling a friend how great your new place is.)",
+          "options": [
+            { "text": "역에서 가까울뿐더러 월세도 싸.", "correct": true, "why": "Both points are pluses, so -(으)ㄹ뿐더러 can stack them." },
+            {
+              "text": "역에서 가까울뿐더러 월세가 너무 비싸.",
+              "correct": false,
+              "why": "The second point cuts against the first. -(으)ㄹ뿐더러 needs both clauses pulling the same way; for a contrast, use -지만 or -는데."
+            },
+            {
+              "text": "역에서 가깝기는커녕 월세도 싸.",
+              "correct": false,
+              "why": "-기는커녕 says the first thing isn't true at all, so it can't introduce a plus you're bragging about."
+            }
+          ]
+        }
+      ],
+      "register": [
+        {
+          "id": "r1",
+          "from": "haeyo",
+          "to": "hapsyo",
+          "source": "이번 개편안은 비용이 많이 들뿐더러 현장 의견도 반영하지 않았어요.",
+          "accepted": ["이번 개편안은 비용이 많이 들뿐더러 현장 의견도 반영하지 않았습니다.", "이번 개편안은 비용이 많이 들뿐더러 현장의 의견도 반영하지 않았습니다."],
+          "features": [
+            { "kind": "endsWith", "any": ["ㅂ니다", "습니다"], "label": "Ending must be 합쇼체 (-ㅂ니다/-습니다)" },
+            { "kind": "contains", "any": ["뿐더러"], "scope": "all", "label": "Keep the -(으)ㄹ뿐더러 clause" }
+          ],
+          "coreWords": ["개편안", "비용", "들뿐더러", "현장", "의견", "반영"],
+          "particleTolerance": "allomorph",
+          "finalPunctOptional": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "g:거니와",
+    "kind": "grammar",
+    "level": 1,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [{ "id": "g:ㄹ뿐더러", "require": "guru" }],
+    "gating": false,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["addition", "contrast-set:addition", "literary"],
+    "mnemonic": "Picture an orator raising a finger: '…and furthermore, I say again…' That's 거니와.",
+    "pattern": "-거니와",
+    "meaning": "and besides; not only … but (literary); also frames a remark being repeated (다시 말하거니와)",
+    "attachment": [
+      { "stem": "V/A", "final": "any", "tense": "present", "form": "V/A-거니와", "example": "실력도 뛰어나거니와" },
+      { "stem": "V/A", "final": "any", "tense": "past", "form": "V/A-았/었거니와", "example": "앞서 말했거니와" },
+      { "stem": "N이다", "final": "any", "tense": "present", "form": "N(이)거니와", "example": "전문가거니와" }
+    ],
+    "nuance": "Like -(으)ㄹ뿐더러, it adds a second point in the same direction, but it has a bookish, literary flavor and is rare in casual speech. It also has a set discourse use that the other additive endings lack: framing a point the speaker is repeating or has already made, as in 다시 말하거니와 / 거듭 말씀드리거니와 ('let me say it again') or 앞서 말했거니와 ('as I said earlier'). In that use there is no second additive point.",
+    "contrasts": [
+      { "id": "g:ㄹ뿐더러", "note": "Same additive meaning; -(으)ㄹ뿐더러 is the neutral-formal default, -거니와 the literary one." },
+      { "id": "g:는-데다가", "note": "-(으)ㄴ/는 데다가 is the everyday choice; in casual talk -거니와 sounds like a book." }
+    ],
+    "examples": [
+      { "ko": "그 작가는 문장도 유려하거니와 구성도 탄탄하다.", "en": "That writer's prose is fluid, and the structure is tight as well.", "register": "written" },
+      { "ko": "다시 말씀드리거니와, 이번 조치는 어디까지나 임시방편입니다.", "en": "Let me say it again: this measure is strictly a stopgap.", "register": "formal" }
+    ],
+    "questionTypes": ["cloze", "nuance"],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "이 제안은 실현 가능성도 {{}} 비용 대비 효과도 크다.",
+          "en": "This proposal is not only feasible but highly cost-effective as well.",
+          "cue": "높다 + -거니와",
+          "accepted": ["높거니와"],
+          "nearMiss": [{ "answer": "높을뿐더러", "hint": "Same meaning; the cue asks for the more literary -거니와." }],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "공식 브리핑에서 앞서 한 말을 강조하며 되풀이하려고 해요. (At a formal briefing, you want to stress a point you've already made.)",
+          "options": [
+            {
+              "text": "다시 말씀드리거니와, 개인 정보는 외부로 유출되지 않았습니다.",
+              "correct": true,
+              "why": "다시 말하거니와 is the set frame for 'let me say it again': -거니와 marks a remark being repeated."
+            },
+            {
+              "text": "다시 말씀드릴뿐더러, 개인 정보는 외부로 유출되지 않았습니다.",
+              "correct": false,
+              "why": "-(으)ㄹ뿐더러 only adds a second same-direction fact; it has no 'as I said' use."
+            },
+            {
+              "text": "다시 말씀드리는 데다가, 개인 정보는 외부로 유출되지 않았습니다.",
+              "correct": false,
+              "why": "-(으)ㄴ/는 데다가 piles up facts; it can't frame a repeated statement."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "g:는-데다가",
+    "kind": "grammar",
+    "level": 1,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["addition", "contrast-set:addition"],
+    "mnemonic": "데 'spot' + 다가 'and then': you set one thing down, then pile another on top.",
+    "pattern": "-(으)ㄴ/는 데다가",
+    "meaning": "on top of …; besides … (piling up facts, often as a combined reason)",
+    "attachment": [
+      { "stem": "V", "final": "any", "tense": "present", "form": "V-는 데다가", "example": "비가 오는 데다가" },
+      { "stem": "V", "final": "any", "tense": "past", "form": "V-(으)ㄴ 데다가", "example": "잠을 설친 데다가" },
+      { "stem": "A", "final": "any", "tense": "present", "form": "A-(으)ㄴ 데다가", "example": "방이 좁은 데다가" },
+      { "stem": "N이다", "final": "any", "tense": "present", "form": "N인 데다가", "example": "주말인 데다가" }
+    ],
+    "nuance": "The everyday way to stack one fact on another, in speech and writing alike; 가 is optional (-(으)ㄴ/는 데다). Both facts point the same way, the second clause often has 도 or 까지, and the pair frequently adds up to a reason (…-아서/-(으)니까 …). 데 is a bound noun, so it is spaced: 좁은 데다가.",
+    "contrasts": [
+      { "id": "g:ㄹ뿐더러", "note": "Close in meaning; -(으)ㄹ뿐더러 is more formal and written as one word." },
+      { "id": "g:거니와", "note": "The literary counterpart." },
+      { "id": "g:기는커녕", "note": "-기는커녕 is the reverse: the expected fact is denied, not added to." }
+    ],
+    "examples": [
+      {
+        "ko": "그날은 주말인 데다가 날씨까지 좋아서 공원에 발 디딜 틈이 없었다.",
+        "en": "It was the weekend, and the weather was great on top of that, so the park was packed.",
+        "register": "written"
+      },
+      {
+        "ko": "걔는 일도 빠른 데다 꼼꼼해서 다들 같이 일하고 싶어 해.",
+        "en": "She's quick and meticulous to boot, so everyone wants to work with her.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": ["cloze", "nuance"],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "어젯밤에 잠을 {{}} 아침까지 걸러서 하루 종일 기운이 없었어.",
+          "en": "I slept badly last night and skipped breakfast on top of that, so I had no energy all day.",
+          "cue": "설치다 (past) + -(으)ㄴ 데다가",
+          "accepted": ["설친 데다가", "설친 데다"],
+          "nearMiss": [
+            { "answer": "설치는 데다가", "hint": "Last night's bad sleep is over and done: use the past form, 설친 데다가." },
+            { "answer": "설쳤을뿐더러", "hint": "Similar meaning, but the cue asks for -(으)ㄴ 데다가." }
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "회사를 그만둔 이유를 친구에게 설명하려고 해요. (Explaining to a friend why you quit your job.)",
+          "options": [
+            { "text": "월급이 적은 데다가 야근도 많아서 그만뒀어.", "correct": true, "why": "Two drawbacks stacked into one reason: exactly what -(으)ㄴ 데다가 does." },
+            {
+              "text": "월급이 적은 데다가 동료들은 좋아서 그만뒀어.",
+              "correct": false,
+              "why": "Nice colleagues pull the other way, so it can't be piled onto low pay with -(으)ㄴ 데다가, and it's no reason to quit."
+            },
+            {
+              "text": "월급이 적기는커녕 야근도 많아서 그만뒀어.",
+              "correct": false,
+              "why": "-기는커녕 would mean the pay was far from low, which undercuts the complaint."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "g:더라도",
+    "kind": "grammar",
+    "level": 1,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["concession", "contrast-set:concession"],
+    "mnemonic": "It's the sturdier cousin of -아/어도: 도 is still the 'even' at the end.",
+    "pattern": "-더라도",
+    "meaning": "even if; even though (concession, often hypothetical)",
+    "attachment": [
+      { "stem": "V/A", "final": "any", "tense": "present", "form": "V/A-더라도", "example": "바쁘더라도" },
+      { "stem": "V/A", "final": "any", "tense": "past", "form": "V/A-았/었더라도", "example": "실수했더라도" },
+      { "stem": "N이다", "final": "any", "tense": "present", "form": "N(이)더라도", "example": "주말이더라도" }
+    ],
+    "nuance": "A firmer, more deliberate 'even if' than -아/어도, typically for a hypothetical or for a fact the speaker concedes. The main clause can be almost anything: a statement, a resolution (-겠다), advice, a command, or a suggestion. That flexibility is what sets it apart from -(으)ㄹ망정 and -(으)ㄹ지언정, which state the speaker's own stance.",
+    "contrasts": [
+      {
+        "id": "g:ㄹ망정",
+        "note": "-(으)ㄹ망정 states the speaker's stance ('I'd accept X but not Y'; 'X, but at least Y'); it is somewhat literary and sounds stilted before an everyday request or suggestion."
+      },
+      { "id": "g:ㄹ지언정", "note": "-(으)ㄹ지언정 is the emphatic, literary 'even if …, never …'." }
+    ],
+    "examples": [
+      {
+        "ko": "결과가 기대에 못 미치더라도 끝까지 해 보는 게 중요하다.",
+        "en": "Even if the results fall short of expectations, what matters is seeing it through.",
+        "register": "written"
+      },
+      { "ko": "늦더라도 연락은 꼭 해 줘.", "en": "Even if you're running late, be sure to let me know.", "register": "spoken" }
+    ],
+    "questionTypes": ["cloze", "nuance"],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "아무리 {{}} 아침은 꼭 챙겨 먹어.",
+          "en": "However busy you are, make sure you eat breakfast.",
+          "cue": "바쁘다 + -더라도",
+          "accepted": ["바쁘더라도"],
+          "nearMiss": [
+            { "answer": "바빠도", "hint": "Fine in meaning; the cue asks for -더라도." },
+            { "answer": "바쁠망정", "hint": "-(으)ㄹ망정 is a stance-taking, somewhat literary concession and sounds stilted before everyday advice; the cue asks for -더라도." }
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "택시비가 좀 비싸지만 시간이 없으니 택시를 타자고 제안하려고 해요. (You suggest taking a taxi even though it's pricey.)",
+          "options": [
+            { "text": "좀 비싸더라도 택시 타자.", "correct": true, "why": "-더라도 concedes the cost and can lead into a suggestion (-자)." },
+            {
+              "text": "좀 비쌀망정 택시 타자.",
+              "correct": false,
+              "why": "-(으)ㄹ망정 is a stance-taking, somewhat literary concession: accepting a real hardship on principle, or 'X, but at least Y'. Leading into an offhand practical suggestion like 택시 타자, it sounds stilted; -더라도 or -아/어도 is what people actually say."
+            },
+            {
+              "text": "좀 비싼 탓에 택시 타자.",
+              "correct": false,
+              "why": "-(으)ㄴ 탓에 blames a cause for a bad result that already happened; it neither concedes nor leads into a suggestion."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "g:ㄹ망정",
+    "kind": "grammar",
+    "level": 1,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [{ "id": "g:더라도", "require": "guru" }],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["concession", "contrast-set:concession"],
+    "mnemonic": "Same 망정 as in -기에 망정이지 ('good thing that…'): in a bad scenario, find the one thing to hold on to.",
+    "pattern": "-(으)ㄹ망정",
+    "meaning": "(1) even if it means …, (I won't) …; (2) although …, at least …",
+    "attachment": [
+      { "stem": "V/A", "final": "any", "tense": "present", "form": "V/A-(으)ㄹ망정", "example": "굶을망정" },
+      { "stem": "V/A", "final": "any", "tense": "past", "form": "V/A-았/었을망정", "example": "졌을망정" },
+      { "stem": "N이다", "final": "any", "tense": "present", "form": "N일망정", "example": "단칸방일망정" }
+    ],
+    "nuance": "Two uses, both from the speaker's own standpoint. (1) The speaker accepts a worse outcome rather than do something unacceptable: 굶을망정 남의 돈에는 손대지 않는다. (2) The speaker concedes a drawback and then points to a redeeming fact: 몸은 피곤할망정 마음은 편하다. Either way the main clause is the speaker's stance or assessment; it rarely leads into an everyday request. It is a near-synonym of -(으)ㄹ지언정, which sounds more emphatic and bookish.",
+    "contrasts": [
+      { "id": "g:ㄹ지언정", "note": "Near-synonyms in both uses; -(으)ㄹ지언정 sounds more emphatic and bookish." },
+      { "id": "g:더라도", "note": "-더라도 is a neutral 'even if' and can lead into advice, commands, and suggestions." },
+      { "id": "g:느니-차라리", "note": "-느니 (차라리) marks the option rejected; -(으)ㄹ망정 marks the hardship accepted: 굶을망정 구걸은 안 한다 ≈ 구걸하느니 차라리 굶겠다." }
+    ],
+    "examples": [
+      { "ko": "손해를 볼망정 손님을 속이는 장사는 하지 않겠다.", "en": "I'd sooner take a loss than run a business that cheats customers.", "register": "written" },
+      {
+        "ko": "월급은 적을망정 퇴근 후 시간이 온전히 내 것이라 만족한다.",
+        "en": "The pay may be low, but at least my evenings are all mine, so I'm content.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": ["cloze", "nuance"],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "몸은 {{}} 마음은 그 어느 때보다 편해요.",
+          "en": "I may be worn out, but at least my mind is more at ease than ever.",
+          "cue": "피곤하다 + -(으)ㄹ망정",
+          "accepted": ["피곤할망정"],
+          "nearMiss": [
+            { "answer": "피곤할지언정", "hint": "Also correct (a near-synonym, a bit more emphatic); the cue asks for -(으)ㄹ망정." },
+            { "answer": "피곤하더라도", "hint": "Grammatical, but it loses the 'at least' tone; the cue asks for -(으)ㄹ망정." }
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "친구가 새로 구한 원룸이 너무 좁다고 속상해해요. 위로하려면? (Your friend is upset that their new studio is tiny. You cheer them up.)",
+          "options": [
+            { "text": "방은 좁을망정 햇볕은 잘 들잖아.", "correct": true, "why": "Concede the drawback, then point to the redeeming fact: use (2) of -(으)ㄹ망정." },
+            {
+              "text": "방은 좁을망정 햇볕도 안 들잖아.",
+              "correct": false,
+              "why": "The second clause has to be the consolation. Adding more bad news with 도 turns it into a pile-on, which -(으)ㄹ망정 can't do."
+            },
+            {
+              "text": "방이 좁은 바람에 햇볕은 잘 들잖아.",
+              "correct": false,
+              "why": "-는 바람에 needs a sudden event causing an unwanted result; a small room doesn't cause good sunlight (and the form would be -는)."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "g:ㄹ지언정",
+    "kind": "grammar",
+    "level": 1,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [{ "id": "g:ㄹ망정", "require": "guru" }],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["concession", "contrast-set:concession"],
+    "mnemonic": "Picture someone planting their feet: 지언정, not one step further, whatever it costs.",
+    "pattern": "-(으)ㄹ지언정",
+    "meaning": "even if …, (I will) never …; would sooner … than …",
+    "attachment": [
+      { "stem": "V/A", "final": "any", "tense": "present", "form": "V/A-(으)ㄹ지언정", "example": "굶을지언정" },
+      { "stem": "N이다", "final": "any", "tense": "present", "form": "N일지언정", "example": "꼴찌일지언정" }
+    ],
+    "nuance": "An emphatic, somewhat literary concession: the speaker accepts the first (bad) scenario and flatly rules out the second. The main clause is typically a refusal or negation (-지 않겠다, 못 하다, -(으)ㄹ 수 없다), often reinforced by 차라리 in the first clause. At home in speeches, op-eds, and dramatic declarations.",
+    "contrasts": [
+      { "id": "g:ㄹ망정", "note": "Near-synonym in both uses; -(으)ㄹ망정 is a little less emphatic and more conversational." },
+      {
+        "id": "g:느니-차라리",
+        "note": "The same choice seen from the other side: -느니 attaches to the option rejected, -(으)ㄹ지언정 to the hardship accepted."
+      }
+    ],
+    "examples": [
+      {
+        "ko": "차라리 굶을지언정 남의 도움은 받지 않겠다던 할아버지의 고집은 끝내 꺾이지 않았다.",
+        "en": "Grandfather, who'd said he'd sooner go hungry than accept help, never gave an inch.",
+        "register": "written"
+      },
+      { "ko": "그는 질지언정 비겁한 방법은 쓰지 않는 선수였다.", "en": "He was the kind of player who'd rather lose than win dirty.", "register": "written" }
+    ],
+    "questionTypes": ["cloze", "nuance", "register"],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "차라리 혼자 {{}} 마음 안 맞는 사람과는 일하고 싶지 않아.",
+          "en": "I'd sooner work alone than work with someone I don't get along with.",
+          "cue": "일하다 + -(으)ㄹ지언정",
+          "accepted": ["일할지언정"],
+          "nearMiss": [
+            { "answer": "일할망정", "hint": "Also possible here; the cue asks for the more emphatic -(으)ㄹ지언정." },
+            { "answer": "일하느니", "hint": "-느니 attaches to the option you reject; here working alone is the one you accept." }
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "원칙을 지키는 기자가 사표를 쓰는 한이 있어도 기사를 고치지는 않겠다는 뜻을 밝히려고 해요. (A principled reporter vows she'll resign before she alters her story.)",
+          "options": [
+            {
+              "text": "사표를 쓸지언정 기사를 고치지는 않겠습니다.",
+              "correct": true,
+              "why": "The hardship accepted (resigning) takes -(으)ㄹ지언정; the act refused follows, negated."
+            },
+            {
+              "text": "기사를 고칠지언정 사표는 쓰지 않겠습니다.",
+              "correct": false,
+              "why": "Grammatical, but it says the opposite: she'd alter the story rather than resign."
+            },
+            {
+              "text": "사표를 쓸지언정 기사를 고치겠습니다.",
+              "correct": false,
+              "why": "After -(으)ㄹ지언정 the main clause should rule something out; 'even if I resign, I'll alter it' doesn't hang together."
+            }
+          ]
+        }
+      ],
+      "register": [
+        {
+          "id": "r1",
+          "from": "hae",
+          "to": "hapsyo",
+          "source": "회사를 그만둘지언정 부당한 지시는 따르지 않을 거야.",
+          "accepted": ["회사를 그만둘지언정 부당한 지시는 따르지 않겠습니다.", "회사를 그만둘지언정 부당한 지시는 따르지 않을 것입니다.", "회사를 그만둘지언정 부당한 지시는 따르지 않을 겁니다."],
+          "features": [
+            { "kind": "endsWith", "any": ["ㅂ니다", "습니다"], "label": "Ending must be 합쇼체 (-ㅂ니다/-습니다)" },
+            { "kind": "contains", "any": ["지언정"], "scope": "all", "label": "Keep the -(으)ㄹ지언정 clause" }
+          ],
+          "coreWords": ["그만둘지언정", "부당한", "지시", "따르지"],
+          "particleTolerance": "allomorph",
+          "finalPunctOptional": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "g:기는커녕",
+    "kind": "grammar",
+    "level": 1,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["negation", "contrast-set:addition"],
+    "mnemonic": "커녕 slams the door on the expectation: 'Praise? Far from it.'",
+    "pattern": "-기는커녕",
+    "meaning": "far from …; let alone … (the expected thing didn't happen, and often the opposite did)",
+    "attachment": [
+      { "stem": "V/A", "final": "any", "tense": "present", "form": "V/A-기는커녕", "example": "칭찬하기는커녕" },
+      { "stem": "N", "final": "any", "tense": "any", "form": "N은/는커녕", "example": "사과는커녕" }
+    ],
+    "nuance": "Emphatically denies the first, expected or hoped-for situation. The second clause either goes further in the same negative direction, often with 도/조차 + a negative (인사는커녕 쳐다보지도 않았다), or reports the opposite, often with 오히려/도리어 (칭찬하기는커녕 오히려 화를 냈다). Common in speech and writing, and frequently tinged with indignation.",
+    "contrasts": [
+      { "id": "g:는-데다가", "note": "-(으)ㄴ/는 데다가 adds a fact that did happen; -기는커녕 denies the first fact outright." },
+      { "id": "g:ㄹ뿐더러", "note": "Same contrast: -(으)ㄹ뿐더러 affirms both points." }
+    ],
+    "examples": [
+      { "ko": "월급이 오르기는커녕 수당까지 줄었다.", "en": "Far from getting a raise, I even had my allowances cut.", "register": "written" },
+      { "ko": "걔는 고맙다는 말은커녕 연락 한 통 없더라.", "en": "Forget a thank-you: I didn't hear a word from him.", "register": "spoken" }
+    ],
+    "questionTypes": ["cloze", "nuance"],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "사과를 {{}} 오히려 내가 한소리를 들었다.",
+          "en": "Far from getting an apology, I was the one who got told off.",
+          "cue": "받다 + -기는커녕",
+          "accepted": ["받기는커녕"],
+          "nearMiss": [{ "answer": "받는 데다가", "hint": "-(으)ㄴ/는 데다가 adds a fact that happened; the apology never came, so the cue asks for -기는커녕." }],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "올해 연봉 협상 결과를 동료에게 전하려고 해요. 기대와 달리 결과가 나빴어요. (Contrary to your hopes, this year's pay talks went badly.)",
+          "options": [
+            {
+              "text": "연봉이 오르기는커녕 오히려 깎였어.",
+              "correct": true,
+              "why": "The hoped-for raise is denied and the opposite happened: textbook -기는커녕 + 오히려."
+            },
+            {
+              "text": "연봉이 오르기는커녕 보너스까지 받았어.",
+              "correct": false,
+              "why": "After -기는커녕 the second clause must run against the hope; a bonus on top is good news, which contradicts the frame."
+            },
+            { "text": "연봉이 오른 데다가 오히려 깎였어.", "correct": false, "why": "-(으)ㄴ 데다가 affirms the raise and then says it was cut: a contradiction." }
+          ]
         }
       ]
     }

@@ -60,3 +60,13 @@ Append-only log of tradeoffs. Newest at the bottom.
 32. **D32: Variant guards in layer 6.** A response eojeol that is a one-jamo substitution of an accepted eojeol (시간애, 됬어요) is a typo and grades close (D9), not a variant. A response that drops the honorific -(으)시- that every accepted answer's predicate has also grades close.
 
 33. **D33: `item.reset` keeps item stats (pending owner input).** A reset leech stays on the trouble list until it rebuilds a correct streak. Revisit if that feels punishing.
+
+## M2 (2026-10-23)
+
+34. **D34: No IndexedDB projection stores in M2.** Derived state lives in memory: `replayAll` on load, `applyEvents` after each write. At about 100 ms for 50k events this is fast enough. The stores can be added later without changing the event log.
+35. **D35: Session snapshot keeps two levels of undo.** The persisted review session keeps undo history for only the last two answers, because nested snapshots grow too fast when serialized. The in-app Undo is still limited to the most recent answer anyway (§6.2).
+36. **D36: Test hooks.** e2e tests fake time with Playwright's `page.clock`. `window.__ksrs` is a read-only test hook. E2E tests live in `apps/web/tests/e2e/` and run against a frozen 10-item fixture seed (`KSRS_SEED_DIR`), plus one real-seed smoke test, so content edits can't break the UI tests.
+37. **D37: Pretendard from the jsDelivr CDN**, cached by the service worker at runtime. It is not self-hosted yet because the font files can't be downloaded in this workspace. The fallback stack is Apple SD Gothic Neo / Noto Sans KR. Self-hosting is planned for M5.
+38. **D38: Deploy workflow uses npm** with a separate `apps/web` install (no workspaces). The e2e CI job is non-blocking until it has run once on GitHub.
+39. **D39: Content style rules from the M2 review.** Write "rarely" or "sounds stilted" instead of "never" for usage claims. Nuance distractors must fail on form or meaning, not register alone. Register labels follow news and written usage. Sentence-final cloze blanks accept every reasonable speech level. Check 표준국어대사전 single-word entries before spacing a word (참다못해). Avoid stock textbook frames. `rev` stays 1 for pre-release edits.
+40. **D40: Five validator warnings are accepted:** alternate hanja readings (更 갱, 殺 쇄) and 두음법칙 (論 → 논란, 논조). The schema holds one `eum` per hanja. A future `altEum[]` field would silence them.

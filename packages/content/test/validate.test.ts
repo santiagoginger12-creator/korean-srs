@@ -252,8 +252,9 @@ test('real seed validates with zero errors', () => {
   assert.deepEqual(seed.loadErrors, []);
   const r = validateBundle(seed.raws, { origins: seed.origins, idRedirects: seed.idRedirects });
   assert.deepEqual(r.errors, []);
-  assert.equal(r.counts.total, 10);
-  assert.deepEqual(r.counts.byKind, { vocab: 4, grammar: 3, expression: 1, hanja: 2 });
+  // M2 seed scope (§9.4): levels 1–3.
+  assert.equal(r.counts.total, 200);
+  assert.deepEqual(r.counts.byKind, { vocab: 120, grammar: 30, expression: 20, hanja: 30 });
 });
 
 test('real seed passes the answer-check self-check (when available)', async (t) => {

@@ -1,0 +1,263 @@
+[
+  {
+    "id": "x:선을-긋다",
+    "kind": "expression",
+    "level": 3,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["관용구", "news", "relationships"],
+    "mnemonic": "A chalk line on the floor: this side, yes; that side, not happening.",
+    "subtype": "관용구",
+    "text": "선을 긋다",
+    "meaning": "to draw a line: to rule something out firmly, or to keep someone at a distance",
+    "literal": "to draw a line",
+    "usage": "Two common uses: (1) in the news, an official firmly denying or ruling out a possibility (~ 가능성에 선을 그었다); (2) in relationships, keeping someone at arm's length (그는 나와 선을 그었다). Neutral.",
+    "examples": [
+      { "ko": "정부는 추가 증세 가능성에 대해 분명히 선을 그었다.", "en": "The government firmly ruled out further tax increases.", "register": "written" },
+      { "ko": "친하게 지내고 싶었는데 걔가 먼저 선을 긋더라.", "en": "I wanted us to be close, but she drew a line first.", "register": "spoken" }
+    ],
+    "questionTypes": ["meaning", "cloze"],
+    "questions": {
+      "meaning": { "accepted": ["draw a line", "draw the line", "rule out", "distance oneself", "keep at a distance", "set boundaries", "flatly deny"] },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "회사 측은 구조 조정 가능성에 대해 {{}}.",
+          "en": "The company firmly ruled out the possibility of restructuring.",
+          "cue": "선을 긋다 (past)",
+          "accepted": ["선을 그었다"],
+          "nearMiss": [{ "answer": "못을 박았다", "hint": "Also natural (stating something firmly to settle it); the cue asks for 선을 긋다." }],
+          "particleTolerance": "loose"
+        }
+      ]
+    }
+  },
+  {
+    "id": "x:찬물을-끼얹다",
+    "kind": "expression",
+    "level": 3,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["관용구", "mood", "economy"],
+    "mnemonic": "A bucket of cold water over a warm party: the fun stops instantly.",
+    "subtype": "관용구",
+    "text": "찬물을 끼얹다",
+    "meaning": "to throw cold water on (a mood or plans); to dampen spirits",
+    "literal": "to splash cold water on",
+    "usage": "For a remark, event, or person that kills enthusiasm or spoils a good atmosphere: 분위기에 찬물을 끼얹다, or in economic news, 회복세에 찬물을 끼얹다. Also 찬물 끼얹는 소리 ('a wet-blanket remark').",
+    "examples": [
+      {
+        "ko": "모처럼 살아나던 소비 심리에 금리 인상이 찬물을 끼얹었다.",
+        "en": "The rate hike threw cold water on consumer sentiment just as it was finally reviving.",
+        "register": "written"
+      },
+      { "ko": "다들 신났는데 찬물 끼얹는 소리 좀 하지 마.", "en": "Everyone's excited, so don't be such a wet blanket.", "register": "spoken" }
+    ],
+    "questionTypes": ["meaning", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": ["throw cold water on", "pour cold water on", "dampen", "dampen spirits", "be a wet blanket", "kill the mood", "rain on someone's parade"]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "다들 들떠 있는데 굳이 {{}} 필요는 없잖아.",
+          "en": "Everyone's so excited; there's no need to go throwing cold water on it.",
+          "cue": "찬물을 끼얹다 + -(으)ㄹ",
+          "accepted": ["찬물을 끼얹을"],
+          "nearMiss": [{ "answer": "산통을 깰", "hint": "Also fits (spoil the fun); the cue asks for 찬물을 끼얹다." }],
+          "particleTolerance": "loose"
+        }
+      ]
+    }
+  },
+  {
+    "id": "x:격세지감",
+    "kind": "expression",
+    "level": 3,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["사자성어", "change"],
+    "mnemonic": "隔 separated + 世 generation + 之 of + 感 feeling: you feel a whole generation away from your own past.",
+    "subtype": "사자성어",
+    "text": "격세지감",
+    "hanjaText": "隔世之感",
+    "meaning": "the feeling that times have changed drastically; feeling like it's a different world",
+    "literal": "the feeling of being a generation removed",
+    "usage": "Used when comparing past and present, especially about rapid social or technological change: 격세지감을 느끼다. Neutral; frequent in essays and interviews, and in conversation when people look back.",
+    "examples": [
+      {
+        "ko": "삼십 년 전 공중전화 앞에 줄 서던 시절을 떠올리면 격세지감을 느낀다.",
+        "en": "Thinking back thirty years to lining up for pay phones, it feels like a different world.",
+        "register": "written"
+      },
+      {
+        "ko": "요즘 애들은 태어날 때부터 스마트폰을 쓰니까 진짜 격세지감이야.",
+        "en": "Kids these days use smartphones from birth. Times have really changed.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": ["meaning", "production"],
+    "questions": {
+      "meaning": {
+        "accepted": [
+          "times have changed",
+          "how times have changed",
+          "a different world",
+          "feeling that times have changed",
+          "worlds apart",
+          "sense of a changed era"
+        ]
+      },
+      "production": { "promptEn": "the feeling that times have changed drastically (lit. a generation removed)", "contextHint": "사자성어", "accepted": ["격세지감"] }
+    }
+  },
+  {
+    "id": "x:침소봉대",
+    "kind": "expression",
+    "level": 3,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["사자성어", "media"],
+    "mnemonic": "針 needle + 小 small + 棒 club + 大 big: a needle's worth of fact, a club's worth of story.",
+    "subtype": "사자성어",
+    "text": "침소봉대",
+    "hanjaText": "針小棒大",
+    "meaning": "blowing something out of proportion; exaggerating a small matter",
+    "literal": "making a needle into a club",
+    "usage": "Critical; about exaggeration in the media, rumors, or arguments: 침소봉대하다, 사실을 침소봉대해 보도하다.",
+    "examples": [
+      {
+        "ko": "일부 언론이 사소한 말실수를 침소봉대해 큰 논란으로 만들었다.",
+        "en": "Some outlets blew a minor slip of the tongue out of proportion into a major controversy.",
+        "register": "written"
+      },
+      { "ko": "그 정도 일 가지고 침소봉대하지 마.", "en": "Don't make a mountain out of a molehill over something like that.", "register": "spoken" }
+    ],
+    "questionTypes": ["meaning", "production"],
+    "questions": {
+      "meaning": { "accepted": ["blow out of proportion", "make a mountain out of a molehill", "exaggerate", "exaggeration", "overblow", "overstate"] },
+      "production": { "promptEn": "blowing something out of proportion (lit. making a needle into a club)", "contextHint": "사자성어", "accepted": ["침소봉대"] }
+    }
+  },
+  {
+    "id": "x:굴러온-돌이-박힌-돌-뺀다",
+    "kind": "expression",
+    "level": 3,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["속담", "workplace"],
+    "mnemonic": "A loose stone tumbles downhill and knocks the old, settled one right out of its socket.",
+    "subtype": "속담",
+    "text": "굴러온 돌이 박힌 돌 뺀다",
+    "meaning": "a newcomer pushes out the old-timer",
+    "literal": "a stone that rolled in dislodges the stone that was embedded",
+    "usage": "Said, often resentfully, when a newcomer displaces someone established: at work, on a team, in a family business. Often quoted or clipped: 굴러온 돌이 박힌 돌 빼는 격이다.",
+    "examples": [
+      {
+        "ko": "입사한 지 석 달 된 경력직이 팀장이 되자 다들 굴러온 돌이 박힌 돌 뺀다고 수군댔다.",
+        "en": "When an experienced hire who'd been there three months became team leader, people muttered about newcomers pushing out the old guard.",
+        "register": "written"
+      },
+      {
+        "ko": "새로 온 사람이 내 자리를 차지하다니, 굴러온 돌이 박힌 돌 빼는 꼴이네.",
+        "en": "The new guy taking my spot: talk about the newcomer pushing out the old-timer.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": ["meaning", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": [
+          "newcomer pushes out the old timer",
+          "the newcomer pushes out the old guard",
+          "newcomer displaces the veteran",
+          "new arrival ousts the established",
+          "the new displaces the old"
+        ]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "굴러온 돌이 {{}} 뺀다더니, 새로 들어온 업체가 오래된 거래처를 밀어냈다.",
+          "en": "Just like the stone that rolls in and knocks out the one that was set, the new supplier pushed out the longtime vendor.",
+          "cue": "the other stone in the proverb",
+          "accepted": ["박힌 돌"],
+          "particleTolerance": "loose"
+        }
+      ]
+    }
+  },
+  {
+    "id": "x:핑계-없는-무덤-없다",
+    "kind": "expression",
+    "level": 3,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": false,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["속담", "excuses"],
+    "mnemonic": "Even the dead have a story about why it wasn't their fault.",
+    "subtype": "속담",
+    "text": "핑계 없는 무덤 없다",
+    "meaning": "everyone has an excuse for everything",
+    "literal": "there's no grave without an excuse",
+    "usage": "Wry or exasperated, about people who always have a reason for failing or being late: 핑계 없는 무덤 없다더니. Even the dead have an excuse for dying.",
+    "examples": [
+      {
+        "ko": "핑계 없는 무덤 없다더니, 지각할 때마다 이유도 가지가지네.",
+        "en": "Everyone's got an excuse, as they say: every time you're late, there's a brand-new reason.",
+        "register": "spoken"
+      },
+      {
+        "ko": "실패한 사업가들의 인터뷰를 읽다 보면 핑계 없는 무덤 없다는 말이 절로 떠오른다.",
+        "en": "Reading interviews with failed entrepreneurs, you can't help recalling that every grave has its excuse.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": ["meaning", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": [
+          "everyone has an excuse",
+          "there's always an excuse",
+          "there's an excuse for everything",
+          "everybody has an excuse for everything",
+          "excuses excuses"
+        ]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "핑계 없는 {{}} 없다더니, 이번에도 차가 막혀서 늦었다고 하더라.",
+          "en": "Every grave has its excuse, as they say: this time he was late because of traffic.",
+          "cue": "what the proverb says always has an excuse",
+          "accepted": ["무덤"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  }
+]

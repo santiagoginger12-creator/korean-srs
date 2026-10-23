@@ -2,6 +2,8 @@
 
 Items the QA & Linguistic Review agent could not clear on its own (D15). One row per concern. Clear the item's `needs_review` once resolved.
 
+**Status (QA pass, 2026-10-23):** the queue is empty. The QA agent resolved all 7 author-flagged items and the 변죽을 울리다 / 얼버무리다 gloss overlap, and cleared their `needs_review`. Every edit is listed in `REVIEW_LOG.md` with before → after, so the per-level skim can start there. The five rewritten nuance explanations and the two replaced distractors (g:고-말다 n1, g:는-양 n1) are the parts most worth a native glance.
+
 | item id | field | concern | suggestion |
 |---|---|---|---|
-| g:는-통에 | nuance | Says -는 통에 is "more colloquial than -는 바람에 and -(으)ㄴ/는 탓에" and "often carries a note of irritation". Both are defensible, but how to rank the register of 통에 vs 바람에 is a native-speaker teaching call. | Keep it if it matches how you teach the set. Otherwise cut it to "colloquial; often irritated in tone" and drop the comparison. |
+| — | — | (none open) | — |
