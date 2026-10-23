@@ -118,7 +118,8 @@ describe('meaning', () => {
   });
   test('typo tolerance follows §8.2 by length; rejected blocks look-alikes', () => {
     assert.equal(check(meaning(['eye']), 'eyes').outcome, 'incorrect');      // n=3 → 0
-    assert.equal(check(meaning(['ship']), 'shop').layer, 'typo');            // n=4 → 1 (by spec)
+    // n=4 → 0 since QA (D30): one edit of a short word is almost always another word.
+    assert.equal(check(meaning(['ship']), 'shop').outcome, 'incorrect');
     assert.equal(check(meaning(['ship'], ['shop']), 'shop').outcome, 'incorrect');
   });
   test('beyond tolerance → incorrect with reveal', () => {

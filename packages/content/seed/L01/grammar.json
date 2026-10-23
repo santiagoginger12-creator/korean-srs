@@ -16,10 +16,10 @@
     "attachment": [
       { "stem": "V", "final": "any", "tense": "present", "form": "V-는 바람에", "example": "급하게 나오는 바람에" }
     ],
-    "nuance": "The cause is a sudden or unforeseen event, and its (usually unwanted) result has already happened. The form is always -는, even for past events: 넘어지는 바람에, not *넘어진 바람에. The main clause is normally past tense and cannot be a command or suggestion (-(으)세요, -자, -(으)ㅂ시다). The tone is neutral: it reports what happened without blaming anyone or describing the atmosphere.",
+    "nuance": "The cause is typically a sudden or unforeseen event, and its (usually unwanted) result has already happened. The form is always -는, even for past events: 넘어지는 바람에, not *넘어진 바람에. The main clause is normally past tense and cannot be a command or suggestion (-(으)세요, -자, -(으)ㅂ시다). The tone is neutral: it reports what happened without blaming anyone or describing the atmosphere.",
     "contrasts": [
       { "id": "g:는-탓에", "note": "-(으)ㄴ/는 탓에 points a finger: the cause is held responsible. -는 바람에 just reports a sudden cause." },
-      { "id": "g:는-통에", "note": "-는 통에 blames a hectic, chaotic scene (noise, crowds, commotion); -는 바람에 is one sudden event." }
+      { "id": "g:는-통에", "note": "-는 통에 blames a hectic, chaotic scene (noise, crowds, commotion); -는 바람에 is typically a single sudden event." }
     ],
     "examples": [
       { "ko": "지하철이 중간에 멈추는 바람에 면접에 20분이나 늦었다.", "en": "The subway stopped partway, so I ended up a full 20 minutes late for my interview.", "register": "written" },
@@ -75,7 +75,7 @@
       { "stem": "A", "final": "any", "tense": "present", "form": "A-(으)ㄴ 탓에", "example": "일교차가 큰 탓에" },
       { "stem": "N이다", "final": "any", "tense": "present", "form": "N인 탓에", "example": "초보인 탓에" }
     ],
-    "nuance": "탓 means fault or blame, so the clause names a cause held responsible for a negative outcome. Unlike -는 바람에, it takes past (-(으)ㄴ) and adjective forms, and the cause can be a lasting condition rather than a sudden event. It is never used for good outcomes; for those, use 덕분에. Common in both speech and news writing. 탓 also stands alone as a noun: 날씨 탓이다, 남 탓을 하다.",
+    "nuance": "탓 means fault or blame, so the clause names a cause held responsible for a negative outcome. Unlike -는 바람에, it takes past (-(으)ㄴ) and adjective forms, and the cause can be a lasting condition rather than a sudden event. It is not used for good outcomes except sarcastically; for those, use 덕분에. Common in both speech and news writing. 탓 also stands alone as a noun: 날씨 탓이다, 남 탓을 하다.",
     "contrasts": [
       { "id": "g:는-바람에", "note": "-는 바람에 neutrally reports a sudden event and only takes -는; -(으)ㄴ/는 탓에 assigns blame and also takes past and adjective forms." },
       { "id": "g:는-통에", "note": "-는 통에 is specifically about commotion; -(으)ㄴ/는 탓에 can blame any cause, including a person or a steady condition." }
@@ -137,7 +137,7 @@
     ],
     "nuance": "통 here is the thick of things: the cause is a busy, noisy, or confused situation, often an ongoing one, that got in the way. The result is unwanted and has already happened, so no command or suggestion can follow. It is more colloquial than -는 바람에 and -(으)ㄴ/는 탓에 and often carries a note of irritation.",
     "contrasts": [
-      { "id": "g:는-바람에", "note": "Both take -는 and report an unwanted result. -는 바람에 is one sudden event (the bus stopped); -는 통에 is a whole messy scene (kids yelling, construction all day)." },
+      { "id": "g:는-바람에", "note": "Both take -는 and report an unwanted result. -는 바람에 is typically one sudden event (the bus stopped); -는 통에 is a whole messy scene (kids yelling, construction all day)." },
       { "id": "g:는-탓에", "note": "-(으)ㄴ/는 탓에 assigns blame to any cause; -는 통에 is specifically about commotion." }
     ],
     "examples": [

@@ -67,5 +67,6 @@ test('koTolerance thresholds (§8.2)', () => {
 });
 
 test('enTolerance thresholds (§8.2)', () => {
-  assert.deepEqual([1, 3, 4, 5, 6, 7, 8, 11, 12, 20, 40].map(enTolerance), [0, 0, 1, 1, 2, 2, 2, 2, 3, 4, 4]);
+  // Tightened in QA (DECISIONS D30): ≤4 → 0, 5–7 → 1, ≥8 → min(4, ⌊n/4⌋), measured with OSA distance.
+  assert.deepEqual([1, 3, 4, 5, 6, 7, 8, 11, 12, 20, 40].map(enTolerance), [0, 0, 0, 1, 1, 1, 2, 2, 3, 4, 4]);
 });

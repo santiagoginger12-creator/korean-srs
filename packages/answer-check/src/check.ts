@@ -1,6 +1,7 @@
 // The layered answer checker (ARCHITECTURE.md §8.3–8.4). Pure and synchronous.
 import type { FeatureRule, ParticleTolerance, QuestionInstance } from '@ksrs/content';
-import { enTolerance, jamoDiff, jamoDistance, koTolerance, levenshtein, type EditOp } from './distance.ts';
+import { enTolerance, jamoDiff, jamoDistance, koTolerance, osaDistance, type EditOp } from './distance.ts';
+import { isKnownEnglishWord } from './en-words.ts';
 import { dubeolsikToHangul, looksLikeDubeolsik } from './dubeolsik.ts';
 import { checkCoreWords, checkFeatures, similarity, VARIANT_SIM } from './features.ts';
 import { toJamo } from './jamo.ts';
@@ -42,6 +43,12 @@ export interface CheckOptions {
   otherHeadwords?: Map<string, string>;
   /** Answers the owner accepted via "I was right". */
   userAccepted?: string[];
+  /**
+   * English meanings of other items (meaning questions). An exact match is
+   * incorrect with a hint, and their words count as "real words" for the
+   * typo guard, so typo tolerance never lands on another item's meaning.
+   */
+  otherMeanings?: string[];
 }
 
 const res = (outcome: Outcome, layer: Layer, extra: Partial<CheckResult> = {}): CheckResult =>
@@ -78,9 +85,12 @@ function checkMeaning(accepted: string[], rejected: string[], response: string, 
   if (hasHangul(response)) return res('close', 'script', { hint: 'Answer in English.' });
   const r = normalizeEn(response);
   if (r === '') return res('close', 'empty', { hint: 'Type an answer.' });
+  // "to be cumbersome" also accepts plain "cumbersome" (descriptive verbs).
   const targets = (xs: readonly string[]): { raw: string; norm: string }[] =>
-    xs.flatMap((raw) => enAlternatives(raw).map((alt) => ({ raw, norm: normalizeEn(alt) })))
-      .filter((t) => t.norm !== '');
+    xs.flatMap((raw) => enAlternatives(raw).flatMap((alt) => {
+      const norm = normalizeEn(alt);
+      return /^be \S/.test(norm) ? [{ raw, norm }, { raw, norm: norm.slice(3) }] : [{ raw, norm }];
+    })).filter((t) => t.norm !== '');
   const acc = targets([...accepted, ...(opts.userAccepted ?? [])]);
   const rej = targets(rejected);
 
@@ -89,20 +99,56 @@ function checkMeaning(accepted: string[], rejected: string[], response: string, 
   const rejExact = rej.find((t) => t.norm === r);
   if (rejExact) return res('incorrect', 'rejected', { matched: accepted[0], hint: `"${response.trim()}" is not this word's meaning.` });
 
-  let best: { raw: string; d: number; ok: boolean } | undefined;
+  // Another item's meaning, typed exactly (결재 "approval" for 결제 "payment").
+  const others = (opts.otherMeanings ?? []).flatMap((m) => enAlternatives(m).map((alt) => ({ raw: m, norm: normalizeEn(alt) })));
+  const other = others.find((t) => t.norm === r);
+  if (other) {
+    return res('incorrect', 'otherHeadword', { matched: accepted[0], hint: `"${other.raw}" is the meaning of a different word.` });
+  }
+
+  let best: { raw: string; norm: string; d: number; ok: boolean } | undefined;
   for (const t of acc) {
-    const d = levenshtein(r, t.norm);
+    const d = osaDistance(r, t.norm);
     const ok = d <= enTolerance([...t.norm].length);
-    if (!best || (ok && !best.ok) || (ok === best.ok && d < best.d)) best = { raw: t.raw, d, ok };
+    if (!best || (ok && !best.ok) || (ok === best.ok && d < best.d)) best = { raw: t.raw, norm: t.norm, d, ok };
   }
   if (best?.ok) {
     // Never let typo tolerance land on a meaning that is explicitly wrong.
-    const rejD = Math.min(Infinity, ...rej.map((t) => levenshtein(r, t.norm)));
+    const rejD = Math.min(Infinity, ...rej.map((t) => osaDistance(r, t.norm)));
+    // Nor on a different real word (shop for ship, desert for dessert).
+    const extra = new Set(others.flatMap((t) => t.norm.split(' ')));
+    const realWord = realWordSubstitution(r, best.norm, extra);
+    if (realWord) {
+      return res('incorrect', 'none', { matched: best.raw, distance: best.d, hint: `"${realWord}" is a different word.` });
+    }
     if (rejD > best.d) {
       return res('correct', 'typo', { matched: best.raw, distance: best.d, notes: [`typo: expected "${best.raw}"`] });
     }
   }
   return res('incorrect', 'none', { matched: best?.raw ?? accepted[0], distance: best?.d });
+}
+
+/**
+ * A word in the response that is not in the target but is itself a known
+ * English word (and not just an inflection/derivation of a target word, as in
+ * approve/approval or hesitates/hesitate). Returns that word, or null.
+ */
+export function realWordSubstitution(response: string, target: string, extra?: ReadonlySet<string>): string | null {
+  const tw = target.split(' ');
+  for (const w of response.split(' ')) {
+    if (tw.includes(w)) continue;
+    if (tw.some((t) => isDerivedForm(w, t))) continue;
+    if (isKnownEnglishWord(w, extra)) return w;
+  }
+  return null;
+}
+
+/** approve/approval, hesitate/hesitates: same stem, different length, short tails. */
+function isDerivedForm(a: string, b: string): boolean {
+  if (a.length === b.length) return false; // stationary/stationery, principal/principle
+  let p = 0;
+  while (p < a.length && p < b.length && a[p] === b[p]) p++;
+  return p >= 4 && Math.max(a.length, b.length) - p <= 3;
 }
 
 // ---------------------------------------------------------------- nuance
@@ -190,14 +236,19 @@ function checkKo(response: string, s: KoSpec, opts: CheckOptions): CheckResult {
 
   // Layer 5: particles.
   let allomorphHit: { raw: string; fixes: { typed: string; fix: string }[] } | undefined;
+  let ambiguousHit = false;
   for (const a of acc) {
     const m = particleMatch(r, a.n, s.tol);
     if (!m) continue;
     if (m.kind === 'equal') return res('correct', 'particle', { matched: a.raw, notes: m.notes });
+    if (m.kind === 'ambiguous') { ambiguousHit = true; continue; }
     allomorphHit ??= { raw: a.raw, fixes: m.fixes };
   }
   if (allomorphHit) {
     return res('close', 'particle', { hint: allomorphHint(allomorphHit.fixes) });
+  }
+  if (ambiguousHit) {
+    return res('close', 'particle', { hint: 'Incomplete word, or a dropped particle? Type the full form.' });
   }
 
   // Layer 6: target features + core words (register).
@@ -232,6 +283,15 @@ function layer6(r: string, acc: { raw: string; n: string }[], s: KoSpec): CheckR
   if (c.status === 'fuzzy') return res('close', 'coreWord', { hint: `Check the spelling of "${c.word}".` });
   const wrong = findWrongAllomorphs(r, acc.map((a) => a.n));
   if (wrong.length) return res('close', 'particle', { hint: allomorphHint(wrong) });
+  // A misspelled eojeol (시간애 for 시간에, 됬어요 for 됐어요) is a Korean typo (D9:
+  // close), not a lenient variant.
+  const typo = eojeolTypo(r, acc.map((a) => a.n));
+  if (typo) return res('close', 'jamo', { distance: typo.d, hint: diffHint(typo.ops) });
+  // Honorific -(으)시- dropped from the predicate (오십니다 → 옵니다) is a grammar
+  // change, never a lenient variant.
+  if (acc.length > 0 && acc.every((a) => hasHonorificSi(lastEojeolOf(a.n))) && !hasHonorificSi(lastEojeolOf(r))) {
+    return res('close', 'feature', { hint: 'Check the honorific -(으)시-.' });
+  }
   let best: { raw: string; sim: number } | undefined;
   for (const a of acc) {
     const sim = similarity(r, a.n);
@@ -239,6 +299,35 @@ function layer6(r: string, acc: { raw: string; n: string }[], s: KoSpec): CheckR
   }
   if (best && best.sim >= VARIANT_SIM) {
     return res('correct', 'variant', { matched: best.raw, notes: [`variant: not in accepted list (similarity ${best.sim.toFixed(2)})`] });
+  }
+  return null;
+}
+
+const lastEojeolOf = (s: string): string => s.split(' ').pop() ?? s;
+
+/** Does the eojeol contain a 시/셔/세/십/신/실/심-type syllable (honorific -시- candidates)? */
+export function hasHonorificSi(eojeol: string): boolean {
+  for (const ch of eojeol) {
+    const j = toJamo(ch);
+    if (j[0] === 'ㅅ' && (j[1] === 'ㅣ' || j[1] === 'ㅕ' || j[1] === 'ㅔ')) return true;
+  }
+  return false;
+}
+
+/**
+ * A response eojeol that is not in any accepted answer but is one jamo
+ * substitution (or one confusable pair) away from an accepted eojeol.
+ */
+function eojeolTypo(r: string, accepted: readonly string[]): { d: number; ops: EditOp[] } | null {
+  const accE = new Set(accepted.flatMap((a) => a.split(' ')));
+  for (const w of r.split(' ')) {
+    if (accE.has(w)) continue;
+    for (const a of accE) {
+      const d = jamoDistance(w, a);
+      if (d === 0 || d > 1) continue;
+      const ops = jamoDiff(w, a);
+      if (ops.every((o) => o.op === 'sub')) return { d, ops };
+    }
   }
   return null;
 }

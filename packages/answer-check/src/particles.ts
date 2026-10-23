@@ -61,7 +61,17 @@ export type EojeolRelation =
   | { kind: 'wrongAllomorph'; fix: string }         // 책를 vs 책을
   | { kind: 'topicSubject'; from: string; to: string } // 책이 vs 책은 (loose only)
   | { kind: 'dropped'; particle: string }            // 계획 vs 계획은 (loose only)
+  | { kind: 'ambiguousDrop'; particle: string }      // 놀 vs 놀이: dropped 이, or a truncated word?
   | { kind: 'different' };
+
+/**
+ * Particles that spoken Korean actually drops: structural case and topic
+ * (은/는, 이/가, 을/를). 와/과 and (으)로 are not dropped, and as noun endings
+ * they are common (결과, 성과, 도로, 피로), so they are never treated as dropped.
+ */
+const DROPPABLE: ReadonlySet<ParticleClass> = new Set(['topic', 'subject', 'object']);
+
+const syllableCount = (s: string): number => [...s].filter(isSyllable).length;
 
 /** How a response eojeol relates to an accepted eojeol under particle rules. */
 export function compareEojeol(resp: string, acc: string, tol: ParticleTolerance): EojeolRelation {
@@ -70,7 +80,13 @@ export function compareEojeol(resp: string, acc: string, tol: ParticleTolerance)
   if (r === a) return { kind: 'same' };
   const as = acceptedSplit(a);
   if (!as) return { kind: 'different' };
-  if (tol === 'loose' && r === as.stem) return { kind: 'dropped', particle: as.particle };
+  if (tol === 'loose' && r === as.stem && DROPPABLE.has(as.cls)) {
+    // 이/가 also end many nouns (놀이, 길이, 먹이, 휴가, 화가): after a one-syllable
+    // stem we can't tell a dropped particle from a truncated word.
+    return as.cls === 'subject' && syllableCount(as.stem) < 2
+      ? { kind: 'ambiguousDrop', particle: as.particle }
+      : { kind: 'dropped', particle: as.particle };
+  }
   for (const rs of particleSplits(r)) {
     if (rs.stem !== as.stem) continue;
     const right = correctAllomorph(rs.stem, rs.cls);
@@ -89,8 +105,11 @@ const isTopicSubject = (x: ParticleClass, y: ParticleClass): boolean =>
   x !== y && (x === 'topic' || x === 'subject') && (y === 'topic' || y === 'subject');
 
 export interface ParticleMatch {
-  /** 'equal': same under the tolerance; 'wrongAllomorph': same apart from 책를-type errors. */
-  kind: 'equal' | 'wrongAllomorph';
+  /**
+   * 'equal': same under the tolerance; 'wrongAllomorph': same apart from 책를-type
+   * errors; 'ambiguous': same only if a one-syllable stem dropped 이/가 (close).
+   */
+  kind: 'equal' | 'wrongAllomorph' | 'ambiguous';
   notes: string[];
   fixes: { typed: string; fix: string }[];
 }
@@ -107,6 +126,7 @@ export function particleMatch(response: string, accepted: string, tol: ParticleT
   const notes: string[] = [];
   const fixes: { typed: string; fix: string }[] = [];
   let changed = false;
+  let ambiguous = false;
   for (let i = 0; i < rw.length; i++) {
     const r = rw[i] as string;
     const a = aw[i] as string;
@@ -116,11 +136,12 @@ export function particleMatch(response: string, accepted: string, tol: ParticleT
       case 'different': return null;
       case 'wrongAllomorph': fixes.push({ typed: r, fix: rel.fix }); changed = true; break;
       case 'dropped': notes.push(`조사 생략: ${a} → ${r}`); changed = true; break;
+      case 'ambiguousDrop': ambiguous = true; changed = true; break;
       case 'topicSubject': notes.push(`조사: ${rel.from} ↔ ${rel.to} (${a})`); changed = true; break;
     }
   }
   if (!changed) return null;
-  return { kind: fixes.length ? 'wrongAllomorph' : 'equal', notes, fixes };
+  return { kind: fixes.length ? 'wrongAllomorph' : ambiguous ? 'ambiguous' : 'equal', notes, fixes };
 }
 
 /**

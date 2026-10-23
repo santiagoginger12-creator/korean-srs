@@ -10,7 +10,7 @@
     "source": { "kind": "original", "license": "original-owned" },
     "needs_review": false,
     "tags": ["sino-korean", "workplace", "homophone:결제"],
-    "mnemonic": "決 decide + 裁 judge: the boss's final ruling on your document. 결재 is a signature on paper, never money; for money it's 결제 (濟).",
+    "mnemonic": "決 decide + 裁 judge: the boss's final ruling on your document. 결재 is sign-off on paperwork (paper or electronic), never money; for money it's 결제 (濟).",
     "word": "결재",
     "meanings": ["approval (from a superior)", "sign-off", "authorization"],
     "pos": "명사",

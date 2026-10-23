@@ -37,6 +37,8 @@ export interface AnswerRecord {
   /** Session state before this record; undo restores it. */
   prev: ReviewSession;
   overridden?: boolean;
+  /** Other events emitted with this record (the override's userAnswer.add); undo voids them too. */
+  sideEvents?: AppEvent[];
 }
 
 export interface ReviewSession {
@@ -176,8 +178,9 @@ export function sessionReducer(sess: ReviewSession, action: SessionAction): { se
       const last = sess.history[sess.history.length - 1];
       if (!last) return NOOP(sess);
       const emit: AppEvent[] = [];
-      if (last.event) {
-        const v = emitOne(sess, { type: 'event.void', targetId: last.event.id, reason: 'undo' }, action.at);
+      for (const e of [last.event, ...(last.sideEvents ?? [])]) {
+        if (!e) continue;
+        const v = emitOne(sess, { type: 'event.void', targetId: e.id, reason: 'undo' }, action.at);
         if (v) emit.push(v);
       }
       return { sess: last.prev, emit };
@@ -191,6 +194,7 @@ export function sessionReducer(sess: ReviewSession, action: SessionAction): { se
       const q = base.questions[last.qid]!;
       const result: CheckOutcome = { outcome: 'correct', layer: 'self' };
       const emit: AppEvent[] = [];
+      const sideEvents: AppEvent[] = [];
       const ev = last.event
         ? emitOne(sess, answerPayload(base, q, last.response, 'correct', result, last.closeAttempts, last.durationMs,
             { overrides: last.event.id }), action.at)
@@ -198,12 +202,13 @@ export function sessionReducer(sess: ReviewSession, action: SessionAction): { se
       if (ev) emit.push(ev);
       if (action.acceptAnswer && last.response.trim() !== '') {
         const ua = emitOne(sess, { type: 'userAnswer.add', itemId: q.itemId, qtype: q.qtype, answer: last.response }, action.at);
-        if (ua) emit.push(ua);
+        if (ua) { emit.push(ua); sideEvents.push(ua); }
       }
       const next = applyGraded({ ...base, closeAttempts: last.closeAttempts }, q, 'correct');
       const rec: AnswerRecord = {
         qid: q.qid, itemId: q.itemId, grade: 'correct', event: ev, response: last.response, durationMs: last.durationMs,
         closeAttempts: last.closeAttempts, result, prev: sess, overridden: true,
+        ...(sideEvents.length ? { sideEvents } : {}),
       };
       // Undoing the override returns to the post-wrong-answer state (void of the override only).
       return { sess: { ...next, history: [...base.history, rec] }, emit };

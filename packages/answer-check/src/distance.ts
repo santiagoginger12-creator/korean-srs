@@ -92,10 +92,39 @@ export function koTolerance(L: number): number {
   return Math.min(4, 0.1 * L);
 }
 
-/** English typo tolerance by normalized target length n (§8.2). */
+/**
+ * Optimal-string-alignment (Damerau) distance over code points: like
+ * Levenshtein, but an adjacent transposition (hassel/hassle) costs 1.
+ */
+export function osaDistance(a: string, b: string): number {
+  const x = [...a];
+  const y = [...b];
+  const d: number[][] = [];
+  for (let i = 0; i <= x.length; i++) d.push(Array.from({ length: y.length + 1 }, (_, j) => (i === 0 ? j : j === 0 ? i : 0)));
+  for (let i = 1; i <= x.length; i++) {
+    for (let j = 1; j <= y.length; j++) {
+      const row = d[i] as number[];
+      const prev = d[i - 1] as number[];
+      const cost = x[i - 1] === y[j - 1] ? 0 : 1;
+      let v = Math.min((prev[j] as number) + 1, (row[j - 1] as number) + 1, (prev[j - 1] as number) + cost);
+      if (i > 1 && j > 1 && x[i - 1] === y[j - 2] && x[i - 2] === y[j - 1]) {
+        v = Math.min(v, ((d[i - 2] as number[])[j - 2] as number) + 1);
+      }
+      row[j] = v;
+    }
+  }
+  return (d[x.length] as number[])[y.length] as number;
+}
+
+/**
+ * English typo tolerance by normalized target length n (§8.2, tightened in QA,
+ * see DECISIONS D30): ≤ 4 → 0; 5–7 → 1; ≥ 8 → min(4, ⌊0.25n⌋). Measured with
+ * `osaDistance`, so a swapped pair of letters is a single typo. Short words are
+ * strict because one edit almost always lands on another real word
+ * (ship/shop, hate/have); see also the real-word guard in check.ts.
+ */
 export function enTolerance(n: number): number {
-  if (n <= 3) return 0;
-  if (n <= 5) return 1;
-  if (n <= 7) return 2;
+  if (n <= 4) return 0;
+  if (n <= 7) return 1;
   return Math.min(4, Math.floor(0.25 * n));
 }

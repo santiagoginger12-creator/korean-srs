@@ -42,3 +42,22 @@ register	[to=haeyo core=주말,등산 particles=loose] 주말에 등산을 갑�
 register	[to=haeyo core=주말,등산 particles=loose] 주말에 등산을 갑니다.	주말에 등산을 가요	주말에 등산를 가요	close	wrong allomorph
 register	[to=haeyo core=주말,등산 particles=loose] 주말에 등산을 갑니다.	주말에 등산을 가요	주말에 등산을 갑니다	incorrect	feature: still 합쇼체
 register	[to=haera core=결과,예상] 결과가 예상보다 좋았어요.	결과가 예상보다 좋았다.	결과는 예상보다 좋았다	correct	topic↔subject (register defaults to loose)
+# --- QA (M1 review): real-word typo guard, conservative particle drops, register typos/honorifics
+meaning	배	ship|boat	shop	incorrect	real word one edit away (n≤4 is exact-only)
+meaning	미워하다	to hate	have	incorrect	real word one edit away
+meaning	후식	dessert	desert	incorrect	confusable real word
+meaning	조용하다	to be quiet	quite	incorrect	transposition that forms a real word
+meaning	문구	stationery	stationary	incorrect	same-length confusable
+meaning	받다	to receive	recieve	correct	transposition = 1 edit (OSA)
+meaning	번거롭다	to be cumbersome|troublesome|a hassle	cumbresome	correct	'to be X' accepts X; transposition typo
+meaning	당황하다	to be embarrassed|flustered	embarassed	correct	genuine typo in a long word
+meaning	결재	approval (sign-off)|sanction	approve	correct	derivation of the target, not a different word
+cloze	[particles=loose] 아이들이 {{}} 시간을 기다렸다.	놀이	놀	close	1-syllable stem + 이: truncated word or dropped particle?
+cloze	[particles=loose] 예상과 다른 {{}} 나왔다.	결과가	결	incorrect	과 is part of 결과, never a dropped particle
+cloze	[particles=loose] 오랜 야근으로 {{}} 쌓였다.	피로가	피	incorrect	피로 is a word, not 피+로
+cloze	[particles=loose] {{}} 막혀서 늦었어요.	도로가	도로	correct	dropped 가 after a 2-syllable stem
+register	[to=hapsyo core=회의,발표] 회의 시간에 늦는 바람에 발표를 놓쳤어요.	회의 시간에 늦는 바람에 발표를 놓쳤습니다.	회의 시간애 늦는 바람에 발표를 놓쳤습니다	close	ㅔ/ㅐ typo is never a 'variant'
+register	[to=hapsyo core=선생님,내일,학교] 선생님께서 내일 학교에 오세요.	선생님께서 내일 학교에 오십니다.	선생님께서 내일 학교에 옵니다	close	honorific -시- dropped
+register	[to=hapsyo core=선생님,내일,학교] 선생님께서 내일 학교에 오세요.	선생님께서 내일 학교에 오십니다.	선생님께서 내일 학교에 오세요	incorrect	해요체 answer to a 합쇼체 prompt
+production	[rejected=결제] approval (of a document)	결재	결제	incorrect	collision, reverse direction
+production	to hesitate	망설이다	망설이ㄷ	close	IME leftover jamo
