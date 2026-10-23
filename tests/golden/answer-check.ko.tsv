@@ -1,0 +1,44 @@
+# Golden answer-check cases (owner-reviewed). Tab-separated; '#' lines are comments.
+# prompt may start with [options]: rejected=a,b  particles=none|allomorph|loose  spacingStrict  to=<SpeechLevel>  core=a,b
+# meaning: prompt = Korean headword; production: prompt = English cue; cloze: prompt = sentence with {{}}; register: prompt = source sentence.
+# register features come from to=: hapsyo → ends -ㅂ니다/-습니다(…), haeyo → ends 요, haera/written → ends 다.
+qtype	prompt	accepted	response	expected_outcome	note
+meaning	망설이다	to hesitate	hesitate	correct	leading 'to' stripped
+meaning	결제	payment|settlement (of a bill)	Payment.	correct	case + punctuation
+meaning	결재	approval (sign-off)|sanction	aproval	correct	typo n=8 d=1
+meaning	고즈넉하다	to be quiet and still|tranquil	tranquill	correct	typo
+meaning	번거롭다	to be cumbersome|troublesome|a hassle	hassel	correct	typo n=6 d=2
+meaning	소홀하다	to neglect|to be careless (about)	negligent	incorrect	different word form beyond tolerance
+meaning	흐지부지	fizzling out|petering out	petering out	correct	second alternative
+meaning	의아하다	to be puzzled|to find (something) odd	의아하다	close	Hangul in meaning field
+production	[rejected=미르다] to put off (a task)	미루다|연기하다	연기하다	correct	second accepted
+production	to put off (a task)	미루다|연기하다	미르다	close	ㅜ/ㅡ, d=1 ≤ 1
+production	[rejected=결재] payment (settling a bill)	결제	결재	incorrect	always-incorrect collision
+production	[rejected=결재] payment (settling a bill)	결제	결제(決濟)	correct	Hanja gloss stripped
+production	to be obvious (predictably so)	뻔하다	번하다	close	plain/tense ㅂ/ㅃ = 0.5
+production	to be obvious (predictably so)	뻔하다	Qjsgkek	close	wrong keyboard → 뻔하다
+production	to be ambiguous	애매하다|모호하다	에매하다	close	ㅔ/ㅐ
+production	to be ambiguous	애매하다|모호하다	막연하다	incorrect	different word
+production	to be awkward	어색하다	어색하다.	correct	final punctuation
+production	to be dumbfounded	어이가 없다|어이없다	어이 없다	correct	spacing
+production	to make a decision	결정을 내리다	결정를 내리다	close	wrong allomorph after consonant
+production	to be unavoidable	불가피하다	불가​피하다	correct	zero-width char
+production	fatigue	피로	피곤	incorrect	different word, d=2 > 1
+cloze	회의가 길어지는 {{}} 점심을 걸렀다.	바람에	바람에	correct	exact
+cloze	그는 실력이 {{}} 늘 겸손하다.	뛰어난데도|뛰어난데도 불구하고	뛰어난 데도	correct	spacing note
+cloze	보고서를 {{}} 퇴근할 수 있었다.	마무리하고서야	마무리 하고서야	correct	spacing note
+cloze	{{}} 다시 논의하기로 했다.	그 문제를	그 문제을	close	wrong allomorph
+cloze	[particles=loose] {{}} 이미 끝났으니 잊어버려.	그 일은	그 일이	correct	topic↔subject under loose
+cloze	[particles=loose] {{}} 이미 끝났으니 잊어버려.	그 일은	그 일	correct	dropped particle under loose
+cloze	비가 그치기가 {{}} 사람들이 쏟아져 나왔다.	무섭게	무섭개	close	ㅔ/ㅐ
+cloze	약속 시간에 {{}} 택시를 탔다.	늦을까 봐	늦을까봐	correct	spacing
+cloze	[spacingStrict] 약속 시간에 {{}} 택시를 탔다.	늦을까 봐	늦을까봐	close	spacing strict
+cloze	약속 시간에 {{}} 택시를 탔다.	늦을까 봐	늦을 테니	incorrect	different pattern
+register	[to=hapsyo core=자료,검토] 자료를 검토해 봤어요.	자료를 검토해 보았습니다.|자료를 검토해 봤습니다.	자료를 검토해 보았습니다	correct	exact, period optional
+register	[to=hapsyo core=자료,검토] 자료를 검토해 봤어요.	자료를 검토해 보았습니다.|자료를 검토해 봤습니다.	자료를 검토했습니다.	correct	variant
+register	[to=hapsyo core=자료,검토] 자료를 검토해 봤어요.	자료를 검토해 보았습니다.|자료를 검토해 봤습니다.	자료를 검토해 봤어요	incorrect	feature: still 해요체
+register	[to=hapsyo core=자료,검토] 자료를 검토해 봤어요.	자료를 검토해 보았습니다.|자료를 검토해 봤습니다.	자료를 겸토해 봤습니다	close	core word fuzzy
+register	[to=haeyo core=주말,등산 particles=loose] 주말에 등산을 갑니다.	주말에 등산을 가요	주말에 등산 가요	correct	dropped particle
+register	[to=haeyo core=주말,등산 particles=loose] 주말에 등산을 갑니다.	주말에 등산을 가요	주말에 등산를 가요	close	wrong allomorph
+register	[to=haeyo core=주말,등산 particles=loose] 주말에 등산을 갑니다.	주말에 등산을 가요	주말에 등산을 갑니다	incorrect	feature: still 합쇼체
+register	[to=haera core=결과,예상] 결과가 예상보다 좋았어요.	결과가 예상보다 좋았다.	결과는 예상보다 좋았다	correct	topic↔subject (register defaults to loose)

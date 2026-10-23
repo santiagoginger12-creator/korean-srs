@@ -1,0 +1,35 @@
+[
+  {
+    "id": "x:발등에-불이-떨어지다",
+    "kind": "expression",
+    "level": 1,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["관용구", "urgency", "procrastination"],
+    "mnemonic": "A fire across town can wait. A spark on your own foot can't: you move now.",
+    "subtype": "관용구",
+    "text": "발등에 불이 떨어지다",
+    "meaning": "to be faced with an urgent problem that can't be put off any longer; to be under the gun",
+    "literal": "fire falls on the top of one's foot",
+    "usage": "Usually about a deadline or crisis that has suddenly become pressing, often after putting it off. Neutral to casual; common in speech, essays, and headlines. Frequent frames: 발등에 불이 떨어져야 (only once it's an emergency does one act), and the noun phrase 발등에 떨어진 불 (the most urgent matter): 발등에 떨어진 불부터 끄자.",
+    "examples": [
+      { "ko": "평소에는 미루다가 꼭 발등에 불이 떨어져야 움직이는 게 내 문제야.", "en": "My problem is that I put things off and only get moving when it's an emergency.", "register": "spoken" },
+      { "ko": "마감이 내일로 다가오자 발등에 불이 떨어진 팀원들이 밤을 새우기 시작했다.", "en": "With the deadline now tomorrow, the team, suddenly under the gun, started pulling all-nighters.", "register": "written" }
+    ],
+    "questionTypes": ["meaning", "production"],
+    "questions": {
+      "meaning": {
+        "accepted": ["be under the gun", "face an urgent problem", "be faced with an urgent problem", "be in a pinch", "urgent situation", "be pressed for time", "crunch time", "have an emergency on one's hands", "pressing matter"]
+      },
+      "production": {
+        "promptEn": "to be faced with an urgent problem that can't wait (lit. fire falls on the top of one's foot)",
+        "contextHint": "관용구",
+        "accepted": ["발등에 불이 떨어지다", "발등에 불 떨어지다"]
+      }
+    }
+  }
+]
