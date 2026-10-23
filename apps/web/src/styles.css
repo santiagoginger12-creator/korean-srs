@@ -160,10 +160,12 @@ main { max-width: 760px; margin: 0 auto; padding: 16px 16px 48px; }
 
 /* ---- lessons */
 .lesson-bar, .quiz-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
-.dots { list-style: none; display: flex; gap: 8px; padding: 0; margin: 0 auto; }
+.dots { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; padding: 0; margin: 0 auto; min-width: 0; }
 .dot { width: 12px; height: 12px; padding: 0; border-radius: 50%; border: 2px solid var(--k); background: transparent; cursor: pointer; }
 .dot.on { background: var(--k); }
-.lesson-nav { display: flex; justify-content: space-between; gap: 12px; position: sticky; bottom: 0; padding: 12px 0; background: linear-gradient(to top, var(--bg) 70%, transparent); }
+.lesson-nav { display: flex; justify-content: space-between; gap: 12px; position: sticky; bottom: 0; z-index: 2; padding: 12px 0 calc(12px + env(safe-area-inset-bottom)); background: linear-gradient(to top, var(--bg) 70%, transparent); }
+.lesson-bar .count-only { margin: 0 auto; }
+.table-wrap, .details { max-width: 100%; }
 .lesson-nav .btn { flex: 1; }
 
 /* ---- quiz */
@@ -250,3 +252,12 @@ textarea { resize: vertical; }
 .banner-error { background: var(--bad-soft); color: var(--bad); }
 .toast { position: fixed; left: 50%; bottom: calc(16px + env(safe-area-inset-bottom)); transform: translateX(-50%); display: flex; gap: 12px; align-items: center; background: var(--primary); color: var(--primary-text); padding: 8px 8px 8px 18px; border-radius: 999px; box-shadow: var(--shadow); z-index: 10; }
 .toast .btn { background: var(--primary-text); color: var(--primary); }
+
+/* Phones: stack the attachment table into labeled rows instead of scrolling sideways. */
+@media (max-width: 560px) {
+  .attach thead { display: none; }
+  .attach, .attach tbody, .attach tr, .attach td { display: block; width: 100%; }
+  .attach tr { padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .attach td { border: 0; padding: 2px 0; white-space: normal; display: flex; gap: 12px; }
+  .attach td::before { content: attr(data-label); flex: 0 0 4.5rem; color: var(--muted); font-size: .78rem; font-weight: 600; padding-top: 2px; }
+}

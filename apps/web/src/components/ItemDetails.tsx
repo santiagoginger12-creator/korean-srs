@@ -119,7 +119,7 @@ export function GrammarDetails({ item, index }: { item: GrammarItem; index: Cont
             <thead><tr><th>Stem</th><th>Final</th><th>Tense</th><th>Form</th><th>Example</th></tr></thead>
             <tbody>
               {item.attachment.map((a, i) => (
-                <tr key={i}><td>{a.stem}</td><td>{a.final ?? 'any'}</td><td>{a.tense}</td><td lang="ko">{a.form}</td><td lang="ko">{a.example}</td></tr>
+                <tr key={i}><td data-label="Stem">{a.stem}</td><td data-label="Final">{a.final ?? 'any'}</td><td data-label="Tense">{a.tense}</td><td data-label="Form" lang="ko">{a.form}</td><td data-label="Example" lang="ko">{a.example}</td></tr>
               ))}
             </tbody>
           </table>

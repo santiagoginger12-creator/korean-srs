@@ -1,0 +1,169 @@
+[
+  {
+    "id": "v:결재",
+    "kind": "vocab",
+    "level": 1,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["sino-korean", "workplace", "homophone:결제"],
+    "mnemonic": "決 decide + 裁 judge: the boss's final ruling on your document. 결재 is a signature on paper, never money; for money it's 결제 (濟).",
+    "word": "결재",
+    "meanings": ["approval (from a superior)", "sign-off", "authorization"],
+    "pos": "명사",
+    "register": "formal",
+    "hanjaBreakdown": [
+      { "syllable": "결", "hanja": "決", "hanjaId": "h:決" },
+      { "syllable": "재", "hanja": "裁", "hanjaId": "h:裁" }
+    ],
+    "collocations": [
+      { "ko": "결재를 올리다", "en": "to submit (a document) for approval" },
+      { "ko": "결재를 받다", "en": "to get sign-off" },
+      { "ko": "결재가 나다", "en": "(approval) to come through" },
+      { "ko": "전자 결재", "en": "electronic approval system" }
+    ],
+    "examples": [
+      { "ko": "팀장님 결재가 나야 비품을 주문할 수 있어요.", "en": "We can't order supplies until the team leader signs off.", "register": "neutral" },
+      { "ko": "보고서를 고쳐서 다시 결재를 올렸지만 아직 아무 답이 없다.", "en": "I revised the report and resubmitted it for approval, but there's still no response.", "register": "written" }
+    ],
+    "questionTypes": ["meaning", "production"],
+    "questions": {
+      "meaning": {
+        "accepted": ["approval", "sign-off", "sign off", "authorization", "official approval", "approval from a superior", "managerial approval", "endorsement"],
+        "rejected": ["payment", "settlement"]
+      },
+      "production": {
+        "promptEn": "approval / sign-off (from a superior, on a document)",
+        "contextHint": "office paperwork, not money",
+        "accepted": ["결재"],
+        "rejected": ["결제"]
+      }
+    }
+  },
+  {
+    "id": "v:결제",
+    "kind": "vocab",
+    "level": 1,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["sino-korean", "money", "homophone:결재"],
+    "mnemonic": "決 settle + 濟 (the 제 of 경제, economy): settling up with money. Money has 제; paperwork has 재.",
+    "word": "결제",
+    "meanings": ["payment", "settlement (of a bill or account)"],
+    "pos": "명사",
+    "register": "neutral",
+    "hanjaBreakdown": [
+      { "syllable": "결", "hanja": "決", "hanjaId": "h:決" },
+      { "syllable": "제", "hanja": "濟" }
+    ],
+    "collocations": [
+      { "ko": "카드로 결제하다", "en": "to pay by card" },
+      { "ko": "결제 수단", "en": "payment method" },
+      { "ko": "간편 결제", "en": "quick (one-tap) payment" },
+      { "ko": "결제 대금", "en": "amount due" }
+    ],
+    "examples": [
+      { "ko": "해외 사이트에서 결제할 때는 수수료가 붙는지 꼭 확인하세요.", "en": "When you pay on an overseas site, be sure to check whether a fee gets added.", "register": "neutral" },
+      { "ko": "카드 결제가 자꾸 거절돼서 결국 계좌 이체로 보냈다.", "en": "My card payment kept getting declined, so I ended up sending it by bank transfer.", "register": "written" }
+    ],
+    "questionTypes": ["meaning", "production"],
+    "questions": {
+      "meaning": {
+        "accepted": ["payment", "settlement", "paying", "settling a bill", "settlement of an account", "settling an account", "settling up"],
+        "rejected": ["approval", "sign-off"]
+      },
+      "production": {
+        "promptEn": "payment (settling a bill)",
+        "contextHint": "money, not paperwork",
+        "accepted": ["결제"],
+        "rejected": ["결재"]
+      }
+    }
+  },
+  {
+    "id": "v:재량",
+    "kind": "vocab",
+    "level": 1,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["sino-korean", "workplace"],
+    "mnemonic": "裁 judge + 量 measure: you get to measure things out by your own judgment.",
+    "word": "재량",
+    "meanings": ["discretion", "latitude (to decide)", "judgment"],
+    "pos": "명사",
+    "register": "neutral",
+    "hanjaBreakdown": [
+      { "syllable": "재", "hanja": "裁", "hanjaId": "h:裁" },
+      { "syllable": "량", "hanja": "量" }
+    ],
+    "collocations": [
+      { "ko": "재량에 맡기다", "en": "to leave (it) to someone's discretion" },
+      { "ko": "재량껏", "en": "at one's own discretion, as one sees fit" },
+      { "ko": "재량권", "en": "discretionary authority" },
+      { "ko": "재량 휴업일", "en": "school-designated day off" }
+    ],
+    "examples": [
+      { "ko": "회식 참석 여부는 각자 재량에 맡기겠습니다.", "en": "Whether to come to the staff dinner is up to each of you.", "register": "formal" },
+      { "ko": "환불 기준이 애매할 때는 매장 직원이 재량껏 처리해도 된다.", "en": "When the refund rules are unclear, store staff may handle it as they see fit.", "register": "written" }
+    ],
+    "questionTypes": ["meaning", "production"],
+    "questions": {
+      "meaning": {
+        "accepted": ["discretion", "latitude", "judgment", "leeway", "discretionary power", "own judgment"]
+      },
+      "production": {
+        "promptEn": "discretion (latitude to decide as one sees fit)",
+        "accepted": ["재량"]
+      }
+    }
+  },
+  {
+    "id": "v:얼버무리다",
+    "kind": "vocab",
+    "level": 1,
+    "track": "core",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": { "kind": "original", "license": "original-owned" },
+    "needs_review": false,
+    "tags": ["native", "speech", "communication"],
+    "mnemonic": "버무리다 is tossing 나물 with seasoning. 얼버무리다: you toss your words together so loosely that no clear answer comes out.",
+    "word": "얼버무리다",
+    "meanings": ["to equivocate", "to give an evasive answer", "to gloss over"],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      { "ko": "대답을 얼버무리다", "en": "to dodge a question, answer evasively" },
+      { "ko": "말을 얼버무리다", "en": "to speak evasively, fudge one's words" },
+      { "ko": "적당히 얼버무리다", "en": "to gloss over it somehow" }
+    ],
+    "examples": [
+      { "ko": "언제 갚을 거냐고 묻자 그는 말끝을 흐리며 대답을 얼버무렸다.", "en": "When asked when he'd pay it back, he trailed off and dodged the question.", "register": "written" },
+      { "ko": "기자들의 질문에 대변인은 \"검토 중\"이라는 말로 얼버무렸다.", "en": "The spokesperson brushed off the reporters' questions with a \"we're looking into it.\"", "register": "written" },
+      { "ko": "괜히 얼버무리지 말고 솔직하게 말해 봐.", "en": "Don't beat around the bush. Just tell me honestly.", "register": "spoken" }
+    ],
+    "questionTypes": ["meaning", "production"],
+    "questions": {
+      "meaning": {
+        "accepted": ["equivocate", "evade", "be evasive", "give an evasive answer", "answer evasively", "dodge the question", "dodge a question", "gloss over", "hedge", "prevaricate", "mumble evasively", "beat around the bush"]
+      },
+      "production": {
+        "promptEn": "to answer evasively; to gloss over (a question)",
+        "contextHint": "native word, verb",
+        "accepted": ["얼버무리다"]
+      }
+    }
+  }
+]

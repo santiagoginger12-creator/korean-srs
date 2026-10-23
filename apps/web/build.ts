@@ -1,5 +1,6 @@
 // Production build (D29: esbuild instead of Vite). Run: `npm run build:web` (root) or
 // `tsx apps/web/build.ts`. Env: BASE (default "/"; GitHub Pages uses "/<repo>/").
+// KSRS_SEED_DIR (default packages/content/seed; e2e uses apps/web/tests/e2e/fixture-seed).
 // Flags: --dev (no minify, sourcemaps, no service worker registration), --out <dir>.
 //
 // Emits dist/: index.html, assets/main-[hash].{js,css}, content.bundle.json (from
@@ -16,7 +17,8 @@ import { canonicalJson, sha256Hex } from '../../packages/srs-engine/src/index.ts
 
 export const WEB_DIR = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(WEB_DIR, '../..');
-const SEED_DIR = join(ROOT, 'packages/content/seed');
+/** Seed to bundle: KSRS_SEED_DIR (absolute, or relative to the repo root), default the real seed. */
+export const seedDir = (): string => resolve(ROOT, process.env.KSRS_SEED_DIR ?? 'packages/content/seed');
 export const PRETENDARD_CSS = 'https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css';
 
 export interface BuildOptions { base?: string; dev?: boolean; outDir?: string; quiet?: boolean }
@@ -29,7 +31,7 @@ export function normalizeBase(b: string | undefined): string {
 }
 
 /** Loads seed/**\/*.json in sorted path order (mirrors packages/content/bin/lib.ts). */
-export function loadSeed(dir = SEED_DIR): { raws: unknown[]; origins: string[]; idRedirects: Record<string, string> } {
+export function loadSeed(dir = seedDir()): { raws: unknown[]; origins: string[]; idRedirects: Record<string, string> } {
   const out = { raws: [] as unknown[], origins: [] as string[], idRedirects: {} as Record<string, string> };
   const walk = (d: string): string[] => readdirSync(d).sort().flatMap((f) => {
     const p = join(d, f);
@@ -167,7 +169,7 @@ ${css ? `<link rel="stylesheet" href="${url(css)}">` : ''}
     const kb = (f: string) => (statSync(f).size / 1024).toFixed(1);
     console.log(`built ${relative(ROOT, outDir)} (base ${base}${dev ? ', dev' : ''}) in ${Date.now() - t0} ms`);
     console.log(`  ${relative(outDir, js)} ${kb(js)} KB${css ? `, ${relative(outDir, css)} ${kb(css)} KB` : ''}`);
-    console.log(`  content ${content.items.length} items (${content.contentVersion.slice(0, 12)}), sw ${version}, ${precache.length} precached`);
+    console.log(`  content ${content.items.length} items from ${relative(ROOT, seedDir())} (${content.contentVersion.slice(0, 12)}), sw ${version}, ${precache.length} precached`);
   }
   return { outDir, base, files: precache };
 }

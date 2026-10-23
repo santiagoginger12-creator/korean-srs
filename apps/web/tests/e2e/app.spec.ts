@@ -1,12 +1,11 @@
 import { expect, test } from '@playwright/test';
-import { mkdirSync } from 'node:fs';
-import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
 import {
   answerAllCorrectly, correctAnswer, currentQ, doLessonBatch, flush, goHome, HOUR, next, readEvents, setup, submit, T0, wrongAnswer,
 } from './helpers.ts';
 
-const SHOTS = join(dirname(fileURLToPath(import.meta.url)), '../../test-results');
+// Runs against the fixture seed (tests/e2e/fixture-seed: the original 10 M1 items), so the
+// behaviour checks don't break when the real seed changes. See real-seed.spec.ts for the
+// smoke test and owner screenshots on the live seed.
 
 test('1. fresh start → lesson batch → quiz → lesson.completed persisted', async ({ page }) => {
   const b = await setup(page);
@@ -174,34 +173,4 @@ test('5. offline reload after the first load (service worker)', async ({ page, c
   await page.getByTestId('start-lessons').click();
   await expect(page.getByTestId('lesson-page')).toBeVisible();
   await context.setOffline(false);
-});
-
-test('6. mobile screenshots (390×844) for the owner', async ({ browser }) => {
-  mkdirSync(SHOTS, { recursive: true });
-  const context = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
-  const page = await context.newPage();
-  const b = await setup(page);
-  await page.getByTestId('start-lessons').click();
-  // A vocab teach page is the most representative lesson screen.
-  for (let g = 0; g < 6; g++) {
-    if ((await page.getByTestId('lesson-page').getAttribute('data-item-id'))!.startsWith('v:')) break;
-    if (await page.getByTestId('start-quiz').isVisible()) break;
-    await page.getByRole('button', { name: 'Next', exact: true }).click();
-  }
-  await page.screenshot({ path: join(SHOTS, 'lesson-390x844.png') });
-  await goHome(page);
-  await doLessonBatch(page, b);
-  await page.clock.setSystemTime(T0 + 5 * HOUR);
-  await goHome(page);
-  await page.screenshot({ path: join(SHOTS, 'home-390x844.png') });
-  await page.getByTestId('start-reviews').click();
-  let q = await currentQ(page);
-  for (let g = 0; q.qtype !== 'cloze' && q.qtype !== 'production' && g < 30; g++) {
-    await submit(page, q, correctAnswer(b, q)); await next(page); q = await currentQ(page);
-  }
-  await page.screenshot({ path: join(SHOTS, 'review-390x844.png') });
-  await submit(page, q, wrongAnswer(b, q));
-  await expect(page.getByTestId('feedback')).toBeVisible();
-  await page.screenshot({ path: join(SHOTS, 'review-feedback-390x844.png') });
-  await context.close();
 });

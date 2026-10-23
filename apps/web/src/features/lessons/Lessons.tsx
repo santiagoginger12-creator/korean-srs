@@ -12,6 +12,8 @@ import { store } from '../../state/store.ts';
 import { QuizRunner } from '../reviews/QuizRunner.tsx';
 
 type Phase = 'teach' | 'quiz' | 'done';
+/** Beyond this many pages the dot row would crowd a phone screen; show just the counter. */
+const MAX_DOTS = 12;
 
 const quizReducer = (s: ReviewSession, a: SessionAction): ReviewSession => sessionReducer(s, a).sess;
 
@@ -112,11 +114,15 @@ export function Lessons(): JSX.Element {
     <div className={`page lesson k-${it.kind}`} data-testid="lesson-page" data-item-id={it.id}>
       <div className="lesson-bar">
         <button type="button" className="btn-text" onClick={() => navigate('#/')} aria-label="Leave lessons">✕</button>
-        <ol className="dots" aria-label="Lesson pages">
-          {batch.map((b, i) => (
-            <li key={b.id}><button type="button" className={`dot k-${b.kind} ${i === page ? 'on' : ''}`} onClick={() => setPage(i)} aria-label={`Page ${i + 1}`} /></li>
-          ))}
-        </ol>
+        {batch.length <= MAX_DOTS
+          ? (
+            <ol className="dots" aria-label="Lesson pages">
+              {batch.map((b, i) => (
+                <li key={b.id}><button type="button" className={`dot k-${b.kind} ${i === page ? 'on' : ''}`} onClick={() => setPage(i)} aria-label={`Page ${i + 1}`} /></li>
+              ))}
+            </ol>
+          )
+          : <span className="count-only" />}
         <span className="muted">{page + 1}/{batch.length}</span>
       </div>
       <div className="card teach">

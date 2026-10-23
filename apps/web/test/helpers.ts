@@ -4,7 +4,8 @@ import { fileURLToPath } from 'node:url';
 import { buildBundle, validateBundle, type ContentBundle } from '@ksrs/content';
 import { canonicalJson, createEventFactory, createHlc, sha256Hex, type EventPayload, type AppEvent } from '@ksrs/srs-engine';
 
-const SEED = fileURLToPath(new URL('../../../packages/content/seed', import.meta.url));
+// The fixture seed (original 10 M1 items) keeps these tests independent of seed edits.
+const SEED = fileURLToPath(new URL('../tests/e2e/fixture-seed', import.meta.url));
 
 export function seedBundle(): ContentBundle {
   const raws: unknown[] = [];
