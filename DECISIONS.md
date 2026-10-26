@@ -70,3 +70,9 @@ Append-only log of tradeoffs. Newest at the bottom.
 38. **D38: Deploy workflow uses npm** with a separate `apps/web` install (no workspaces). The e2e CI job is non-blocking until it has run once on GitHub.
 39. **D39: Content style rules from the M2 review.** Write "rarely" or "sounds stilted" instead of "never" for usage claims. Nuance distractors must fail on form or meaning, not register alone. Register labels follow news and written usage. Sentence-final cloze blanks accept every reasonable speech level. Check 표준국어대사전 single-word entries before spacing a word (참다못해). Avoid stock textbook frames. `rev` stays 1 for pre-release edits.
 40. **D40: Five validator warnings are accepted:** alternate hanja readings (更 갱, 殺 쇄) and 두음법칙 (論 → 논란, 논조). The schema holds one `eum` per hanja. A future `altEum[]` field would silence them.
+
+## Owner answers (2026-10-26)
+
+41. **D41: `item.reset` keeps leech history** (confirms D33). A reset item stays on the trouble list until it rebuilds a correct streak.
+42. **D42: Keep lenient particle drops** (confirms D31). A dropped 이/가 after a stem of two or more syllables is accepted. The rare truncation false-positive (물놀이 → 물놀) is an accepted tradeoff for fewer retries.
+43. **D43: Phone install and GitHub deploy are deferred** by the owner. M3–M5 continue locally. The deploy workflow stays ready.
