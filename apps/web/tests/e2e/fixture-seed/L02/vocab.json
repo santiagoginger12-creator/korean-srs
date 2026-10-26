@@ -1,0 +1,82 @@
+[
+ {
+  "id": "v:결심",
+  "kind": "vocab",
+  "level": 2,
+  "track": "core",
+  "rev": 1,
+  "unlockDeps": [],
+  "gating": true,
+  "source": {
+   "kind": "original",
+   "license": "original-owned"
+  },
+  "needs_review": false,
+  "tags": [
+   "sino-korean",
+   "fixture"
+  ],
+  "mnemonic": "決 decide + 心 heart: the heart has decided.",
+  "word": "결심",
+  "meanings": [
+   "resolution",
+   "determination"
+  ],
+  "pos": "명사",
+  "register": "neutral",
+  "hanjaBreakdown": [
+   {
+    "syllable": "결",
+    "hanja": "決",
+    "hanjaId": "h:決"
+   },
+   {
+    "syllable": "심",
+    "hanja": "心",
+    "hanjaId": "h:心"
+   }
+  ],
+  "collocations": [
+   {
+    "ko": "결심을 하다",
+    "en": "to make up one's mind"
+   },
+   {
+    "ko": "결심이 서다",
+    "en": "(a decision) to be firmly made"
+   }
+  ],
+  "examples": [
+   {
+    "ko": "올해는 담배를 끊기로 결심했다.",
+    "en": "I resolved to quit smoking this year.",
+    "register": "neutral"
+   },
+   {
+    "ko": "한번 결심이 서면 그는 절대 물러서지 않는다.",
+    "en": "Once his mind is made up, he never backs down.",
+    "register": "written"
+   }
+  ],
+  "questionTypes": [
+   "meaning",
+   "production"
+  ],
+  "questions": {
+   "meaning": {
+    "accepted": [
+     "resolution",
+     "determination",
+     "resolve",
+     "decision"
+    ]
+   },
+   "production": {
+    "promptEn": "resolution, a firm decision",
+    "accepted": [
+     "결심"
+    ]
+   }
+  }
+ }
+]

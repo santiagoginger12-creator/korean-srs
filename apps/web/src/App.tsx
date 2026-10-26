@@ -1,5 +1,6 @@
 import { useEffect, useSyncExternalStore } from 'react';
-import { Home } from './features/home/Home.tsx';
+import { Browse } from './features/browse/Browse.tsx';
+import { Dashboard } from './features/home/Dashboard.tsx';
 import { ItemPage } from './features/items/ItemPage.tsx';
 import { Lessons } from './features/lessons/Lessons.tsx';
 import { Reviews } from './features/reviews/Reviews.tsx';
@@ -21,7 +22,8 @@ export function App(): JSX.Element {
   else if (app.status === 'error') body = <div className="page narrow"><h1>Couldn't start</h1><p>{app.error}</p></div>;
   else {
     switch (route.name) {
-      case 'home': body = <Home />; break;
+      case 'home': body = <Dashboard />; break;
+      case 'browse': body = <Browse />; break;
       case 'lessons': body = <Lessons />; break;
       case 'reviews': body = <Reviews />; break;
       case 'settings': body = <Settings />; break;

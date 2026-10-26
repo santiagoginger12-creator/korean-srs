@@ -23,9 +23,10 @@ const avail = (page: Page): Promise<Avail> => page.evaluate(() => {
 
 /** "Today: N done · cap M …" → M (lessons allowed today, including any done). */
 async function shownCap(page: Page): Promise<number> {
-  const m = /cap (\d+)/.exec(await page.getByTestId('lessons-tile').innerText());
+  // "Today: 3 of 11 done · …" → lessons still allowed today (non-hanja).
+  const m = /Today: (\d+) of (\d+) done/.exec(await page.getByTestId('lessons-tile').innerText());
   expect(m, 'home shows the daily cap').not.toBeNull();
-  return Number(m![1]);
+  return Math.max(0, Number(m![2]) - Number(m![1]));
 }
 
 const kindOf = (id: string) => (id.startsWith('h:') ? 'hanja' : 'other');
@@ -88,10 +89,13 @@ test('smoke: fresh start → hanja-first batches within the cap → quiz renders
 
 test('owner screenshots on the real seed (390×844)', async ({ browser }) => {
   mkdirSync(SHOTS, { recursive: true });
-  const context = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
+  test.setTimeout(150_000);
+  const context = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true, timezoneId: 'Asia/Seoul' });
   const page = await context.newPage();
   const b = await setup(page);
   const shot = (name: string, fullPage = false) => page.screenshot({ path: join(SHOTS, `${name}-390x844.png`), fullPage });
+  await shot('dashboard-fresh');
+  await shot('dashboard-fresh-full', true);
 
   // One batch that reaches the first grammar item. The batch size is set through the store's
   // public setSetting (the same event the Settings select emits; the select stops at 20), and
@@ -126,11 +130,10 @@ test('owner screenshots on the real seed (390×844)', async ({ browser }) => {
   await page.getByRole('button', { name: 'Finish lessons' }).click();
   await expect(page.getByTestId('lessons-done')).toBeVisible();
 
-  // Four-plus hours later: home with reviews due, then a review.
+  // Four-plus hours later: reviews due; a review screen, then answer a dozen and step out.
   await page.clock.setSystemTime(T0 + 5 * HOUR);
   await goHome(page);
   await expect(page.getByTestId('reviews-count')).not.toHaveText('0');
-  await shot('home');
   await page.getByTestId('start-reviews').click();
   let q = await currentQ(page);
   for (let g = 0; q.qtype !== 'cloze' && q.qtype !== 'production' && g < 40; g++) {
@@ -140,5 +143,43 @@ test('owner screenshots on the real seed (390×844)', async ({ browser }) => {
   await submit(page, q, wrongAnswer(b, q));
   await expect(page.getByTestId('feedback')).toBeVisible();
   await shot('review-feedback');
+  await next(page);
+  for (let g = 0; g < 14 && !(await page.getByTestId('review-summary').isVisible()); g++) {
+    q = await currentQ(page);
+    await submit(page, q, correctAnswer(b, q)); await next(page);
+  }
+  await goHome(page);
+  await expect(page.getByTestId('forecast-24h').locator('.chart-plus').first()).toBeVisible();
+  await shot('dashboard-progress');
+  await shot('dashboard-progress-full', true);
+  await page.emulateMedia({ colorScheme: 'dark' });
+  await shot('dashboard-dark');
+  await shot('dashboard-dark-full', true);
+  await page.emulateMedia({ colorScheme: 'light' });
+
+  // A Sino-Korean word whose (learned) hanja has the most vocab, and that hanja's page.
+  const pick = await page.evaluate(() => {
+    const s = (window as any).__ksrs.store.getState().derived;
+    // Score: number of vocab sharing the hanja, +100 if the hanja's lesson is done (so its page shows progress).
+    let best: { vocab: string; hanja: string; n: number } | null = null;
+    for (const it of s.index.byId.values()) {
+      if (it.kind !== 'vocab') continue;
+      for (const hb of it.hanjaBreakdown ?? []) {
+        if (!hb.hanjaId) continue;
+        const n = (s.index.vocabByHanja.get(hb.hanjaId) ?? []).length + (s.items.get(hb.hanjaId)?.lessonAt !== undefined ? 100 : 0);
+        if (!best || n > best.n) best = { vocab: it.id, hanja: hb.hanjaId, n };
+      }
+    }
+    return best;
+  });
+  expect(pick, 'a vocab item with hanja').not.toBeNull();
+  await page.evaluate((id) => { location.hash = '#/item/' + encodeURIComponent(id); }, pick!.vocab);
+  await expect(page.getByTestId('related')).toBeVisible();
+  await shot('item-vocab');
+  await shot('item-vocab-full', true);
+  await page.evaluate((id) => { location.hash = '#/item/' + encodeURIComponent(id); }, pick!.hanja);
+  await expect(page.getByTestId('related')).toBeVisible();
+  await shot('item-hanja');
+  await shot('item-hanja-full', true);
   await context.close();
 });

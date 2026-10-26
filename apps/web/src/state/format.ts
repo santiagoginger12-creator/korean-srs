@@ -38,3 +38,10 @@ export function relTime(t: number, now: number): string {
 }
 
 export function itemHref(id: string): string { return `#/item/${encodeURIComponent(id)}`; }
+
+/** Local "YYYY-MM-DD HH:MM" in the device zone (display only). */
+export function localDateTime(t: number): string {
+  const d = new Date(t);
+  const p2 = (n: number) => String(n).padStart(2, '0');
+  return `${d.getFullYear()}-${p2(d.getMonth() + 1)}-${p2(d.getDate())} ${p2(d.getHours())}:${p2(d.getMinutes())}`;
+}

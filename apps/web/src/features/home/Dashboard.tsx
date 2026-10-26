@@ -1,0 +1,153 @@
+// Dashboard (M3, §15): lessons vs cap, reviews due, 24 h / 7 d forecast, stage counts,
+// level progress with the 90% marker, and a calm level-up banner.
+import { dueItems } from '@ksrs/srs-engine';
+import { ForecastChart } from '../../components/ForecastChart.tsx';
+import { tz } from '../../state/clock.ts';
+import { capNote, capView, forecastView, levelView, localTime, stageView } from '../../state/dashboard.ts';
+import { itemHref, relTime } from '../../state/format.ts';
+import { useApp, useNow } from '../../state/hooks.ts';
+import { OVERRIDE_STEP, planLessons } from '../../state/lessons.ts';
+import { store } from '../../state/store.ts';
+
+const MAX_REMAINING_CHIPS = 12;
+
+export function Dashboard(): JSX.Element {
+  const app = useApp();
+  const t = useNow();
+  const d = app.derived!;
+  const plan = planLessons(d, app.events, t, tz, app.lessonOverride);
+  const cap = capView(plan.report);
+  const due = dueItems(d, t).length;
+  const fc = forecastView(d, t, tz, due);
+  const lv = levelView(d);
+  const stages = stageView(d);
+  const active = app.review?.status === 'active' ? app.review : null;
+  const left = active ? Object.values(active.items).filter((i) => !i.complete).length : 0;
+  const nextAt = [...d.items.values()]
+    .filter((s) => s.kind !== 'hanja' && s.stage >= 1 && s.stage <= 8 && s.availableAt !== null && s.availableAt > t)
+    .map((s) => s.availableAt!).sort((a, b) => a - b)[0];
+  const capped = plan.otherAvailable > plan.allowance;
+  const lessons = plan.queue.length;
+  const markerPct = lv.threshold * 100;
+
+  return (
+    <div className="page home dashboard">
+      <header className="home-head">
+        <div>
+          <p className="eyebrow">오늘의 공부</p>
+          <h1>Level <span data-testid="level">{d.userLevel}</span></h1>
+        </div>
+        <nav className="head-links">
+          <a className="btn-text" href="#/browse">Browse</a>
+          <a className="btn-text" href="#/settings">Settings</a>
+        </nav>
+      </header>
+
+      {app.levelUp && (
+        <div className="levelup" role="status" data-testid="level-up-banner">
+          <div>
+            <p className="levelup-title">레벨 업 · Level {app.levelUp.to}</p>
+            <p className="levelup-body">
+              90% of level {app.levelUp.to - 1} has reached Guru. {lessons > 0 ? `${lessons} new lesson${lessons === 1 ? ' is' : 's are'} waiting.` : 'New lessons unlock as you go.'}
+            </p>
+          </div>
+          <button type="button" className="btn-text" onClick={() => store.dismissLevelUp()} aria-label="Dismiss">✕</button>
+        </div>
+      )}
+
+      <div className="tiles">
+        <section className="tile tile-lessons" data-testid="lessons-tile">
+          <h2>Lessons</h2>
+          <p className="tile-count" data-testid="lessons-count">{lessons}</p>
+          <p className="tile-note" data-testid="cap-note">
+            {plan.report.clearReviewsFirst
+              ? <><span className="warn-text">{cap.why}.</span>{plan.overrideExtra > 0 && <><br />{capNote(plan)}</>}</>
+              : capNote(plan)}
+            {plan.hanjaAvailable > 0 ? <><br />{plan.hanjaAvailable} hanja (no cap)</> : null}
+          </p>
+          <div className="row">
+            <a className={`btn btn-primary ${lessons ? '' : 'is-disabled'}`} href="#/lessons" aria-disabled={!lessons} data-testid="start-lessons"
+               onClick={(e: { preventDefault(): void }) => { if (!lessons) e.preventDefault(); }}>Start lessons</a>
+            {(capped || plan.report.clearReviewsFirst) && plan.otherAvailable > 0 && (
+              <button type="button" className="btn btn-quiet" onClick={() => void store.grantLessonOverride()} data-testid="lessons-override">+{OVERRIDE_STEP} anyway</button>
+            )}
+          </div>
+        </section>
+
+        <section className="tile tile-reviews" data-testid="reviews-tile">
+          <h2>Reviews</h2>
+          <p className="tile-count" data-testid="reviews-count">{due}</p>
+          <p className="tile-note">
+            {active ? `Session in progress: ${left} item${left === 1 ? '' : 's'} left`
+              : due ? 'due now' : nextAt !== undefined ? `Next ${relTime(nextAt, t)} (${localTime(nextAt, tz)})` : 'Nothing scheduled yet'}
+            {cap.reviewMinToday > 0 && <><br /><span className="muted" data-testid="review-estimate">≈{cap.reviewMinToday} min of reviews today · target {cap.targetMin}</span></>}
+          </p>
+          <a className={`btn btn-primary ${due || active ? '' : 'is-disabled'}`} href="#/reviews" data-testid="start-reviews" aria-disabled={!(due || active)}
+             onClick={(e: { preventDefault(): void }) => { if (!(due || active)) e.preventDefault(); }}>{active ? 'Resume reviews' : 'Start reviews'}</a>
+        </section>
+      </div>
+
+      <section className="card forecast">
+        <div className="section-head"><h3>Forecast</h3><span className="muted small">{fc.next24h} more in 24 h</span></div>
+        <ForecastChart bars={fc.hourly} label="Next 24 hours" testId="forecast-24h" dueNow={fc.dueNow} />
+        <ForecastChart bars={fc.daily} label="Next 7 days" testId="forecast-7d" />
+      </section>
+
+      <section className="card stages" data-testid="stage-counts">
+        <h3>Stages</h3>
+        <ul className="stage-row">
+          {stages.map((s) => (
+            <li key={s.key} className={`stage stage-${s.key}`} data-stage={s.key}>
+              <span className="stage-count">{s.count}</span>
+              <span className="stage-label">{s.label}</span>
+              <span className="stage-ko" lang="ko">{s.ko}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="card level" data-testid="level-progress" data-passed={lv.passed} data-total={lv.total}>
+        <div className="section-head">
+          <h3>Level {lv.level} progress</h3>
+          <span className="small"><strong>{lv.passed}</strong> / {lv.total} passed</span>
+        </div>
+        <div className="meter" role="meter" aria-valuemin={0} aria-valuemax={lv.total} aria-valuenow={lv.passed}
+             aria-label={`Level ${lv.level}: ${lv.passed} of ${lv.total} gating items passed; ${Math.ceil(lv.total * 0.9)} needed`}>
+          <div className="meter-fill" style={{ width: `${lv.ratio * 100}%` }} />
+          <div className="meter-mark" style={{ left: `${markerPct}%` }} title="90%: next level unlocks" />
+        </div>
+        <p className="meter-note" data-testid="level-needed">
+          {lv.isMaxLevel ? (lv.unlocksNext ? 'All levels open.' : `${lv.needed} more to Guru to finish the last level's 90%.`)
+            : lv.unlocksNext ? `Level ${lv.level + 1} is open.`
+            : `${lv.needed} more to Guru to unlock level ${lv.level + 1}.`}
+        </p>
+        {lv.byKind.length > 0 && (
+          <ul className="kind-rows">
+            {lv.byKind.map((r) => (
+              <li key={r.kind} className={`k-${r.kind}`}>
+                <span className="kind-dot" />{kindLabel(r.kind)}
+                <span className="mini-meter"><span style={{ width: `${r.total ? (r.passed / r.total) * 100 : 0}%` }} /></span>
+                <span className="small">{r.passed}/{r.total}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+        {!lv.unlocksNext && lv.remaining.length > 0 && (
+          <>
+            <p className="small muted">Still to pass (closest first):</p>
+            <p className="chips">
+              {lv.remaining.slice(0, MAX_REMAINING_CHIPS).map((r) => (
+                <a key={r.id} className={`item-link k-${r.kind}`} href={itemHref(r.id)} title={r.stage ? `Apprentice ${r.stage}` : 'Not learned yet'}>
+                  {r.label}{r.stage > 0 && <span className="chip-stage">A{r.stage}</span>}
+                </a>
+              ))}
+              {lv.remaining.length > MAX_REMAINING_CHIPS && <span className="muted small">+{lv.remaining.length - MAX_REMAINING_CHIPS} more</span>}
+            </p>
+          </>
+        )}
+      </section>
+    </div>
+  );
+}
+
+const kindLabel = (k: string) => (k === 'vocab' ? 'Vocabulary' : k === 'grammar' ? 'Grammar' : 'Expressions');

@@ -18,8 +18,12 @@ export interface LessonPlan {
   hanjaAvailable: number;
   /** Non-hanja lessons unlocked (before the cap). */
   otherAvailable: number;
-  /** Non-hanja lessons allowed today = cap + override extra. */
+  /** Non-hanja lessons still allowed now = max(0, limit − lessons done today). */
   allowance: number;
+  /** The estimator's limit for the whole study day (0 in the backlog state), before overrides. */
+  baseLimit: number;
+  /** Total non-hanja lessons allowed today = baseLimit + overrideExtra. */
+  limit: number;
   overrideExtra: number;
   report: LessonCapReport;
 }
@@ -33,7 +37,11 @@ export function planLessons(s: DerivedState, events: readonly AppEvent[], now: n
   const report = dailyLessonCap(s, events, now, s.settings, tz);
   const dayStart = localDayStart(now, tz, s.settings.dayStartHour);
   const overrideExtra = overrideExtraFor(override, dayStart);
-  const allowance = report.cap + overrideExtra;
+  // The override extends the day's total limit. (Adding it to the remaining cap instead let the
+  // extra be reused forever once lessons done exceeded the cap, since the cap clamps at 0.)
+  const baseLimit = report.clearReviewsFirst ? 0 : Math.min(report.steadyCap, report.headroomCap, report.maxLessonsPerDay);
+  const limit = baseLimit + overrideExtra;
+  const allowance = Math.max(0, limit - report.lessonsDoneToday);
   const all = availableLessons(s.index, s);
   const queue: ItemId[] = [];
   let hanjaAvailable = 0;
@@ -46,12 +54,20 @@ export function planLessons(s: DerivedState, events: readonly AppEvent[], now: n
     otherAvailable++;
     if (others < allowance) { queue.push(id); others++; }
   }
-  return { queue, hanjaAvailable, otherAvailable, allowance, overrideExtra, report };
+  return { queue, hanjaAvailable, otherAvailable, allowance, baseLimit, limit, overrideExtra, report };
 }
 
-export function grantOverride(prev: LessonOverride | undefined, now: number, tz: TzOffset, dayStartHour: number): LessonOverride {
+/**
+ * "+5 anyway": always yields exactly OVERRIDE_STEP more lessons from now. If lessons done today
+ * already exceed the limit (the backlog state, or a headroom cap that shrank), the extra first
+ * catches up to what was done, so the press is never swallowed. Pass the current plan for that.
+ */
+export function grantOverride(prev: LessonOverride | undefined, now: number, tz: TzOffset, dayStartHour: number,
+                              plan?: Pick<LessonPlan, 'baseLimit' | 'report'>): LessonOverride {
   const dayStart = localDayStart(now, tz, dayStartHour);
-  return { dayStart, extra: overrideExtraFor(prev, dayStart) + OVERRIDE_STEP };
+  const cur = overrideExtraFor(prev, dayStart);
+  const overDone = plan ? plan.report.lessonsDoneToday - plan.baseLimit : 0;
+  return { dayStart, extra: Math.max(cur, overDone) + OVERRIDE_STEP };
 }
 
 export function nextBatch(plan: LessonPlan, s: DerivedState): Item[] {

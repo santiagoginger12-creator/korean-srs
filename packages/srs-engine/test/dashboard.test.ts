@@ -84,10 +84,11 @@ describe('load estimator (§7.4)', () => {
     assert.ok(Math.abs(r.avgItemCost - 19.55) < 1e-9);
     assert.equal(r.steadyCap, 14);
     assert.deepEqual(r.newItemReviewsPerDay, [2, 1, 0, 1, 0, 0, 0]);
+    // Today's 3 lessons are NOT projected (they're paid for by lessonsDoneToday; D44).
     // Yesterday's lesson n3 (03:00) is overdue since 07:00 → projected at now (d0), then 18:00 d0, d1, d3:
-    // d0 = (3×2 + 2) × 19.55, so day 0 binds at ⌊(2700 − 156.4)/39.1⌋ = 65; cap is still min(14, 65, 20) − 3 = 11.
-    assert.ok(Math.abs(r.projectedDaySec[0]! - (3 * 2 + 2) * 19.55) < 1e-9);
-    assert.equal(r.headroomCap, Math.floor((2700 - 8 * 19.55) / (2 * 19.55)));
+    // d0 = 2 × 19.55, so day 0 binds at ⌊(2700 − 39.1)/39.1⌋ = 68; cap is min(14, 68, 20) − 3 = 11.
+    assert.ok(Math.abs(r.projectedDaySec[0]! - 2 * 19.55) < 1e-9);
+    assert.equal(r.headroomCap, Math.floor((2700 - 2 * 19.55) / (2 * 19.55)));
     assert.equal(r.lessonsDoneToday, 3); // hanja and yesterday's lesson excluded
     assert.equal(r.cap, 11);
     assert.equal(r.clearReviewsFirst, false);
@@ -114,5 +115,26 @@ describe('load estimator (§7.4)', () => {
     // 200 due (≈3910 s) is under the 4050 s threshold
     const s2 = replayAll(b, log.slice(0, 200));
     assert.equal(dailyLessonCap(s2, log.slice(0, 200), T0, s2.settings, 0).clearReviewsFirst, false);
+  });
+
+  test('headroom-bound cap: the day total stays fixed as lessons are done (no double count, D44)', () => {
+    const b = bundle(Array.from({ length: 100 }, (_, i) => vocab(`n${i}`, 1)));
+    const d = device('d');
+    // 40 items learned yesterday afternoon load today's and tomorrow's projection heavily.
+    const yesterday = Array.from({ length: 40 }, (_, i) => d(lessonP(`v:n${i}`), T0 - 10 * HOUR));
+    const st0 = replayAll(b, yesterday);
+    const settings = { ...st0.settings, targetReviewMin: 30 };
+    const morning = T0 + 5 * HOUR;
+    const r0 = dailyLessonCap(st0, yesterday, morning, settings, 0);
+    assert.ok(r0.headroomCap < r0.steadyCap, `fixture must be headroom-bound (${r0.headroomCap} vs ${r0.steadyCap})`);
+    assert.ok(r0.cap >= 2, `need room for lessons (cap ${r0.cap})`);
+    const k = 2;
+    const today = Array.from({ length: k }, (_, i) => d(lessonP(`v:n${40 + i}`), morning + 60_000));
+    const log1 = [...yesterday, ...today];
+    const st1 = replayAll(b, log1);
+    const r1 = dailyLessonCap(st1, log1, morning + 2 * 60_000, settings, 0);
+    assert.equal(r1.lessonsDoneToday, k);
+    assert.equal(r1.headroomCap, r0.headroomCap);
+    assert.equal(r1.cap + k, r0.cap);
   });
 });

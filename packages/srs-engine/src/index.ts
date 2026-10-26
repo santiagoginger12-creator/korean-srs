@@ -23,6 +23,7 @@ export { buildContentIndex, resolveId, headword, type ContentIndex } from './con
 export { replayAll, applyEvents, liveEvents, DUENESS_GRACE_MS } from './replay.ts';
 export { computeUnlocks, levelProgress, availableLessons, unlockDepsOf, LEVEL_THRESHOLD } from './unlock.ts';
 export { dueItems } from './queue.ts';
+export { relatedItems, type RelatedItems } from './related.ts';
 export { forecast, stageCounts, stageGroup, type ForecastBucket, type StageGroup } from './forecast.ts';
 export { leechScore, isLeech, troubleItems, LEECH_MIN_REVIEWS, LEECH_MIN_SCORE } from './leech.ts';
 export {

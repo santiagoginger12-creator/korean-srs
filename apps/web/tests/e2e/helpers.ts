@@ -121,6 +121,8 @@ export async function flush(page: Page): Promise<void> {
 }
 
 export async function goHome(page: Page): Promise<void> {
-  await page.evaluate(() => { location.hash = '#/'; });
+  // After page.clock jumps, a dashboard that is already mounted still holds the old "now"
+  // until its 30 s tick; a focus event is the app's own refresh path (returning to the tab).
+  await page.evaluate(() => { location.hash = '#/'; window.dispatchEvent(new Event('focus')); });
   await expect(page.getByTestId('lessons-tile')).toBeVisible();
 }

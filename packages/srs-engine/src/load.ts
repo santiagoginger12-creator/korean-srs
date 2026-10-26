@@ -108,10 +108,22 @@ export function dailyLessonCap(s: DerivedState, events: readonly AppEvent[], now
     while (d + 1 < HEADROOM_DAYS && bounds[d + 1]! <= t) d++;
     return d;
   };
+  // Lessons already done today (non-hanja, distinct items).
+  const done = new Set<ItemId>();
+  for (const e of liveEvents(events)) {
+    if (e.type !== 'lesson.completed' || e.at < dayStart || e.at > now) continue;
+    const it = s.index.byId.get(e.itemId);
+    if (it && it.kind !== 'hanja') done.add(it.id);
+  }
+  const lessonsDoneToday = done.size;
+
   const iv = st['srs.intervals'];
   const projectedDaySec = new Array<number>(HEADROOM_DAYS).fill(0);
   for (const it of s.items.values()) {
     if (it.kind === 'hanja' || it.stage < 1 || it.stage > 8 || it.availableAt === null) continue;
+    // Items learned today are paid for by subtracting lessonsDoneToday below; projecting them
+    // here as well would count them twice and shrink the cap as the day goes on.
+    if (done.has(it.itemId)) continue;
     const cost = costOf(s.index.byId.get(it.itemId));
     let t = Math.max(it.availableAt, now);
     let stage: number = it.stage;
@@ -137,14 +149,6 @@ export function dailyLessonCap(s: DerivedState, events: readonly AppEvent[], now
   }
   if (!Number.isFinite(headroomCap)) headroomCap = steadyCap;
 
-  // Lessons already done today (non-hanja, distinct items).
-  const done = new Set<ItemId>();
-  for (const e of liveEvents(events)) {
-    if (e.type !== 'lesson.completed' || e.at < dayStart || e.at > now) continue;
-    const it = s.index.byId.get(e.itemId);
-    if (it && it.kind !== 'hanja') done.add(it.id);
-  }
-  const lessonsDoneToday = done.size;
 
   const due = dueItems(s, now);
   const dueLoadSec = due.reduce((a, id) => a + costOf(s.index.byId.get(id)), 0);

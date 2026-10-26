@@ -24,7 +24,7 @@ export default defineConfig({
   reporter: [['list']],
   use: { serviceWorkers: 'allow', trace: 'retain-on-failure' },
   projects: browsers.flatMap((b) => [
-    { name: `fixture-${b.name}`, testMatch: 'app.spec.ts', use: { ...b.use, baseURL: url(PORT) } },
+    { name: `fixture-${b.name}`, testMatch: /(app|dashboard)\.spec\.ts/ , use: { ...b.use, baseURL: url(PORT) } },
     { name: `real-seed-${b.name}`, testMatch: 'real-seed.spec.ts', use: { ...b.use, baseURL: url(REAL_PORT) } },
   ]),
   webServer: [

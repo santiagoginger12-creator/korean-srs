@@ -1,0 +1,67 @@
+[
+ {
+  "id": "g:느라고",
+  "kind": "grammar",
+  "level": 2,
+  "track": "core",
+  "rev": 1,
+  "unlockDeps": [],
+  "gating": true,
+  "source": {
+   "kind": "original",
+   "license": "original-owned"
+  },
+  "needs_review": false,
+  "tags": [
+   "cause",
+   "fixture"
+  ],
+  "pattern": "-느라고",
+  "meaning": "because (I was busy) doing …, so something else didn't happen",
+  "attachment": [
+   {
+    "stem": "V",
+    "final": "any",
+    "tense": "present",
+    "form": "V-느라고",
+    "example": "공부하느라고"
+   }
+  ],
+  "nuance": "The first clause is an activity that took up time or attention; the result is usually something missed. Both clauses share the same subject.",
+  "contrasts": [
+   {
+    "id": "g:는-바람에",
+    "note": "-는 바람에 is a sudden outside event; -느라고 is your own time-consuming activity."
+   }
+  ],
+  "examples": [
+   {
+    "ko": "숙제하느라고 전화를 못 받았어요.",
+    "en": "I was doing homework, so I couldn't answer the phone.",
+    "register": "neutral"
+   },
+   {
+    "ko": "이사 준비하느라고 정신이 없었다.",
+    "en": "I was swamped getting ready to move.",
+    "register": "written"
+   }
+  ],
+  "questionTypes": [
+   "cloze"
+  ],
+  "questions": {
+   "cloze": [
+    {
+     "id": "c1",
+     "sentence": "어젯밤에 영화를 {{}} 잠을 못 잤어요.",
+     "en": "I was watching a movie last night, so I didn't get any sleep.",
+     "cue": "보다 + -느라고",
+     "accepted": [
+      "보느라고"
+     ],
+     "particleTolerance": "none"
+    }
+   ]
+  }
+ }
+]

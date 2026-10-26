@@ -72,8 +72,10 @@ export function HangulInput(props: HangulInputProps): JSX.Element {
     handle.current = {
       focus: () => el.current?.focus({ preventScroll: true }),
       value: () => el.current?.value ?? '',
-      setValue: (v) => { if (el.current && !composing.current) el.current.value = v; },
-      clear: () => { if (el.current && !composing.current) el.current.value = ''; },
+      // A programmatic value change starts a new submission context, so the double-Enter
+      // guard must not swallow the next (fast) Enter, e.g. right after Undo refills the input.
+      setValue: (v) => { if (el.current && !composing.current) { el.current.value = v; lastFire.current = { t: -Infinity, value: '' }; } },
+      clear: () => { if (el.current && !composing.current) { el.current.value = ''; lastFire.current = { t: -Infinity, value: '' }; } },
       isComposing: () => composing.current,
     };
     return () => { handle.current = null; };

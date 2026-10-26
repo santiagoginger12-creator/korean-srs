@@ -10,7 +10,8 @@ import {
 } from '@ksrs/srs-engine';
 import { KV, openAppDb, requestPersistence, type AppDb } from '../db/index.ts';
 import { cryptoRng, now, randomDeviceId, tz } from './clock.ts';
-import { grantOverride, type LessonOverride } from './lessons.ts';
+import { detectLevelUp } from './dashboard.ts';
+import { grantOverride, planLessons, type LessonOverride } from './lessons.ts';
 import { reviveSession, toSnapshot } from './snapshot.ts';
 
 export interface AppState {
@@ -28,6 +29,8 @@ export interface AppState {
   deviceId: string;
   /** Theme known before replay finishes (from the kv settings cache). */
   bootTheme: Settings['theme'];
+  /** Set when applying events raised userLevel (no event is stored for it); cleared on dismiss. */
+  levelUp: { from: number; to: number } | null;
 }
 
 type Listener = () => void;
@@ -51,7 +54,7 @@ const defaultDeps: StoreDeps = {
 export class AppStore {
   private state: AppState = {
     status: 'loading', content: null, events: [], derived: null, review: null, lessonOverride: undefined,
-    deviceId: '', bootTheme: 'system',
+    deviceId: '', bootTheme: 'system', levelUp: null,
   };
   private listeners = new Set<Listener>();
   private db: AppDb | null = null;
@@ -130,6 +133,8 @@ export class AppStore {
       const inOrder = newEvents.every((e, i) => (i === 0 ? !last || e.hlc > last.hlc : e.hlc > newEvents[i - 1]!.hlc));
       events = inOrder ? [...events, ...newEvents] : sortEvents([...events, ...newEvents]);
       next = applyEvents(derived, content, events, newEvents).state;
+      const up = detectLevelUp(derived.userLevel, next.userLevel);
+      if (up) patch = { ...patch, levelUp: { from: this.state.levelUp?.from ?? up.from, to: up.to } };
       kv = { ...kv, [KV.hlc]: this.hlc.last() };
       if (newEvents.some((e) => e.type === 'settings.set')) kv[KV.settings] = next.settings;
     }
@@ -165,9 +170,13 @@ export class AppStore {
   grantLessonOverride(): Promise<void> {
     const d = this.state.derived;
     if (!d || !this.db) return Promise.resolve();
-    const lessonOverride = grantOverride(this.state.lessonOverride, now(), tz, d.settings.dayStartHour);
+    const t = now();
+    const plan = planLessons(d, this.state.events, t, tz, this.state.lessonOverride);
+    const lessonOverride = grantOverride(this.state.lessonOverride, t, tz, d.settings.dayStartHour, plan);
     return this.commit([], { [KV.lessonOverride]: lessonOverride }, { lessonOverride });
   }
+
+  dismissLevelUp(): void { this.set({ levelUp: null }); }
 
   // ------------------------------------------------------------------ reviews
 

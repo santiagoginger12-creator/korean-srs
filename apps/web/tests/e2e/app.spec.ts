@@ -121,7 +121,8 @@ test('4. IME: Enter during composition submits the whole word (CDP)', async ({ p
   while (!(await page.getByTestId('start-quiz').isVisible())) await page.getByRole('button', { name: 'Next', exact: true }).click();
   await page.getByTestId('start-quiz').click();
   let q = await currentQ(page);
-  for (let g = 0; (q.qtype === 'meaning' || q.qtype === 'nuance') && g < 40; g++) {
+  // A typed-Korean question for some item other than 망설이다 (so the typed word grades incorrect and is echoed).
+  for (let g = 0; (q.qtype === 'meaning' || q.qtype === 'nuance' || q.itemId === 'v:망설이다') && g < 40; g++) {
     await submit(page, q, correctAnswer(b, q)); await next(page); q = await currentQ(page);
   }
   expect(['production', 'cloze', 'register']).toContain(q.qtype);

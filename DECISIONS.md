@@ -76,3 +76,13 @@ Append-only log of tradeoffs. Newest at the bottom.
 41. **D41: `item.reset` keeps leech history** (confirms D33). A reset item stays on the trouble list until it rebuilds a correct streak.
 42. **D42: Keep lenient particle drops** (confirms D31). A dropped 이/가 after a stem of two or more syllables is accepted. The rare truncation false-positive (물놀이 → 물놀) is an accepted tradeoff for fewer retries.
 43. **D43: Phone install and GitHub deploy are deferred** by the owner. M3–M5 continue locally. The deploy workflow stays ready.
+
+## M3 (2026-10-26)
+
+44. **D44: The daily lesson cap is fixed for the study day.** The headroom projection skips items whose lesson was completed today, because `lessonsDoneToday` already pays for them. Previously they were counted twice, so the cap shrank as the owner did lessons. This amends §7.4.
+45. **D45: "+5 anyway" raises the day's total.** Each press adds exactly 5 to the day's allowance, even with a review backlog. Previously the extras were added to a cap that floors at 0, so they were offered again after every batch. The lessons tile always shows the limit actually enforced.
+46. **D46: The level-up banner is UI-only.** It is derived by comparing `userLevel` before and after applying events, so no event is stored. It doesn't reappear after a reload.
+47. **D47: `relatedItems(index, itemId)`** is added to the engine. It returns contrasts in both directions (one entry per pair, with a direction flag), vocab grouped by shared hanja, unlock deps, and the items each one unlocks. It tolerates custom items with missing fields.
+48. **D48: Light-mode `--muted` darkened to #686b72** (≈5:1 on the background and card) so small labels and chart axes meet WCAG AA.
+49. **D49: e2e fixture seed grown to 15 items over 2 levels** (10 gating in L1), so level-up can be tested at 8/10 (no) vs 9/10 (yes). The exact 90% arithmetic is unit-tested in the engine and probed on the real seed (45/51 no, 46/51 yes).
+50. **D50: Known minor gap.** In half-hour time zones (e.g. India), forecast hour labels read ":00" for buckets that start at :30. This doesn't affect the owner (New York / Seoul).

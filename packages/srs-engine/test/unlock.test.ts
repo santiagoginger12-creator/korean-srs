@@ -68,6 +68,21 @@ describe('unlocks (§7.3)', () => {
     assert.deepEqual(levelProgress(index, { items: mk(90) }, 1), { gatingTotal: 100, gatingPassed: 90, threshold: 0.9, unlocksNext: true });
   });
 
+  test('90% of a non-multiple of 10 (the real L1 has 51): 45/51 stays, 46/51 = ceil(45.9) levels up (QA)', () => {
+    const index = buildContentIndex(bulkBundle(51));
+    const mk = (n: number) => {
+      const items = new Map<ItemId, ItemState>();
+      for (let i = 0; i < n; i++) {
+        const id = `v:w${String(i).padStart(4, '0')}`;
+        items.set(id, { itemId: id, kind: 'vocab', level: 1, stage: 4, availableAt: T0, lessonAt: T0, passedAt: T0, pending: null,
+          stats: { reviews: 4, correct: 3, incorrect: 1, streak: 0, selfGraded: 0, ignoredEarly: 0 }, leechScore: 0, recentIncorrectAts: [] });
+      }
+      return items;
+    };
+    assert.equal(computeUnlocks(index, mk(45)).userLevel, 1);
+    assert.equal(computeUnlocks(index, mk(46)).userLevel, 2); // stage 4 now: passed stays sticky
+  });
+
   test('90% boundary via replay: 8/10 no, 9/10 yes; non-gating items do not count', () => {
     const b = bulkBundle(10);
     const d = device('d');

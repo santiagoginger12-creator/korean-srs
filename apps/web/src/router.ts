@@ -1,8 +1,8 @@
-// Hash routing (D14): #/, #/lessons, #/reviews, #/item/<id>, #/settings.
+// Hash routing (D14): #/, #/lessons, #/reviews, #/item/<id>, #/browse, #/settings.
 import { useSyncExternalStore } from 'react';
 
 export type Route =
-  | { name: 'home' } | { name: 'lessons' } | { name: 'reviews' } | { name: 'settings' }
+  | { name: 'home' } | { name: 'lessons' } | { name: 'reviews' } | { name: 'settings' } | { name: 'browse' }
   | { name: 'item'; id: string } | { name: 'notFound'; path: string };
 
 export function parseRoute(hash: string): Route {
@@ -12,6 +12,7 @@ export function parseRoute(hash: string): Route {
   if (seg[0] === 'lessons' && seg.length === 1) return { name: 'lessons' };
   if (seg[0] === 'reviews' && seg.length === 1) return { name: 'reviews' };
   if (seg[0] === 'settings' && seg.length === 1) return { name: 'settings' };
+  if (seg[0] === 'browse' && seg.length === 1) return { name: 'browse' };
   if (seg[0] === 'item' && seg.length >= 2) {
     try { return { name: 'item', id: decodeURIComponent(seg.slice(1).join('/')) }; } catch { /* fallthrough */ }
   }

@@ -50,8 +50,8 @@ function Mnemonic({ text }: { text?: string }): JSX.Element | null {
   return <section className="section"><h3>Mnemonic</h3><p className="prose">{text}</p></section>;
 }
 
-export function HanjaDetails({ item, index }: { item: HanjaItem; index: ContentIndex }): JSX.Element {
-  const unlocks = index.vocabByHanja.get(item.id) ?? [];
+export function HanjaDetails({ item, index, hideRelations }: { item: HanjaItem; index: ContentIndex; hideRelations?: boolean }): JSX.Element {
+  const unlocks = hideRelations ? [] : index.vocabByHanja.get(item.id) ?? [];
   return (
     <div className="details">
       <div className="hero hero-hanja">
@@ -105,7 +105,7 @@ export function VocabDetails({ item, index }: { item: VocabItem; index: ContentI
   );
 }
 
-export function GrammarDetails({ item, index }: { item: GrammarItem; index: ContentIndex }): JSX.Element {
+export function GrammarDetails({ item, index, hideRelations }: { item: GrammarItem; index: ContentIndex; hideRelations?: boolean }): JSX.Element {
   return (
     <div className="details">
       <div className="hero">
@@ -126,7 +126,7 @@ export function GrammarDetails({ item, index }: { item: GrammarItem; index: Cont
         </div>
       </section>
       <section className="section"><h3>Nuance</h3><p className="prose">{item.nuance}</p></section>
-      {item.contrasts.length > 0 && (
+      {!hideRelations && item.contrasts.length > 0 && (
         <section className="section">
           <h3>Contrasts</h3>
           <ul className="contrasts">
@@ -157,11 +157,12 @@ export function ExpressionDetails({ item }: { item: ExpressionItem; index: Conte
   );
 }
 
-export function ItemDetails({ item, index }: { item: Item; index: ContentIndex }): JSX.Element {
+/** `hideRelations`: the item page renders richer related-item sections itself (M3). */
+export function ItemDetails({ item, index, hideRelations }: { item: Item; index: ContentIndex; hideRelations?: boolean }): JSX.Element {
   switch (item.kind) {
-    case 'hanja': return <HanjaDetails item={item} index={index} />;
+    case 'hanja': return <HanjaDetails item={item} index={index} hideRelations={hideRelations} />;
     case 'vocab': return <VocabDetails item={item} index={index} />;
-    case 'grammar': return <GrammarDetails item={item} index={index} />;
+    case 'grammar': return <GrammarDetails item={item} index={index} hideRelations={hideRelations} />;
     case 'expression': return <ExpressionDetails item={item} index={index} />;
   }
 }
