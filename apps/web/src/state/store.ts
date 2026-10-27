@@ -286,6 +286,11 @@ export class AppStore {
     const { content } = this.state;
     if (!content || !this.db || !this.hlc) throw new Error('store not ready');
     await this.writes;
+    // QA: Replace must never turn a device with history into an empty one (e.g. a backup whose
+    // events are all from a newer app, so all quarantined). Checked before anything is written.
+    if (mode === 'replace' && incoming.length === 0 && (await this.db.allEvents()).length > 0) {
+      throw new Error('this backup has no events this app can apply, so Replace would erase this device\'s history. Nothing was changed');
+    }
     const t = now();
     if (quarantine.length) {
       await this.db.quarantineAdd(quarantine.map((q) => ({ key: quarantineKey(q.raw), raw: q.raw, reason: q.reason, source, at: t })));

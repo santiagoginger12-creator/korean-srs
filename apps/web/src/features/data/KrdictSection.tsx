@@ -3,7 +3,7 @@
 // first and the fallbacks are: paste the XML response, or upload a downloaded KRDict file.
 // KRDict-derived items are custom items (events) only; they never enter the public repo.
 import { useEffect, useState, type ChangeEvent } from 'react';
-import type { VocabItem } from '@ksrs/content';
+import type { Item, VocabItem } from '@ksrs/content';
 import { importItems, krdictToVocab, parseKrdict, senseView, type KrdictSense } from '../../data/contract.ts';
 import { itemHref } from '../../state/format.ts';
 import { useApp } from '../../state/hooks.ts';
@@ -54,7 +54,19 @@ export function KrdictSection(): JSX.Element {
   };
 
   const pick = (s: KrdictSense) => {
-    const item = krdictToVocab(s, { level: app.derived?.userLevel ?? 1, retrievedAt: new Date(now()).toISOString() });
+    const opts = { level: app.derived?.userLevel ?? 1, retrievedAt: new Date(now()).toISOString() };
+    let item = krdictToVocab(s, opts);
+    // QA: a dictionary draft must never overwrite a different item (a built-in one with its
+    // curated examples and prompts, or another sense saved earlier). Reuse an id only when it
+    // holds this same KRDict sense; otherwise take the next free `:2`, `:3`… (as CSV does).
+    const byId = app.derived?.index.byId;
+    if (byId) {
+      const sameSense = (it: Item | undefined) => it?.kind === 'vocab' && it.source?.kind === 'krdict'
+        && it.source.krdictTargetCode === s.targetCode && (it.questions?.production?.contextHint ?? '') === s.definitionKo.trim();
+      let id = item.id;
+      for (let n = 2; byId.has(id) && !sameSense(byId.get(id)); n++) id = `${item.id}:${n}`;
+      if (id !== item.id) item = krdictToVocab(s, { ...opts, idHint: id });
+    }
     setDraft({ item, level: item.level, meanings: (item.meanings ?? []).join('\n'), examples: (item.examples ?? []).map((e) => `${e.ko} | ${e.en}`).join('\n') });
   };
 
@@ -101,7 +113,8 @@ export function KrdictSection(): JSX.Element {
         <button type="button" className="btn btn-primary btn-small" onClick={() => void search()} disabled={!key.trim() || !q.trim()} data-testid="krdict-search">Search</button>
       </div>
       {status && <p className={status.kind === 'error' ? 'error-text' : status.kind === 'ok' ? 'ok-text' : 'muted'} role="status" data-testid="krdict-status">{status.text}</p>}
-      {(corsBlocked || senses.length === 0) && (
+      {/* Always available: pasting/uploading is the usual path (CORS), including for a second word. */}
+      {(
         <details className="fallback" open={corsBlocked} data-testid="krdict-fallback">
           <summary>Paste or upload a KRDict response</summary>
           {key.trim() && q.trim() && <p className="small">1. <a href={krdictSearchUrl(key.trim(), q.trim())} target="_blank" rel="noopener noreferrer">Open the API result in a new tab</a>, select all, copy.</p>}
@@ -130,7 +143,16 @@ export function KrdictSection(): JSX.Element {
       )}
       {draft && (
         <div className="preview" data-testid="krdict-draft">
-          <p><strong lang="ko">{draft.item.word}</strong> <code>{draft.item.id}</code> {app.derived?.index.byId.has(draft.item.id) && <span className="warn-text small">· replaces <a href={itemHref(draft.item.id)}>an existing item</a></span>}</p>
+          <p><strong lang="ko">{draft.item.word}</strong> <code data-testid="krdict-draft-id">{draft.item.id}</code>{' '}
+            {app.derived?.index.byId.has(draft.item.id)
+              ? <span className="warn-text small" data-testid="krdict-clash">· updates the copy of this sense you saved before</span>
+              : (() => {
+                  const base = draft.item.id.replace(/:\d+$/, '');
+                  return base !== draft.item.id && app.derived?.index.byId.has(base)
+                    ? <span className="muted small" data-testid="krdict-clash">· <a href={itemHref(base)}>{draft.item.word}</a> is already in your deck; this sense is added as a separate item</span>
+                    : null;
+                })()}
+          </p>
           <label className="field"><span>Level</span>
             <input type="number" min={1} max={99} value={draft.level} onChange={(e: { target: HTMLInputElement }) => setDraft({ ...draft, level: Number(e.target.value) || 1 })} data-testid="krdict-level" />
           </label>

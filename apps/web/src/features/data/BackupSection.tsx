@@ -102,7 +102,10 @@ export function BackupSection(): JSX.Element {
                 <label className={mode === 'replace' ? 'on' : ''}><input type="radio" name="restore-mode" checked={mode === 'replace'} onChange={() => setMode('replace')} data-testid="mode-replace" />Replace</label>
               </div>
             </fieldset>
-            {mode === 'replace' && (
+            {mode === 'replace' && pending.events.length === 0 && app.events.length > 0 && (
+              <p className="error-text" role="alert" data-testid="replace-empty">This backup has no events this app can apply, so Replace would erase this device's history. Use Merge (it keeps any newer-app events in quarantine), or update the app first.</p>
+            )}
+            {mode === 'replace' && !(pending.events.length === 0 && app.events.length > 0) && (
               <label className="field danger"><span>Replace deletes this device's {app.events.length} events and keeps only the backup's. Type <strong>REPLACE</strong> to confirm.</span>
                 <input type="text" value={confirmText} onChange={(e: { target: HTMLInputElement }) => setConfirmText(e.target.value)} autoCapitalize="characters" data-testid="replace-confirm" />
               </label>

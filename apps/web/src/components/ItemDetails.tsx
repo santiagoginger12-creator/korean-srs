@@ -167,7 +167,8 @@ export function Attribution({ item }: { item: Item }): JSX.Element | null {
       <span className="label">Source</span>{' '}
       {src.attribution ?? (src.kind === 'user' ? 'Your own item' : 'Imported')}
       {src.license && src.license !== 'original-owned' ? ` · ${src.license}` : ''}
-      {src.url ? <> · <a href={src.url} target="_blank" rel="noopener noreferrer">link</a></> : null}
+      {/* The url comes from imported/synced data: only ever link http(s). */}
+      {src.url && /^https?:\/\//i.test(src.url) ? <> · <a href={src.url} target="_blank" rel="noopener noreferrer">link</a></> : null}
     </p>
   );
 }

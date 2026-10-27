@@ -273,3 +273,169 @@ test('practice: no "accept in future" option, and undo / "I was right" write not
   expect(await readEvents(page)).toEqual(before);
   void b;
 });
+
+// KRDict search responses as saved from the API (entities, Korean numeric references, CDATA).
+const krdictXml = (code: number, word: string, en: string, defKo: string, link = `https://krdict.korean.go.kr/dicSearch/SearchView?ParaWordNo=${code}`) =>
+  `<?xml version="1.0" encoding="UTF-8"?><channel><total>1</total><item><target_code>${code}</target_code><word>${word}</word><pos>부사</pos>`
+  + `<link>${link}</link><sense><sense_order>1</sense_order><definition>${defKo}</definition>`
+  + `<translation><trans_lang>영어</trans_lang><trans_word>${en}</trans_word><trans_dfn>In a roundabout way &amp; quietly.</trans_dfn></translation></sense></item></channel>`;
+
+async function pasteKrdict(page: Page, xml: string): Promise<void> {
+  const fb = page.getByTestId('krdict-fallback');
+  if (!(await fb.getAttribute('open') !== null)) await fb.locator('summary').click();
+  await page.getByTestId('krdict-xml').fill(xml);
+  await page.getByTestId('krdict-parse').click();
+}
+
+test('KRDict: error/empty responses, entities, attribution on the draft and item, lesson without examples, no clobbering', async ({ page }) => {
+  const b = await setup(page);
+  const errors: string[] = [];
+  page.on('pageerror', (e) => errors.push(e.message));
+  await page.evaluate(() => { location.hash = '#/data'; });
+
+  await pasteKrdict(page, '<?xml version="1.0"?><error><error_code>020</error_code><message>등록되지 않은 인증키입니다.</message></error>');
+  await expect(page.getByTestId('krdict-status')).toContainText('KRDict error 020: 등록되지 않은 인증키입니다.');
+  await pasteKrdict(page, '<?xml version="1.0"?><channel><total>0</total><start>1</start><num>10</num></channel>');
+  await expect(page.getByTestId('krdict-status')).toContainText('No entries found');
+
+  // &#45324;&#xC9C0;&#49884; = 넌지시
+  await pasteKrdict(page, krdictXml(54321, '&#45324;&#xC9C0;&#49884;', 'indirectly, casually', '드러나지 &lt;않게&gt; 가만히.', 'javascript:window.__xss=1'));
+  await expect(page.getByTestId('krdict-senses')).toContainText('넌지시');
+  await expect(page.getByTestId('krdict-senses')).toContainText('드러나지 <않게> 가만히.');
+  await page.getByTestId('krdict-senses').locator('.sense').first().click();
+  const draft = page.getByTestId('krdict-draft');
+  await expect(draft).toContainText('한국어기초사전 (국립국어원)');
+  await expect(draft).toContainText('CC-BY-SA-2.0-KR');
+  await expect(page.getByTestId('krdict-draft-id')).toHaveText('v:넌지시');
+  await page.getByTestId('krdict-add').click();
+  await expect(page.getByTestId('krdict-status')).toContainText('Saved 넌지시');
+  const saved = (await readEvents(page)).filter((e) => e.type === 'customItem.upsert');
+  expect(saved).toHaveLength(1);
+  expect(saved[0].item.source).toMatchObject({ kind: 'krdict', license: 'CC-BY-SA-2.0-KR', krdictTargetCode: 54321 });
+  expect(saved[0].item.examples).toEqual([]);
+
+  // Item page credits KRDict; a non-http link from the file is not rendered as a link.
+  await page.evaluate(() => { location.hash = '#/item/' + encodeURIComponent('v:넌지시'); });
+  await expect(page.getByTestId('attribution')).toContainText('한국어기초사전 (국립국어원) · CC-BY-SA-2.0-KR');
+  await expect(page.getByTestId('attribution').locator('a')).toHaveCount(0);
+
+  // A word that is already a built-in item: the draft gets its own id; the built-in is untouched.
+  const before = b.items.find((i) => i.id === 'v:망설이다')!;
+  await page.evaluate(() => { location.hash = '#/data'; });
+  await pasteKrdict(page, krdictXml(12345, '망설이다', 'hesitate', '이리저리 생각만 하고 태도를 결정하지 못하다.'));
+  await page.getByTestId('krdict-senses').locator('.sense').first().click();
+  await expect(page.getByTestId('krdict-draft-id')).toHaveText('v:망설이다:2');
+  await expect(page.getByTestId('krdict-clash')).toContainText('already in your deck');
+  await page.getByTestId('krdict-add').click();
+  await expect(page.getByTestId('krdict-status')).toContainText('Saved 망설이다');
+  const idx = await page.evaluate(() => {
+    const byId = (window as any).__ksrs.store.getState().derived.index.byId;
+    return { seed: byId.get('v:망설이다'), krdict: byId.get('v:망설이다:2')?.source?.kind };
+  });
+  expect(idx.seed.source.kind).toBe('original');
+  expect(idx.seed.examples).toEqual((before as any).examples);
+  expect(idx.krdict).toBe('krdict');
+  // Picking the same sense again updates that copy instead of making a third.
+  await pasteKrdict(page, krdictXml(12345, '망설이다', 'hesitate', '이리저리 생각만 하고 태도를 결정하지 못하다.'));
+  await page.getByTestId('krdict-senses').locator('.sense').first().click();
+  await expect(page.getByTestId('krdict-draft-id')).toHaveText('v:망설이다:2');
+  await expect(page.getByTestId('krdict-clash')).toContainText('updates the copy');
+
+  // The example-less draft renders as a lesson (walk batches until it shows up).
+  await goHome(page);
+  if (await page.getByTestId('lessons-override').isVisible()) await page.getByTestId('lessons-override').click();
+  const seen: string[] = [];
+  for (let batch = 0; batch < 6 && !seen.includes('v:넌지시'); batch++) {
+    await goHome(page);
+    if (await page.getByTestId('lessons-override').isVisible()) await page.getByTestId('lessons-override').click();
+    if (Number(await page.getByTestId('lessons-count').innerText()) === 0) break;
+    await page.getByTestId('start-lessons').click();
+    for (let g = 0; g < 30; g++) {
+      const cur = (await page.getByTestId('lesson-page').getAttribute('data-item-id'))!;
+      seen.push(cur);
+      if (cur === 'v:넌지시' || await page.getByTestId('start-quiz').isVisible()) break;
+      await page.getByRole('button', { name: 'Next', exact: true }).click();
+    }
+    if (seen.includes('v:넌지시')) break;
+    await goHome(page);
+    await doLessonBatch(page, b);
+  }
+  expect(seen).toContain('v:넌지시');
+  await expect(page.getByTestId('lesson-page')).toContainText('넌지시');
+  await expect(page.getByTestId('lesson-page').getByTestId('attribution')).toContainText('한국어기초사전');
+  expect(await page.evaluate(() => (window as any).__xss)).toBeUndefined();
+  expect(errors).toEqual([]);
+});
+
+test('Replace with a backup that has nothing applicable (all newer-app events) is refused; history stays', async ({ page }) => {
+  const b = await setup(page);
+  await doLessonBatch(page, b);
+  const before = await readEvents(page);
+  const ev0 = before[0];
+  const only = [{ ...ev0, id: '0190f000-0000-7000-8000-00000000beef', v: 2, type: 'review.rated' }];
+  const { createHash } = await import('node:crypto');
+  const canon = (v: unknown): string => v === null || typeof v !== 'object' ? JSON.stringify(v)
+    : Array.isArray(v) ? `[${v.map(canon).join(',')}]`
+    : `{${Object.keys(v as object).sort().map((k) => `${JSON.stringify(k)}:${canon((v as any)[k])}`).join(',')}}`;
+  const f = tmp('newer.ksrs.json');
+  writeFileSync(f, JSON.stringify({ format: 'ksrs-backup', formatVersion: 1, createdAt: 'x', app: { version: 'v9', contentVersion: 'c' }, deviceId: 'new', eventCount: 1, events: only, checksum: 'sha256:' + createHash('sha256').update(canon(only)).digest('hex') }));
+
+  await pickRestoreFile(page, f);
+  await expect(page.getByTestId('restore-preview')).toContainText('1 from a newer app');
+  await page.getByTestId('mode-replace').check({ force: true });
+  await expect(page.getByTestId('replace-empty')).toBeVisible();
+  await expect(page.getByTestId('replace-confirm')).toHaveCount(0);
+  await expect(page.getByTestId('apply-restore')).toBeDisabled();
+  // The store refuses too (defence in depth), before writing anything.
+  const err = await page.evaluate(() => (window as any).__ksrs.store.restore([], [], 'replace', 'test').then(() => null, (e: Error) => e.message));
+  expect(err).toMatch(/would erase/);
+  expect(await readEvents(page)).toEqual(before);
+  // Merge is still available: the newer event is kept in quarantine, history untouched.
+  await page.getByTestId('restore-preview').getByText('Merge', { exact: true }).click();
+  await page.getByTestId('apply-restore').click();
+  await expect(page.getByTestId('restore-msg')).toContainText('1 kept in quarantine');
+  expect(await readEvents(page)).toEqual(before);
+});
+
+test('CSV import over a built-in item (Excel: BOM, CRLF, semicolons): preview says so; progress is kept', async ({ page }) => {
+  const b = await setup(page);
+  const ids = await doLessonBatch(page, b);
+  const target = ids.find((i) => i.startsWith('v:'))!;
+  const word = target.slice(2);
+  const stageBefore = await page.evaluate((id) => (window as any).__ksrs.store.getState().derived.items.get(id).stage, target);
+  const f = tmp('excel.csv');
+  writeFileSync(f, '﻿level;word;meanings;pos;;\r\n1;' + word + ';“edited” meaning;동사;;\r\n;;;;;\r\n');
+  await page.evaluate(() => { location.hash = '#/data'; });
+  await page.getByTestId('import-kind').selectOption('vocab');
+  await page.getByTestId('import-file').setInputFiles(f);
+  const prev = page.getByTestId('import-preview');
+  await expect(prev).toContainText('0 new · 1 changed · 0 unchanged');
+  const row = prev.locator('tr[data-builtin="true"]');
+  await expect(row).toHaveCount(1);
+  await expect(row).toContainText(target);
+  await expect(row).toContainText('replaces the built-in item (your progress on it is kept)');
+  await page.getByTestId('import-confirm').click();
+  await expect(page.getByTestId('import-msg')).toContainText('Imported 1 item');
+  const after = await page.evaluate((id) => {
+    const d = (window as any).__ksrs.store.getState().derived;
+    return { stage: d.items.get(id).stage, meanings: d.index.byId.get(id).meanings };
+  }, target);
+  expect(after).toEqual({ stage: stageBefore, meanings: ['“edited” meaning'] });
+});
+
+test('TTS: a browser without speechSynthesis at all: no speakers, autoplay on is harmless', async ({ page }) => {
+  await page.addInitScript(() => { delete (window as any).speechSynthesis; delete (Window.prototype as any).speechSynthesis; });
+  const errors: string[] = [];
+  page.on('pageerror', (e) => errors.push(e.message));
+  const b = await setup(page);
+  expect(await page.evaluate(() => 'speechSynthesis' in window)).toBe(false);
+  await page.evaluate(() => (window as any).__ksrs.store.setAppSetting('tts.autoplay', true));
+  await page.getByTestId('start-lessons').click();
+  await expect(page.getByTestId('lesson-page')).toBeVisible();
+  await expect(page.getByTestId('speaker')).toHaveCount(0);
+  await goHome(page);
+  await doLessonBatch(page, b);
+  await page.evaluate(() => { location.hash = '#/settings'; });
+  await expect(page.getByTestId('tts-settings')).toBeVisible();
+  expect(errors).toEqual([]);
+});
