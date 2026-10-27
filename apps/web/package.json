@@ -1,7 +1,7 @@
 {
   "name": "@ksrs/web",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.5.0",
   "type": "module",
   "description": "ksrs PWA (M2: lessons and reviews). Offline dev: run `npm run link-offline-deps` at the repo root instead of installing (D29).",
   "scripts": {

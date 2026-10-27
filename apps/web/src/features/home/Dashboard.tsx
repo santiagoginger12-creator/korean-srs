@@ -8,6 +8,9 @@ import { itemHref, relTime } from '../../state/format.ts';
 import { useApp, useNow } from '../../state/hooks.ts';
 import { OVERRIDE_STEP, planLessons } from '../../state/lessons.ts';
 import { store } from '../../state/store.ts';
+import { backupDue } from '../../data/backup.ts';
+import { inboxEntries } from '../../data/contract.ts';
+import { troubleRows } from '../../state/trouble.ts';
 
 const MAX_REMAINING_CHIPS = 12;
 
@@ -29,6 +32,9 @@ export function Dashboard(): JSX.Element {
   const capped = plan.otherAvailable > plan.allowance;
   const lessons = plan.queue.length;
   const markerPct = lv.threshold * 100;
+  const inbox = inboxEntries(d, app.events).length;
+  const trouble = troubleRows(d, app.events, t).length;
+  const needBackup = backupDue(app.lastBackupAt, t, app.events.length);
 
   return (
     <div className="page home dashboard">
@@ -38,6 +44,7 @@ export function Dashboard(): JSX.Element {
           <h1>Level <span data-testid="level">{d.userLevel}</span></h1>
         </div>
         <nav className="head-links">
+          <a className="btn-text" href="#/practice">Practice</a>
           <a className="btn-text" href="#/browse">Browse</a>
           <a className="btn-text" href="#/settings">Settings</a>
         </nav>
@@ -53,6 +60,18 @@ export function Dashboard(): JSX.Element {
           </div>
           <button type="button" className="btn-text" onClick={() => store.dismissLevelUp()} aria-label="Dismiss">✕</button>
         </div>
+      )}
+
+      {needBackup && (
+        <p className="notice" data-testid="backup-reminder">
+          {app.lastBackupAt ? 'No backup in over a week.' : 'You haven\'t backed up yet.'} <a href="#/data">Download a backup</a> — your progress only lives on this device.
+        </p>
+      )}
+      {(inbox > 0 || trouble > 0) && (
+        <nav className="pill-row" aria-label="Needs attention">
+          {inbox > 0 && <a className="pill on-soft" href="#/inbox" data-testid="inbox-badge">Variants inbox <span className="count">{inbox}</span></a>}
+          {trouble > 0 && <a className="pill on-soft" href="#/trouble" data-testid="trouble-link">Trouble items <span className="count">{trouble}</span></a>}
+        </nav>
       )}
 
       <div className="tiles">

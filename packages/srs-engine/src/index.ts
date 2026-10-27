@@ -18,7 +18,7 @@ export { wkScheduler, wkNextStage, wkAvailableAt, getScheduler } from './schedul
 
 export type { DerivedState, ItemState, ItemStats, PendingGroup } from './state.ts';
 export { noteKey, userAnswerKey } from './state.ts';
-export { buildContentIndex, resolveId, headword, type ContentIndex } from './content-index.ts';
+export { buildContentIndex, resolveId, headword, repairCustomItem, type ContentIndex } from './content-index.ts';
 
 export { replayAll, applyEvents, liveEvents, DUENESS_GRACE_MS } from './replay.ts';
 export { computeUnlocks, levelProgress, availableLessons, unlockDepsOf, LEVEL_THRESHOLD } from './unlock.ts';
@@ -37,9 +37,18 @@ export {
   type CheckOutcome, type AnswerRecord,
 } from './session.ts';
 export {
-  makeBackup, parseBackup, serializeBackup, mergeBackup, eventsChecksum,
+  makeBackup, parseBackup, serializeBackup, mergeBackup, mergeEventSets, eventsChecksum,
   BACKUP_FORMAT, BACKUP_FORMAT_VERSION, type BackupFile, type BackupMeta, type ParseBackupResult,
 } from './backup.ts';
+
+export {
+  defaultAppSettings, coerceAppSetting, settingPayload, EXTRA_SETTING_DEFAULTS,
+  type AppSettings, type AppSettingKey, type ExtraSettings,
+} from './settings.ts';
+export {
+  variantsInbox, extraStudyItems, resetCandidates, normalizeResponse,
+  type VariantEntry, type ExtraStudySource,
+} from './study.ts';
 
 export { localDayStart, nextLocalDayStart, localDayBoundaries, type TzOffset } from './time.ts';
 export { floorHour, seededShuffle, canonicalJson, sha256Hex, MINUTE, HOUR, DAY } from './util.ts';

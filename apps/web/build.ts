@@ -21,6 +21,10 @@ const ROOT = resolve(WEB_DIR, '../..');
 export const seedDir = (): string => resolve(ROOT, process.env.KSRS_SEED_DIR ?? 'packages/content/seed');
 export const PRETENDARD_CSS = 'https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css';
 
+/** KSRS_BUILD_ID (CI: commit sha) or the app package version. Shown on the Data page. */
+export const buildId = (): string => process.env.KSRS_BUILD_ID
+  ?? (JSON.parse(readFileSync(join(WEB_DIR, 'package.json'), 'utf8')) as { version: string }).version;
+
 export interface BuildOptions { base?: string; dev?: boolean; outDir?: string; quiet?: boolean }
 
 export function normalizeBase(b: string | undefined): string {
@@ -100,6 +104,7 @@ export async function build(opts: BuildOptions = {}): Promise<{ outDir: string; 
       'process.env.NODE_ENV': JSON.stringify(dev ? 'development' : 'production'),
       __BASE__: JSON.stringify(base),
       __DEV__: JSON.stringify(dev),
+      __BUILD_ID__: JSON.stringify(buildId()),
     },
     logLevel: opts.quiet ? 'silent' : 'warning',
   });
@@ -116,14 +121,21 @@ export async function build(opts: BuildOptions = {}): Promise<{ outDir: string; 
   // Static assets.
   cpSync(join(WEB_DIR, 'public'), outDir, { recursive: true });
 
+  // §13: relative start_url/scope keep the build portable across BASE values (D14). The
+  // manifest has one theme_color; per-scheme colours live in the <meta name="theme-color"> tags.
   const manifest = {
-    name: 'ksrs · 한국어 SRS', short_name: '익히다', description: 'Spaced repetition for advanced Korean',
-    lang: 'ko', dir: 'ltr', start_url: './', scope: './', display: 'standalone',
-    background_color: '#f7f6f2', theme_color: '#f7f6f2',
+    id: './', name: 'ksrs · 한국어 SRS', short_name: '익히다', description: 'Spaced repetition for advanced Korean',
+    lang: 'ko', dir: 'ltr', start_url: './', scope: './', display: 'standalone', orientation: 'any',
+    background_color: '#f7f6f2', theme_color: '#f7f6f2', categories: ['education'],
     icons: [
-      { src: 'icons/icon-192.png', sizes: '192x192', type: 'image/png' },
-      { src: 'icons/icon-512.png', sizes: '512x512', type: 'image/png' },
+      { src: 'icons/icon-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
+      { src: 'icons/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
       { src: 'icons/icon-maskable-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
+      { src: 'icons/icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' },
+    ],
+    shortcuts: [
+      { name: 'Reviews', short_name: '복습', url: './#/reviews', icons: [{ src: 'icons/icon-192.png', sizes: '192x192' }] },
+      { name: 'Lessons', short_name: '학습', url: './#/lessons', icons: [{ src: 'icons/icon-192.png', sizes: '192x192' }] },
     ],
   };
   writeFileSync(join(outDir, 'manifest.webmanifest'), JSON.stringify(manifest, null, 2));
@@ -135,7 +147,8 @@ export async function build(opts: BuildOptions = {}): Promise<{ outDir: string; 
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ksrs · 한국어</title>
 <meta name="description" content="Spaced repetition for advanced Korean">
-<meta name="theme-color" content="#f7f6f2">
+<meta name="theme-color" content="#f7f6f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16181d" media="(prefers-color-scheme: dark)">
 <meta name="color-scheme" content="light dark">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="익히다">

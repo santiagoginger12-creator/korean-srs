@@ -1,6 +1,10 @@
 import { useEffect, useSyncExternalStore } from 'react';
 import { Browse } from './features/browse/Browse.tsx';
+import { DataPage } from './features/data/DataPage.tsx';
 import { Dashboard } from './features/home/Dashboard.tsx';
+import { Inbox } from './features/inbox/Inbox.tsx';
+import { Practice } from './features/practice/Practice.tsx';
+import { Trouble } from './features/trouble/Trouble.tsx';
 import { ItemPage } from './features/items/ItemPage.tsx';
 import { Lessons } from './features/lessons/Lessons.tsx';
 import { Reviews } from './features/reviews/Reviews.tsx';
@@ -24,6 +28,10 @@ export function App(): JSX.Element {
     switch (route.name) {
       case 'home': body = <Dashboard />; break;
       case 'browse': body = <Browse />; break;
+      case 'data': body = <DataPage />; break;
+      case 'trouble': body = <Trouble />; break;
+      case 'inbox': body = <Inbox />; break;
+      case 'practice': body = <Practice key={route.preset ?? ''} preset={route.preset} />; break;
       case 'lessons': body = <Lessons />; break;
       case 'reviews': body = <Reviews />; break;
       case 'settings': body = <Settings />; break;
@@ -31,7 +39,7 @@ export function App(): JSX.Element {
       default: body = <div className="page narrow"><h1>Not found</h1><a href="#/">Home</a></div>;
     }
   }
-  const inSession = route.name === 'reviews' || route.name === 'lessons';
+  const inSession = route.name === 'reviews' || route.name === 'lessons' || route.name === 'practice';
   return (
     <>
       {app.persistError && <div className="banner banner-error" role="alert">{app.persistError}</div>}

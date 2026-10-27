@@ -126,3 +126,97 @@ export async function goHome(page: Page): Promise<void> {
   await page.evaluate(() => { location.hash = '#/'; window.dispatchEvent(new Event('focus')); });
   await expect(page.getByTestId('lessons-tile')).toBeVisible();
 }
+
+// ---------------------------------------------------------------- M5 helpers
+
+/** Read-only peeks through the D36 test hook. */
+export const peek = {
+  maxDueAt: (page: Page) => page.evaluate(() => {
+    const s = (window as any).__ksrs.store.getState().derived;
+    let m = 0;
+    for (const st of s.items.values()) if (st.kind !== 'hanja' && st.availableAt !== null && st.stage < 9) m = Math.max(m, st.availableAt);
+    return m;
+  }),
+  eventCount: (page: Page) => page.evaluate(async () => { const st = (window as any).__ksrs.store; await st.flush(); return st.getState().events.length; }),
+  /** itemId → "stage@availableAt" for every learned item, sorted (device-independent projection). */
+  projection: (page: Page) => page.evaluate(() => {
+    const s = (window as any).__ksrs.store.getState().derived;
+    return [...s.items.values()].filter((st: any) => st.lessonAt !== undefined)
+      .map((st: any) => `${st.itemId}:${st.stage}@${st.availableAt}`).sort();
+  }),
+  deviceId: (page: Page) => page.evaluate(() => (window as any).__ksrs.store.getState().deviceId as string),
+};
+
+/** Moves the fake clock just past the latest due time and reloads "now" on the dashboard. */
+export async function jumpToDue(page: Page): Promise<void> {
+  await page.clock.setSystemTime((await peek.maxDueAt(page)) + 60_000);
+  await goHome(page);
+}
+
+/** One full review session; `choose` may return a different response for a question. */
+export async function reviewRound(page: Page, b: Bundle, choose?: (q: Q) => string | null): Promise<void> {
+  await jumpToDue(page);
+  await page.getByTestId('start-reviews').click();
+  for (let g = 0; g < 200; g++) {
+    if (await page.getByTestId('review-summary').isVisible()) break;
+    const q = await currentQ(page);
+    await submit(page, q, choose?.(q) ?? correctAnswer(b, q));
+    await expect(page.getByTestId('feedback')).toBeVisible();
+    await next(page);
+  }
+  await page.getByRole('button', { name: 'Done' }).click();
+  await expect(page.getByTestId('lessons-tile')).toBeVisible();
+}
+
+/** Downloads a backup from the Data page and returns the saved file path. */
+export async function downloadBackup(page: Page, opts: { gzip?: boolean } = {}): Promise<string> {
+  await page.evaluate(() => { location.hash = '#/data'; });
+  await expect(page.getByTestId('backup-card')).toBeVisible();
+  const gz = page.getByTestId('gzip');
+  if (await gz.count()) await gz.setChecked(!!opts.gzip);
+  const [dl] = await Promise.all([page.waitForEvent('download'), page.getByTestId('export-backup').click()]);
+  const path = await dl.path();
+  if (!path) throw new Error('download failed');
+  const named = `${path}-${dl.suggestedFilename()}`;
+  await dl.saveAs(named);
+  return named;
+}
+
+/** Restores a backup file on the Data page (Merge by default). Returns the "new events" preview count. */
+export async function restoreBackup(page: Page, file: string, mode: 'merge' | 'replace' = 'merge'): Promise<number> {
+  await page.evaluate(() => { location.hash = '#/data'; });
+  await page.getByTestId('restore-file').setInputFiles(file);
+  await expect(page.getByTestId('restore-preview')).toBeVisible();
+  const fresh = Number(await page.getByTestId('preview-new').innerText());
+  if (mode === 'replace') {
+    await page.getByTestId('mode-replace').check({ force: true });
+    await page.getByTestId('replace-confirm').fill('REPLACE');
+  }
+  await page.getByTestId('apply-restore').click();
+  await expect(page.getByTestId('restore-msg')).toBeVisible();
+  return fresh;
+}
+
+export async function dashboardCounts(page: Page): Promise<Record<string, string>> {
+  await goHome(page);
+  const out: Record<string, string> = {
+    level: await page.getByTestId('level').innerText(),
+    lessons: await page.getByTestId('lessons-count').innerText(),
+    reviews: await page.getByTestId('reviews-count').innerText(),
+    passed: (await page.getByTestId('level-progress').getAttribute('data-passed')) ?? '',
+  };
+  for (const li of await page.getByTestId('stage-counts').locator('[data-stage]').all()) {
+    out[(await li.getAttribute('data-stage'))!] = await li.locator('.stage-count').innerText();
+  }
+  return out;
+}
+
+/** Chooser for reviewRound: the first attempt at each matching question is wrong, retries are right. */
+export function wrongOnce(b: Bundle, match: (q: Q) => boolean): (q: Q) => string | null {
+  const seen = new Set<string>();
+  return (q) => {
+    if (!match(q) || seen.has(q.qid)) return null;
+    seen.add(q.qid);
+    return wrongAnswer(b, q);
+  };
+}

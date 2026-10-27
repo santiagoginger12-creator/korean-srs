@@ -1,7 +1,10 @@
-import { useState } from 'react';
+import { useState, useSyncExternalStore } from 'react';
 import type { Settings as S } from '@ksrs/srs-engine';
 import { useApp } from '../../state/hooks.ts';
 import { store } from '../../state/store.ts';
+import { koVoices, speak, ttsAvailable, ttsPrefs } from '../../tts/tts.ts';
+
+const SAMPLE = '천천히 또박또박 읽어 볼게요.';
 
 export function Settings(): JSX.Element {
   const app = useApp();
@@ -39,8 +42,10 @@ export function Settings(): JSX.Element {
           </div>
         </fieldset>
       </div>
+      <TtsSettings />
       <div className="card form">
         <h3>Data</h3>
+        <p><a className="btn btn-quiet" href="#/data" data-testid="open-data">Backup, sync and import →</a></p>
         <p className="muted">Your progress is an event log on this device ({app.events.length} events). Rebuilding replays it from scratch.</p>
         <button type="button" className="btn btn-quiet" data-testid="rebuild" onClick={() => {
           setRebuilt('Rebuilding…');
@@ -49,6 +54,42 @@ export function Settings(): JSX.Element {
         {rebuilt && <p className="muted" role="status">{rebuilt}</p>}
         <p className="muted small">Device {app.deviceId}</p>
       </div>
+    </div>
+  );
+}
+
+const noop = () => () => {};
+const NONE: SpeechSynthesisVoice[] = [];
+
+function TtsSettings(): JSX.Element {
+  const app = useApp();
+  const prefs = ttsPrefs(app.derived!.settings);
+  const supported = ttsAvailable();
+  const voices = useSyncExternalStore(supported ? koVoices.subscribe : noop, supported ? koVoices.get : () => NONE);
+  const [rate, setRate] = useState(prefs.rate);
+  return (
+    <div className="card form" data-testid="tts-settings">
+      <h3>Pronunciation (text-to-speech)</h3>
+      {!supported ? <p className="muted">This browser has no speech synthesis.</p> : voices.length === 0 ? (
+        <p className="muted" data-testid="no-ko-voice">No Korean voice installed. On iPhone: Settings → Accessibility → Spoken Content → Voices → Korean. Speaker buttons stay disabled until one is available.</p>
+      ) : (
+        <>
+          <label className="field"><span>Voice</span>
+            <select value={prefs.voiceURI} onChange={(e: { target: HTMLSelectElement }) => void store.setAppSetting('tts.voiceURI', e.target.value)} data-testid="tts-voice">
+              <option value="">Default Korean voice</option>
+              {voices.map((v) => <option key={v.voiceURI} value={v.voiceURI}>{v.name} ({v.lang}){v.localService ? '' : ' · online'}</option>)}
+            </select>
+          </label>
+          <label className="field"><span>Speed {rate.toFixed(2)}×</span>
+            <input type="range" min={0.5} max={1.5} step={0.05} value={rate}
+              onChange={(e: { target: HTMLInputElement }) => setRate(Number(e.target.value))}
+              onPointerUp={() => void store.setAppSetting('tts.rate', rate)} onKeyUp={() => void store.setAppSetting('tts.rate', rate)}
+              onBlur={() => { if (rate !== prefs.rate) void store.setAppSetting('tts.rate', rate); }} data-testid="tts-rate" />
+          </label>
+          <label className="check"><input type="checkbox" checked={prefs.autoplay} onChange={(e: { target: HTMLInputElement }) => void store.setAppSetting('tts.autoplay', e.target.checked)} data-testid="tts-autoplay" /> Read the answer aloud after I answer</label>
+          <p><button type="button" className="btn btn-quiet btn-small" onClick={() => speak(SAMPLE, { rate, voiceURI: prefs.voiceURI })} data-testid="tts-test">Test voice</button></p>
+        </>
+      )}
     </div>
   );
 }

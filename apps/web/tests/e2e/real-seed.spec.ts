@@ -183,3 +183,44 @@ test('owner screenshots on the real seed (390×844)', async ({ browser }) => {
   await shot('item-hanja-full', true);
   await context.close();
 });
+
+test('owner screenshots: M5 pages on the real seed (390×844)', async ({ browser }) => {
+  mkdirSync(SHOTS, { recursive: true });
+  const context = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true, timezoneId: 'Asia/Seoul' });
+  const page = await context.newPage();
+  // Two Korean voices so the TTS settings render as on a phone with voices installed.
+  await page.addInitScript(() => {
+    const list = [{ lang: 'ko-KR', name: 'Yuna', voiceURI: 'yuna', localService: true, default: true }, { lang: 'ko-KR', name: 'Sora', voiceURI: 'sora', localService: true, default: false }];
+    (window as any).SpeechSynthesisUtterance = class { text: string; constructor(t: string) { this.text = t; } };
+    Object.defineProperty(window, 'speechSynthesis', { configurable: true, value: { getVoices: () => list, speak() {}, cancel() {}, addEventListener() {}, removeEventListener() {} } });
+  });
+  const b = await setup(page);
+  const shot = (name: string, fullPage = true) => page.screenshot({ path: join(SHOTS, `${name}-390x844.png`), fullPage });
+  // Learn the hanja batch and one quiz batch so there is history to back up and practise.
+  for (let i = 0; i < 3; i++) {
+    await goHome(page);
+    await page.getByTestId('start-lessons').click();
+    while (!(await page.getByTestId('start-quiz').isVisible())) await page.getByRole('button', { name: 'Next', exact: true }).click();
+    await page.getByTestId('start-quiz').click();
+    if (await page.getByTestId('question').isVisible().catch(() => false)) {
+      await answerAllCorrectly(page, b, 'quiz-done');
+      await page.getByRole('button', { name: 'Finish lessons' }).click();
+      break;
+    }
+  }
+  await goHome(page);
+  await expect(page.getByTestId('backup-reminder')).toBeVisible();
+  await shot('dashboard-backup-reminder', false);
+  await page.evaluate(() => { location.hash = '#/data'; });
+  await expect(page.getByTestId('data-page')).toBeVisible();
+  await shot('data');
+  await page.evaluate(() => { location.hash = '#/settings'; });
+  await expect(page.getByTestId('tts-voice')).toBeVisible();
+  await shot('settings-tts');
+  await page.evaluate(() => { location.hash = '#/practice'; });
+  await shot('practice-picker', false);
+  await page.getByTestId('start-practice').click();
+  await expect(page.getByTestId('practice-label')).toBeVisible();
+  await shot('practice-question', false);
+  await context.close();
+});

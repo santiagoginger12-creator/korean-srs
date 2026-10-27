@@ -312,6 +312,9 @@ export function validateBundle(rawItems: readonly unknown[], opts: ValidateBundl
 
   const err = (it: Item, path: string, msg: string) => errors.push({ itemId: it.id, path: `${it.id}${path}`, msg });
   const warn = (it: Item, path: string, msg: string) => warnings.push({ itemId: it.id, path: `${it.id}${path}`, msg });
+  // Draft tolerance (M5): user/KRDict/imported items may be saved before their examples are
+  // written, so example-count rules are warnings for them. Seed (`original`) items stay strict.
+  const exErr = (it: Item, path: string, msg: string) => (isDraftSource(it) ? warn : err)(it, path, msg);
 
   // 2. Ids
   const byId = new Map<ItemId, Item>();
@@ -358,9 +361,9 @@ export function validateBundle(rawItems: readonly unknown[], opts: ValidateBundl
         if (t.eum !== h.syllable) warn(it, `${hp}.syllable`, `"${h.syllable}" differs from ${h.hanjaId} reading "${t.eum}" (ok only for 두음법칙 etc.)`);
         if (t.level > it.level) err(it, `${hp}.hanjaId`, `hanja ${h.hanjaId} is level ${t.level} > item level ${it.level}`);
       });
-      if (it.examples.length < 2 || it.examples.length > 3) err(it, '.examples', `vocab needs 2–3 examples (has ${it.examples.length})`);
+      if (it.examples.length < 2 || it.examples.length > 3) exErr(it, '.examples', `vocab needs 2–3 examples (has ${it.examples.length})`);
     } else if (it.examples.length < 1) {
-      err(it, '.examples', `${it.kind} needs at least 1 example`);
+      exErr(it, '.examples', `${it.kind} needs at least 1 example`);
     }
 
     if (it.kind === 'grammar') {
@@ -414,6 +417,11 @@ export function validateBundle(rawItems: readonly unknown[], opts: ValidateBundl
 }
 
 type ErrFn = (it: Item, path: string, msg: string) => void;
+
+/** Items whose example-count rules are warnings rather than errors (anything not seed content). */
+export function isDraftSource(it: Pick<Item, 'source'>): boolean {
+  return it.source.kind !== 'original';
+}
 
 function checkHanjaSem(it: HanjaItem, err: ErrFn): void {
   if (it.gating !== false) err(it, '.gating', 'hanja must have gating: false (they never gate levels)');

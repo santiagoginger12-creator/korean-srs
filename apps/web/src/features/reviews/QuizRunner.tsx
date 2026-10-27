@@ -14,6 +14,9 @@ import { HangulInput, type HangulInputHandle } from '../../components/HangulInpu
 import { checkOptionsFor } from '../../state/checkOpts.ts';
 import { now } from '../../state/clock.ts';
 import { itemHref, KIND_KO, QTYPE_LABEL, SPEECH_LEVEL } from '../../state/format.ts';
+import { useApp } from '../../state/hooks.ts';
+import { Speaker } from '../../tts/Speaker.tsx';
+import { speak, ttsPrefs } from '../../tts/tts.ts';
 
 export interface Feedback {
   q: QuestionInstance;
@@ -27,7 +30,7 @@ interface Props {
   sess: ReviewSession;
   dispatch: (a: SessionAction) => void;
   index: ContentIndex;
-  mode: 'review' | 'quiz';
+  mode: 'review' | 'quiz' | 'practice';
   /** Rendered when the session is done and no feedback is open. */
   done: JSX.Element;
   /** Review mode: wrap-up and exit controls. */
@@ -45,6 +48,7 @@ export function QuizRunner({ sess, dispatch, index, mode, done, onWrapUp, onExit
   const input = useRef<HangulInputHandle | null>(null);
   const nextBtn = useRef<HTMLButtonElement | null>(null);
   const startedAt = useRef(now());
+  const app = useApp();
   const q = feedback ? feedback.q : currentQuestion(sess);
   const qKey = q ? `${q.qid}|${sess.history.length}` : 'none';
 
@@ -71,6 +75,11 @@ export function QuizRunner({ sess, dispatch, index, mode, done, onWrapUp, onExit
     const outcome = { outcome: result.outcome, layer: result.layer, ...(result.matched !== undefined ? { matched: result.matched } : {}) };
     dispatch({ type: 'answer', qid: q.qid, response, result: outcome, durationMs: Math.max(0, at - startedAt.current), at });
     setHint(null);
+    // Autoplay only after a graded submit (a user gesture), never before (§13).
+    if (app.derived) {
+      const prefs = ttsPrefs(app.derived.settings);
+      if (prefs.autoplay) speak(spokenAnswer(q, result), prefs);
+    }
     setFeedback({ q, response, result, grade: result.outcome, overridden: false });
   };
 
@@ -91,7 +100,7 @@ export function QuizRunner({ sess, dispatch, index, mode, done, onWrapUp, onExit
 
   const iWasRight = () => {
     if (!feedback || feedback.grade !== 'incorrect') return;
-    dispatch({ type: 'override', at: now(), acceptAnswer: acceptFuture && isKoOrEn(feedback.q) });
+    dispatch({ type: 'override', at: now(), acceptAnswer: mode === 'review' && acceptFuture && isKoOrEn(feedback.q) });
     setFeedback({ ...feedback, grade: 'correct', overridden: true });
   };
 
@@ -138,6 +147,7 @@ export function QuizRunner({ sess, dispatch, index, mode, done, onWrapUp, onExit
         <span className="quiz-stats" data-testid="remaining">{remaining} left · {pct}%</span>
       </div>
       {mode === 'quiz' && <p className="practice-label">Lesson quiz · practice, not scheduled</p>}
+      {mode === 'practice' && <p className="practice-label" data-testid="practice-label">Practice — not scheduled</p>}
       {sess.wrappingUp && <p className="practice-label">Wrapping up: finishing items already started</p>}
 
       <article className="card question" data-testid="question" data-qtype={q.qtype} data-item-id={q.itemId}
@@ -182,7 +192,7 @@ export function QuizRunner({ sess, dispatch, index, mode, done, onWrapUp, onExit
 
       {feedback && (
         <FeedbackPanel fb={feedback} index={index} acceptFuture={acceptFuture} setAcceptFuture={setAcceptFuture}
-                       onUndo={undo} onRight={iWasRight} onNext={next} nextRef={nextBtn} />
+                       persists={mode === 'review'} onUndo={undo} onRight={iWasRight} onNext={next} nextRef={nextBtn} />
       )}
 
       {!feedback && (
@@ -196,6 +206,17 @@ export function QuizRunner({ sess, dispatch, index, mode, done, onWrapUp, onExit
 }
 
 const isKoOrEn = (q: QuestionInstance): boolean => q.qtype !== 'nuance';
+
+/** The Korean to read aloud once a question has been answered (the right answer in context). */
+export function spokenAnswer(q: QuestionInstance, result: { matched?: string }): string {
+  switch (q.qtype) {
+    case 'meaning': return q.promptKo;
+    case 'production': return result.matched ?? q.accepted[0] ?? '';
+    case 'cloze': return `${q.before}${result.matched ?? q.accepted[0] ?? ''}${q.after}`;
+    case 'register': return result.matched ?? q.accepted[0] ?? '';
+    case 'nuance': return q.options.find((o) => o.key === q.correctKey)?.text ?? '';
+  }
+}
 
 function Prompt({ q }: { q: QuestionInstance }): JSX.Element {
   switch (q.qtype) {
@@ -247,10 +268,12 @@ function NuanceOptions({ q, feedback, onPick }: { q: Extract<QuestionInstance, {
 
 interface FbProps {
   fb: Feedback; index: ContentIndex; acceptFuture: boolean; setAcceptFuture: (v: boolean) => void;
+  /** False in practice and lesson quizzes, which emit no events: nothing is saved, so don't offer to. */
+  persists: boolean;
   onUndo: () => void; onRight: () => void; onNext: () => void; nextRef: { current: HTMLButtonElement | null };
 }
 
-function FeedbackPanel({ fb, acceptFuture, setAcceptFuture, onUndo, onRight, onNext, nextRef }: FbProps): JSX.Element {
+function FeedbackPanel({ fb, acceptFuture, setAcceptFuture, persists, onUndo, onRight, onNext, nextRef }: FbProps): JSX.Element {
   const { q, result } = fb;
   const correct = fb.grade === 'correct';
   const shown = q.qtype === 'nuance' ? q.options.find((o) => o.key === q.correctKey)?.text : result.matched ?? acceptedOf(q)[0];
@@ -274,11 +297,12 @@ function FeedbackPanel({ fb, acceptFuture, setAcceptFuture, onUndo, onRight, onN
         {!correct && (
           <>
             <button type="button" className="btn btn-quiet" onClick={onRight}>I was right</button>
-            {q.qtype !== 'nuance' && fb.response.trim() !== '' && (
+            {persists && q.qtype !== 'nuance' && fb.response.trim() !== '' && (
               <label className="check"><input type="checkbox" checked={acceptFuture} onChange={(e: { target: HTMLInputElement }) => setAcceptFuture(e.target.checked)} /> Accept this answer in future</label>
             )}
           </>
         )}
+        <Speaker text={spokenAnswer(q, result)} label="Listen to the answer" />
         <a className="btn-text" href={itemHref(q.itemId)} target="_self">View item</a>
         <button type="button" className="btn btn-primary" ref={nextRef} onClick={onNext} onKeyDown={onKeyDownNext}>Next</button>
       </div>

@@ -7,6 +7,7 @@ import { defineConfig, devices } from '@playwright/test';
 
 const PORT = Number(process.env.E2E_PORT ?? 4173);
 const REAL_PORT = PORT + 1;
+const UPDATE_PORT = PORT + 2;
 // Same normalization as build.ts: BASE=/repo/ (GitHub Pages) or / (default).
 const BASE = `/${(process.env.BASE ?? '/').replace(/^\/+|\/+$/g, '')}/`.replace('//', '/');
 const url = (port: number) => `http://127.0.0.1:${port}${BASE}`;
@@ -24,11 +25,13 @@ export default defineConfig({
   reporter: [['list']],
   use: { serviceWorkers: 'allow', trace: 'retain-on-failure' },
   projects: browsers.flatMap((b) => [
-    { name: `fixture-${b.name}`, testMatch: /(app|dashboard)\.spec\.ts/ , use: { ...b.use, baseURL: url(PORT) } },
+    { name: `fixture-${b.name}`, testMatch: /(app|dashboard|data|study|pwa|m5-qa)\.spec\.ts/, use: { ...b.use, baseURL: url(PORT) } },
+    { name: `update-${b.name}`, testMatch: 'update.spec.ts', use: { ...b.use, baseURL: url(UPDATE_PORT) } },
     { name: `real-seed-${b.name}`, testMatch: 'real-seed.spec.ts', use: { ...b.use, baseURL: url(REAL_PORT) } },
   ]),
   webServer: [
     { command: `tsx serve.ts --port ${PORT} --dir node_modules/.e2e/fixture`, url: url(PORT), reuseExistingServer: false, timeout: 20_000 },
     { command: `tsx serve.ts --port ${REAL_PORT} --dir node_modules/.e2e/real`, url: url(REAL_PORT), reuseExistingServer: false, timeout: 20_000 },
+    { command: `tsx serve.ts --port ${UPDATE_PORT} --dir node_modules/.e2e/update`, url: url(UPDATE_PORT), reuseExistingServer: false, timeout: 20_000 },
   ],
 });

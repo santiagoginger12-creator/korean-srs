@@ -31,13 +31,30 @@ export function eventsChecksum(events: readonly unknown[]): string {
   return 'sha256:' + sha256Hex(canonicalJson(events));
 }
 
-/** Dedupes by id, sorts by (hlc, id), and checksums the canonical events JSON. */
-export function makeBackup(events: readonly AppEvent[], meta: BackupMeta): BackupFile {
+/**
+ * Dedupes by id, sorts by (hlc, id), and checksums the canonical events JSON.
+ *
+ * `quarantined`: raw events this device holds but can't apply (newer app version, malformed).
+ * They are appended after the sorted log (deduped, in canonical order) so a backup never
+ * loses them; `parseBackup` puts them back in quarantine on any app that still can't read
+ * them, and a newer app reads them as ordinary events.
+ */
+export function makeBackup(events: readonly AppEvent[], meta: BackupMeta, quarantined: readonly unknown[] = []): BackupFile {
   const sorted = sortEvents(events);
+  const have = new Set(sorted.map((e) => e.id));
+  const extra = new Map<string, unknown>();
+  for (const raw of quarantined) {
+    const id = typeof raw === 'object' && raw !== null ? (raw as { id?: unknown }).id : undefined;
+    if (typeof id === 'string' && have.has(id)) continue;
+    const c = canonicalJson(raw);
+    extra.set(typeof id === 'string' ? `id:${id}` : `c:${c}`, raw);
+  }
+  const tail = [...extra].sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0)).map(([, raw]) => raw as AppEvent);
+  const all = tail.length ? [...sorted, ...tail] : sorted;
   return {
     format: BACKUP_FORMAT, formatVersion: BACKUP_FORMAT_VERSION, createdAt: meta.createdAt,
     app: { version: meta.appVersion, contentVersion: meta.contentVersion }, deviceId: meta.deviceId,
-    eventCount: sorted.length, events: sorted, checksum: eventsChecksum(sorted),
+    eventCount: all.length, events: all, checksum: eventsChecksum(all),
   };
 }
 
@@ -98,4 +115,12 @@ export function parseBackup(json: string | unknown): ParseBackupResult {
 /** Restore in Merge mode: union by id (§12). */
 export function mergeBackup(local: readonly AppEvent[], incoming: readonly AppEvent[]): AppEvent[] {
   return unionEvents(local, incoming);
+}
+
+/**
+ * Manual file sync (§11 option d, M5): the union of two devices' logs. Same as `mergeBackup`
+ * (named for the sync use). Replace-mode restore is just `parsed.events` on an empty store.
+ */
+export function mergeEventSets(a: readonly AppEvent[], b: readonly AppEvent[]): AppEvent[] {
+  return unionEvents(a, b);
 }

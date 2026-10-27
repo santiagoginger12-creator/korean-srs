@@ -4,9 +4,10 @@
 import type { ContentBundle, Item, ItemId, QuestionType } from '@ksrs/content';
 import { buildContentIndex, resolveId, type ContentIndex } from './content-index.ts';
 import {
-  coerceSetting, compareEvents, defaultSettings, DEFAULT_INTERVALS, eventItemId, sortEvents, SRS_SETTING_KEYS,
-  type AppEvent, type EventOf, type Settings,
+  coerceSetting, compareEvents, DEFAULT_INTERVALS, eventItemId, sortEvents, SRS_SETTING_KEYS,
+  type AppEvent, type EventOf,
 } from './events.ts';
+import { coerceAppSetting, defaultAppSettings, type AppSettings } from './settings.ts';
 import { leechScore, LEECH_WINDOW_MS } from './leech.ts';
 import { wkAvailableAt } from './scheduler/wk.ts';
 import { getScheduler } from './scheduler/wk.ts';
@@ -65,7 +66,7 @@ interface Scan {
   byId: Map<string, AppEvent>;
   voided: Set<string>;
   timeline: Timeline;
-  settings: Settings;
+  settings: AppSettings;
   notes: Map<string, string>;
   userAnswers: Map<string, string[]>;
   customItems: Map<ItemId, Item>;
@@ -108,7 +109,7 @@ function scanLog(content: ContentBundle, events: readonly AppEvent[]): Scan {
   const voided = computeVoided(sorted, byId);
   const live = voided.size ? sorted.filter((e) => !voided.has(e.id)) : sorted;
 
-  const settings = defaultSettings();
+  const settings = defaultAppSettings();
   const notes = new Map<string, string>();
   const answerRegs = new Map<string, Map<string, boolean>>();
   const customItems = new Map<ItemId, Item>();
@@ -125,8 +126,12 @@ function scanLog(content: ContentBundle, events: readonly AppEvent[]): Scan {
         push(resolveId(R, e.itemId), e);
         break;
       case 'settings.set': {
-        const v = coerceSetting(e.key, e.value);
-        if (v !== undefined) (settings as unknown as Record<string, unknown>)[e.key] = v;
+        const v = coerceAppSetting(e.key, e.value);
+        // `inbox.dismissed` is a grow-only set (union of every write), not LWW: two devices that
+        // dismiss different variants offline both keep their dismissals after a merge.
+        if (v !== undefined && e.key === ('inbox.dismissed' as string)) {
+          settings['inbox.dismissed'] = [...new Set([...settings['inbox.dismissed'], ...(v as string[])])];
+        } else if (v !== undefined) (settings as unknown as Record<string, unknown>)[e.key] = v;
         break;
       }
       case 'note.set': {

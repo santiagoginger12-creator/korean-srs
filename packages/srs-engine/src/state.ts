@@ -2,7 +2,8 @@
 
 import type { Item, ItemId, ItemKind, QuestionType } from '@ksrs/content';
 import type { ContentIndex } from './content-index.ts';
-import type { HLC, NoteField, Settings } from './events.ts';
+import type { HLC, NoteField } from './events.ts';
+import type { AppSettings } from './settings.ts';
 import type { SrsCore } from './scheduler/index.ts';
 
 export interface ItemStats {
@@ -50,7 +51,8 @@ export interface DerivedState {
   unlocked: Set<ItemId>;
   /** key: noteKey(itemId, field) */
   notes: Map<string, string>;
-  settings: Settings;
+  /** M1 `Settings` plus the M5 extras (inbox.dismissed, tts.*). */
+  settings: AppSettings;
   /** key: userAnswerKey(itemId, qtype) */
   userAnswers: Map<string, string[]>;
   customItems: Map<ItemId, Item>;

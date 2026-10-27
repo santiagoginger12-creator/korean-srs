@@ -1,13 +1,26 @@
-// Builds the two e2e targets outside dist/ (so the real deploy build is never clobbered):
-//   node_modules/.e2e/fixture  ← tests/e2e/fixture-seed (the original 10 M1 items; stable)
-//   node_modules/.e2e/real     ← packages/content/seed (the live seed; smoke test + screenshots)
+// Builds the e2e targets outside dist/ (so the real deploy build is never clobbered):
+//   node_modules/.e2e/fixture   ← tests/e2e/fixture-seed (frozen fixture; behaviour tests)
+//   node_modules/.e2e/real      ← packages/content/seed (live seed; smoke test + screenshots)
+//   node_modules/.e2e/update-a, update-b ← fixture seed with two build ids, for the SW update
+//     prompt test; the test copies one of them into node_modules/.e2e/update, which is served.
 // Respects BASE like the normal build.
+import { cpSync, mkdirSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
 import { build, WEB_DIR } from '../../build.ts';
 
 export const E2E_OUT = join(WEB_DIR, 'node_modules/.e2e');
+const FIXTURE = join(WEB_DIR, 'tests/e2e/fixture-seed');
 
-process.env.KSRS_SEED_DIR = join(WEB_DIR, 'tests/e2e/fixture-seed');
+process.env.KSRS_SEED_DIR = FIXTURE;
 await build({ outDir: join(E2E_OUT, 'fixture') });
+for (const v of ['a', 'b']) {
+  process.env.KSRS_BUILD_ID = `e2e-${v}`;
+  await build({ outDir: join(E2E_OUT, `update-${v}`), quiet: true });
+}
+delete process.env.KSRS_BUILD_ID;
 delete process.env.KSRS_SEED_DIR;
 await build({ outDir: join(E2E_OUT, 'real') });
+rmSync(join(E2E_OUT, 'update'), { recursive: true, force: true });
+mkdirSync(join(E2E_OUT, 'update'), { recursive: true });
+cpSync(join(E2E_OUT, 'update-a'), join(E2E_OUT, 'update'), { recursive: true });
+console.log('e2e update targets: e2e-a, e2e-b');

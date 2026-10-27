@@ -21,7 +21,7 @@ export const KIND_ORDER: Record<ItemKind, number> = { hanja: 0, vocab: 1, gramma
 export function buildContentIndex(content: ContentBundle, customItems?: Iterable<Item>): ContentIndex {
   const byId = new Map<ItemId, Item>();
   for (const it of content.items) byId.set(it.id, it);
-  if (customItems) for (const it of customItems) byId.set(it.id, it);
+  if (customItems) for (const it of customItems) byId.set(it.id, repairCustomItem(it));
 
   const order = new Map<ItemId, number>();
   let i = 0;
@@ -74,4 +74,67 @@ export function headword(it: Item): string {
     case 'expression': return it.text;
     case 'hanja': return it.char;
   }
+}
+
+type Obj = Record<string, unknown>;
+const arr = (v: unknown): unknown[] => (Array.isArray(v) ? v : []);
+const str = (v: unknown, d = ''): string => (typeof v === 'string' ? v : d);
+/** `arr(v)` keeping only elements that pass; the same array when they all do. */
+const only = (v: unknown, ok: (x: unknown) => boolean): unknown[] => { const a = arr(v); return a.every(ok) ? a : a.filter(ok); };
+const isStrX = (x: unknown): boolean => typeof x === 'string';
+const hasId = (x: unknown): boolean => typeof x === 'object' && x !== null && typeof (x as Obj).id === 'string';
+
+/**
+ * Custom items arrive through events that are only structurally validated (id, kind, level), so
+ * a hand-edited backup or an older/newer device can deliver a partial item. Every consumer
+ * (lessons, reviews, item pages, browse, related items) assumes the full shape, so the index
+ * gets a copy with missing or mistyped fields defaulted, and question types whose spec is
+ * unusable dropped. Complete items are returned unchanged (same object).
+ */
+export function repairCustomItem(it: Item): Item {
+  const o = it as unknown as Obj;
+  const out: Obj = { ...o };
+  const fix = (k: string, v: unknown) => { if (out[k] !== v) out[k] = v; };
+  fix('tags', arr(o.tags));
+  fix('unlockDeps', only(o.unlockDeps, hasId));
+  if (typeof o.source !== 'object' || o.source === null || typeof (o.source as Obj).kind !== 'string') {
+    out.source = { kind: 'import', license: 'unknown', attribution: 'unknown source' };
+  }
+  switch (o.kind) {
+    case 'hanja':
+      for (const k of ['char', 'hun', 'eum', 'mnemonic']) fix(k, str(o[k]));
+      fix('meanings', only(o.meanings, isStrX));
+      break;
+    case 'vocab':
+      for (const k of ['word', 'pos']) fix(k, str(o[k]));
+      fix('register', str(o.register, 'neutral'));
+      fix('meanings', only(o.meanings, isStrX));
+      fix('collocations', arr(o.collocations));
+      fix('examples', arr(o.examples));
+      if (o.hanjaBreakdown !== undefined) fix('hanjaBreakdown', arr(o.hanjaBreakdown));
+      break;
+    case 'grammar':
+      for (const k of ['pattern', 'meaning', 'nuance']) fix(k, str(o[k]));
+      fix('attachment', arr(o.attachment));
+      fix('contrasts', only(o.contrasts, hasId));
+      fix('examples', arr(o.examples));
+      break;
+    case 'expression':
+      for (const k of ['text', 'meaning', 'literal', 'usage']) fix(k, str(o[k]));
+      fix('subtype', str(o.subtype, '관용구'));
+      fix('examples', arr(o.examples));
+      break;
+  }
+  if (o.kind !== 'hanja') {
+    const q = (typeof o.questions === 'object' && o.questions !== null ? o.questions : {}) as Obj;
+    const usable = (t: unknown): boolean => {
+      const spec = q[t as string];
+      if (t === 'meaning' || t === 'production') return typeof spec === 'object' && spec !== null && Array.isArray((spec as Obj).accepted);
+      return Array.isArray(spec) && spec.length > 0;
+    };
+    fix('questions', q);
+    fix('questionTypes', only(o.questionTypes, usable));
+  }
+  const changed = Object.keys(out).some((k) => out[k] !== o[k]);
+  return changed ? (out as unknown as Item) : it;
 }

@@ -33,6 +33,23 @@ self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') self.skipWaiting();
 });
 
+/** Stale-while-revalidate for the Pretendard CSS and its woff2 subsets (D37). A cached copy is
+ * served immediately; the network refresh runs in the background (kept alive by waitUntil) and
+ * only replaces the cache on a usable response. Offline with nothing cached → network error, and
+ * the CSS font stack falls back to system Korean fonts. */
+async function fontSwr(event, req) {
+  const cache = await caches.open(FONTS);
+  const hit = await cache.match(req, { ignoreVary: true });
+  const refresh = fetch(req).then(async (res) => {
+    if (res && (res.ok || res.type === 'opaque')) {
+      try { await cache.put(req, res.clone()); } catch (e) { /* quota: keep serving the old copy */ }
+    }
+    return res;
+  }).catch(() => null);
+  if (hit) { event.waitUntil(refresh); return hit; }
+  return (await refresh) || Response.error();
+}
+
 const PRECACHED = new Set(PRECACHE.map((u) => new URL(u, self.location.origin).href));
 
 self.addEventListener('fetch', (event) => {
@@ -59,14 +76,6 @@ self.addEventListener('fetch', (event) => {
   }
 
   if (url.hostname === 'cdn.jsdelivr.net' && url.pathname.includes('/pretendard')) {
-    event.respondWith((async () => {
-      const cache = await caches.open(FONTS);
-      const hit = await cache.match(req);
-      const net = fetch(req).then((res) => {
-        if (res.ok || res.type === 'opaque') void cache.put(req, res.clone());
-        return res;
-      }).catch(() => hit || Response.error());
-      return hit || net;
-    })());
+    event.respondWith(fontSwr(event, req));
   }
 });
