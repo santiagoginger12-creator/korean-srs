@@ -109,32 +109,114 @@ export function repairCustomItem(it: Item): Item {
       for (const k of ['word', 'pos']) fix(k, str(o[k]));
       fix('register', str(o.register, 'neutral'));
       fix('meanings', only(o.meanings, isStrX));
-      fix('collocations', arr(o.collocations));
-      fix('examples', arr(o.examples));
-      if (o.hanjaBreakdown !== undefined) fix('hanjaBreakdown', arr(o.hanjaBreakdown));
+      fix('collocations', repairList(o.collocations, (x) => withStrs(x, ['ko'], ['en'])));
+      fix('examples', repairList(o.examples, repairExample));
+      if (o.hanjaBreakdown !== undefined) fix('hanjaBreakdown', repairList(o.hanjaBreakdown, (x) => withStrs(x, ['syllable'], ['hanja'])));
       break;
     case 'grammar':
       for (const k of ['pattern', 'meaning', 'nuance']) fix(k, str(o[k]));
-      fix('attachment', arr(o.attachment));
-      fix('contrasts', only(o.contrasts, hasId));
-      fix('examples', arr(o.examples));
+      fix('attachment', repairList(o.attachment, (x) => withStrs(x, [], ['stem', 'tense', 'form', 'example'])));
+      fix('contrasts', repairList(only(o.contrasts, hasId), (x) => withStrs(x, ['id'], ['note'])));
+      fix('examples', repairList(o.examples, repairExample));
       break;
     case 'expression':
       for (const k of ['text', 'meaning', 'literal', 'usage']) fix(k, str(o[k]));
       fix('subtype', str(o.subtype, '관용구'));
-      fix('examples', arr(o.examples));
+      fix('examples', repairList(o.examples, repairExample));
       break;
   }
   if (o.kind !== 'hanja') {
-    const q = (typeof o.questions === 'object' && o.questions !== null ? o.questions : {}) as Obj;
+    const q0 = (typeof o.questions === 'object' && o.questions !== null ? o.questions : {}) as Obj;
+    // QA M5: repair each prompt too. A non-empty prompt array with a malformed prompt (e.g. a
+    // cloze without `sentence`) used to pass and crash question building in reviews.
+    const q: Obj = { ...q0 };
+    const qfix = (k: string, v: unknown) => { if (v === undefined) delete q[k]; else if (q[k] !== v) q[k] = v; };
+    qfix('meaning', repairAnswerSpec(q0.meaning, []));
+    qfix('production', repairAnswerSpec(q0.production, ['promptEn']));
+    qfix('cloze', q0.cloze === undefined ? undefined : repairList(q0.cloze, repairCloze));
+    qfix('nuance', q0.nuance === undefined ? undefined : repairList(q0.nuance, repairNuance));
+    qfix('register', q0.register === undefined ? undefined : repairList(q0.register, repairRegister));
+    const qs = Object.keys(q).length === Object.keys(q0).length && Object.keys(q).every((k) => q[k] === q0[k]) ? q0 : q;
     const usable = (t: unknown): boolean => {
-      const spec = q[t as string];
+      const spec = qs[t as string];
       if (t === 'meaning' || t === 'production') return typeof spec === 'object' && spec !== null && Array.isArray((spec as Obj).accepted);
       return Array.isArray(spec) && spec.length > 0;
     };
-    fix('questions', q);
+    fix('questions', qs);
     fix('questionTypes', only(o.questionTypes, usable));
   }
   const changed = Object.keys(out).some((k) => out[k] !== o[k]);
   return changed ? (out as unknown as Item) : it;
+}
+
+const isObjX = (x: unknown): x is Obj => typeof x === 'object' && x !== null && !Array.isArray(x);
+const DROP = Symbol('drop');
+
+/** Maps `repair` over an array (non-arrays → []), dropping DROP; the same array when nothing changed. */
+function repairList(v: unknown, repair: (x: unknown) => unknown): unknown[] {
+  const a = arr(v);
+  let changed = a !== v;
+  const out: unknown[] = [];
+  for (const x of a) {
+    const r = repair(x);
+    if (r !== x) changed = true;
+    if (r !== DROP) out.push(r);
+  }
+  return changed ? out : a;
+}
+
+/** Object with every `required` key a string (else DROP) and `defaults` keys defaulted to ''. */
+function withStrs(x: unknown, required: string[], defaults: string[]): unknown {
+  if (!isObjX(x) || required.some((k) => typeof x[k] !== 'string')) return DROP;
+  const bad = defaults.filter((k) => typeof x[k] !== 'string');
+  if (!bad.length) return x;
+  const out: Obj = { ...x };
+  for (const k of bad) out[k] = '';
+  return out;
+}
+
+const strList = (v: unknown): unknown[] => only(v, isStrX);
+/** Patches fields of `x`; returns `x` itself when no patch changes anything. */
+function patch(x: Obj, p: Obj): Obj {
+  return Object.keys(p).some((k) => p[k] !== x[k]) ? { ...x, ...p } : x;
+}
+
+const repairExample = (x: unknown): unknown => withStrs(x, ['ko'], ['en']);
+
+function repairAnswerSpec(v: unknown, strKeys: string[]): unknown {
+  if (v === undefined) return undefined;
+  if (!isObjX(v) || !Array.isArray(v.accepted)) return undefined;
+  const p: Obj = { accepted: strList(v.accepted) };
+  if (v.rejected !== undefined) p.rejected = strList(v.rejected);
+  for (const k of strKeys) p[k] = str(v[k]);
+  return patch(v, p);
+}
+
+function repairCloze(x: unknown): unknown {
+  if (!isObjX(x) || typeof x.id !== 'string' || typeof x.sentence !== 'string' || !Array.isArray(x.accepted)) return DROP;
+  const p: Obj = { accepted: strList(x.accepted), en: str(x.en), cue: str(x.cue), particleTolerance: str(x.particleTolerance, 'allomorph') };
+  if (x.nearMiss !== undefined) p.nearMiss = repairList(x.nearMiss, (n) => withStrs(n, ['answer'], ['hint']));
+  return patch(x, p);
+}
+
+function repairNuance(x: unknown): unknown {
+  if (!isObjX(x) || typeof x.id !== 'string') return DROP;
+  const options = repairList(x.options, (op) => {
+    const r = withStrs(op, ['text'], ['why']);
+    return r === DROP || typeof (r as Obj).correct === 'boolean' ? r : { ...(r as Obj), correct: false };
+  });
+  if (options.length < 2) return DROP;
+  return patch(x, { situation: str(x.situation), options });
+}
+
+function repairRegister(x: unknown): unknown {
+  if (!isObjX(x) || typeof x.id !== 'string' || typeof x.source !== 'string' || !Array.isArray(x.accepted)) return DROP;
+  const features = repairList(x.features, (f) => {
+    if (!isObjX(f) || typeof f.kind !== 'string') return DROP;
+    return patch(f, { any: strList(f.any), label: str(f.label) });
+  });
+  return patch(x, {
+    accepted: strList(x.accepted), features, coreWords: strList(x.coreWords), from: str(x.from), to: str(x.to),
+    particleTolerance: str(x.particleTolerance, 'allomorph'), finalPunctOptional: typeof x.finalPunctOptional === 'boolean' ? x.finalPunctOptional : false,
+  });
 }

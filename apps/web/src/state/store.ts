@@ -125,12 +125,15 @@ export class AppStore {
     if (!q.length) return;
     const ready: AppEvent[] = [];
     const keys: string[] = [];
+    // Never let a quarantined copy overwrite an event already in the log (e.g. a conflicting
+    // duplicate from a damaged file): the log copy wins and the other stays quarantined.
+    const have = new Set((await db.allEvents()).map((e) => e.id));
     for (const entry of q) {
       try {
         const up = upcastEvent(entry.raw);
         if (isUnknownFutureVersion(up)) continue;
         const r = validateEvent(up);
-        if (r.ok) { ready.push(r.event); keys.push(entry.key); }
+        if (r.ok && !have.has(r.event.id)) { ready.push(r.event); keys.push(entry.key); have.add(r.event.id); }
       } catch { /* still unreadable: keep it */ }
     }
     if (ready.length) await db.quarantineResolve(ready, keys);
@@ -293,7 +296,7 @@ export class AppStore {
     }
     const t = now();
     if (quarantine.length) {
-      await this.db.quarantineAdd(quarantine.map((q) => ({ key: quarantineKey(q.raw), raw: q.raw, reason: q.reason, source, at: t })));
+      await this.db.quarantineAdd(quarantine.map((q) => ({ key: quarantineKey(q.raw, q.reason), raw: q.raw, reason: q.reason, source, at: t })));
     }
     // Local HLC must move past everything we ingest (D4).
     for (const e of incoming) this.hlc.observe(e.hlc);

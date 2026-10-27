@@ -5,7 +5,7 @@ import { mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { gzipSync } from 'node:zlib';
-import { doLessonBatch, downloadBackup, goHome, peek, readEvents, setup } from './helpers.ts';
+import { correctAnswer, currentQ, doLessonBatch, downloadBackup, goHome, jumpToDue, next, peek, readEvents, restoreBackup, setup, submit, wrongAnswer, type Bundle } from './helpers.ts';
 
 test.use({ timezoneId: 'Asia/Seoul', acceptDownloads: true });
 
@@ -82,9 +82,9 @@ test('damaged backup files are rejected with a message and change nothing', asyn
   const good = readFileSync(await downloadBackup(page));
   const n = await peek.eventCount(page);
   const cases: [string, Buffer | string, RegExp][] = [
-    ['empty.ksrs.json', '', /not JSON/],
+    ['empty.ksrs.json', '', /That file is empty/],
     ['corrupt.ksrs.json', good.subarray(0, Math.floor(good.length / 2)), /not JSON/],
-    ['truncated.ksrs.json.gz', gzipSync(good).subarray(0, 60), /Couldn't open|not JSON|damaged/],
+    ['truncated.ksrs.json.gz', gzipSync(good).subarray(0, 60), /incomplete or damaged/],
     ['wrong.json', JSON.stringify({ hello: 'world' }), /isn't a ksrs backup/],
     ['array.json', '[1,2,3]', /isn't a ksrs backup/],
     ['future.ksrs.json', JSON.stringify({ ...JSON.parse(good.toString()), formatVersion: 2 }), /newer version/],
@@ -437,5 +437,196 @@ test('TTS: a browser without speechSynthesis at all: no speakers, autoplay on is
   await doLessonBatch(page, b);
   await page.evaluate(() => { location.hash = '#/settings'; });
   await expect(page.getByTestId('tts-settings')).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
+test('one id twice in a file with different content: one copy applied, the other quarantined; a reload never swaps them', async ({ page, browser }) => {
+  const b = await setup(page);
+  await doLessonBatch(page, b);
+  const before = await readEvents(page);
+  const json = JSON.parse(readFileSync(await downloadBackup(page), 'utf8'));
+  const twin = { ...json.events[1], itemId: 'v:twin' };
+  json.events = [...json.events, twin];
+  const { createHash } = await import('node:crypto');
+  const canon = (v: unknown): string => v === null || typeof v !== 'object' ? JSON.stringify(v)
+    : Array.isArray(v) ? `[${v.map(canon).join(',')}]`
+    : `{${Object.keys(v as object).sort().map((k) => `${JSON.stringify(k)}:${canon((v as any)[k])}`).join(',')}}`;
+  json.eventCount = json.events.length;
+  json.checksum = 'sha256:' + createHash('sha256').update(canon(json.events)).digest('hex');
+  const f = tmp('twin.ksrs.json');
+  writeFileSync(f, JSON.stringify(json));
+
+  // Merge on this device: its own copy wins; the other copy is kept in quarantine, not lost.
+  await pickRestoreFile(page, f);
+  await expect(page.getByTestId('restore-preview')).toContainText('second copy of an event');
+  await page.getByTestId('apply-restore').click();
+  await expect(page.getByTestId('restore-msg')).toContainText('1 kept in quarantine');
+  await page.reload();
+  await goHome(page);
+  expect(await readEvents(page)).toEqual(before);
+
+  // Replace on a fresh device: exactly one copy applied; after a reload (quarantine resolution
+  // runs at startup) the applied copy is unchanged and the twin is still quarantined.
+  const ctx = await browser.newContext({ timezoneId: 'Asia/Seoul' });
+  const p2 = await ctx.newPage();
+  await setup(p2);
+  await pickRestoreFile(p2, f);
+  await p2.getByTestId('mode-replace').check({ force: true });
+  await p2.getByTestId('replace-confirm').fill('REPLACE');
+  await p2.getByTestId('apply-restore').click();
+  await expect(p2.getByTestId('restore-msg')).toContainText('Replaced');
+  const applied = await readEvents(p2);
+  expect(applied).toHaveLength(before.length);
+  await p2.reload();
+  await goHome(p2);
+  expect(await readEvents(p2)).toEqual(applied);
+  await p2.evaluate(() => { location.hash = '#/data'; });
+  await expect(p2.getByTestId('quarantine')).toBeVisible();
+  expect((await p2.evaluate(() => (window as any).__ksrs.store.listQuarantine())).length).toBe(1);
+  await ctx.close();
+});
+
+/** One review round where the first meaning question is answered wrong, then fixed via `fix`. */
+async function reviewWithFix(page: Page, b: Bundle, fix: 'override' | 'undo'): Promise<void> {
+  await jumpToDue(page);
+  await page.getByTestId('start-reviews').click();
+  let fixed = false;
+  for (let g = 0; g < 200; g++) {
+    if (await page.getByTestId('review-summary').isVisible()) break;
+    const q = await currentQ(page);
+    if (!fixed && q.qtype === 'meaning') {
+      fixed = true;
+      await submit(page, q, wrongAnswer(b, q));
+      const fb = page.getByTestId('feedback');
+      await expect(fb).toHaveAttribute('data-grade', 'incorrect');
+      if (fix === 'override') {
+        await fb.getByRole('button', { name: 'I was right' }).click();
+        await expect(fb).toHaveAttribute('data-grade', 'correct');
+        await next(page);
+      } else {
+        await fb.getByRole('button', { name: 'Undo', exact: true }).click();
+        await expect(page.getByTestId('feedback')).toHaveCount(0);
+        await submit(page, q, correctAnswer(b, q));
+        await next(page);
+      }
+      continue;
+    }
+    await submit(page, q, correctAnswer(b, q));
+    await expect(page.getByTestId('feedback')).toBeVisible();
+    await next(page);
+  }
+  expect(fixed).toBe(true);
+  await page.getByRole('button', { name: 'Done' }).click();
+  await expect(page.getByTestId('lessons-tile')).toBeVisible();
+}
+
+test('two devices: "I was right" on one, undo on the other, notes + inbox dismissals on both → converge; repeated merges change nothing', async ({ browser }) => {
+  test.setTimeout(150_000);
+  const mk = async () => {
+    const ctx = await browser.newContext({ timezoneId: 'Asia/Seoul', acceptDownloads: true });
+    const page = await ctx.newPage();
+    return { page, b: await setup(page), ctx };
+  };
+  const A = await mk();
+  const B = await mk();
+  for (const d of [A, B]) await doLessonBatch(d.page, d.b);
+  await reviewWithFix(A.page, A.b, 'override');
+  await reviewWithFix(B.page, B.b, 'undo');
+  const types = async (p: Page) => (await readEvents(p)).map((e) => e.type + (e.overrides ? '+override' : ''));
+  expect(await types(A.page)).toContain('review.answer+override');
+  expect(await types(B.page)).toContain('event.void');
+  // Same note edited on both (LWW by HLC) and a different inbox dismissal on each (grow-only).
+  const item = (await readEvents(A.page)).find((e) => e.type === 'lesson.completed').itemId;
+  await A.page.evaluate((id) => (window as any).__ksrs.store.setNote(id, 'mnemonic', 'from A'), item);
+  await B.page.evaluate((id) => (window as any).__ksrs.store.setNote(id, 'mnemonic', 'from B'), item);
+  await A.page.evaluate(() => (window as any).__ksrs.store.setAppSetting('inbox.dismissed', ['dismissed-on-A']));
+  await B.page.evaluate(() => (window as any).__ksrs.store.setAppSetting('inbox.dismissed', ['dismissed-on-B']));
+
+  const t = Math.max(await A.page.evaluate(() => Date.now()), await B.page.evaluate(() => Date.now()));
+  for (const d of [A, B]) await d.page.clock.setSystemTime(t);
+  const state = (p: Page) => p.evaluate(async () => {
+    const st = (window as any).__ksrs.store; await st.flush();
+    const s = st.getState();
+    return { ids: s.events.map((e: any) => e.id), notes: [...s.derived.notes.entries()].sort(), dismissed: [...s.derived.settings['inbox.dismissed']].sort() };
+  });
+
+  for (let round = 0; round < 3; round++) {
+    const nB = await restoreBackup(B.page, await downloadBackup(A.page));
+    const nA = await restoreBackup(A.page, await downloadBackup(B.page));
+    if (round > 0) expect([nA, nB], `round ${round}`).toEqual([0, 0]);
+    const [sa, sb] = [await state(A.page), await state(B.page)];
+    expect(sa).toEqual(sb);
+    expect(sa.dismissed).toEqual(['dismissed-on-A', 'dismissed-on-B']);
+    expect(sa.notes.filter(([k]: [string]) => k.includes(item))).toHaveLength(1);
+    expect(await peek.projection(A.page)).toEqual(await peek.projection(B.page));
+  }
+  // And after a reload (replay from IndexedDB, not the in-memory merge) nothing moves.
+  const before = await state(A.page);
+  await A.page.reload();
+  await goHome(A.page);
+  expect(await state(A.page)).toEqual(before);
+  await A.ctx.close();
+  await B.ctx.close();
+});
+
+test('re-importing the same CSV (even a renamed copy) shows everything unchanged and writes nothing', async ({ page }) => {
+  await setup(page);
+  const csv = 'level,word,meanings,pos\r\n1,뜬금없다,out of the blue,형용사\r\n';
+  const importFile = async (name: string) => {
+    const f = tmp(name);
+    writeFileSync(f, csv);
+    await page.evaluate(() => { location.hash = '#/data'; });
+    await page.getByTestId('import-kind').selectOption('vocab');
+    await page.getByTestId('import-file').setInputFiles(f);
+  };
+  await importFile('words.csv');
+  await expect(page.getByTestId('import-preview')).toContainText('1 new · 0 changed · 0 unchanged');
+  await page.getByTestId('import-confirm').click();
+  await expect(page.getByTestId('import-msg')).toContainText('Imported 1 item');
+  const before = await readEvents(page);
+  for (const name of ['words.csv', 'words (1).csv']) {
+    await importFile(name);
+    await expect(page.getByTestId('import-preview'), name).toContainText('0 new · 0 changed · 1 unchanged');
+    const confirm = page.getByTestId('import-confirm');
+    if (await confirm.isEnabled()) await confirm.click();
+  }
+  expect(await readEvents(page)).toEqual(before);
+});
+
+test('partial custom items in reviews and related-item panels: no crash, no questions built from missing fields', async ({ page }) => {
+  const b = await setup(page);
+  await doLessonBatch(page, b);
+  const errors: string[] = [];
+  page.on('pageerror', (e) => errors.push(e.message));
+  const partial = [
+    { id: 'v:부분', kind: 'vocab', level: 1, word: '부분', hanja: [{ syllable: '부', hanjaId: 'h:없음' }] },
+    { id: 'v:빈', kind: 'vocab', level: 1, questionTypes: ['meaning', 'production'] },
+    { id: 'g:빈', kind: 'grammar', level: 1, questionTypes: ['cloze'], questions: { cloze: [{ id: 'c1' }] } },
+    { id: 'x:빈', kind: 'expression', level: 1, contrasts: [{ itemId: 'v:부분' }] },
+  ];
+  await page.evaluate((items) => (window as any).__ksrs.store.emit([
+    ...items.map((item) => ({ type: 'customItem.upsert', item })),
+    ...items.map((item) => ({ type: 'lesson.completed', itemId: item.id })),
+  ]), partial);
+  for (const it of partial) {
+    await page.evaluate((id) => { location.hash = '#/item/' + encodeURIComponent(id); }, it.id);
+    await expect(page.getByTestId('item-page')).toBeVisible();
+  }
+  await jumpToDue(page);
+  await page.getByTestId('start-reviews').click();
+  for (let g = 0; g < 60; g++) {
+    if (await page.getByTestId('review-summary').isVisible()) break;
+    const q = await currentQ(page);
+    if (q.itemId.endsWith('빈') || q.itemId === 'v:부분') {
+      // Whatever was built for a partial item must be answerable without throwing.
+      await submit(page, q, '부분');
+    } else {
+      await submit(page, q, correctAnswer(b, q));
+    }
+    const fb = page.getByTestId('feedback');
+    if (!(await fb.isVisible())) { await page.locator('input.answer').fill('x'); await page.locator('input.answer').press('Enter'); }
+    await expect(fb).toBeVisible();
+    await next(page);
+  }
   expect(errors).toEqual([]);
 });

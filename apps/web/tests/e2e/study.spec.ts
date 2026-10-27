@@ -73,6 +73,19 @@ test('trouble: a leech appears, can be drilled, and Reset to Apprentice 1 emits 
   await expect(row).toContainText('score');
   await expect(row).toContainText('Last wrong');
   await ownerShot(page, 'trouble');
+  // QA: the row actions must look like buttons (outline + padding + pill), not plain text.
+  for (const id of ['note', 'reset']) {
+    const look = await row.getByTestId(id).evaluate((el) => {
+      const cs = getComputedStyle(el);
+      const card = getComputedStyle(el.closest('.card')!);
+      return { bw: parseFloat(cs.borderTopWidth), bc: cs.borderTopColor, cardBg: card.backgroundColor, pad: parseFloat(cs.paddingLeft), radius: parseFloat(cs.borderTopLeftRadius), h: el.getBoundingClientRect().height };
+    });
+    expect(look.bw, id).toBeGreaterThanOrEqual(1);
+    expect(look.bc, id).not.toBe(look.cardBg);
+    expect(look.pad, id).toBeGreaterThanOrEqual(10);
+    expect(look.radius, id).toBeGreaterThanOrEqual(8);
+    expect(look.h, id).toBeGreaterThanOrEqual(32);
+  }
 
   // Drill: practice preset with the trouble item, no events.
   const before = await peek.eventCount(page);

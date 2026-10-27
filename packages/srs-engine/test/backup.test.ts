@@ -1,7 +1,7 @@
 import { describe, test } from 'node:test';
 import assert from 'node:assert/strict';
-import { makeBackup, mergeBackup, parseBackup, replayAll, serializeBackup, type AppEvent } from '../src/index.ts';
-import { HOUR } from '../src/util.ts';
+import { DUPLICATE_ID_REASON, eventsChecksum, makeBackup, mergeBackup, parseBackup, replayAll, serializeBackup, type AppEvent } from '../src/index.ts';
+import { canonicalJson, HOUR } from '../src/util.ts';
 import { answerP, canon, device, FIXTURE, lessonP, passAll, T0 } from './fixtures.ts';
 
 const META = { createdAt: '2026-10-16T12:00:00Z', appVersion: '0.1.0', contentVersion: 'sha256:test', deviceId: 'd' };
@@ -78,5 +78,38 @@ describe('backup (§12)', () => {
     assert.equal(m.length, log.length);
     assert.deepEqual(mergeBackup(b, a), m);
     assert.deepEqual(mergeBackup(m, m), m);
+  });
+});
+
+describe('backup QA (M5): damaged files', () => {
+  test('an empty file is its own error, not "not JSON"', () => {
+    for (const s of ['', '   \n']) assert.deepEqual(parseBackup(s), { ok: false, error: 'empty file' });
+  });
+
+  test('one id with two different bodies inside a file: first (hlc,id) copy kept, the other quarantined, deterministic', () => {
+    const log = sampleLog();
+    const note = log[log.length - 1]!;
+    const evil = { ...note, text: 'edited by hand' };
+    const same = { ...log[0]! }; // identical duplicate: silently deduped, not a conflict
+    for (const order of [[...log, evil, same], [evil, same, ...log]]) {
+      const raw = JSON.parse(serializeBackup(makeBackup(log, META)));
+      raw.events = order;
+      raw.eventCount = order.length;
+      raw.checksum = eventsChecksum(order);
+      const r = parseBackup(JSON.stringify(raw));
+      assert.ok(r.ok);
+      assert.equal(r.events.length, log.length);
+      assert.equal(r.quarantine.length, 1);
+      assert.equal(r.quarantine[0]!.reason, DUPLICATE_ID_REASON);
+      const kept = r.events.find((e) => e.id === note.id)!;
+      const other = r.quarantine[0]!.raw as typeof note;
+      assert.notEqual(canonicalJson(kept), canonicalJson(other));
+    }
+    const pick = (order: AppEvent[]) => {
+      const raw = { ...JSON.parse(serializeBackup(makeBackup(log, META))), events: order, eventCount: order.length, checksum: eventsChecksum(order) };
+      const r = parseBackup(raw);
+      return r.ok ? canonicalJson(r.events.find((e) => e.id === note.id)) : '';
+    };
+    assert.equal(pick([...log, evil as AppEvent]), pick([evil as AppEvent, ...log]));
   });
 });

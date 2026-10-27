@@ -1,7 +1,7 @@
 // Backup / restore / manual-sync helpers (§12). Pure except for the stream-based gzip helpers,
 // which use the standard CompressionStream API (browsers and Node 18+).
 import type { AppEvent } from '@ksrs/srs-engine';
-import { canonicalJson, sha256Hex, DAY } from '@ksrs/srs-engine';
+import { canonicalJson, sha256Hex, DAY, DUPLICATE_ID_REASON } from '@ksrs/srs-engine';
 
 export const BACKUP_REMINDER_DAYS = 7;
 
@@ -47,10 +47,16 @@ export function restorePreview(local: readonly AppEvent[], incoming: readonly Ap
   };
 }
 
-/** Stable quarantine key: the event id when it has one, else a content hash. */
-export function quarantineKey(raw: unknown): string {
+/**
+ * Stable quarantine key: the event id when it has one, else a content hash. A second copy of
+ * an id with different content (`DUPLICATE_ID_REASON`) is keyed by id + content hash so it
+ * never overwrites another quarantined copy.
+ */
+export function quarantineKey(raw: unknown, reason?: string): string {
   const id = typeof raw === 'object' && raw !== null ? (raw as { id?: unknown }).id : undefined;
-  return typeof id === 'string' && id ? `id:${id}` : `h:${sha256Hex(canonicalJson(raw)).slice(0, 32)}`;
+  const h = (): string => sha256Hex(canonicalJson(raw)).slice(0, 32);
+  if (typeof id !== 'string' || !id) return `h:${h()}`;
+  return reason === DUPLICATE_ID_REASON ? `dup:${id}:${h()}` : `id:${id}`;
 }
 
 export function backupFilename(now: number, deviceName: string, gzip: boolean): string {
@@ -81,8 +87,13 @@ export async function decodeBackupFile(data: Blob | ArrayBuffer): Promise<string
   const head = new Uint8Array(buf, 0, Math.min(2, buf.byteLength));
   if (head[0] === 0x1f && head[1] === 0x8b) {
     if (typeof DecompressionStream === 'undefined') throw new Error('This browser cannot open .gz files; export without compression instead.');
-    const stream = new Blob([buf]).stream().pipeThrough(new DecompressionStream('gzip'));
-    return await new Response(stream).text();
+    try {
+      const stream = new Blob([buf]).stream().pipeThrough(new DecompressionStream('gzip'));
+      return await new Response(stream).text();
+    } catch {
+      // The browser's own message ("Failed to fetch", zlib codes) means nothing to the owner.
+      throw new Error('this .gz file is incomplete or damaged (perhaps it didn\'t finish downloading or copying). Nothing was imported');
+    }
   }
   return new TextDecoder().decode(buf);
 }
@@ -91,6 +102,7 @@ export async function decodeBackupFile(data: Blob | ArrayBuffer): Promise<string
 export function friendlyBackupError(error: string): string {
   if (/checksum/.test(error)) return 'This backup has been modified or damaged (checksum mismatch). Nothing was imported.';
   if (/eventCount/.test(error)) return 'This backup looks truncated (event count mismatch). Nothing was imported.';
+  if (/empty file/.test(error)) return 'That file is empty. Nothing was imported.';
   if (/not JSON/.test(error)) return 'That file isn\'t a readable backup (not JSON).';
   if (/not a ksrs backup/.test(error)) return 'That JSON file isn\'t a ksrs backup.';
   if (/formatVersion/.test(error)) return 'This backup was made by a newer version of the app. Update the app, then try again.';

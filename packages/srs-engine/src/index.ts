@@ -38,7 +38,7 @@ export {
 } from './session.ts';
 export {
   makeBackup, parseBackup, serializeBackup, mergeBackup, mergeEventSets, eventsChecksum,
-  BACKUP_FORMAT, BACKUP_FORMAT_VERSION, type BackupFile, type BackupMeta, type ParseBackupResult,
+  BACKUP_FORMAT, BACKUP_FORMAT_VERSION, DUPLICATE_ID_REASON, type BackupFile, type BackupMeta, type ParseBackupResult,
 } from './backup.ts';
 
 export {

@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { DAY, makeBackup, parseBackup, serializeBackup } from '@ksrs/srs-engine';
+import { DAY, DUPLICATE_ID_REASON, makeBackup, parseBackup, serializeBackup } from '@ksrs/srs-engine';
 import {
   backupDue, backupFilename, decodeBackupFile, encodeBackup, friendlyBackupError, quarantineKey, restorePreview,
 } from '../src/data/backup.ts';
@@ -77,4 +77,22 @@ test('restore preview flags same-id events whose content differs (local copy is 
   assert.equal(p.fresh, 0);
   assert.equal(p.conflicts, 1);
   assert.equal(restorePreview([a!, b!], [a!, b!], 0).conflicts, 0);
+});
+
+test('QA: an empty file and a truncated .gz get plain-language errors', async () => {
+  assert.match(friendlyBackupError(parseBackup('').ok ? '' : 'empty file'), /empty/);
+  const backup = serializeBackup(makeBackup(log(), { createdAt: 'x', appVersion: 't', contentVersion: 'c', deviceId: 'd' }));
+  const gz = new Uint8Array(await (await encodeBackup(backup, true)).arrayBuffer());
+  await assert.rejects(decodeBackupFile(gz.slice(0, Math.floor(gz.length / 2)).buffer), /incomplete or damaged/);
+});
+
+test('QA: a conflicting duplicate never shares a quarantine key with the id it duplicates', () => {
+  const [a] = log();
+  const other = { ...a!, itemId: 'v:다른' };
+  assert.equal(quarantineKey(a), `id:${a!.id}`);
+  const k1 = quarantineKey(a, DUPLICATE_ID_REASON);
+  const k2 = quarantineKey(other, DUPLICATE_ID_REASON);
+  assert.match(k1, /^dup:/);
+  assert.notEqual(k1, k2);
+  assert.equal(k1, quarantineKey({ ...a! }, DUPLICATE_ID_REASON));
 });

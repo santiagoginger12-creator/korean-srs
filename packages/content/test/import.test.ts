@@ -351,6 +351,15 @@ describe('importCsv: spreadsheet quirks (QA)', () => {
     const again = importCsv('vocab', text, ctx(existing));
     assert.deepEqual(diffItems(existing, again.items), { added: [], changed: [], unchanged: [first.items[0]!.id] });
 
+    // The same rows from a renamed copy (browsers save "words (1).csv") are still unchanged.
+    const fileSrc = (name: string) => ({ kind: 'import' as const, license: 'user-provided', attribution: `Imported from ${name}` });
+    const viaFile = importCsv('vocab', text, ctx(new Map(), { defaultSource: fileSrc('words.csv') }));
+    const had = new Map<ItemId, Item>(viaFile.items.map((it) => [it.id, it]));
+    const renamed = importCsv('vocab', text, ctx(had, { defaultSource: fileSrc('words (1).csv') }));
+    assert.deepEqual(diffItems(had, renamed.items), { added: [], changed: [], unchanged: [viaFile.items[0]!.id] });
+    // A brand-new item still gets this file's attribution.
+    assert.equal(importCsv('vocab', text, ctx(new Map(), { defaultSource: fileSrc('b.csv') })).items[0]!.source.attribution, 'Imported from b.csv');
+
     const seedVocab = SEED.find((it): it is VocabItem => it.kind === 'vocab')!;
     const clash = importCsv('vocab', `id,level,word,meanings,pos\n${seedVocab.id},1,${seedVocab.word},changed meaning,${seedVocab.pos}\n`, ctx());
     assert.deepEqual(errors(clash), []);

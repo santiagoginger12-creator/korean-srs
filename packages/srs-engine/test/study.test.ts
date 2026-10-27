@@ -225,4 +225,32 @@ describe('partial custom items (QA)', () => {
     assert.deepEqual(s.customItems.get('v:빈'), partial[0]); // the raw item is kept (export, sync)
     assert.doesNotThrow(() => { dueItems(s, T0 + 30 * DAY); troubleItems(s, 50, T0); availableLessons(s.index, s); });
   });
+
+  test('malformed prompts inside a non-empty prompt list are repaired or dropped (cloze without sentence crashed reviews)', async () => {
+    const { repairCustomItem, buildQuestions } = await import('../src/index.ts');
+    const item = {
+      id: 'g:틀', kind: 'grammar', level: 1, pattern: '-틀', questionTypes: ['meaning', 'production', 'cloze', 'nuance', 'register'],
+      questions: {
+        meaning: { accepted: ['frame', 3] }, production: { accepted: ['틀'] },
+        cloze: [{ id: 'c1' }, { id: 'c2', sentence: '그{{}}', accepted: ['는'] }],
+        nuance: [{ id: 'n1', options: [{ text: 'a', correct: true }] }, { id: 'n2', situation: 's', options: [{ text: 'a', correct: true }, { text: 'b' }, 7] }],
+        register: [{ id: 'r1', source: '했다', accepted: ['했어요'], features: [{ kind: 'endsWith' }, null] }, { id: 'r2' }],
+      },
+      examples: [{ ko: '예' }, {}, null], contrasts: [{ id: 'g:x' }], attachment: [{}],
+    };
+    const r = repairCustomItem(item as never) as unknown as { questions: Record<string, unknown[]>; questionTypes: string[]; examples: unknown[] };
+    assert.deepEqual(r.questionTypes, ['meaning', 'production', 'cloze', 'nuance', 'register']);
+    assert.deepEqual((r.questions.cloze as { id: string }[]).map((p) => p.id), ['c2']);
+    assert.deepEqual((r.questions.nuance as { id: string }[]).map((p) => p.id), ['n2']);
+    assert.deepEqual((r.questions.register as { id: string }[]).map((p) => p.id), ['r1']);
+    assert.deepEqual(r.examples, [{ ko: '예', en: '' }]);
+    const s = replayAll(FIXTURE, [device('a')({ type: 'customItem.upsert', item: item as never }, T0)]);
+    for (let i = 0; i < 20; i++) {
+      const qs = buildQuestions(s.index.byId.get('g:틀')!, s, ['meaning', 'production', 'cloze', 'nuance', 'register'], `seed${i}`);
+      assert.equal(qs.length, 5);
+    }
+    // Only a cloze list with no usable prompt at all removes the qtype.
+    const none = repairCustomItem({ ...item, questions: { cloze: [{ id: 'c1' }] }, questionTypes: ['cloze'] } as never) as unknown as { questionTypes: string[] };
+    assert.deepEqual(none.questionTypes, []);
+  });
 });

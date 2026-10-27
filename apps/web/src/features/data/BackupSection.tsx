@@ -94,7 +94,7 @@ export function BackupSection(): JSX.Element {
               {p.range && <><dt>Dates</dt><dd>{localDateTime(p.range.from)} – {localDateTime(p.range.to)}</dd></>}
               <dt>Devices</dt><dd>{p.devices.map((d) => `${d.deviceId === app.deviceId ? 'this device' : d.deviceId} (${d.count})`).join(', ') || '—'}</dd>
               {p.conflicts > 0 && <><dt>Conflicts</dt><dd className="warn-text" data-testid="preview-conflicts">{p.conflicts} event{p.conflicts === 1 ? '' : 's'} differ from this device's copy (the file may be damaged or edited); Merge keeps this device's version</dd></>}
-              {p.quarantined > 0 && <><dt>Quarantined</dt><dd className="warn-text">{p.quarantined} from a newer app or malformed; kept, not applied</dd></>}
+              {p.quarantined > 0 && <><dt>Quarantined</dt><dd className="warn-text">{p.quarantined} from a newer app, malformed, or a second copy of an event with different content; kept, not applied</dd></>}
             </dl>
             <fieldset className="field"><legend>How</legend>
               <div className="segmented">
@@ -112,7 +112,7 @@ export function BackupSection(): JSX.Element {
             )}
             <div className="row">
               <button type="button" className="btn btn-primary" onClick={() => void apply()} disabled={busy || (mode === 'replace' && confirmText !== 'REPLACE')} data-testid="apply-restore">
-                {mode === 'merge' ? `Merge ${p.fresh} new event${p.fresh === 1 ? '' : 's'}` : 'Replace everything'}
+                {busy ? 'Working… (large backups take a while)' : mode === 'merge' ? `Merge ${p.fresh} new event${p.fresh === 1 ? '' : 's'}` : 'Replace everything'}
               </button>
               <button type="button" className="btn-text" onClick={() => setPending(null)}>Cancel</button>
             </div>

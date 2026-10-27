@@ -63,6 +63,9 @@ export function serializeBackup(b: BackupFile): string {
   return canonicalJson(b);
 }
 
+/** Quarantine reason for a second copy of an event id with different content (damaged/edited file). */
+export const DUPLICATE_ID_REASON = 'duplicate id with different content';
+
 export type ParseBackupResult =
   | { ok: true; meta: BackupMeta; events: AppEvent[]; quarantine: { raw: unknown; reason: string }[] }
   | { ok: false; error: string };
@@ -75,6 +78,7 @@ export type ParseBackupResult =
 export function parseBackup(json: string | unknown): ParseBackupResult {
   let raw: unknown = json;
   if (typeof json === 'string') {
+    if (json.trim() === '') return { ok: false, error: 'empty file' };
     try { raw = JSON.parse(json); } catch { return { ok: false, error: 'not JSON' }; }
   }
   if (typeof raw !== 'object' || raw === null) return { ok: false, error: 'not an object' };
@@ -99,6 +103,30 @@ export function parseBackup(json: string | unknown): ParseBackupResult {
   }
   const { valid, invalid } = validateLog(candidates);
   for (const x of invalid) quarantine.push({ raw: x.raw, reason: x.error });
+  // Events are immutable, so one id with two different bodies means a damaged or hand-edited
+  // file. Keep one copy, chosen by (hlc, canonical JSON) so the choice doesn't depend on the
+  // order inside the file, and quarantine the others instead of silently dropping them (QA M5).
+  let sorted = sortEvents(valid);
+  if (sorted.length < valid.length) {
+    const best = new Map<string, { e: AppEvent; c: string }>();
+    const copies = new Map<string, Map<string, AppEvent>>();
+    const counts = new Map<string, number>();
+    for (const e of valid) counts.set(e.id, (counts.get(e.id) ?? 0) + 1);
+    for (const e of valid) {
+      if (counts.get(e.id)! < 2) continue;
+      const c = canonicalJson(e);
+      const m = copies.get(e.id) ?? new Map<string, AppEvent>();
+      m.set(c, e);
+      copies.set(e.id, m);
+      const cur = best.get(e.id);
+      if (!cur || e.hlc < cur.e.hlc || (e.hlc === cur.e.hlc && c < cur.c)) best.set(e.id, { e, c });
+    }
+    for (const [id, m] of copies) {
+      const keep = best.get(id)!;
+      for (const [c, e] of m) if (c !== keep.c) quarantine.push({ raw: e, reason: DUPLICATE_ID_REASON });
+    }
+    sorted = sortEvents(valid.filter((e) => !best.has(e.id) || e === best.get(e.id)!.e));
+  }
 
   const app = (typeof b.app === 'object' && b.app !== null ? b.app : {}) as Record<string, unknown>;
   return {
@@ -107,7 +135,7 @@ export function parseBackup(json: string | unknown): ParseBackupResult {
       createdAt: String(b.createdAt ?? ''), appVersion: String(app.version ?? ''),
       contentVersion: String(app.contentVersion ?? ''), deviceId: String(b.deviceId ?? ''),
     },
-    events: sortEvents(valid),
+    events: sorted,
     quarantine,
   };
 }

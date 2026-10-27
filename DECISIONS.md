@@ -86,3 +86,21 @@ Append-only log of tradeoffs. Newest at the bottom.
 48. **D48: Light-mode `--muted` darkened to #686b72** (≈5:1 on the background and card) so small labels and chart axes meet WCAG AA.
 49. **D49: e2e fixture seed grown to 15 items over 2 levels** (10 gating in L1), so level-up can be tested at 8/10 (no) vs 9/10 (yes). The exact 90% arithmetic is unit-tested in the engine and probed on the real seed (45/51 no, 46/51 yes).
 50. **D50: Known minor gap.** In half-hour time zones (e.g. India), forecast hour labels read ":00" for buckets that start at :30. This doesn't affect the owner (New York / Seoul).
+
+## M5 (2026-10-27)
+
+51. **D51: Import pipeline.** CSV/JSON import lives in `@ksrs/content/import` (pure, no deps). One CSV per kind, with header-named columns, `|` for multi-values and `ko::en` pairs. Nuance, register and multi-cloze prompts go in a `questions_json` column, so everything round-trips. Exports include a BOM for Excel. Hanja must be imported before the vocab that links to them. See packages/content/IMPORT.md.
+52. **D52: Draft tolerance.** Items whose source isn't `original` (user, import, krdict) get a *warning*, not an error, for fewer than 2 examples. KRDict drafts are `needs_review: true` and `gating: false`. `repairCustomItem` repairs or drops malformed prompts, examples, collocations and attachments in custom items at index time, so imported or synced data can never crash lessons, reviews or item pages.
+53. **D53: Settings beyond the frozen M1 keys** (`inbox.dismissed`, `tts.autoplay`, `tts.rate`, `tts.voiceURI`) go through `settingPayload()` and are coerced on replay (`AppSettings`, a superset of `Settings`). `events.ts` is unchanged.
+54. **D54: Variants inbox.** Built from live `review.answer` events with `check.layer === 'variant'`. Promote = `userAnswer.add`, normalized like the checker. Dismissing hides every entry with the same (item, qtype, normalized response). Dismissals are LWW via settings and survive merges.
+55. **D55: Backup, restore and manual sync.**
+    - Merge is an event-set union. Replace is atomic (one IndexedDB transaction) and also clears an open session and any "+5" extras.
+    - Duplicate ids inside one file: one copy is kept deterministically, and the other is quarantined and reported.
+    - Future-version events are quarantined and included in later backups, so they're never lost. A quarantined copy never overwrites an existing event.
+    - Projections compare in canonical form. Manual sync is the same flow, run in both directions.
+56. **D56: IndexedDB schema v2** adds `secrets` (never exported or backed up) and `quarantine`. The v1→v2 upgrade is verified to preserve data.
+57. **D57: KRDict.** The app tries a browser fetch first. The API likely blocks it (CORS), so the fallbacks are pasting the XML or uploading a file (API search/view XML, the downloadable LMF XML, or JSON). Attribution: 한국어기초사전 (국립국어원), CC BY-SA 2.0 KR.
+58. **D58: Known limits.**
+    - A 50k-event restore takes about 40 s in this sandbox, IndexedDB-bound, with about 1.4 s of main-thread parsing. That parsing could move to a background worker later.
+    - On a merge conflict (same id, different content), the local copy wins and the conflict is reported, not quarantined.
+    - WebKit/iOS remains untested.

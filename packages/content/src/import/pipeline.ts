@@ -120,6 +120,13 @@ export function finalize(cands: readonly Candidate[], ctx: ImportContext, issues
       push({ row: c.row, id, path: 'kind', msg: `id already belongs to a ${ex.kind} item`, severity: 'error' });
       continue;
     }
+    // Re-importing an item whose row has no source of its own keeps the source it already has
+    // (QA M5): otherwise the same rows from a renamed copy ("words (1).csv") show every item
+    // as changed only because the default attribution names the file.
+    if (ex && ex.source.kind === ctx.defaultSource.kind && stableJson(r.item.source) === stableJson(ctx.defaultSource)) {
+      accepted.push({ ...r.item, source: ex.source });
+      continue;
+    }
     accepted.push(r.item);
   }
 
