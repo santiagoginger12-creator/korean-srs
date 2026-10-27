@@ -3,6 +3,7 @@ import { useState, type ChangeEvent } from 'react';
 import { parseBackup, type AppEvent } from '@ksrs/srs-engine';
 import { canGzip, decodeBackupFile, friendlyBackupError, restorePreview, type RestorePreview } from '../../data/backup.ts';
 import { downloadBlob } from '../../data/files.ts';
+import { isArtifact } from '../../host.ts';
 import { localDateTime } from '../../state/format.ts';
 import { useApp } from '../../state/hooks.ts';
 import { store } from '../../state/store.ts';
@@ -22,9 +23,11 @@ export function BackupSection(): JSX.Element {
   const doExport = async () => {
     setBusy(true); setMsg(null);
     try {
-      const r = await store.exportBackup(gzip);
-      downloadBlob(r.blob, r.filename);
-      setMsg({ kind: 'ok', text: `Saved ${r.events} events as ${r.filename}.` });
+      const r = await store.exportBackup(gzip && !isArtifact);
+      const saved = await downloadBlob(r.blob, r.filename);
+      setMsg(saved
+        ? { kind: 'ok', text: `Saved ${r.events} events as ${r.filename}.` }
+        : { kind: 'error', text: 'Backup not saved: the save was declined.' });
     } catch (e) { setMsg({ kind: 'error', text: `Export failed: ${(e as Error).message}` }); }
     finally { setBusy(false); }
   };
@@ -74,7 +77,7 @@ export function BackupSection(): JSX.Element {
         <p className="small" data-testid="last-backup">Last backup: {app.lastBackupAt ? localDateTime(app.lastBackupAt) : 'never'}</p>
         <div className="row">
           <button type="button" className="btn btn-primary" onClick={() => void doExport()} disabled={busy} data-testid="export-backup">Download backup</button>
-          {canGzip() && <label className="check"><input type="checkbox" checked={gzip} onChange={(e: { target: HTMLInputElement }) => setGzip(e.target.checked)} data-testid="gzip" /> Compress (.gz)</label>}
+          {canGzip() && !isArtifact && <label className="check"><input type="checkbox" checked={gzip} onChange={(e: { target: HTMLInputElement }) => setGzip(e.target.checked)} data-testid="gzip" /> Compress (.gz)</label>}
         </div>
       </section>
 

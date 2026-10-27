@@ -104,3 +104,13 @@ Append-only log of tradeoffs. Newest at the bottom.
     - A 50k-event restore takes about 40 s in this sandbox, IndexedDB-bound, with about 1.4 s of main-thread parsing. That parsing could move to a background worker later.
     - On a merge conflict (same id, different content), the local copy wins and the conflict is reported, not quarantined.
     - WebKit/iOS remains untested.
+
+## Hosted preview (2026-10-27)
+
+59. **D59: `KSRS_TARGET=artifact` build for a private claude.ai page.**
+    - Relative paths, no service worker or manifest, and Google Fonts Noto Sans/Serif KR (the page's CSP blocks the jsDelivr Pretendard CSS).
+    - The page content is emitted without a document skeleton.
+    - Files (backup, CSV templates, exports) go through the page's `downloads` capability (`src/host.ts`, `data/files.ts`), which asks the viewer to confirm.
+    - Backups are uncompressed `.ksrs.json` on that target, because `.gz` isn't an allowed save extension.
+    - Progress lives in that browser's IndexedDB for the page's origin. It survives republishes to the same URL, but not other browsers or devices. Use Backup/Merge to move it.
+    - The PWA build is unchanged.

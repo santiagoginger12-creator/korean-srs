@@ -25,10 +25,11 @@ export const PRETENDARD_CSS = 'https://cdn.jsdelivr.net/gh/orioncactus/pretendar
 export const buildId = (): string => process.env.KSRS_BUILD_ID
   ?? (JSON.parse(readFileSync(join(WEB_DIR, 'package.json'), 'utf8')) as { version: string }).version;
 
-export interface BuildOptions { base?: string; dev?: boolean; outDir?: string; quiet?: boolean }
+export interface BuildOptions { base?: string; dev?: boolean; outDir?: string; quiet?: boolean; target?: "pwa" | "artifact" }
 
 export function normalizeBase(b: string | undefined): string {
   let base = (b ?? '/').trim() || '/';
+  if (base === './' || base === '.') return './';
   if (!base.startsWith('/')) base = `/${base}`;
   if (!base.endsWith('/')) base = `${base}/`;
   return base;
@@ -78,7 +79,10 @@ function walkFiles(dir: string): string[] {
 }
 
 export async function build(opts: BuildOptions = {}): Promise<{ outDir: string; base: string; files: string[] }> {
-  const base = normalizeBase(opts.base ?? process.env.BASE);
+  // KSRS_TARGET=artifact: a private claude.ai page (D59): relative paths, no service worker or
+  // manifest, Google Fonts instead of the jsDelivr CSS (CSP), and no document skeleton.
+  const artifact = (opts.target ?? process.env.KSRS_TARGET) === 'artifact';
+  const base = artifact ? './' : normalizeBase(opts.base ?? process.env.BASE);
   const dev = !!opts.dev;
   const outDir = resolve(opts.outDir ?? join(WEB_DIR, 'dist'));
   const t0 = Date.now();
@@ -105,6 +109,7 @@ export async function build(opts: BuildOptions = {}): Promise<{ outDir: string; 
       __BASE__: JSON.stringify(base),
       __DEV__: JSON.stringify(dev),
       __BUILD_ID__: JSON.stringify(buildId()),
+      __ARTIFACT__: JSON.stringify(artifact),
     },
     logLevel: opts.quiet ? 'silent' : 'warning',
   });
@@ -166,7 +171,20 @@ ${css ? `<link rel="stylesheet" href="${url(css)}">` : ''}
 </body>
 </html>
 `;
-  writeFileSync(join(outDir, 'index.html'), html);
+  const artifactHtml = `<title>익히다</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Noto+Serif+KR:wght@500;700&display=swap">
+${css ? `<link rel="stylesheet" href="${url(css)}">` : ''}
+<div id="root"></div>
+<script type="module" src="${url(js)}"></script>
+`;
+  writeFileSync(join(outDir, 'index.html'), artifact ? artifactHtml : html);
+  if (artifact) {
+    for (const f of ['manifest.webmanifest']) rmSync(join(outDir, f), { force: true });
+    if (!opts.quiet) console.log(`built ${relative(ROOT, outDir)} (artifact target) in ${Date.now() - t0} ms`);
+    return { outDir, base, files: walkFiles(outDir).map(url) };
+  }
 
   // Service worker: precache every emitted file except maps; version = hash of their contents.
   const files = walkFiles(outDir).filter((f) => !f.endsWith('.map')).sort();

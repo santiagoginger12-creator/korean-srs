@@ -13,7 +13,8 @@
     "build:web": "tsx apps/web/build.ts",
     "dev:web": "tsx apps/web/dev.ts",
     "test:web": "tsx --test \"apps/web/test/**/*.test.ts\"",
-    "test:e2e": "tsx apps/web/tests/e2e/build-e2e.ts && cd apps/web && node node_modules/playwright/cli.js test -c playwright.config.ts"
+    "test:e2e": "tsx apps/web/tests/e2e/build-e2e.ts && cd apps/web && node node_modules/playwright/cli.js test -c playwright.config.ts",
+    "build:artifact": "KSRS_TARGET=artifact tsx apps/web/build.ts --out /tmp/claude-0/-home-claude/930e5698-216f-53cd-8a62-8a5b37138109/scratchpad/ksrs-artifact"
   },
   "devDependencies": {
     "typescript": "^5.6.0",
