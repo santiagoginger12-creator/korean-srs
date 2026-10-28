@@ -7,7 +7,7 @@ import {
   coerceSetting, compareEvents, DEFAULT_INTERVALS, eventItemId, sortEvents, SRS_SETTING_KEYS,
   type AppEvent, type EventOf,
 } from './events.ts';
-import { coerceAppSetting, defaultAppSettings, type AppSettings } from './settings.ts';
+import { coerceAppSetting, defaultAppSettings, EXT_PREFIX, type AppSettings } from './settings.ts';
 import { leechScore, LEECH_WINDOW_MS } from './leech.ts';
 import { wkAvailableAt } from './scheduler/wk.ts';
 import { getScheduler } from './scheduler/wk.ts';
@@ -67,6 +67,7 @@ interface Scan {
   voided: Set<string>;
   timeline: Timeline;
   settings: AppSettings;
+  ext: Map<string, unknown>;
   notes: Map<string, string>;
   userAnswers: Map<string, string[]>;
   customItems: Map<ItemId, Item>;
@@ -110,6 +111,7 @@ function scanLog(content: ContentBundle, events: readonly AppEvent[]): Scan {
   const live = voided.size ? sorted.filter((e) => !voided.has(e.id)) : sorted;
 
   const settings = defaultAppSettings();
+  const ext = new Map<string, unknown>();
   const notes = new Map<string, string>();
   const answerRegs = new Map<string, Map<string, boolean>>();
   const customItems = new Map<ItemId, Item>();
@@ -126,6 +128,10 @@ function scanLog(content: ContentBundle, events: readonly AppEvent[]): Scan {
         push(resolveId(R, e.itemId), e);
         break;
       case 'settings.set': {
+        if ((e.key as string).startsWith(EXT_PREFIX)) {
+          if (e.value === null || e.value === undefined) ext.delete(e.key); else ext.set(e.key, e.value);
+          break;
+        }
         const v = coerceAppSetting(e.key, e.value);
         // `inbox.dismissed` is a grow-only set (union of every write), not LWW: two devices that
         // dismiss different variants offline both keep their dismissals after a merge.
@@ -164,7 +170,7 @@ function scanLog(content: ContentBundle, events: readonly AppEvent[]): Scan {
   }
 
   return {
-    sorted, byId, voided, timeline: buildTimeline(live), settings, notes, userAnswers, customItems, itemEvents,
+    sorted, byId, voided, timeline: buildTimeline(live), settings, ext, notes, userAnswers, customItems, itemEvents,
     lastHlc: sorted.length ? sorted[sorted.length - 1]!.hlc : '',
   };
 }
@@ -253,7 +259,7 @@ function assemble(scan: Scan, index: ContentIndex, items: Map<ItemId, ItemState>
   const { userLevel, unlocked } = computeUnlocks(index, items);
   return {
     items, userLevel, unlocked,
-    notes: scan.notes, settings: scan.settings, userAnswers: scan.userAnswers, customItems: scan.customItems,
+    notes: scan.notes, settings: scan.settings, ext: scan.ext, userAnswers: scan.userAnswers, customItems: scan.customItems,
     lastHlc: scan.lastHlc, index, flags: { fsrsFallback: scan.timeline.anyFsrs },
   };
 }

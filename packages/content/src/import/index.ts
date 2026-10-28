@@ -6,3 +6,7 @@ export { importJson, importItems, diffItems, generateId, idSlug } from './pipeli
 export {
   parseKrdictXml, parseKrdict, krdictToVocab, krdictUrl, KRDICT_SOURCE, type KrdictSense,
 } from './krdict.ts';
+export {
+  MASTER_COLUMNS, MASTER_STATUSES, MASTER_HEADER, parseMasterCsv, serializeMasterCsv, masterCells, stripFences, meaningAnswers,
+  sessionWordItem, type MasterColumn, type MasterStatus, type MasterRow, type MasterIssue, type MasterParseResult,
+} from './master.ts';

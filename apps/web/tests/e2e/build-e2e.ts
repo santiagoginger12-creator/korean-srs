@@ -1,6 +1,7 @@
 // Builds the e2e targets outside dist/ (so the real deploy build is never clobbered):
 //   node_modules/.e2e/fixture   ← tests/e2e/fixture-seed (frozen fixture; behaviour tests)
 //   node_modules/.e2e/real      ← packages/content/seed (live seed; smoke test + screenshots)
+//   node_modules/.e2e/artifact  ← fixture seed, KSRS_TARGET=artifact (hosted-page download path)
 //   node_modules/.e2e/update-a, update-b ← fixture seed with two build ids, for the SW update
 //     prompt test; the test copies one of them into node_modules/.e2e/update, which is served.
 // Respects BASE like the normal build.
@@ -13,6 +14,8 @@ const FIXTURE = join(WEB_DIR, 'tests/e2e/fixture-seed');
 
 process.env.KSRS_SEED_DIR = FIXTURE;
 await build({ outDir: join(E2E_OUT, 'fixture') });
+// The hosted claude.ai page target (D59) on the fixture seed: files go through `downloads`.
+await build({ outDir: join(E2E_OUT, 'artifact'), target: 'artifact', quiet: true });
 for (const v of ['a', 'b']) {
   process.env.KSRS_BUILD_ID = `e2e-${v}`;
   await build({ outDir: join(E2E_OUT, `update-${v}`), quiet: true });

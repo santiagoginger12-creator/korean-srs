@@ -7,6 +7,7 @@ import { APP_VERSION, store } from '../../state/store.ts';
 import { BackupSection } from './BackupSection.tsx';
 import { ImportSection } from './ImportSection.tsx';
 import { KrdictSection } from './KrdictSection.tsx';
+import { MasterSection } from './MasterSection.tsx';
 
 export function DataPage(): JSX.Element {
   const app = useApp();
@@ -26,6 +27,7 @@ export function DataPage(): JSX.Element {
       </section>
       <BackupSection />
       {app.quarantineCount > 0 && <QuarantineList count={app.quarantineCount} />}
+      <MasterSection />
       <ImportSection />
       <KrdictSection />
     </div>

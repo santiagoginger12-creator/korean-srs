@@ -220,3 +220,28 @@ export function wrongOnce(b: Bundle, match: (q: Q) => boolean): (q: Q) => string
     return wrongAnswer(b, q);
   };
 }
+
+// ---------------------------------------------------------------- master list
+
+export const HEADER = 'word,meaning,hanja,pos,status,times_missed,times_seen,last_seen,freq_rank,sources,tags,notes';
+export const FIXTURE_VOCAB = ['결재', '결제', '재량', '얼버무리다', '망설이다', '덤', '결심'];
+
+export function baselineCsv(): string {
+  return [
+    HEADER,
+    '걸치다,"to extend, stretch; to wear",,verb/adj,learning,78,320,2026-08-15,5309,anki,leech shaky,',
+    ...FIXTURE_VOCAB.map((w, i) => `${w},${w} gloss,,noun,mastered,7,20,2026-08-0${i + 1},${1000 + i},anki,,`),
+    '겨우,barely,,adverb,new,0,0,,800,anki,,',
+    '가랑비에 옷 젖는 줄 모른다,small things add up,,속담,new,0,0,,,app,app-L1,',
+  ].join('\r\n') + '\r\n';
+}
+
+export async function importBaseline(page: Page, csv = baselineCsv()): Promise<void> {
+  await page.evaluate(() => { location.hash = '#/data'; });
+  await expect(page.getByTestId('master-card')).toBeVisible();
+  await page.getByTestId('baseline-file').setInputFiles({ name: 'korean_master_vocab.csv', mimeType: 'text/csv', buffer: Buffer.from(csv) });
+  await expect(page.getByTestId('baseline-preview')).toBeVisible();
+  await page.getByTestId('baseline-confirm').click();
+  await expect(page.getByTestId('master-msg')).toContainText('as the Anki baseline');
+}
+

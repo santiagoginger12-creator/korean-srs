@@ -252,9 +252,10 @@ test('real seed validates with zero errors', () => {
   assert.deepEqual(seed.loadErrors, []);
   const r = validateBundle(seed.raws, { origins: seed.origins, idRedirects: seed.idRedirects });
   assert.deepEqual(r.errors, []);
-  // M2 seed scope (§9.4): levels 1–3.
-  assert.equal(r.counts.total, 200);
-  assert.deepEqual(r.counts.byKind, { vocab: 120, grammar: 30, expression: 20, hanja: 30 });
+  // M2 seed scope (§9.4): levels 1–3, plus L04 (native-verb track: 64 sense-level vocab items).
+  assert.equal(r.counts.total, 264);
+  assert.deepEqual(r.counts.byKind, { vocab: 184, grammar: 30, expression: 20, hanja: 30 });
+  assert.deepEqual(r.counts.byLevel[4], { vocab: 64, grammar: 0, expression: 0, hanja: 0 });
 });
 
 test('real seed passes the answer-check self-check (when available)', async (t) => {

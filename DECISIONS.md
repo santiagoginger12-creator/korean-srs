@@ -114,3 +114,16 @@ Append-only log of tradeoffs. Newest at the bottom.
     - Backups are uncompressed `.ksrs.json` on that target, because `.gz` isn't an allowed save extension.
     - Progress lives in that browser's IndexedDB for the page's origin. It survives republishes to the same URL, but not other browsers or devices. Use Backup/Merge to move it.
     - The PWA build is unchanged.
+
+## Anki integration (2026-10-28)
+
+60. **D60: Imported extras interleave with the curriculum.** Non-gating, non-original items (e.g. the personal Anki "shaky words" import) no longer queue ahead of curriculum lessons. After hanja, lessons alternate between 3 curriculum items and 2 extras, and the daily cap still applies. This amends the §7.3 lesson order.
+61. **D61: Master list sync.** The master vocab CSV (docs/MASTER_LIST.md) is a deterministic export from three sources:
+    - the frozen Anki baseline, stored in `ext.master.baseline`, compressed
+    - app history
+    - recorded session rows, one `ext.` key per block, keyed by the block's hash, so pasting the same block twice is a no-op
+    
+    No new event types were added (D22). Status rules: a word mastered in Anki stays mastered until new misses are recorded, ≥ 8 total misses means `learning`, and suspended stays suspended. Removing a recorded block also removes the unstudied lesson items it created. The CSV uses CRLF and no BOM, to match the owner's file.
+62. **D62: Level 4 is a native-verb track** built from the owner's Anki leeches: 64 sense-level items covering 30 verbs and 8 adverbs, all cloze-led, with sense ids such as `v:걸치다:span`. Later senses unlock after the earlier sense reaches Guru.
+    - **Known schema gaps:** no sense-hint field for meaning prompts, and no sibling relation for vocab. Siblings use `verb:` tags for now.
+    - **Personal imports never reuse curriculum ids.** The import generator skips words and ids already in the seed.

@@ -21,12 +21,29 @@ export function isLeech(st: ItemState, now?: number): boolean {
   return score >= LEECH_MIN_SCORE;
 }
 
-/** Leeches sorted by score (desc), then item id. Pass `now` to score against the current time. */
+/** Item tag of the owner's private Anki import of shaky words: known leeches before the app saw them. */
+export const ANKI_SHAKY_TAG = 'anki-shaky';
+/**
+ * Known leeches (tagged `anki-shaky`) join the trouble list as soon as they're missed in the app,
+ * without the usual 4-review minimum, and stay until the score drops below this: one recent
+ * miss scores 1, then 0.35 after two clean reviews and 0.19 after three, when it leaves.
+ */
+export const PRIOR_LEECH_MIN_SCORE = 0.25;
+
+/**
+ * Leeches sorted by score (desc), then item id. Pass `now` to score against the current time.
+ * Also includes `anki-shaky` items with a recent app miss (PRIOR_LEECH_MIN_SCORE).
+ */
 export function troubleItems(s: DerivedState, limit = 20, now?: number): { itemId: ItemId; score: number }[] {
   const out: { itemId: ItemId; score: number }[] = [];
   for (const st of s.items.values()) {
-    if (!isLeech(st, now)) continue;
+    if (st.kind === 'hanja') continue;
     const score = now === undefined ? st.leechScore : leechScore(st.recentIncorrectAts, st.stats.streak, now);
+    if (!isLeech(st, now)) {
+      const tags = s.index.byId.get(st.itemId)?.tags;
+      const prior = st.stats.incorrect > 0 && Array.isArray(tags) && tags.includes(ANKI_SHAKY_TAG);
+      if (!prior || score < PRIOR_LEECH_MIN_SCORE) continue;
+    }
     out.push({ itemId: st.itemId, score });
   }
   out.sort((a, b) => b.score - a.score || (a.itemId < b.itemId ? -1 : a.itemId > b.itemId ? 1 : 0));

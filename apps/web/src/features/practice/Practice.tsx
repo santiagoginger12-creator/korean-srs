@@ -2,7 +2,7 @@
 // "Practice — not scheduled". Sources: recent lessons, trouble list, or a level/kind/stage filter.
 import { useReducer, useState } from 'react';
 import type { ItemKind } from '@ksrs/content';
-import { buildQuestions, emptySession, sessionReducer, type ReviewSession, type SessionAction, type StartItem } from '@ksrs/srs-engine';
+import { ANKI_SHAKY_TAG, buildQuestions, emptySession, sessionReducer, type ReviewSession, type SessionAction, type StartItem } from '@ksrs/srs-engine';
 import { extraStudy, type PracticeSource } from '../../data/contract.ts';
 import { navigate } from '../../router.ts';
 import { now } from '../../state/clock.ts';
@@ -16,16 +16,18 @@ export const PRACTICE_LIMIT = 20;
 export function Practice({ preset }: { preset?: 'trouble' | 'recent' }): JSX.Element {
   const app = useApp();
   const d = app.derived!;
-  const [kind, setKind] = useState<'recentLessons' | 'trouble' | 'filter'>(preset === 'trouble' ? 'trouble' : 'recentLessons');
+  const [kind, setKind] = useState<'recentLessons' | 'trouble' | 'filter' | 'tag'>(preset === 'trouble' ? 'trouble' : 'recentLessons');
   const [days, setDays] = useState(3);
   const [level, setLevel] = useState<number | ''>('');
   const [itemKind, setItemKind] = useState<ItemKind | ''>('');
   const [stage, setStage] = useState<typeof STAGE_GROUPS[number] | ''>('');
   const [sess, dispatch] = useReducer(reducer, undefined, emptySession);
   const [empty, setEmpty] = useState(false);
+  const hasShaky = [...d.index.byId.values()].some((it) => it.kind !== 'hanja' && Array.isArray(it.tags) && it.tags.includes(ANKI_SHAKY_TAG));
 
   const start = () => {
     const src: PracticeSource = kind === 'recentLessons' ? { kind, days } : kind === 'trouble' ? { kind, limit: PRACTICE_LIMIT }
+      : kind === 'tag' ? { kind, tag: ANKI_SHAKY_TAG }
       : { kind, ...(level !== '' ? { level } : {}), ...(itemKind ? { itemKind } : {}), ...(stage ? { stageGroup: stage } : {}) };
     const t = now();
     const seed = `practice|${t}`;
@@ -59,9 +61,10 @@ export function Practice({ preset }: { preset?: 'trouble' | 'recent' }): JSX.Ele
       <div className="card form">
         <fieldset className="field"><legend>What to practise</legend>
           <div className="segmented">
-            {([['recentLessons', 'Recent lessons'], ['trouble', 'Trouble items'], ['filter', 'Filter']] as const).map(([k, label]) => (
-              <label key={k} className={kind === k ? 'on' : ''}><input type="radio" name="src" checked={kind === k} onChange={() => setKind(k)} />{label}</label>
-            ))}
+            {([['recentLessons', 'Recent lessons'], ['trouble', 'Trouble items'], ['filter', 'Filter'], ['tag', 'Anki shaky words']] as const)
+              .filter(([k]) => k !== 'tag' || hasShaky).map(([k, label]) => (
+                <label key={k} className={kind === k ? 'on' : ''}><input type="radio" name="src" checked={kind === k} onChange={() => setKind(k)} data-testid={`src-${k}`} />{label}</label>
+              ))}
           </div>
         </fieldset>
         {kind === 'recentLessons' && (
@@ -90,6 +93,7 @@ export function Practice({ preset }: { preset?: 'trouble' | 'recent' }): JSX.Ele
             </label>
           </>
         )}
+        {kind === 'tag' && <p className="muted small">Your imported Anki shaky words (tag <code>{ANKI_SHAKY_TAG}</code>), lesson or not; the ones you've missed in the app come first.</p>}
         <button type="button" className="btn btn-primary" onClick={start} data-testid="start-practice">Start practice</button>
         {empty && <p className="muted" role="status" data-testid="practice-empty">Nothing matches yet. Learn some lessons first, or widen the filter.</p>}
       </div>

@@ -66,7 +66,9 @@ export function variantsInbox(s: DerivedState, events: readonly AppEvent[]): Var
 export type ExtraStudySource =
   | { kind: 'recentLessons'; days: number }
   | { kind: 'trouble'; limit: number }
-  | { kind: 'filter'; level?: number; itemKind?: ItemKind; stageGroup?: StageGroup };
+  | { kind: 'filter'; level?: number; itemKind?: ItemKind; stageGroup?: StageGroup }
+  /** Every reviewable item with this tag, lesson or not (practice emits no events): app-missed first, worst first. */
+  | { kind: 'tag'; tag: string };
 
 const byId = (a: ItemState, b: ItemState) => (a.itemId < b.itemId ? -1 : a.itemId > b.itemId ? 1 : 0);
 
@@ -91,6 +93,15 @@ export function extraStudyItems(s: DerivedState, src: ExtraStudySource, now: num
     case 'trouble': {
       const ok = new Set(pool.map((st) => st.itemId));
       ranked = troubleItems(s, Math.max(0, src.limit), now).map((t) => t.itemId).filter((id) => ok.has(id));
+      break;
+    }
+    case 'tag': {
+      const tagged = [...s.index.byId.values()]
+        .filter((it) => it.kind !== 'hanja' && Array.isArray(it.tags) && it.tags.includes(src.tag)).map((it) => it.id).sort();
+      const missed = tagged.map((id) => s.items.get(id)).filter((st): st is ItemState => !!st && st.stats.incorrect > 0)
+        .sort((a, b) => b.leechScore - a.leechScore || b.stats.incorrect - a.stats.incorrect || byId(a, b)).map((st) => st.itemId);
+      const first = new Set(missed);
+      ranked = [...missed, ...seededShuffle(tagged.filter((id) => !first.has(id)), `${seed}#pick`)];
       break;
     }
     case 'filter':

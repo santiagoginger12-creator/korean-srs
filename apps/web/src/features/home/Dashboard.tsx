@@ -11,6 +11,7 @@ import { store } from '../../state/store.ts';
 import { backupDue } from '../../data/backup.ts';
 import { inboxEntries } from '../../data/contract.ts';
 import { troubleRows } from '../../state/trouble.ts';
+import { MasterLine } from './MasterLine.tsx';
 
 const MAX_REMAINING_CHIPS = 12;
 
@@ -73,6 +74,8 @@ export function Dashboard(): JSX.Element {
           {trouble > 0 && <a className="pill on-soft" href="#/trouble" data-testid="trouble-link">Trouble items <span className="count">{trouble}</span></a>}
         </nav>
       )}
+
+      <MasterLine />
 
       <div className="tiles">
         <section className="tile tile-lessons" data-testid="lessons-tile">

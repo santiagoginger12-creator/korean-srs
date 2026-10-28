@@ -25,7 +25,7 @@ export { computeUnlocks, levelProgress, availableLessons, unlockDepsOf, LEVEL_TH
 export { dueItems } from './queue.ts';
 export { relatedItems, type RelatedItems } from './related.ts';
 export { forecast, stageCounts, stageGroup, type ForecastBucket, type StageGroup } from './forecast.ts';
-export { leechScore, isLeech, troubleItems, LEECH_MIN_REVIEWS, LEECH_MIN_SCORE } from './leech.ts';
+export { leechScore, isLeech, troubleItems, LEECH_MIN_REVIEWS, LEECH_MIN_SCORE, ANKI_SHAKY_TAG, PRIOR_LEECH_MIN_SCORE } from './leech.ts';
 export {
   dailyLessonCap, secPerQEstimates, rollingAccuracy, itemCost, requiredQTypes, DEFAULT_SEC_PER_Q,
   type LessonCapReport,
@@ -42,7 +42,7 @@ export {
 } from './backup.ts';
 
 export {
-  defaultAppSettings, coerceAppSetting, settingPayload, EXTRA_SETTING_DEFAULTS,
+  defaultAppSettings, coerceAppSetting, settingPayload, extPayload, EXT_PREFIX, EXTRA_SETTING_DEFAULTS,
   type AppSettings, type AppSettingKey, type ExtraSettings,
 } from './settings.ts';
 export {
@@ -52,3 +52,10 @@ export {
 
 export { localDayStart, nextLocalDayStart, localDayBoundaries, type TzOffset } from './time.ts';
 export { floorHour, seededShuffle, canonicalJson, sha256Hex, MINUTE, HOUR, DAY } from './util.ts';
+export {
+  MASTER_EXT_BASELINE, MASTER_EXT_SESSION_PREFIX, MASTER_EXT_LAST_EXPORT, MASTER_LEECH_MISSES,
+  readMasterExt, sessionKey, baselineRows, statusCounts, appWords, localDate, buildMasterList, compareMasterRows,
+  sessionHash, planSession, itemsForWord,
+  type BaselineBlob, type SessionRowRec, type SessionRecord, type SessionSource, type LastExport, type MasterExt,
+  type AppWord, type MasterInputs,
+} from './master.ts';

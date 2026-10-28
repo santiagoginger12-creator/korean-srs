@@ -59,6 +59,11 @@ export interface DerivedState {
   lastHlc: HLC;
   /** Additions to §7.2: the content index (bundle + custom items) used by this projection… */
   index: ContentIndex;
+  /**
+   * `settings.set` values under the `ext.` namespace (D22 forward-compatible keys), LWW per key,
+   * stored as written (no coercion; readers validate). A `null` value deletes the key.
+   */
+  ext: Map<string, unknown>;
   /** …and engine flags. fsrsFallback: an 'fsrs' scheduler setting exists but WK was used (D19). */
   flags: { fsrsFallback: boolean };
 }

@@ -384,3 +384,10 @@ textarea { resize: vertical; }
 .trouble-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 6px; }
 .btn-danger { background: var(--bad); color: var(--surface); }
 .confirm { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: .9rem; }
+
+/* Master list (Data page) and its dashboard line */
+.master-line { margin: -4px 0 12px; }
+.master-line a { font-weight: 600; }
+.master h4 { margin: 18px 0 6px; font-size: .95rem; }
+.master textarea { width: 100%; font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace); font-size: .85rem; }
+.master .sessions { margin-top: 10px; }

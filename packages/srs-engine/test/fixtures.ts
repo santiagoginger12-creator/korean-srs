@@ -137,7 +137,7 @@ export function canon(s: DerivedState): string {
   const sortEntries = <V>(m: Map<string, V>) => [...m.entries()].sort((a, b) => (a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0));
   return JSON.stringify({
     items: sortEntries(s.items), userLevel: s.userLevel, unlocked: [...s.unlocked].sort(), notes: sortEntries(s.notes),
-    settings: s.settings, userAnswers: sortEntries(s.userAnswers), customItems: sortEntries(s.customItems),
+    settings: s.settings, ext: sortEntries(s.ext), userAnswers: sortEntries(s.userAnswers), customItems: sortEntries(s.customItems),
     lastHlc: s.lastHlc, flags: s.flags,
   });
 }

@@ -3,3 +3,4 @@ dist
 *.tsbuildinfo
 .DS_Store
 apps/web/test-results/
+data-private/

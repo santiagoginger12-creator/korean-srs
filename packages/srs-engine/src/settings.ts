@@ -3,6 +3,12 @@
 
 import { coerceSetting, defaultSettings, type EventPayload, type SettingKey, type Settings } from './events.ts';
 
+/**
+ * Namespace for extension data kept in `settings.set` events (D22): LWW per key, no coercion,
+ * exposed raw as `DerivedState.ext`. Writing `null` deletes a key.
+ */
+export const EXT_PREFIX = 'ext.';
+
 export interface ExtraSettings {
   /** Variants-inbox entries the owner dismissed (review.answer event ids). Replay takes the union of every write (grow-only set), so dismissals from two devices merge. */
   'inbox.dismissed': string[];
@@ -44,5 +50,11 @@ export function coerceAppSetting(key: string, value: unknown): unknown {
 
 /** A typed `settings.set` payload for any app setting (the frozen event type only names M1 keys). */
 export function settingPayload<K extends AppSettingKey>(key: K, value: AppSettings[K]): EventPayload {
+  return { type: 'settings.set', key: key as SettingKey, value };
+}
+
+/** A `settings.set` payload for an `ext.` key (`null` deletes it). */
+export function extPayload(key: string, value: unknown): EventPayload {
+  if (!key.startsWith(EXT_PREFIX) || key.length <= EXT_PREFIX.length) throw new Error(`extPayload: "${key}" is not an ext. key`);
   return { type: 'settings.set', key: key as SettingKey, value };
 }

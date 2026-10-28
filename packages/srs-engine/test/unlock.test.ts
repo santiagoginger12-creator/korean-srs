@@ -5,7 +5,7 @@ import {
   availableLessons, buildContentIndex, computeUnlocks, dueItems, levelProgress, replayAll, type AppEvent, type ItemState,
 } from '../src/index.ts';
 import { DAY, HOUR } from '../src/util.ts';
-import { advance, answerP, bulkBundle, device, FIXTURE, lessonP, passAll, T0 } from './fixtures.ts';
+import { advance, answerP, bulkBundle, bundle, device, FIXTURE, hanja, lessonP, passAll, T0, vocab } from './fixtures.ts';
 
 const MP = ['meaning', 'production'] as const;
 const MC = ['meaning', 'cloze'] as const;
@@ -118,4 +118,22 @@ describe('unlocks (§7.3)', () => {
     const s2 = replayAll(FIXTURE, [d(lessonP('h:定'), T0), d(lessonP('h:決'), T0)]);
     assert.deepEqual(availableLessons(s2.index, s2).slice(0, 2), ['v:결정', 'v:망설이다']);
   });
+});
+
+test('imported non-gating extras interleave 3 curriculum : 2 extras after hanja (D60)', () => {
+  const imp = { kind: 'import' as const, license: 'personal-use', attribution: 'Anki' };
+  const items = [
+    hanja('一', 1),
+    ...Array.from({ length: 6 }, (_, i) => vocab(`c${i}`, 1)),
+    ...Array.from({ length: 5 }, (_, i) => vocab(`x${i}`, 1, { gating: false, source: imp })),
+  ];
+  const b = bundle(items);
+  const s = replayAll(b, []);
+  const order = availableLessons(s.index, s);
+  assert.deepEqual(order, [
+    'h:一', 'v:c0', 'v:c1', 'v:c2', 'v:x0', 'v:x1', 'v:c3', 'v:c4', 'v:c5', 'v:x2', 'v:x3', 'v:x4',
+  ]);
+  // With no extras the order is unchanged.
+  const plain = replayAll(bundle(items.slice(0, 7)), []);
+  assert.deepEqual(availableLessons(plain.index, plain), ['h:一', 'v:c0', 'v:c1', 'v:c2', 'v:c3', 'v:c4', 'v:c5']);
 });

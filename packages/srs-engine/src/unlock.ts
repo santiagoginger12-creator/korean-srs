@@ -91,5 +91,24 @@ export function availableLessons(index: ContentIndex, s: Pick<DerivedState, 'ite
     return ha - hb || a.level - b.level || KIND_ORDER[a.kind] - KIND_ORDER[b.kind]
       || (index.order.get(a.id) ?? 0) - (index.order.get(b.id) ?? 0);
   });
-  return out.map((it) => it.id);
+  // Imported, non-gating extras (e.g. a personal Anki import) are interleaved with the
+  // curriculum instead of queuing ahead of it (D60): after hanja, every block of
+  // CURRICULUM_RUN curriculum lessons is followed by up to EXTRA_RUN extras.
+  const isExtra = (it: Item): boolean => it.kind !== 'hanja' && !it.gating && it.source?.kind !== 'original';
+  const hanja = out.filter((it) => it.kind === 'hanja');
+  const core = out.filter((it) => it.kind !== 'hanja' && !isExtra(it));
+  const extras = out.filter(isExtra);
+  const mixed: Item[] = [...hanja];
+  let c = 0;
+  let e = 0;
+  while (c < core.length || e < extras.length) {
+    for (let k = 0; k < CURRICULUM_RUN && c < core.length; k++) mixed.push(core[c++]!);
+    for (let k = 0; k < EXTRA_RUN && e < extras.length; k++) mixed.push(extras[e++]!);
+    if (c >= core.length) while (e < extras.length) mixed.push(extras[e++]!);
+  }
+  return mixed.map((it) => it.id);
 }
+
+/** Lesson interleave for imported extras: 3 curriculum, then 2 extras (a default batch of 5). */
+export const CURRICULUM_RUN = 3;
+export const EXTRA_RUN = 2;

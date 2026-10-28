@@ -1,0 +1,7130 @@
+[
+  {
+    "id": "v:걸치다:wear",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:걸치다",
+      "sense:wear"
+    ],
+    "word": "걸치다",
+    "meanings": [
+      "to throw on (clothing)",
+      "to drape over one's shoulders",
+      "to put on loosely"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "어깨에 카디건을 걸치다",
+        "en": "to drape a cardigan over one's shoulders"
+      },
+      {
+        "ko": "아무거나 대충 걸치다",
+        "en": "to throw on whatever is at hand"
+      },
+      {
+        "ko": "겉옷을 걸치고 나가다",
+        "en": "to pull on a jacket and head out"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "아침에 급하게 나오느라 아무 셔츠나 걸치고 왔어요.",
+        "en": "I left in such a rush this morning that I just threw on any old shirt.",
+        "register": "spoken"
+      },
+      {
+        "ko": "그녀는 잠옷 위에 코트만 걸친 채 택배를 받으러 내려갔다.",
+        "en": "She went downstairs for the parcel with nothing but a coat thrown over her pajamas.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "저녁엔 쌀쌀하니까 뭐라도 하나 {{}} 나가.",
+          "en": "It gets chilly in the evening, so throw something on before you go out.",
+          "cue": "걸치다 · throw on (clothing)",
+          "accepted": [
+            "걸치고",
+            "걸쳐 입고"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "회의실이 추워서 다들 재킷을 어깨에 {{}} 앉아 있었다.",
+          "en": "The meeting room was cold, so everyone sat with their jackets draped over their shoulders.",
+          "cue": "걸치다 · drape over the shoulders",
+          "accepted": [
+            "걸치고",
+            "걸친 채",
+            "걸친 채로"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "셔츠 위에 카디건을 팔을 끼우지 않고 어깨에만 두른 모습을 말하려면? (A cardigan thrown over the shoulders, arms not in the sleeves.)",
+          "options": [
+            {
+              "text": "셔츠 위에 카디건을 걸쳤다.",
+              "correct": true,
+              "why": "Loosely draping or throwing on a garment is 걸치다."
+            },
+            {
+              "text": "셔츠 위에 카디건을 꼈다.",
+              "correct": false,
+              "why": "끼다 is for things fitted onto or into a body part: rings, gloves, contact lenses (반지를 끼다). A cardigan isn't one."
+            },
+            {
+              "text": "셔츠 위에 카디건을 썼다.",
+              "correct": false,
+              "why": "쓰다 is for things on the head or face: a hat, glasses, a mask."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:걸치다:span",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [
+      {
+        "id": "v:걸치다:wear",
+        "require": "guru"
+      }
+    ],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:걸치다",
+      "sense:span"
+    ],
+    "word": "걸치다",
+    "meanings": [
+      "to span (a period or area)",
+      "to extend over",
+      "to stretch across"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "여러 해에 걸쳐",
+        "en": "over several years"
+      },
+      {
+        "ko": "전국에 걸쳐",
+        "en": "all across the country"
+      },
+      {
+        "ko": "두 차례에 걸쳐",
+        "en": "on two separate occasions; in two rounds"
+      },
+      {
+        "ko": "전반에 걸친 개혁",
+        "en": "reform across the board"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "이 다리는 10년에 걸친 공사 끝에 지난달 개통했다.",
+        "en": "The bridge opened last month after construction that spanned ten years.",
+        "register": "written"
+      },
+      {
+        "ko": "내일은 전국에 걸쳐 비가 오겠고, 남부 지방은 바람도 강하게 불겠습니다.",
+        "en": "Tomorrow rain is expected across the whole country, with strong winds in the south as well.",
+        "register": "formal"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "회사는 두 차례에 {{}} 공식 사과문을 발표했다.",
+          "en": "The company issued an official apology on two separate occasions.",
+          "cue": "걸치다 · span (occasions / a period)",
+          "accepted": [
+            "걸쳐",
+            "걸쳐서"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "경제 전반에 {{}} 구조 개혁이 필요하다는 목소리가 높다.",
+          "en": "There are growing calls for structural reform spanning the entire economy.",
+          "cue": "걸치다 · span (an area)",
+          "accepted": [
+            "걸친",
+            "걸쳐"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "지난 반세기 동안 이어진 연구를 기사에서 소개하려면? (A news piece about research carried on over the past half-century.)",
+          "options": [
+            {
+              "text": "반세기에 걸친 연구",
+              "correct": true,
+              "why": "A stretch of time that the work covers is N에 걸치다: 반세기에 걸친 연구."
+            },
+            {
+              "text": "반세기에 걸린 연구",
+              "correct": false,
+              "why": "걸리다 (take time) has the time as its subject: 반세기가 걸린 연구, \"research that took fifty years\". Spanning a period is 에 걸치다."
+            },
+            {
+              "text": "반세기를 걸친 연구",
+              "correct": false,
+              "why": "In the \"span\" sense 걸치다 takes 에, not 을/를: 반세기에 걸친."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:걸치다:perch",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [
+      {
+        "id": "v:걸치다:span",
+        "require": "guru"
+      }
+    ],
+    "gating": false,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:걸치다",
+      "sense:perch"
+    ],
+    "word": "걸치다",
+    "meanings": [
+      "to rest across (an edge)",
+      "to hang over (something)",
+      "to perch on the edge of"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "의자 끝에 걸쳐 앉다",
+        "en": "to perch on the edge of a chair"
+      },
+      {
+        "ko": "난간에 다리를 걸치다",
+        "en": "to prop one's leg over the railing"
+      },
+      {
+        "ko": "의자 등받이에 걸쳐 놓다",
+        "en": "to leave (something) hanging over the back of a chair"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "면접 대기실에서 그는 긴장한 듯 의자 끝에 엉덩이만 걸치고 앉아 있었다.",
+        "en": "In the interview waiting room he sat perched on the very edge of his chair, clearly nervous.",
+        "register": "written"
+      },
+      {
+        "ko": "빨래를 의자 등받이에 걸쳐 놓지 말고 좀 개어 놔.",
+        "en": "Don't just leave the laundry hanging over the back of the chair. Fold it.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "소파에 제대로 앉지도 못하고 팔걸이에 {{}} 앉아서 밥을 먹었다.",
+          "en": "I couldn't even sit on the sofa properly, so I ate perched on the armrest.",
+          "cue": "걸치다 · perch on an edge",
+          "accepted": [
+            "걸쳐"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "걸터",
+              "hint": "걸터앉다 (one word) paints the same picture, but the cue asks for 걸치다: 걸쳐 앉다."
+            }
+          ]
+        },
+        {
+          "id": "c2",
+          "sentence": "젖은 수건은 욕조 가장자리에 {{}} 말려.",
+          "en": "Hang the wet towel over the edge of the tub to dry.",
+          "cue": "걸치다 · hang over an edge",
+          "accepted": [
+            "걸쳐",
+            "걸쳐서",
+            "걸쳐 놓고",
+            "걸쳐 두고"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "재킷을 의자 등받이 위로 넘겨 늘어뜨려 둔 것을 말하려면? (A jacket left hanging over the back of a chair.)",
+          "options": [
+            {
+              "text": "재킷을 의자에 걸쳐 놓았다.",
+              "correct": true,
+              "why": "Something laid across an edge so it hangs down both sides is 걸치다."
+            },
+            {
+              "text": "재킷을 의자에 꽂아 놓았다.",
+              "correct": false,
+              "why": "꽂다 means to stick something into a slot or hole: a pin, a flower, a USB drive."
+            },
+            {
+              "text": "재킷을 의자에 걸려 놓았다.",
+              "correct": false,
+              "why": "걸리다 is intransitive or passive (재킷이 걸려 있다). It can't take 재킷을 as an object."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:맞추다:adjust",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:맞추다",
+      "sense:adjust"
+    ],
+    "mnemonic": "맞추다 makes two things 맞다 (fit): a schedule to a person, a watch to a time, pieces to each other. 맞히다 is only for hitting: 정답을 맞히다, 과녁을 맞히다.",
+    "word": "맞추다",
+    "meanings": [
+      "to adjust to",
+      "to match (to)",
+      "to tailor to",
+      "to time (something) for"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "눈높이에 맞추다",
+        "en": "to pitch (something) to someone's level"
+      },
+      {
+        "ko": "일정을 맞추다",
+        "en": "to make schedules line up"
+      },
+      {
+        "ko": "시간에 맞춰 도착하다",
+        "en": "to arrive on time"
+      },
+      {
+        "ko": "비위를 맞추다",
+        "en": "to humor someone; to keep someone happy"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "강의는 듣는 사람 눈높이에 맞춰서 해야 해요. 전문 용어만 늘어놓으면 소용없어요.",
+        "en": "You have to pitch a lecture to your audience's level. Just reeling off jargon is useless.",
+        "register": "spoken"
+      },
+      {
+        "ko": "출판사는 연말 특수에 맞춰 개정판 출간 일정을 앞당겼다.",
+        "en": "The publisher moved up the revised edition's release to catch the year-end rush.",
+        "register": "written"
+      },
+      {
+        "ko": "팀장 비위 맞추느라 하루가 다 갔네.",
+        "en": "The whole day went to keeping the team lead happy.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "다들 바쁘니까 회의 시간은 제일 늦게 끝나는 사람 일정에 {{}} 정하죠.",
+          "en": "Everyone's busy, so let's set the meeting time to fit whoever finishes latest.",
+          "cue": "맞추다 · fit to (a schedule)",
+          "accepted": [
+            "맞춰",
+            "맞춰서",
+            "맞추어",
+            "맞추어서"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "시계를 서울 시간에 {{}} 놓는 걸 깜빡했다.",
+          "en": "I forgot to set my watch to Seoul time.",
+          "cue": "맞추다 · set to (a time)",
+          "accepted": [
+            "맞춰",
+            "맞추어"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "기차 출발 시각보다 늦지 않게 역에 도착했다. (Arrived at the station in time for the train.)",
+          "options": [
+            {
+              "text": "출발 시간에 맞춰 도착했다.",
+              "correct": true,
+              "why": "Aligning with a time or schedule is 맞추다."
+            },
+            {
+              "text": "출발 시간에 맞혀 도착했다.",
+              "correct": false,
+              "why": "맞히다 means to hit a target or get an answer right (정답을 맞히다). Fitting to a time is 맞추다."
+            },
+            {
+              "text": "출발 시간을 맞아 도착했다.",
+              "correct": false,
+              "why": "-을 맞아 means \"on the occasion of\" (개교 50주년을 맞아). It doesn't mean \"in time for\"."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:맞추다:check",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [
+      {
+        "id": "v:맞추다:adjust",
+        "require": "guru"
+      }
+    ],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:맞추다",
+      "sense:check"
+    ],
+    "word": "맞추다",
+    "meanings": [
+      "to fit together",
+      "to put together (pieces)",
+      "to check against",
+      "to compare (answers)"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "퍼즐을 맞추다",
+        "en": "to do a jigsaw puzzle"
+      },
+      {
+        "ko": "답을 맞춰 보다",
+        "en": "to check answers (against each other or a key)"
+      },
+      {
+        "ko": "말을 맞추다",
+        "en": "to get one's stories straight"
+      },
+      {
+        "ko": "조각을 맞추다",
+        "en": "to fit the pieces together"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "시험 끝나고 친구랑 답을 맞춰 봤는데 세 문제나 다르더라.",
+        "en": "After the exam I compared answers with a friend, and we differed on three questions.",
+        "register": "spoken"
+      },
+      {
+        "ko": "두 사람은 미리 말을 맞춘 듯 똑같은 진술을 했다.",
+        "en": "The two gave identical statements, as if they had gotten their stories straight beforehand.",
+        "register": "written"
+      },
+      {
+        "ko": "흩어진 조각을 하나씩 맞추다 보니 사건의 전모가 드러났다.",
+        "en": "As the scattered pieces were fit together one by one, the full picture of the case emerged.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "카드 명세서와 영수증을 한 장씩 {{}} 보면서 빠진 내역이 없는지 확인했다.",
+          "en": "I checked the receipts against the card statement one by one to make sure nothing was missing.",
+          "cue": "맞추다 · check against",
+          "accepted": [
+            "맞춰",
+            "맞추어"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "천 피스짜리 퍼즐을 주말 내내 {{}} 겨우 완성했다.",
+          "en": "I spent the whole weekend putting together a 1,000-piece puzzle and only just finished it.",
+          "cue": "맞추다 · fit pieces together",
+          "accepted": [
+            "맞춰서",
+            "맞춰",
+            "맞추어서",
+            "맞추어"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "시험이 끝난 뒤 친구와 서로 쓴 답이 같은지 확인했다. (After the exam, you checked whether your answers matched your friend's.)",
+          "options": [
+            {
+              "text": "친구랑 답을 맞춰 봤다.",
+              "correct": true,
+              "why": "Laying two things side by side to see if they line up is 맞추다 (맞춰 보다)."
+            },
+            {
+              "text": "친구랑 답을 맞혀 봤다.",
+              "correct": false,
+              "why": "맞히다 is getting a question right, or trying to guess the answer. It doesn't mean comparing."
+            },
+            {
+              "text": "친구랑 답을 고쳐 봤다.",
+              "correct": false,
+              "why": "고치다 means to correct or change. You compared the answers; you didn't change them."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:맞추다:order",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [
+      {
+        "id": "v:맞추다:check",
+        "require": "guru"
+      }
+    ],
+    "gating": false,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:맞추다",
+      "sense:order"
+    ],
+    "word": "맞추다",
+    "meanings": [
+      "to have (something) custom-made",
+      "to order made-to-measure",
+      "to have tailored"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "양복을 맞추다",
+        "en": "to have a suit tailored"
+      },
+      {
+        "ko": "안경을 맞추다",
+        "en": "to get glasses made"
+      },
+      {
+        "ko": "반지를 맞추다",
+        "en": "to have rings made (e.g. matching rings)"
+      },
+      {
+        "ko": "단체 티를 맞추다",
+        "en": "to order matching T-shirts for a group"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "결혼식 때 입으려고 처음으로 양복을 맞췄어요.",
+        "en": "I had a suit tailored for the first time, to wear at the wedding.",
+        "register": "spoken"
+      },
+      {
+        "ko": "시력이 떨어져서 안경을 새로 맞춰야 할 것 같아.",
+        "en": "My eyesight's gotten worse. I think I need to get new glasses made.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "축제 때 입을 단체 티셔츠를 인쇄소에 {{}} 놨어.",
+          "en": "I've put in an order at the print shop for group T-shirts for the festival.",
+          "cue": "맞추다 · order custom-made",
+          "accepted": [
+            "맞춰",
+            "맞추어"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "엄마 환갑 선물로 금반지를 하나 {{}} 드렸다.",
+          "en": "For Mom's sixtieth birthday, I had a gold ring made for her.",
+          "cue": "맞추다 · have (something) made",
+          "accepted": [
+            "맞춰",
+            "맞추어"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "기성복이 몸에 안 맞아서 치수를 재고 새로 만들게 했다. (Off-the-rack didn't fit, so you had one made to your measurements.)",
+          "options": [
+            {
+              "text": "정장을 한 벌 맞췄다.",
+              "correct": true,
+              "why": "Having something made to order is 맞추다 (맞춤 양복)."
+            },
+            {
+              "text": "정장을 한 벌 맞혔다.",
+              "correct": false,
+              "why": "맞히다 means to hit or guess correctly. It has nothing to do with tailoring."
+            },
+            {
+              "text": "정장을 한 벌 고쳤다.",
+              "correct": false,
+              "why": "고치다 is altering or repairing a suit you already have, not having a new one made."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:어긋나다:contrary",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:어긋나다",
+      "sense:contrary"
+    ],
+    "word": "어긋나다",
+    "meanings": [
+      "to go against (rules, expectations)",
+      "to run counter to",
+      "to violate",
+      "to disappoint (expectations)"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "기대에 어긋나다",
+        "en": "to disappoint expectations; to go against what was hoped for"
+      },
+      {
+        "ko": "원칙에 어긋나다",
+        "en": "to violate a principle"
+      },
+      {
+        "ko": "예의에 어긋나다",
+        "en": "to be bad manners"
+      },
+      {
+        "ko": "상식에 어긋나다",
+        "en": "to defy common sense"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "부모님의 기대에 어긋나는 선택이었지만 후회는 없다.",
+        "en": "It was a choice that went against my parents' expectations, but I have no regrets.",
+        "register": "written"
+      },
+      {
+        "ko": "어른한테 그렇게 말하는 건 예의에 어긋나지.",
+        "en": "Talking to an elder like that is bad manners.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "그 조치는 형평성 원칙에 {{}} 것이어서 거센 비판을 받았다.",
+          "en": "The measure ran counter to the principle of fairness and drew fierce criticism.",
+          "cue": "어긋나다 · go against (a principle)",
+          "accepted": [
+            "어긋나는",
+            "어긋난"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "개인 정보를 동의 없이 공유하는 건 회사 규정에도 {{}}.",
+          "en": "Sharing personal data without consent also violates company rules.",
+          "cue": "어긋나다 · violate (rules)",
+          "accepted": [
+            "어긋나요",
+            "어긋나",
+            "어긋납니다",
+            "어긋난다",
+            "어긋나죠",
+            "어긋나지",
+            "어긋나지요"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "스포츠 기사: 선수들이 팬들이 바라던 수준의 경기를 보여 주지 못했다. (The team didn't play to the level fans hoped for.)",
+          "options": [
+            {
+              "text": "팬들의 기대에 어긋나는 경기력이었다.",
+              "correct": true,
+              "why": "Falling short of or running against expectations, rules or manners is N에 어긋나다."
+            },
+            {
+              "text": "팬들의 기대에 엇갈리는 경기력이었다.",
+              "correct": false,
+              "why": "엇갈리다 is for opinions or paths that diverge or cross (평가가 엇갈리다). It doesn't take 기대에."
+            },
+            {
+              "text": "팬들의 기대에 벗어나는 경기력이었다.",
+              "correct": false,
+              "why": "벗어나다 takes 에서 or 을/를 (기대에서 벗어나다, 예상을 벗어나다). With 에, the verb is 어긋나다."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:어긋나다:awry",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [
+      {
+        "id": "v:어긋나다:contrary",
+        "require": "guru"
+      }
+    ],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:어긋나다",
+      "sense:awry"
+    ],
+    "word": "어긋나다",
+    "meanings": [
+      "to go awry",
+      "to fall through",
+      "to miss each other",
+      "to go wrong (between people)"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "계획이 어긋나다",
+        "en": "plans go awry"
+      },
+      {
+        "ko": "길이 어긋나다",
+        "en": "to miss each other on the way"
+      },
+      {
+        "ko": "사이가 어긋나다",
+        "en": "a relationship goes wrong"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "서로 마중을 나갔다가 길이 어긋나서 한 시간을 헤맸다.",
+        "en": "We'd both gone out to meet each other, missed each other on the way, and wandered around for an hour.",
+        "register": "neutral"
+      },
+      {
+        "ko": "사소한 오해로 시작된 일이었는데 그 뒤로 둘 사이가 자꾸 어긋났어요.",
+        "en": "It started with a small misunderstanding, but after that things between them kept going wrong.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": [
+      "cloze"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "날씨 때문에 여행 계획이 완전히 {{}} 버렸다.",
+          "en": "The weather threw our travel plans completely off.",
+          "cue": "어긋나다 · go awry",
+          "accepted": [
+            "어긋나"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "역 앞에서 만나기로 했는데 출구를 잘못 알아서 길이 {{}} 말았다.",
+          "en": "We'd agreed to meet in front of the station, but I had the wrong exit and we ended up missing each other.",
+          "cue": "어긋나다 · miss each other",
+          "accepted": [
+            "어긋나고"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "엇갈리고",
+              "hint": "길이 엇갈리다 is just as natural here, but the cue asks for 어긋나다: 길이 어긋나고."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:갖추다:equip",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:갖추다",
+      "sense:equip"
+    ],
+    "word": "갖추다",
+    "meanings": [
+      "to have in place",
+      "to be equipped with",
+      "to meet (requirements)",
+      "to possess (qualifications)"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "자격을 갖추다",
+        "en": "to meet the qualifications"
+      },
+      {
+        "ko": "시설을 갖추다",
+        "en": "to be equipped with facilities"
+      },
+      {
+        "ko": "서류를 갖추다",
+        "en": "to have the paperwork in order"
+      },
+      {
+        "ko": "경쟁력을 갖추다",
+        "en": "to become competitive"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "이 병원은 최신 장비를 두루 갖추고 있어서 멀리서도 환자들이 찾아온다.",
+        "en": "This hospital has a full range of the latest equipment, so patients come from far away.",
+        "register": "written"
+      },
+      {
+        "ko": "지원 자격만 갖추면 누구든 신청할 수 있어요.",
+        "en": "Anyone can apply as long as they meet the requirements.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "필요한 서류를 다 {{}} 다시 방문해 주세요.",
+          "en": "Please come back once you have all the required documents.",
+          "cue": "갖추다 · have in place",
+          "accepted": [
+            "갖춰서",
+            "갖추어서",
+            "갖춰",
+            "갖추어",
+            "갖추고",
+            "갖춘 뒤",
+            "갖춘 뒤에",
+            "갖춘 후",
+            "갖춘 후에"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "중소기업도 기술력을 {{}} 대기업과 충분히 경쟁할 수 있다.",
+          "en": "Smaller firms can compete with the big players too, as long as they have the technology.",
+          "cue": "갖추다 · possess (capability)",
+          "accepted": [
+            "갖추면",
+            "갖춘다면"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "채용 공고: 아래 조건을 충족하는 분을 찾습니다. (A job ad looking for candidates who meet the following.)",
+          "options": [
+            {
+              "text": "다음 자격을 갖춘 분",
+              "correct": true,
+              "why": "Having qualifications, equipment or documents in place is 갖추다."
+            },
+            {
+              "text": "다음 자격을 차린 분",
+              "correct": false,
+              "why": "차리다 is for setting something out or up (밥상을 차리다, 가게를 차리다, 격식을 차리다). Qualifications aren't set up; you hold them, so it's 갖추다."
+            },
+            {
+              "text": "다음 자격을 거친 분",
+              "correct": false,
+              "why": "거치다 is for stages or procedures you go through (과정을 거치다). Qualifications are something you hold."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:갖추다:observe",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [
+      {
+        "id": "v:갖추다:equip",
+        "require": "guru"
+      }
+    ],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:갖추다",
+      "sense:observe"
+    ],
+    "word": "갖추다",
+    "meanings": [
+      "to observe (proper form)",
+      "to show (due courtesy)",
+      "to dress properly (for)"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "예의를 갖추다",
+        "en": "to show proper courtesy"
+      },
+      {
+        "ko": "격식을 갖추다",
+        "en": "to observe formalities"
+      },
+      {
+        "ko": "정장을 갖춰 입다",
+        "en": "to dress formally"
+      },
+      {
+        "ko": "예를 갖추다",
+        "en": "to pay due respect"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "처음 뵙는 자리니까 최소한의 예의는 갖춰야지.",
+        "en": "It's your first time meeting them, so at least show some basic courtesy.",
+        "register": "spoken"
+      },
+      {
+        "ko": "시상식장은 정장을 갖춰 입은 참석자들로 가득했다.",
+        "en": "The awards hall was full of attendees in formal dress.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "보고서는 내부용이니까 너무 격식을 {{}} 쓸 필요는 없어요.",
+          "en": "The report is for internal use, so there's no need to write it too formally.",
+          "cue": "갖추다 · observe (formalities)",
+          "accepted": [
+            "갖춰서",
+            "갖춰",
+            "갖추어서",
+            "갖추어"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "차려",
+              "hint": "격식을 차리다 is also idiomatic, but the cue asks for 갖추다: 격식을 갖춰."
+            },
+            {
+              "answer": "차려서",
+              "hint": "격식을 차리다 is also idiomatic, but the cue asks for 갖추다: 격식을 갖춰서."
+            }
+          ]
+        },
+        {
+          "id": "c2",
+          "sentence": "드레스 코드가 있는 자리라서 오랜만에 정장을 {{}} 입고 갔다.",
+          "en": "There was a dress code, so for once I went in a proper suit.",
+          "cue": "갖추다 · dress (properly)",
+          "accepted": [
+            "갖춰",
+            "갖추어"
+          ],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:거치다:via",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:거치다",
+      "sense:via"
+    ],
+    "word": "거치다",
+    "meanings": [
+      "to go via",
+      "to stop over at",
+      "to pass through (on the way)"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "대전을 거쳐 부산으로 가다",
+        "en": "to go to Busan via Daejeon"
+      },
+      {
+        "ko": "홍콩을 거쳐 귀국하다",
+        "en": "to fly home by way of Hong Kong"
+      },
+      {
+        "ko": "여러 사람의 손을 거치다",
+        "en": "to pass through many hands"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "이번 비행기는 도쿄를 거쳐 서울에 도착하니까 환승 시간을 잘 확인하세요.",
+        "en": "This flight goes via Tokyo before reaching Seoul, so check your connection time carefully.",
+        "register": "spoken"
+      },
+      {
+        "ko": "이 고서는 여러 수집가의 손을 거쳐 지금의 도서관에 들어오게 되었다.",
+        "en": "This old book passed through the hands of several collectors before ending up in this library.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "이 버스는 시내를 {{}} 공항까지 갑니다.",
+          "en": "This bus goes to the airport by way of downtown.",
+          "cue": "거치다 · go via (a place)",
+          "accepted": [
+            "거쳐",
+            "거쳐서"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "서울에서 출발한 열차가 대전역과 대구역에 정차한 뒤 부산에 도착한다. (A train stops at Daejeon and Daegu on its way to Busan.)",
+          "options": [
+            {
+              "text": "열차는 대전과 대구를 거쳐 부산에 도착한다.",
+              "correct": true,
+              "why": "Stops along a route are N을 거치다."
+            },
+            {
+              "text": "열차는 대전과 대구를 겪어 부산에 도착한다.",
+              "correct": false,
+              "why": "겪다 is to go through an experience (hardship, change), not a place."
+            },
+            {
+              "text": "열차는 대전과 대구를 들러서 부산에 도착한다.",
+              "correct": false,
+              "why": "들르다 takes 에 (대전에 들르다) and means a personal side visit, not scheduled stops on a route."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:거치다:process",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [
+      {
+        "id": "v:거치다:via",
+        "require": "guru"
+      }
+    ],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:거치다",
+      "sense:process"
+    ],
+    "word": "거치다",
+    "meanings": [
+      "to go through (a process)",
+      "to undergo (review, a stage)",
+      "to pass (screening)"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "심사를 거치다",
+        "en": "to go through a review"
+      },
+      {
+        "ko": "절차를 거치다",
+        "en": "to go through (proper) procedures"
+      },
+      {
+        "ko": "우여곡절을 거치다",
+        "en": "to go through many twists and turns"
+      },
+      {
+        "ko": "검토를 거쳐",
+        "en": "after review"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "모든 원고는 두 차례의 교정을 거쳐야 인쇄에 들어갈 수 있다.",
+        "en": "Every manuscript has to go through two rounds of proofreading before it can go to press.",
+        "register": "written"
+      },
+      {
+        "ko": "정식 절차를 안 거치고 일을 처리했다가 나중에 문제가 됐어요.",
+        "en": "We handled it without going through proper procedures, and it became a problem later.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "법안은 상임위원회 심사를 {{}} 본회의에 상정되었다.",
+          "en": "After standing committee review, the bill was put before the plenary session.",
+          "cue": "거치다 · go through (a review)",
+          "accepted": [
+            "거쳐",
+            "거쳐서",
+            "거친 뒤",
+            "거친 뒤에",
+            "거친 후",
+            "거친 후에"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "수많은 시행착오를 {{}} 지금의 방식이 자리를 잡았다.",
+          "en": "The current method only took hold after a great deal of trial and error.",
+          "cue": "거치다 · go through (a process)",
+          "accepted": [
+            "거쳐",
+            "거쳐서",
+            "거친 끝에",
+            "거친 뒤",
+            "거친 뒤에"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "신입 사원은 3개월의 수습 기간을 마쳐야 정식 직원이 된다. (New hires become permanent after a three-month probation.)",
+          "options": [
+            {
+              "text": "3개월의 수습 기간을 거쳐 정식 직원이 된다.",
+              "correct": true,
+              "why": "A set stage or procedure you pass through is 거치다."
+            },
+            {
+              "text": "3개월의 수습 기간을 겪어 정식 직원이 된다.",
+              "correct": false,
+              "why": "겪다 is for something that happens to you, usually hardship or change (어려움을 겪다). A fixed stage is 거치다."
+            },
+            {
+              "text": "3개월의 수습 기간을 지나쳐 정식 직원이 된다.",
+              "correct": false,
+              "why": "지나치다 means to go past without stopping, or to overdo something."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:대다:park",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:대다",
+      "sense:park"
+    ],
+    "word": "대다",
+    "meanings": [
+      "to pull up (a vehicle)",
+      "to park",
+      "to bring (a car) up to"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "차를 대다",
+        "en": "to park; to pull up"
+      },
+      {
+        "ko": "문 앞에 차를 대다",
+        "en": "to pull up at the door"
+      },
+      {
+        "ko": "골목에 대다",
+        "en": "to park in the alley"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "건물 앞은 주차 금지라서 뒤쪽 골목에 차를 댔어요.",
+        "en": "There's no parking in front of the building, so I parked in the alley out back.",
+        "register": "spoken"
+      },
+      {
+        "ko": "기사님, 저기 편의점 앞에 대 주세요.",
+        "en": "Driver, could you pull up in front of that convenience store?",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": [
+      "cloze"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "비가 오니까 현관 바로 앞에 차를 {{}} 줄게.",
+          "en": "It's raining, so I'll pull the car right up to the entrance for you.",
+          "cue": "대다 · pull up (a car)",
+          "accepted": [
+            "대",
+            "대어"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "주차장이 꽉 차서 차를 어디에 {{}} 할지 모르겠어요.",
+          "en": "The lot is full, so I don't know where I'm supposed to park.",
+          "cue": "대다 · park",
+          "accepted": [
+            "대야"
+          ],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:대다:cite",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [
+      {
+        "id": "v:대다:park",
+        "require": "guru"
+      }
+    ],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:대다",
+      "sense:cite"
+    ],
+    "word": "대다",
+    "meanings": [
+      "to give (an excuse, a reason)",
+      "to make (an excuse)",
+      "to produce (grounds, evidence)"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "핑계를 대다",
+        "en": "to make an excuse"
+      },
+      {
+        "ko": "이유를 대다",
+        "en": "to give a reason"
+      },
+      {
+        "ko": "증거를 대다",
+        "en": "to produce evidence"
+      },
+      {
+        "ko": "이름을 대다",
+        "en": "to give (someone's) name"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "그는 몸이 안 좋다는 핑계를 대고 회식에 빠졌다.",
+        "en": "He used feeling unwell as an excuse to skip the staff dinner.",
+        "register": "written"
+      },
+      {
+        "ko": "늦은 이유를 대 봐. 납득이 가면 넘어갈게.",
+        "en": "Go on, tell me why you're late. If it makes sense, I'll let it go.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "숙제를 안 해 온 학생들은 저마다 그럴듯한 핑계를 {{}} 바빴다.",
+          "en": "The students who hadn't done their homework were all busy coming up with plausible excuses.",
+          "cue": "대다 · make (an excuse)",
+          "accepted": [
+            "대느라",
+            "대기에",
+            "대기"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "근거를 {{}} 못하면 그 주장은 받아들일 수 없어요.",
+          "en": "If you can't give any grounds, that claim can't be accepted.",
+          "cue": "대다 · give (grounds)",
+          "accepted": [
+            "대지"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "늦잠을 자 놓고 버스가 안 와서 늦었다고 했다. (You overslept but blamed the bus.)",
+          "options": [
+            {
+              "text": "버스 핑계를 댔다.",
+              "correct": true,
+              "why": "Making an excuse is 핑계를 대다."
+            },
+            {
+              "text": "버스 핑계를 들었다.",
+              "correct": false,
+              "why": "들다 takes 예 or 이유 (예를 들다, 이유를 들어 거절하다). With 핑계 the verb is 대다; 핑계를 들다 sounds off."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:건지다:fish-out",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:건지다",
+      "sense:fish-out"
+    ],
+    "word": "건지다",
+    "meanings": [
+      "to fish out (of liquid)",
+      "to lift out (of water)",
+      "to pull out (of water)"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "면을 건지다",
+        "en": "to lift noodles out (of the water)"
+      },
+      {
+        "ko": "건더기를 건져 먹다",
+        "en": "to fish out the solids and eat them"
+      },
+      {
+        "ko": "물에 빠진 사람을 건지다",
+        "en": "to pull a drowning person out"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "면이 다 익으면 체로 건져서 찬물에 헹궈 주세요.",
+        "en": "When the noodles are done, lift them out with a strainer and rinse them in cold water.",
+        "register": "spoken"
+      },
+      {
+        "ko": "강에 떨어뜨린 휴대폰을 낚시꾼이 그물로 건져 줬다.",
+        "en": "A fisherman fished out the phone I'd dropped in the river with his net.",
+        "register": "neutral"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "국물은 남기고 건더기만 {{}} 먹었다.",
+          "en": "I left the broth and fished out just the solids to eat.",
+          "cue": "건지다 · fish out (of liquid)",
+          "accepted": [
+            "건져",
+            "건져서"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "끓는 냄비에서 삶은 달걀을 국자로 꺼냈다. (You lifted the boiled eggs out of the pot with a ladle.)",
+          "options": [
+            {
+              "text": "달걀을 국자로 건졌다.",
+              "correct": true,
+              "why": "Lifting something solid out of liquid is 건지다."
+            },
+            {
+              "text": "달걀을 국자로 건넸다.",
+              "correct": false,
+              "why": "건네다 means to hand something over to someone."
+            },
+            {
+              "text": "달걀을 국자로 걸렀다.",
+              "correct": false,
+              "why": "거르다 means to strain or filter a liquid (or to skip a meal). Lifting solids out one by one is 건지다."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:건지다:salvage",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [
+      {
+        "id": "v:건지다:fish-out",
+        "require": "guru"
+      }
+    ],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:건지다",
+      "sense:salvage"
+    ],
+    "word": "건지다",
+    "meanings": [
+      "to salvage",
+      "to come away with",
+      "to get (something) out of",
+      "to escape with (one's life)"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "목숨을 건지다",
+        "en": "to escape with one's life"
+      },
+      {
+        "ko": "본전을 건지다",
+        "en": "to break even; to get one's money back"
+      },
+      {
+        "ko": "건진 게 없다",
+        "en": "to come away with nothing"
+      },
+      {
+        "ko": "사진 한 장 건지다",
+        "en": "to get one good photo out of it"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "여행 내내 비만 왔지만 그래도 마음에 드는 사진 몇 장은 건졌어.",
+        "en": "It rained the whole trip, but I still got a few photos I like out of it.",
+        "register": "spoken"
+      },
+      {
+        "ko": "사고 차량은 크게 부서졌지만 운전자는 기적적으로 목숨을 건졌다.",
+        "en": "The car was badly wrecked, but the driver miraculously escaped with his life.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "주식으로 손해만 보다가 겨우 본전을 {{}} 바로 다 팔았다.",
+          "en": "After nothing but losses on stocks, I finally got back to break-even and sold everything right away.",
+          "cue": "건지다 · get back (one's money)",
+          "accepted": [
+            "건지고",
+            "건지자",
+            "건지자마자",
+            "건져서"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "세 시간짜리 세미나였는데 솔직히 {{}} 게 하나도 없었어.",
+          "en": "It was a three-hour seminar, and honestly I didn't get a single thing out of it.",
+          "cue": "건지다 · come away with",
+          "accepted": [
+            "건진"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "투자금을 다 잃을 뻔했는데 겨우 원금만은 되찾았다. (You nearly lost everything but got your principal back.)",
+          "options": [
+            {
+              "text": "겨우 본전은 건졌다.",
+              "correct": true,
+              "why": "Salvaging something from a loss is 건지다 (본전을 건지다)."
+            },
+            {
+              "text": "겨우 본전은 견뎠다.",
+              "correct": false,
+              "why": "견디다 means to endure or hold out. It doesn't mean getting money back."
+            },
+            {
+              "text": "겨우 본전은 걸렀다.",
+              "correct": false,
+              "why": "거르다 means to strain or filter, or to skip (a meal)."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:끼다:wear",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:끼다",
+      "sense:wear"
+    ],
+    "word": "끼다",
+    "meanings": [
+      "to wear (on the fingers or hands)",
+      "to put on (a ring, gloves, lenses)",
+      "to fold (one's arms)"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "반지를 끼다",
+        "en": "to wear a ring"
+      },
+      {
+        "ko": "장갑을 끼다",
+        "en": "to put on gloves"
+      },
+      {
+        "ko": "렌즈를 끼다",
+        "en": "to put in contact lenses"
+      },
+      {
+        "ko": "팔짱을 끼다",
+        "en": "to fold one's arms; to link arms"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "결혼반지를 끼고 설거지하다가 하수구에 빠뜨릴 뻔했어.",
+        "en": "I was doing the dishes with my wedding ring on and nearly lost it down the drain.",
+        "register": "spoken"
+      },
+      {
+        "ko": "그는 팔짱을 낀 채 아무 말 없이 회의 내용을 듣고만 있었다.",
+        "en": "He sat with his arms folded, just listening to the meeting without a word.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "손이 시려서 장갑을 두 겹이나 {{}} 나왔다.",
+          "en": "My hands were freezing, so I came out wearing two pairs of gloves.",
+          "cue": "끼다 · put on (gloves)",
+          "accepted": [
+            "끼고"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "눈이 너무 건조해서 렌즈를 {{}} 수가 없어.",
+          "en": "My eyes are so dry I can't put my contacts in.",
+          "cue": "끼다 · put in (lenses)",
+          "accepted": [
+            "낄"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "추운 날 손을 보호하려고 장갑을 착용했다. (You put on gloves on a cold day.)",
+          "options": [
+            {
+              "text": "장갑을 꼈다.",
+              "correct": true,
+              "why": "Things you slip your fingers or hands into take 끼다."
+            },
+            {
+              "text": "장갑을 썼다.",
+              "correct": false,
+              "why": "쓰다 is for things on the head or face: hats, glasses, masks."
+            },
+            {
+              "text": "장갑을 찼다.",
+              "correct": false,
+              "why": "차다 is for things strapped or hung on: a watch, a belt."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:끼다:settle",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [
+      {
+        "id": "v:끼다:wear",
+        "require": "guru"
+      }
+    ],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:끼다",
+      "sense:settle"
+    ],
+    "word": "끼다",
+    "meanings": [
+      "to set in (fog, cloud)",
+      "to gather (dust, grime)",
+      "to hang over"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "안개가 끼다",
+        "en": "fog sets in"
+      },
+      {
+        "ko": "구름이 잔뜩 끼다",
+        "en": "to be heavily overcast"
+      },
+      {
+        "ko": "먼지가 끼다",
+        "en": "dust collects"
+      },
+      {
+        "ko": "때가 끼다",
+        "en": "to get grimy"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "새벽에 안개가 짙게 끼어서 고속도로에서 사고가 잇따랐다.",
+        "en": "Thick fog set in before dawn, and there was a string of accidents on the expressway.",
+        "register": "written"
+      },
+      {
+        "ko": "오래 안 쓴 키보드라 자판 사이에 먼지가 잔뜩 꼈네.",
+        "en": "This keyboard hasn't been used in ages. There's dust packed between all the keys.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "하늘에 구름이 잔뜩 {{}} 있어서 별이 하나도 안 보였다.",
+          "en": "The sky was so overcast that not a single star was visible.",
+          "cue": "끼다 · (cloud) hang over",
+          "accepted": [
+            "껴",
+            "끼어"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "물때가 {{}} 욕실 타일을 주말에 박박 닦았다.",
+          "en": "Over the weekend I gave the bathroom tiles, crusted with soap scum, a hard scrub.",
+          "cue": "끼다 · (grime) build up",
+          "accepted": [
+            "낀"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "아침 일찍 창밖을 보니 온 동네가 뿌옇게 보였다. (Early morning: the whole neighborhood looks hazy.)",
+          "options": [
+            {
+              "text": "밤사이 안개가 잔뜩 꼈다.",
+              "correct": true,
+              "why": "Fog, cloud, dust and grime take 끼다: they form and settle over something."
+            },
+            {
+              "text": "밤사이 안개가 잔뜩 묻었다.",
+              "correct": false,
+              "why": "묻다 is for a liquid or powder getting on something (옷에 잉크가 묻다). Fog doesn't 묻다."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:이루다:achieve",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:이루다",
+      "sense:achieve"
+    ],
+    "word": "이루다",
+    "meanings": [
+      "to achieve",
+      "to accomplish",
+      "to realize (a dream)",
+      "to reach (an agreement)"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "꿈을 이루다",
+        "en": "to realize one's dream"
+      },
+      {
+        "ko": "목표를 이루다",
+        "en": "to reach a goal"
+      },
+      {
+        "ko": "뜻을 이루다",
+        "en": "to achieve one's aim"
+      },
+      {
+        "ko": "합의를 이루다",
+        "en": "to reach an agreement"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "십 년 넘게 준비한 끝에 그녀는 마침내 자기 책을 내겠다는 꿈을 이뤘다.",
+        "en": "After more than ten years of preparation, she finally realized her dream of publishing her own book.",
+        "register": "written"
+      },
+      {
+        "ko": "양측은 밤샘 협상 끝에 극적으로 합의를 이루었다.",
+        "en": "After all-night negotiations, the two sides dramatically reached an agreement.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "올해 세운 목표를 다 {{}} 못했지만 절반은 해냈다.",
+          "en": "I didn't achieve every goal I set this year, but I got halfway.",
+          "cue": "이루다 · achieve",
+          "accepted": [
+            "이루지"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "작은 목표라도 하나씩 {{}} 가다 보면 자신감이 붙는다.",
+          "en": "If you keep achieving goals one at a time, however small, your confidence builds.",
+          "cue": "이루다 · achieve (goals)",
+          "accepted": [
+            "이뤄",
+            "이루어"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "오랜 노력 끝에 바라던 것을 손에 넣었다. (After long effort, you got what you'd hoped for.)",
+          "options": [
+            {
+              "text": "꿈을 이루었다.",
+              "correct": true,
+              "why": "Achieving a dream or goal is 이루다, with an object."
+            },
+            {
+              "text": "꿈을 이르렀다.",
+              "correct": false,
+              "why": "이르다 (이르러, 이르렀다) means to reach a point and takes 에: 결론에 이르다."
+            },
+            {
+              "text": "꿈을 거두었다.",
+              "correct": false,
+              "why": "거두다 goes with results and wins (성과를 거두다, 승리를 거두다), not dreams."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:이루다:form",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [
+      {
+        "id": "v:이루다:achieve",
+        "require": "guru"
+      }
+    ],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:이루다",
+      "sense:form"
+    ],
+    "word": "이루다",
+    "meanings": [
+      "to form",
+      "to make up",
+      "to create (a contrast, harmony)"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "가정을 이루다",
+        "en": "to start a family"
+      },
+      {
+        "ko": "조화를 이루다",
+        "en": "to be in harmony"
+      },
+      {
+        "ko": "대조를 이루다",
+        "en": "to contrast (with)"
+      },
+      {
+        "ko": "주류를 이루다",
+        "en": "to make up the mainstream"
+      },
+      {
+        "ko": "장사진을 이루다",
+        "en": "to form a long queue"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "붉은 단풍이 파란 하늘과 선명한 대조를 이루었다.",
+        "en": "The red autumn leaves stood out vividly against the blue sky.",
+        "register": "written"
+      },
+      {
+        "ko": "새 휴대폰 출시일에 매장 앞은 아침부터 장사진을 이뤘다.",
+        "en": "On the new phone's launch day, a long line formed outside the store from early morning.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "이 도시는 오래된 한옥과 현대식 건물이 묘한 조화를 {{}} 있다.",
+          "en": "In this city, old hanok and modern buildings sit together in a curious harmony.",
+          "cue": "이루다 · form (harmony)",
+          "accepted": [
+            "이루고"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "그 시절 문단의 주류를 {{}} 것은 참여 문학이었다.",
+          "en": "What made up the literary mainstream in those days was socially engaged literature.",
+          "cue": "이루다 · make up",
+          "accepted": [
+            "이룬",
+            "이루던",
+            "이루었던",
+            "이뤘던"
+          ],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:빌다:wish",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:빌다",
+      "sense:wish"
+    ],
+    "mnemonic": "빌다 (wish, beg) → 빌어, 빕니다. 빌리다 (borrow) → 빌려. The extra 리 is what you borrow.",
+    "word": "빌다",
+    "meanings": [
+      "to wish (for)",
+      "to pray (for)",
+      "to make a wish"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "소원을 빌다",
+        "en": "to make a wish"
+      },
+      {
+        "ko": "행운을 빌다",
+        "en": "to wish (someone) luck"
+      },
+      {
+        "ko": "명복을 빌다",
+        "en": "to pray for the soul of the departed"
+      },
+      {
+        "ko": "건강을 빌다",
+        "en": "to wish someone good health"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "새해 첫날 해돋이를 보면서 가족들 건강을 빌었어요.",
+        "en": "On New Year's Day, watching the sunrise, I prayed for my family's health.",
+        "register": "spoken"
+      },
+      {
+        "ko": "면접 잘 보고 와. 행운을 빌게!",
+        "en": "Good luck at the interview. I'll keep my fingers crossed!",
+        "register": "spoken"
+      },
+      {
+        "ko": "고인의 명복을 빕니다.",
+        "en": "May the departed rest in peace.",
+        "register": "formal"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "합격 발표 날, 어머니는 아침부터 두 손을 모으고 {{}} 계셨다.",
+          "en": "On the day the results came out, my mother sat with her hands clasped in prayer from the morning on.",
+          "cue": "빌다 · pray",
+          "accepted": [
+            "빌고"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "다들 시험 잘 보길 {{}}.",
+          "en": "I hope you all do well on the exam.",
+          "cue": "빌다 · wish",
+          "accepted": [
+            "빌게",
+            "빌게요",
+            "빌어",
+            "빌어요",
+            "빕니다",
+            "빈다",
+            "빌겠습니다"
+          ],
+          "nearMiss": [
+            {
+              "answer": "빌께",
+              "hint": "Spelled 빌게: -(으)ㄹ게 is written with ㄱ."
+            }
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "친구의 앞날에 행운이 있기를 바란다. (You wish your friend luck.)",
+          "options": [
+            {
+              "text": "행운을 빌어.",
+              "correct": true,
+              "why": "Wishing or praying is 빌다 → 빌어."
+            },
+            {
+              "text": "행운을 빌려.",
+              "correct": false,
+              "why": "빌려 comes from 빌리다 (borrow). Wishing is 빌다 → 빌어."
+            },
+            {
+              "text": "행운을 빌러.",
+              "correct": false,
+              "why": "-(으)러 means \"in order to\" and needs a verb of motion after it (빌러 가다)."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:빌다:beg",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [
+      {
+        "id": "v:빌다:wish",
+        "require": "guru"
+      }
+    ],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:빌다",
+      "sense:beg"
+    ],
+    "word": "빌다",
+    "meanings": [
+      "to beg (forgiveness)",
+      "to plead",
+      "to apologize abjectly"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "용서를 빌다",
+        "en": "to beg forgiveness"
+      },
+      {
+        "ko": "싹싹 빌다",
+        "en": "to beg abjectly; to grovel"
+      },
+      {
+        "ko": "잘못을 빌다",
+        "en": "to apologize for one's wrongdoing"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "약속을 또 어겨서 여자 친구한테 싹싹 빌었어.",
+        "en": "I broke my promise again, so I groveled to my girlfriend.",
+        "register": "spoken"
+      },
+      {
+        "ko": "그는 피해자 가족 앞에 무릎을 꿇고 용서를 빌었다.",
+        "en": "He knelt before the victim's family and begged their forgiveness.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "이제 와서 잘못했다고 {{}} 봐야 이미 늦었어.",
+          "en": "There's no point begging forgiveness now. It's too late.",
+          "cue": "빌다 · beg (forgiveness)",
+          "accepted": [
+            "빌어"
+          ],
+          "nearMiss": [
+            {
+              "answer": "빌려",
+              "hint": "빌려 is from 빌리다 (borrow). Begging is 빌다 → 빌어."
+            }
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "아이는 다시는 안 그러겠다며 엄마에게 {{}}.",
+          "en": "The child begged his mother's forgiveness, promising never to do it again.",
+          "cue": "빌다 · beg (forgiveness)",
+          "accepted": [
+            "빌었다",
+            "빌었어",
+            "빌었어요",
+            "빌었습니다"
+          ],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:빌리다:avail",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:빌리다",
+      "sense:avail"
+    ],
+    "word": "빌리다",
+    "meanings": [
+      "to take (an opportunity) to",
+      "to borrow (words); to quote",
+      "with the help of"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "이 자리를 빌려",
+        "en": "(I'd like to) take this opportunity to"
+      },
+      {
+        "ko": "말을 빌리자면",
+        "en": "to borrow (someone's) words"
+      },
+      {
+        "ko": "술기운을 빌려",
+        "en": "with a little Dutch courage"
+      },
+      {
+        "ko": "힘을 빌리다",
+        "en": "to get help (from someone)"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "이 자리를 빌려 그동안 도와주신 모든 분께 감사드립니다.",
+        "en": "I'd like to take this opportunity to thank everyone who has helped along the way.",
+        "register": "formal"
+      },
+      {
+        "ko": "한 평론가의 말을 빌리자면, 이 소설은 '실패한 걸작'이다.",
+        "en": "To borrow one critic's words, this novel is a \"failed masterpiece.\"",
+        "register": "written"
+      },
+      {
+        "ko": "평소엔 말도 못 붙이더니 술기운을 빌려 고백을 했다.",
+        "en": "He'd never even managed to talk to her, but with a little Dutch courage he confessed.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "meaning"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "작가는 수상 소감에서 이 자리를 {{}} 번역가에게 고마움을 전했다.",
+          "en": "In her acceptance speech, the author took the opportunity to thank her translator.",
+          "cue": "빌리다 · take (the opportunity)",
+          "accepted": [
+            "빌려",
+            "빌려서"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "어느 시인의 표현을 {{}} 그 시절 우리는 '눈부시게 가난했다.'",
+          "en": "To borrow a poet's phrase, in those days we were \"dazzlingly poor.\"",
+          "cue": "빌리다 · borrow (words)",
+          "accepted": [
+            "빌리자면",
+            "빌리면",
+            "빌려 말하자면"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "meaning": {
+        "accepted": [
+          "take the opportunity to",
+          "borrow",
+          "to borrow",
+          "quote",
+          "to quote",
+          "borrow words",
+          "avail oneself of",
+          "with the help of",
+          "make use of"
+        ]
+      }
+    }
+  },
+  {
+    "id": "v:들어주다:grant",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:들어주다",
+      "sense:grant"
+    ],
+    "mnemonic": "Granting a request is the single word 들어주다. \"Listen to (someone)\" is 듣다 + -어 주다 and is spaced in careful writing: 얘기를 들어 주다.",
+    "word": "들어주다",
+    "meanings": [
+      "to grant (a request)",
+      "to do (someone) a favor",
+      "to give in to (a demand)"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "부탁을 들어주다",
+        "en": "to do (someone) a favor"
+      },
+      {
+        "ko": "소원을 들어주다",
+        "en": "to grant a wish"
+      },
+      {
+        "ko": "요구를 들어주다",
+        "en": "to give in to a demand"
+      },
+      {
+        "ko": "청을 들어주다",
+        "en": "to accede to a request"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "웬만한 부탁은 다 들어주는데 돈 빌려 달라는 건 좀 곤란해.",
+        "en": "I'll do you most favors, but lending money is a bit much.",
+        "register": "spoken"
+      },
+      {
+        "ko": "회사는 결국 노조의 요구를 일부 들어주기로 했다.",
+        "en": "The company finally agreed to meet some of the union's demands.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance",
+      "meaning"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "아이가 하도 졸라서 강아지를 키우고 싶다는 소원을 {{}} 수밖에 없었다.",
+          "en": "My kid begged so much that I had no choice but to grant her wish for a puppy.",
+          "cue": "들어주다 · grant (a wish)",
+          "accepted": [
+            "들어줄"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "그렇게 무리한 요구를 다 {{}} 계약할 이유는 없다.",
+          "en": "There's no reason to sign if it means giving in to such unreasonable demands.",
+          "cue": "들어주다 · give in to (demands)",
+          "accepted": [
+            "들어주면서",
+            "들어주고",
+            "들어주며"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "친구가 이삿짐 나르는 걸 도와 달라고 해서 도와주기로 했다. (A friend asked for help moving, and you agreed.)",
+          "options": [
+            {
+              "text": "친구 부탁을 들어줬다.",
+              "correct": true,
+              "why": "Granting a request is 들어주다, written as one word."
+            },
+            {
+              "text": "친구 부탁을 들려줬다.",
+              "correct": false,
+              "why": "들려주다 means to tell or play something so someone hears it (이야기를 들려주다)."
+            },
+            {
+              "text": "친구 부탁을 들어 봤다.",
+              "correct": false,
+              "why": "들어 보다 is just hearing the request out. It doesn't say you agreed."
+            }
+          ]
+        }
+      ],
+      "meaning": {
+        "accepted": [
+          "grant",
+          "to grant",
+          "grant a request",
+          "do a favor",
+          "comply with",
+          "accept",
+          "go along with",
+          "give in to",
+          "listen to"
+        ]
+      }
+    }
+  },
+  {
+    "id": "v:돌려보내다",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:돌려보내다"
+    ],
+    "word": "돌려보내다",
+    "meanings": [
+      "to send back",
+      "to turn away",
+      "to return (something to its sender)"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "빈손으로 돌려보내다",
+        "en": "to send (someone) away empty-handed"
+      },
+      {
+        "ko": "선물을 돌려보내다",
+        "en": "to send a gift back"
+      },
+      {
+        "ko": "손님을 돌려보내다",
+        "en": "to turn guests away"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "예약 없이 찾아온 손님들을 그냥 돌려보낼 수밖에 없었다.",
+        "en": "We had no choice but to turn away the guests who showed up without a reservation.",
+        "register": "written"
+      },
+      {
+        "ko": "멀리서 왔는데 빈손으로 돌려보내기가 미안해서 차라도 한잔 대접했어요.",
+        "en": "They'd come a long way and I felt bad sending them off empty-handed, so I at least offered them some tea.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance",
+      "meaning"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "주문한 것과 다른 색이 와서 상품을 판매자에게 {{}} 했다.",
+          "en": "The wrong color arrived, so I had to send the item back to the seller.",
+          "cue": "돌려보내다 · send back",
+          "accepted": [
+            "돌려보내야"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "서류 하나 빠졌다고 민원인을 그냥 {{}} 건 너무하잖아요.",
+          "en": "Sending someone away just because one document was missing is a bit much.",
+          "cue": "돌려보내다 · turn away",
+          "accepted": [
+            "돌려보낸",
+            "돌려보내는"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "청탁성 선물이 배달되자 그는 뜯지도 않고 보낸 사람에게 다시 보냈다. (A gift that came with strings attached arrived; he sent it back unopened.)",
+          "options": [
+            {
+              "text": "선물을 그대로 돌려보냈다.",
+              "correct": true,
+              "why": "Sending something or someone back where it came from is 돌려보내다."
+            },
+            {
+              "text": "선물을 그대로 내보냈다.",
+              "correct": false,
+              "why": "내보내다 means to send or let out of a space, to dismiss, or to broadcast. It doesn't mean returning to the sender."
+            },
+            {
+              "text": "선물을 그대로 되돌아갔다.",
+              "correct": false,
+              "why": "되돌아가다 is intransitive (go back). It can't take 선물을 as an object."
+            }
+          ]
+        }
+      ],
+      "meaning": {
+        "accepted": [
+          "send back",
+          "to send back",
+          "return",
+          "turn away",
+          "send away"
+        ]
+      }
+    }
+  },
+  {
+    "id": "v:내놓다:release",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:내놓다",
+      "sense:release"
+    ],
+    "word": "내놓다",
+    "meanings": [
+      "to put up (for sale)",
+      "to put on the market",
+      "to bring out (a product)"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "집을 내놓다",
+        "en": "to put one's house on the market"
+      },
+      {
+        "ko": "매물로 내놓다",
+        "en": "to list for sale"
+      },
+      {
+        "ko": "신제품을 내놓다",
+        "en": "to bring out a new product"
+      },
+      {
+        "ko": "시장에 내놓다",
+        "en": "to put on the market"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "이사 가려고 지난달에 집을 내놨는데 아직 보러 오는 사람이 없네.",
+        "en": "We put the house on the market last month to move, but nobody's come to see it yet.",
+        "register": "spoken"
+      },
+      {
+        "ko": "업체는 기존 모델보다 가격을 낮춘 보급형 제품을 내놓았다.",
+        "en": "The company brought out a budget model priced below its existing line.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "오래 몰던 차를 중고 시장에 {{}} 일주일 만에 팔렸다.",
+          "en": "I put the car I'd driven for years on the used market, and it sold within a week.",
+          "cue": "내놓다 · put up for sale",
+          "accepted": [
+            "내놨더니",
+            "내놓았더니",
+            "내놓자",
+            "내놨는데",
+            "내놓았는데"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "그 출판사는 해마다 번역 시리즈를 꾸준히 {{}} 있다.",
+          "en": "That publisher has been steadily bringing out a translation series every year.",
+          "cue": "내놓다 · bring out (a product)",
+          "accepted": [
+            "내놓고"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "회사가 새 스마트폰 모델을 출시했다. (A company launched a new smartphone model.)",
+          "options": [
+            {
+              "text": "회사가 새 모델을 내놓았다.",
+              "correct": true,
+              "why": "Bringing a product out onto the market is 내놓다."
+            },
+            {
+              "text": "회사가 새 모델을 꺼냈다.",
+              "correct": false,
+              "why": "꺼내다 means to take something out of a container, or to bring up a topic."
+            },
+            {
+              "text": "회사가 새 모델을 내보냈다.",
+              "correct": false,
+              "why": "내보내다 means to send people or things out of a place, or to air a broadcast."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:내놓다:propose",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [
+      {
+        "id": "v:내놓다:release",
+        "require": "guru"
+      }
+    ],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:내놓다",
+      "sense:propose"
+    ],
+    "word": "내놓다",
+    "meanings": [
+      "to come up with (measures, a plan)",
+      "to put forward",
+      "to issue (a statement)",
+      "to produce (results)"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "대책을 내놓다",
+        "en": "to come up with countermeasures"
+      },
+      {
+        "ko": "입장을 내놓다",
+        "en": "to issue a statement of position"
+      },
+      {
+        "ko": "해결책을 내놓다",
+        "en": "to put forward a solution"
+      },
+      {
+        "ko": "결과를 내놓다",
+        "en": "to produce results"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "정부는 전세 사기 피해자를 위한 지원책을 내놓았다.",
+        "en": "The government put forward support measures for victims of jeonse fraud.",
+        "register": "written"
+      },
+      {
+        "ko": "회의는 세 시간이나 했는데 아무도 뾰족한 수를 못 내놓더라.",
+        "en": "The meeting went on for three hours, and nobody could come up with a real solution.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "논란이 커지자 구단은 공식 입장을 {{}} 사태 수습에 나섰다.",
+          "en": "As the controversy grew, the club issued an official statement and set about damage control.",
+          "cue": "내놓다 · issue (a statement)",
+          "accepted": [
+            "내놓고",
+            "내놓으며",
+            "내놓으면서"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "비판만 하지 말고 대안을 {{}} 봐.",
+          "en": "Don't just criticize. Come up with an alternative.",
+          "cue": "내놓다 · come up with",
+          "accepted": [
+            "내놔",
+            "내놓아"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "전문가 위원회가 문제를 해결할 방법을 제시했다. (An expert committee proposed a way to solve the problem.)",
+          "options": [
+            {
+              "text": "위원회가 해결 방안을 내놓았다.",
+              "correct": true,
+              "why": "Putting forward plans, measures or statements is 내놓다."
+            },
+            {
+              "text": "위원회가 해결 방안을 내렸다.",
+              "correct": false,
+              "why": "내리다 goes with decisions, conclusions and orders (결론을 내리다). Proposals are 내놓다 or 제시하다."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:건드리다:touch",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:건드리다",
+      "sense:touch"
+    ],
+    "mnemonic": "건들다 is the accepted short form: 건들지 마.",
+    "word": "건드리다",
+    "meanings": [
+      "to touch (and disturb)",
+      "to mess with",
+      "to fiddle with",
+      "to tamper with"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "함부로 건드리다",
+        "en": "to touch carelessly"
+      },
+      {
+        "ko": "남의 물건을 건드리다",
+        "en": "to mess with other people's things"
+      },
+      {
+        "ko": "자는 아이를 건드리다",
+        "en": "to disturb a sleeping child"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "내 책상 위 서류는 순서대로 놔둔 거니까 건드리지 마.",
+        "en": "The papers on my desk are in order, so don't touch them.",
+        "register": "spoken"
+      },
+      {
+        "ko": "고양이가 자고 있을 때 건드리면 할퀼 수도 있어요.",
+        "en": "If you poke the cat while it's sleeping, it might scratch you.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": [
+      "cloze"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "전시품은 손으로 {{}} 마시고 눈으로만 감상해 주세요.",
+          "en": "Please don't touch the exhibits. Look only.",
+          "cue": "건드리다 · touch",
+          "accepted": [
+            "건드리지",
+            "건들지"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "설정을 잘못 {{}} 프로그램이 아예 안 켜진다.",
+          "en": "I messed with the settings and now the program won't even start.",
+          "cue": "건드리다 · mess with",
+          "accepted": [
+            "건드렸더니",
+            "건드려서",
+            "건들었더니",
+            "건드리는 바람에"
+          ],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:건드리다:provoke",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [
+      {
+        "id": "v:건드리다:touch",
+        "require": "guru"
+      }
+    ],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:건드리다",
+      "sense:provoke"
+    ],
+    "word": "건드리다",
+    "meanings": [
+      "to provoke",
+      "to touch a nerve",
+      "to hurt (pride, feelings)",
+      "to touch on (a sore subject)"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "자존심을 건드리다",
+        "en": "to wound someone's pride"
+      },
+      {
+        "ko": "신경을 건드리다",
+        "en": "to get on someone's nerves"
+      },
+      {
+        "ko": "아픈 데를 건드리다",
+        "en": "to touch a sore spot"
+      },
+      {
+        "ko": "성질을 건드리다",
+        "en": "to provoke someone's temper"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "괜히 실직 얘기를 꺼내서 친구 아픈 데를 건드린 것 같아.",
+        "en": "I think I touched a sore spot by bringing up my friend's job loss for no reason.",
+        "register": "spoken"
+      },
+      {
+        "ko": "그의 한마디가 동료들의 자존심을 건드렸다.",
+        "en": "His one remark wounded his colleagues' pride.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "그 사람 지금 예민하니까 괜히 {{}} 말고 가만히 있어.",
+          "en": "He's touchy right now, so don't go provoking him. Just leave it.",
+          "cue": "건드리다 · provoke",
+          "accepted": [
+            "건드리지",
+            "건들지"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "기자의 질문이 감독의 신경을 {{}} 듯했다.",
+          "en": "The reporter's question seemed to get on the coach's nerves.",
+          "cue": "건드리다 · get on (someone's) nerves",
+          "accepted": [
+            "건드린",
+            "건드리는"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "농담으로 한 말인데 상대가 몹시 불쾌해했다. 상대의 자부심을 상하게 한 것이다. (A joke offended someone's sense of pride.)",
+          "options": [
+            {
+              "text": "상대의 자존심을 건드렸다.",
+              "correct": true,
+              "why": "Hurting someone's pride or touching a nerve is 건드리다."
+            },
+            {
+              "text": "상대의 자존심을 걸었다.",
+              "correct": false,
+              "why": "자존심을 걸다 means to stake one's own pride on something."
+            },
+            {
+              "text": "상대의 자존심을 세웠다.",
+              "correct": false,
+              "why": "자존심을 세우다 means to stand on (or protect) one's pride, the opposite of wounding it."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:돌아보다:reflect",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:돌아보다",
+      "sense:reflect"
+    ],
+    "word": "돌아보다",
+    "meanings": [
+      "to look back on",
+      "to reflect on",
+      "to look back (over one's shoulder)"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "지난날을 돌아보다",
+        "en": "to look back on the past"
+      },
+      {
+        "ko": "자신을 돌아보다",
+        "en": "to take a hard look at oneself"
+      },
+      {
+        "ko": "뒤를 돌아보다",
+        "en": "to look back (behind one)"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "한 해를 돌아보니 바쁘기만 했지 남은 게 별로 없네.",
+        "en": "Looking back on the year, I was busy the whole time but don't have much to show for it.",
+        "register": "spoken"
+      },
+      {
+        "ko": "남을 탓하기 전에 먼저 자신을 돌아볼 필요가 있다.",
+        "en": "Before blaming others, you need to take a look at yourself.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "누가 부르는 것 같아서 뒤를 {{}} 아무도 없었다.",
+          "en": "I thought someone called my name, but when I looked back there was no one there.",
+          "cue": "돌아보다 · look back",
+          "accepted": [
+            "돌아봤는데",
+            "돌아보았는데",
+            "돌아봤더니",
+            "돌아보았더니",
+            "돌아보니"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "이번 실패를 계기로 그동안의 운영 방식을 차분히 {{}} 한다.",
+          "en": "We should use this failure as a chance to take a calm look back at how we've been running things.",
+          "cue": "돌아보다 · reflect on",
+          "accepted": [
+            "돌아봐야",
+            "돌아보아야"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "졸업식 날, 지난 4년간의 대학 생활을 떠올리며 생각에 잠겼다. (On graduation day, you thought back over four years of college.)",
+          "options": [
+            {
+              "text": "지난 4년을 돌아봤다.",
+              "correct": true,
+              "why": "Looking back over a stretch of the past is 돌아보다."
+            },
+            {
+              "text": "지난 4년을 둘러봤다.",
+              "correct": false,
+              "why": "둘러보다 means to look around a place (매장을 둘러보다). A stretch of past time is 돌아보다."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:돌아보다:tour",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [
+      {
+        "id": "v:돌아보다:reflect",
+        "require": "guru"
+      }
+    ],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:돌아보다",
+      "sense:tour"
+    ],
+    "word": "돌아보다",
+    "meanings": [
+      "to make the rounds of",
+      "to tour (a site)",
+      "to go around and inspect"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "현장을 돌아보다",
+        "en": "to tour / inspect the site"
+      },
+      {
+        "ko": "피해 지역을 돌아보다",
+        "en": "to visit the affected areas"
+      },
+      {
+        "ko": "동네를 한 바퀴 돌아보다",
+        "en": "to take a walk around the neighborhood"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "장관은 태풍 피해 지역을 돌아보며 복구 상황을 점검했다.",
+        "en": "The minister toured the typhoon-hit areas, checking on recovery progress.",
+        "register": "written"
+      },
+      {
+        "ko": "이사 갈 동네를 미리 한 바퀴 돌아봤는데 생각보다 조용하더라.",
+        "en": "I took a walk around the neighborhood we're moving to, and it's quieter than I thought.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": [
+      "cloze"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "시장은 취임 첫날 공사 현장 여러 곳을 직접 {{}}.",
+          "en": "On her first day in office, the mayor personally toured several construction sites.",
+          "cue": "돌아보다 · tour (sites)",
+          "accepted": [
+            "돌아봤다",
+            "돌아보았다",
+            "돌아봤어요",
+            "돌아봤습니다",
+            "돌아봤어",
+            "돌아보셨다",
+            "돌아보셨어요",
+            "돌아보셨습니다"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "경비원은 밤 열 시가 되면 층마다 한 바퀴씩 {{}} 문이 잠겼는지 확인한다.",
+          "en": "At ten every night the security guard makes a round of each floor, checking that the doors are locked.",
+          "cue": "돌아보다 · make the rounds",
+          "accepted": [
+            "돌아보며",
+            "돌아보면서",
+            "돌아보고",
+            "돌아보고서"
+          ],
+          "particleTolerance": "none"
+        }
+      ]
+    },
+    "mnemonic": "돌아보다 here is 돌아다니며 보다: you move from place to place and check (현장을 돌아보다, 순찰하듯 돌아보다). 둘러보다 is looking around one place or browsing (매장을 둘러보다)."
+  },
+  {
+    "id": "v:놀리다:tease",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:놀리다",
+      "sense:tease"
+    ],
+    "word": "놀리다",
+    "meanings": [
+      "to tease",
+      "to make fun of",
+      "to mock"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "친구를 놀리다",
+        "en": "to tease a friend"
+      },
+      {
+        "ko": "말투를 가지고 놀리다",
+        "en": "to make fun of the way someone talks"
+      },
+      {
+        "ko": "놀림을 받다",
+        "en": "to be teased"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "어릴 때 이름이 특이하다고 친구들이 많이 놀렸어요.",
+        "en": "When I was little, my friends teased me a lot because my name was unusual.",
+        "register": "spoken"
+      },
+      {
+        "ko": "남의 발음을 놀리는 건 장난이라도 상처가 될 수 있다.",
+        "en": "Mocking someone's pronunciation can hurt, even as a joke.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "형이 겁쟁이라고 하도 {{}} 울음을 터뜨렸다.",
+          "en": "My older brother teased me so much for being a scaredy-cat that I burst into tears.",
+          "cue": "놀리다 · tease",
+          "accepted": [
+            "놀려서",
+            "놀리는 바람에",
+            "놀리니까"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "장난으로 한 말인데, {{}} 것처럼 들렸다면 미안해.",
+          "en": "I only meant it as a joke, but I'm sorry if it sounded like I was making fun of you.",
+          "cue": "놀리다 · make fun of",
+          "accepted": [
+            "놀리는",
+            "놀린"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "친구가 넘어진 걸 보고 다른 친구들이 웃으며 장난스럽게 흉내를 냈다. (Friends laughed and mimicked a friend who'd tripped.)",
+          "options": [
+            {
+              "text": "넘어진 친구를 놀렸다.",
+              "correct": true,
+              "why": "Making fun of someone is 놀리다."
+            },
+            {
+              "text": "넘어진 친구를 노렸다.",
+              "correct": false,
+              "why": "노리다 means to aim at or watch for (a target, a chance)."
+            },
+            {
+              "text": "넘어진 친구랑 놀았다.",
+              "correct": false,
+              "why": "놀다 means to play or hang out (with someone)."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:놀리다:idle",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [
+      {
+        "id": "v:놀리다:tease",
+        "require": "guru"
+      }
+    ],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:놀리다",
+      "sense:idle"
+    ],
+    "word": "놀리다",
+    "meanings": [
+      "to leave idle",
+      "to leave unused",
+      "to let (land, equipment) sit idle"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "땅을 놀리다",
+        "en": "to leave land unused"
+      },
+      {
+        "ko": "기계를 놀리다",
+        "en": "to leave machines idle"
+      },
+      {
+        "ko": "놀리는 방",
+        "en": "a room that sits unused"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "주문이 끊겨서 공장 설비 절반을 몇 달째 놀리고 있다.",
+        "en": "Orders dried up, so half the factory's equipment has been sitting idle for months.",
+        "register": "written"
+      },
+      {
+        "ko": "시골에 놀리는 밭이 있는데 주말농장으로 써 볼까 해.",
+        "en": "We've got a field sitting unused in the countryside. I'm thinking of using it as a weekend farm.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": [
+      "cloze"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "빈방을 그냥 {{}} 아까우니까 서재로 쓰자.",
+          "en": "It's a waste to leave the spare room unused, so let's make it a study.",
+          "cue": "놀리다 · leave unused",
+          "accepted": [
+            "놀리기",
+            "놀리긴",
+            "놀리기엔",
+            "놀리기에는",
+            "놀리기가"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "비싼 장비를 {{}} 두는 대신 다른 팀에 빌려주기로 했다.",
+          "en": "Instead of leaving the expensive equipment sitting idle, we decided to lend it to another team.",
+          "cue": "놀리다 · leave idle",
+          "accepted": [
+            "놀려"
+          ],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:꺼내다:bring-up",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:꺼내다",
+      "sense:bring-up"
+    ],
+    "word": "꺼내다",
+    "meanings": [
+      "to bring up (a topic)",
+      "to broach",
+      "to take out (of a container)"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "말을 꺼내다",
+        "en": "to bring something up; to start to say something"
+      },
+      {
+        "ko": "이야기를 꺼내다",
+        "en": "to raise a subject"
+      },
+      {
+        "ko": "어렵게 말을 꺼내다",
+        "en": "to bring something up hesitantly"
+      },
+      {
+        "ko": "지갑에서 꺼내다",
+        "en": "to take out of a wallet"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "헤어지자는 말을 어떻게 꺼내야 할지 며칠째 고민 중이야.",
+        "en": "I've been agonizing for days over how to bring up breaking up.",
+        "register": "spoken"
+      },
+      {
+        "ko": "그는 한참 망설이다가 어렵게 이야기를 꺼냈다.",
+        "en": "After hesitating for a long while, he finally raised the subject.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance",
+      "meaning"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "연봉 얘기를 먼저 {{}} 게 좀 눈치 보여서 가만히 있었어.",
+          "en": "I felt awkward bringing up salary first, so I kept quiet.",
+          "cue": "꺼내다 · bring up",
+          "accepted": [
+            "꺼내는"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "회의 막바지에 누군가 예산 문제를 {{}} 분위기가 싸해졌다.",
+          "en": "Toward the end of the meeting someone raised the budget issue, and the mood went cold.",
+          "cue": "꺼내다 · raise (an issue)",
+          "accepted": [
+            "꺼내자",
+            "꺼내는 바람에",
+            "꺼냈더니",
+            "꺼내서"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "회식 자리에서 결혼 계획 이야기를 처음으로 했다. (At a staff dinner, you brought up your wedding plans for the first time.)",
+          "options": [
+            {
+              "text": "결혼 이야기를 꺼냈다.",
+              "correct": true,
+              "why": "Bringing up a topic in conversation is 꺼내다."
+            },
+            {
+              "text": "결혼 이야기를 들췄다.",
+              "correct": false,
+              "why": "들추다 is to dig up something hidden or past, usually embarrassing (과거를 들추다)."
+            },
+            {
+              "text": "결혼 이야기를 내렸다.",
+              "correct": false,
+              "why": "내리다 goes with decisions and conclusions (결론을 내리다), not topics."
+            }
+          ]
+        }
+      ],
+      "meaning": {
+        "accepted": [
+          "bring up",
+          "to bring up",
+          "broach",
+          "raise",
+          "take out",
+          "pull out",
+          "mention"
+        ]
+      }
+    }
+  },
+  {
+    "id": "v:내려놓다:let-go",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:내려놓다",
+      "sense:let-go"
+    ],
+    "word": "내려놓다",
+    "meanings": [
+      "to let go of (a desire, a burden)",
+      "to give up",
+      "to step down from (a post)",
+      "to put down"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "욕심을 내려놓다",
+        "en": "to let go of one's ambitions"
+      },
+      {
+        "ko": "마음을 내려놓다",
+        "en": "to let go; to stop worrying"
+      },
+      {
+        "ko": "자리를 내려놓다",
+        "en": "to step down from a position"
+      },
+      {
+        "ko": "짐을 내려놓다",
+        "en": "to set down a load"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "결과는 내가 어쩔 수 없는 거니까 이제 마음을 내려놓기로 했어.",
+        "en": "The result is out of my hands, so I've decided to stop worrying about it.",
+        "register": "spoken"
+      },
+      {
+        "ko": "그는 30년간 지켜 온 대표직을 내려놓고 고향으로 돌아갔다.",
+        "en": "He stepped down from the CEO post he'd held for 30 years and went back to his hometown.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance",
+      "meaning"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "완벽하게 하겠다는 욕심을 {{}} 오히려 일이 잘 풀렸다.",
+          "en": "Once I let go of the urge to do it perfectly, things actually went more smoothly.",
+          "cue": "내려놓다 · let go of",
+          "accepted": [
+            "내려놓으니까",
+            "내려놓으니",
+            "내려놓았더니",
+            "내려놨더니",
+            "내려놓자"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "무거운 장바구니를 현관에 {{}} 한숨 돌렸다.",
+          "en": "I set the heavy shopping bags down in the entryway and caught my breath.",
+          "cue": "내려놓다 · put down",
+          "accepted": [
+            "내려놓고"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "그동안의 집착을 버리고 편해지기로 했다. (You decided to stop clinging and be at peace.)",
+          "options": [
+            {
+              "text": "집착을 내려놓았다.",
+              "correct": true,
+              "why": "Letting go of something on purpose is 내려놓다."
+            },
+            {
+              "text": "집착을 놓쳤다.",
+              "correct": false,
+              "why": "놓치다 is to miss or lose hold of something by accident (기회를 놓치다)."
+            },
+            {
+              "text": "집착을 떨어뜨렸다.",
+              "correct": false,
+              "why": "떨어뜨리다 means to drop something, or to lower a figure (성적을 떨어뜨리다)."
+            }
+          ]
+        }
+      ],
+      "meaning": {
+        "accepted": [
+          "let go",
+          "let go of",
+          "put down",
+          "set down",
+          "give up",
+          "step down",
+          "relinquish",
+          "lay down"
+        ]
+      }
+    }
+  },
+  {
+    "id": "v:빠지다:absent",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:빠지다",
+      "sense:absent"
+    ],
+    "word": "빠지다",
+    "meanings": [
+      "to be left out",
+      "to be missing (from)",
+      "to skip (a class, a meeting)",
+      "to sit out"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "모임에 빠지다",
+        "en": "to skip a gathering"
+      },
+      {
+        "ko": "명단에서 빠지다",
+        "en": "to be left off the list"
+      },
+      {
+        "ko": "수업을 빠지다",
+        "en": "to skip class"
+      },
+      {
+        "ko": "하나도 빠짐없이",
+        "en": "without missing a single one"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "이번 회식은 사정이 있어서 빠질게요.",
+        "en": "Something's come up, so I'll sit out this staff dinner.",
+        "register": "spoken"
+      },
+      {
+        "ko": "최종 명단에서 내 이름이 빠져 있어서 담당자에게 다시 확인했다.",
+        "en": "My name was missing from the final list, so I double-checked with the person in charge.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "교정지를 보니 3장 마지막 문단이 통째로 {{}} 있었다.",
+          "en": "Looking at the proofs, I found the last paragraph of chapter 3 was missing entirely.",
+          "cue": "빠지다 · be missing",
+          "accepted": [
+            "빠져"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "중요한 회의니까 웬만하면 {{}} 말고 꼭 참석해 주세요.",
+          "en": "It's an important meeting, so unless you really can't, please don't skip it.",
+          "cue": "빠지다 · skip",
+          "accepted": [
+            "빠지지"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "출판사가 실수로 내 글을 목차에 넣지 않았다. (By mistake, your piece was left out of the table of contents.)",
+          "options": [
+            {
+              "text": "목차에서 내 글이 빠졌다.",
+              "correct": true,
+              "why": "With the piece as subject, being left out is intransitive 빠지다."
+            },
+            {
+              "text": "목차에서 내 글이 뺐다.",
+              "correct": false,
+              "why": "빼다 is transitive: someone 뺐다 something (편집자가 내 글을 뺐다)."
+            },
+            {
+              "text": "목차에서 내 글이 빠뜨렸다.",
+              "correct": false,
+              "why": "빠뜨리다 also needs an agent and an object (편집자가 내 글을 빠뜨렸다)."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:빠지다:fall-into",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [
+      {
+        "id": "v:빠지다:absent",
+        "require": "guru"
+      }
+    ],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:빠지다",
+      "sense:fall-into"
+    ],
+    "word": "빠지다",
+    "meanings": [
+      "to fall into (a state)",
+      "to get hooked on",
+      "to fall (in love)",
+      "to sink into (thought, crisis)"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "사랑에 빠지다",
+        "en": "to fall in love"
+      },
+      {
+        "ko": "생각에 빠지다",
+        "en": "to be lost in thought"
+      },
+      {
+        "ko": "위기에 빠지다",
+        "en": "to fall into crisis"
+      },
+      {
+        "ko": "게임에 빠지다",
+        "en": "to get hooked on games"
+      },
+      {
+        "ko": "딜레마에 빠지다",
+        "en": "to be caught in a dilemma"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "요즘 옛날 드라마에 빠져서 주말마다 정주행하고 있어.",
+        "en": "I'm hooked on old dramas these days and binge-watch every weekend.",
+        "register": "spoken"
+      },
+      {
+        "ko": "주력 사업이 흔들리면서 회사는 심각한 경영 위기에 빠졌다.",
+        "en": "As its core business faltered, the company fell into a serious crisis.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "그는 창밖을 바라보며 한동안 깊은 생각에 {{}} 있었다.",
+          "en": "He gazed out the window, lost in thought for a while.",
+          "cue": "빠지다 · be lost in (thought)",
+          "accepted": [
+            "빠져"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "어느 쪽을 택해도 손해라 완전히 딜레마에 {{}}.",
+          "en": "Whichever way we go, we lose. We're well and truly caught in a dilemma.",
+          "cue": "빠지다 · be caught in",
+          "accepted": [
+            "빠졌다",
+            "빠졌어",
+            "빠졌어요",
+            "빠졌습니다",
+            "빠졌네",
+            "빠졌네요"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "두 사람은 처음 만난 날부터 서로에게 반했다. (The two were smitten with each other from the day they met.)",
+          "options": [
+            {
+              "text": "첫눈에 사랑에 빠졌다.",
+              "correct": true,
+              "why": "Falling into a state (love, thought, crisis) is N에 빠지다."
+            },
+            {
+              "text": "첫눈에 사랑에 떨어졌다.",
+              "correct": false,
+              "why": "A calque of English \"fall in love\". 떨어지다 means to drop, fail (an exam), or run out."
+            },
+            {
+              "text": "첫눈에 사랑을 빠뜨렸다.",
+              "correct": false,
+              "why": "빠뜨리다 is transitive: to drop or leave something out."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:빠지다:drain",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [
+      {
+        "id": "v:빠지다:fall-into",
+        "require": "guru"
+      }
+    ],
+    "gating": false,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:빠지다",
+      "sense:drain"
+    ],
+    "word": "빠지다",
+    "meanings": [
+      "to come out (a stain, color)",
+      "to drain away (strength)",
+      "to come off (weight)",
+      "to fall out (hair)"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "얼룩이 빠지다",
+        "en": "a stain comes out"
+      },
+      {
+        "ko": "힘이 빠지다",
+        "en": "to feel deflated; to lose strength"
+      },
+      {
+        "ko": "살이 빠지다",
+        "en": "to lose weight"
+      },
+      {
+        "ko": "김이 빠지다",
+        "en": "to go flat; to lose steam"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "흰 셔츠에 묻은 커피 얼룩이 아무리 빨아도 안 빠져요.",
+        "en": "No matter how many times I wash it, the coffee stain on my white shirt won't come out.",
+        "register": "spoken"
+      },
+      {
+        "ko": "열심히 준비한 발표가 취소됐다니 힘이 쭉 빠지네.",
+        "en": "The presentation I worked so hard on got cancelled? That really takes the wind out of me.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": [
+      "cloze"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "한 달 동안 야식을 끊었더니 살이 {{}} 바지가 헐렁해졌다.",
+          "en": "I cut out late-night snacks for a month and lost so much weight my pants are loose.",
+          "cue": "빠지다 · (weight) come off",
+          "accepted": [
+            "빠져서",
+            "빠져"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "범인을 미리 알고 읽는 추리 소설은 김이 {{}} 끝까지 읽기 힘들다.",
+          "en": "A mystery novel where you already know the culprit falls flat, and it's hard to read to the end.",
+          "cue": "빠지다 · go flat",
+          "accepted": [
+            "빠져서",
+            "빠져"
+          ],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:넘어가다:fall-for",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:넘어가다",
+      "sense:fall-for"
+    ],
+    "word": "넘어가다",
+    "meanings": [
+      "to fall for (a trick)",
+      "to be taken in (by)",
+      "to be won over (by)"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "속임수에 넘어가다",
+        "en": "to fall for a trick"
+      },
+      {
+        "ko": "꾐에 넘어가다",
+        "en": "to be lured in"
+      },
+      {
+        "ko": "말에 넘어가다",
+        "en": "to be talked into it"
+      },
+      {
+        "ko": "쉽게 넘어가다",
+        "en": "to be easily taken in"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "점원 말솜씨에 넘어가서 필요도 없는 물건을 잔뜩 샀어.",
+        "en": "The clerk's smooth talk got me, and I bought a pile of stuff I didn't need.",
+        "register": "spoken"
+      },
+      {
+        "ko": "피해자들은 고수익을 보장한다는 말에 넘어가 투자금을 맡겼다.",
+        "en": "The victims fell for the promise of guaranteed high returns and handed over their money.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "그런 뻔한 수법에 {{}} 사람이 아직도 있다니 놀랍다.",
+          "en": "It's amazing there are still people who fall for such an obvious scam.",
+          "cue": "넘어가다 · fall for",
+          "accepted": [
+            "넘어가는"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "아무리 꼬드겨도 이번에는 안 {{}}.",
+          "en": "No matter how you try to sweet-talk me, I'm not falling for it this time.",
+          "cue": "넘어가다 · fall for",
+          "accepted": [
+            "넘어가",
+            "넘어가요",
+            "넘어갈 거야",
+            "넘어갈 거예요",
+            "넘어간다",
+            "넘어갑니다"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "사기꾼의 그럴듯한 말을 믿고 돈을 보냈다. (You believed a con artist and sent money.)",
+          "options": [
+            {
+              "text": "사기꾼 말에 넘어갔다.",
+              "correct": true,
+              "why": "Being taken in by words or a trick is N에 넘어가다."
+            },
+            {
+              "text": "사기꾼 말에 넘어졌다.",
+              "correct": false,
+              "why": "넘어지다 means to trip and fall over."
+            },
+            {
+              "text": "사기꾼 말에 넘겼다.",
+              "correct": false,
+              "why": "넘기다 is transitive and needs an object (돈을 넘기다). Being taken in is intransitive 넘어가다."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:넘어가다:let-slide",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [
+      {
+        "id": "v:넘어가다:fall-for",
+        "require": "guru"
+      }
+    ],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:넘어가다",
+      "sense:let-slide"
+    ],
+    "word": "넘어가다",
+    "meanings": [
+      "to let (something) slide",
+      "to let pass",
+      "to move on (to the next item)",
+      "to gloss over"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "그냥 넘어가다",
+        "en": "to let it slide"
+      },
+      {
+        "ko": "다음 안건으로 넘어가다",
+        "en": "to move on to the next item"
+      },
+      {
+        "ko": "대충 넘어가다",
+        "en": "to gloss over"
+      },
+      {
+        "ko": "없던 일로 하고 넘어가다",
+        "en": "to pretend it never happened"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "이번 실수는 그냥 넘어갈 테니까 다음부터 조심해.",
+        "en": "I'll let this mistake slide, but be careful from now on.",
+        "register": "spoken"
+      },
+      {
+        "ko": "시간 관계상 질의응답은 생략하고 다음 순서로 넘어가겠습니다.",
+        "en": "Given the time, we'll skip the Q&A and move on to the next part of the program.",
+        "register": "formal"
+      }
+    ],
+    "questionTypes": [
+      "cloze"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "이 부분은 다들 아는 내용이니까 빨리 {{}}.",
+          "en": "Everyone knows this part, so let's move on quickly.",
+          "cue": "넘어가다 · move on",
+          "accepted": [
+            "넘어갈게요",
+            "넘어가죠",
+            "넘어갑시다",
+            "넘어가자",
+            "넘어갈게",
+            "넘어가겠습니다",
+            "넘어가요",
+            "넘어가시죠",
+            "넘어갈까요"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "회계 오류를 대충 {{}} 나중에 감사에서 크게 문제가 됐다.",
+          "en": "They glossed over the accounting error, and it blew up into a major problem at the audit.",
+          "cue": "넘어가다 · gloss over",
+          "accepted": [
+            "넘어갔다가",
+            "넘어갔더니",
+            "넘어가는 바람에"
+          ],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:넘기다:overrun",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:넘기다",
+      "sense:overrun"
+    ],
+    "word": "넘기다",
+    "meanings": [
+      "to miss (a deadline)",
+      "to go past (a time limit)",
+      "to top (a number)"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "마감을 넘기다",
+        "en": "to miss the deadline"
+      },
+      {
+        "ko": "기한을 넘기다",
+        "en": "to go past the due date"
+      },
+      {
+        "ko": "자정을 넘기다",
+        "en": "to go past midnight"
+      },
+      {
+        "ko": "백만 명을 넘기다",
+        "en": "to top a million (people)"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "번역 원고 마감을 또 넘겨서 편집자한테 면목이 없어요.",
+        "en": "I missed the deadline for the translation manuscript again, and I can't face my editor.",
+        "register": "spoken"
+      },
+      {
+        "ko": "회의는 예정 시간을 한 시간이나 넘겨서야 끝났다.",
+        "en": "The meeting only ended a full hour past its scheduled time.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "납부 기한을 {{}} 연체료가 붙는다.",
+          "en": "If you go past the payment due date, a late fee is added.",
+          "cue": "넘기다 · go past (a deadline)",
+          "accepted": [
+            "넘기면"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "공연은 자정을 {{}} 끝났다.",
+          "en": "The concert ran past midnight.",
+          "cue": "넘기다 · go past (a time)",
+          "accepted": [
+            "넘겨서",
+            "넘겨",
+            "넘기고",
+            "넘겨서야"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "약속한 날까지 원고를 보내지 못했다. (You didn't send the manuscript by the agreed date.)",
+          "options": [
+            {
+              "text": "원고 마감을 넘겼다.",
+              "correct": true,
+              "why": "With the deadline as object, the verb is transitive 넘기다."
+            },
+            {
+              "text": "원고 마감을 넘어갔다.",
+              "correct": false,
+              "why": "With a person as subject, missing a deadline is transitive 넘기다. 넘어가다 makes the deadline the subject (마감이 넘어갔다)."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:넘기다:pull-through",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [
+      {
+        "id": "v:넘기다:overrun",
+        "require": "guru"
+      }
+    ],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:넘기다",
+      "sense:pull-through"
+    ],
+    "word": "넘기다",
+    "meanings": [
+      "to get through (a crisis)",
+      "to pull through",
+      "to weather",
+      "to make it through"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "고비를 넘기다",
+        "en": "to get past the critical point"
+      },
+      {
+        "ko": "위기를 넘기다",
+        "en": "to weather a crisis"
+      },
+      {
+        "ko": "겨울을 넘기다",
+        "en": "to make it through the winter"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "의사 말로는 오늘 밤만 잘 넘기면 괜찮을 거래요.",
+        "en": "The doctor says if he makes it through tonight, he'll be all right.",
+        "register": "spoken"
+      },
+      {
+        "ko": "팀은 주장의 극적인 동점골로 강등 위기를 넘겼다.",
+        "en": "The team survived the threat of relegation thanks to the captain's dramatic equalizer.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "대출 덕분에 가게는 겨우 고비를 {{}} 숨을 돌렸다.",
+          "en": "Thanks to the loan, the shop barely got through the crisis and could breathe again.",
+          "cue": "넘기다 · get through (a crisis)",
+          "accepted": [
+            "넘기고",
+            "넘겨",
+            "넘겨서"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "화분을 실내에 들여놨더니 겨울을 무사히 {{}}.",
+          "en": "I brought the potted plant inside, and it made it through the winter just fine.",
+          "cue": "넘기다 · make it through",
+          "accepted": [
+            "넘겼다",
+            "넘겼어",
+            "넘겼어요",
+            "넘겼네",
+            "넘겼네요",
+            "넘겼습니다"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "환자는 수술 후 위험한 순간이 있었지만 결국 회복했다. (After surgery the patient had a dangerous moment but recovered.)",
+          "options": [
+            {
+              "text": "환자는 고비를 넘겼다.",
+              "correct": true,
+              "why": "Getting past a critical point is 고비를 넘기다."
+            },
+            {
+              "text": "환자는 고비를 넘어졌다.",
+              "correct": false,
+              "why": "넘어지다 means to trip and fall."
+            },
+            {
+              "text": "환자는 고비를 넘쳤다.",
+              "correct": false,
+              "why": "넘치다 means to overflow (물이 넘치다)."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:세우다:draw-up",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:세우다",
+      "sense:draw-up"
+    ],
+    "word": "세우다",
+    "meanings": [
+      "to draw up (a plan)",
+      "to set (a goal, a standard)",
+      "to work out (measures)"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "계획을 세우다",
+        "en": "to make a plan"
+      },
+      {
+        "ko": "목표를 세우다",
+        "en": "to set a goal"
+      },
+      {
+        "ko": "대책을 세우다",
+        "en": "to come up with measures"
+      },
+      {
+        "ko": "기준을 세우다",
+        "en": "to set a standard"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "여행 계획을 꼼꼼하게 세우는 편이라 일정표가 분 단위예요.",
+        "en": "I tend to plan trips meticulously, so my itinerary goes minute by minute.",
+        "register": "spoken"
+      },
+      {
+        "ko": "교육청은 폭염에 대비해 단축 수업 기준을 새로 세웠다.",
+        "en": "The education office set new standards for shortened school days in preparation for heat waves.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "번역 일정이 빠듯해서 장마다 세부 일정을 따로 {{}} 작업하고 있다.",
+          "en": "The translation schedule is tight, so I've drawn up a separate schedule for each chapter and am working to it.",
+          "cue": "세우다 · draw up (a schedule)",
+          "accepted": [
+            "세워",
+            "세워서",
+            "세워 놓고",
+            "세워 두고"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "재발 방지 대책을 {{}} 전까지는 공사를 재개할 수 없다.",
+          "en": "Construction can't resume until measures to prevent a recurrence are drawn up.",
+          "cue": "세우다 · draw up (measures)",
+          "accepted": [
+            "세우기"
+          ],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:세우다:uphold",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [
+      {
+        "id": "v:세우다:draw-up",
+        "require": "guru"
+      }
+    ],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:세우다",
+      "sense:uphold"
+    ],
+    "word": "세우다",
+    "meanings": [
+      "to save (face)",
+      "to stand on (one's pride)",
+      "to dig one's heels in"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "체면을 세우다",
+        "en": "to save face"
+      },
+      {
+        "ko": "자존심을 세우다",
+        "en": "to stand on one's pride"
+      },
+      {
+        "ko": "고집을 세우다",
+        "en": "to dig one's heels in"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "후배들 앞에서 내 체면을 세워 줘서 고마워.",
+        "en": "Thanks for helping me save face in front of the juniors.",
+        "register": "spoken"
+      },
+      {
+        "ko": "그는 끝까지 자존심을 세우다가 결국 좋은 기회를 놓쳤다.",
+        "en": "He stood on his pride to the very end and ended up missing a good opportunity.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "사장은 거래처 앞에서 체면을 {{}} 무리한 약속을 했다.",
+          "en": "The boss made an unreasonable promise to save face in front of the client.",
+          "cue": "세우다 · save (face)",
+          "accepted": [
+            "세우려고",
+            "세우려다",
+            "세우려다가",
+            "세우느라"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "그렇게 고집만 {{}} 아무도 안 도와준다.",
+          "en": "If you just dig your heels in like that, nobody's going to help you.",
+          "cue": "세우다 · dig one's heels in",
+          "accepted": [
+            "세우면"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "남에게 숙이고 싶지 않아서 도움 요청을 끝까지 거절했다. (Unwilling to bow to anyone, you refused help to the end.)",
+          "options": [
+            {
+              "text": "끝까지 자존심을 세웠다.",
+              "correct": true,
+              "why": "Standing on one's pride is 자존심을 세우다."
+            },
+            {
+              "text": "끝까지 자존심을 버렸다.",
+              "correct": false,
+              "why": "자존심을 버리다 means to swallow one's pride, the opposite."
+            },
+            {
+              "text": "끝까지 자존심을 건드렸다.",
+              "correct": false,
+              "why": "자존심을 건드리다 means to wound someone else's pride."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:짚다:point-out",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:짚다",
+      "sense:point-out"
+    ],
+    "mnemonic": "짚다 (ㅍ) touches a point with a fingertip or cane: 맥을 짚다, 지팡이를 짚다, 문제를 짚다. 집다 (ㅂ) picks something up.",
+    "word": "짚다",
+    "meanings": [
+      "to point out",
+      "to put one's finger on",
+      "to address (an issue) explicitly"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "짚고 넘어가다",
+        "en": "to make a point of addressing (before moving on)"
+      },
+      {
+        "ko": "문제점을 짚다",
+        "en": "to pinpoint the problems"
+      },
+      {
+        "ko": "핵심을 짚다",
+        "en": "to put one's finger on the crux"
+      },
+      {
+        "ko": "잘못 짚다",
+        "en": "to guess wrong; to misjudge"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "계약서에 애매한 조항이 있으면 서명하기 전에 꼭 짚고 넘어가세요.",
+        "en": "If there's an ambiguous clause in the contract, be sure to raise it before you sign.",
+        "register": "spoken"
+      },
+      {
+        "ko": "이 칼럼은 저출생 대책의 허점을 날카롭게 짚었다.",
+        "en": "This column sharply pinpointed the gaps in the low-birth-rate measures.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance",
+      "meaning"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "지난번 회의에서 나온 문제는 오늘 한 번 더 {{}} 넘어갑시다.",
+          "en": "Let's go over the issue from last meeting once more before we move on.",
+          "cue": "짚다 · address (an issue)",
+          "accepted": [
+            "짚고"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "선생님은 내 글의 약점을 정확히 {{}} 주셨다.",
+          "en": "My teacher pinpointed exactly the weak spots in my writing.",
+          "cue": "짚다 · point out",
+          "accepted": [
+            "짚어"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "보고서의 가장 중요한 문제를 정확하게 지적했다. (You pinpointed the report's key problem.)",
+          "options": [
+            {
+              "text": "핵심을 정확히 짚었다.",
+              "correct": true,
+              "why": "Pointing out or putting one's finger on something is 짚다, spelled with ㅍ."
+            },
+            {
+              "text": "핵심을 정확히 집었다.",
+              "correct": false,
+              "why": "집다 means to pick something up with fingers or tongs. Pointing out is 짚다."
+            }
+          ]
+        }
+      ],
+      "meaning": {
+        "accepted": [
+          "point out",
+          "to point out",
+          "pinpoint",
+          "put one's finger on",
+          "address",
+          "lean on",
+          "feel",
+          "take a pulse"
+        ]
+      }
+    }
+  },
+  {
+    "id": "v:이르다:reach",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:이르다",
+      "sense:reach"
+    ],
+    "mnemonic": "Reach → 이르러, 이르렀다 (러-irregular, like 푸르다 → 푸르러). Tell / early → 일러, 일렀다 (르-irregular, like 부르다 → 불러).",
+    "word": "이르다",
+    "meanings": [
+      "to reach (a point, a conclusion)",
+      "to arrive at",
+      "to come to (a state)",
+      "to go so far as to"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "결론에 이르다",
+        "en": "to reach a conclusion"
+      },
+      {
+        "ko": "합의에 이르다",
+        "en": "to come to an agreement"
+      },
+      {
+        "ko": "오늘에 이르기까지",
+        "en": "up to the present day"
+      },
+      {
+        "ko": "-기에 이르다",
+        "en": "to go so far as to; to end up"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "오랜 논의 끝에 위원회는 만장일치로 같은 결론에 이르렀다.",
+        "en": "After long deliberation, the committee unanimously reached the same conclusion.",
+        "register": "written"
+      },
+      {
+        "ko": "작은 갈등이 쌓이고 쌓여 결국 소송을 제기하기에 이르렀다.",
+        "en": "Small conflicts kept piling up until it finally came to a lawsuit.",
+        "register": "written"
+      },
+      {
+        "ko": "창업 초기부터 오늘에 이르기까지 원칙은 하나였어요.",
+        "en": "From the company's early days up to today, there's been one principle.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "산 정상에 {{}} 바다가 보였다.",
+          "en": "Only when we reached the summit could we see the sea.",
+          "cue": "이르다 · reach (a place)",
+          "accepted": [
+            "이르러서야",
+            "이르러서",
+            "이르러"
+          ],
+          "nearMiss": [
+            {
+              "answer": "일러서야",
+              "hint": "That's the 르-irregular 이르다 (tell / early). \"Reach\" is 러-irregular: 이르러, 이르렀다."
+            }
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "양측은 긴 협상 끝에 합의에 {{}}.",
+          "en": "After long negotiations, the two sides came to an agreement.",
+          "cue": "이르다 · reach (agreement)",
+          "accepted": [
+            "이르렀다",
+            "이르렀어요",
+            "이르렀습니다",
+            "이르렀어"
+          ],
+          "nearMiss": [
+            {
+              "answer": "일렀다",
+              "hint": "일렀다 is the past of 이르다 \"tell / early\". \"Reach\" keeps the stem: 이르렀다."
+            }
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "토론 끝에 모두가 같은 판단을 내리게 되었다. (After debate, everyone came to the same judgment.)",
+          "options": [
+            {
+              "text": "결론에 이르렀다.",
+              "correct": true,
+              "why": "Reaching a point or conclusion is 에 이르다, 러-irregular: 이르러, 이르렀다."
+            },
+            {
+              "text": "결론에 이루었다.",
+              "correct": false,
+              "why": "이루다 takes an object (꿈을 이루다), not 에."
+            },
+            {
+              "text": "결론에 일렀다.",
+              "correct": false,
+              "why": "일렀다 is the past of 이르다 \"tell / early\" (르-irregular). \"Reach\" is 이르렀다."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:이르다:tell",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [
+      {
+        "id": "v:이르다:reach",
+        "require": "guru"
+      }
+    ],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:이르다",
+      "sense:tell"
+    ],
+    "mnemonic": "A book's 일러두기 (notes to the reader) comes from this verb: 일러 두다, \"tell in advance\".",
+    "word": "이르다",
+    "meanings": [
+      "to tell on (someone)",
+      "to tattle",
+      "to tell (someone to do something)",
+      "to advise"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "선생님께 이르다",
+        "en": "to tell the teacher (on someone)"
+      },
+      {
+        "ko": "엄마한테 이를 거야",
+        "en": "I'm telling Mom!"
+      },
+      {
+        "ko": "누누이 이르다",
+        "en": "to tell (someone) over and over"
+      },
+      {
+        "ko": "일러 주다",
+        "en": "to tell; to advise"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "너 또 내 과자 먹으면 엄마한테 이를 거야!",
+        "en": "If you eat my snacks again, I'm telling Mom!",
+        "register": "spoken"
+      },
+      {
+        "ko": "할머니는 외출할 때마다 문단속을 잘하라고 누누이 이르셨다.",
+        "en": "Every time she went out, Grandma told us over and over to lock up properly.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "동생이 내가 몰래 게임한 걸 아빠한테 {{}} 버렸다.",
+          "en": "My little brother went and told Dad that I'd been sneaking in games.",
+          "cue": "이르다 · tell on",
+          "accepted": [
+            "일러"
+          ],
+          "nearMiss": [
+            {
+              "answer": "이르러",
+              "hint": "이르러 is \"reach\" (러-irregular). \"Tell on\" is 르-irregular: 일러, 일렀다."
+            }
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "그거 선생님한테 {{}} 안 돼, 알았지?",
+          "en": "You can't tell the teacher about that, okay?",
+          "cue": "이르다 · tell on",
+          "accepted": [
+            "이르면"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "형이 장난친 걸 동생이 엄마에게 고자질했다. (The younger brother tattled to Mom about the older one's prank.)",
+          "options": [
+            {
+              "text": "동생이 엄마한테 일렀다.",
+              "correct": true,
+              "why": "Telling on someone is 이르다, 르-irregular: 일러, 일렀다."
+            },
+            {
+              "text": "동생이 엄마한테 이르렀다.",
+              "correct": false,
+              "why": "이르렀다 is the past of 이르다 \"reach\" (러-irregular)."
+            },
+            {
+              "text": "동생이 엄마한테 들렀다.",
+              "correct": false,
+              "why": "들르다 means to drop by somewhere."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:이르다:early",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [
+      {
+        "id": "v:이르다:tell",
+        "require": "guru"
+      }
+    ],
+    "gating": false,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:이르다",
+      "sense:early"
+    ],
+    "word": "이르다",
+    "meanings": [
+      "early",
+      "premature",
+      "too early (to …)"
+    ],
+    "pos": "형용사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "이른 아침",
+        "en": "early morning"
+      },
+      {
+        "ko": "아직 이르다",
+        "en": "it's still too early"
+      },
+      {
+        "ko": "단정하기엔 이르다",
+        "en": "too early to say for sure"
+      },
+      {
+        "ko": "이른 나이에",
+        "en": "at an early age"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "결과를 낙관하기엔 아직 이르다는 지적이 나온다.",
+        "en": "Some point out that it's still too early to be optimistic about the outcome.",
+        "register": "written"
+      },
+      {
+        "ko": "출근하기엔 좀 이른 시간이라 카페에서 기다렸어요.",
+        "en": "It was a bit early to go into the office, so I waited in a café.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": [
+      "cloze"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "그는 스물셋이라는 {{}} 나이에 첫 소설을 발표했다.",
+          "en": "He published his first novel at the early age of twenty-three.",
+          "cue": "이르다 · early (adjective)",
+          "accepted": [
+            "이른"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "어린",
+              "hint": "어린 나이에 is also natural, but the cue asks for 이르다: 이른 나이에."
+            }
+          ]
+        },
+        {
+          "id": "c2",
+          "sentence": "아직 포기하기엔 {{}}. 결과 나올 때까지 기다려 보자.",
+          "en": "It's too early to give up. Let's wait until the results are out.",
+          "cue": "이르다 · too early",
+          "accepted": [
+            "일러",
+            "일러요",
+            "이르다",
+            "이릅니다",
+            "이르지",
+            "이르지요",
+            "이르죠"
+          ],
+          "nearMiss": [
+            {
+              "answer": "이르러",
+              "hint": "이르러 is \"reach\". The adjective \"early\" is 르-irregular: 일러."
+            }
+          ],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:짓다:express",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:짓다",
+      "sense:express"
+    ],
+    "word": "짓다",
+    "meanings": [
+      "to make (a facial expression)",
+      "to give (a smile, a sigh)",
+      "to wear (a look)"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "미소를 짓다",
+        "en": "to smile"
+      },
+      {
+        "ko": "한숨을 짓다",
+        "en": "to heave a sigh"
+      },
+      {
+        "ko": "표정을 짓다",
+        "en": "to make a face; to wear a look"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "아이는 칭찬을 듣자 수줍은 미소를 지었다.",
+        "en": "When she was praised, the child gave a shy smile.",
+        "register": "written"
+      },
+      {
+        "ko": "그렇게 억울한 표정 짓지 마. 네가 먼저 시작했잖아.",
+        "en": "Don't make that wounded face. You started it.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "합격 소식을 들은 그는 어리둥절한 표정을 {{}} 한참 말이 없었다.",
+          "en": "On hearing he'd passed, he wore a dazed look and said nothing for a long while.",
+          "cue": "짓다 · wear (a look)",
+          "accepted": [
+            "지으며",
+            "지은 채",
+            "지은 채로",
+            "짓고",
+            "지으면서"
+          ],
+          "nearMiss": [
+            {
+              "answer": "짖고",
+              "hint": "짖다 is \"bark\". Facial expressions are 짓다 (ㅅ-irregular): 짓고, 지으며."
+            }
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "통장 잔고를 보던 엄마가 깊은 한숨을 {{}}.",
+          "en": "Looking at the bank balance, Mom heaved a deep sigh.",
+          "cue": "짓다 · heave (a sigh)",
+          "accepted": [
+            "지으셨다",
+            "지었다",
+            "지으셨어",
+            "지으셨어요",
+            "지으셨습니다",
+            "지었어",
+            "지었어요"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "쉬셨다",
+              "hint": "한숨을 쉬다 is the everyday verb; the cue asks for the more literary 한숨을 짓다 (ㅅ-irregular: 지었다)."
+            },
+            {
+              "answer": "쉬었다",
+              "hint": "한숨을 쉬다 is the everyday verb; the cue asks for the more literary 한숨을 짓다 (ㅅ-irregular: 지었다)."
+            }
+          ]
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "그는 상대의 말에 놀란 기색을 얼굴에 드러냈다. (Surprise showed on his face.)",
+          "options": [
+            {
+              "text": "놀란 표정을 지었다.",
+              "correct": true,
+              "why": "A facial expression is 표정을 짓다. 짓다 is ㅅ-irregular: 지어, 지었다."
+            },
+            {
+              "text": "놀란 표정을 지냈다.",
+              "correct": false,
+              "why": "지내다 means to spend time or get along (잘 지내다)."
+            },
+            {
+              "text": "놀란 표정을 졌다.",
+              "correct": false,
+              "why": "짓다 never contracts to 졌다; the past is 지었다. 졌다 is the past of 지다 (lose, carry)."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:짓다:conclude",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [
+      {
+        "id": "v:짓다:express",
+        "require": "guru"
+      }
+    ],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:짓다",
+      "sense:conclude"
+    ],
+    "word": "짓다",
+    "meanings": [
+      "to conclude",
+      "to settle (a matter)",
+      "to wrap up",
+      "to draw (a conclusion)"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "결론을 짓다 / 결론짓다",
+        "en": "to draw a conclusion"
+      },
+      {
+        "ko": "매듭을 짓다 / 매듭짓다",
+        "en": "to settle; to tie up loose ends"
+      },
+      {
+        "ko": "마무리를 짓다",
+        "en": "to wrap up"
+      },
+      {
+        "ko": "결판을 짓다",
+        "en": "to settle it once and for all"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "이 문제는 오늘 안에 매듭을 짓고 퇴근합시다.",
+        "en": "Let's get this settled today before we go home.",
+        "register": "neutral"
+      },
+      {
+        "ko": "증거가 부족한 상황에서 사고 원인을 섣불리 결론짓기는 어렵다.",
+        "en": "With so little evidence, it's hard to draw hasty conclusions about what caused the accident.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "올해 안에 원고 마무리를 {{}} 내년 봄에 출간할 예정이다.",
+          "en": "The plan is to wrap up work on the manuscript this year and publish next spring.",
+          "cue": "짓다 · wrap up",
+          "accepted": [
+            "짓고",
+            "지어"
+          ],
+          "nearMiss": [
+            {
+              "answer": "짖고",
+              "hint": "짖다 is \"bark\". Wrapping up is 짓다: 마무리를 짓고."
+            }
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "두 사람은 오늘 결판을 {{}} 작정인지 회의실에서 나오지 않았다.",
+          "en": "The two of them stayed in the meeting room, apparently set on settling it once and for all today.",
+          "cue": "짓다 · settle (once and for all)",
+          "accepted": [
+            "지을"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "낼",
+              "hint": "결판을 내다 is just as idiomatic, but the cue asks for 짓다: 결판을 지을."
+            }
+          ]
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "협상을 끝내고 합의서에 서명했다. (The negotiations ended with a signed agreement.)",
+          "options": [
+            {
+              "text": "협상을 매듭지었다.",
+              "correct": true,
+              "why": "매듭짓다 is one word; 짓다 is ㅅ-irregular: 매듭지었다."
+            },
+            {
+              "text": "협상을 매듭졌다.",
+              "correct": false,
+              "why": "짓다 never contracts to 졌다. The past is 지었다: 매듭지었다."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:빚다:shape",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:빚다",
+      "sense:shape"
+    ],
+    "word": "빚다",
+    "meanings": [
+      "to shape (dough, clay)",
+      "to make (dumplings, rice cakes)",
+      "to brew (liquor)"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "만두를 빚다",
+        "en": "to make dumplings"
+      },
+      {
+        "ko": "송편을 빚다",
+        "en": "to make songpyeon"
+      },
+      {
+        "ko": "술을 빚다",
+        "en": "to brew liquor"
+      },
+      {
+        "ko": "흙을 빚다",
+        "en": "to shape clay"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "외할머니는 만두를 빚을 때마다 속을 너무 많이 넣어서 늘 몇 개씩 터졌다.",
+        "en": "Whenever Grandma made dumplings she overstuffed them, so a few always burst.",
+        "register": "written"
+      },
+      {
+        "ko": "이 막걸리는 양조장에서 지역 쌀로 직접 빚은 거예요.",
+        "en": "This makgeolli was brewed right here at the brewery from local rice.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "도예가는 물레 앞에서 흙을 {{}} 그릇의 형태를 잡아 갔다.",
+          "en": "At the wheel, the potter shaped the clay and gradually formed the bowl.",
+          "cue": "빚다 · shape (clay)",
+          "accepted": [
+            "빚어",
+            "빚으며",
+            "빚으면서"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "명절 음식 중에서 만두 {{}} 게 제일 재밌어.",
+          "en": "Of all the holiday cooking, making dumplings is the most fun.",
+          "cue": "빚다 · make (dumplings)",
+          "accepted": [
+            "빚는"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "반죽을 손으로 동그랗게 모양을 만들었다. (You shaped the dough into rounds by hand.)",
+          "options": [
+            {
+              "text": "반죽을 동그랗게 빚었다.",
+              "correct": true,
+              "why": "Shaping dough or clay by hand is 빚다."
+            },
+            {
+              "text": "반죽을 동그랗게 빗었다.",
+              "correct": false,
+              "why": "빗다 means to comb (머리를 빗다)."
+            },
+            {
+              "text": "반죽을 동그랗게 빚졌다.",
+              "correct": false,
+              "why": "빚지다 means to owe or be in debt."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:빚다:cause",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [
+      {
+        "id": "v:빚다:shape",
+        "require": "guru"
+      }
+    ],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:빚다",
+      "sense:cause"
+    ],
+    "word": "빚다",
+    "meanings": [
+      "to cause (trouble, confusion)",
+      "to give rise to",
+      "to suffer (a setback)"
+    ],
+    "pos": "동사",
+    "register": "written",
+    "collocations": [
+      {
+        "ko": "물의를 빚다",
+        "en": "to cause a public stir"
+      },
+      {
+        "ko": "혼선을 빚다",
+        "en": "to cause confusion"
+      },
+      {
+        "ko": "차질을 빚다",
+        "en": "to suffer a setback; to be disrupted"
+      },
+      {
+        "ko": "마찰을 빚다",
+        "en": "to cause friction"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "부품 공급이 늦어지면서 신차 출시가 차질을 빚고 있다.",
+        "en": "Delays in parts supply are disrupting the new car's launch.",
+        "register": "written"
+      },
+      {
+        "ko": "그 배우는 음주 운전으로 물의를 빚은 뒤 활동을 중단했다.",
+        "en": "The actor stopped working after causing a scandal by driving drunk.",
+        "register": "written"
+      },
+      {
+        "ko": "두 부서가 업무 분담을 놓고 계속 마찰을 빚고 있어요.",
+        "en": "The two departments keep clashing over how to split the work.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "안내 문자가 두 번이나 바뀌는 바람에 현장에서 큰 혼선을 {{}}.",
+          "en": "The notification text changed twice, causing major confusion on site.",
+          "cue": "빚다 · cause (confusion)",
+          "accepted": [
+            "빚었다",
+            "빚었어요",
+            "빚었습니다",
+            "빚었어"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "폭설로 항공편 운항이 차질을 {{}} 있다.",
+          "en": "Heavy snow is disrupting flight operations.",
+          "cue": "빚다 · suffer (a setback)",
+          "accepted": [
+            "빚고"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "공사 일정이 예정대로 진행되지 못했다. (The construction schedule couldn't proceed as planned.)",
+          "options": [
+            {
+              "text": "공사 일정이 차질을 빚었다.",
+              "correct": true,
+              "why": "Setbacks, confusion and friction are 빚다: 차질을 빚다."
+            },
+            {
+              "text": "공사 일정이 차질을 빗었다.",
+              "correct": false,
+              "why": "빗다 means to comb (머리를 빗다)."
+            },
+            {
+              "text": "공사 일정이 차질을 빚졌다.",
+              "correct": false,
+              "why": "빚지다 means to owe money or a favor."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:그치다:stop-at",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:그치다",
+      "sense:stop-at"
+    ],
+    "word": "그치다",
+    "meanings": [
+      "to stop at",
+      "to amount only to",
+      "to be limited to",
+      "to go no further than"
+    ],
+    "pos": "동사",
+    "register": "written",
+    "collocations": [
+      {
+        "ko": "말에 그치다",
+        "en": "to be all talk"
+      },
+      {
+        "ko": "일회성에 그치다",
+        "en": "to be a one-off"
+      },
+      {
+        "ko": "1%에 그치다",
+        "en": "to stop at just 1 percent"
+      },
+      {
+        "ko": "-는 데 그치지 않고",
+        "en": "not stopping at …; going beyond …"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "정부의 발표는 구체적인 계획 없이 선언에 그쳤다.",
+        "en": "The government's announcement amounted to a mere declaration with no concrete plan.",
+        "register": "written"
+      },
+      {
+        "ko": "올해 매출 증가율은 1%에 그쳐 목표에 크게 못 미쳤다.",
+        "en": "Sales growth this year stopped at just 1 percent, far short of the target.",
+        "register": "written"
+      },
+      {
+        "ko": "이번엔 말로만 그치지 말고 진짜 실천해 봐.",
+        "en": "This time don't let it just be talk. Actually do it.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "meaning"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "이번 할인 행사가 일회성에 {{}} 않도록 정기적으로 열 계획이다.",
+          "en": "We plan to hold the sale regularly so that it isn't just a one-off.",
+          "cue": "그치다 · stop at",
+          "accepted": [
+            "그치지"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "투표율은 30%에 {{}} 역대 최저를 기록했다.",
+          "en": "Turnout stopped at just 30 percent, a record low.",
+          "cue": "그치다 · amount only to",
+          "accepted": [
+            "그쳐",
+            "그쳐서",
+            "그치며",
+            "그치면서"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "meaning": {
+        "accepted": [
+          "stop at",
+          "be limited to",
+          "amount only to",
+          "go no further than",
+          "remain at",
+          "stop",
+          "cease",
+          "end"
+        ]
+      }
+    }
+  },
+  {
+    "id": "v:들르다",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:들르다"
+    ],
+    "mnemonic": "들르다 works like 따르다 → 따라: 들러, 들렀다. 들려 belongs to 들리다 (be heard).",
+    "word": "들르다",
+    "meanings": [
+      "to drop by",
+      "to stop in (at)",
+      "to swing by"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "잠깐 들르다",
+        "en": "to drop in briefly"
+      },
+      {
+        "ko": "퇴근길에 들르다",
+        "en": "to stop by on the way home from work"
+      },
+      {
+        "ko": "들렀다 가다",
+        "en": "to stop by on the way"
+      },
+      {
+        "ko": "편의점에 들르다",
+        "en": "to stop at a convenience store"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "퇴근길에 꽃집에 들러서 엄마 생신 꽃을 샀어요.",
+        "en": "I stopped by a florist on the way home and bought flowers for Mom's birthday.",
+        "register": "spoken"
+      },
+      {
+        "ko": "근처에 올 일 있으면 언제든 들러.",
+        "en": "If you're ever in the area, drop by any time.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "서울 가는 길에 대전에 잠깐 {{}} 친구를 만나고 갔다.",
+          "en": "On the way to Seoul I stopped off briefly in Daejeon to see a friend.",
+          "cue": "들르다 · drop by",
+          "accepted": [
+            "들러서",
+            "들러",
+            "들렀다가"
+          ],
+          "nearMiss": [
+            {
+              "answer": "들려서",
+              "hint": "들려서 is from 들리다 (be heard). \"Drop by\" is 들르다 → 들러서, 들렀다."
+            }
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "오늘 회사 앞 카페에 {{}} 네 생각이 나서 쿠키 샀어.",
+          "en": "I stopped by the café in front of the office today, thought of you, and bought you a cookie.",
+          "cue": "들르다 · stop by",
+          "accepted": [
+            "들렀는데",
+            "들렀다가"
+          ],
+          "nearMiss": [
+            {
+              "answer": "들렸는데",
+              "hint": "들렸는데 is from 들리다 (be heard). \"Stop by\" is 들르다 → 들렀는데."
+            }
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "퇴근하면서 잠깐 서점에 갔다 왔다. (On the way home you popped into a bookstore.)",
+          "options": [
+            {
+              "text": "서점에 들렀다 왔어.",
+              "correct": true,
+              "why": "들르다 drops its 으: 들러, 들렀다."
+            },
+            {
+              "text": "서점에 들렸다 왔어.",
+              "correct": false,
+              "why": "들렸다 is from 들리다 (be heard, be lifted). It's a very common misspelling of 들렀다."
+            },
+            {
+              "text": "서점을 거쳐 왔어.",
+              "correct": false,
+              "why": "거치다 treats the place as a waypoint on a route. For a quick personal visit, 들르다 is the natural verb."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:메다:shoulder",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:메다",
+      "sense:shoulder"
+    ],
+    "mnemonic": "Tie → 매다: 매듭 (a knot) starts with 매. Everything slung over a shoulder is 메다.",
+    "word": "메다",
+    "meanings": [
+      "to carry on one's shoulder or back",
+      "to sling (a bag) over one's shoulder",
+      "to shoulder (a burden)"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "가방을 메다",
+        "en": "to carry a bag on one's shoulder or back"
+      },
+      {
+        "ko": "배낭을 메다",
+        "en": "to wear a backpack"
+      },
+      {
+        "ko": "어깨에 메다",
+        "en": "to sling over one's shoulder"
+      },
+      {
+        "ko": "총대를 메다",
+        "en": "to take the lead on something risky"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "노트북 때문에 백팩을 메고 다녔더니 어깨가 뻐근해요.",
+        "en": "I've been carrying a backpack because of my laptop, and my shoulders are stiff.",
+        "register": "spoken"
+      },
+      {
+        "ko": "아무도 나서지 않자 결국 막내가 총대를 메고 팀장에게 건의했다.",
+        "en": "When nobody would step up, the youngest finally took one for the team and raised it with the team lead.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "등산객들은 무거운 배낭을 {{}} 산길을 올랐다.",
+          "en": "The hikers climbed the trail with heavy packs on their backs.",
+          "cue": "메다 · carry on the back",
+          "accepted": [
+            "메고"
+          ],
+          "nearMiss": [
+            {
+              "answer": "매고",
+              "hint": "매다 means to tie (넥타이를 매다, 신발 끈을 매다). Bags on the shoulder or back take 메다: 메고."
+            }
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "가방을 한쪽 어깨에만 {{}} 자세가 나빠진다.",
+          "en": "If you carry your bag on just one shoulder, your posture suffers.",
+          "cue": "메다 · carry on the shoulder",
+          "accepted": [
+            "메면"
+          ],
+          "nearMiss": [
+            {
+              "answer": "매면",
+              "hint": "매다 means to tie. Carrying on the shoulder is 메다: 메면."
+            }
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "학생이 책가방을 등에 지고 학교에 갔다. (A student went to school with a schoolbag on her back.)",
+          "options": [
+            {
+              "text": "책가방을 메고 갔다.",
+              "correct": true,
+              "why": "Bags carried on the shoulder or back take 메다."
+            },
+            {
+              "text": "책가방을 매고 갔다.",
+              "correct": false,
+              "why": "매다 means to tie (a tie, shoelaces, a knot). It's a very common misspelling here."
+            },
+            {
+              "text": "책가방을 끼고 갔다.",
+              "correct": false,
+              "why": "옆구리에 끼다 means to tuck under one's arm. On the back, it's 메다."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:메다:choke",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [
+      {
+        "id": "v:메다:shoulder",
+        "require": "guru"
+      }
+    ],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "native-verb",
+      "verb:메다",
+      "sense:choke"
+    ],
+    "word": "메다",
+    "meanings": [
+      "to choke up (with emotion)",
+      "(the throat) to tighten",
+      "(the throat) to clog (with food)"
+    ],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "목이 메다",
+        "en": "to get choked up"
+      },
+      {
+        "ko": "목이 메어 말을 잇지 못하다",
+        "en": "to be too choked up to go on"
+      },
+      {
+        "ko": "가슴이 메다",
+        "en": "to feel one's heart tighten (with grief)"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "수상 소감을 말하다가 목이 메어서 잠시 말을 멈췄다.",
+        "en": "Partway through her acceptance speech she got choked up and had to pause.",
+        "register": "written"
+      },
+      {
+        "ko": "엄마 편지를 읽는데 목이 메어서 끝까지 못 읽겠더라.",
+        "en": "I was reading Mom's letter and got so choked up I couldn't finish it.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "아들의 이름을 부르던 아버지는 목이 {{}} 더 말을 잇지 못했다.",
+          "en": "Calling out his son's name, the father choked up and couldn't go on.",
+          "cue": "메다 · choke up",
+          "accepted": [
+            "메어",
+            "메어서"
+          ],
+          "nearMiss": [
+            {
+              "answer": "메여",
+              "hint": "A common but nonstandard form. 메다 → 메어: 목이 메어."
+            },
+            {
+              "answer": "매여",
+              "hint": "매이다 means to be tied. Choking up is 메다 → 메어."
+            }
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "고구마를 물도 없이 먹었더니 목이 {{}} 혼났네.",
+          "en": "I ate sweet potato without any water and it got stuck in my throat. Awful.",
+          "cue": "메다 · (throat) clog",
+          "accepted": [
+            "메어서",
+            "메어"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "졸업식에서 은사님께 감사 인사를 하다가 울컥했다. (Thanking your old teacher at graduation, you were overcome.)",
+          "options": [
+            {
+              "text": "목이 메어 말을 잇지 못했다.",
+              "correct": true,
+              "why": "Choking up is 목이 메다 → 메어."
+            },
+            {
+              "text": "목이 매어 말을 잇지 못했다.",
+              "correct": false,
+              "why": "매다 means to tie. Choking up is 메다."
+            },
+            {
+              "text": "목이 막아 말을 잇지 못했다.",
+              "correct": false,
+              "why": "막다 is transitive (block something). The intransitive is 막히다: 목이 막히다."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:미처",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "discourse-adverb"
+    ],
+    "word": "미처",
+    "meanings": [
+      "(not) yet",
+      "(not) in time",
+      "(not) quite (managed to)"
+    ],
+    "pos": "부사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "미처 몰랐다",
+        "en": "didn't realize (until then)"
+      },
+      {
+        "ko": "미처 생각하지 못하다",
+        "en": "not think of it in time"
+      },
+      {
+        "ko": "미처 피할 새도 없이",
+        "en": "without even time to dodge"
+      },
+      {
+        "ko": "미처 챙기지 못하다",
+        "en": "not get a chance to grab or take care of"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "네가 그렇게 힘들었는지 미처 몰랐어. 미안해.",
+        "en": "I didn't realize you were having such a hard time. I'm sorry.",
+        "register": "spoken"
+      },
+      {
+        "ko": "급하게 나오느라 우산을 미처 챙기지 못했다.",
+        "en": "I left in such a hurry that I didn't get a chance to grab an umbrella.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance",
+      "meaning"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "차가 너무 빨리 달려와서 {{}} 피할 겨를도 없었다.",
+          "en": "The car came at us so fast there wasn't even time to get out of the way.",
+          "cue": "ㅁㅊ · (not) in time; always with a negative",
+          "accepted": [
+            "미처"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "회의 자료에 오류가 있는 줄 {{}} 모르고 그대로 배포했다.",
+          "en": "We distributed the meeting materials without having caught the error in time.",
+          "cue": "ㅁㅊ · (not) yet / in time",
+          "accepted": [
+            "미처"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "약속 시간이 바뀌었다는 문자가 늦게 와서 알지 못했다. (The text about the time change came late, so you didn't know.)",
+          "options": [
+            {
+              "text": "시간이 바뀐 줄 미처 몰랐어.",
+              "correct": true,
+              "why": "미처 + a negative: something didn't happen in time (미처 몰랐다, 미처 못 챙겼다)."
+            },
+            {
+              "text": "시간이 바뀐 줄 차마 몰랐어.",
+              "correct": false,
+              "why": "차마 is \"couldn't bring oneself to\" and goes with a held-back action (차마 말을 못 했다), not with not knowing."
+            },
+            {
+              "text": "시간이 바뀐 줄 미리 몰랐어.",
+              "correct": false,
+              "why": "미리 means \"beforehand\" and goes with things done ahead of time (미리 알려 주다). Not knowing in time is 미처."
+            }
+          ]
+        }
+      ],
+      "meaning": {
+        "accepted": [
+          "not yet",
+          "yet",
+          "in time",
+          "not in time",
+          "before (one) could",
+          "not quite"
+        ]
+      }
+    }
+  },
+  {
+    "id": "v:왠지",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "discourse-adverb"
+    ],
+    "mnemonic": "왠지 is the only 왠: it's 왜인지 squeezed. Everything else is 웬: 웬일, 웬만하다, 웬걸.",
+    "word": "왠지",
+    "meanings": [
+      "somehow",
+      "for some reason",
+      "for no particular reason"
+    ],
+    "pos": "부사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "왠지 모르게",
+        "en": "somehow; for some reason"
+      },
+      {
+        "ko": "왠지 불안하다",
+        "en": "to feel uneasy for no clear reason"
+      },
+      {
+        "ko": "왠지 낯이 익다",
+        "en": "to look somehow familiar"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "처음 와 본 동네인데 왠지 낯설지 않았다.",
+        "en": "It was my first time in that neighborhood, yet somehow it didn't feel strange.",
+        "register": "written"
+      },
+      {
+        "ko": "오늘은 왠지 일이 잘 풀릴 것 같은 예감이 들어.",
+        "en": "I've got a feeling things are going to go well today, somehow.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance",
+      "meaning"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "별일 없을 텐데 {{}} 자꾸 마음이 불안하다.",
+          "en": "Nothing's probably wrong, but for some reason I keep feeling uneasy.",
+          "cue": "ㅇㅈ · somehow, for some reason",
+          "accepted": [
+            "왠지"
+          ],
+          "nearMiss": [
+            {
+              "answer": "웬지",
+              "hint": "왠지 = 왜인지 (\"why\" + -ㄴ지). 웬 is \"what sort of\" (웬일, 웬 떡)."
+            }
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "그 사람 목소리가 {{}} 모르게 익숙했다.",
+          "en": "There was something oddly familiar about his voice.",
+          "cue": "ㅇㅈ · for some reason",
+          "accepted": [
+            "왠지"
+          ],
+          "nearMiss": [
+            {
+              "answer": "웬지",
+              "hint": "왠지 = 왜인지 (\"why\" + -ㄴ지). 웬 is \"what sort of\" (웬일, 웬 떡)."
+            }
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "특별한 이유는 없는데 기분이 좋다. (You're in a good mood for no particular reason.)",
+          "options": [
+            {
+              "text": "오늘은 왠지 기분이 좋아.",
+              "correct": true,
+              "why": "왠지 (from 왜인지) means \"somehow, for some reason\"."
+            },
+            {
+              "text": "오늘은 웬지 기분이 좋아.",
+              "correct": false,
+              "why": "Misspelling. 웬 means \"what sort of\" (웬일이야?). \"Somehow\" is 왠지."
+            },
+            {
+              "text": "오늘은 웬일 기분이 좋아.",
+              "correct": false,
+              "why": "웬일 is a noun, \"what's the occasion?\" (웬일이야?). It can't modify the sentence like this."
+            }
+          ]
+        }
+      ],
+      "meaning": {
+        "accepted": [
+          "somehow",
+          "for some reason",
+          "for no particular reason",
+          "for some reason or other"
+        ]
+      }
+    }
+  },
+  {
+    "id": "v:마침",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "discourse-adverb"
+    ],
+    "word": "마침",
+    "meanings": [
+      "just then",
+      "as it happens",
+      "just in time",
+      "conveniently"
+    ],
+    "pos": "부사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "마침 잘됐다",
+        "en": "perfect timing; how convenient"
+      },
+      {
+        "ko": "때마침",
+        "en": "just at that moment"
+      },
+      {
+        "ko": "마침 -(으)려던 참이다",
+        "en": "to have been just about to"
+      },
+      {
+        "ko": "마침 그때",
+        "en": "right at that moment"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "안 그래도 너한테 전화하려던 참이었는데 마침 잘 왔다.",
+        "en": "I was just about to call you. Perfect timing.",
+        "register": "spoken"
+      },
+      {
+        "ko": "우산이 없어 난감하던 차에 마침 동료가 지나가다 씌워 주었다.",
+        "en": "I was stuck without an umbrella when, as luck would have it, a colleague walked by and shared hers.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance",
+      "meaning"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "배가 고프던 참에 {{}} 친구가 떡볶이를 사 왔다.",
+          "en": "Just when I was getting hungry, my friend showed up with tteokbokki.",
+          "cue": "ㅁㅊ · just then, as it happens",
+          "accepted": [
+            "마침",
+            "때마침"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "다음 주에 서울 간다고? {{}} 잘됐다, 부탁할 게 있었거든.",
+          "en": "You're going to Seoul next week? Perfect. I had a favor to ask.",
+          "cue": "ㅁㅊ · conveniently",
+          "accepted": [
+            "마침"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "그 문제를 상의하려던 참에 그 사람이 딱 그때 사무실에 들어왔다. (Right as you meant to raise the issue, he walked in.)",
+          "options": [
+            {
+              "text": "마침 그가 들어왔다.",
+              "correct": true,
+              "why": "마침 is timing that happens to fit: \"just then, as it happens\"."
+            },
+            {
+              "text": "마침내 그가 들어왔다.",
+              "correct": false,
+              "why": "마침내 means \"finally, at long last\", after a long wait or effort."
+            },
+            {
+              "text": "비로소 그가 들어왔다.",
+              "correct": false,
+              "why": "비로소 means \"only then\", after some condition was met."
+            }
+          ]
+        }
+      ],
+      "meaning": {
+        "accepted": [
+          "just then",
+          "as it happens",
+          "just in time",
+          "conveniently",
+          "luckily",
+          "at just the right time",
+          "opportunely"
+        ]
+      }
+    }
+  },
+  {
+    "id": "v:아무래도",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "discourse-adverb"
+    ],
+    "word": "아무래도",
+    "meanings": [
+      "it looks like (after all)",
+      "I'm afraid (that)",
+      "all things considered"
+    ],
+    "pos": "부사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "아무래도 -(으)ㄹ 것 같다",
+        "en": "it looks like; I'm afraid"
+      },
+      {
+        "ko": "아무래도 안 되겠다",
+        "en": "this just isn't going to work"
+      },
+      {
+        "ko": "아무래도 -는 게 낫다",
+        "en": "all things considered, it's better to"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "아무래도 오늘 안에는 다 못 끝낼 것 같아요.",
+        "en": "I'm afraid I won't be able to finish it all today.",
+        "register": "spoken"
+      },
+      {
+        "ko": "날씨가 이래서는 아무래도 야외 행사는 취소해야겠다.",
+        "en": "With the weather like this, it looks like we'll have to cancel the outdoor event.",
+        "register": "neutral"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance",
+      "meaning"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "열이 계속 나는 걸 보니 {{}} 병원에 가 봐야 할 것 같아.",
+          "en": "Since the fever won't go down, I think I'd better see a doctor after all.",
+          "cue": "ㅇㅁㄹㄷ · all things considered (+ a guess)",
+          "accepted": [
+            "아무래도"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "이 정도 예산으로는 {{}} 무리겠어요.",
+          "en": "On a budget like this, I'm afraid it's just not doable.",
+          "cue": "ㅇㅁㄹㄷ · I'm afraid",
+          "accepted": [
+            "아무래도"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "여러 가지를 따져 보니 결국 이번 여행은 못 갈 것 같다. (Weighing everything, it looks like you can't make the trip.)",
+          "options": [
+            {
+              "text": "아무래도 이번 여행은 못 가겠어.",
+              "correct": true,
+              "why": "아무래도 leads into a reluctant conclusion: \"all things considered, I'm afraid …\"."
+            },
+            {
+              "text": "아무리 이번 여행은 못 가겠어.",
+              "correct": false,
+              "why": "아무리 needs a concessive ending: 아무리 -아도/-더라도 (\"no matter how …\")."
+            },
+            {
+              "text": "아무렇게나 이번 여행은 못 가겠어.",
+              "correct": false,
+              "why": "아무렇게나 means \"carelessly, any old way\"."
+            }
+          ]
+        }
+      ],
+      "meaning": {
+        "accepted": [
+          "it looks like",
+          "I'm afraid",
+          "all things considered",
+          "after all",
+          "probably",
+          "it seems",
+          "however you look at it"
+        ]
+      }
+    }
+  },
+  {
+    "id": "v:기어이",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "discourse-adverb"
+    ],
+    "word": "기어이",
+    "meanings": [
+      "in the end (despite everything)",
+      "insistently",
+      "no matter what"
+    ],
+    "pos": "부사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "기어이 해내다",
+        "en": "to pull it off in the end"
+      },
+      {
+        "ko": "기어이 -고야 말다",
+        "en": "to go ahead and do it anyway"
+      },
+      {
+        "ko": "기어이 따라나서다",
+        "en": "to insist on coming along"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "말렸는데도 동생은 기어이 그 비싼 카메라를 사고야 말았다.",
+        "en": "We tried to talk him out of it, but my brother went ahead and bought that expensive camera anyway.",
+        "register": "written"
+      },
+      {
+        "ko": "괜찮다는데도 기어이 집 앞까지 데려다주더라.",
+        "en": "I said it was fine, but he insisted on walking me all the way home.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance",
+      "meaning"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "비 오는 날 등산은 위험하다고 그렇게 말렸는데 {{}} 가더니 감기에 걸려 왔다.",
+          "en": "We begged him not to go hiking in the rain, but he went anyway and came back with a cold.",
+          "cue": "ㄱㅇㅇ · anyway, despite everything",
+          "accepted": [
+            "기어이",
+            "기어코"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "몇 번이나 떨어졌지만 그녀는 {{}} 꿈을 이뤘다.",
+          "en": "She failed several times, but in the end she made her dream come true.",
+          "cue": "ㄱㅇㅇ · in the end, no matter what",
+          "accepted": [
+            "기어이",
+            "기어코"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "가족들이 다 반대했는데도 그는 결국 회사를 그만두었다. (The whole family objected, but he quit his job anyway.)",
+          "options": [
+            {
+              "text": "기어이 회사를 그만두었다.",
+              "correct": true,
+              "why": "기어이 is doing something in the end despite resistance or obstacles."
+            },
+            {
+              "text": "기껏 회사를 그만두었다.",
+              "correct": false,
+              "why": "기껏 sets up a letdown: \"after all that effort, only to …\" (기껏 준비했더니 취소됐다)."
+            },
+            {
+              "text": "기왕 회사를 그만두었다.",
+              "correct": false,
+              "why": "기왕 means \"since (it's already so)\" and needs a follow-up clause (기왕 그만둔 거, 푹 쉬어)."
+            }
+          ]
+        }
+      ],
+      "meaning": {
+        "accepted": [
+          "in the end",
+          "despite everything",
+          "insistently",
+          "no matter what",
+          "at all costs",
+          "eventually",
+          "anyway",
+          "finally"
+        ]
+      }
+    }
+  },
+  {
+    "id": "v:이윽고",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "discourse-adverb"
+    ],
+    "word": "이윽고",
+    "meanings": [
+      "presently",
+      "before long",
+      "at length"
+    ],
+    "pos": "부사",
+    "register": "written",
+    "collocations": [
+      {
+        "ko": "이윽고 입을 열다",
+        "en": "at length (someone) speaks"
+      },
+      {
+        "ko": "이윽고 날이 밝다",
+        "en": "before long, day breaks"
+      },
+      {
+        "ko": "이윽고 막이 오르다",
+        "en": "presently, the curtain rises"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "한참 동안 서류를 넘기던 면접관이 이윽고 고개를 들었다.",
+        "en": "After leafing through the papers for a long while, the interviewer at length looked up.",
+        "register": "written"
+      },
+      {
+        "ko": "긴 침묵이 흐른 뒤, 그녀가 이윽고 입을 열었다.",
+        "en": "After a long silence, she finally spoke.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance",
+      "meaning"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "밤새 내리던 눈이 그치고 {{}} 동쪽 하늘이 밝아 오기 시작했다.",
+          "en": "The snow that had fallen all night stopped, and before long the eastern sky began to brighten.",
+          "cue": "ㅇㅇㄱ · presently, before long (narration)",
+          "accepted": [
+            "이윽고"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "멀리서 기차 소리가 들리더니 {{}} 열차가 승강장으로 들어왔다.",
+          "en": "We heard a train in the distance, and presently it pulled into the platform.",
+          "cue": "ㅇㅇㄱ · presently",
+          "accepted": [
+            "이윽고"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "소설 속 장면: 한참 망설이던 주인공이 잠시 뒤 말을 꺼냈다. (In a novel, the hero hesitates, then speaks after a moment.)",
+          "options": [
+            {
+              "text": "이윽고 그가 입을 열었다.",
+              "correct": true,
+              "why": "이윽고 narrates the next thing that happens after a pause: \"presently, at length\"."
+            },
+            {
+              "text": "이따가 그가 입을 열었다.",
+              "correct": false,
+              "why": "이따가 means \"in a little while (from now)\" and is for plans, not past narration."
+            },
+            {
+              "text": "이미 그가 입을 열었다.",
+              "correct": false,
+              "why": "이미 means \"already\": he had spoken before, not after the pause."
+            }
+          ]
+        }
+      ],
+      "meaning": {
+        "accepted": [
+          "presently",
+          "before long",
+          "at length",
+          "soon",
+          "shortly",
+          "eventually",
+          "after a while",
+          "soon after",
+          "finally"
+        ]
+      }
+    }
+  },
+  {
+    "id": "v:정작",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "discourse-adverb"
+    ],
+    "word": "정작",
+    "meanings": [
+      "(but) when it actually comes to it",
+      "the one who actually …",
+      "what actually (matters)"
+    ],
+    "pos": "부사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "정작 중요한 것",
+        "en": "what actually matters"
+      },
+      {
+        "ko": "정작 본인은",
+        "en": "the person him/herself (by contrast)"
+      },
+      {
+        "ko": "정작 필요할 때",
+        "en": "just when it's actually needed"
+      },
+      {
+        "ko": "정작 당일에는",
+        "en": "on the actual day"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "다들 걱정하는데 정작 본인은 태평하네.",
+        "en": "Everyone's worried, but the person in question is completely relaxed.",
+        "register": "spoken"
+      },
+      {
+        "ko": "몇 달을 준비했는데 정작 발표 당일엔 머릿속이 하얘졌다.",
+        "en": "I prepared for months, but on the actual day of the presentation my mind went blank.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance",
+      "meaning"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "우산을 늘 들고 다니다가 {{}} 비 오는 날엔 놓고 나왔다.",
+          "en": "I always carry an umbrella, but on the one day it actually rained I left it at home.",
+          "cue": "ㅈㅈ · (when it) actually (came to it)",
+          "accepted": [
+            "정작"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "말은 많았지만 {{}} 중요한 문제는 아무도 언급하지 않았다.",
+          "en": "There was a lot of talk, but nobody mentioned the issue that actually mattered.",
+          "cue": "ㅈㅈ · what actually (matters)",
+          "accepted": [
+            "정작"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "주변 사람들은 모두 그의 건강을 걱정하는데 그 사람만 아무렇지 않아 한다. (Everyone worries about his health except him.)",
+          "options": [
+            {
+              "text": "정작 본인은 아무렇지 않아 한다.",
+              "correct": true,
+              "why": "정작 singles out the key person or thing against expectations: \"the one actually concerned\"."
+            },
+            {
+              "text": "과연 본인은 아무렇지 않아 한다.",
+              "correct": false,
+              "why": "과연 means \"as expected\" or \"really?\". It doesn't mark a contrast with everyone else."
+            },
+            {
+              "text": "하물며 본인은 아무렇지 않아 한다.",
+              "correct": false,
+              "why": "하물며 means \"let alone, all the more\" and needs an a fortiori comparison."
+            }
+          ]
+        }
+      ],
+      "meaning": {
+        "accepted": [
+          "actually",
+          "when it actually comes to it",
+          "in fact",
+          "the one actually",
+          "ironically",
+          "in reality"
+        ]
+      }
+    }
+  },
+  {
+    "id": "v:굳이",
+    "kind": "vocab",
+    "level": 4,
+    "track": "native-verb",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "discourse-adverb"
+    ],
+    "word": "굳이",
+    "meanings": [
+      "(go to the trouble) of",
+      "insist on (doing something unnecessary)",
+      "(no need) to bother",
+      "strictly speaking (굳이 따지자면)"
+    ],
+    "pos": "부사",
+    "register": "neutral",
+    "collocations": [
+      {
+        "ko": "굳이 그럴 필요 없다",
+        "en": "there's no need to go that far"
+      },
+      {
+        "ko": "굳이 따지자면",
+        "en": "strictly speaking; if you insist on splitting hairs"
+      },
+      {
+        "ko": "굳이 말하자면",
+        "en": "if I had to say"
+      },
+      {
+        "ko": "굳이 -겠다면",
+        "en": "if you insist on …"
+      }
+    ],
+    "examples": [
+      {
+        "ko": "택시 타면 금방인데 굳이 마중 나올 필요 없어.",
+        "en": "It's quick by taxi, so there's no need to bother coming to pick me up.",
+        "register": "spoken"
+      },
+      {
+        "ko": "굳이 따지자면 이번 일은 우리 쪽 책임이 더 크다.",
+        "en": "Strictly speaking, we bear more of the responsibility for this.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "meaning"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "다 아는 얘기를 {{}} 또 설명할 필요는 없잖아요.",
+          "en": "There's no need to go out of your way to explain what everyone already knows.",
+          "cue": "ㄱㅇ · go to the trouble of",
+          "accepted": [
+            "굳이"
+          ],
+          "nearMiss": [
+            {
+              "answer": "구지",
+              "hint": "Spelled 굳이 (굳다 + -이), pronounced [구지]."
+            }
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "{{}} 하나만 고르라면 저는 첫 번째 안이 낫다고 봐요.",
+          "en": "If I had to pick just one, I'd go with the first option.",
+          "cue": "ㄱㅇ · if (I) had to",
+          "accepted": [
+            "굳이"
+          ],
+          "nearMiss": [
+            {
+              "answer": "구지",
+              "hint": "Spelled 굳이 (굳다 + -이), pronounced [구지]."
+            }
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "meaning": {
+        "accepted": [
+          "go out of one's way",
+          "go to the trouble of",
+          "bother to",
+          "needlessly",
+          "necessarily",
+          "insist on",
+          "if I had to",
+          "strictly speaking"
+        ]
+      }
+    }
+  }
+]

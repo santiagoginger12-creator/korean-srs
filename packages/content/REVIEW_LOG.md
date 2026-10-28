@@ -150,3 +150,153 @@ Totals: 33 items edited. N 9 · A 4 · G 9 · Q 8 · S 2 · C 1 (counted by prim
 - -(으)ㄹ뿐더러 is written attached in every field, with `spacingStrict` set on the cloze. -(으)ㄴ/는 데다가 and -(으)ㄴ/는 듯이 are spaced, and -듯(이) after a stem is attached.
 - 갱신/경신: kept the 기록 = 경신, 계약 = 갱신 split and its rejected lists.
 - 조는 바람에: did not add 졸던 바람에. -는 바람에 does not take -던.
+
+---
+
+## L04 (author self-pass, 2026-10-28)
+
+L04 is the **native-verb track**: 64 vocab items (`track: "native-verb"`) covering 56 senses of 30 high-lapse native verbs (from the owner's Anki leech list) plus 8 discourse adverbs. Everything is original. The author wrote the level, then did an independent linguistic re-read; the edits are below. Validator: 0 errors. Self-check: 1931 cases, 0 failures.
+
+**Conventions used.**
+- Sense ids follow `v:<word>:<sense>`.
+- Senses that share a headword are linked by `tags` (`verb:<word>`, `sense:<name>`) and by `guru` unlockDeps (sense 2 depends on sense 1, sense 3 on sense 2), so two senses of one verb never land in the same lesson batch.
+- Third senses are `gating: false` (걸치다:perch, 맞추다:order, 빠지다:drain, 이르다:early).
+- Multi-sense items have **no `meaning` question**: the meaning prompt shows only the headword, so it can't say which sense it wants (see the schema-friction note in REVIEW_NOTES). They use cloze + nuance instead.
+- Adverb cloze cues give 초성 plus a sense hint (e.g. ㅁㅊ · (not) in time), because a cue that showed the word itself would give the answer away.
+
+**Self-pass edits** (before → after):
+
+**v:맞추다:adjust** [N]
+- `examples[0]`: …맞춰서 해야지, 전문 용어만 늘어놓으면 소용없어요. → …맞춰서 해야 해요. 전문 용어만 늘어놓으면 소용없어요. One sentence was mixing 반말 (해야지) with 해요체.
+
+**v:맞추다:order** [Q]
+- `cloze c2`: 기성복은 어깨가 안 맞아서 아예 정장을 한 벌 맞춰 입기로 했다 → 엄마 환갑 선물로 금반지를 하나 맞춰 드렸다. The old c2 repeated the nuance situation, and 맞춰 입다 can also be read as "dress to match".
+
+**v:걸치다:span** [G]
+- `nuance n1`: replaced the distractor 반세기를 거친 연구, because 거치다 with a time span is attested (오랜 세월을 거쳐 형성된). The new distractors test the frame instead: 반세기에 걸린 연구 (걸리다 needs the time as subject: 반세기가 걸린) and 반세기를 걸친 연구 (the span sense takes 에).
+
+**v:건지다:fish-out** [A]
+- `nuance n1 option c why`: tightened. 거르다 = strain a liquid / skip a meal; lifting solids out one by one is 건지다.
+
+**v:이루다:achieve** [N]
+- `cloze c2`: 작은 성공을 여러 번 이뤄 보면 → 작은 목표라도 하나씩 이뤄 가다 보면. 성공 collocates more naturally with 거두다; 목표를 이루다 is the core frame.
+
+**v:넘어가다:fall-for** [G]
+- `cloze c2.accepted`: removed 넘어갈래. Falling for something isn't volitional, so 안 넘어갈래 is odd.
+
+**v:세우다:draw-up** [N]
+- `cloze c1`: 장마다 마감일을 따로 세워 → 장마다 세부 일정을 따로 세워. Deadlines are 정하다, not 세우다; 일정을 세우다 is the frame.
+
+**v:이르다:reach** [N]
+- `cloze c1`: 숨을 헐떡이며 정상에 이르러 보니 구름이 걷혀 있었다 → 산 정상에 이르러서야 바다가 보였다. 이르러 보니 is stilted. accepted: 이르러서야 / 이르러서 / 이르러. nearMiss: 일러서야.
+
+**v:이르다:tell** [A]
+- `register`: spoken → neutral. 누누이 이르다 / 일러 주다 are at home in writing too.
+
+**v:짓다:conclude** [A]
+- `examples[0].register`: spoken → neutral (…매듭을 짓고 퇴근합시다).
+
+### Reviewed and left as is (for the owner's skim)
+- **Spacing checked against 표준국어대사전 single-word entries:** 돌려보내다, 들어주다, 내려놓다, 넘어가다, 결론짓다, 매듭짓다, 데려다주다, 장사진, 한잔.
+  - 들어주다 is one word only in the "grant" sense. The "listen to (someone)" use is 듣다 + -어 주다 and is spaced (들어 주다); this is recorded in the item's mnemonic. That is why there's no separate 들어주다:listen item.
+  - 마무리 is only ever used with a particle (마무리를 짓다), so whether 마무리짓다 is one word never comes up.
+- **Irregular forms are drilled through nearMiss** (18 entries): 이르다 러/르 (이르러 vs 일러), 들르다/들리다 (들러 vs 들려), 메다/매다, 짓다/짖다, 왠지/웬지, 굳이/구지, 빌다/빌리다, 메어/메여.
+- **사랑에 떨어지다** is used as a nuance distractor and labelled a calque. Its "why" avoids "never".
+- **고인의 명복을 빕니다** is a fixed condolence formula. It is kept as an example because the frame itself is the target.
+
+## L04 QA (independent review, 2026-10-28)
+
+An independent re-read of all 64 L04 items by the QA & Linguistic Review agent, as a native-speaker editor. Ids, `rev`, schema and unlock graph are unchanged. Validator: 0 errors. Self-check: 1949 cases, 0 failures. All 3 author flags are resolved, and the L04 queue in REVIEW_NOTES is empty.
+
+Totals: 24 items edited. N 6 · A 5 · G 3 · Q 9 · flag-only 1 (counted by primary category).
+
+**v:맞추다:check** [N] (flag)
+- `cloze c1`: 번역 원고와 원문을 한 줄씩 맞춰 보면서 빠진 문장이 없는지 → 카드 명세서와 영수증을 한 장씩 맞춰 보면서 빠진 내역이 없는지. 맞춰 보다 for a translation is fine colloquially, but in the owner's own field the professional word is 대조하다, so the frame invites second-guessing. The receipts frame is unambiguous. `en` updated to match. `needs_review` cleared.
+- Left as is: this item merges two 표준 senses (조각을 맞추다 "fit together" and 답을 맞추다 "compare"). Both are clozed (c2 / c1) and the nuance tests "compare", so the merge is workable.
+
+**v:돌아보다:tour** [N] (flag)
+- Kept. 표준 돌아보다 「3」 (여기저기 두루 돌아다니며 살피다) is a distinct, high-frequency news sense (현장을 돌아보다). It differs from 둘러보다: 돌아보다 = move from site to site and check; 둘러보다 = look around one place or browse.
+- `cloze c2`: 주말에 박람회장을 천천히 돌아보며 볼 만한 부스를 적어 두었다 → 경비원은 밤 열 시가 되면 층마다 한 바퀴씩 돌아보며 문이 잠겼는지 확인한다. The author was right that browsing an expo hall is 둘러보다; a patrol round is unambiguously 돌아보다. cue: make the rounds of → make the rounds. accepted: 돌아보며 / 돌아보면서 / 돌아보고 / 돌아보고서.
+- `cloze c1.accepted`: + 돌아보셨다 / 돌아보셨어요 / 돌아보셨습니다 (honorific for 시장 in speech).
+- `mnemonic`: added (none) → the 돌아보다 / 둘러보다 contrast above. `needs_review` cleared.
+
+**v:메다:choke** (flag)
+- Kept c2 (고구마를 물도 없이 먹었더니 목이 메어서). 목이 메다 for food is everyday native usage (표준 메다¹ 「1」 막히다), and it reinforces the same spelling, 메어. The item's third meaning already names it. `needs_review` cleared.
+
+**v:걸치다:wear** [A]
+- `nuance n1 option b why`: "things you slip fingers or hands into: rings, gloves, contact lenses" → "things fitted onto or into a body part: rings, gloves, contact lenses". Lenses aren't slipped onto fingers.
+
+**v:걸치다:perch** [Q]
+- `cloze c1.nearMiss`: + 걸터 → "걸터앉다 (one word) paints the same picture, but the cue asks for 걸치다". This is the most likely native answer for "perched on the armrest".
+
+**v:맞추다:adjust** [N]
+- `cloze c2`: 시곗바늘을 서울 시간에 맞춰 놓는 걸 → 시계를 서울 시간에 맞춰 놓는 걸. Natives set the 시계, not the hands.
+
+**v:어긋나다:contrary** [A]
+- `meanings[3]`: to fall short of (expectations) → to disappoint (expectations). "Fall short of" is 못 미치다. 기대에 어긋나다 is going against the hope, not under-reaching it.
+- `collocations[0].en`: to fall short of / go against expectations → to disappoint expectations; to go against what was hoped for.
+
+**v:어긋나다:awry** [Q]
+- `cloze c2.nearMiss`: + 엇갈리고. 길이 엇갈리다 is at least as common as 길이 어긋나다; it now gets a hint instead of a flat miss.
+
+**v:갖추다:equip** [G]
+- `nuance n1 option b why`: "차리다 is to set out a meal, open a business, or come to one's senses" → "차리다 is for setting something out or up (밥상을 차리다, 가게를 차리다, 격식을 차리다)…". The old list omitted 격식/예의를 차리다, which is a near-synonym of the sibling sense 갖추다:observe.
+
+**v:갖추다:observe** [N]
+- `cloze c1.nearMiss`: + 차려 / 차려서 (격식을 차리다 is equally idiomatic).
+- `cloze c2`: 어르신께 편지를 쓸 때는 예를 갖춰 쓰는 게 좋다 → 드레스 코드가 있는 자리라서 오랜만에 정장을 갖춰 입고 갔다. 예를 갖춰 쓰다 is stilted, and c1 already used the 갖춰 쓰다 frame. The new c2 drills 정장을 갖춰 입다 from the collocations. cue: show (due respect) → dress (properly). accepted: 갖춰 / 갖추어.
+
+**v:대다:cite** [G]
+- `nuance n1 option a why`: "An excuse is always 핑계를 대다." → "Making an excuse is 핑계를 대다." (D39: no absolutes).
+- `nuance n1 option b why`: "…but not 핑계." → "…With 핑계 the verb is 대다; 핑계를 들다 sounds off." 핑계를 들어 is sporadically attested, so "not" overstated it.
+- `cloze c1.accepted`: + 대기에 / 대기. 핑계 대기에 바빴다 is at least as natural as 대느라 바빴다.
+
+**v:끼다:settle** [A]
+- `cloze c2.en`: "…tiles that had gotten scaly with grime" → "…gave the bathroom tiles, crusted with soap scum, a hard scrub." 물때 is soap scum or limescale.
+- `nuance n1 option a why`: "Fog, cloud, dust and grime 끼다" → "…take 끼다" (grammar of the English).
+
+**v:빌다:wish** [Q]
+- `cloze c2.accepted`: + 빌겠습니다.
+
+**v:들어주다:grant** [N]
+- `cloze c2`: 무리한 조건을 다 들어주면서 → 무리한 요구를 다 들어주면서. 조건 collocates with 받아들이다/수용하다; 요구를 들어주다 is the core frame. cue: accept (demands) → give in to (demands). `en` updated.
+
+**v:내놓다:release** [Q]
+- `cloze c1.accepted`: + 내놨는데 / 내놓았는데.
+
+**v:놀리다:tease** [Q]
+- `cloze c2`: 놀리려는 건 아니었는데, {{}} 것처럼 → 장난으로 한 말인데, {{}} 것처럼. The old sentence printed the answer's stem next to the blank. `en` updated.
+- `collocations[1].ko`: 말투를 놀리다 → 말투를 가지고 놀리다. The bare object sounds clipped; natives say "X 가지고 놀리다".
+
+**v:놀리다:idle** [Q]
+- `cloze c1.accepted`: + 놀리기가.
+
+**v:넘어가다:let-slide** [Q]
+- `cloze c1.accepted`: + 넘어가시죠 / 넘어갈까요 (the usual chair's phrasing in a meeting).
+
+**v:넘기다:overrun** [G]
+- `nuance n1 option b why`: "넘어가다 is intransitive here: the deadline is its subject…, not its object." → "With a person as subject, missing a deadline is transitive 넘기다. 넘어가다 makes the deadline the subject (마감이 넘어갔다)." 넘어가다 does take time objects (시간이 자정을 넘어갔다), so "intransitive" was too strong.
+
+**v:넘기다:pull-through** [Q]
+- `cloze c1.accepted`: + 넘겨서.
+
+**v:이르다:early** [Q]
+- `cloze c1.nearMiss`: + 어린 → "어린 나이에 is also natural…". It's the commoner native collocation.
+
+**v:짓다:express** [A]
+- `nuance n1 option a why`: "짓다 is ㅅ-irregular: 지어, 지었다." → "A facial expression is 표정을 짓다. 짓다 is ㅅ-irregular…". The old text explained only the form, not why the verb fits.
+- `cloze c2.nearMiss`: + 쉬었다 / 쉬셨다. 한숨을 쉬다 is the everyday verb, and the hint says the cue wants the literary 한숨을 짓다.
+
+**v:짓다:conclude** [N]
+- `cloze c1`: 원고 작업의 마무리를 짓고 → 원고 마무리를 짓고 (the double genitive was heavy).
+- `cloze c2.nearMiss`: + 낼 (결판을 내다 is just as idiomatic).
+- **Correction to the author note above:** "마무리 is only ever used with a particle" is not right. 마무리 짓다 without a particle is very common. It isn't a single 표준 entry, so it's spaced (마무리 짓다), and the item still avoids it.
+
+**v:굳이** [A]
+- `questions.meaning.accepted`: removed "deliberately". That is 일부러, which is itself on the owner's leech list. Accepting it would reinforce the confusion. It is not added to `rejected`, because the checker's "not this word's meaning" message would overstate it.
+
+### Considered and left as is
+- **들어주다 meaning accepts "listen to".** I left it accepted. 보조용언 붙여쓰기 is permitted (맞춤법 제47항), so the string 들어주다 can legitimately read "listen to". The mnemonic's "spaced in careful writing" is accurate (원칙).
+- **Cue collision ㅁㅊ:** 미처 and 마침 share 초성. The sense hints ("always with a negative" vs "just then") disambiguate.
+- **Stock-frame risk:** 고인의 명복을 빕니다 and 사랑에 빠지다 are fixed formulas, kept because the frame is the target (as the author noted). No other sentence matches a dictionary or textbook stock example closely enough to flag.
+- **Spacing spot-checks:** 한잔, 데려다주다, 결혼반지, 잘되다, 빌려주다, 들여놓다 are single 표준 entries and are written solid. 짚고 넘어가다, 짚어 주다, 맞춰 보다 and 마무리 짓다 are spaced.
