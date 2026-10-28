@@ -17,6 +17,14 @@ The master vocab list is shared by the study app, 대화 모드 (conversation mo
 | 11 | `tags` | Space-separated tags: `leech` (≥ 8 misses), `shaky`, `app-L<n>`, `native-verb`, … |
 | 12 | `notes` | Free text, e.g. which sense was missed or a collocation. |
 
+## One row per word family
+
+- A noun and its 하다/되다 verb share one row, keyed by the noun, when they mean the same thing: 요구 covers 요구하다, and its notes say `also: 요구하다`. The verb's gloss is appended as `요구하다: ask`.
+- Homograph pairs stay separate (전 "before" vs 전하다 "convey").
+- Words the app teaches keep their own rows.
+- Reports should use the family's row (the noun form) when a merged row exists.
+- Synonyms are never deleted. Rows whose glosses overlap strongly are linked in `notes` as `similar: …`, so you can contrast them.
+
 ## Status rules
 
 - `new`: added but not yet studied (an app lesson not done, or a word first met in conversation).
