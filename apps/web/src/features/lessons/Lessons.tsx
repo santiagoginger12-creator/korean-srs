@@ -7,7 +7,8 @@ import { ItemDetails, KindTag, NeedsReview } from '../../components/ItemDetails.
 import { navigate } from '../../router.ts';
 import { now, tz } from '../../state/clock.ts';
 import { useApp } from '../../state/hooks.ts';
-import { nextBatch, planLessons } from '../../state/lessons.ts';
+import { nextBatch, queueFor } from '../../state/lessons.ts';
+import type { LessonPath } from '@ksrs/srs-engine';
 import { store } from '../../state/store.ts';
 import { QuizRunner } from '../reviews/QuizRunner.tsx';
 
@@ -17,11 +18,11 @@ const MAX_DOTS = 12;
 
 const quizReducer = (s: ReviewSession, a: SessionAction): ReviewSession => sessionReducer(s, a).sess;
 
-export function Lessons(): JSX.Element {
+export function Lessons({ path = 'vocab' }: { path?: LessonPath }): JSX.Element {
   const app = useApp();
   const d = app.derived!;
   // Freeze the batch at mount: emitting events changes the plan underneath us.
-  const [batch, setBatch] = useState<Item[]>(() => nextBatch(planLessons(d, app.events, now(), tz, app.lessonOverride), d));
+  const [batch, setBatch] = useState<Item[]>(() => nextBatch(queueFor(path, d, app.events, now(), tz, app.lessonOverride), d));
   const [phase, setPhase] = useState<Phase>('teach');
   const [page, setPage] = useState(0);
   const [quiz, dispatch] = useReducer(quizReducer, undefined, emptySession);
@@ -63,8 +64,8 @@ export function Lessons(): JSX.Element {
   if (batch.length === 0) {
     return (
       <div className="page narrow">
-        <h1>Lessons</h1>
-        <p className="empty">No lessons available right now.</p>
+        <h1>{path === 'grammar' ? 'Grammar lessons' : 'Lessons'}</h1>
+        <p className="empty">{path === 'grammar' ? 'No grammar lessons available right now.' : 'No lessons available right now.'}</p>
         <a className="btn btn-primary" href="#/">Home</a>
       </div>
     );
@@ -72,10 +73,11 @@ export function Lessons(): JSX.Element {
 
   if (phase === 'done') {
     const again = () => {
-      const fresh = nextBatch(planLessons(store.getState().derived!, store.getState().events, now(), tz, store.getState().lessonOverride), store.getState().derived!);
+      const st = store.getState();
+      const fresh = nextBatch(queueFor(path, st.derived!, st.events, now(), tz, st.lessonOverride), st.derived!);
       setBatch(fresh); setPage(0); setPhase('teach');
     };
-    const more = planLessons(d, app.events, now(), tz, app.lessonOverride).queue.length;
+    const more = queueFor(path, d, app.events, now(), tz, app.lessonOverride).queue.length;
     return (
       <div className="page narrow summary" data-testid="lessons-done">
         <h1>Lessons learned</h1>
@@ -111,7 +113,7 @@ export function Lessons(): JSX.Element {
   const it = batch[page]!;
   const last = page === batch.length - 1;
   return (
-    <div className={`page lesson k-${it.kind}`} data-testid="lesson-page" data-item-id={it.id}>
+    <div className={`page lesson k-${it.kind}`} data-testid="lesson-page" data-item-id={it.id} data-path={path}>
       <div className="lesson-bar">
         <button type="button" className="btn-text" onClick={() => navigate('#/')} aria-label="Leave lessons">✕</button>
         {batch.length <= MAX_DOTS

@@ -23,6 +23,8 @@ export const KV = {
   lessonOverride: 'lessonOverride',
   deviceName: 'deviceName',
   lastBackupAt: 'lastBackupAt',
+  /** Completed ghost-review slot keys (per device, never synced or backed up). */
+  ghostsDone: 'ghostsDone',
 } as const;
 
 export interface QuarantineEntry { key: string; raw: unknown; reason: string; source: string; at: number }

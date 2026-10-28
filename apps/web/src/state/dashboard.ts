@@ -2,10 +2,10 @@
 
 import type { Item, ItemId, ItemKind } from '@ksrs/content';
 import {
-  forecast, headword, LEVEL_THRESHOLD, levelProgress, stageCounts, HOUR, MINUTE,
+  forecast, grammarProgress, headword, isSeparatePath, LEVEL_THRESHOLD, levelProgress, stageCounts, vocabLevels, HOUR, MINUTE,
   type DerivedState, type LessonCapReport, type TzOffset,
 } from '@ksrs/srs-engine';
-import type { LessonPlan } from './lessons.ts';
+import type { GrammarPlan, LessonPlan } from './lessons.ts';
 
 const offsetAt = (tz: TzOffset, t: number): number => (typeof tz === 'number' ? tz : tz(t));
 /** A Date whose UTC fields read as local wall-clock time in `tz`. */
@@ -85,12 +85,15 @@ export interface LevelView {
 
 export function levelView(s: DerivedState, level = s.userLevel): LevelView {
   const p = levelProgress(s.index, s, level);
-  const kinds: LevelKindRow['kind'][] = ['vocab', 'grammar', 'expression'];
+  const sep = isSeparatePath(s.settings);
+  // With the separate grammar path, grammar has its own card and doesn't gate levels.
+  const kinds: LevelKindRow['kind'][] = sep ? ['vocab', 'expression'] : ['vocab', 'grammar', 'expression'];
   const byKind = kinds.map((kind) => ({ kind, total: 0, passed: 0 }));
   const remaining: LevelView['remaining'] = [];
   for (const it of s.index.byLevel.get(level) ?? []) {
     if (it.kind === 'hanja' || !it.gating) continue;
-    const row = byKind.find((r) => r.kind === it.kind)!;
+    const row = byKind.find((r) => r.kind === it.kind);
+    if (!row) continue;
     row.total++;
     const st = s.items.get(it.id);
     if (st?.passedAt !== undefined) row.passed++;
@@ -105,10 +108,60 @@ export function levelView(s: DerivedState, level = s.userLevel): LevelView {
     threshold: LEVEL_THRESHOLD,
     needed: Math.max(0, neededTotal - p.gatingPassed),
     unlocksNext: p.unlocksNext,
-    isMaxLevel: level >= s.index.maxLevel,
+    isMaxLevel: level >= Math.max(0, ...vocabLevels(s.index, sep)),
     byKind: byKind.filter((r) => r.total > 0),
     remaining,
   };
+}
+
+// ---------------------------------------------------------------- grammar path
+
+export interface GrammarCardView {
+  /** False in combined mode (`grammar.separatePath: false`): no grammar card. */
+  separate: boolean;
+  /** Grammar lessons offered now (capped by today's allowance). */
+  lessons: number;
+  available: number;
+  /** Today's grammar limit and how many were done. */
+  limit: number;
+  doneToday: number;
+  /** Grammar items among the due reviews (reviews share one queue). */
+  reviewsDue: number;
+  /** The current (highest open) stage: 1-based position, its content level and gating progress. */
+  stage: number;
+  stageLevel: number | null;
+  stageCount: number;
+  total: number;
+  passed: number;
+  ratio: number;
+  threshold: number;
+  needed: number;
+  unlocksNext: boolean;
+  isLastStage: boolean;
+}
+
+export function grammarCardView(s: DerivedState, plan: GrammarPlan, due: readonly string[]): GrammarCardView {
+  const gp = grammarProgress(s.index, s);
+  const cur = gp.current;
+  const total = cur?.gatingTotal ?? 0;
+  const passed = cur?.gatingPassed ?? 0;
+  return {
+    separate: gp.separate,
+    lessons: plan.queue.length, available: plan.available, limit: plan.limit, doneToday: plan.doneToday,
+    reviewsDue: due.filter((id) => s.index.byId.get(id)?.kind === 'grammar').length,
+    stage: cur?.stage ?? 0, stageLevel: cur?.level ?? null, stageCount: gp.stages.length,
+    total, passed, ratio: total ? passed / total : 1, threshold: LEVEL_THRESHOLD,
+    needed: Math.max(0, Math.ceil((total * 9) / 10) - passed),
+    unlocksNext: cur?.unlocksNext ?? false,
+    isLastStage: !cur || cur.stage >= gp.stages.length,
+  };
+}
+
+/** "Today: 1 of 3 done" for the grammar card. */
+export function grammarCapNote(g: Pick<GrammarCardView, 'limit' | 'doneToday' | 'available'>, clearReviewsFirst: boolean): string {
+  if (clearReviewsFirst) return 'Clear reviews first';
+  const head = `Today: ${g.doneToday} of ${g.limit} done`;
+  return g.available > 0 ? head : `${head} · none unlocked`;
 }
 
 // ---------------------------------------------------------------- stages and load

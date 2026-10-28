@@ -256,9 +256,9 @@ export function replayItem(item: Item, evs: readonly SrsEvent[], tl: Timeline): 
 // ---------------------------------------------------------------- public API
 
 function assemble(scan: Scan, index: ContentIndex, items: Map<ItemId, ItemState>): DerivedState {
-  const { userLevel, unlocked } = computeUnlocks(index, items);
+  const { userLevel, grammarStage, unlocked } = computeUnlocks(index, items, scan.settings);
   return {
-    items, userLevel, unlocked,
+    items, userLevel, grammarStage, unlocked,
     notes: scan.notes, settings: scan.settings, ext: scan.ext, userAnswers: scan.userAnswers, customItems: scan.customItems,
     lastHlc: scan.lastHlc, index, flags: { fsrsFallback: scan.timeline.anyFsrs },
   };

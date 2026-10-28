@@ -4,6 +4,7 @@ import type { Example, ExpressionItem, GrammarItem, HanjaItem, Item, VocabItem }
 import { headword, type ContentIndex } from '@ksrs/srs-engine';
 import { itemHref, KIND_KO, KIND_LABEL, REGISTER_LABEL } from '../state/format.ts';
 import { Speaker } from '../tts/Speaker.tsx';
+import { displayNuance, htskRefs } from '../state/htsk.ts';
 
 export function KindTag({ kind }: { kind: Item['kind'] }): JSX.Element {
   return <span className={`kind-tag k-${kind}`}>{KIND_KO[kind]} · {KIND_LABEL[kind]}</span>;
@@ -126,7 +127,7 @@ export function GrammarDetails({ item, index, hideRelations }: { item: GrammarIt
           </table>
         </div>
       </section>
-      {item.nuance ? <section className="section"><h3>Nuance</h3><p className="prose">{item.nuance}</p></section> : null}
+      {item.nuance ? <section className="section"><h3>Nuance</h3><p className="prose" data-testid="nuance">{displayNuance(item)}</p></section> : null}
       {!hideRelations && (item.contrasts ?? []).length > 0 && (
         <section className="section">
           <h3>Contrasts</h3>
@@ -173,9 +174,26 @@ export function Attribution({ item }: { item: Item }): JSX.Element | null {
   );
 }
 
+/** "HowtoStudyKorean Lesson n" links from `htsk:<n>` tags (external, new tab). */
+export function HtskLinks({ item }: { item: Item }): JSX.Element | null {
+  const refs = htskRefs(item);
+  if (!refs.length) return null;
+  return (
+    <p className="htsk" data-testid="htsk">
+      <span className="label">See also</span>{' '}
+      {refs.map((r, i) => (
+        <span key={r.lesson}>
+          {i > 0 ? ' · ' : ''}
+          {r.url ? <a href={r.url} target="_blank" rel="noopener" data-testid="htsk-link">{r.label} ↗</a> : <span>{r.label}</span>}
+        </span>
+      ))}
+    </p>
+  );
+}
+
 /** `hideRelations`: the item page renders richer related-item sections itself (M3). */
 export function ItemDetails(props: { item: Item; index: ContentIndex; hideRelations?: boolean }): JSX.Element {
-  return <>{renderDetails(props)}<Attribution item={props.item} /></>;
+  return <>{renderDetails(props)}<HtskLinks item={props.item} /><Attribution item={props.item} /></>;
 }
 
 function renderDetails({ item, index, hideRelations }: { item: Item; index: ContentIndex; hideRelations?: boolean }): JSX.Element {

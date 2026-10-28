@@ -4,7 +4,7 @@
 
 import type { ContentBundle, ItemId, QuestionType } from '@ksrs/content';
 import {
-  applyEvents, buildQuestions, createEventFactory, createHlc, dueItems, emptySession, isUnknownFutureVersion, makeBackup, replayAll, serializeBackup, sessionReducer, settingPayload, sortEvents, upcastEvent, validateEvent,
+  applyEvents, buildQuestions, pruneGhostDone, createEventFactory, createHlc, dueItems, emptySession, isUnknownFutureVersion, makeBackup, replayAll, serializeBackup, sessionReducer, settingPayload, sortEvents, upcastEvent, validateEvent,
   type AppSettingKey, type AppSettings,
   type AppEvent, type DerivedState, type EventPayload, type HlcClock, type NoteField, type ReviewSession,
   type SessionAction, type SessionCtx, type SettingKey, type Settings, type StartItem,
@@ -39,6 +39,8 @@ export interface AppState {
   /** navigator.storage.persist() outcome: true/false, or null when unsupported. */
   persisted: boolean | null;
   quarantineCount: number;
+  /** Ghost-review slots finished on this device (kv only; ghosts never write events). */
+  ghostsDone: string[];
 }
 
 type Listener = () => void;
@@ -63,7 +65,7 @@ export class AppStore {
   private state: AppState = {
     status: 'loading', content: null, events: [], derived: null, review: null, lessonOverride: undefined,
     deviceId: '', bootTheme: 'system', levelUp: null, deviceName: '', lastBackupAt: undefined, persisted: null,
-    quarantineCount: 0,
+    quarantineCount: 0, ghostsDone: [],
   };
   private listeners = new Set<Listener>();
   private db: AppDb | null = null;
@@ -109,7 +111,9 @@ export class AppStore {
       const deviceName = (await db.kvGet<string>(KV.deviceName)) ?? defaultDeviceName(deviceId);
       const lastBackupAt = await db.kvGet<number>(KV.lastBackupAt);
       const quarantineCount = (await db.quarantineAll()).length;
-      this.set({ status: 'ready', content, events, derived, review, lessonOverride, deviceId, deviceName, lastBackupAt, quarantineCount });
+      const storedGhosts = await db.kvGet<string[]>(KV.ghostsDone);
+      const ghostsDone = Array.isArray(storedGhosts) ? pruneGhostDone(derived.index, events, now(), storedGhosts.filter((k) => typeof k === 'string')) : [];
+      this.set({ status: 'ready', content, events, derived, review, lessonOverride, deviceId, deviceName, lastBackupAt, quarantineCount, ghostsDone });
       void db.kvSet({ [KV.settings]: derived.settings });
     } catch (e) {
       this.set({ status: 'error', error: (e as Error).message ?? String(e) });
@@ -218,6 +222,15 @@ export class AppStore {
   }
 
   dismissLevelUp(): void { this.set({ levelUp: null }); }
+
+  /** Marks ghost slots as practised on this device (kv only; no events, D22/§6 untouched). */
+  completeGhosts(keys: readonly string[]): Promise<void> {
+    const cur = new Set(this.state.ghostsDone);
+    if (keys.every((k) => cur.has(k))) return this.writes;
+    for (const k of keys) cur.add(k);
+    const ghostsDone = [...cur].sort();
+    return this.commit([], { [KV.ghostsDone]: ghostsDone }, { ghostsDone });
+  }
 
   // ------------------------------------------------------------------ reviews
 

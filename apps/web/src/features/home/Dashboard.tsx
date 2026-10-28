@@ -1,12 +1,12 @@
 // Dashboard (M3, §15): lessons vs cap, reviews due, 24 h / 7 d forecast, stage counts,
 // level progress with the 90% marker, and a calm level-up banner.
-import { dueItems } from '@ksrs/srs-engine';
+import { dueGhosts, dueItems } from '@ksrs/srs-engine';
 import { ForecastChart } from '../../components/ForecastChart.tsx';
 import { tz } from '../../state/clock.ts';
-import { capNote, capView, forecastView, levelView, localTime, stageView } from '../../state/dashboard.ts';
+import { capNote, capView, forecastView, grammarCapNote, grammarCardView, levelView, localTime, stageView } from '../../state/dashboard.ts';
 import { itemHref, relTime } from '../../state/format.ts';
 import { useApp, useNow } from '../../state/hooks.ts';
-import { OVERRIDE_STEP, planLessons } from '../../state/lessons.ts';
+import { OVERRIDE_STEP, planAll } from '../../state/lessons.ts';
 import { store } from '../../state/store.ts';
 import { backupDue } from '../../data/backup.ts';
 import { inboxEntries } from '../../data/contract.ts';
@@ -19,9 +19,13 @@ export function Dashboard(): JSX.Element {
   const app = useApp();
   const t = useNow();
   const d = app.derived!;
-  const plan = planLessons(d, app.events, t, tz, app.lessonOverride);
+  const plans = planAll(d, app.events, t, tz, app.lessonOverride);
+  const plan = plans.vocab;
   const cap = capView(plan.report);
-  const due = dueItems(d, t).length;
+  const dueIds = dueItems(d, t);
+  const due = dueIds.length;
+  const gv = grammarCardView(d, plans.grammar, dueIds);
+  const ghosts = dueGhosts(d.index, app.events, t, app.ghostsDone).length;
   const fc = forecastView(d, t, tz, due);
   const lv = levelView(d);
   const stages = stageView(d);
@@ -68,8 +72,9 @@ export function Dashboard(): JSX.Element {
           {app.lastBackupAt ? 'No backup in over a week.' : 'You haven\'t backed up yet.'} <a href="#/data">Download a backup</a> — your progress only lives on this device.
         </p>
       )}
-      {(inbox > 0 || trouble > 0) && (
+      {(inbox > 0 || trouble > 0 || ghosts > 0) && (
         <nav className="pill-row" aria-label="Needs attention">
+          {ghosts > 0 && <a className="pill on-soft" href="#/ghosts" data-testid="ghosts-link">Ghosts: <span className="count" data-testid="ghosts-count">{ghosts}</span></a>}
           {inbox > 0 && <a className="pill on-soft" href="#/inbox" data-testid="inbox-badge">Variants inbox <span className="count">{inbox}</span></a>}
           {trouble > 0 && <a className="pill on-soft" href="#/trouble" data-testid="trouble-link">Trouble items <span className="count">{trouble}</span></a>}
         </nav>
@@ -79,7 +84,7 @@ export function Dashboard(): JSX.Element {
 
       <div className="tiles">
         <section className="tile tile-lessons" data-testid="lessons-tile">
-          <h2>Lessons</h2>
+          <h2>{gv.separate ? 'Vocab lessons' : 'Lessons'}</h2>
           <p className="tile-count" data-testid="lessons-count">{lessons}</p>
           <p className="tile-note" data-testid="cap-note">
             {plan.report.clearReviewsFirst
@@ -108,6 +113,44 @@ export function Dashboard(): JSX.Element {
              onClick={(e: { preventDefault(): void }) => { if (!(due || active)) e.preventDefault(); }}>{active ? 'Resume reviews' : 'Start reviews'}</a>
         </section>
       </div>
+
+      {gv.separate && (
+        <section className="card grammar-card k-grammar" data-testid="grammar-card" data-stage={gv.stage} data-passed={gv.passed} data-total={gv.total}>
+          <div className="section-head">
+            <h3>Grammar <span className="muted small" lang="ko">문법</span></h3>
+            <a className="btn-text small" href="#/grammar" data-testid="grammar-progress-link">All patterns →</a>
+          </div>
+          <div className="grammar-row">
+            <div>
+              <p className="tile-count" data-testid="grammar-lessons-count">{gv.lessons}</p>
+              <p className="tile-note" data-testid="grammar-cap-note">lessons · {grammarCapNote(gv, plans.grammar.report.clearReviewsFirst)}</p>
+            </div>
+            <div>
+              <p className="tile-count" data-testid="grammar-reviews-count">{gv.reviewsDue}</p>
+              <p className="tile-note">of {due} review{due === 1 ? '' : 's'} due</p>
+            </div>
+            <a className={`btn btn-primary ${gv.lessons ? '' : 'is-disabled'}`} href="#/lessons/grammar" aria-disabled={!gv.lessons} data-testid="start-grammar-lessons"
+               onClick={(e: { preventDefault(): void }) => { if (!gv.lessons) e.preventDefault(); }}>Grammar lessons</a>
+          </div>
+          {gv.stageCount > 0 && (
+            <>
+              <div className="section-head">
+                <span className="small">Stage <strong data-testid="grammar-stage">{gv.stage}</strong> of {gv.stageCount}</span>
+                <span className="small"><strong>{gv.passed}</strong> / {gv.total} passed</span>
+              </div>
+              <div className="meter" role="meter" aria-valuemin={0} aria-valuemax={gv.total} aria-valuenow={gv.passed}
+                   aria-label={`Grammar stage ${gv.stage}: ${gv.passed} of ${gv.total} gating patterns passed; ${Math.ceil(gv.total * 0.9)} needed`}>
+                <div className="meter-fill" style={{ width: `${gv.ratio * 100}%` }} />
+                <div className="meter-mark" style={{ left: `${gv.threshold * 100}%` }} title="90%: next grammar stage unlocks" />
+              </div>
+              <p className="meter-note" data-testid="grammar-needed">
+                {gv.isLastStage ? (gv.unlocksNext ? 'All grammar stages open.' : `${gv.needed} more to Guru to finish the last stage's 90%.`)
+                  : gv.unlocksNext ? `Stage ${gv.stage + 1} is open.` : `${gv.needed} more to Guru to unlock grammar stage ${gv.stage + 1}.`}
+              </p>
+            </>
+          )}
+        </section>
+      )}
 
       <section className="card forecast">
         <div className="section-head"><h3>Forecast</h3><span className="muted small">{fc.next24h} more in 24 h</span></div>

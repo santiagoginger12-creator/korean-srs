@@ -21,6 +21,9 @@ export function normalizeResponse(s: string): string {
   return s.normalize('NFC').replace(/\s+/g, ' ').trim().replace(/[.!?~…。！？～]+$/u, '').trim().toLowerCase();
 }
 
+/** The checker layer without hint suffixes (`variant+hint1` → `variant`). */
+export const baseLayer = (layer: string): string => layer.split('+')[0]!;
+
 /**
  * Correct answers accepted by the checker's variant layer (`check.layer === 'variant'`) that the
  * owner hasn't curated yet. Live events only (undone/overridden answers are gone). Excludes
@@ -34,7 +37,7 @@ export function variantsInbox(s: DerivedState, events: readonly AppEvent[]): Var
   const keyOf = (e: AppEvent & { type: 'review.answer' }) =>
     `${resolveId(R, e.itemId)}\u0000${e.qtype}\u0000${normalizeResponse(e.response)}`;
   const isVariant = (e: AppEvent): e is AppEvent & { type: 'review.answer' } =>
-    e.type === 'review.answer' && e.grade === 'correct' && e.check.layer === 'variant';
+    e.type === 'review.answer' && e.grade === 'correct' && baseLayer(e.check.layer) === 'variant';
 
   const dismissedIds = new Set(s.settings['inbox.dismissed'] ?? []);
   const dismissedKeys = new Set<string>();

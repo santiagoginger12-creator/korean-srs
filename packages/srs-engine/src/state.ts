@@ -47,7 +47,10 @@ export interface ItemState extends SrsCore {
 
 export interface DerivedState {
   items: Map<ItemId, ItemState>;
+  /** Highest open vocab-path level (§7.3). */
   userLevel: number;
+  /** Highest open grammar-path stage (a content level), or null when there is no grammar content. */
+  grammarStage: number | null;
   unlocked: Set<ItemId>;
   /** key: noteKey(itemId, field) */
   notes: Map<string, string>;

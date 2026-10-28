@@ -7,6 +7,8 @@ import { Practice } from './features/practice/Practice.tsx';
 import { Trouble } from './features/trouble/Trouble.tsx';
 import { ItemPage } from './features/items/ItemPage.tsx';
 import { Lessons } from './features/lessons/Lessons.tsx';
+import { GrammarPage } from './features/grammar/GrammarPage.tsx';
+import { Ghosts } from './features/ghosts/Ghosts.tsx';
 import { Reviews } from './features/reviews/Reviews.tsx';
 import { Settings } from './features/settings/Settings.tsx';
 import { applyUpdate, updateReady } from './pwa/register.ts';
@@ -32,14 +34,16 @@ export function App(): JSX.Element {
       case 'trouble': body = <Trouble />; break;
       case 'inbox': body = <Inbox />; break;
       case 'practice': body = <Practice key={route.preset ?? ''} preset={route.preset} />; break;
-      case 'lessons': body = <Lessons />; break;
+      case 'lessons': body = <Lessons key={route.path ?? 'vocab'} path={route.path ?? 'vocab'} />; break;
+      case 'grammar': body = <GrammarPage />; break;
+      case 'ghosts': body = <Ghosts />; break;
       case 'reviews': body = <Reviews />; break;
       case 'settings': body = <Settings />; break;
       case 'item': body = <ItemPage key={route.id} id={route.id} />; break;
       default: body = <div className="page narrow"><h1>Not found</h1><a href="#/">Home</a></div>;
     }
   }
-  const inSession = route.name === 'reviews' || route.name === 'lessons' || route.name === 'practice';
+  const inSession = route.name === 'reviews' || route.name === 'lessons' || route.name === 'practice' || route.name === 'ghosts';
   return (
     <>
       {app.persistError && <div className="banner banner-error" role="alert">{app.persistError}</div>}

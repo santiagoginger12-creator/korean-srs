@@ -7,11 +7,12 @@
 // Nuance options: 1–3 pick an option.
 
 import { useEffect, useRef, useState, type KeyboardEvent as RKeyboardEvent } from 'react';
-import type { QuestionInstance } from '@ksrs/content';
+import type { Item, QuestionInstance } from '@ksrs/content';
 import { check, type CheckResult } from '@ksrs/answer-check';
 import { currentQuestion, type ContentIndex, type ReviewSession, type SessionAction } from '@ksrs/srs-engine';
 import { HangulInput, type HangulInputHandle } from '../../components/HangulInput.tsx';
 import { checkOptionsFor } from '../../state/checkOpts.ts';
+import { HINT_MISS_TEXT, maxHintLevel, shortMeaning, splitCue, withHint, type HintLevel } from '../../state/hints.ts';
 import { now } from '../../state/clock.ts';
 import { itemHref, KIND_KO, QTYPE_LABEL, SPEECH_LEVEL } from '../../state/format.ts';
 import { useApp } from '../../state/hooks.ts';
@@ -24,6 +25,8 @@ export interface Feedback {
   result: CheckResult;
   grade: 'correct' | 'incorrect';
   overridden: boolean;
+  /** Correct, but after the full (level-2) cloze hint: graded as a miss. */
+  hintPenalty?: boolean;
 }
 
 interface Props {
@@ -36,15 +39,18 @@ interface Props {
   /** Review mode: wrap-up and exit controls. */
   onWrapUp?: () => void;
   onExit: () => void;
+  /** Practice-mode banner text (default "Practice — not scheduled"). */
+  label?: string;
 }
 
 const isKoInput = (q: QuestionInstance): boolean => q.qtype !== 'meaning' && q.qtype !== 'nuance';
 
-export function QuizRunner({ sess, dispatch, index, mode, done, onWrapUp, onExit }: Props): JSX.Element {
+export function QuizRunner({ sess, dispatch, index, mode, done, onWrapUp, onExit, label }: Props): JSX.Element {
   const [feedback, setFeedback] = useState<Feedback | null>(null);
   const [hint, setHint] = useState<{ text: string; converted?: string } | null>(null);
   const [shake, setShake] = useState(0);
   const [acceptFuture, setAcceptFuture] = useState(false);
+  const [hintLevel, setHintLevel] = useState<HintLevel>(0);
   const input = useRef<HangulInputHandle | null>(null);
   const nextBtn = useRef<HTMLButtonElement | null>(null);
   const startedAt = useRef(now());
@@ -60,11 +66,15 @@ export function QuizRunner({ sess, dispatch, index, mode, done, onWrapUp, onExit
     setAcceptFuture(false);
     input.current?.focus();
   }, [qKey, feedback]);
+  // The hint ladder restarts only when a different question comes up (not after a close retry).
+  useEffect(() => { setHintLevel(0); }, [qKey]);
 
   const submit = (response: string) => {
     if (feedback) { next(); return; }
     if (!q) return;
-    const result = check(q, response, checkOptionsFor(index));
+    const checked = check(q, response, checkOptionsFor(index));
+    // Cloze hint ladder: the level goes into check.layer; a correct answer at level 2 is a miss.
+    const { hintPenalty, ...result } = q.qtype === 'cloze' ? withHint(checked, hintLevel) : { ...checked, hintPenalty: false };
     const at = now();
     if (result.outcome === 'close') {
       setHint({ text: result.hint ?? 'Almost. Try again.', converted: result.converted });
@@ -80,7 +90,7 @@ export function QuizRunner({ sess, dispatch, index, mode, done, onWrapUp, onExit
       const prefs = ttsPrefs(app.derived.settings);
       if (prefs.autoplay) speak(spokenAnswer(q, result), prefs);
     }
-    setFeedback({ q, response, result, grade: result.outcome, overridden: false });
+    setFeedback({ q, response, result, grade: result.outcome, overridden: false, hintPenalty });
   };
 
   const next = () => {
@@ -101,7 +111,7 @@ export function QuizRunner({ sess, dispatch, index, mode, done, onWrapUp, onExit
   const iWasRight = () => {
     if (!feedback || feedback.grade !== 'incorrect') return;
     dispatch({ type: 'override', at: now(), acceptAnswer: mode === 'review' && acceptFuture && isKoOrEn(feedback.q) });
-    setFeedback({ ...feedback, grade: 'correct', overridden: true });
+    setFeedback({ ...feedback, grade: 'correct', overridden: true, hintPenalty: false });
   };
 
   // Document-level keys for when focus isn't in the answer input.
@@ -147,16 +157,22 @@ export function QuizRunner({ sess, dispatch, index, mode, done, onWrapUp, onExit
         <span className="quiz-stats" data-testid="remaining">{remaining} left · {pct}%</span>
       </div>
       {mode === 'quiz' && <p className="practice-label">Lesson quiz · practice, not scheduled</p>}
-      {mode === 'practice' && <p className="practice-label" data-testid="practice-label">Practice — not scheduled</p>}
+      {mode === 'practice' && <p className="practice-label" data-testid="practice-label">{label ?? 'Practice — not scheduled'}</p>}
       {sess.wrappingUp && <p className="practice-label">Wrapping up: finishing items already started</p>}
 
       <article className="card question" data-testid="question" data-qtype={q.qtype} data-item-id={q.itemId}
-               data-prompt-id={q.promptId ?? ''} data-qid={q.qid}>
+               data-prompt-id={q.promptId ?? ''} data-qid={q.qid} data-hint-level={q.qtype === 'cloze' ? hintLevel : undefined}>
         <div className="q-head">
           <span className={`kind-tag k-${kind}`}>{KIND_KO[kind]}</span>
           <span className="qtype">{QTYPE_LABEL[q.qtype]}</span>
+          {q.qtype === 'cloze' && !feedback && hintLevel < maxHintLevel(q.cue) && (
+            <button type="button" className="btn btn-small btn-quiet hint-btn" data-testid="hint-btn"
+                    onClick={() => { setHintLevel((l) => (Math.min(maxHintLevel(q.cue), l + 1) as HintLevel)); input.current?.focus(); }}>
+              {hintLevel === 0 ? 'Hint' : 'More hint'}
+            </button>
+          )}
         </div>
-        <Prompt q={q} />
+        <Prompt q={q} item={item} hintLevel={feedback ? 2 : hintLevel} />
       </article>
 
       {q.qtype === 'nuance'
@@ -218,7 +234,7 @@ export function spokenAnswer(q: QuestionInstance, result: { matched?: string }):
   }
 }
 
-function Prompt({ q }: { q: QuestionInstance }): JSX.Element {
+function Prompt({ q, item, hintLevel }: { q: QuestionInstance; item: Item | undefined; hintLevel: HintLevel }): JSX.Element {
   switch (q.qtype) {
     case 'meaning':
       return (<><div className="prompt-ko" lang="ko">{q.promptKo}</div><p className="ask">What does it mean? <span className="muted">(English)</span></p></>);
@@ -226,12 +242,17 @@ function Prompt({ q }: { q: QuestionInstance }): JSX.Element {
       return (<><div className="prompt-en">{q.promptEn}</div>
         {q.contextHint ? <p className="context-hint">{q.contextHint}</p> : null}
         <p className="ask">Say it in Korean</p></>);
-    case 'cloze':
+    case 'cloze': {
+      const cue = splitCue(q.cue);
+      const meaning = shortMeaning(item);
       return (<>
         <p className="cloze-sentence" lang="ko">{q.before}<span className="blank" aria-label="blank">　　　</span>{q.after}</p>
-        <p className="cue" lang="ko">{q.cue}</p>
+        <p className="cue" lang="ko"><span data-testid="cue-base">{cue.base}</span>
+          {cue.pattern && hintLevel >= 2 && <> + <span className="cue-pattern" data-testid="hint-pattern">{cue.pattern}</span></>}</p>
+        {hintLevel >= 1 && meaning && <p className="hint-meaning" data-testid="hint-meaning">{meaning}</p>}
         <p className="gloss-en">{q.en}</p>
       </>);
+    }
     case 'register': {
       const from = SPEECH_LEVEL[q.from];
       const to = SPEECH_LEVEL[q.to];
@@ -279,10 +300,11 @@ function FeedbackPanel({ fb, acceptFuture, setAcceptFuture, persists, onUndo, on
   const shown = q.qtype === 'nuance' ? q.options.find((o) => o.key === q.correctKey)?.text : result.matched ?? acceptedOf(q)[0];
   const onKeyDownNext = (e: RKeyboardEvent<HTMLButtonElement>) => { if (e.key === 'Backspace') { e.preventDefault(); onUndo(); } };
   return (
-    <section className={`feedback ${correct ? 'fb-correct' : 'fb-incorrect'}`} role="status" data-testid="feedback" data-grade={fb.grade}>
+    <section className={`feedback ${correct ? 'fb-correct' : 'fb-incorrect'}`} role="status" data-testid="feedback" data-grade={fb.grade}
+             data-hint-penalty={fb.hintPenalty ? 'true' : undefined}>
       <p className="fb-verdict">
-        {correct ? (fb.overridden ? 'Marked correct (self-graded)' : 'Correct') : 'Incorrect'}
-        {result.layer === 'variant' && correct && !fb.overridden ? <span className="badge">variant</span> : null}
+        {correct ? (fb.overridden ? 'Marked correct (self-graded)' : 'Correct') : fb.hintPenalty ? HINT_MISS_TEXT : 'Incorrect'}
+        {result.layer.split('+')[0] === 'variant' && correct && !fb.overridden ? <span className="badge">variant</span> : null}
       </p>
       {shown && q.qtype !== 'nuance' && (
         <p className="fb-answer"><span className="label">{correct ? 'Matched' : 'Answer'}</span> <span lang={q.qtype === 'meaning' ? 'en' : 'ko'}>{shown}</span></p>
@@ -290,7 +312,7 @@ function FeedbackPanel({ fb, acceptFuture, setAcceptFuture, persists, onUndo, on
       {q.qtype !== 'nuance' && (!correct || fb.overridden) && (
         <p className="fb-response"><span className="label">You wrote</span> <span data-testid="fb-response" lang={q.qtype === 'meaning' ? 'en' : 'ko'}>{fb.response}</span></p>
       )}
-      {!correct && result.hint && <p className="fb-hint">{result.hint}</p>}
+      {!correct && result.hint && !fb.hintPenalty && <p className="fb-hint">{result.hint}</p>}
       {result.notes.length > 0 && <ul className="fb-notes">{result.notes.map((n, i) => <li key={i} lang="ko">{n}</li>)}</ul>}
       <div className="fb-actions">
         <button type="button" className="btn btn-quiet" onClick={onUndo}>Undo</button>

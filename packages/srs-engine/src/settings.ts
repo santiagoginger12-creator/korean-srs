@@ -18,6 +18,10 @@ export interface ExtraSettings {
   'tts.rate': number;
   /** SpeechSynthesisVoice.voiceURI; '' = first Korean voice. */
   'tts.voiceURI': string;
+  /** Daily grammar-lesson allowance on the separate grammar path (0–50). Counts against the one review budget. */
+  'grammar.dailyLessons': number;
+  /** Grammar paced on its own path (stages, lessons, allowance). false = the pre-split combined behaviour. */
+  'grammar.separatePath': boolean;
 }
 export type AppSettings = Settings & ExtraSettings;
 export type AppSettingKey = keyof AppSettings;
@@ -27,6 +31,8 @@ export const EXTRA_SETTING_DEFAULTS: Readonly<ExtraSettings> = Object.freeze({
   'tts.autoplay': false,
   'tts.rate': 1,
   'tts.voiceURI': '',
+  'grammar.dailyLessons': 3,
+  'grammar.separatePath': true,
 });
 
 export function defaultAppSettings(): AppSettings {
@@ -44,6 +50,8 @@ export function coerceAppSetting(key: string, value: unknown): unknown {
     case 'tts.autoplay': return typeof value === 'boolean' ? value : undefined;
     case 'tts.rate': return typeof value === 'number' && Number.isFinite(value) && value >= 0.5 && value <= 1.5 ? value : undefined;
     case 'tts.voiceURI': return typeof value === 'string' && value.length <= 512 ? value : undefined;
+    case 'grammar.dailyLessons': return typeof value === 'number' && Number.isInteger(value) && value >= 0 && value <= 50 ? value : undefined;
+    case 'grammar.separatePath': return typeof value === 'boolean' ? value : undefined;
     default: return coerceSetting(key as SettingKey, value);
   }
 }

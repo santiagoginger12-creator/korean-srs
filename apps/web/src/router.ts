@@ -1,9 +1,9 @@
 // Hash routing (D14): #/, #/lessons, #/reviews, #/item/<id>, #/browse, #/settings, #/data,
-// #/trouble, #/inbox, #/practice[/trouble|/recent].
+// #/trouble, #/inbox, #/practice[/trouble|/recent], #/lessons/grammar, #/grammar, #/ghosts.
 import { useSyncExternalStore } from 'react';
 
 export type Route =
-  | { name: 'home' } | { name: 'lessons' } | { name: 'reviews' } | { name: 'settings' } | { name: 'browse' }
+  | { name: 'home' } | { name: 'lessons'; path?: 'grammar' } | { name: 'grammar' } | { name: 'ghosts' } | { name: 'reviews' } | { name: 'settings' } | { name: 'browse' }
   | { name: 'data' } | { name: 'trouble' } | { name: 'inbox' } | { name: 'practice'; preset?: 'trouble' | 'recent' }
   | { name: 'item'; id: string } | { name: 'notFound'; path: string };
 
@@ -12,6 +12,9 @@ export function parseRoute(hash: string): Route {
   const seg = path.split('/').filter(Boolean);
   if (seg.length === 0) return { name: 'home' };
   if (seg[0] === 'lessons' && seg.length === 1) return { name: 'lessons' };
+  if (seg[0] === 'lessons' && seg.length === 2 && seg[1] === 'grammar') return { name: 'lessons', path: 'grammar' };
+  if (seg[0] === 'grammar' && seg.length === 1) return { name: 'grammar' };
+  if (seg[0] === 'ghosts' && seg.length === 1) return { name: 'ghosts' };
   if (seg[0] === 'reviews' && seg.length === 1) return { name: 'reviews' };
   if (seg[0] === 'settings' && seg.length === 1) return { name: 'settings' };
   if (seg[0] === 'browse' && seg.length === 1) return { name: 'browse' };

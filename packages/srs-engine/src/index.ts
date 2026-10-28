@@ -21,14 +21,21 @@ export { noteKey, userAnswerKey } from './state.ts';
 export { buildContentIndex, resolveId, headword, repairCustomItem, type ContentIndex } from './content-index.ts';
 
 export { replayAll, applyEvents, liveEvents, DUENESS_GRACE_MS } from './replay.ts';
-export { computeUnlocks, levelProgress, availableLessons, unlockDepsOf, LEVEL_THRESHOLD } from './unlock.ts';
+export {
+  computeUnlocks, levelProgress, grammarProgress, availableLessons, unlockDepsOf, openLevels, openGrammarStages,
+  vocabLevels, grammarStages, isSeparatePath, LEVEL_THRESHOLD,
+  type LessonPath, type PathSettings, type GrammarProgress, type GrammarStageProgress,
+} from './unlock.ts';
+export {
+  ghostSlots, dueGhosts, nextGhostAt, pruneGhostDone, GHOST_OFFSETS_MS, GHOST_EXPIRY_MS, type GhostSlot, type GhostDue,
+} from './ghost.ts';
 export { dueItems } from './queue.ts';
 export { relatedItems, type RelatedItems } from './related.ts';
 export { forecast, stageCounts, stageGroup, type ForecastBucket, type StageGroup } from './forecast.ts';
 export { leechScore, isLeech, troubleItems, LEECH_MIN_REVIEWS, LEECH_MIN_SCORE, ANKI_SHAKY_TAG, PRIOR_LEECH_MIN_SCORE } from './leech.ts';
 export {
   dailyLessonCap, secPerQEstimates, rollingAccuracy, itemCost, requiredQTypes, DEFAULT_SEC_PER_Q,
-  type LessonCapReport,
+  type LessonCapReport, type GrammarCapReport, type CapSettings,
 } from './load.ts';
 export { buildQuestions } from './questions.ts';
 export {
@@ -46,7 +53,7 @@ export {
   type AppSettings, type AppSettingKey, type ExtraSettings,
 } from './settings.ts';
 export {
-  variantsInbox, extraStudyItems, resetCandidates, normalizeResponse,
+  variantsInbox, extraStudyItems, resetCandidates, normalizeResponse, baseLayer,
   type VariantEntry, type ExtraStudySource,
 } from './study.ts';
 
