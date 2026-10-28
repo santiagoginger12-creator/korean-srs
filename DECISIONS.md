@@ -127,3 +127,17 @@ Append-only log of tradeoffs. Newest at the bottom.
 62. **D62: Level 4 is a native-verb track** built from the owner's Anki leeches: 64 sense-level items covering 30 verbs and 8 adverbs, all cloze-led, with sense ids such as `v:걸치다:span`. Later senses unlock after the earlier sense reaches Guru.
     - **Known schema gaps:** no sense-hint field for meaning prompts, and no sibling relation for vocab. Siblings use `verb:` tags for now.
     - **Personal imports never reuse curriculum ids.** The import generator skips words and ids already in the seed.
+
+## Owner direction (2026-10-28, afternoon)
+
+63. **D63: Hanja are removed as lesson nodes; this supersedes D12.**
+    - The owner asked to remove the WaniKani-style hanja element and focus on learning and reviewing Hangul vocabulary.
+    - The seed has no hanja items, and vocab has no hanja unlock deps.
+    - `hanjaBreakdown` keeps `syllable` + `hanja`, without `hanjaId`. It is shown only as one subtle, muted annotation on Sino-Korean vocab.
+    - Hanja lesson events already in a log replay harmlessly.
+    - Hanja lessons can only be re-enabled through the `hanja.lessons` setting, which defaults to off.
+64. **D64: The vocab path starts where the owner's Anki history ends.**
+    - New vocab levels (L05+) come from words the owner has never drilled, in frequency order from rank ~5,000 upward (data-private/vocab-candidates.tsv, a private word list).
+    - Trivial loanwords and transparent compounds are skipped.
+    - All glosses and sentences are original.
+    - Grammar runs on its own path (separate pacing), so vocab level numbers and grammar stage numbers are independent.

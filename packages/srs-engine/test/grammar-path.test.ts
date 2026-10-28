@@ -162,7 +162,7 @@ describe('two caps in one review budget', () => {
   });
 
   test('no reservation for grammar that cannot happen today; done-today grammar counts against the allowance', () => {
-    const onlyVocab = bundle(items.filter((it) => it.kind === 'vocab').concat(grammar('locked', 1, { unlockDeps: [{ id: 'v:v000', require: 'guru' }] })));
+    const onlyVocab = bundle([...items.filter((it) => it.kind === 'vocab'), grammar('locked', 1, { unlockDeps: [{ id: 'v:v000', require: 'guru' }] })]);
     const s0 = replayAll(onlyVocab, []);
     const r0 = dailyLessonCap(s0, [], NOW, s0.settings, 0);
     assert.equal(r0.grammar.available, 0);
