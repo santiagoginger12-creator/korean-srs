@@ -1,6 +1,6 @@
 // Full item presentation per kind. Used by lesson teach pages and the item page.
 import { useState } from 'react';
-import type { Example, ExpressionItem, GrammarItem, HanjaItem, Item, VocabItem } from '@ksrs/content';
+import type { Example, ExpressionItem, GrammarItem, Item, VocabItem } from '@ksrs/content';
 import { headword, type ContentIndex } from '@ksrs/srs-engine';
 import { itemHref, KIND_KO, KIND_LABEL, REGISTER_LABEL } from '../state/format.ts';
 import { Speaker } from '../tts/Speaker.tsx';
@@ -52,24 +52,14 @@ function Mnemonic({ text }: { text?: string }): JSX.Element | null {
   return <section className="section"><h3>Mnemonic</h3><p className="prose">{text}</p></section>;
 }
 
-export function HanjaDetails({ item, index, hideRelations }: { item: HanjaItem; index: ContentIndex; hideRelations?: boolean }): JSX.Element {
-  const unlocks = hideRelations ? [] : index.vocabByHanja.get(item.id) ?? [];
-  return (
-    <div className="details">
-      <div className="hero hero-hanja">
-        <div className="hanja-glyph" lang="ko-Hani">{item.char}</div>
-        <div className="hun-eum" lang="ko"><span className="hun">{item.hun}</span> <span className="eum">{item.eum}</span><Speaker text={`${item.hun ?? ''} ${item.eum ?? ''}`} className="speaker-inline" /></div>
-        <p className="meanings">{(item.meanings ?? []).join(', ')}</p>
-      </div>
-      <Mnemonic text={item.mnemonic} />
-      {unlocks.length > 0 && (
-        <section className="section">
-          <h3>Unlocks</h3>
-          <p className="chips">{unlocks.map((id) => <ItemLink key={id} index={index} id={id} />)}</p>
-        </section>
-      )}
-    </div>
-  );
+/** The hanja behind a Sino-Korean word as one muted line (e.g. 決裁). Not a link, not a lesson (D63). */
+export function vocabHanja(item: VocabItem): string {
+  return (Array.isArray(item.hanjaBreakdown) ? item.hanjaBreakdown : []).map((b) => b.hanja ?? '').join('');
+}
+
+function HanjaLine({ item }: { item: VocabItem }): JSX.Element | null {
+  const h = vocabHanja(item);
+  return h ? <p className="hanja-line" lang="ko-Hani" data-testid="hanja-line" title="Hanja">{h}</p> : null;
 }
 
 export function VocabDetails({ item, index }: { item: VocabItem; index: ContentIndex }): JSX.Element {
@@ -78,21 +68,9 @@ export function VocabDetails({ item, index }: { item: VocabItem; index: ContentI
       <div className="hero">
         <div className="headword-row"><div className="headword" lang="ko">{item.word}</div><Speaker text={item.word} /></div>
         <p className="meanings">{(item.meanings ?? []).join('; ')}</p>
+        <HanjaLine item={item} />
         <p className="meta">{item.pos ? <span>{item.pos}</span> : null}{item.register ? <span>{REGISTER_LABEL[item.register] ?? item.register} ({item.register})</span> : null}</p>
       </div>
-      {Array.isArray(item.hanjaBreakdown) && item.hanjaBreakdown.length > 0 && (
-        <section className="section">
-          <h3>Hanja</h3>
-          <ul className="breakdown">
-            {item.hanjaBreakdown.map((b, i) => {
-              const h = b.hanjaId ? index.byId.get(b.hanjaId) : undefined;
-              const body = (<><span className="hanja-small" lang="ko-Hani">{b.hanja}</span><span className="syl" lang="ko">{b.syllable}</span>
-                {h && h.kind === 'hanja' ? <span className="gloss">{h.hun} {h.eum} · {h.meanings[0]}</span> : null}</>);
-              return <li key={i}>{b.hanjaId && h ? <a href={itemHref(b.hanjaId)}>{body}</a> : body}</li>;
-            })}
-          </ul>
-        </section>
-      )}
       <Mnemonic text={item.mnemonic} />
       {(item.collocations ?? []).length > 0 && (
         <section className="section">
@@ -148,8 +126,8 @@ export function ExpressionDetails({ item }: { item: ExpressionItem; index: Conte
       <div className="hero">
         <p className="subtype" lang="ko">{item.subtype}</p>
         <div className="headword-row"><div className="headword headword-long" lang="ko">{item.text}</div><Speaker text={item.text} /></div>
-        {item.hanjaText ? <p className="hanja-text" lang="ko-Hani">{item.hanjaText}</p> : null}
         <p className="meanings">{item.meaning}</p>
+        {item.hanjaText ? <p className="hanja-line" lang="ko-Hani" data-testid="hanja-line">{item.hanjaText}</p> : null}
         {item.literal ? <p className="literal"><span className="label">Literally</span> {item.literal}</p> : null}
       </div>
       {item.usage ? <section className="section"><h3>Usage</h3><p className="prose">{item.usage}</p></section> : null}
@@ -198,7 +176,7 @@ export function ItemDetails(props: { item: Item; index: ContentIndex; hideRelati
 
 function renderDetails({ item, index, hideRelations }: { item: Item; index: ContentIndex; hideRelations?: boolean }): JSX.Element {
   switch (item.kind) {
-    case 'hanja': return <HanjaDetails item={item} index={index} hideRelations={hideRelations} />;
+    case 'hanja': return <div className="details"><p className="muted">Hanja aren't studied as items.</p></div>;
     case 'vocab': return <VocabDetails item={item} index={index} />;
     case 'grammar': return <GrammarDetails item={item} index={index} hideRelations={hideRelations} />;
     case 'expression': return <ExpressionDetails item={item} index={index} />;

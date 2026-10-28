@@ -1,90 +1,79 @@
-// Runs against the LIVE seed (packages/content/seed). Deliberately asserts no specific
-// items: only structure (hanja-first order, the daily cap) and that screens render.
-// Also produces the owner's 390×844 screenshots in apps/web/test-results/.
+// Runs against the LIVE seed (packages/content/seed). Deliberately asserts no specific items or
+// counts (content agents edit the seed): only structure (no hanja lessons, separate vocab and
+// grammar queues, both daily caps) and that screens render. Also produces the owner's 390×844
+// screenshots in apps/web/test-results/.
 import { expect, test, type Page } from '@playwright/test';
 import { mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { answerAllCorrectly, correctAnswer, currentQ, goHome, HOUR, next, setup, submit, T0, wrongAnswer } from './helpers.ts';
+import { answerAllCorrectly, correctAnswer, currentQ, goHome, HOUR, next, setup, submit, T0 } from './helpers.ts';
 
 const SHOTS = join(dirname(fileURLToPath(import.meta.url)), '../../test-results');
 
-interface Avail { hanja: number; other: number; batch: number }
-/** Unlocked items without a lesson, from the app's own derived state (read-only hook). */
+interface Avail { vocab: number; grammar: number; hanja: number; batch: number; grammarAllowance: number }
+/** Unlocked items without a lesson, per path, from the app's own derived state (read-only hook). */
 const avail = (page: Page): Promise<Avail> => page.evaluate(() => {
   const s = (window as any).__ksrs.store.getState().derived;
-  let hanja = 0, other = 0;
+  let vocab = 0, grammar = 0, hanja = 0;
   for (const id of s.unlocked) {
     if (s.items.get(id)?.lessonAt !== undefined) continue;
-    if (s.index.byId.get(id).kind === 'hanja') hanja++; else other++;
+    const k = s.index.byId.get(id).kind;
+    if (k === 'hanja') hanja++; else if (k === 'grammar') grammar++; else vocab++;
   }
-  return { hanja, other, batch: s.settings.lessonBatch };
+  return { vocab, grammar, hanja, batch: s.settings.lessonBatch, grammarAllowance: s.settings['grammar.dailyLessons'] };
 });
 
-/** "Today: N done · cap M …" → M (lessons allowed today, including any done). */
-async function shownCap(page: Page): Promise<number> {
-  // "Today: 3 of 11 done · …" → lessons still allowed today (non-hanja).
-  const m = /Today: (\d+) of (\d+) done/.exec(await page.getByTestId('lessons-tile').innerText());
-  expect(m, 'home shows the daily cap').not.toBeNull();
+/** "Today: 3 of 11 done · …" → lessons still allowed today on the tile `testId`. */
+async function shownCap(page: Page, testId = 'cap-note'): Promise<number> {
+  const m = /Today: (\d+) of (\d+) done/.exec(await page.getByTestId(testId).innerText());
+  expect(m, `${testId} shows the daily cap`).not.toBeNull();
   return Math.max(0, Number(m![2]) - Number(m![1]));
 }
 
-const kindOf = (id: string) => (id.startsWith('h:') ? 'hanja' : 'other');
+/** Teach pages of the current lesson batch; returns their item ids (stops at the quiz button). */
+async function walkBatch(page: Page): Promise<string[]> {
+  const ids: string[] = [];
+  for (let g = 0; g < 60; g++) {
+    const lp = page.getByTestId('lesson-page');
+    await expect(lp).toBeVisible();
+    ids.push((await lp.getAttribute('data-item-id'))!);
+    if (await page.getByTestId('start-quiz').isVisible()) break;
+    await page.getByRole('button', { name: 'Next', exact: true }).click();
+  }
+  return ids;
+}
 
-test('smoke: fresh start → hanja-first batches within the cap → quiz renders', async ({ page }) => {
+test('smoke: no hanja lessons; separate vocab and grammar queues within their caps; quizzes render', async ({ page }) => {
   await setup(page);
   const a0 = await avail(page);
+  expect(a0.hanja, 'hanja are never lessons (D63)').toBe(0);
+  expect(a0.vocab, 'the real seed has vocab lessons at level 1').toBeGreaterThan(0);
   const cap0 = await shownCap(page);
-  const count0 = Number(await page.getByTestId('lessons-count').innerText());
-  expect(a0.hanja + a0.other, 'the real seed has lessons at level 1').toBeGreaterThan(0);
   expect(cap0).toBeLessThanOrEqual(20); // maxLessonsPerDay
-  // Hanja are uncapped; everything else is limited by the daily cap.
-  expect(count0).toBe(a0.hanja + Math.min(a0.other, cap0));
-  if (a0.other > cap0) await expect(page.getByTestId('lessons-override')).toBeVisible();
+  expect(Number(await page.getByTestId('lessons-count').innerText())).toBe(Math.min(a0.vocab, cap0));
+  if (a0.vocab > cap0) await expect(page.getByTestId('lessons-override')).toBeVisible();
+  const gCount = Number(await page.getByTestId('grammar-lessons-count').innerText());
+  expect(gCount).toBeLessThanOrEqual(a0.grammarAllowance);
+  expect(gCount).toBeLessThanOrEqual(a0.grammar);
 
-  // Walk batches until one has a quiz; every batch must be hanja-first (§7.3).
   await page.getByTestId('start-lessons').click();
-  let sawQuiz = false;
-  let hanjaLeft = a0.hanja;
-  for (let batchNo = 0; batchNo < 6 && !sawQuiz; batchNo++) {
-    const ids: string[] = [];
-    for (let g = 0; g < 60; g++) {
-      const lp = page.getByTestId('lesson-page');
-      await expect(lp).toBeVisible();
-      ids.push((await lp.getAttribute('data-item-id'))!);
-      if (await page.getByTestId('start-quiz').isVisible()) break;
-      await page.getByRole('button', { name: 'Next', exact: true }).click();
-    }
-    const kinds = ids.map(kindOf);
-    expect(ids.length).toBeGreaterThan(0);
-    expect(ids.length).toBeLessThanOrEqual(a0.batch);
-    const firstOther = kinds.indexOf('other');
-    if (firstOther >= 0) expect(kinds.slice(firstOther)).not.toContain('hanja');
-    if (hanjaLeft >= ids.length) expect(kinds.every((k) => k === 'hanja')).toBe(true);
-    hanjaLeft -= kinds.filter((k) => k === 'hanja').length;
+  const ids = await walkBatch(page);
+  expect(ids.length).toBeGreaterThan(0);
+  expect(ids.length).toBeLessThanOrEqual(a0.batch);
+  expect(ids.filter((id) => id.startsWith('h:') || id.startsWith('g:'))).toEqual([]);
+  await page.getByTestId('start-quiz').click();
+  const q = await currentQ(page);
+  expect(['meaning', 'production', 'cloze', 'nuance', 'register']).toContain(q.qtype);
+  if (q.qtype !== 'nuance') await expect(page.locator('input.answer')).toBeVisible();
 
-    await page.getByTestId('start-quiz').click();
-    if (await page.getByTestId('question').isVisible().catch(() => false)) {
-      sawQuiz = true;
-      const q = await currentQ(page);
-      expect(['meaning', 'production', 'cloze', 'nuance', 'register']).toContain(q.qtype);
-      if (q.qtype !== 'nuance') await expect(page.locator('input.answer')).toBeVisible();
-    } else {
-      await expect(page.getByTestId('lessons-done')).toBeVisible();
-      await page.getByRole('button', { name: /Next batch/ }).click();
-    }
+  if (gCount > 0) {
+    await goHome(page);
+    await page.getByTestId('start-grammar-lessons').click();
+    const gIds = await walkBatch(page);
+    expect(gIds.length).toBeGreaterThan(0);
+    expect(gIds.every((id) => id.startsWith('g:'))).toBe(true);
+    expect(gIds.length).toBeLessThanOrEqual(gCount);
   }
-  expect(sawQuiz, 'a batch with a quiz appears after the hanja').toBe(true);
-
-  // Once the hanja are learned their vocab unlocks; the cap must still bind.
-  await goHome(page);
-  const a1 = await avail(page);
-  const cap1 = await shownCap(page);
-  const count1 = Number(await page.getByTestId('lessons-count').innerText());
-  expect(a1.hanja).toBe(0);
-  expect(count1).toBe(Math.min(a1.other, cap1));
-  expect(count1).toBeLessThanOrEqual(20);
-  if (a1.other > cap1) await expect(page.getByTestId('lessons-override')).toBeVisible();
 });
 
 test('owner screenshots on the real seed (390×844)', async ({ browser }) => {
@@ -94,62 +83,65 @@ test('owner screenshots on the real seed (390×844)', async ({ browser }) => {
   const page = await context.newPage();
   const b = await setup(page);
   const shot = (name: string, fullPage = false) => page.screenshot({ path: join(SHOTS, `${name}-390x844.png`), fullPage });
+  await expect(page.getByTestId('grammar-card')).toBeVisible();
   await shot('dashboard-fresh');
   await shot('dashboard-fresh-full', true);
 
-  // One batch that reaches the first grammar item. The batch size is set through the store's
-  // public setSetting (the same event the Settings select emits; the select stops at 20), and
-  // "+5 anyway" lifts the cap, as the owner would.
-  await page.evaluate(() => (window as any).__ksrs.store.setSetting('lessonBatch', 50));
-  // One "+5 anyway" is enough to reach the first grammar item on a fresh start; add more only if needed.
-  for (let i = 0; i < 10; i++) {
-    const inQueue = await page.evaluate(() => {
-      const st = (window as any).__ksrs.store.getState();
-      return Number(document.querySelector('[data-testid=lessons-count]')!.textContent) >
-        [...st.derived.unlocked].filter((id: string) => !id.startsWith('g:') && st.derived.items.get(id)?.lessonAt === undefined).length;
-    });
-    if (inQueue || !(await page.getByTestId('lessons-override').isVisible())) break;
-    await page.getByTestId('lessons-override').click();
-  }
+  // A vocab lesson batch; the screenshot shows a page with the subtle hanja line when there is one.
   await page.getByTestId('start-lessons').click();
   const lp = page.getByTestId('lesson-page');
-  await expect(lp).toHaveAttribute('data-item-id', /^h:/); // hanja first
-  await shot('lesson-hanja');
-  for (let g = 0; g < 60 && !(await lp.getAttribute('data-item-id'))!.startsWith('g:'); g++) {
+  for (let g = 0; g < 30 && !(await page.getByTestId('hanja-line').isVisible()); g++) {
     if (await page.getByTestId('start-quiz').isVisible()) break;
     await page.getByRole('button', { name: 'Next', exact: true }).click();
   }
-  await expect(lp).toHaveAttribute('data-item-id', /^g:/);
-  await shot('lesson-grammar');
-  await shot('lesson-grammar-full', true);
-
-  // Finish the batch through the quiz.
+  await expect(lp).toHaveAttribute('data-path', 'vocab');
+  await shot('lesson-vocab');
   while (!(await page.getByTestId('start-quiz').isVisible())) await page.getByRole('button', { name: 'Next', exact: true }).click();
   await page.getByTestId('start-quiz').click();
   await answerAllCorrectly(page, b, 'quiz-done');
   await page.getByRole('button', { name: 'Finish lessons' }).click();
   await expect(page.getByTestId('lessons-done')).toBeVisible();
 
-  // Four-plus hours later: reviews due; a review screen, then answer a dozen and step out.
+  // A grammar lesson batch from the Grammar card.
+  await goHome(page);
+  await page.getByTestId('start-grammar-lessons').click();
+  await expect(lp).toHaveAttribute('data-item-id', /^g:/);
+  await shot('lesson-grammar');
+  await shot('lesson-grammar-full', true);
+  while (!(await page.getByTestId('start-quiz').isVisible())) await page.getByRole('button', { name: 'Next', exact: true }).click();
+  await page.getByTestId('start-quiz').click();
+  await answerAllCorrectly(page, b, 'quiz-done');
+  await page.getByRole('button', { name: 'Finish lessons' }).click();
+  await expect(page.getByTestId('lessons-done')).toBeVisible();
+
+  // Four-plus hours later: reviews due. A grammar cloze at hint levels 0, 1, 2, then the hint-2 miss.
   await page.clock.setSystemTime(T0 + 5 * HOUR);
   await goHome(page);
   await expect(page.getByTestId('reviews-count')).not.toHaveText('0');
+  await shot('dashboard-reviews-due');
   await page.getByTestId('start-reviews').click();
   let q = await currentQ(page);
-  for (let g = 0; q.qtype !== 'cloze' && q.qtype !== 'production' && g < 40; g++) {
-    await submit(page, q, correctAnswer(b, q)); await next(page); q = await currentQ(page);
+  for (let g = 0; !(q.qtype === 'cloze' && q.itemId.startsWith('g:')) && g < 60; g++) {
+    if (await page.getByTestId('review-summary').isVisible()) break;
+    await submit(page, q, correctAnswer(b, q)); await next(page);
+    if (await page.getByTestId('review-summary').isVisible()) break;
+    q = await currentQ(page);
   }
-  await shot('review');
-  await submit(page, q, wrongAnswer(b, q));
+  expect(q.qtype === 'cloze' && q.itemId.startsWith('g:'), 'a grammar cloze in the first reviews').toBe(true);
+  await shot('review-cloze-hint0');
+  await page.getByTestId('hint-btn').click();
+  await shot('review-cloze-hint1');
+  if (await page.getByTestId('hint-btn').isVisible()) await page.getByTestId('hint-btn').click();
+  await shot('review-cloze-hint2');
+  await submit(page, q, correctAnswer(b, q));
   await expect(page.getByTestId('feedback')).toBeVisible();
-  await shot('review-feedback');
+  await shot('review-hint-miss');
   await next(page);
-  for (let g = 0; g < 14 && !(await page.getByTestId('review-summary').isVisible()); g++) {
+  for (let g = 0; g < 40 && !(await page.getByTestId('review-summary').isVisible()); g++) {
     q = await currentQ(page);
     await submit(page, q, correctAnswer(b, q)); await next(page);
   }
   await goHome(page);
-  await expect(page.getByTestId('forecast-24h').locator('.chart-plus').first()).toBeVisible();
   await shot('dashboard-progress');
   await shot('dashboard-progress-full', true);
   await page.emulateMedia({ colorScheme: 'dark' });
@@ -157,30 +149,29 @@ test('owner screenshots on the real seed (390×844)', async ({ browser }) => {
   await shot('dashboard-dark-full', true);
   await page.emulateMedia({ colorScheme: 'light' });
 
-  // A Sino-Korean word whose (learned) hanja has the most vocab, and that hanja's page.
-  const pick = await page.evaluate(() => {
+  // Two hours after the hint-2 miss: a ghost review is offered.
+  await page.clock.setSystemTime(T0 + 7 * HOUR + 10 * 60_000);
+  await goHome(page);
+  await expect(page.getByTestId('ghosts-link')).toBeVisible();
+  await shot('dashboard-ghosts');
+
+  await page.getByTestId('grammar-progress-link').click();
+  await expect(page.getByTestId('grammar-page')).toBeVisible();
+  await shot('grammar-progress');
+  await shot('grammar-progress-full', true);
+
+  // A vocab item page with its hanja as one muted line.
+  const vocabId = await page.evaluate(() => {
     const s = (window as any).__ksrs.store.getState().derived;
-    // Score: number of vocab sharing the hanja, +100 if the hanja's lesson is done (so its page shows progress).
-    let best: { vocab: string; hanja: string; n: number } | null = null;
-    for (const it of s.index.byId.values()) {
-      if (it.kind !== 'vocab') continue;
-      for (const hb of it.hanjaBreakdown ?? []) {
-        if (!hb.hanjaId) continue;
-        const n = (s.index.vocabByHanja.get(hb.hanjaId) ?? []).length + (s.items.get(hb.hanjaId)?.lessonAt !== undefined ? 100 : 0);
-        if (!best || n > best.n) best = { vocab: it.id, hanja: hb.hanjaId, n };
-      }
-    }
-    return best;
+    for (const it of s.index.byId.values()) if (it.kind === 'vocab' && (it.hanjaBreakdown ?? []).length && s.items.get(it.id)?.lessonAt !== undefined) return it.id as string;
+    for (const it of s.index.byId.values()) if (it.kind === 'vocab' && (it.hanjaBreakdown ?? []).length) return it.id as string;
+    return null;
   });
-  expect(pick, 'a vocab item with hanja').not.toBeNull();
-  await page.evaluate((id) => { location.hash = '#/item/' + encodeURIComponent(id); }, pick!.vocab);
-  await expect(page.getByTestId('related')).toBeVisible();
+  expect(vocabId, 'a vocab item with hanja').not.toBeNull();
+  await page.evaluate((id) => { location.hash = '#/item/' + encodeURIComponent(id); }, vocabId!);
+  await expect(page.getByTestId('hanja-line')).toBeVisible();
   await shot('item-vocab');
   await shot('item-vocab-full', true);
-  await page.evaluate((id) => { location.hash = '#/item/' + encodeURIComponent(id); }, pick!.hanja);
-  await expect(page.getByTestId('related')).toBeVisible();
-  await shot('item-hanja');
-  await shot('item-hanja-full', true);
   await context.close();
 });
 
@@ -196,7 +187,7 @@ test('owner screenshots: M5 pages on the real seed (390×844)', async ({ browser
   });
   const b = await setup(page);
   const shot = (name: string, fullPage = true) => page.screenshot({ path: join(SHOTS, `${name}-390x844.png`), fullPage });
-  // Learn the hanja batch and one quiz batch so there is history to back up and practise.
+  // Learn one quiz batch so there is history to back up and practise.
   for (let i = 0; i < 3; i++) {
     await goHome(page);
     await page.getByTestId('start-lessons').click();

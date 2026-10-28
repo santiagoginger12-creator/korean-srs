@@ -8,9 +8,15 @@ import { seededShuffle } from './util.ts';
 
 const uniq = (xs: readonly string[]): string[] => [...new Set(xs)];
 
-function pickPrompt<T>(prompts: readonly T[] | undefined, seed: string): T | undefined {
+/**
+ * Prompt rotation (D68): each item/qtype has a fixed shuffled order of its prompts, and the
+ * n-th review shows prompt n mod length. Every prompt is used before any repeats, and
+ * consecutive reviews never repeat a sentence (when there are 2+ prompts).
+ */
+function pickPrompt<T>(prompts: readonly T[] | undefined, cycleKey: string, reviews: number): T | undefined {
   if (!prompts || prompts.length === 0) return undefined;
-  return seededShuffle(prompts, seed)[0];
+  const order = seededShuffle(prompts, cycleKey);
+  return order[((reviews % order.length) + order.length) % order.length];
 }
 
 /**
@@ -21,7 +27,7 @@ function pickPrompt<T>(prompts: readonly T[] | undefined, seed: string): T | und
  * - accepted is merged with the user's own accepted answers (userAnswer.add).
  * - production.rejected is merged with every other vocab headword (§5, e.g. 결재 for 결제),
  *   minus anything accepted.
- * - Multi-prompt types pick a prompt by seededShuffle keyed on (seed, itemId, qtype, reviewCount).
+ * - Multi-prompt types rotate through a fixed per-item order, one prompt per review (D68).
  * - Nuance options are shuffled deterministically and keyed a, b, c….
  */
 export function buildQuestions(item: Item, s: DerivedState, enabled: readonly QuestionType[], seed: string): QuestionInstance[] {
@@ -61,7 +67,7 @@ export function buildQuestions(item: Item, s: DerivedState, enabled: readonly Qu
         break;
       }
       case 'cloze': {
-        const p = pickPrompt(qs.cloze, pseed(qtype));
+        const p = pickPrompt(qs.cloze, `${item.id}|${qtype}`, reviews);
         if (!p) break;
         const i = p.sentence.indexOf('{{}}');
         out.push({
@@ -74,7 +80,7 @@ export function buildQuestions(item: Item, s: DerivedState, enabled: readonly Qu
         break;
       }
       case 'nuance': {
-        const p = pickPrompt(qs.nuance, pseed(qtype));
+        const p = pickPrompt(qs.nuance, `${item.id}|${qtype}`, reviews);
         if (!p) break;
         const shuffled = seededShuffle(p.options, `${pseed(qtype)}|${p.id}|options`);
         const keys = 'abcdefghij';
@@ -87,7 +93,7 @@ export function buildQuestions(item: Item, s: DerivedState, enabled: readonly Qu
         break;
       }
       case 'register': {
-        const p = pickPrompt(qs.register, pseed(qtype));
+        const p = pickPrompt(qs.register, `${item.id}|${qtype}`, reviews);
         if (!p) break;
         out.push({
           qid: `${item.id}#register#${p.id}`, itemId: item.id, promptId: p.id, qtype,

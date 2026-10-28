@@ -1,12 +1,14 @@
 // Item-page view models (pure). Unit-tested in test/itemView.test.ts.
 import type { ItemId } from '@ksrs/content';
-import { headword, isLeech, leechScore, relatedItems, resolveId, type DerivedState } from '@ksrs/srs-engine';
+import { headword, isLeech, isSeparatePath, leechScore, relatedItems, resolveId, type DerivedState } from '@ksrs/srs-engine';
 
 export interface DepView { id: ItemId; label: string; require: 'lesson' | 'guru'; met: boolean; text: string }
 export interface UnlockView {
   status: 'learned' | 'available' | 'locked';
-  /** Set when the item's level isn't open yet. */
+  /** Set when the item's level (or, for grammar on the separate path, its grammar stage) isn't open yet. */
   levelLocked: number | null;
+  /** True when `levelLocked` refers to the grammar path. */
+  grammarPath: boolean;
   deps: DepView[];
 }
 
@@ -23,8 +25,10 @@ export function unlockView(s: DerivedState, itemId: ItemId): UnlockView {
   });
   const learned = s.items.get(id)?.lessonAt !== undefined;
   const status = learned ? 'learned' : s.unlocked.has(id) ? 'available' : 'locked';
-  const levelLocked = status === 'locked' && it && it.level > s.userLevel ? it.level : null;
-  return { status, levelLocked, deps };
+  const grammarPath = it?.kind === 'grammar' && isSeparatePath(s.settings);
+  const openTo = grammarPath ? (s.grammarStage ?? 0) : s.userLevel;
+  const levelLocked = status === 'locked' && it && it.level > openTo ? it.level : null;
+  return { status, levelLocked, grammarPath, deps };
 }
 
 export interface SrsView {

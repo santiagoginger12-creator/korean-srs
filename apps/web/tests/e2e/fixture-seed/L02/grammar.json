@@ -14,7 +14,8 @@
   "needs_review": false,
   "tags": [
    "cause",
-   "fixture"
+   "fixture",
+   "fn:cause"
   ],
   "pattern": "-느라고",
   "meaning": "because (I was busy) doing …, so something else didn't happen",
@@ -58,6 +59,88 @@
      "cue": "보다 + -느라고",
      "accepted": [
       "보느라고"
+     ],
+     "particleTolerance": "none"
+    }
+   ]
+  }
+ },
+ {
+  "id": "g:더라도",
+  "kind": "grammar",
+  "level": 2,
+  "track": "core",
+  "rev": 1,
+  "unlockDeps": [],
+  "gating": true,
+  "source": {
+   "kind": "original",
+   "license": "original-owned"
+  },
+  "needs_review": false,
+  "tags": [
+   "concession",
+   "fn:concession",
+   "htsk:112"
+  ],
+  "mnemonic": "It's the sturdier cousin of -아/어도: 도 is still the 'even' at the end.",
+  "pattern": "-더라도",
+  "meaning": "even if; even though (concession, often hypothetical)",
+  "attachment": [
+   {
+    "stem": "V/A",
+    "final": "any",
+    "tense": "present",
+    "form": "V/A-더라도",
+    "example": "바쁘더라도"
+   },
+   {
+    "stem": "V/A",
+    "final": "any",
+    "tense": "past",
+    "form": "V/A-았/었더라도",
+    "example": "실수했더라도"
+   },
+   {
+    "stem": "N이다",
+    "final": "any",
+    "tense": "present",
+    "form": "N(이)더라도",
+    "example": "주말이더라도"
+   }
+  ],
+  "nuance": "A firmer, more deliberate 'even if' than -아/어도, typically for a hypothetical or for a fact the speaker concedes. The main clause can be almost anything: a statement, a resolution (-겠다), advice, a command, or a suggestion. See also HowtoStudyKorean Lesson 112.",
+  "contrasts": [],
+  "examples": [
+   {
+    "ko": "결과가 기대에 못 미치더라도 끝까지 해 보는 게 중요하다.",
+    "en": "Even if the results fall short of expectations, what matters is seeing it through.",
+    "register": "written"
+   },
+   {
+    "ko": "늦더라도 연락은 꼭 해 줘.",
+    "en": "Even if you're running late, be sure to let me know.",
+    "register": "spoken"
+   }
+  ],
+  "questionTypes": [
+   "cloze"
+  ],
+  "questions": {
+   "cloze": [
+    {
+     "id": "c1",
+     "sentence": "아무리 {{}} 아침은 꼭 챙겨 먹어.",
+     "en": "However busy you are, make sure you eat breakfast.",
+     "cue": "바쁘다 + -더라도",
+     "accepted": [
+      "바쁘더라도"
+     ],
+     "nearMiss": [
+      {
+       "answer": "바빠도",
+       "hint": "Fine in meaning; the cue asks for -더라도."
+      }
      ],
      "particleTolerance": "none"
     }

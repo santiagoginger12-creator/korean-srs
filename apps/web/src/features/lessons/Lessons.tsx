@@ -1,5 +1,4 @@
 // Lesson batch: teach pages → lesson quiz (extra-study mode, no events) → lesson.completed.
-// Hanja need no quiz: their lesson.completed is emitted when the teach pages are finished.
 import { useEffect, useReducer, useState } from 'react';
 import type { Item } from '@ksrs/content';
 import { buildQuestions, emptySession, sessionReducer, type ReviewSession, type SessionAction, type StartItem } from '@ksrs/srs-engine';
@@ -27,11 +26,9 @@ export function Lessons({ path = 'vocab' }: { path?: LessonPath }): JSX.Element 
   const [page, setPage] = useState(0);
   const [quiz, dispatch] = useReducer(quizReducer, undefined, emptySession);
 
-  const others = batch.filter((it) => it.kind !== 'hanja');
+  const others = batch.filter((it) => it.kind !== 'hanja'); // hanja are never lessons (D63)
 
   const startQuiz = () => {
-    const hanja = batch.filter((it) => it.kind === 'hanja').map((it) => it.id);
-    if (hanja.length) void store.completeLessons(hanja);
     if (!others.length) { setPhase('done'); return; }
     const items: StartItem[] = others
       .map((it) => ({ itemId: it.id, instances: buildQuestions(it, d, d.settings.enabledQTypes, `lesson|${now()}`) }))
@@ -143,7 +140,7 @@ export function Lessons({ path = 'vocab' }: { path?: LessonPath }): JSX.Element 
 
 function label(it: Item): string {
   switch (it.kind) {
-    case 'hanja': return it.char;
+    case 'hanja': return it.char; // unreachable in lessons (D63); kept for type completeness
     case 'vocab': return it.word;
     case 'grammar': return it.pattern;
     case 'expression': return it.text;

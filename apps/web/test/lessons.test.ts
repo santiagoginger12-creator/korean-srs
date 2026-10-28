@@ -6,16 +6,18 @@ import { fakeFactory, seedBundle } from './helpers.ts';
 
 const UTC = 0;
 
-test('hanja come first and are never capped; others are limited by the cap', () => {
+test('no hanja lessons (D63); vocab lessons limited by the cap; grammar on its own queue', () => {
   const content = seedBundle();
   const f = fakeFactory();
   const s = replayAll(content, []);
   const plan = planLessons(s, [], f.now, UTC, undefined);
   const kinds = plan.queue.map((id) => s.index.byId.get(id)!.kind);
-  assert.ok(plan.hanjaAvailable > 0);
-  assert.deepEqual(kinds.slice(0, plan.hanjaAvailable), Array(plan.hanjaAvailable).fill('hanja'));
-  assert.ok(plan.queue.length - plan.hanjaAvailable <= plan.allowance);
+  assert.ok(!kinds.includes('hanja') && !kinds.includes('grammar'));
+  assert.ok(plan.queue.length <= plan.allowance);
   assert.equal(nextBatch(plan, s).length, Math.min(s.settings.lessonBatch, plan.queue.length));
+  // Even with the engine rollback (hanja.lessons on) the app never queues hanja.
+  const on = replayAll(content, [f.mk({ type: 'settings.set', key: 'hanja.lessons' as never, value: true })]);
+  assert.ok(!planLessons(on, [], f.now, UTC, undefined).queue.some((id) => id.startsWith('h:')));
 });
 
 test('+5 anyway raises the allowance for the current study day only', () => {
@@ -32,18 +34,6 @@ test('+5 anyway raises the allowance for the current study day only', () => {
   assert.equal(overrideExtraFor(o, o.dayStart + 24 * HOUR), 0);
 });
 
-test('lesson.completed for hanja unlocks their vocab in the next plan', () => {
-  const content = seedBundle();
-  const f = fakeFactory();
-  const s0 = replayAll(content, []);
-  const hanja = planLessons(s0, [], f.now, UTC, undefined).queue.filter((id) => s0.index.byId.get(id)!.kind === 'hanja');
-  const evs = hanja.map((itemId) => f.mk({ type: 'lesson.completed', itemId }));
-  const s1 = replayAll(content, evs);
-  const before = planLessons(s0, [], f.now, UTC, undefined).otherAvailable;
-  const after = planLessons(s1, evs, f.now, UTC, undefined).otherAvailable;
-  assert.ok(after > before, `${after} > ${before}`);
-});
-
 test('+5 anyway extends the day total: once used up, the allowance is 0 again (QA regression)', () => {
   const content = seedBundle();
   const f = fakeFactory(Date.UTC(2026, 9, 23, 12));
@@ -56,11 +46,6 @@ test('+5 anyway extends the day total: once used up, the allowance is 0 again (Q
     }
     return plan;
   };
-  // Hanja first (uncapped) so enough vocab is unlocked.
-  const s0 = replayAll(content, evs);
-  for (const id of planLessons(s0, evs, f.now, UTC, undefined).queue) {
-    if (s0.index.byId.get(id)!.kind === 'hanja') evs.push(f.mk({ type: 'lesson.completed', itemId: id }));
-  }
   const p0 = learn(2);
   assert.equal(p0.allowance, 2);
   const s1 = replayAll(content, evs);

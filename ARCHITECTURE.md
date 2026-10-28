@@ -63,7 +63,7 @@ flowchart LR
 | Validation | Zod 4 | Content schemas, import validation, and event validation on sync ingest. |
 | PWA | `vite-plugin-pwa` (Workbox `generateSW`, `registerType: 'prompt'`) | Standard and framework-agnostic. The prompt avoids reloading mid-review. |
 | Styling | CSS Modules + CSS custom-property tokens; `prefers-color-scheme` plus a manual override | No runtime CSS-in-JS. Dark mode is a token swap. |
-| Typography | **Pretendard Variable** (self-hosted, precached) for UI and Korean; **Noto Serif KR subset** for Hanja | Pretendard's standard build has no CJK ideographs. A build step subsets Noto Serif KR to the Hanja in the content bundle (a few KB). The fallback stack is `"Apple SD Gothic Neo", "Noto Sans KR", system-ui`. |
+| Typography | **Pretendard Variable** for UI and Korean (Hangul is the visual focus) | Pretendard has no CJK ideographs; the one muted hanja line per vocab item falls back to `"Apple SD Gothic Neo", "Noto Sans KR"`. No serif hanja font (D63). |
 | FSRS | `ts-fsrs` (pinned, MIT, pure TS) behind the `Scheduler` interface | Optional mode. |
 | Tests | Vitest, fast-check (property tests), fake-indexeddb, Playwright (Chromium + WebKit) | §12. |
 | Lint/format | ESLint (flat) + Prettier; `dependency-cruiser` for boundary rules | Enforces the package API boundaries in §4. |
@@ -342,25 +342,29 @@ export function uuidv7(clock: () => number, rng: () => number): string;
 export function upcastEvent(raw: unknown): AppEvent | { unknownFutureVersion: true; raw: unknown };
 ```
 
-### 7.3 Unlock logic (Hanja redesign)
+### 7.3 Unlock logic (two paths; hanja are not lesson nodes)
 
-- Level 1 is unlocked at start. **Level N+1 unlocks when ≥ 90% of level N's gating items** (vocab, grammar, and expressions with `gating: true`) have `passedAt` set. Passed means reached Guru at least once and is sticky, as in WaniKani. Hanja never gate.
-- Within an unlocked level:
-  - **Hanja** are available for lessons immediately. Their lesson emits `lesson.completed`. They have no stage and are never queued for review.
-  - **Vocab** gets implicit deps `{hanjaId, require: 'lesson'}` for every `hanjaBreakdown` entry that resolves to a content hanja. Finishing a hanja's lesson therefore unlocks its Sino-Korean vocab.
-  - **Grammar and expressions** use explicit `unlockDeps`, e.g. `-는 통에` requires `{g:는-바람에, require:'guru'}`.
-- Lesson order: hanja first, then items by level, kind order (vocab, grammar, expression), then content order.
+- **Hanja are not lesson nodes** (D63, supersedes D12). `availableLessons` never returns hanja items (content, custom or imported), hanja are never unlocked, and deps on hanja (implicit `hanjaBreakdown` deps or explicit ones) don't apply. Old `lesson.completed` events for hanja ids replay harmlessly: the item gets `lessonAt` only and is never counted (levels, caps, forecast, stage counts, due). A vocab item's hanja show as one muted line on its page. `settings.set hanja.lessons = true` is an engine-only rollback hook; the UI has no hanja lessons or pages.
+- **Vocab path** (vocab + expressions). Its levels are the levels holding a non-grammar item. Level 1 is open at start; **level N+1 opens at ≥ 90% of level N's gating vocab and expression items** with `passedAt` set (first Guru, sticky).
+- **Grammar path** (grammar only). Its stages are the distinct `level` values of grammar items, ascending (gaps are fine: 1, 2, 3, 5, 6, 7). Stage 1 is open at start; **stage k+1 opens at ≥ 90% of stage k's gating grammar items passed**. Neither path's progress opens the other. `grammarProgress(index, state)` reports every stage; `DerivedState.grammarStage` is the highest open one.
+- Within an open level/stage, explicit `unlockDeps` still apply, e.g. `-는 통에` requires `{g:는-바람에, require:'guru'}`.
+- Lesson queues: `availableLessons(index, s, { path })`. `vocab` = everything except grammar, by level, kind order (vocab, expression), content order, with imported extras interleaved 3:2 (D60). `grammar` = grammar by level, then content order.
+- `grammar.separatePath = false` restores the combined behaviour: one ladder over all levels, gating counts vocab, grammar and expressions, one lesson queue.
 
 ### 7.4 Lessons and load estimator
 
 Lessons come in batches of `settings.lessonBatch` (default 5). Each batch has teach pages, then a lesson quiz (no events). Passing the quiz emits `lesson.completed` for each item.
 
-Daily cap (`dailyLessonCap`), with hanja excluded from the cap:
+Daily caps (`dailyLessonCap`): **one review budget T** (`targetReviewMin`, 45 min), **two caps**, reported as `cap` (vocab path) and `grammar.cap` in the `LessonCapReport`:
 - `secPerQ[qtype]` is the EMA of `durationMs` (clamped to 3–120 s). Defaults: meaning 7, production 10, cloze 14, nuance 18, register 40.
-- `itemCost = Σ_required secPerQ × (1 + (1 − acc))`, where `acc` is the rolling 30-day accuracy (default 0.85).
-- **Steady-state cap.** A new item costs about 8 reviews to burn, inflated by 1/acc, giving about 9.4 reviews. Daily load ≈ `n × 9.4 × avgItemCost`. Solve for the `n` that gives T = 45 min (`settings.targetReviewMin`). With a 25 s item cost, n ≈ 11/day.
-- **Headroom cap.** Simulate the next 7 days of existing items, assuming success-path progression. A new item adds 4 reviews in that window (+4h, +12h, +1.5d, +3.5d). Take `n` such that the peak projected day stays ≤ T.
-- `cap = clamp(min(steady, headroom) − lessonsDoneToday, 0, settings.maxLessonsPerDay=20)`. If due reviews exceed 1.5 × T, the cap is 0 and the dashboard says "clear reviews first". "Today" uses `settings.dayStartHour` (default 4:00 local). The user can always override with "+5 anyway".
+- `itemCost = Σ_required secPerQ × (1 + (1 − acc))`, where `acc` is the rolling 30-day accuracy (default 0.85). Each path averages over its own next items (`c_v`, `c_g`), so grammar is costed at its real question types.
+- `rpi` (reviews per item) = 8 / acc ≈ 9.4.
+- **Grammar first.** `limit_g = min(grammar.dailyLessons (default 3), ⌊T / (rpi·c_g)⌋, grammar headroom)`; `grammar.cap = limit_g − grammar lessons done today`. Its projected cost is **reserved**: `reserved = max(doneToday_g, min(limit_g, doneToday_g + available_g))` (grammar that can't happen today reserves nothing).
+- **Vocab in what's left.** Steady: `n_v = ⌊(T − reserved·rpi·c_g) / (rpi·c_v)⌋`. Headroom (7-day success-path simulation of existing items; a new item adds reviews at +4h, +12h, +1.5d, +3.5d): `n_v = min_d ⌊(T − proj_d − adds_d·reserved·c_g) / (adds_d·c_v)⌋`.
+- `cap = clamp(min(steady, headroom) − vocabLessonsDoneToday, 0, maxLessonsPerDay = 20)`. Items learned today are excluded from the projection (D44). If due reviews exceed 1.5 × T, both caps are 0 ("clear reviews first"). "Today" uses `dayStartHour` (4:00 local). "+5 anyway" raises the vocab day total (D45).
+- Example (defaults, nothing learned, vocab = meaning+production, grammar = meaning+cloze): `c_v = 17 × 1.15 = 19.55 s`, `c_g = 21 × 1.15 = 24.15 s`, `rpi = 9.41`. Grammar reserves 3 × 9.41 × 24.15 ≈ 682 s, so vocab steady = ⌊(2700 − 682) / 184⌋ = 10 (it would be 14 with no grammar allowance).
+- Grammar misses also open **ghost reviews** at +2 h and +24 h (derived from the log, practice-only `extra` sessions with no events; done-state per device in kv; slots lapse after 7 days).
+- Combined mode (`grammar.separatePath = false`): the original single cap over all non-hanja lessons.
 
 ### 7.5 Leeches, extra study, FSRS
 

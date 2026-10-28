@@ -9,7 +9,7 @@
     "gating": true,
     "source": { "kind": "original", "license": "original-owned" },
     "needs_review": false,
-    "tags": ["degree", "contrast-set:extremes"],
+    "tags": ["degree", "contrast-set:extremes", "fn:degree-extent"],
     "mnemonic": "나머지 = the remainder: so much feeling that the overflow spills into an action.",
     "pattern": "-(으)ㄴ 나머지",
     "meaning": "so … that (as a result of too much …), usually with an unintended outcome",
@@ -19,10 +19,7 @@
     ],
     "nuance": "An excess of some feeling or state (긴장, 당황, 흥분, 서두르다, 기쁘다) leads to a result the person usually didn't intend: 당황한 나머지 엉뚱한 대답을 했다. Both verbs and adjectives take -(으)ㄴ. The main clause reports what happened, so it can't be a command or suggestion. Slightly formal and common in narrative writing and news, but perfectly usable in speech.",
     "contrasts": [
-      {
-        "id": "g:다-못해",
-        "note": "-다 못해 is about reaching a limit (참다못해, 'unable to hold back any longer') or spilling past one degree into another (짜다 못해 쓰다)."
-      },
+      { "id": "g:다-못해", "note": "-다 못해 is about reaching a limit (참다못해, 'unable to hold back any longer') or spilling past one degree into another (짜다 못해 쓰다)." },
       { "id": "g:ㄹ-지경이다", "note": "-(으)ㄹ 지경이다 describes being on the verge of an extreme state, not an action that resulted." }
     ],
     "examples": [
@@ -51,6 +48,77 @@
             { "answer": "서두르는 바람에", "hint": "Natural too; the cue asks for -(으)ㄴ 나머지, which pins the cause on the excess of hurry." }
           ],
           "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "오랜만에 만난 친구가 너무 {{}} 길 한복판에서 소리를 질렀다.",
+          "en": "I was so happy to run into an old friend that I shouted in the middle of the street.",
+          "cue": "반갑다 + -(으)ㄴ 나머지",
+          "accepted": ["반가운 나머지"],
+          "nearMiss": [{ "answer": "반갑은 나머지", "hint": "반갑다 is ㅂ-irregular: 반가운 나머지." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c3",
+          "sentence": "간병이 너무 {{}} 그녀는 결국 휴직을 신청했다.",
+          "en": "Caregiving wore her down so badly that she finally applied for leave.",
+          "cue": "힘들다 + -(으)ㄴ 나머지",
+          "accepted": ["힘든 나머지"],
+          "nearMiss": [{ "answer": "힘들은 나머지", "hint": "힘들다 drops its ㄹ before -ㄴ: 힘든 나머지." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c4",
+          "sentence": "그는 마감에 {{}} 중요한 수치를 하나 빠뜨렸다.",
+          "en": "Racing against the deadline, he left out an important figure.",
+          "cue": "쫓기다 + -(으)ㄴ 나머지",
+          "accepted": ["쫓긴 나머지"],
+          "nearMiss": [{ "answer": "쫓기는 나머지", "hint": "-(으)ㄴ 나머지 always takes -(으)ㄴ: 쫓긴 나머지." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c5",
+          "sentence": "아이는 {{}} 엄마 뒤로 숨어 버렸다.",
+          "en": "The child was so frightened that he hid behind his mother.",
+          "cue": "무섭다 + -(으)ㄴ 나머지",
+          "accepted": ["무서운 나머지"],
+          "nearMiss": [{ "answer": "무섭은 나머지", "hint": "무섭다 is ㅂ-irregular: 무서운 나머지." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c6",
+          "sentence": "투자자들이 {{}} 주식을 한꺼번에 내다 팔면서 주가가 폭락했다.",
+          "en": "Panicked investors dumped their shares all at once, and the stock price crashed.",
+          "cue": "겁먹다 + -(으)ㄴ 나머지",
+          "accepted": ["겁먹은 나머지"],
+          "nearMiss": [{ "answer": "겁먹는 바람에", "hint": "Grammatical; the cue asks for -(으)ㄴ 나머지, which pins the dumping on an excess of fear." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c7",
+          "sentence": "그는 게임에 너무 {{}} 약속 시간을 까맣게 잊어버렸다.",
+          "en": "He got so absorbed in the game that he completely forgot about his appointment.",
+          "cue": "몰입하다 + -(으)ㄴ 나머지",
+          "accepted": ["몰입한 나머지"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c8",
+          "sentence": "제가 감정이 {{}} 무례한 말씀을 드렸습니다. 죄송합니다.",
+          "en": "I let my emotions get the better of me and said something rude. I apologize.",
+          "cue": "앞서다 + -(으)ㄴ 나머지",
+          "accepted": ["앞선 나머지"],
+          "nearMiss": [{ "answer": "앞서는 나머지", "hint": "-(으)ㄴ 나머지 always takes -(으)ㄴ: 앞선 나머지." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c9",
+          "sentence": "그녀는 우승을 놓친 게 너무 {{}} 시상식 내내 눈물을 보였다.",
+          "en": "She was so crushed at missing the title that she was in tears throughout the ceremony.",
+          "cue": "아쉽다 + -(으)ㄴ 나머지",
+          "accepted": ["아쉬운 나머지"],
+          "nearMiss": [{ "answer": "아쉽은 나머지", "hint": "아쉽다 is ㅂ-irregular: 아쉬운 나머지." }],
+          "particleTolerance": "none"
         }
       ],
       "nuance": [
@@ -70,6 +138,19 @@
               "why": "-(으)ㄴ 나머지 reports a result that has already happened; it can't lead into a suggestion."
             }
           ]
+        },
+        {
+          "id": "n2",
+          "situation": "동료가 발표 때 너무 긴장해서 준비한 말을 다 잊어버렸대요. 다른 동료에게 전하려면? (A coworker was so nervous at her presentation that she forgot everything she'd prepared. You pass this on.)",
+          "options": [
+            {
+              "text": "너무 긴장한 나머지 준비한 말을 다 잊어버렸대.",
+              "correct": true,
+              "why": "An excess of nerves leading to an unintended result, with the -(으)ㄴ form the pattern requires."
+            },
+            { "text": "너무 긴장하는 나머지 준비한 말을 다 잊어버렸대.", "correct": false, "why": "-(으)ㄴ 나머지 always takes -(으)ㄴ: 긴장한 나머지." },
+            { "text": "너무 긴장한 덕분에 준비한 말을 다 잊어버렸대.", "correct": false, "why": "덕분에 credits a cause for a good result; blanking on your talk isn't one." }
+          ]
         }
       ],
       "register": [
@@ -78,13 +159,31 @@
           "from": "written",
           "to": "haeyo",
           "source": "그는 당황한 나머지 엉뚱한 대답을 하고 말았다.",
-          "accepted": ["그 사람은 당황한 나머지 엉뚱한 대답을 하고 말았어요.", "그 사람은 당황한 나머지 엉뚱한 대답을 해 버렸어요.", "걔는 당황한 나머지 엉뚱한 대답을 하고 말았어요."],
+          "accepted": [
+            "그 사람은 당황한 나머지 엉뚱한 대답을 하고 말았어요.",
+            "그 사람은 당황한 나머지 엉뚱한 대답을 해 버렸어요.",
+            "걔는 당황한 나머지 엉뚱한 대답을 하고 말았어요."
+          ],
           "features": [
             { "kind": "endsWith", "any": ["요"], "label": "Use 해요체, not written -다" },
             { "kind": "notContains", "any": ["그는"], "scope": "all", "label": "그는 is written-only; say 그 사람은 (or 걔는)" }
           ],
           "coreWords": ["당황한", "나머지", "엉뚱한", "대답"],
           "particleTolerance": "loose",
+          "finalPunctOptional": true
+        },
+        {
+          "id": "r2",
+          "from": "haeyo",
+          "to": "written",
+          "source": "합격 소식에 너무 기쁜 나머지 눈물이 났어요.",
+          "accepted": ["합격 소식에 너무 기쁜 나머지 눈물이 났다.", "합격 소식에 너무 기쁜 나머지 눈물이 흘렀다."],
+          "features": [
+            { "kind": "endsWith", "any": ["다"], "label": "Use the written -다 ending" },
+            { "kind": "contains", "any": ["나머지"], "scope": "all", "label": "Keep the -(으)ㄴ 나머지 clause" }
+          ],
+          "coreWords": ["합격", "기쁜", "나머지", "눈물"],
+          "particleTolerance": "allomorph",
           "finalPunctOptional": true
         }
       ]
@@ -100,7 +199,7 @@
     "gating": true,
     "source": { "kind": "original", "license": "original-owned" },
     "needs_review": false,
-    "tags": ["degree", "contrast-set:extremes"],
+    "tags": ["degree", "contrast-set:extremes", "fn:degree-extent"],
     "mnemonic": "못해 = 'couldn't (go on)': you tried to keep going, and you couldn't.",
     "pattern": "-다(가) 못해",
     "meaning": "(V) unable to keep … up any longer, finally …; (A) so … that it goes beyond into …",
@@ -132,6 +231,74 @@
           "accepted": ["보다못해", "보다 못해"],
           "nearMiss": [{ "answer": "본 나머지", "hint": "-(으)ㄴ 나머지 needs an excess of feeling; for 'couldn't stand by any longer', the set word is 보다못해." }],
           "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "아이가 하도 보채서 엄마는 {{}} 장난감을 사 주고 말았다.",
+          "en": "The child whined so much that the mother, unable to bear it any longer, gave in and bought the toy.",
+          "cue": "견디다 + -다 못해",
+          "accepted": ["견디다 못해", "견디다가 못해"],
+          "nearMiss": [{ "answer": "견딘 나머지", "hint": "-(으)ㄴ 나머지 needs an excess of feeling; for \"couldn't bear it any longer\", the cue asks for -다 못해." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c3",
+          "sentence": "그날 바다는 {{}} 검푸른 빛을 띠었다.",
+          "en": "That day the sea was so deeply blue it was nearly black.",
+          "cue": "파랗다 + -다 못해",
+          "accepted": ["파랗다 못해"],
+          "nearMiss": [{ "answer": "파란 나머지", "hint": "-(으)ㄴ 나머지 links an excess of feeling to a result; a color pushed past its limit takes -다 못해." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c4",
+          "sentence": "선수들의 실수가 이어지자 감독은 {{}} 직접 작전 지시에 나섰다.",
+          "en": "As the players kept making mistakes, the coach, unable to just watch any longer, stepped in to direct the play himself.",
+          "cue": "지켜보다 + -다 못해",
+          "accepted": ["지켜보다 못해", "지켜보다가 못해"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c5",
+          "sentence": "그의 변명은 {{}} 우스꽝스러웠다.",
+          "en": "His excuse was so absurd it was downright comical.",
+          "cue": "어이없다 + -다 못해",
+          "accepted": ["어이없다 못해"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c6",
+          "sentence": "계속되는 월세 인상을 {{}} 결국 가게를 정리했다.",
+          "en": "Unable to keep up with the endless rent hikes, he finally closed the shop.",
+          "cue": "버티다 + -다 못해",
+          "accepted": ["버티다 못해", "버티다가 못해"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c7",
+          "sentence": "한여름 햇살이 {{}} 따가웠다.",
+          "en": "The midsummer sun was beyond hot; it stung.",
+          "cue": "뜨겁다 + -다 못해",
+          "accepted": ["뜨겁다 못해"],
+          "nearMiss": [{ "answer": "뜨거운 나머지", "hint": "-(으)ㄴ 나머지 links an excess of feeling to a result; pushing a quality past its limit takes -다 못해." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c8",
+          "sentence": "직원들은 {{}} 노조를 만들기로 했다.",
+          "en": "Their patience exhausted, the employees decided to form a union.",
+          "cue": "참다 + -다 못해",
+          "accepted": ["참다못해", "참다가 못해"],
+          "nearMiss": [{ "answer": "참은 나머지", "hint": "-(으)ㄴ 나머지 needs an excess of feeling; \"having endured\" isn't one." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c9",
+          "sentence": "그 집 음식은 {{}} 써요.",
+          "en": "That restaurant's food is so salty it's practically bitter.",
+          "cue": "짜다 + -다 못해",
+          "accepted": ["짜다 못해"],
+          "particleTolerance": "none"
         }
       ],
       "nuance": [
@@ -151,6 +318,19 @@
               "why": "-는 바람에 makes enduring the sudden cause of an unwanted result, which turns the logic upside down."
             }
           ]
+        },
+        {
+          "id": "n2",
+          "situation": "환자의 얼굴에 핏기가 하나도 없었어요. 하얀 정도를 넘어 아파 보였다고 쓰려면? (The patient's face had no color at all: beyond pale, it looked sickly.)",
+          "options": [
+            { "text": "얼굴이 하얗다 못해 창백했다.", "correct": true, "why": "A-다 못해 pushes a quality past its limit into a more extreme state on the same scale." },
+            { "text": "얼굴이 하얗다 못해 발그레했다.", "correct": false, "why": "Rosy cheeks go the other way. -다 못해 needs a more extreme degree of the same quality." },
+            {
+              "text": "얼굴이 하얀 나머지 창백했다.",
+              "correct": false,
+              "why": "-(으)ㄴ 나머지 links an excess of feeling to a resulting action; pale skin doesn't cause paleness."
+            }
+          ]
         }
       ]
     }
@@ -165,7 +345,7 @@
     "gating": true,
     "source": { "kind": "original", "license": "original-owned" },
     "needs_review": false,
-    "tags": ["degree", "contrast-set:extremes"],
+    "tags": ["degree", "contrast-set:extremes", "fn:degree-extent"],
     "mnemonic": "地境 = a border: you're standing right at the border of losing it.",
     "pattern": "-(으)ㄹ 지경이다",
     "meaning": "to the point of …; on the verge of … (an extreme, usually bad state)",
@@ -193,12 +373,83 @@
           "id": "c1",
           "sentence": "에어컨이 고장 난 사무실은 숨이 {{}}.",
           "en": "With the air conditioner broken, the office was so stifling you could hardly breathe.",
-          "cue": "막히다 + -(으)ㄹ 지경이다 (past)",
-          "accepted": ["막힐 지경이었다", "막힐 지경이었어", "막힐 지경이었어요"],
+          "cue": "막히다 + -(으)ㄹ 지경이다",
+          "accepted": ["막힐 지경이었다", "막힐 지경이었어", "막힐 지경이었어요", "막힐 지경이었습니다"],
           "nearMiss": [
             { "answer": "막힐 정도였다", "hint": "Similar meaning; the cue asks for -(으)ㄹ 지경이다." },
             { "answer": "막혔을 지경이었다", "hint": "The clause before 지경 takes the plain -(으)ㄹ form; tense goes on 이다: 막힐 지경이었다." }
           ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "요즘 물가가 너무 올라서 장 보기가 {{}}.",
+          "en": "Prices have shot up so much lately that grocery shopping is downright scary.",
+          "cue": "무섭다 + -(으)ㄹ 지경이다",
+          "accepted": ["무서울 지경이다", "무서울 지경이야", "무서울 지경이에요", "무서울 지경입니다"],
+          "nearMiss": [{ "answer": "무섭을 지경이야", "hint": "무섭다 is ㅂ-irregular: 무서울 지경이야." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c3",
+          "sentence": "업무 전화가 쉴 새 없이 와서 머리가 {{}}.",
+          "en": "Work calls keep coming nonstop; my head is spinning.",
+          "cue": "돌다 + -(으)ㄹ 지경이다",
+          "accepted": ["돌 지경이다", "돌 지경이야", "돌 지경이에요", "돌 지경입니다"],
+          "nearMiss": [{ "answer": "돌을 지경이야", "hint": "An ㄹ-stem takes plain -ㄹ: 돌 지경이야." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c4",
+          "sentence": "적자가 누적되면서 그 회사는 결국 문을 {{}}.",
+          "en": "As losses piled up, the company was eventually brought to the brink of closing.",
+          "cue": "닫다 + -(으)ㄹ 지경에 이르다",
+          "accepted": ["닫을 지경에 이르렀다", "닫을 지경에 이르렀습니다", "닫을 지경에 이르렀어요"],
+          "nearMiss": [{ "answer": "닫을 지경에 이렀다", "hint": "이르다 'reach' is 러-irregular: 이르러, 이르렀다." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c5",
+          "sentence": "하루 종일 걸었더니 다리가 {{}}.",
+          "en": "I walked all day, and my legs feel like they're about to fall off.",
+          "cue": "끊어지다 + -(으)ㄹ 지경이다",
+          "accepted": ["끊어질 지경이다", "끊어질 지경이야", "끊어질 지경이에요", "끊어질 지경입니다"],
+          "nearMiss": [{ "answer": "끊어질 정도야", "hint": "Similar meaning; the cue asks for -(으)ㄹ 지경이다." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c6",
+          "sentence": "너무 억울해서 {{}}.",
+          "en": "It's so unfair I could cry.",
+          "cue": "울다 + -(으)ㄹ 지경이다",
+          "accepted": ["울 지경이다", "울 지경이야", "울 지경이에요", "울 지경입니다"],
+          "nearMiss": [{ "answer": "울을 지경이야", "hint": "An ㄹ-stem takes plain -ㄹ: 울 지경이야." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c7",
+          "sentence": "아이가 밤새 열이 펄펄 끓어서 부모는 애가 {{}}.",
+          "en": "The child ran a high fever all night, and the parents were beside themselves with worry.",
+          "cue": "타다 + -(으)ㄹ 지경이다",
+          "accepted": ["탈 지경이었다", "탈 지경이었어", "탈 지경이었어요", "탈 지경이었습니다"],
+          "nearMiss": [{ "answer": "탔을 지경이었다", "hint": "The clause before 지경 stays -(으)ㄹ; tense goes on 이다: 탈 지경이었다." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c8",
+          "sentence": "논문 마감이 코앞이라 요즘은 밥 먹을 시간도 {{}}.",
+          "en": "My thesis deadline is around the corner, so these days I hardly have time to eat.",
+          "cue": "없다 + -(으)ㄹ 지경이다",
+          "accepted": ["없을 지경이다", "없을 지경이야", "없을 지경이에요", "없을 지경입니다"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c9",
+          "sentence": "주문이 한꺼번에 몰려 일손이 {{}}.",
+          "en": "Orders have flooded in all at once, and we're desperately short-handed.",
+          "cue": "모자라다 + -(으)ㄹ 지경이다",
+          "accepted": ["모자랄 지경이다", "모자랄 지경이야", "모자랄 지경이에요", "모자랄 지경입니다"],
+          "nearMiss": [{ "answer": "모자를 지경이다", "hint": "모자라다 keeps its 라: 모자랄 지경이다." }],
           "particleTolerance": "none"
         }
       ],
@@ -215,6 +466,15 @@
             { "text": "한 달째 잠을 못 자서 미치기 마련이야.", "correct": false, "why": "-기 마련이다 states a general truth; it can't describe your own current state." },
             { "text": "한 달째 잠을 못 자서 미치는 셈이야.", "correct": false, "why": "-는 셈이다 is a reckoning ('it amounts to'), not an extreme of feeling." }
           ]
+        },
+        {
+          "id": "n2",
+          "situation": "시험 결과 발표를 앞두고 너무 걱정돼서 밥이 목으로 안 넘어가요. 친구에게 하소연하려면? (Results come out soon and you're so anxious you can barely eat. You vent to a friend.)",
+          "options": [
+            { "text": "결과가 걱정돼서 밥이 안 넘어갈 지경이야.", "correct": true, "why": "-(으)ㄹ 지경이다: your state has nearly reached an extreme." },
+            { "text": "결과가 걱정돼서 밥이 안 넘어갔을 지경이야.", "correct": false, "why": "The clause before 지경 stays in the -(으)ㄹ form; tense, if any, goes on 이다." },
+            { "text": "결과가 걱정돼서 밥이 안 넘어가는 법이야.", "correct": false, "why": "-는 법이다 states a rule of life; it can't describe how you feel right now." }
+          ]
         }
       ]
     }
@@ -229,7 +489,7 @@
     "gating": true,
     "source": { "kind": "original", "license": "original-owned" },
     "needs_review": false,
-    "tags": ["completion", "contrast-set:completion"],
+    "tags": ["completion", "contrast-set:completion", "fn:emphasis-attitude"],
     "mnemonic": "버리다 = throw away: the action is done and tossed behind you, for better or worse.",
     "pattern": "-아/어 버리다",
     "meaning": "(do something) completely; end up … (with relief, regret, or decisiveness)",
@@ -256,14 +516,82 @@
           "id": "c1",
           "sentence": "마감이 내일이니까 오늘 밤에 다 {{}}.",
           "en": "The deadline's tomorrow, so let's just get it all done tonight.",
-          "cue": "끝내다 + -아/어 버리다 (suggestion, -자)",
-          "accepted": ["끝내 버리자", "끝내버리자"],
+          "cue": "끝내다 + -아/어 버리다",
+          "accepted": ["끝내 버리자", "끝내버리자", "끝내 버립시다"],
           "nearMiss": [
-            {
-              "answer": "끝내고 말자",
-              "hint": "Possible as a show of grim determination, but for a brisk 'let's just get it over with', the cue asks for -아/어 버리다."
-            }
+            { "answer": "끝내고 말자", "hint": "Possible as a show of grim determination, but for a brisk 'let's just get it over with', the cue asks for -아/어 버리다." }
           ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "날이 너무 더워서 머리를 짧게 {{}}.",
+          "en": "It was so hot that I just chopped my hair short.",
+          "cue": "자르다 + -아/어 버리다",
+          "accepted": ["잘라 버렸다", "잘라 버렸어", "잘라 버렸어요", "잘라 버렸습니다"],
+          "nearMiss": [{ "answer": "자라 버렸어", "hint": "자르다 is 르-irregular: 잘라 버렸어." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c3",
+          "sentence": "뉴스 보기가 싫어서 텔레비전을 {{}}.",
+          "en": "I couldn't stand watching the news, so I just switched the TV off.",
+          "cue": "끄다 + -아/어 버리다",
+          "accepted": ["꺼 버렸다", "꺼 버렸어", "꺼 버렸어요", "꺼 버렸습니다"],
+          "nearMiss": [{ "answer": "끄어 버렸어", "hint": "끄다 drops its ㅡ before -어: 꺼 버렸어." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c4",
+          "sentence": "식은 커피를 개수대에 다 {{}}.",
+          "en": "I just poured the cold coffee down the sink.",
+          "cue": "붓다 + -아/어 버리다",
+          "accepted": ["부어 버렸다", "부어 버렸어", "부어 버렸어요", "부어 버렸습니다"],
+          "nearMiss": [{ "answer": "붓어 버렸어", "hint": "붓다 is ㅅ-irregular: 부어 버렸어." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c5",
+          "sentence": "궁금한 걸 참지 못하고 그만 나이를 {{}}.",
+          "en": "I couldn't help myself and went ahead and asked her age.",
+          "cue": "묻다 + -아/어 버리다",
+          "accepted": ["물어 버렸다", "물어 버렸어", "물어 버렸어요", "물어 버렸습니다"],
+          "nearMiss": [{ "answer": "묻어 버렸어", "hint": "묻다 'ask' is ㄷ-irregular: 물어. 묻어 is from 묻다 'bury'." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c6",
+          "sentence": "집에 오자마자 씻지도 않고 침대에 {{}}.",
+          "en": "As soon as I got home I flopped into bed without even washing up.",
+          "cue": "눕다 + -아/어 버리다",
+          "accepted": ["누워 버렸다", "누워 버렸어", "누워 버렸어요", "누워 버렸습니다"],
+          "nearMiss": [{ "answer": "눕어 버렸어", "hint": "눕다 is ㅂ-irregular: 누워 버렸어." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c7",
+          "sentence": "그는 홧김에 회사에 사표를 {{}}.",
+          "en": "In a fit of anger, he went and handed in his resignation.",
+          "cue": "내다 + -아/어 버리다",
+          "accepted": ["내 버렸다", "내 버렸어", "내 버렸어요", "내 버렸습니다"],
+          "nearMiss": [{ "answer": "내고 말았다", "hint": "Also natural; the cue asks for -아/어 버리다." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c8",
+          "sentence": "그 사진이 마음에 안 들면 그냥 {{}}.",
+          "en": "If you don't like that photo, just delete it.",
+          "cue": "지우다 + -아/어 버리다",
+          "accepted": ["지워 버려", "지워 버려요", "지워 버리세요", "지워 버리십시오"],
+          "nearMiss": [{ "answer": "지우고 말아", "hint": "-고 말다 doesn't work as a breezy \"just do it\" command; the cue asks for -아/어 버리다." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c9",
+          "sentence": "죄송합니다. 회의 자료를 실수로 전부 {{}}.",
+          "en": "I'm sorry. I accidentally deleted all the meeting materials.",
+          "cue": "삭제하다 + -아/어 버리다",
+          "accepted": ["삭제해 버렸다", "삭제해 버렸어", "삭제해 버렸어요", "삭제해 버렸습니다"],
           "particleTolerance": "none"
         }
       ],
@@ -280,6 +608,23 @@
             },
             { "text": "고민 그만하고 그냥 지원하기 마련이야!", "correct": false, "why": "-기 마련이다 states a general truth; it can't push someone to act." }
           ]
+        },
+        {
+          "id": "n2",
+          "situation": "몇 주째 밀려 있던 보고서를 오늘 드디어 다 끝내서 홀가분해요. (You finally cleared the reports that had been piling up for weeks, and you feel light as air.)",
+          "options": [
+            { "text": "밀린 보고서를 오늘 다 끝내 버렸어. 속이 다 시원해!", "correct": true, "why": "-아/어 버리다 marks the job as done and gone, here with relief." },
+            {
+              "text": "밀린 보고서를 오늘 다 끝나 버렸어. 속이 다 시원해!",
+              "correct": false,
+              "why": "끝나다 is intransitive. With 보고서를 as the object you need 끝내다: 끝내 버렸어."
+            },
+            {
+              "text": "밀린 보고서를 오늘 다 끝내고 말 거야. 속이 다 시원해!",
+              "correct": false,
+              "why": "-고 말 거야 is a vow about the future, which can't go with relief at something already done."
+            }
+          ]
         }
       ]
     }
@@ -294,7 +639,7 @@
     "gating": true,
     "source": { "kind": "original", "license": "original-owned" },
     "needs_review": false,
-    "tags": ["completion", "contrast-set:completion"],
+    "tags": ["completion", "contrast-set:completion", "fn:emphasis-attitude"],
     "mnemonic": "말다 = stop: the story stops at this ending, whether you wanted it or not.",
     "pattern": "-고 말다",
     "meaning": "end up … (despite efforts or wishes); with -겠다/-(으)ㄹ 거다, be determined to …",
@@ -324,9 +669,95 @@
           "id": "c1",
           "sentence": "그렇게 조심했는데도 회의 자료에 오타를 {{}}.",
           "en": "Careful as I was, I still ended up leaving a typo in the meeting materials.",
-          "cue": "내다 + -고 말다 (past)",
-          "accepted": ["내고 말았다", "내고 말았어", "내고 말았어요"],
+          "cue": "내다 + -고 말다",
+          "accepted": ["내고 말았다", "내고 말았어", "내고 말았어요", "내고 말았습니다"],
           "nearMiss": [{ "answer": "내 버렸다", "hint": "Also natural; the cue asks for -고 말다, which stresses the outcome despite your care." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "참으려고 했지만 결국 웃음을 {{}}.",
+          "en": "I tried to hold it in, but in the end I burst out laughing.",
+          "cue": "터뜨리다 + -고 말다",
+          "accepted": ["터뜨리고 말았다", "터뜨리고 말았어", "터뜨리고 말았어요", "터뜨리고 말았습니다"],
+          "nearMiss": [{ "answer": "터뜨려 버렸어", "hint": "Also natural; the cue asks for -고 말다, which stresses the outcome despite your effort." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c3",
+          "sentence": "올해는 무슨 일이 있어도 마라톤을 {{}}.",
+          "en": "This year I'm going to finish a marathon, no matter what.",
+          "cue": "완주하다 + -고 말다",
+          "accepted": [
+            "완주하고 말겠다",
+            "완주하고 말겠어",
+            "완주하고 말겠어요",
+            "완주하고 말겠습니다",
+            "완주하고 말 거야",
+            "완주하고 말 거예요",
+            "완주하고 말 것이다",
+            "완주하고 말 겁니다"
+          ],
+          "nearMiss": [{ "answer": "완주하고 말았어", "hint": "말았다 reports an outcome. For a vow about this year, use -고 말겠다 or -고 말 거야." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c4",
+          "sentence": "양측의 협상은 끝내 {{}}.",
+          "en": "Talks between the two sides ultimately broke down.",
+          "cue": "결렬되다 + -고 말다",
+          "accepted": ["결렬되고 말았다", "결렬되고 말았어", "결렬되고 말았어요", "결렬되고 말았습니다"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c5",
+          "sentence": "그렇게 아끼던 화분을 이사하다가 {{}}.",
+          "en": "I ended up breaking the flowerpot I'd treasured while moving.",
+          "cue": "깨뜨리다 + -고 말다",
+          "accepted": ["깨뜨리고 말았다", "깨뜨리고 말았어", "깨뜨리고 말았어요", "깨뜨리고 말았습니다"],
+          "nearMiss": [{ "answer": "깨뜨려 버렸어", "hint": "Also natural; the cue asks for -고 말다." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c6",
+          "sentence": "몇 번이나 붙잡았지만 그녀는 결국 {{}}.",
+          "en": "I begged her to stay again and again, but in the end she left.",
+          "cue": "떠나다 + -고 말다",
+          "accepted": ["떠나고 말았다", "떠나고 말았어", "떠나고 말았어요", "떠나고 말았습니다"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c7",
+          "sentence": "이번 대회에서는 반드시 우승을 {{}}.",
+          "en": "We will win the title at this tournament, whatever it takes.",
+          "cue": "차지하다 + -고 말다",
+          "accepted": [
+            "차지하고 말겠다",
+            "차지하고 말겠어",
+            "차지하고 말겠어요",
+            "차지하고 말겠습니다",
+            "차지하고 말 거야",
+            "차지하고 말 거예요",
+            "차지하고 말 것이다",
+            "차지하고 말 겁니다"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c8",
+          "sentence": "동생은 엄마 몰래 과자를 먹다가 결국 {{}}.",
+          "en": "My little brother was sneaking snacks behind Mom's back and finally got caught.",
+          "cue": "들키다 + -고 말다",
+          "accepted": ["들키고 말았다", "들키고 말았어", "들키고 말았어요", "들키고 말았습니다"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c9",
+          "sentence": "실험 데이터를 백업 안 했다가 결국 다 {{}}.",
+          "en": "I didn't back up my experiment data, and in the end I lost all of it.",
+          "cue": "잃다 + -고 말다",
+          "accepted": ["잃고 말았다", "잃고 말았어", "잃고 말았어요", "잃고 말았습니다"],
+          "nearMiss": [{ "answer": "잃어버렸어요", "hint": "Also natural; the cue asks for -고 말다." }],
           "particleTolerance": "none"
         }
       ],
@@ -342,6 +773,15 @@
               "why": "-고 말았다 reports an outcome already reached (use 1). A vow about next time needs the resolve form, -고 말 거다 or -고 말겠다."
             },
             { "text": "다음엔 무슨 일이 있어도 합격하기 십상이야.", "correct": false, "why": "-기 십상이다 predicts a likely bad outcome; it can't express resolve." }
+          ]
+        },
+        {
+          "id": "n2",
+          "situation": "다이어트 중이라 야식을 참으려 했는데 결국 밤 12시에 라면을 끓여 먹었어요. (You're on a diet and tried to resist, but at midnight you ended up making ramyeon.)",
+          "options": [
+            { "text": "참으려고 했는데 결국 라면을 먹고 말았어.", "correct": true, "why": "-고 말았다 reports an outcome reached despite your efforts." },
+            { "text": "참으려고 했는데 결국 라면을 먹고 말겠어.", "correct": false, "why": "-고 말겠다 is a vow; it can't report something that already happened." },
+            { "text": "참으려고 했는데 결국 라면을 먹기 십상이었어.", "correct": false, "why": "-기 십상이다 says something was likely; it doesn't report that it happened." }
           ]
         }
       ],
@@ -359,6 +799,21 @@
           "coreWords": ["확인했", "결국", "실수", "말았"],
           "particleTolerance": "allomorph",
           "finalPunctOptional": true
+        },
+        {
+          "id": "r2",
+          "from": "written",
+          "to": "hae",
+          "source": "그는 끝내 고향으로 돌아가고 말았다.",
+          "accepted": ["그 사람은 끝내 고향으로 돌아가고 말았어.", "걔는 끝내 고향으로 돌아가고 말았어.", "그 사람은 결국 고향으로 돌아가고 말았어."],
+          "features": [
+            { "kind": "endsWith", "any": ["어"], "label": "Use 반말 (-어), not written -다" },
+            { "kind": "contains", "any": ["고 말"], "scope": "all", "label": "Keep the -고 말다 ending" },
+            { "kind": "notContains", "any": ["그는"], "scope": "all", "label": "그는 is written-only; say 그 사람은 (or 걔는)" }
+          ],
+          "coreWords": ["고향", "돌아가고", "말았"],
+          "particleTolerance": "loose",
+          "finalPunctOptional": true
         }
       ]
     }
@@ -373,7 +828,7 @@
     "gating": true,
     "source": { "kind": "original", "license": "original-owned" },
     "needs_review": false,
-    "tags": ["manner", "contrast-set:manner"],
+    "tags": ["manner", "contrast-set:manner", "fn:manner-comparison"],
     "mnemonic": "-다시피 = '(just) as…': as you know, as you see, or as good as doing it.",
     "pattern": "-다시피",
     "meaning": "(1) as (you know / can see / heard); (2) in -다시피 하다, practically, all but",
@@ -398,9 +853,84 @@
           "id": "c1",
           "sentence": "시험 기간에는 도서관에서 {{}} 했다.",
           "en": "During exams I practically lived in the library.",
-          "cue": "살다 + -다시피 (하다)",
+          "cue": "살다 + -다시피 하다",
           "accepted": ["살다시피"],
           "nearMiss": [{ "answer": "사는 듯이", "hint": "-듯이 makes a simile; the set phrase for 'practically living there' is -다시피 하다." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "{{}} 올해 신입 사원 채용 인원은 작년의 절반입니다.",
+          "en": "As you know, we're hiring half as many new employees this year as last.",
+          "cue": "알다 + -다시피",
+          "accepted": ["아시다시피"],
+          "nearMiss": [
+            { "answer": "알다시피", "hint": "Speaking to an audience in 합쇼체, add the honorific: 아시다시피." },
+            { "answer": "알으시다시피", "hint": "알다 drops its ㄹ before -시-: 아시다시피." }
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c3",
+          "sentence": "지난번 회의에서 {{}} 이번 프로젝트 예산은 동결됩니다.",
+          "en": "As I mentioned at the last meeting, the budget for this project is frozen.",
+          "cue": "말씀드리다 + -았/었다시피",
+          "accepted": ["말씀드렸다시피"],
+          "nearMiss": [{ "answer": "말씀드리다시피", "hint": "You said it at the last meeting: use the past, 말씀드렸다시피." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c4",
+          "sentence": "너도 {{}} 요즘 내가 정신이 하나도 없어.",
+          "en": "As you can see, I'm completely swamped these days.",
+          "cue": "보다 + -다시피",
+          "accepted": ["보다시피"],
+          "nearMiss": [{ "answer": "보듯이", "hint": "-듯이 makes a simile; \"as you can see\" takes -다시피." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c5",
+          "sentence": "여러분도 {{}} 다음 달부터 사무실이 이전합니다.",
+          "en": "As you've all heard, the office moves next month.",
+          "cue": "듣다 + -았/었다시피",
+          "accepted": ["들으셨다시피"],
+          "nearMiss": [
+            { "answer": "듣으셨다시피", "hint": "듣다 is ㄷ-irregular: 들으셨다시피." },
+            { "answer": "들었다시피", "hint": "Speaking to 여러분 in 합쇼체, add the honorific: 들으셨다시피." }
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c6",
+          "sentence": "출장 기간 내내 호텔 방에 {{}} 하며 보고서를 썼다.",
+          "en": "Throughout the business trip I all but locked myself in my hotel room, writing the report.",
+          "cue": "갇히다 + -다시피 하다",
+          "accepted": ["갇히다시피"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c7",
+          "sentence": "다리를 다쳐서 계단을 {{}} 올라갔다.",
+          "en": "With my injured leg, I practically crawled up the stairs.",
+          "cue": "기다 + -다시피",
+          "accepted": ["기다시피"],
+          "nearMiss": [{ "answer": "기는 듯이", "hint": "Grammatical as a simile; for \"practically crawling\", the cue asks for -다시피." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c8",
+          "sentence": "공장 가동이 {{}} 한 상태라 인근 상권도 타격을 입었다.",
+          "en": "With the factory all but shut down, nearby businesses took a hit as well.",
+          "cue": "멈추다 + -다시피 하다",
+          "accepted": ["멈추다시피"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c9",
+          "sentence": "부모님이 맞벌이를 하셔서 나는 외할머니 댁에서 {{}} 했다.",
+          "en": "Both my parents worked, so I practically grew up at my grandmother's.",
+          "cue": "자라다 + -다시피 하다",
+          "accepted": ["자라다시피"],
           "particleTolerance": "none"
         }
       ],
@@ -421,6 +951,23 @@
               "why": "-는 둥 마는 둥 describes doing something half-heartedly; it can't frame shared knowledge."
             }
           ]
+        },
+        {
+          "id": "n2",
+          "situation": "마감 주간 내내 거의 한 끼도 제대로 못 먹었다고 친구에게 말하려고 해요. (You tell a friend you barely ate a proper meal all deadline week.)",
+          "options": [
+            { "text": "마감 주간에는 거의 굶다시피 했어.", "correct": true, "why": "-다시피 하다: you all but starved." },
+            {
+              "text": "마감 주간에는 거의 굶는 둥 마는 둥 했어.",
+              "correct": false,
+              "why": "-는 둥 마는 둥 describes doing something half-heartedly; \"half-heartedly starving\" makes no sense."
+            },
+            {
+              "text": "마감 주간에는 거의 굶듯이 했어.",
+              "correct": false,
+              "why": "-듯이 draws a comparison of manner (\"like starving\"); the \"practically, all but\" frame is -다시피 하다."
+            }
+          ]
         }
       ]
     }
@@ -435,7 +982,7 @@
     "gating": true,
     "source": { "kind": "original", "license": "original-owned" },
     "needs_review": false,
-    "tags": ["manner", "contrast-set:manner"],
+    "tags": ["manner", "contrast-set:manner", "fn:manner-comparison"],
     "mnemonic": "듯 = semblance: it looks just like…",
     "pattern": "-듯(이)",
     "meaning": "like, as if; just as",
@@ -467,6 +1014,75 @@
           "accepted": ["먹듯이", "먹듯"],
           "nearMiss": [{ "answer": "먹다시피", "hint": "-다시피 means 'practically'; for the simile 'as easily as eating', the cue asks for -듯이." }],
           "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "한여름 공사장에서 인부들이 땀을 비 {{}} 흘렸다.",
+          "en": "At the construction site in midsummer, the workers were pouring with sweat.",
+          "cue": "오다 + -듯이",
+          "accepted": ["오듯이", "오듯"],
+          "nearMiss": [{ "answer": "오다시피", "hint": "-다시피 means \"practically\" or \"as you know\"; the simile takes -듯이." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c3",
+          "sentence": "그는 {{}} 어깨를 으쓱했다.",
+          "en": "He shrugged as if it made no difference to him.",
+          "cue": "상관없다 + -다는 듯이",
+          "accepted": ["상관없다는 듯이", "상관없다는 듯"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c4",
+          "sentence": "그 고양이는 마치 집주인이라도 {{}} 소파 한가운데를 차지하고 있었다.",
+          "en": "The cat had claimed the middle of the sofa as if it owned the place.",
+          "cue": "되다 + -(으)ㄴ 듯이",
+          "accepted": ["된 듯이", "된 듯"],
+          "nearMiss": [{ "answer": "된 양", "hint": "Also possible (and more pointed); the cue asks for -(으)ㄴ 듯이." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c5",
+          "sentence": "그 개는 내 말을 다 {{}} 꼬리를 흔들었다.",
+          "en": "The dog wagged its tail as if it understood every word I said.",
+          "cue": "알아듣다 + -는 듯이",
+          "accepted": ["알아듣는 듯이", "알아듣는 듯", "알아들은 듯이", "알아들은 듯"],
+          "nearMiss": [{ "answer": "알아듣다시피", "hint": "-다시피 can't mean \"as if\"; the cue asks for -는 듯이." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c6",
+          "sentence": "부모가 자식을 {{}} 그는 제자들을 아꼈다.",
+          "en": "He cherished his students just as a parent cherishes a child.",
+          "cue": "아끼다 + -듯이",
+          "accepted": ["아끼듯이", "아끼듯"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c7",
+          "sentence": "내가 말을 꺼내자 그는 {{}} 반론을 쏟아 냈다.",
+          "en": "The moment I brought it up, he fired off objections as if he'd been waiting for it.",
+          "cue": "기다리다 + -았/었다는 듯이",
+          "accepted": ["기다렸다는 듯이", "기다렸다는 듯"],
+          "nearMiss": [{ "answer": "기다렸다시피", "hint": "-다시피 can't mean \"as if\"; the cue asks for -다는 듯이." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c8",
+          "sentence": "그는 영어를 숨 {{}} 자연스럽게 한다.",
+          "en": "He speaks English as naturally as breathing.",
+          "cue": "쉬다 + -듯이",
+          "accepted": ["쉬듯이", "쉬듯"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c9",
+          "sentence": "약속이라도 {{}} 다들 같은 시간에 도착했어요.",
+          "en": "Everyone arrived at the same time, as if they'd planned it.",
+          "cue": "하다 + -(으)ㄴ 듯이",
+          "accepted": ["한 듯이", "한 듯"],
+          "nearMiss": [{ "answer": "하는 듯이", "hint": "The arrangement would have been made beforehand: 한 듯이." }],
+          "particleTolerance": "none"
         }
       ],
       "nuance": [
@@ -479,15 +1095,28 @@
               "correct": true,
               "why": "-다는 듯이 means 'as if (it were the case that)': exactly the pretense described."
             },
-            {
-              "text": "그는 아무 일도 없었다시피 웃으며 인사했다.",
-              "correct": false,
-              "why": "-다시피 never means 'as if'; it points to shared knowledge or means 'practically'."
-            },
+            { "text": "그는 아무 일도 없었다시피 웃으며 인사했다.", "correct": false, "why": "-다시피 never means 'as if'; it points to shared knowledge or means 'practically'." },
             {
               "text": "그는 아무 일도 없기 마련이라 웃으며 인사했다.",
               "correct": false,
               "why": "-기 마련이다 states a general truth; it can't describe an appearance or a pretense."
+            }
+          ]
+        },
+        {
+          "id": "n2",
+          "situation": "내 농담에 친구가 정말 재밌다는 표정으로 배를 잡고 웃었어요. 이 장면을 글로 쓰려면? (Your friend clutched their stomach laughing at your joke, as if it were hilarious.)",
+          "options": [
+            { "text": "친구는 정말 재밌다는 듯이 배를 잡고 웃었다.", "correct": true, "why": "-다는 듯이 describes how someone acts, as if (they found) something to be so." },
+            {
+              "text": "친구는 정말 재밌다시피 배를 잡고 웃었다.",
+              "correct": false,
+              "why": "-다시피 works with verbs of knowing or perceiving (\"as you know\") or in -다시피 하다; it can't mean \"as if\"."
+            },
+            {
+              "text": "친구는 정말 재밌는 둥 마는 둥 배를 잡고 웃었다.",
+              "correct": false,
+              "why": "-는 둥 마는 둥 means doing something half-heartedly, which contradicts laughing that hard."
             }
           ]
         }
@@ -504,7 +1133,7 @@
     "gating": false,
     "source": { "kind": "original", "license": "original-owned" },
     "needs_review": false,
-    "tags": ["manner", "contrast-set:manner", "literary"],
+    "tags": ["manner", "contrast-set:manner", "literary", "fn:manner-comparison"],
     "mnemonic": "양 (樣) = appearance: all appearance, no substance.",
     "pattern": "-(으)ㄴ/는 양 (하다)",
     "meaning": "as if, pretending that (often a false or presumptuous pose)",
@@ -534,6 +1163,77 @@
           "accepted": ["전문가인 양"],
           "nearMiss": [{ "answer": "전문가인 듯이", "hint": "Grammatical; the cue asks for -(으)ㄴ 양, which carries the sense that the pose is unearned." }],
           "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "그는 아무것도 모르면서 다 {{}} 고개를 끄덕였다.",
+          "en": "He knew nothing, yet he nodded as if he knew it all.",
+          "cue": "알다 + -는 양",
+          "accepted": ["아는 양"],
+          "nearMiss": [{ "answer": "알는 양", "hint": "알다 drops its ㄹ before -는: 아는 양." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c3",
+          "sentence": "그녀는 자기가 이 모임의 {{}} 사람들에게 자리를 정해 주었다.",
+          "en": "She assigned people their seats as if she were the host of the gathering.",
+          "cue": "주인이다 + -(으)ㄴ 양",
+          "accepted": ["주인인 양"],
+          "nearMiss": [{ "answer": "주인인 듯이", "hint": "Grammatical; the cue asks for -(으)ㄴ 양, which hints that the pose is presumptuous." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c4",
+          "sentence": "그는 마치 큰 공이라도 {{}} 어깨에 힘을 주고 다녔다.",
+          "en": "He went around swaggering as if he'd done something heroic.",
+          "cue": "세우다 + -(으)ㄴ 양",
+          "accepted": ["세운 양"],
+          "nearMiss": [{ "answer": "세우는 양", "hint": "The imagined feat lies in the past: 세운 양." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c5",
+          "sentence": "그녀는 그 소문을 이미 들었으면서도 못 {{}}.",
+          "en": "She had already heard the rumor, but she pretended not to have.",
+          "cue": "듣다 + -(으)ㄴ 양하다",
+          "accepted": ["들은 양했다", "들은 양했어", "들은 양했어요", "들은 양했습니다"],
+          "nearMiss": [{ "answer": "듣은 양했다", "hint": "듣다 is ㄷ-irregular: 들은 양했다." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c6",
+          "sentence": "일부 정치인은 서민의 삶을 다 {{}} 말하지만 현실과 동떨어진 공약만 내놓는다.",
+          "en": "Some politicians talk as if they fully understood ordinary people's lives, yet offer only pledges detached from reality.",
+          "cue": "이해하다 + -는 양",
+          "accepted": ["이해하는 양"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c7",
+          "sentence": "그는 자기가 세상에서 제일 {{}} 거들먹거렸다.",
+          "en": "He swaggered around as if he were the greatest person on earth.",
+          "cue": "잘나다 + -(으)ㄴ 양",
+          "accepted": ["잘난 양"],
+          "nearMiss": [{ "answer": "잘나는 양", "hint": "잘나다 is an adjective, so it takes -(으)ㄴ: 잘난 양." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c8",
+          "sentence": "낙엽이 마치 나비가 {{}} 허공을 맴돌았다.",
+          "en": "The fallen leaves circled in the air as if they were butterflies in flight.",
+          "cue": "날다 + -는 양",
+          "accepted": ["나는 양"],
+          "nearMiss": [{ "answer": "날는 양", "hint": "날다 drops its ㄹ before -는: 나는 양." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c9",
+          "sentence": "입사 동기인데 무슨 {{}} 나한테 일을 시키더라.",
+          "en": "We joined the company at the same time, but he orders me around as if he were my boss.",
+          "cue": "상사이다 + -(으)ㄴ 양",
+          "accepted": ["상사인 양"],
+          "nearMiss": [{ "answer": "상사인 듯이", "hint": "Grammatical; the cue asks for -(으)ㄴ 양, which carries the sense that the pose is unearned." }],
+          "particleTolerance": "none"
         }
       ],
       "nuance": [
@@ -541,13 +1241,38 @@
           "id": "n1",
           "situation": "입사한 지 일주일 된 신입 사원이 회의에서 회사 사정을 다 아는 것처럼 굴며 선배들을 가르치려 들어요. 이 태도를 꼬집어 묘사하려면? (A new hire, one week in, lectures his seniors as if he knew the company inside out. You describe this pointedly.)",
           "options": [
-            { "text": "그는 회사 사정을 다 아는 양 선배들을 가르치려 들었다.", "correct": true, "why": "-는 양 describes someone acting as if something were so, with a hint that the pose is unearned: exactly the presumption here." },
+            {
+              "text": "그는 회사 사정을 다 아는 양 선배들을 가르치려 들었다.",
+              "correct": true,
+              "why": "-는 양 describes someone acting as if something were so, with a hint that the pose is unearned: exactly the presumption here."
+            },
             {
               "text": "그는 회사 사정을 다 알다시피 선배들을 가르치려 들었다.",
               "correct": false,
               "why": "-다시피 points to shared knowledge ('as he knows') or means 'practically'; it can't describe a pose someone puts on."
             },
-            { "text": "그는 회사 사정을 다 아는 둥 마는 둥 선배들을 가르치려 들었다.", "correct": false, "why": "-는 둥 마는 둥 describes doing something half-heartedly; it says nothing about putting on airs." }
+            {
+              "text": "그는 회사 사정을 다 아는 둥 마는 둥 선배들을 가르치려 들었다.",
+              "correct": false,
+              "why": "-는 둥 마는 둥 describes doing something half-heartedly; it says nothing about putting on airs."
+            }
+          ]
+        },
+        {
+          "id": "n2",
+          "situation": "그는 그 소식을 이미 알고 있었지만, 처음 듣는 척 놀란 표정을 지었어요. 이 모습을 소설 문장으로 쓰려면? (He already knew the news but put on a look of surprise, as if hearing it for the first time.)",
+          "options": [
+            { "text": "그는 다 알면서도 처음 듣는 양 놀란 표정을 지었다.", "correct": true, "why": "-는 양: acting as if something were so, when it isn't." },
+            {
+              "text": "그는 다 알면서도 처음 들을 양으로 놀란 표정을 지었다.",
+              "correct": false,
+              "why": "-(으)ㄹ 양으로 is a separate pattern meaning \"intending to\"; it can't describe a pretense."
+            },
+            {
+              "text": "그는 다 알면서도 처음 듣다시피 놀란 표정을 지었다.",
+              "correct": false,
+              "why": "-다시피 points to shared knowledge or means \"practically\"; it can't mean \"as if\"."
+            }
           ]
         }
       ]
@@ -563,7 +1288,7 @@
     "gating": true,
     "source": { "kind": "original", "license": "original-owned" },
     "needs_review": false,
-    "tags": ["manner", "contrast-set:manner", "colloquial"],
+    "tags": ["manner", "contrast-set:manner", "colloquial", "fn:manner-comparison"],
     "mnemonic": "둥 … 마는 둥: did they or didn't they? Even an onlooker can't tell.",
     "pattern": "-는 둥 마는 둥 (하다)",
     "meaning": "half-heartedly, barely (doing); as if one hardly did it at all",
@@ -588,6 +1313,73 @@
           "accepted": ["듣는 둥 마는 둥"],
           "nearMiss": [{ "answer": "듣다시피", "hint": "-다시피 하다 would mean he practically listened in full; here it's the opposite." }],
           "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "아이는 숙제를 {{}} 하더니 놀이터로 뛰어나갔다.",
+          "en": "The kid barely did his homework before dashing out to the playground.",
+          "cue": "하다 + -는 둥 마는 둥",
+          "accepted": ["하는 둥 마는 둥", "한 둥 만 둥"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c3",
+          "sentence": "휴가 내내 일 생각에 {{}} 하다 왔어.",
+          "en": "Work was on my mind the whole vacation, so I hardly got to unwind.",
+          "cue": "놀다 + -는 둥 마는 둥",
+          "accepted": ["노는 둥 마는 둥", "논 둥 만 둥"],
+          "nearMiss": [{ "answer": "놀는 둥 마는 둥", "hint": "놀다 drops its ㄹ before -는: 노는 둥 마는 둥." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c4",
+          "sentence": "그는 계약서를 {{}} 하고 서명부터 했다.",
+          "en": "He barely skimmed the contract before signing it.",
+          "cue": "읽다 + -는 둥 마는 둥",
+          "accepted": ["읽는 둥 마는 둥", "읽은 둥 만 둥"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c5",
+          "sentence": "아기가 밤새 보채는 바람에 {{}} 하고 출근했다.",
+          "en": "The baby fussed all night, so I barely slept before heading to work.",
+          "cue": "자다 + -는 둥 마는 둥",
+          "accepted": ["자는 둥 마는 둥", "잔 둥 만 둥"],
+          "nearMiss": [{ "answer": "자다시피", "hint": "-다시피 하다 would mean you practically slept the whole time, the opposite of what happened." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c6",
+          "sentence": "아들은 게임에 빠져서 내 말에 {{}} 했다.",
+          "en": "My son was so absorbed in his game that he barely answered me.",
+          "cue": "대답하다 + -는 둥 마는 둥",
+          "accepted": ["대답하는 둥 마는 둥", "대답한 둥 만 둥"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c7",
+          "sentence": "너무 피곤해서 {{}} 하고 바로 잠들었어요.",
+          "en": "I was so tired that I barely washed before falling asleep.",
+          "cue": "씻다 + -는 둥 마는 둥",
+          "accepted": ["씻는 둥 마는 둥", "씻은 둥 만 둥"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c8",
+          "sentence": "설거지한 그릇을 {{}} 해서 물기가 그대로 남아 있었다.",
+          "en": "He barely dried the washed dishes, so they were still dripping.",
+          "cue": "닦다 + -는 둥 마는 둥",
+          "accepted": ["닦는 둥 마는 둥", "닦은 둥 만 둥"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c9",
+          "sentence": "선배는 내 설명을 {{}} 하더니 자기 할 말만 했다.",
+          "en": "My senior barely listened to my explanation before launching into what he wanted to say.",
+          "cue": "듣다 + -(으)ㄴ 둥 만 둥",
+          "accepted": ["들은 둥 만 둥", "듣는 둥 마는 둥"],
+          "nearMiss": [{ "answer": "듣은 둥 만 둥", "hint": "듣다 is ㄷ-irregular: 들은 둥 만 둥." }],
+          "particleTolerance": "none"
         }
       ],
       "nuance": [
@@ -595,21 +1387,18 @@
           "id": "n1",
           "situation": "동료가 실수를 하고 사과를 하긴 했는데, 건성으로 대충 하고 넘어갔어요. (Your colleague did apologize, but only perfunctorily.)",
           "options": [
-            {
-              "text": "그 사람은 사과를 하는 둥 마는 둥 하고 넘어갔다.",
-              "correct": true,
-              "why": "-는 둥 마는 둥: he did apologize, but so half-heartedly it barely counted."
-            },
-            {
-              "text": "그 사람은 사과를 하기는커녕 오히려 화를 냈다.",
-              "correct": false,
-              "why": "-기는커녕 says he didn't apologize at all, which contradicts the situation."
-            },
-            {
-              "text": "그 사람은 사과를 하다시피 하고 넘어갔다.",
-              "correct": false,
-              "why": "-다시피 하다 means 'practically (fully) did', which overstates a perfunctory apology."
-            }
+            { "text": "그 사람은 사과를 하는 둥 마는 둥 하고 넘어갔다.", "correct": true, "why": "-는 둥 마는 둥: he did apologize, but so half-heartedly it barely counted." },
+            { "text": "그 사람은 사과를 하기는커녕 오히려 화를 냈다.", "correct": false, "why": "-기는커녕 says he didn't apologize at all, which contradicts the situation." },
+            { "text": "그 사람은 사과를 하다시피 하고 넘어갔다.", "correct": false, "why": "-다시피 하다 means 'practically (fully) did', which overstates a perfunctory apology." }
+          ]
+        },
+        {
+          "id": "n2",
+          "situation": "시험 전날 밤 걱정 때문에 잠을 거의 못 잤어요. 친구에게 말하려면? (You hardly slept the night before the exam because of nerves. You tell a friend.)",
+          "options": [
+            { "text": "걱정 때문에 자는 둥 마는 둥 했어.", "correct": true, "why": "-는 둥 마는 둥: you slept, but so fitfully it barely counted." },
+            { "text": "걱정 때문에 자다시피 했어.", "correct": false, "why": "-다시피 하다 means you practically did sleep all the way, which is the opposite." },
+            { "text": "걱정 때문에 자기는커녕 푹 잤어.", "correct": false, "why": "-기는커녕 denies sleeping and then says you slept soundly, a contradiction." }
           ]
         }
       ]
@@ -625,7 +1414,7 @@
     "gating": true,
     "source": { "kind": "original", "license": "original-owned" },
     "needs_review": false,
-    "tags": ["choice", "contrast-set:concession"],
+    "tags": ["choice", "contrast-set:concession", "fn:contrast"],
     "mnemonic": "-느니 points at the option you're throwing out; 차라리 picks up the one you'll grudgingly keep.",
     "pattern": "-느니 (차라리)",
     "meaning": "rather than …, (I'd) sooner …",
@@ -658,6 +1447,74 @@
           "accepted": ["하느니"],
           "nearMiss": [{ "answer": "할지언정", "hint": "-(으)ㄹ지언정 attaches to the hardship you accept; asking him is the option you reject, so it takes -느니." }],
           "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "그 돈을 주고 그런 집에 {{}} 차라리 좀 멀어도 넓은 데로 가겠다.",
+          "en": "I'd rather move somewhere bigger, even if it's farther out, than pay that much to live in a place like that.",
+          "cue": "살다 + -느니",
+          "accepted": ["사느니"],
+          "nearMiss": [{ "answer": "살느니", "hint": "살다 drops its ㄹ before -느니: 사느니." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c3",
+          "sentence": "이렇게 맛없는 걸 {{}} 차라리 굶겠다.",
+          "en": "I'd rather go hungry than eat something this bad.",
+          "cue": "먹다 + -느니",
+          "accepted": ["먹느니"],
+          "nearMiss": [{ "answer": "먹을지언정", "hint": "-(으)ㄹ지언정 marks the hardship you accept; eating this is the option you reject, so it takes -느니." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c4",
+          "sentence": "그 사람 잔소리를 {{}} 차라리 혼자 하는 게 낫지.",
+          "en": "I'd rather do it alone than listen to him nag.",
+          "cue": "듣다 + -느니",
+          "accepted": ["듣느니"],
+          "nearMiss": [{ "answer": "들으니", "hint": "-(으)니 gives a reason. -느니 attaches straight to the stem: 듣느니." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c5",
+          "sentence": "이걸 처음부터 다시 {{}} 차라리 새로 사는 게 싸겠다.",
+          "en": "It'd be cheaper to just buy a new one than make this all over again from scratch.",
+          "cue": "만들다 + -느니",
+          "accepted": ["만드느니"],
+          "nearMiss": [{ "answer": "만들느니", "hint": "만들다 drops its ㄹ before -느니: 만드느니." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c6",
+          "sentence": "정부는 부실기업을 계속 {{}} 차라리 정리하는 편이 낫다고 판단했다.",
+          "en": "The government concluded it was better to wind down the insolvent firms than keep propping them up.",
+          "cue": "지원하다 + -느니",
+          "accepted": ["지원하느니"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c7",
+          "sentence": "이렇게 하루 종일 집에만 {{}} 나가서 산책이라도 하자.",
+          "en": "Rather than sit around at home all day like this, let's at least go out for a walk.",
+          "cue": "있다 + -느니",
+          "accepted": ["있느니"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c8",
+          "sentence": "억지로 관계를 이어 가며 {{}} 차라리 깨끗하게 헤어지는 게 서로에게 좋아.",
+          "en": "Rather than keep seeing each other out of obligation, it's better for both of us to make a clean break.",
+          "cue": "만나다 + -느니",
+          "accepted": ["만나느니"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c9",
+          "sentence": "이 시간에는 택시를 {{}} 차라리 걸어가시는 게 낫습니다.",
+          "en": "At this hour, you're better off walking than waiting for a taxi.",
+          "cue": "기다리다 + -느니",
+          "accepted": ["기다리느니"],
+          "particleTolerance": "none"
         }
       ],
       "nuance": [
@@ -677,6 +1534,27 @@
               "why": "-(으)ㄹ지언정 marks the hardship you accept, so this says you'd ride with him and still walk, which doesn't hang together."
             }
           ]
+        },
+        {
+          "id": "n2",
+          "situation": "마음에 드는 코트가 있는데 너무 비싸요. 그 돈을 내고 사느니 안 사겠다고 말하려면? (You love a coat but it's far too expensive. You'd rather not buy it than pay that much.)",
+          "options": [
+            {
+              "text": "이 돈 주고 사느니 차라리 안 사고 말지.",
+              "correct": true,
+              "why": "-느니 marks the rejected option (paying that much); the main clause is the lesser evil you choose."
+            },
+            {
+              "text": "이렇게 비싸느니 차라리 안 사고 말지.",
+              "correct": false,
+              "why": "In the \"rather than\" sense, -느니 attaches to verbs (the option you reject), not to adjectives like 비싸다."
+            },
+            {
+              "text": "이 돈 주고 살지언정 차라리 안 사고 말지.",
+              "correct": false,
+              "why": "-(으)ㄹ지언정 marks the hardship you accept, so it says you'd buy it and also not buy it."
+            }
+          ]
         }
       ],
       "register": [
@@ -691,6 +1569,25 @@
             { "kind": "contains", "any": ["느니"], "scope": "all", "label": "Keep the -느니 clause" }
           ],
           "coreWords": ["어설프게", "고치느니", "처음부터", "만드는", "낫"],
+          "particleTolerance": "allomorph",
+          "finalPunctOptional": true
+        },
+        {
+          "id": "r2",
+          "from": "hae",
+          "to": "hapsyo",
+          "source": "그 사람한테 고개를 숙이느니 차라리 회사를 그만둘 거야.",
+          "accepted": [
+            "그 사람한테 고개를 숙이느니 차라리 회사를 그만두겠습니다.",
+            "그 사람한테 고개를 숙이느니 차라리 회사를 그만둘 겁니다.",
+            "그 사람에게 고개를 숙이느니 차라리 회사를 그만두겠습니다.",
+            "그분께 고개를 숙이느니 차라리 회사를 그만두겠습니다."
+          ],
+          "features": [
+            { "kind": "endsWith", "any": ["ㅂ니다", "습니다"], "label": "Ending must be 합쇼체 (-ㅂ니다/-습니다)" },
+            { "kind": "contains", "any": ["느니"], "scope": "all", "label": "Keep the -느니 clause" }
+          ],
+          "coreWords": ["고개", "숙이느니", "회사", "그만"],
           "particleTolerance": "allomorph",
           "finalPunctOptional": true
         }

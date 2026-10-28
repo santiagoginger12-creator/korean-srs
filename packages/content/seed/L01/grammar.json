@@ -8,21 +8,23 @@
     "unlockDeps": [],
     "gating": true,
     "source": { "kind": "original", "license": "original-owned" },
-    "needs_review": false,
-    "tags": ["cause", "contrast-set:unwanted-cause"],
+    "needs_review": true,
+    "tags": ["cause", "contrast-set:unwanted-cause", "fn:cause"],
     "mnemonic": "바람 = a gust of wind: something sudden knocks your plans over, and the damage is already done.",
     "pattern": "-는 바람에",
     "meaning": "because of a sudden, unexpected event, with an unwanted result (\"…, and so I ended up …\")",
-    "attachment": [
-      { "stem": "V", "final": "any", "tense": "present", "form": "V-는 바람에", "example": "급하게 나오는 바람에" }
-    ],
+    "attachment": [{ "stem": "V", "final": "any", "tense": "present", "form": "V-는 바람에", "example": "급하게 나오는 바람에" }],
     "nuance": "The cause is typically a sudden or unforeseen event, and its (usually unwanted) result has already happened. The form is always -는, even for past events: 넘어지는 바람에, not *넘어진 바람에. The main clause is normally past tense and cannot be a command or suggestion (-(으)세요, -자, -(으)ㅂ시다). The tone is neutral: it reports what happened without blaming anyone or describing the atmosphere.",
     "contrasts": [
       { "id": "g:는-탓에", "note": "-(으)ㄴ/는 탓에 points a finger: the cause is held responsible. -는 바람에 just reports a sudden cause." },
       { "id": "g:는-통에", "note": "-는 통에 blames a hectic, chaotic scene (noise, crowds, commotion); -는 바람에 is typically a single sudden event." }
     ],
     "examples": [
-      { "ko": "지하철이 중간에 멈추는 바람에 면접에 20분이나 늦었다.", "en": "The subway stopped partway, so I ended up a full 20 minutes late for my interview.", "register": "written" },
+      {
+        "ko": "지하철이 중간에 멈추는 바람에 면접에 20분이나 늦었다.",
+        "en": "The subway stopped partway, so I ended up a full 20 minutes late for my interview.",
+        "register": "written"
+      },
       { "ko": "급하게 나오는 바람에 지갑을 집에 두고 왔어요.", "en": "I left in such a rush that I forgot my wallet at home.", "register": "neutral" }
     ],
     "questionTypes": ["cloze", "nuance"],
@@ -40,6 +42,80 @@
             { "answer": "조는 통에", "hint": "-는 통에 needs a hectic, chaotic scene. Nodding off is one sudden slip, and the cue asks for -는 바람에." }
           ],
           "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "회의가 예정보다 한 시간이나 {{}} 저녁 약속에 늦었다.",
+          "en": "The meeting ran a full hour over, so I was late for my dinner plans.",
+          "cue": "길어지다 + -는 바람에",
+          "accepted": ["길어지는 바람에"],
+          "nearMiss": [{ "answer": "길어진 바람에", "hint": "-는 바람에 stays -는 even for a past event: 길어지는 바람에." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c3",
+          "sentence": "누가 창문을 활짝 {{}} 책상 위 서류가 다 날아갔어.",
+          "en": "Somebody flung the window wide open, and the papers on my desk blew everywhere.",
+          "cue": "열다 + -는 바람에",
+          "accepted": ["여는 바람에"],
+          "nearMiss": [
+            { "answer": "열는 바람에", "hint": "열다 drops its ㄹ before -는: 여는." },
+            { "answer": "연 바람에", "hint": "-는 바람에 stays -는 even for a past event: 여는 바람에." }
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c4",
+          "sentence": "점심을 너무 급하게 {{}} 오후 내내 속이 더부룩했어요.",
+          "en": "I wolfed my lunch down so fast that my stomach felt bloated all afternoon.",
+          "cue": "먹다 + -는 바람에",
+          "accepted": ["먹는 바람에"],
+          "nearMiss": [{ "answer": "먹은 바람에", "hint": "-는 바람에 stays -는 even for a past event: 먹는 바람에." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c5",
+          "sentence": "휴대폰 배터리가 갑자기 {{}} 택시도 못 부르고 한참을 걸었다.",
+          "en": "My phone battery suddenly died, so I couldn't even call a cab and had to walk for ages.",
+          "cue": "나가다 + -는 바람에",
+          "accepted": ["나가는 바람에"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c6",
+          "sentence": "시스템 오류로 결제가 중복으로 {{}} 고객님께 불편을 드렸습니다.",
+          "en": "A system error processed your payment twice, and we have caused you inconvenience.",
+          "cue": "처리되다 + -는 바람에",
+          "accepted": ["처리되는 바람에"],
+          "nearMiss": [{ "answer": "처리된 바람에", "hint": "-는 바람에 stays -는 even for a past event: 처리되는 바람에." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c7",
+          "sentence": "그는 상사의 말을 잘못 {{}} 엉뚱한 자료를 준비해 갔다.",
+          "en": "He misheard his boss and showed up with the wrong materials.",
+          "cue": "알아듣다 + -는 바람에",
+          "accepted": ["알아듣는 바람에"],
+          "nearMiss": [{ "answer": "알아들은 바람에", "hint": "-는 바람에 stays -는 even for a past event: 알아듣는 바람에." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c8",
+          "sentence": "걔가 갑자기 약속을 {{}} 주말 계획이 다 꼬였어.",
+          "en": "She canceled on me out of nowhere, and my whole weekend got thrown off.",
+          "cue": "취소하다 + -는 바람에",
+          "accepted": ["취소하는 바람에"],
+          "nearMiss": [{ "answer": "취소하는 탓에", "hint": "-(으)ㄴ/는 탓에 pins the blame on her; the cue asks for -는 바람에, which just reports the sudden turn." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c9",
+          "sentence": "발표 도중에 프로젝터가 {{}} 준비한 슬라이드를 하나도 못 보여 줬어요.",
+          "en": "The projector shut off in the middle of my presentation, so I couldn't show a single slide I'd prepared.",
+          "cue": "꺼지다 + -는 바람에",
+          "accepted": ["꺼지는 바람에"],
+          "nearMiss": [{ "answer": "꺼진 바람에", "hint": "-는 바람에 stays -는 even for a past event: 꺼지는 바람에." }],
+          "particleTolerance": "none"
         }
       ],
       "nuance": [
@@ -49,7 +125,32 @@
           "options": [
             { "text": "비가 쏟아지는 바람에 우산 가져가.", "correct": false, "why": "-는 바람에 reports a result that has already happened. It can't lead into a command." },
             { "text": "비가 쏟아지니까 우산 가져가.", "correct": true, "why": "-(으)니까 gives a reason and can be followed by a command or suggestion." },
-            { "text": "비가 쏟아지는 통에 우산 가져가.", "correct": false, "why": "Same problem: -는 통에 explains something that already went wrong, so no command can follow it." }
+            {
+              "text": "비가 쏟아지는 통에 우산 가져가.",
+              "correct": false,
+              "why": "Same problem: -는 통에 explains something that already went wrong, so no command can follow it."
+            }
+          ]
+        },
+        {
+          "id": "n2",
+          "situation": "지난 금요일 친구 생일 파티에 못 갔어요. 퇴근 직전에 급한 일이 생겼거든요. 사과하면서 이유를 말하려면? (You missed a friend's party last Friday because something urgent came up just before you left work.)",
+          "options": [
+            {
+              "text": "퇴근 직전에 급한 일이 생기는 바람에 못 갔어. 미안해.",
+              "correct": true,
+              "why": "A sudden event (urgent work cropping up) with an unwanted result that has already happened: exactly what -는 바람에 reports."
+            },
+            {
+              "text": "퇴근 직전에 일이 너무 바쁜 바람에 못 갔어. 미안해.",
+              "correct": false,
+              "why": "-는 바람에 attaches to verbs in the -는 form; an adjective like 바쁘다 can't take it. Say 바빠서."
+            },
+            {
+              "text": "퇴근 직전에 급한 일이 생긴 덕분에 못 갔어. 미안해.",
+              "correct": false,
+              "why": "덕분에 credits a cause for a good result. Missing the party isn't one, so it sounds as if you were glad of the excuse."
+            }
           ]
         }
       ]
@@ -65,7 +166,7 @@
     "gating": true,
     "source": { "kind": "original", "license": "original-owned" },
     "needs_review": false,
-    "tags": ["cause", "contrast-set:unwanted-cause"],
+    "tags": ["cause", "contrast-set:unwanted-cause", "fn:cause"],
     "mnemonic": "탓 = fault, as in \"네 탓이야!\" The clause is the finger you point at the cause.",
     "pattern": "-(으)ㄴ/는 탓에",
     "meaning": "because of (a cause blamed for a bad outcome); \"owing to\", \"thanks to\" in the sarcastic sense",
@@ -81,19 +182,140 @@
       { "id": "g:는-통에", "note": "-는 통에 is specifically about commotion; -(으)ㄴ/는 탓에 can blame any cause, including a person or a steady condition." }
     ],
     "examples": [
-      { "ko": "평소에 운동을 게을리한 탓에 계단 몇 층만 올라가도 숨이 찬다.", "en": "Because I've neglected exercise, I get winded after just a few flights of stairs.", "register": "written" },
-      { "ko": "일교차가 큰 탓에 감기 환자가 늘고 있다.", "en": "Cold cases are rising because of the wide swings between daytime and nighttime temperatures.", "register": "written" }
+      {
+        "ko": "평소에 운동을 게을리한 탓에 계단 몇 층만 올라가도 숨이 찬다.",
+        "en": "Because I've neglected exercise, I get winded after just a few flights of stairs.",
+        "register": "written"
+      },
+      {
+        "ko": "일교차가 큰 탓에 감기 환자가 늘고 있다.",
+        "en": "Cold cases are rising because of the wide swings between daytime and nighttime temperatures.",
+        "register": "written"
+      }
     ],
-    "questionTypes": ["nuance", "register"],
+    "questionTypes": ["cloze", "nuance", "register"],
     "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "날씨가 연일 기록적으로 {{}} 전력 사용량이 역대 최고치를 경신했다.",
+          "en": "With record-breaking heat day after day, electricity use hit an all-time high.",
+          "cue": "덥다 + -(으)ㄴ 탓에",
+          "accepted": ["더운 탓에"],
+          "nearMiss": [
+            { "answer": "덥은 탓에", "hint": "덥다 is ㅂ-irregular: 더운." },
+            { "answer": "더운 바람에", "hint": "-는 바람에 takes only verbs in the -는 form; for an adjective, the cue asks for -(으)ㄴ 탓에." }
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "어젯밤에 야식을 {{}} 아침에 얼굴이 퉁퉁 부었다.",
+          "en": "I had a late-night snack last night, and my face was all puffy this morning.",
+          "cue": "먹다 + -(으)ㄴ 탓에",
+          "accepted": ["먹은 탓에"],
+          "nearMiss": [{ "answer": "먹는 탓에", "hint": "The snack was last night: use the past form, 먹은 탓에." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c3",
+          "sentence": "회사가 집에서 너무 {{}} 출퇴근에만 하루 세 시간을 쓴다.",
+          "en": "My office is so far from home that I spend three hours a day just commuting.",
+          "cue": "멀다 + -(으)ㄴ 탓에",
+          "accepted": ["먼 탓에"],
+          "nearMiss": [{ "answer": "멀은 탓에", "hint": "멀다 drops its ㄹ before -ㄴ: 먼." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c4",
+          "sentence": "시공사가 건물을 날림으로 {{}} 몇 년 만에 벽 곳곳에 금이 갔다.",
+          "en": "The contractor threw the building up shoddily, and within a few years cracks had appeared all over the walls.",
+          "cue": "짓다 + -(으)ㄴ 탓에",
+          "accepted": ["지은 탓에"],
+          "nearMiss": [
+            { "answer": "짓은 탓에", "hint": "짓다 is ㅅ-irregular: 지은." },
+            { "answer": "짓는 탓에", "hint": "The building was finished years ago: use the past form, 지은 탓에." }
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c5",
+          "sentence": "신입이 사내 절차를 잘 {{}} 결재 서류가 자꾸 반려된다.",
+          "en": "The new hire doesn't know the internal procedures well, so his approval requests keep getting sent back.",
+          "cue": "모르다 + -는 탓에",
+          "accepted": ["모르는 탓에"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c6",
+          "sentence": "피부가 워낙 {{}} 조금만 피곤해도 눈 밑이 거뭇해진다.",
+          "en": "Her skin is so fair that the slightest fatigue shows up as dark circles.",
+          "cue": "하얗다 + -(으)ㄴ 탓에",
+          "accepted": ["하얀 탓에"],
+          "nearMiss": [{ "answer": "하얗은 탓에", "hint": "하얗다 is ㅎ-irregular: 하얀." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c7",
+          "sentence": "인지도가 낮은 {{}} 투자자를 찾기가 쉽지 않았다.",
+          "en": "As a little-known newcomer, she struggled to find investors.",
+          "cue": "신인이다 + -(으)ㄴ 탓에",
+          "accepted": ["신인인 탓에"],
+          "nearMiss": [{ "answer": "신인 탓에", "hint": "신인 탓에 blames the newcomer as a person. To say \"because she is a newcomer\", keep the copula: 신인인 탓에." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c8",
+          "sentence": "제가 일정을 꼼꼼히 {{}} 행사 준비에 차질이 생겼습니다.",
+          "en": "Because I failed to keep proper track of the schedule, preparations for the event ran into problems.",
+          "cue": "챙기지 못하다 + -(으)ㄴ 탓에",
+          "accepted": ["챙기지 못한 탓에", "못 챙긴 탓에"],
+          "nearMiss": [{ "answer": "챙기지 못하는 탓에", "hint": "The slip is already in the past: 챙기지 못한 탓에." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c9",
+          "sentence": "하루 종일 구두를 신고 {{}} 발에 물집이 잡혔다.",
+          "en": "I walked around in dress shoes all day, and now I have blisters.",
+          "cue": "걷다 + -(으)ㄴ 탓에",
+          "accepted": ["걸은 탓에"],
+          "nearMiss": [{ "answer": "걷은 탓에", "hint": "걷다 is ㄷ-irregular: 걸은." }],
+          "particleTolerance": "none"
+        }
+      ],
       "nuance": [
         {
           "id": "n1",
           "situation": "친구가 추천해 준 식당이 정말 맛있었어요. 친구에게 고마운 마음을 전하려면? (The restaurant your friend recommended was great. You want to thank them.)",
           "options": [
-            { "text": "네가 추천해 준 탓에 정말 잘 먹었어.", "correct": false, "why": "-(으)ㄴ 탓에 blames a cause for a bad result. Here it sounds sarcastic, as if the meal were a disaster." },
+            {
+              "text": "네가 추천해 준 탓에 정말 잘 먹었어.",
+              "correct": false,
+              "why": "-(으)ㄴ 탓에 blames a cause for a bad result. Here it sounds sarcastic, as if the meal were a disaster."
+            },
             { "text": "네가 추천해 준 덕분에 정말 잘 먹었어.", "correct": true, "why": "덕분에 credits a cause for a good result." },
             { "text": "네가 추천해 주는 통에 정말 잘 먹었어.", "correct": false, "why": "-는 통에 needs a chaotic situation and an unwanted result." }
+          ]
+        },
+        {
+          "id": "n2",
+          "situation": "몇 년째 이어진 불황으로 동네 가게들이 하나둘 문을 닫고 있어요. 원인을 짚어 기사 문장으로 쓰려면? (A years-long slump is closing neighborhood shops one by one. You name the cause in a news sentence.)",
+          "options": [
+            {
+              "text": "불황이 길어진 탓에 동네 가게들이 하나둘 문을 닫고 있다.",
+              "correct": true,
+              "why": "-(으)ㄴ 탓에 blames a cause, including a lasting condition, for a bad outcome."
+            },
+            {
+              "text": "불황이 긴 바람에 동네 가게들이 하나둘 문을 닫고 있다.",
+              "correct": false,
+              "why": "-는 바람에 takes only verbs in the -는 form, so the adjective 길다 can't carry it. A long slump isn't a sudden event either."
+            },
+            {
+              "text": "불황이 길어진 덕분에 동네 가게들이 하나둘 문을 닫고 있다.",
+              "correct": false,
+              "why": "덕분에 credits a cause for a good result. Shops closing is bad news, so it reads as callous sarcasm."
+            }
           ]
         }
       ],
@@ -103,15 +325,26 @@
           "from": "haeyo",
           "to": "hapsyo",
           "source": "제가 확인을 제대로 안 한 탓에 일정이 늦어졌어요.",
-          "accepted": [
-            "제가 확인을 제대로 안 한 탓에 일정이 늦어졌습니다.",
-            "제가 확인을 제대로 하지 않은 탓에 일정이 늦어졌습니다."
-          ],
+          "accepted": ["제가 확인을 제대로 안 한 탓에 일정이 늦어졌습니다.", "제가 확인을 제대로 하지 않은 탓에 일정이 늦어졌습니다."],
           "features": [
             { "kind": "endsWith", "any": ["ㅂ니다", "습니다"], "label": "Ending must be 합쇼체 (-ㅂ니다/-습니다)" },
             { "kind": "contains", "any": ["탓에"], "scope": "all", "label": "Keep the -(으)ㄴ 탓에 clause" }
           ],
           "coreWords": ["확인", "탓에", "일정", "늦어졌"],
+          "particleTolerance": "allomorph",
+          "finalPunctOptional": true
+        },
+        {
+          "id": "r2",
+          "from": "written",
+          "to": "haeyo",
+          "source": "밤늦게까지 휴대폰을 본 탓에 아침에 늦잠을 잤다.",
+          "accepted": ["밤늦게까지 휴대폰을 본 탓에 아침에 늦잠을 잤어요.", "밤늦게까지 핸드폰을 본 탓에 아침에 늦잠을 잤어요."],
+          "features": [
+            { "kind": "endsWith", "any": ["요"], "label": "Use 해요체, not written -다" },
+            { "kind": "contains", "any": ["탓에"], "scope": "all", "label": "Keep the -(으)ㄴ 탓에 clause" }
+          ],
+          "coreWords": ["밤늦게까지", "본", "탓에", "늦잠"],
           "particleTolerance": "allomorph",
           "finalPunctOptional": true
         }
@@ -128,23 +361,28 @@
     "gating": true,
     "source": { "kind": "original", "license": "original-owned" },
     "needs_review": false,
-    "tags": ["cause", "contrast-set:unwanted-cause", "colloquial"],
+    "tags": ["cause", "contrast-set:unwanted-cause", "colloquial", "fn:cause"],
     "mnemonic": "Picture yourself stuck in the thick of a noisy crowd: with all that going on, you couldn't do what you meant to.",
     "pattern": "-는 통에",
     "meaning": "because of a hectic or chaotic situation (noise, crowds, commotion), with an unwanted result (\"what with all the …\")",
-    "attachment": [
-      { "stem": "V", "final": "any", "tense": "present", "form": "V-는 통에", "example": "옆집에서 공사하는 통에" }
-    ],
+    "attachment": [{ "stem": "V", "final": "any", "tense": "present", "form": "V-는 통에", "example": "옆집에서 공사하는 통에" }],
     "nuance": "통 here is the thick of things: the cause is a busy, noisy, or confused situation, often an ongoing one, that got in the way. The result is unwanted and has already happened, so no command or suggestion can follow. It is at home in everyday speech and often carries a note of irritation or exasperation.",
     "contrasts": [
-      { "id": "g:는-바람에", "note": "Both take -는 and report an unwanted result. -는 바람에 is typically one sudden event (the bus stopped); -는 통에 is a whole messy scene (kids yelling, construction all day)." },
+      {
+        "id": "g:는-바람에",
+        "note": "Both take -는 and report an unwanted result. -는 바람에 is typically one sudden event (the bus stopped); -는 통에 is a whole messy scene (kids yelling, construction all day)."
+      },
       { "id": "g:는-탓에", "note": "-(으)ㄴ/는 탓에 assigns blame to any cause; -는 통에 is specifically about commotion." }
     ],
     "examples": [
-      { "ko": "윗집 아이들이 밤늦게까지 뛰어다니는 통에 한숨도 못 잤어요.", "en": "What with the kids upstairs running around till late, I didn't sleep a wink.", "register": "neutral" },
+      {
+        "ko": "윗집 아이들이 밤늦게까지 뛰어다니는 통에 한숨도 못 잤어요.",
+        "en": "What with the kids upstairs running around till late, I didn't sleep a wink.",
+        "register": "neutral"
+      },
       { "ko": "다들 한꺼번에 떠드는 통에 무슨 얘긴지 하나도 못 알아들었다.", "en": "Everyone was talking at once, so I couldn't make out a thing.", "register": "spoken" }
     ],
-    "questionTypes": ["cloze"],
+    "questionTypes": ["cloze", "nuance"],
     "questions": {
       "cloze": [
         {
@@ -157,6 +395,111 @@
             { "answer": "공사하는 바람에", "hint": "Grammatical, but the cue asks for -는 통에: an all-day racket is exactly the ongoing commotion -는 통에 describes." }
           ],
           "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "옆 테이블 사람들이 큰 소리로 {{}} 대화에 집중할 수가 없었다.",
+          "en": "The people at the next table were so loud that we couldn't focus on our conversation.",
+          "cue": "떠들다 + -는 통에",
+          "accepted": ["떠드는 통에"],
+          "nearMiss": [{ "answer": "떠들는 통에", "hint": "떠들다 drops its ㄹ before -는: 떠드는." }, { "answer": "떠든 통에", "hint": "-는 통에 stays -는: 떠드는 통에." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c3",
+          "sentence": "아이들이 거실에서 하루 종일 {{}} 재택근무는 거의 불가능했어요.",
+          "en": "With the kids running around the living room all day, working from home was nearly impossible.",
+          "cue": "뛰어놀다 + -는 통에",
+          "accepted": ["뛰어노는 통에"],
+          "nearMiss": [{ "answer": "뛰어놀는 통에", "hint": "뛰어놀다 drops its ㄹ before -는: 뛰어노는." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c4",
+          "sentence": "명절 기차표 예매 사이트에 사람이 한꺼번에 {{}} 접속조차 안 됐다.",
+          "en": "Everyone piled onto the holiday train-ticket site at once, so I couldn't even get on.",
+          "cue": "몰리다 + -는 통에",
+          "accepted": ["몰리는 통에"],
+          "nearMiss": [{ "answer": "몰리는 바람에", "hint": "Grammatical; the cue asks for -는 통에, which paints the whole scramble." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c5",
+          "sentence": "옆집 개가 밤새 {{}} 한숨도 못 잤어.",
+          "en": "The neighbor's dog barked all night, so I didn't sleep a wink.",
+          "cue": "짖다 + -는 통에",
+          "accepted": ["짖는 통에"],
+          "nearMiss": [{ "answer": "짖은 통에", "hint": "-는 통에 stays -는 even for a past scene: 짖는 통에." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c6",
+          "sentence": "시위대와 경찰이 도로 한복판에서 {{}} 일대 교통이 한동안 마비됐다.",
+          "en": "With protesters and police facing off in the middle of the road, traffic in the area was paralyzed for a while.",
+          "cue": "대치하다 + -는 통에",
+          "accepted": ["대치하는 통에"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c7",
+          "sentence": "명절에 친척들이 다 모여 {{}} 정작 할머니께 인사도 제대로 못 드렸어요.",
+          "en": "With all the relatives crowding in for the holiday, I never even properly greeted my grandmother.",
+          "cue": "북적거리다 + -는 통에",
+          "accepted": ["북적거리는 통에", "북적대는 통에"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c8",
+          "sentence": "다들 이것저것 {{}} 정작 내가 하려던 말은 꺼내지도 못했다.",
+          "en": "Everyone kept firing questions at me, so I never got to say what I'd meant to.",
+          "cue": "묻다 + -는 통에",
+          "accepted": ["묻는 통에"],
+          "nearMiss": [{ "answer": "물은 통에", "hint": "-는 통에 stays -는, and 묻다 keeps its ㄷ before -는: 묻는 통에." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c9",
+          "sentence": "학회장 로비가 사람들로 {{}} 발표자를 찾는 데만 한참 걸렸다.",
+          "en": "The conference lobby was so packed that it took ages just to find the speaker.",
+          "cue": "붐비다 + -는 통에",
+          "accepted": ["붐비는 통에"],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "동네 축제로 거리가 북적였는데, 그 덕에 가게 매출이 크게 올랐어요. 이 일을 전하려면? (A street festival packed the neighborhood, and your shop's sales jumped.)",
+          "options": [
+            { "text": "축제로 사람들이 몰린 덕분에 매출이 크게 올랐다.", "correct": true, "why": "덕분에 credits a cause for a good result." },
+            {
+              "text": "축제로 사람들이 몰리는 통에 매출이 크게 올랐다.",
+              "correct": false,
+              "why": "-는 통에 blames a commotion for an unwanted result. A jump in sales isn't unwanted."
+            },
+            {
+              "text": "축제로 사람들이 몰리는 탓에 매출이 크게 올랐다.",
+              "correct": false,
+              "why": "-(으)ㄴ/는 탓에 also blames a cause for a bad result, so it makes the sales boom sound like a misfortune."
+            }
+          ]
+        },
+        {
+          "id": "n2",
+          "situation": "도서관 열람실에서 친구가 이어폰 없이 영상을 틀었어요. 소리를 줄여 달라고 하려면? (In the library reading room, your friend is playing a video without earphones. You ask them to turn it down.)",
+          "options": [
+            { "text": "다들 공부하고 있으니까 소리 좀 줄여 줄래?", "correct": true, "why": "-(으)니까 gives a reason and can lead into a request." },
+            {
+              "text": "다들 공부하는 통에 소리 좀 줄여 줄래?",
+              "correct": false,
+              "why": "-는 통에 reports a commotion that has already caused trouble, so it can't lead into a request. People studying quietly isn't a commotion either."
+            },
+            {
+              "text": "다들 공부하는 바람에 소리 좀 줄여 줄래?",
+              "correct": false,
+              "why": "-는 바람에 reports a sudden cause of something that already happened; no request can follow it."
+            }
+          ]
         }
       ]
     }
@@ -171,7 +514,7 @@
     "gating": true,
     "source": { "kind": "original", "license": "original-owned" },
     "needs_review": false,
-    "tags": ["addition", "contrast-set:addition", "spelling"],
+    "tags": ["addition", "contrast-set:addition", "spelling", "fn:addition"],
     "mnemonic": "뿐 'only' + 더러 'what's more': not only that, there's more, all in one word.",
     "pattern": "-(으)ㄹ뿐더러",
     "meaning": "not only … but also; on top of that (adds a second point pulling the same way)",
@@ -209,6 +552,86 @@
           ],
           "particleTolerance": "none",
           "spacingStrict": true
+        },
+        {
+          "id": "c2",
+          "sentence": "이 프로그램은 사용법이 {{}} 오류도 잦아서 현장에서 외면받고 있다.",
+          "en": "This program is hard to use and buggy besides, so people on the ground are shunning it.",
+          "cue": "까다롭다 + -(으)ㄹ뿐더러",
+          "accepted": ["까다로울뿐더러"],
+          "nearMiss": [{ "answer": "까다롭을뿐더러", "hint": "까다롭다 is ㅂ-irregular: 까다로울뿐더러." }],
+          "particleTolerance": "none",
+          "spacingStrict": true
+        },
+        {
+          "id": "c3",
+          "sentence": "그 동네는 지하철역에서 {{}} 밤에는 길도 어두워서 혼자 다니기 무섭다.",
+          "en": "That neighborhood is far from the subway, and the streets are dark at night too, so it's scary to walk around alone.",
+          "cue": "멀다 + -(으)ㄹ뿐더러",
+          "accepted": ["멀뿐더러"],
+          "nearMiss": [{ "answer": "멀을뿐더러", "hint": "An ㄹ-stem takes plain -ㄹ: 멀뿐더러." }],
+          "particleTolerance": "none",
+          "spacingStrict": true
+        },
+        {
+          "id": "c4",
+          "sentence": "그는 남의 조언을 잘 {{}} 받아들인 조언은 바로 실천에 옮긴다.",
+          "en": "He not only listens to others' advice but puts what he takes on board into practice right away.",
+          "cue": "듣다 + -(으)ㄹ뿐더러",
+          "accepted": ["들을뿐더러"],
+          "nearMiss": [{ "answer": "듣을뿐더러", "hint": "듣다 is ㄷ-irregular: 들을뿐더러." }],
+          "particleTolerance": "none",
+          "spacingStrict": true
+        },
+        {
+          "id": "c5",
+          "sentence": "새 치료법은 기존 방법보다 효과가 {{}} 부작용도 적다.",
+          "en": "The new treatment works better than existing methods and has fewer side effects as well.",
+          "cue": "낫다 + -(으)ㄹ뿐더러",
+          "accepted": ["나을뿐더러"],
+          "nearMiss": [{ "answer": "낫을뿐더러", "hint": "낫다 is ㅅ-irregular: 나을뿐더러." }],
+          "particleTolerance": "none",
+          "spacingStrict": true
+        },
+        {
+          "id": "c6",
+          "sentence": "그는 그날 회의에 {{}} 미리 연락 한 통 없었다.",
+          "en": "He was not only late to the meeting that day but hadn't even called ahead.",
+          "cue": "늦다 + -았/었을뿐더러",
+          "accepted": ["늦었을뿐더러"],
+          "nearMiss": [{ "answer": "늦을뿐더러", "hint": "The lateness is a past fact: 늦었을뿐더러." }],
+          "particleTolerance": "none",
+          "spacingStrict": true
+        },
+        {
+          "id": "c7",
+          "sentence": "그 가게는 동네에 하나뿐인 비건 {{}} 맛도 좋아서 늘 붐빈다.",
+          "en": "It's the only vegan restaurant in the neighborhood and the food is good too, so it's always packed.",
+          "cue": "식당이다 + -(으)ㄹ뿐더러",
+          "accepted": ["식당일뿐더러"],
+          "nearMiss": [{ "answer": "식당인 데다가", "hint": "Also natural; the cue asks for -(으)ㄹ뿐더러." }],
+          "particleTolerance": "none",
+          "spacingStrict": true
+        },
+        {
+          "id": "c8",
+          "sentence": "새로 온 팀장님은 업무 파악이 {{}} 팀원들 의견도 잘 들어 주신다.",
+          "en": "The new team lead gets a grip on the work quickly and listens to the team's opinions too.",
+          "cue": "빠르다 + -(으)ㄹ뿐더러",
+          "accepted": ["빠를뿐더러"],
+          "nearMiss": [{ "answer": "빠른 데다가", "hint": "Also natural; the cue asks for -(으)ㄹ뿐더러." }],
+          "particleTolerance": "none",
+          "spacingStrict": true
+        },
+        {
+          "id": "c9",
+          "sentence": "이번 정책은 실효성이 {{}} 형평성에도 어긋난다는 비판을 받고 있습니다.",
+          "en": "This policy is being criticized as not only ineffective but unfair.",
+          "cue": "없다 + -(으)ㄹ뿐더러",
+          "accepted": ["없을뿐더러"],
+          "nearMiss": [{ "answer": "없거니와", "hint": "Grammatical but more literary; the cue asks for -(으)ㄹ뿐더러." }],
+          "particleTolerance": "none",
+          "spacingStrict": true
         }
       ],
       "nuance": [
@@ -228,6 +651,23 @@
               "why": "-기는커녕 says the first thing isn't true at all, so it can't introduce a plus you're bragging about."
             }
           ]
+        },
+        {
+          "id": "n2",
+          "situation": "보고서에 새 거래처의 장점을 정리하려고 해요. 맞춤법과 문법에 맞는 문장은? (In a report, you list the new supplier's strengths. Which sentence is correct in both spelling and grammar?)",
+          "options": [
+            { "text": "새 거래처는 단가가 낮을뿐더러 납기도 정확하다.", "correct": true, "why": "Two pluses stacked, and -(으)ㄹ뿐더러 is written solid as one ending." },
+            {
+              "text": "새 거래처는 단가가 낮을 뿐더러 납기도 정확하다.",
+              "correct": false,
+              "why": "-(으)ㄹ뿐더러 is a single ending, so it is written solid. The spaced 뿐 belongs to -(으)ㄹ 뿐만 아니라."
+            },
+            {
+              "text": "새 거래처는 단가가 낮을뿐더러 납기가 자주 늦다.",
+              "correct": false,
+              "why": "Late deliveries cut against the low price. -(으)ㄹ뿐더러 needs both points pulling the same way."
+            }
+          ]
         }
       ],
       "register": [
@@ -244,6 +684,20 @@
           "coreWords": ["개편안", "비용", "들뿐더러", "현장", "의견", "반영"],
           "particleTolerance": "allomorph",
           "finalPunctOptional": true
+        },
+        {
+          "id": "r2",
+          "from": "written",
+          "to": "haeyo",
+          "source": "그 후보는 경험이 부족할뿐더러 공약도 구체적이지 않다.",
+          "accepted": ["그 후보는 경험이 부족할뿐더러 공약도 구체적이지 않아요.", "그 후보는 경험이 부족할뿐더러 공약도 구체적이지 않네요."],
+          "features": [
+            { "kind": "endsWith", "any": ["요"], "label": "Use 해요체, not written -다" },
+            { "kind": "contains", "any": ["뿐더러"], "scope": "all", "label": "Keep the -(으)ㄹ뿐더러 clause" }
+          ],
+          "coreWords": ["후보", "경험", "부족할뿐더러", "공약", "구체적"],
+          "particleTolerance": "allomorph",
+          "finalPunctOptional": true
         }
       ]
     }
@@ -258,7 +712,7 @@
     "gating": false,
     "source": { "kind": "original", "license": "original-owned" },
     "needs_review": false,
-    "tags": ["addition", "contrast-set:addition", "literary"],
+    "tags": ["addition", "contrast-set:addition", "literary", "fn:addition"],
     "mnemonic": "Picture an orator raising a finger: '…and furthermore, I say again…' That's 거니와.",
     "pattern": "-거니와",
     "meaning": "and besides; not only … but (literary); also frames a remark being repeated (다시 말하거니와)",
@@ -287,6 +741,80 @@
           "accepted": ["높거니와"],
           "nearMiss": [{ "answer": "높을뿐더러", "hint": "Same meaning; the cue asks for the more literary -거니와." }],
           "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "그 배우는 연기력도 {{}} 자기 관리도 철저하기로 유명하다.",
+          "en": "The actor is known for superb acting and rigorous self-discipline alike.",
+          "cue": "뛰어나다 + -거니와",
+          "accepted": ["뛰어나거니와"],
+          "nearMiss": [{ "answer": "뛰어날뿐더러", "hint": "Same meaning; the cue asks for the more literary -거니와." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c3",
+          "sentence": "앞서 {{}} 이번 개편의 목적은 비용 절감이 아닙니다.",
+          "en": "As I mentioned earlier, the purpose of this reorganization is not cost-cutting.",
+          "cue": "말씀드리다 + -았/었거니와",
+          "accepted": ["말씀드렸거니와"],
+          "nearMiss": [
+            { "answer": "말씀드렸을뿐더러", "hint": "-(으)ㄹ뿐더러 has no \"as I said\" use; framing a remark you are repeating takes -거니와." },
+            { "answer": "말씀드리거니와", "hint": "앞서 points back to something already said: use the past, 말씀드렸거니와." }
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c4",
+          "sentence": "그 소설은 문체가 {{}} 결말의 여운도 길다.",
+          "en": "The novel's prose is beautiful, and its ending lingers long after, too.",
+          "cue": "아름답다 + -거니와",
+          "accepted": ["아름답거니와"],
+          "nearMiss": [{ "answer": "아름다우거니와", "hint": "-거니와 attaches straight to the stem, so the ㅂ stays: 아름답거니와." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c5",
+          "sentence": "그는 이 분야 최고의 {{}} 인품도 훌륭해 후배들의 존경을 받는다.",
+          "en": "He is the leading expert in the field and a person of fine character, so younger colleagues look up to him.",
+          "cue": "전문가이다 + -거니와",
+          "accepted": ["전문가거니와", "전문가이거니와"],
+          "nearMiss": [{ "answer": "전문가일뿐더러", "hint": "Same meaning; the cue asks for -거니와." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c6",
+          "sentence": "거듭 {{}}, 이번 사고의 책임은 전적으로 회사에 있습니다.",
+          "en": "Let me stress it once more: responsibility for this accident lies entirely with the company.",
+          "cue": "강조하다 + -거니와",
+          "accepted": ["강조하거니와"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c7",
+          "sentence": "그 길은 경사가 {{}} 노면도 미끄러워서 겨울에는 통행을 자제하는 것이 좋다.",
+          "en": "That road is steep and slippery besides, so it's best avoided in winter.",
+          "cue": "가파르다 + -거니와",
+          "accepted": ["가파르거니와"],
+          "nearMiss": [{ "answer": "가팔라거니와", "hint": "-거니와 attaches straight to the stem; the 르-irregular change only appears before -아/어: 가파르거니와." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c8",
+          "sentence": "이번 회담은 성과도 {{}} 양국 정상 간의 신뢰를 확인한 자리였다.",
+          "en": "The summit not only produced substantial results but confirmed the trust between the two leaders.",
+          "cue": "크다 + -았/었거니와",
+          "accepted": ["컸거니와"],
+          "nearMiss": [{ "answer": "크었거니와", "hint": "크다 drops its ㅡ before -었-: 컸거니와." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c9",
+          "sentence": "저는 이 분야에서 경험도 {{}} 무엇보다 이 일에 애정이 있습니다.",
+          "en": "I have plenty of experience in this field, and above all, I care about this work.",
+          "cue": "많다 + -거니와",
+          "accepted": ["많거니와"],
+          "nearMiss": [{ "answer": "많을뿐더러", "hint": "Same meaning; the cue asks for -거니와." }],
+          "particleTolerance": "none"
         }
       ],
       "nuance": [
@@ -310,6 +838,19 @@
               "why": "-(으)ㄴ/는 데다가 piles up facts; it can't frame a repeated statement."
             }
           ]
+        },
+        {
+          "id": "n2",
+          "situation": "추천서에 지원자의 장점을 두 가지 쓰려고 해요. (In a reference letter, you name two of the applicant's strengths.)",
+          "options": [
+            { "text": "지원자는 성실하거니와 분석력도 뛰어나다.", "correct": true, "why": "Two strengths in the same direction, in the bookish tone a reference letter suits." },
+            {
+              "text": "지원자는 성실하거니와 분석력이 부족하다.",
+              "correct": false,
+              "why": "-거니와 adds a second point in the same direction. For a weakness after a strength, use -지만 or -(으)나."
+            },
+            { "text": "지원자는 성실하기는커녕 분석력도 뛰어나다.", "correct": false, "why": "-기는커녕 denies the first point outright, which wrecks the praise." }
+          ]
         }
       ]
     }
@@ -324,7 +865,7 @@
     "gating": true,
     "source": { "kind": "original", "license": "original-owned" },
     "needs_review": false,
-    "tags": ["addition", "contrast-set:addition"],
+    "tags": ["addition", "contrast-set:addition", "fn:addition"],
     "mnemonic": "데 'spot' + 다가 'and then': you set one thing down, then pile another on top.",
     "pattern": "-(으)ㄴ/는 데다가",
     "meaning": "on top of …; besides … (piling up facts, often as a combined reason)",
@@ -346,11 +887,7 @@
         "en": "It was the weekend, and the weather was great on top of that, so the park was packed.",
         "register": "written"
       },
-      {
-        "ko": "걔는 일도 빠른 데다 꼼꼼해서 다들 같이 일하고 싶어 해.",
-        "en": "She's quick and meticulous to boot, so everyone wants to work with her.",
-        "register": "spoken"
-      }
+      { "ko": "걔는 일도 빠른 데다 꼼꼼해서 다들 같이 일하고 싶어 해.", "en": "She's quick and meticulous to boot, so everyone wants to work with her.", "register": "spoken" }
     ],
     "questionTypes": ["cloze", "nuance"],
     "questions": {
@@ -359,12 +896,85 @@
           "id": "c1",
           "sentence": "어젯밤에 잠을 {{}} 아침까지 걸러서 하루 종일 기운이 없었어.",
           "en": "I slept badly last night and skipped breakfast on top of that, so I had no energy all day.",
-          "cue": "설치다 (past) + -(으)ㄴ 데다가",
+          "cue": "설치다 + -(으)ㄴ 데다가",
           "accepted": ["설친 데다가", "설친 데다"],
           "nearMiss": [
             { "answer": "설치는 데다가", "hint": "Last night's bad sleep is over and done: use the past form, 설친 데다가." },
             { "answer": "설쳤을뿐더러", "hint": "Similar meaning, but the cue asks for -(으)ㄴ 데다가." }
           ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "그날은 날씨가 {{}} 바람까지 세게 불어서 야외 행사가 일찍 끝났다.",
+          "en": "It was cold that day and windy on top of that, so the outdoor event ended early.",
+          "cue": "춥다 + -(으)ㄴ 데다가",
+          "accepted": ["추운 데다가", "추운 데다"],
+          "nearMiss": [{ "answer": "춥은 데다가", "hint": "춥다 is ㅂ-irregular: 추운." }, { "answer": "추울뿐더러", "hint": "Similar meaning; the cue asks for -(으)ㄴ 데다가." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c3",
+          "sentence": "그 친구는 회사 근처에 {{}} 출근 시간도 자유로워서 아침마다 여유가 있다.",
+          "en": "My friend lives near the office and has flexible hours too, so his mornings are relaxed.",
+          "cue": "살다 + -는 데다가",
+          "accepted": ["사는 데다가", "사는 데다"],
+          "nearMiss": [{ "answer": "살는 데다가", "hint": "살다 drops its ㄹ before -는: 사는." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c4",
+          "sentence": "그날은 {{}} 비까지 와서 손님이 거의 없었어요.",
+          "en": "It was a weekday and raining besides, so there were hardly any customers.",
+          "cue": "평일이다 + -(으)ㄴ 데다가",
+          "accepted": ["평일인 데다가", "평일인 데다"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c5",
+          "sentence": "이 집은 거실 창이 {{}} 남향이라 하루 종일 햇빛이 잘 들어.",
+          "en": "This place has a big living-room window and faces south, so it gets sun all day.",
+          "cue": "커다랗다 + -(으)ㄴ 데다가",
+          "accepted": ["커다란 데다가", "커다란 데다"],
+          "nearMiss": [{ "answer": "커다랗은 데다가", "hint": "커다랗다 is ㅎ-irregular: 커다란." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c6",
+          "sentence": "그 얘기는 이미 여러 번 {{}} 내용도 뻔해서 별로 귀담아듣지 않았다.",
+          "en": "I'd already heard that story several times, and it was predictable besides, so I didn't really pay attention.",
+          "cue": "듣다 + -(으)ㄴ 데다가",
+          "accepted": ["들은 데다가", "들은 데다"],
+          "nearMiss": [
+            { "answer": "듣은 데다가", "hint": "듣다 is ㄷ-irregular: 들은." },
+            { "answer": "듣는 데다가", "hint": "You had already heard it: use the past form, 들은 데다가." }
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c7",
+          "sentence": "이번 대책은 재원 마련 방안이 {{}} 시행 시기도 불분명하다는 지적을 받고 있습니다.",
+          "en": "The measures are criticized for vague funding plans and an unclear start date.",
+          "cue": "모호하다 + -(으)ㄴ 데다가",
+          "accepted": ["모호한 데다가", "모호한 데다"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c8",
+          "sentence": "회사가 지난달 인원을 {{}} 일감까지 늘어서 다들 야근이 일상이 됐다.",
+          "en": "The company cut staff last month and the workload has grown too, so working late has become routine for everyone.",
+          "cue": "줄이다 + -(으)ㄴ 데다가",
+          "accepted": ["줄인 데다가", "줄인 데다"],
+          "nearMiss": [{ "answer": "줄이는 데다가", "hint": "The cut happened last month: use the past form, 줄인 데다가." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c9",
+          "sentence": "모기 물린 데가 퉁퉁 {{}} 가렵기까지 해서 잠을 못 잤어.",
+          "en": "The mosquito bite swelled right up and itched like mad, so I couldn't sleep.",
+          "cue": "붓다 + -(으)ㄴ 데다가",
+          "accepted": ["부은 데다가", "부은 데다"],
+          "nearMiss": [{ "answer": "붓은 데다가", "hint": "붓다 is ㅅ-irregular: 부은." }],
           "particleTolerance": "none"
         }
       ],
@@ -379,10 +989,19 @@
               "correct": false,
               "why": "Nice colleagues pull the other way, so it can't be piled onto low pay with -(으)ㄴ 데다가, and it's no reason to quit."
             },
+            { "text": "월급이 적기는커녕 야근도 많아서 그만뒀어.", "correct": false, "why": "-기는커녕 would mean the pay was far from low, which undercuts the complaint." }
+          ]
+        },
+        {
+          "id": "n2",
+          "situation": "이사할 집을 보러 다니다가 한 집을 포기했어요. 친구에게 이유를 말하려면? (House-hunting, you passed on one place. You tell a friend why.)",
+          "options": [
+            { "text": "방이 좁은 데다가 역에서도 멀어서 포기했어.", "correct": true, "why": "Two drawbacks stacked into one reason, with the adjective in its -(으)ㄴ form." },
+            { "text": "방이 좁는 데다가 역에서도 멀어서 포기했어.", "correct": false, "why": "Adjectives take -(으)ㄴ before 데다가: 좁은 데다가." },
             {
-              "text": "월급이 적기는커녕 야근도 많아서 그만뒀어.",
+              "text": "방이 좁은 데다가 역에서도 가까워서 포기했어.",
               "correct": false,
-              "why": "-기는커녕 would mean the pay was far from low, which undercuts the complaint."
+              "why": "Being close to the station is a plus. It can't be piled onto a drawback with -(으)ㄴ 데다가, and it's no reason to pass."
             }
           ]
         }
@@ -399,7 +1018,7 @@
     "gating": true,
     "source": { "kind": "original", "license": "original-owned" },
     "needs_review": false,
-    "tags": ["concession", "contrast-set:concession"],
+    "tags": ["concession", "contrast-set:concession", "fn:concession"],
     "mnemonic": "It's the sturdier cousin of -아/어도: 도 is still the 'even' at the end.",
     "pattern": "-더라도",
     "meaning": "even if; even though (concession, often hypothetical)",
@@ -438,6 +1057,77 @@
             { "answer": "바쁠망정", "hint": "-(으)ㄹ망정 is a stance-taking, somewhat literary concession and sounds stilted before everyday advice; the cue asks for -더라도." }
           ],
           "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "규정을 {{}} 위반은 위반이다.",
+          "en": "Even if you didn't know the rule, a violation is still a violation.",
+          "cue": "모르다 + -았/었더라도",
+          "accepted": ["몰랐더라도", "모르더라도"],
+          "nearMiss": [{ "answer": "모랐더라도", "hint": "모르다 is 르-irregular: 몰랐더라도." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c3",
+          "sentence": "아무리 상황이 {{}} 기본 원칙까지 저버려서는 안 된다.",
+          "en": "However hard things get, we must not abandon our basic principles.",
+          "cue": "어렵다 + -더라도",
+          "accepted": ["어렵더라도"],
+          "nearMiss": [{ "answer": "어려우더라도", "hint": "-더라도 attaches straight to the stem, so the ㅂ stays: 어렵더라도." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c4",
+          "sentence": "아무리 {{}} 회의 자료는 미리 읽어 와야죠.",
+          "en": "New or not, you should read the meeting materials beforehand.",
+          "cue": "신입이다 + -더라도",
+          "accepted": ["신입이더라도"],
+          "nearMiss": [{ "answer": "신입이라도", "hint": "Fine in meaning; the cue asks for -더라도." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c5",
+          "sentence": "그 말을 내가 직접 {{}} 믿지 않았을 거예요.",
+          "en": "Even if I'd heard it myself, I wouldn't have believed it.",
+          "cue": "듣다 + -았/었더라도",
+          "accepted": ["들었더라도"],
+          "nearMiss": [{ "answer": "듣었더라도", "hint": "듣다 is ㄷ-irregular: 들었더라도." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c6",
+          "sentence": "약 먹고 좀 {{}} 무리하지 말고 며칠 더 쉬어.",
+          "en": "Even if you feel a bit better after the medicine, don't push it. Rest a few more days.",
+          "cue": "낫다 + -았/었더라도",
+          "accepted": ["나았더라도", "낫더라도"],
+          "nearMiss": [{ "answer": "낫았더라도", "hint": "낫다 is ㅅ-irregular: 나았더라도." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c7",
+          "sentence": "정부는 일부 반발이 {{}} 개혁을 예정대로 추진하겠다고 밝혔다.",
+          "en": "The government said it would push ahead with the reform on schedule even if there is some backlash.",
+          "cue": "있다 + -더라도",
+          "accepted": ["있더라도"],
+          "nearMiss": [{ "answer": "있을지언정", "hint": "-(으)ㄹ지언정 needs a main clause that rules something out; the cue asks for -더라도." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c8",
+          "sentence": "회사에서 좀 {{}} 조용한 동네에서 살고 싶어.",
+          "en": "Even if it's a bit far from work, I want to live in a quiet neighborhood.",
+          "cue": "멀다 + -더라도",
+          "accepted": ["멀더라도"],
+          "nearMiss": [{ "answer": "멀어도", "hint": "Fine in meaning; the cue asks for -더라도." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c9",
+          "sentence": "아무리 화가 {{}} 그런 말은 하면 안 되지.",
+          "en": "No matter how angry you were, that's not something you say.",
+          "cue": "나다 + -았/었더라도",
+          "accepted": ["났더라도", "나더라도"],
+          "particleTolerance": "none"
         }
       ],
       "nuance": [
@@ -457,6 +1147,19 @@
               "why": "-(으)ㄴ 탓에 blames a cause for a bad result that already happened; it neither concedes nor leads into a suggestion."
             }
           ]
+        },
+        {
+          "id": "n2",
+          "situation": "야외 행사 공지에 비가 와도 행사를 그대로 진행한다는 내용을 넣으려고 해요. (A notice for an outdoor event: it goes ahead even if it rains.)",
+          "options": [
+            { "text": "비가 오더라도 행사는 예정대로 진행됩니다.", "correct": true, "why": "-더라도 concedes the rain and says the plan holds anyway." },
+            { "text": "비가 오기에 행사는 예정대로 진행됩니다.", "correct": false, "why": "-기에 gives a reason, which would make the rain the reason the event goes ahead." },
+            {
+              "text": "비가 오는 바람에 행사는 예정대로 진행됩니다.",
+              "correct": false,
+              "why": "-는 바람에 reports a sudden cause of an unwanted result; it can't concede anything."
+            }
+          ]
         }
       ]
     }
@@ -471,7 +1174,7 @@
     "gating": true,
     "source": { "kind": "original", "license": "original-owned" },
     "needs_review": false,
-    "tags": ["concession", "contrast-set:concession"],
+    "tags": ["concession", "contrast-set:concession", "fn:concession"],
     "mnemonic": "Same 망정 as in -기에 망정이지 ('good thing that…'): in a bad scenario, find the one thing to hold on to.",
     "pattern": "-(으)ㄹ망정",
     "meaning": "(1) even if it means …, (I won't) …; (2) although …, at least …",
@@ -508,6 +1211,76 @@
             { "answer": "피곤하더라도", "hint": "Grammatical, but it loses the 'at least' tone; the cue asks for -(으)ㄹ망정." }
           ],
           "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "작은 단칸방에 {{}} 남한테 손 벌리지는 않겠다.",
+          "en": "I'll live in a tiny one-room flat before I go asking others for money.",
+          "cue": "살다 + -(으)ㄹ망정",
+          "accepted": ["살망정"],
+          "nearMiss": [{ "answer": "살을망정", "hint": "An ㄹ-stem takes plain -ㄹ: 살망정." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c3",
+          "sentence": "겨울 산장은 {{}} 밤하늘의 별은 원 없이 볼 수 있다.",
+          "en": "The mountain hut may be freezing in winter, but at least you can see all the stars you could want.",
+          "cue": "춥다 + -(으)ㄹ망정",
+          "accepted": ["추울망정"],
+          "nearMiss": [{ "answer": "춥을망정", "hint": "춥다 is ㅂ-irregular: 추울망정." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c4",
+          "sentence": "연구소 보수는 {{}} 하고 싶은 연구를 마음껏 할 수 있어서 이곳에 남았다.",
+          "en": "The institute pays poorly, but I stayed because I can do the research I want.",
+          "cue": "박하다 + -(으)ㄹ망정",
+          "accepted": ["박할망정"],
+          "nearMiss": [{ "answer": "박할지언정", "hint": "A near-synonym, a bit more emphatic; the cue asks for -(으)ㄹ망정." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c5",
+          "sentence": "경기에는 {{}} 끝까지 최선을 다했으니 후회는 없다.",
+          "en": "We may have lost the match, but we gave it everything to the end, so no regrets.",
+          "cue": "지다 + -았/었을망정",
+          "accepted": ["졌을망정"],
+          "nearMiss": [{ "answer": "질망정", "hint": "The loss has already happened: 졌을망정." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c6",
+          "sentence": "먼 길을 {{}} 그 사람 차는 절대 안 탈 거야.",
+          "en": "I'll walk the whole long way before I get in his car.",
+          "cue": "걷다 + -(으)ㄹ망정",
+          "accepted": ["걸을망정"],
+          "nearMiss": [{ "answer": "걷을망정", "hint": "걷다 is ㄷ-irregular: 걸을망정." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c7",
+          "sentence": "비록 낡은 {{}} 내 집이 생겼다는 게 그저 기뻤다.",
+          "en": "It may have been just an old apartment, but I was simply happy to have a place of my own.",
+          "cue": "아파트이다 + -(으)ㄹ망정",
+          "accepted": ["아파트일망정"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c8",
+          "sentence": "실력은 그 사람이 {{}} 성실함만큼은 내가 앞선다.",
+          "en": "He may be the better player, but when it comes to diligence I'm ahead.",
+          "cue": "낫다 + -(으)ㄹ망정",
+          "accepted": ["나을망정"],
+          "nearMiss": [{ "answer": "낫을망정", "hint": "낫다 is ㅅ-irregular: 나을망정." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c9",
+          "sentence": "당장 표를 {{}} 원칙을 저버리는 공약은 내놓지 않겠습니다.",
+          "en": "We may lose votes in the short term, but we will not put forward pledges that betray our principles.",
+          "cue": "잃다 + -(으)ㄹ망정",
+          "accepted": ["잃을망정"],
+          "particleTolerance": "none"
         }
       ],
       "nuance": [
@@ -527,6 +1300,27 @@
               "why": "-는 바람에 needs a sudden event causing an unwanted result; a small room doesn't cause good sunlight (and the form would be -는)."
             }
           ]
+        },
+        {
+          "id": "n2",
+          "situation": "처음 차린 가게가 작은 구멍가게지만 내 가게라서 뿌듯해요. (Your first shop is just a tiny corner store, but it's yours and you're proud of it.)",
+          "options": [
+            {
+              "text": "작은 구멍가게일망정 내 가게라서 뿌듯해.",
+              "correct": true,
+              "why": "Concede the drawback, then the redeeming fact: use (2) of -(으)ㄹ망정, attached to the copula as 일망정."
+            },
+            {
+              "text": "작은 구멍가게인 망정 내 가게라서 뿌듯해.",
+              "correct": false,
+              "why": "망정 here is part of the ending -(으)ㄹ망정, so the copula takes -ㄹ and attaches: 구멍가게일망정."
+            },
+            {
+              "text": "작은 구멍가게인 덕분에 내 가게라서 뿌듯해.",
+              "correct": false,
+              "why": "덕분에 makes the shop's smallness the cause of your pride; it doesn't concede a drawback."
+            }
+          ]
         }
       ]
     }
@@ -541,7 +1335,7 @@
     "gating": true,
     "source": { "kind": "original", "license": "original-owned" },
     "needs_review": false,
-    "tags": ["concession", "contrast-set:concession"],
+    "tags": ["concession", "contrast-set:concession", "fn:concession"],
     "mnemonic": "Picture someone planting their feet: 지언정, not one step further, whatever it costs.",
     "pattern": "-(으)ㄹ지언정",
     "meaning": "even if …, (I will) never …; would sooner … than …",
@@ -552,10 +1346,7 @@
     "nuance": "An emphatic, somewhat literary concession: the speaker accepts the first (bad) scenario and flatly rules out the second. The main clause is typically a refusal or negation (-지 않겠다, 못 하다, -(으)ㄹ 수 없다), often reinforced by 차라리 in the first clause. At home in speeches, op-eds, and dramatic declarations.",
     "contrasts": [
       { "id": "g:ㄹ망정", "note": "Near-synonym in both uses; -(으)ㄹ망정 is a little less emphatic and more conversational." },
-      {
-        "id": "g:느니-차라리",
-        "note": "The same choice seen from the other side: -느니 attaches to the option rejected, -(으)ㄹ지언정 to the hardship accepted."
-      }
+      { "id": "g:느니-차라리", "note": "The same choice seen from the other side: -느니 attaches to the option rejected, -(으)ㄹ지언정 to the hardship accepted." }
     ],
     "examples": [
       {
@@ -579,6 +1370,77 @@
             { "answer": "일하느니", "hint": "-느니 attaches to the option you reject; here working alone is the one you accept." }
           ],
           "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "평생 혼자 {{}} 마음에 없는 결혼은 하지 않겠다.",
+          "en": "I'd sooner live alone all my life than marry someone I don't love.",
+          "cue": "살다 + -(으)ㄹ지언정",
+          "accepted": ["살지언정"],
+          "nearMiss": [{ "answer": "살을지언정", "hint": "An ㄹ-stem takes plain -ㄹ: 살지언정." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c3",
+          "sentence": "차라리 {{}} 그런 사람들과 어울리고 싶지는 않다.",
+          "en": "I'd rather be lonely than hang around with people like that.",
+          "cue": "외롭다 + -(으)ㄹ지언정",
+          "accepted": ["외로울지언정"],
+          "nearMiss": [{ "answer": "외롭을지언정", "hint": "외롭다 is ㅂ-irregular: 외로울지언정." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c4",
+          "sentence": "차라리 싫은 소리를 {{}} 거짓말로 둘러대지는 않겠다.",
+          "en": "I'd rather take a scolding than talk my way out with a lie.",
+          "cue": "듣다 + -(으)ㄹ지언정",
+          "accepted": ["들을지언정"],
+          "nearMiss": [{ "answer": "듣을지언정", "hint": "듣다 is ㄷ-irregular: 들을지언정." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c5",
+          "sentence": "평생 {{}} 남의 작품을 베끼는 일은 하지 않겠다.",
+          "en": "I'd sooner stay unknown my whole life than copy someone else's work.",
+          "cue": "무명이다 + -(으)ㄹ지언정",
+          "accepted": ["무명일지언정"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c6",
+          "sentence": "그날 경기에서는 {{}} 정신력만큼은 상대에게 뒤지지 않았다.",
+          "en": "We may have lost that day, but in mental toughness we were every bit our opponents' equal.",
+          "cue": "지다 + -았/었을지언정",
+          "accepted": ["졌을지언정"],
+          "nearMiss": [{ "answer": "질지언정", "hint": "That match is over: 졌을지언정." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c7",
+          "sentence": "집을 작게 {{}} 빚을 내서 무리하고 싶지는 않아요.",
+          "en": "I'd rather build a smaller house than take on debt and overextend myself.",
+          "cue": "짓다 + -(으)ㄹ지언정",
+          "accepted": ["지을지언정"],
+          "nearMiss": [{ "answer": "짓을지언정", "hint": "짓다 is ㅅ-irregular: 지을지언정." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c8",
+          "sentence": "회사가 손해를 {{}} 고객 정보를 팔아넘기는 일은 없을 것입니다.",
+          "en": "Even if the company takes a loss, it will not sell off customer data.",
+          "cue": "보다 + -(으)ㄹ지언정",
+          "accepted": ["볼지언정"],
+          "nearMiss": [{ "answer": "보느니", "hint": "-느니 marks the option you reject; taking a loss is the hardship accepted, so it takes -(으)ㄹ지언정." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c9",
+          "sentence": "차라리 밤을 {{}} 내일 아침에 허둥대고 싶지는 않아.",
+          "en": "I'd rather pull an all-nighter than be scrambling tomorrow morning.",
+          "cue": "새우다 + -(으)ㄹ지언정",
+          "accepted": ["새울지언정"],
+          "nearMiss": [{ "answer": "새울망정", "hint": "Also possible; the cue asks for the more emphatic -(으)ㄹ지언정." }],
+          "particleTolerance": "none"
         }
       ],
       "nuance": [
@@ -591,15 +1453,28 @@
               "correct": true,
               "why": "The hardship accepted (resigning) takes -(으)ㄹ지언정; the act refused follows, negated."
             },
-            {
-              "text": "기사를 고칠지언정 사표는 쓰지 않겠습니다.",
-              "correct": false,
-              "why": "Grammatical, but it says the opposite: she'd alter the story rather than resign."
-            },
+            { "text": "기사를 고칠지언정 사표는 쓰지 않겠습니다.", "correct": false, "why": "Grammatical, but it says the opposite: she'd alter the story rather than resign." },
             {
               "text": "사표를 쓸지언정 기사를 고치겠습니다.",
               "correct": false,
               "why": "After -(으)ㄹ지언정 the main clause should rule something out; 'even if I resign, I'll alter it' doesn't hang together."
+            }
+          ]
+        },
+        {
+          "id": "n2",
+          "situation": "친구가 모임에 늦을 것 같다고 해요. 늦어도 괜찮으니 꼭 오라고 하려면? (A friend says they may be late to the get-together. You tell them to come anyway.)",
+          "options": [
+            { "text": "좀 늦더라도 꼭 와.", "correct": true, "why": "-더라도 concedes the lateness and can lead into a request." },
+            {
+              "text": "좀 늦을지언정 꼭 와.",
+              "correct": false,
+              "why": "-(으)ㄹ지언정 sets up a hardship the speaker accepts while ruling something out. Its main clause is a refusal or negation, not a request."
+            },
+            {
+              "text": "좀 늦는 바람에 꼭 와.",
+              "correct": false,
+              "why": "-는 바람에 reports a sudden cause of something that already happened; it can't concede, and no request can follow it."
             }
           ]
         }
@@ -610,12 +1485,36 @@
           "from": "hae",
           "to": "hapsyo",
           "source": "회사를 그만둘지언정 부당한 지시는 따르지 않을 거야.",
-          "accepted": ["회사를 그만둘지언정 부당한 지시는 따르지 않겠습니다.", "회사를 그만둘지언정 부당한 지시는 따르지 않을 것입니다.", "회사를 그만둘지언정 부당한 지시는 따르지 않을 겁니다."],
+          "accepted": [
+            "회사를 그만둘지언정 부당한 지시는 따르지 않겠습니다.",
+            "회사를 그만둘지언정 부당한 지시는 따르지 않을 것입니다.",
+            "회사를 그만둘지언정 부당한 지시는 따르지 않을 겁니다."
+          ],
           "features": [
             { "kind": "endsWith", "any": ["ㅂ니다", "습니다"], "label": "Ending must be 합쇼체 (-ㅂ니다/-습니다)" },
             { "kind": "contains", "any": ["지언정"], "scope": "all", "label": "Keep the -(으)ㄹ지언정 clause" }
           ],
           "coreWords": ["그만둘지언정", "부당한", "지시", "따르지"],
+          "particleTolerance": "allomorph",
+          "finalPunctOptional": true
+        },
+        {
+          "id": "r2",
+          "from": "hapsyo",
+          "to": "hae",
+          "source": "저는 해고를 당할지언정 장부를 조작하지는 않겠습니다.",
+          "accepted": [
+            "나는 해고를 당할지언정 장부를 조작하지는 않을 거야.",
+            "나는 해고를 당할지언정 장부를 조작하지는 않겠어.",
+            "난 해고를 당할지언정 장부를 조작하지는 않을 거야.",
+            "난 해고를 당할지언정 장부를 조작하지는 않겠어."
+          ],
+          "features": [
+            { "kind": "endsWith", "any": ["어", "야"], "label": "Use 반말 (-어 / -(으)ㄹ 거야)" },
+            { "kind": "contains", "any": ["지언정"], "scope": "all", "label": "Keep the -(으)ㄹ지언정 clause" },
+            { "kind": "notContains", "any": ["저는", "전 "], "scope": "all", "label": "In 반말, 저 becomes 나" }
+          ],
+          "coreWords": ["해고", "당할지언정", "장부", "조작"],
           "particleTolerance": "allomorph",
           "finalPunctOptional": true
         }
@@ -632,7 +1531,7 @@
     "gating": true,
     "source": { "kind": "original", "license": "original-owned" },
     "needs_review": false,
-    "tags": ["negation", "contrast-set:addition"],
+    "tags": ["negation", "contrast-set:addition", "fn:contrast"],
     "mnemonic": "커녕 slams the door on the expectation: 'Praise? Far from it.'",
     "pattern": "-기는커녕",
     "meaning": "far from …; let alone … (the expected thing didn't happen, and often the opposite did)",
@@ -660,6 +1559,73 @@
           "accepted": ["받기는커녕"],
           "nearMiss": [{ "answer": "받는 데다가", "hint": "-(으)ㄴ/는 데다가 adds a fact that happened; the apology never came, so the cue asks for -기는커녕." }],
           "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "택시를 탔는데 길이 막혀서 시간을 {{}} 오히려 더 늦었다.",
+          "en": "I took a cab, but the traffic was so bad that, far from saving time, I got there even later.",
+          "cue": "아끼다 + -기는커녕",
+          "accepted": ["아끼기는커녕"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c3",
+          "sentence": "축하 {{}} 내 생일인 줄도 모르더라.",
+          "en": "Forget birthday wishes. He didn't even know it was my birthday.",
+          "cue": "인사 + -은/는커녕",
+          "accepted": ["인사는커녕"],
+          "nearMiss": [{ "answer": "인사은커녕", "hint": "인사 ends in a vowel, so it takes 는: 인사는커녕." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c4",
+          "sentence": "규제 완화 이후 집값이 {{}} 오히려 큰 폭으로 올랐다.",
+          "en": "Since deregulation, far from stabilizing, housing prices have risen sharply.",
+          "cue": "안정되다 + -기는커녕",
+          "accepted": ["안정되기는커녕"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c5",
+          "sentence": "주말에 푹 {{}} 밀린 집안일 하느라 더 피곤해.",
+          "en": "Far from resting up over the weekend, I'm even more tired from catching up on chores.",
+          "cue": "쉬다 + -기는커녕",
+          "accepted": ["쉬기는커녕"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c6",
+          "sentence": "그 논문은 기존 이론을 {{}} 오히려 그 이론을 뒷받침하는 결과를 내놓았다.",
+          "en": "Far from refuting the existing theory, the paper produced results that support it.",
+          "cue": "반박하다 + -기는커녕",
+          "accepted": ["반박하기는커녕"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c7",
+          "sentence": "새로 산 패딩은 {{}} 바람이 숭숭 들어온다.",
+          "en": "My new puffer jacket is anything but warm. The wind cuts right through it.",
+          "cue": "따뜻하다 + -기는커녕",
+          "accepted": ["따뜻하기는커녕"],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c8",
+          "sentence": "회사 측은 피해자에게 {{}} 책임을 회피하는 데만 급급했습니다.",
+          "en": "Far from apologizing to the victims, the company was preoccupied with dodging responsibility.",
+          "cue": "사과하다 + -기는커녕",
+          "accepted": ["사과하기는커녕"],
+          "nearMiss": [{ "answer": "사과하는 데다가", "hint": "-(으)ㄴ/는 데다가 affirms the apology; it never came, so the cue asks for -기는커녕." }],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c9",
+          "sentence": "그 약을 먹고 증상이 {{}} 더 심해졌어요.",
+          "en": "Far from getting better after that medicine, my symptoms got worse.",
+          "cue": "나아지다 + -기는커녕",
+          "accepted": ["나아지기는커녕"],
+          "nearMiss": [{ "answer": "나아졌기는커녕", "hint": "-기는커녕 normally takes the bare stem; the tense goes on the main clause." }],
+          "particleTolerance": "none"
         }
       ],
       "nuance": [
@@ -667,17 +1633,34 @@
           "id": "n1",
           "situation": "올해 연봉 협상 결과를 동료에게 전하려고 해요. 기대와 달리 결과가 나빴어요. (Contrary to your hopes, this year's pay talks went badly.)",
           "options": [
-            {
-              "text": "연봉이 오르기는커녕 오히려 깎였어.",
-              "correct": true,
-              "why": "The hoped-for raise is denied and the opposite happened: textbook -기는커녕 + 오히려."
-            },
+            { "text": "연봉이 오르기는커녕 오히려 깎였어.", "correct": true, "why": "The hoped-for raise is denied and the opposite happened: textbook -기는커녕 + 오히려." },
             {
               "text": "연봉이 오르기는커녕 보너스까지 받았어.",
               "correct": false,
               "why": "After -기는커녕 the second clause must run against the hope; a bonus on top is good news, which contradicts the frame."
             },
             { "text": "연봉이 오른 데다가 오히려 깎였어.", "correct": false, "why": "-(으)ㄴ 데다가 affirms the raise and then says it was cut: a contradiction." }
+          ]
+        },
+        {
+          "id": "n2",
+          "situation": "소개팅 상대가 대화 내내 휴대폰만 봤다고 친구에게 말하려고 해요. (Your blind date spent the whole time on their phone. You tell a friend.)",
+          "options": [
+            {
+              "text": "대화는커녕 눈도 제대로 안 마주치더라.",
+              "correct": true,
+              "why": "N은/는커녕 denies the expected thing and the second clause goes further in the negative direction."
+            },
+            {
+              "text": "대화는커녕 이야기를 많이 나눴어.",
+              "correct": false,
+              "why": "After 커녕 the second clause has to go further in the negative direction. Chatting a lot contradicts it."
+            },
+            {
+              "text": "대화하는 데다가 눈도 제대로 안 마주치더라.",
+              "correct": false,
+              "why": "-는 데다가 affirms that you talked and then adds a complaint, which doesn't hang together."
+            }
           ]
         }
       ]

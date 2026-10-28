@@ -42,9 +42,10 @@ describe('buildQuestions', () => {
     if (c.promptId === 'c1') { assert.equal(c.before, '비가 '); assert.equal(c.after, ' 뛰었다.'); assert.equal(c.spacingStrict, false); }
     else { assert.equal(c.before, ''); assert.equal(c.after, ' 늦었다.'); assert.equal(c.spacingStrict, true); assert.equal(c.nearMiss.length, 1); }
     assert.ok(c.accepted.includes('mine'));
-    const seen = new Set<string>();
-    for (let i = 0; i < 40; i++) seen.add(buildQuestions(g, s, ['cloze'], `s${i}`)[0]!.promptId!);
-    assert.deepEqual([...seen].sort(), ['c1', 'c2']); // both prompts get used
+    // Prompts rotate with the item's review count (D68), not with the session seed (see rotation.test.ts).
+    const ids = new Set<string>();
+    for (let i = 0; i < 10; i++) ids.add(buildQuestions(g, s, ['cloze'], `s${i}`)[0]!.promptId!);
+    assert.equal(ids.size, 1);
   });
 
   test('nuance options shuffled deterministically with a correct key', () => {

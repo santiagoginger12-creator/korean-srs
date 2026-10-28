@@ -223,7 +223,8 @@ test('partial custom items (from a backup/sync) never crash any page', async ({ 
   page.on('pageerror', (e) => errors.push(e.message));
   for (const it of partial) {
     await page.evaluate((id) => { location.hash = '#/item/' + encodeURIComponent(id); }, it.id);
-    await expect(page.getByTestId('item-page')).toBeVisible();
+    // Hanja have no item pages (D63): the link lands on Browse.
+    await expect(page.getByTestId(it.kind === 'hanja' ? 'browse' : 'item-page')).toBeVisible();
   }
   for (const h of ['#/', '#/browse', '#/trouble', '#/inbox', '#/practice', '#/data']) {
     await page.evaluate((x) => { location.hash = x; }, h);
@@ -610,7 +611,8 @@ test('partial custom items in reviews and related-item panels: no crash, no ques
   ]), partial);
   for (const it of partial) {
     await page.evaluate((id) => { location.hash = '#/item/' + encodeURIComponent(id); }, it.id);
-    await expect(page.getByTestId('item-page')).toBeVisible();
+    // Hanja have no item pages (D63): the link lands on Browse.
+    await expect(page.getByTestId(it.kind === 'hanja' ? 'browse' : 'item-page')).toBeVisible();
   }
   await jumpToDue(page);
   await page.getByTestId('start-reviews').click();

@@ -34,7 +34,7 @@ export function shortMeaning(item: Item | undefined): string {
   if (!item) return '';
   let m = item.kind === 'grammar' || item.kind === 'expression' ? item.meaning
     : item.kind === 'vocab' ? (item.meanings ?? []).join('; ') : (item.meanings ?? []).join(', ');
-  m = (m ?? '').replace(HANGUL_RUN, '~').replace(LONE_HANGUL, '~').replace(/\s+/g, ' ').trim();
+  m = (m ?? '').replace(HANGUL_RUN, '~').replace(LONE_HANGUL, '~').replace(/[-(]*~[~\s)]*~?/g, '~ ').replace(/~ (?=[,.;:)]|$)/g, '~').replace(/\s+/g, ' ').trim();
   const semi = m.indexOf(';');
   if (semi > 0) m = m.slice(0, semi).trim();
   const paren = m.search(/\s\(/);

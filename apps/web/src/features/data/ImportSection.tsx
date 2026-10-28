@@ -8,7 +8,7 @@ import { itemHref } from '../../state/format.ts';
 import { useApp } from '../../state/hooks.ts';
 import { store } from '../../state/store.ts';
 
-const KINDS: ItemKind[] = ['vocab', 'grammar', 'expression', 'hanja'];
+const KINDS: ItemKind[] = ['vocab', 'grammar', 'expression']; // hanja aren't items in the app (D63)
 interface Pending { file: string; items: Item[]; issues: ImportIssue[]; diff: ItemDiff }
 
 export function ImportSection(): JSX.Element {
@@ -62,7 +62,7 @@ export function ImportSection(): JSX.Element {
           <li>First row is the header; column names in any order. Required: <code>level</code> plus the headword and meaning columns for the kind (e.g. <code>word</code>, <code>meanings</code>).</li>
           <li><code>|</code> separates several values (<code>decision|determination</code>); <code>::</code> joins pairs (<code>결정을 내리다::to make a decision</code>); escape with <code>\|</code>, <code>\:</code>.</li>
           <li>Rows starting with <code>#</code> are comments. UTF-8; a BOM is fine (exports include one so Excel shows Korean).</li>
-          <li>Import <strong>hanja before the vocabulary</strong> that links to them.</li>
+          <li>Vocabulary can carry its hanja in <code>hanja</code> (e.g. <code>決裁</code>); it's shown as a quiet line, not a separate item.</li>
           <li>Errors reject that row; warnings are informational. Full reference: <code>packages/content/IMPORT.md</code>. The template has every column and an example row.</li>
         </ul>
       </details>

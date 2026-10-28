@@ -58,14 +58,19 @@ test('level view: needed uses the engine integer rule; remaining sorted closest-
   const s0 = replayAll(content, []);
   const v0 = levelView(s0);
   assert.equal(v0.level, 1);
-  assert.equal(v0.total, 10);
+  // Separate grammar path: vocab levels gate on vocab + expressions only.
+  assert.equal(v0.total, 7);
   assert.equal(v0.passed, 0);
-  assert.equal(v0.needed, 9); // ceil(10 × 0.9)
+  assert.equal(v0.needed, 7); // ceil(7 × 0.9)
   assert.equal(v0.unlocksNext, false);
-  assert.deepEqual(v0.byKind.map((r) => [r.kind, r.total]), [['vocab', 6], ['grammar', 3], ['expression', 1]]);
+  assert.deepEqual(v0.byKind.map((r) => [r.kind, r.total]), [['vocab', 6], ['expression', 1]]);
+  // Combined mode (grammar.separatePath=false): grammar counts again.
+  const comb = replayAll(content, [f.mk({ type: 'settings.set', key: 'grammar.separatePath' as never, value: false })]);
+  assert.equal(levelView(comb).total, 9); // -는 통에 is non-gating in the fixture
+  assert.deepEqual(levelView(comb).byKind.map((r) => [r.kind, r.total]), [['vocab', 6], ['grammar', 2], ['expression', 1]]);
   // One item at Apprentice 1 sorts ahead of unlearned ones.
-  const s1 = replayAll(content, [f.mk({ type: 'lesson.completed', itemId: 'g:는-탓에' })]);
-  assert.equal(levelView(s1).remaining[0]!.id, 'g:는-탓에');
+  const s1 = replayAll(content, [f.mk({ type: 'lesson.completed', itemId: 'v:재량' })]);
+  assert.equal(levelView(s1).remaining[0]!.id, 'v:재량');
   assert.equal(levelView(s1).remaining[0]!.stage, 1);
 });
 

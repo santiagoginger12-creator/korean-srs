@@ -23,6 +23,14 @@ export function Settings(): JSX.Element {
             {[3, 4, 5, 6, 8, 10, 15, 20].map((n) => <option key={n} value={n}>{n}</option>)}
           </select>
         </label>
+        <label className="field"><span>Grammar lessons per day</span>
+          <select value={String(s['grammar.dailyLessons'])} data-testid="set-grammar-daily" disabled={!s['grammar.separatePath']}
+            onChange={(e: { target: HTMLSelectElement }) => void store.setAppSetting('grammar.dailyLessons', Number(e.target.value))}>
+            {[0, 1, 2, 3, 4, 5, 6, 8, 10].map((n) => <option key={n} value={n}>{n}</option>)}
+          </select>
+        </label>
+        <label className="check"><input type="checkbox" checked={s['grammar.separatePath']} data-testid="set-grammar-separate"
+          onChange={(e: { target: HTMLInputElement }) => void store.setAppSetting('grammar.separatePath', e.target.checked)} /> Grammar on its own path (separate lessons and stages)</label>
         <label className="field"><span>Daily review target (minutes)</span>
           <input type="number" min={5} max={180} step={5} defaultValue={s.targetReviewMin} inputMode="numeric"
             onBlur={(e: { target: HTMLInputElement }) => set('targetReviewMin', num(e.target.value, 5, 180))} />

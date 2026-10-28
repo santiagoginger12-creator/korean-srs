@@ -174,7 +174,7 @@ ${css ? `<link rel="stylesheet" href="${url(css)}">` : ''}
   const artifactHtml = `<title>익히다</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Noto+Serif+KR:wght@500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap">
 ${css ? `<link rel="stylesheet" href="${url(css)}">` : ''}
 <div id="root"></div>
 <script type="module" src="${url(js)}"></script>

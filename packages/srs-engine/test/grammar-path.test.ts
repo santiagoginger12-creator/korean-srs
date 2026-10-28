@@ -124,7 +124,9 @@ describe('separate lesson queues', () => {
     const s = replayAll(b, [d(lessonP('h:決'), T0)]);
     assert.deepEqual(availableLessons(s.index, s, { path: 'vocab' }), ['v:결정', 'v:망설이다', 'v:덤']);
     assert.deepEqual(availableLessons(s.index, s, { path: 'grammar' }), ['g:는-바람에', 'g:느라고']);
-    assert.deepEqual(availableLessons(s.index, replayAll(b, []), { path: 'vocab' })[0], 'h:決');
+    assert.equal(availableLessons(s.index, replayAll(b, []), { path: 'vocab' })[0], 'v:결정', 'no hanja lessons by default (D63)');
+    const on = replayAll(b, [d(settingPayload('hanja.lessons', true), T0 - 1)]);
+    assert.equal(availableLessons(on.index, on, { path: 'vocab' })[0], 'h:決', 'hanja first with hanja.lessons on');
     assert.deepEqual(availableLessons(s.index, s), ['v:결정', 'v:망설이다', 'g:는-바람에', 'v:덤', 'g:느라고']); // combined (D60 3:2)
   });
 });

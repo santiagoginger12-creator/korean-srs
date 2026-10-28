@@ -1,0 +1,80 @@
+[
+ {
+  "id": "g:기-마련이다",
+  "kind": "grammar",
+  "level": 3,
+  "track": "core",
+  "rev": 1,
+  "unlockDeps": [],
+  "gating": true,
+  "source": {
+   "kind": "original",
+   "license": "original-owned"
+  },
+  "needs_review": false,
+  "tags": [
+   "tendency",
+   "fn:inevitability",
+   "htsk:131"
+  ],
+  "mnemonic": "마련 = arrangement (as in 마련하다): it's all been arranged in advance. That's simply how things go.",
+  "pattern": "-기 마련이다",
+  "meaning": "is bound to …; naturally / inevitably …",
+  "attachment": [
+   {
+    "stem": "V/A",
+    "final": "any",
+    "tense": "present",
+    "form": "V/A-기 마련이다",
+    "example": "실수하기 마련이다"
+   },
+   {
+    "stem": "V/A",
+    "final": "any",
+    "tense": "present",
+    "form": "V/A-게 마련이다",
+    "example": "지치게 마련이다"
+   }
+  ],
+  "nuance": "States what naturally or inevitably happens as a general rule, not what happened in one case. The 기 clause stays in the present (*실수했기 마련이다), though the whole can be shifted to the past (-기 마련이었다). Neutral in tone; used to observe and to comfort (처음엔 누구나 실수하기 마련이에요). Variant: -게 마련이다.",
+  "contrasts": [],
+  "examples": [
+   {
+    "ko": "아무리 친한 사이라도 오래 같이 살다 보면 부딪히기 마련이다.",
+    "en": "However close you are, live together long enough and you're bound to clash.",
+    "register": "written"
+   },
+   {
+    "ko": "처음엔 누구나 헤매기 마련이니까 너무 걱정하지 마세요.",
+    "en": "Everyone fumbles around at first, so don't worry too much.",
+    "register": "neutral"
+   }
+  ],
+  "questionTypes": [
+   "cloze"
+  ],
+  "questions": {
+   "cloze": [
+    {
+     "id": "c1",
+     "sentence": "처음 맡은 일은 누구나 {{}}.",
+     "en": "Anyone is bound to be clumsy at a job they've just taken on.",
+     "cue": "서툴다 + -기 마련이다",
+     "accepted": [
+      "서툴기 마련이다",
+      "서툴게 마련이다",
+      "서툴기 마련이야",
+      "서툴기 마련이에요"
+     ],
+     "nearMiss": [
+      {
+       "answer": "서툰 법이다",
+       "hint": "Also natural; the cue asks for -기 마련이다."
+      }
+     ],
+     "particleTolerance": "none"
+    }
+   ]
+  }
+ }
+]

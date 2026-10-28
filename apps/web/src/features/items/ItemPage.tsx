@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { navigate } from '../../router.ts';
 import type { Item } from '@ksrs/content';
 import { headword, noteKey, relatedItems, resolveId, type DerivedState, type NoteField } from '@ksrs/srs-engine';
 import { ItemDetails, KindTag, NeedsReview } from '../../components/ItemDetails.tsx';
@@ -20,6 +21,10 @@ export function ItemPage({ id }: { id: string }): JSX.Element {
   const d = app.derived!;
   const rid = resolveId(d.index.redirects, id);
   const item = d.index.byId.get(rid);
+  // Hanja have no pages any more (D63): old links (even to hanja the content no longer has) land on Browse.
+  const isHanja = item ? item.kind === 'hanja' : rid.startsWith('h:');
+  useEffect(() => { if (isHanja) navigate('#/browse'); }, [isHanja]);
+  if (isHanja) return <div className="page narrow"><p className="muted">Opening Browse…</p></div>;
   if (!item) {
     return <div className="page narrow"><h1>Not found</h1><p className="muted">No item <code>{id}</code>.</p><a href="#/browse">Browse items</a></div>;
   }
@@ -41,7 +46,7 @@ export function ItemPage({ id }: { id: string }): JSX.Element {
         <section className="card unlock" data-testid="unlock-status">
           <h3>{unlock.status === 'locked' ? 'Unlocks after' : 'Unlocked after'}</h3>
           <ul className="deps">
-            {unlock.levelLocked !== null && <li className="dep">Level {unlock.levelLocked} opens</li>}
+            {unlock.levelLocked !== null && <li className="dep">{unlock.grammarPath ? `Grammar stage for level ${unlock.levelLocked} opens` : `Level ${unlock.levelLocked} opens`}</li>}
             {unlock.deps.map((dep) => (
               <li key={dep.id} className={`dep ${dep.met ? 'met' : ''}`}>
                 <span aria-hidden="true">{dep.met ? '✓' : '○'}</span>{' '}
@@ -56,9 +61,7 @@ export function ItemPage({ id }: { id: string }): JSX.Element {
 
       <section className="card srs" data-testid="srs-status">
         <h3>Progress</h3>
-        {item.kind === 'hanja'
-          ? <p>{st?.lessonAt !== undefined ? `Lesson done ${localDateTime(st.lessonAt)}. Hanja aren't reviewed; they unlock vocabulary.` : 'Not learned yet.'}</p>
-          : !st || st.stage === 0 || st.lessonAt === undefined
+        {!st || st.stage === 0 || st.lessonAt === undefined
             ? <p>{unlock.status === 'available' ? 'Lesson available.' : 'Not learned yet.'}</p>
             : (
               <dl className="kv">
@@ -90,59 +93,8 @@ function UnlockBadge({ status }: { status: 'learned' | 'available' | 'locked' })
   return <span className={`badge ${status === 'locked' ? '' : 'badge-ok'}`}>{status === 'locked' ? 'locked' : 'lesson available'}</span>;
 }
 
-function StageChip({ d, id }: { d: DerivedState; id: string }): JSX.Element {
-  const st = d.items.get(id);
-  const learned = st?.lessonAt !== undefined;
-  return <span className={`chip-stage ${learned ? '' : 'chip-stage-none'}`}>{learned ? stageName(st!.stage) : d.unlocked.has(id) ? 'not learned' : 'locked'}</span>;
-}
-
 function Related({ item, d, rel }: { item: Item; d: DerivedState; rel: ReturnType<typeof relatedItems> }): JSX.Element | null {
   const label = (id: string) => { const it = d.index.byId.get(id); return it ? headword(it) : id; };
-  if (item.kind === 'hanja') {
-    const vocab = rel.byHanja[0]?.items ?? [];
-    return (
-      <section className="card related" data-testid="related">
-        <h3>Vocabulary with <span lang="ko-Hani" className="hanja-inline">{item.char}</span> ({vocab.length})</h3>
-        {vocab.length === 0 ? <p className="muted">No vocabulary uses this hanja yet.</p> : (
-          <ul className="rel-list">
-            {vocab.map((id) => {
-              const v = d.index.byId.get(id);
-              return (
-                <li key={id}>
-                  <a className="item-link k-vocab" href={itemHref(id)} lang="ko">{label(id)}</a>
-                  <span className="rel-gloss">{v?.kind === 'vocab' ? v.meanings[0] : ''}</span>
-                  <StageChip d={d} id={id} />
-                </li>
-              );
-            })}
-          </ul>
-        )}
-      </section>
-    );
-  }
-  if (item.kind === 'vocab' && rel.byHanja.length > 0) {
-    return (
-      <section className="card related" data-testid="related">
-        <h3>Related by hanja</h3>
-        {rel.byHanja.map((g) => {
-          const h = d.index.byId.get(g.hanjaId);
-          return (
-            <div key={g.hanjaId} className="rel-group">
-              <a className="rel-hanja" href={itemHref(g.hanjaId)}>
-                <span lang="ko-Hani" className="hanja-small">{h?.kind === 'hanja' ? h.char : ''}</span>
-                <span lang="ko">{h?.kind === 'hanja' ? `${h.hun} ${h.eum}` : g.hanjaId}</span>
-              </a>
-              {g.items.length === 0 ? <p className="muted small">No other vocabulary yet.</p> : (
-                <p className="chips">{g.items.map((id) => (
-                  <a key={id} className="item-link k-vocab" href={itemHref(id)} lang="ko">{label(id)}<StageChip d={d} id={id} /></a>
-                ))}</p>
-              )}
-            </div>
-          );
-        })}
-      </section>
-    );
-  }
   if (item.kind === 'grammar' && (rel.contrasts.length > 0 || rel.unlocks.length > 0)) {
     return (
       <section className="card related" data-testid="related">

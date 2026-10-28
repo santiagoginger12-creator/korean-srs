@@ -4,7 +4,7 @@ import type { ContentIndex } from '@ksrs/srs-engine';
 
 export interface BrowseFilter { level: number | 'all'; kind: ItemKind | 'all'; query: string }
 
-/** All searchable text for an item: headword, readings, meanings, hanja forms. */
+/** All searchable text for an item: headword, meanings, and hanja forms (vocab still finds by 決裁). */
 export function searchText(it: Item): string {
   switch (it.kind) {
     case 'hanja': return [it.char, it.hun, it.eum, `${it.hun} ${it.eum}`, ...it.meanings].join('\n');
@@ -23,6 +23,7 @@ export function browse(index: ContentIndex, f: BrowseFilter): Map<number, Item[]
   for (const L of index.levels) {
     if (f.level !== 'all' && L !== f.level) continue;
     const items = (index.byLevel.get(L) ?? []).filter((it) => {
+      if (it.kind === 'hanja') return false; // hanja aren't items in the app (D63)
       if (f.kind !== 'all' && it.kind !== f.kind) return false;
       if (!q) return true;
       const t = norm(searchText(it));

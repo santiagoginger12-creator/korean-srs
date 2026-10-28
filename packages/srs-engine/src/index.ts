@@ -23,7 +23,7 @@ export { buildContentIndex, resolveId, headword, repairCustomItem, type ContentI
 export { replayAll, applyEvents, liveEvents, DUENESS_GRACE_MS } from './replay.ts';
 export {
   computeUnlocks, levelProgress, grammarProgress, availableLessons, unlockDepsOf, openLevels, openGrammarStages,
-  vocabLevels, grammarStages, isSeparatePath, LEVEL_THRESHOLD,
+  vocabLevels, grammarStages, isSeparatePath, hanjaLessonsOn, LEVEL_THRESHOLD,
   type LessonPath, type PathSettings, type GrammarProgress, type GrammarStageProgress,
 } from './unlock.ts';
 export {

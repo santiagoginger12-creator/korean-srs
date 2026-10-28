@@ -4,7 +4,7 @@ import { mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
-  correctAnswer, currentQ, doLessonBatch, goHome, jumpToDue, next, peek, readEvents, reviewRound, setup, submit, wrongAnswer, type Bundle,
+  correctAnswer, currentQ, doLessonBatch, goHome, jumpToDue, learnAllLessons, next, peek, readEvents, reviewRound, setup, submit, wrongAnswer, type Bundle,
 } from './helpers.ts';
 
 test.use({ timezoneId: 'Asia/Seoul' });
@@ -18,14 +18,7 @@ async function ownerShot(page: Page, name: string): Promise<void> {
   if (vp) await page.setViewportSize(vp);
 }
 
-async function learnAll(page: Page, b: Bundle): Promise<void> {
-  for (let i = 0; i < 6; i++) {
-    await goHome(page);
-    if (await page.getByTestId('lessons-override').isVisible()) await page.getByTestId('lessons-override').click();
-    if (Number(await page.getByTestId('lessons-count').innerText()) === 0) return;
-    await doLessonBatch(page, b);
-  }
-}
+const learnAll = learnAllLessons;
 
 test('practice runs the quiz with a "not scheduled" label and writes zero events', async ({ page }) => {
   const b = await setup(page);

@@ -319,7 +319,7 @@ function FeedbackPanel({ fb, acceptFuture, setAcceptFuture, persists, onUndo, on
         {!correct && (
           <>
             <button type="button" className="btn btn-quiet" onClick={onRight}>I was right</button>
-            {persists && q.qtype !== 'nuance' && fb.response.trim() !== '' && (
+            {persists && !fb.hintPenalty && q.qtype !== 'nuance' && fb.response.trim() !== '' && (
               <label className="check"><input type="checkbox" checked={acceptFuture} onChange={(e: { target: HTMLInputElement }) => setAcceptFuture(e.target.checked)} /> Accept this answer in future</label>
             )}
           </>

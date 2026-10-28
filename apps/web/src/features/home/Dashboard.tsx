@@ -90,7 +90,6 @@ export function Dashboard(): JSX.Element {
             {plan.report.clearReviewsFirst
               ? <><span className="warn-text">{cap.why}.</span>{plan.overrideExtra > 0 && <><br />{capNote(plan)}</>}</>
               : capNote(plan)}
-            {plan.hanjaAvailable > 0 ? <><br />{plan.hanjaAvailable} hanja (no cap)</> : null}
           </p>
           <div className="row">
             <a className={`btn btn-primary ${lessons ? '' : 'is-disabled'}`} href="#/lessons" aria-disabled={!lessons} data-testid="start-lessons"

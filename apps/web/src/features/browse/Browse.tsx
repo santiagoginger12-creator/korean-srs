@@ -6,7 +6,7 @@ import { browse, type BrowseFilter } from '../../state/browse.ts';
 import { itemHref, KIND_LABEL, stageName } from '../../state/format.ts';
 import { useApp } from '../../state/hooks.ts';
 
-const KINDS: (ItemKind | 'all')[] = ['all', 'hanja', 'vocab', 'grammar', 'expression'];
+const KINDS: (ItemKind | 'all')[] = ['all', 'vocab', 'grammar', 'expression']; // no hanja (D63)
 
 export function Browse(): JSX.Element {
   const app = useApp();
@@ -25,7 +25,7 @@ export function Browse(): JSX.Element {
       <p><a className="btn-text" href="#/">← Home</a></p>
       <h1>Browse</h1>
       <div className="card form browse-filters">
-        <input type="search" lang="ko" placeholder="Search 한자, 단어, meaning…" aria-label="Search items" onInput={onInput}
+        <input type="search" lang="ko" placeholder="Search 단어, 문법, meaning…" aria-label="Search items" onInput={onInput}
           autoCapitalize="off" autoCorrect="off" autoComplete="off" spellCheck={false} data-testid="browse-search" />
         <div className="filter-row" role="group" aria-label="Level">
           <button type="button" className={`pill ${f.level === 'all' ? 'on' : ''}`} onClick={() => setF({ ...f, level: 'all' })}>All levels</button>
@@ -53,9 +53,9 @@ export function Browse(): JSX.Element {
               return (
                 <li key={it.id}>
                   <a className={`browse-item k-${it.kind} ${locked ? 'is-locked' : ''}`} href={itemHref(it.id)} data-item-id={it.id}>
-                    <span className={it.kind === 'hanja' ? 'hanja-small' : 'browse-head'} lang={it.kind === 'hanja' ? 'ko-Hani' : 'ko'}>{headword(it)}</span>
-                    <span className="browse-sub">{it.kind === 'hanja' ? `${it.hun} ${it.eum}` : it.kind === 'vocab' ? it.meanings[0] : it.kind === 'grammar' ? it.meaning : it.meaning}</span>
-                    <span className="browse-stage">{learned ? (it.kind === 'hanja' ? 'learned' : stageName(st!.stage)) : locked ? 'locked' : 'new'}</span>
+                    <span className="browse-head" lang="ko">{headword(it)}</span>
+                    <span className="browse-sub">{it.kind === 'vocab' ? it.meanings[0] : it.kind === 'hanja' ? '' : it.meaning}</span>
+                    <span className="browse-stage">{learned ? stageName(st!.stage) : locked ? 'locked' : 'new'}</span>
                   </a>
                 </li>
               );

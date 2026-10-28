@@ -9,6 +9,9 @@
 // Within an open level/stage, explicit (and implicit hanja) unlockDeps still apply.
 // `grammar.separatePath: false` restores the combined behaviour (one ladder over every level,
 // gating counts vocab, grammar and expressions).
+// Hanja are not lesson nodes (D63, supersedes D12): unless `hanja.lessons` is on, hanja items are
+// never unlocked or offered, and neither implicit hanja-lesson deps nor explicit deps on a hanja
+// apply. Old `lesson.completed` events for hanja replay harmlessly (lessonAt only, never counted).
 
 import type { Item, ItemId } from '@ksrs/content';
 import { KIND_ORDER, resolveId, type ContentIndex } from './content-index.ts';
@@ -18,9 +21,10 @@ export const LEVEL_THRESHOLD = 0.9;
 
 export type LessonPath = 'vocab' | 'grammar';
 
-/** Engine-side view of the path setting. Missing means the default (separate). */
-export interface PathSettings { 'grammar.separatePath'?: boolean }
+/** Engine-side view of the path settings. Missing means the default (separate grammar, no hanja lessons). */
+export interface PathSettings { 'grammar.separatePath'?: boolean; 'hanja.lessons'?: boolean }
 export const isSeparatePath = (st: PathSettings | undefined): boolean => st?.['grammar.separatePath'] !== false;
+export const hanjaLessonsOn = (st: PathSettings | undefined): boolean => st?.['hanja.lessons'] === true;
 
 const isGrammar = (it: Item): boolean => it.kind === 'grammar';
 type Filter = (it: Item) => boolean;
@@ -41,14 +45,19 @@ function gatingCounts(index: ContentIndex, items: Map<ItemId, ItemState>, level:
 /** Integer comparison avoids float edge cases at exactly 90%. An empty level unlocks the next. */
 const meetsThreshold = (passed: number, total: number): boolean => total === 0 || passed * 10 >= total * 9;
 
-/** All implicit and explicit deps of `it`, resolved through idRedirects; unknown ids are ignored. */
-export function unlockDepsOf(index: ContentIndex, it: Item): { id: ItemId; require: 'lesson' | 'guru' }[] {
+/**
+ * All implicit and explicit deps of `it`, resolved through idRedirects; unknown ids are ignored.
+ * With hanja lessons off (the default), deps on hanja items don't exist.
+ */
+export function unlockDepsOf(index: ContentIndex, it: Item, opts?: PathSettings): { id: ItemId; require: 'lesson' | 'guru' }[] {
+  const hanja = hanjaLessonsOn(opts);
   const out: { id: ItemId; require: 'lesson' | 'guru' }[] = [];
   for (const d of it.unlockDeps ?? []) {
     const id = resolveId(index.redirects, d.id);
-    if (index.byId.has(id) && id !== it.id) out.push({ id, require: d.require });
+    const target = index.byId.get(id);
+    if (target && id !== it.id && (hanja || target.kind !== 'hanja')) out.push({ id, require: d.require });
   }
-  if (it.kind === 'vocab' && it.hanjaBreakdown) {
+  if (hanja && it.kind === 'vocab' && it.hanjaBreakdown) {
     for (const hb of it.hanjaBreakdown) {
       if (!hb.hanjaId) continue;
       const id = resolveId(index.redirects, hb.hanjaId);
@@ -58,8 +67,8 @@ export function unlockDepsOf(index: ContentIndex, it: Item): { id: ItemId; requi
   return out;
 }
 
-function depsSatisfied(index: ContentIndex, items: Map<ItemId, ItemState>, it: Item): boolean {
-  for (const d of unlockDepsOf(index, it)) {
+function depsSatisfied(index: ContentIndex, items: Map<ItemId, ItemState>, it: Item, opts?: PathSettings): boolean {
+  for (const d of unlockDepsOf(index, it, opts)) {
     const st = items.get(d.id);
     if (d.require === 'lesson' ? st?.lessonAt === undefined : st?.passedAt === undefined) return false;
   }
@@ -112,19 +121,24 @@ export function openGrammarStages(index: ContentIndex, items: Map<ItemId, ItemSt
 export function computeUnlocks(index: ContentIndex, items: Map<ItemId, ItemState>, opts?: PathSettings):
   { userLevel: number; grammarStage: number | null; unlocked: Set<ItemId> } {
   const sep = isSeparatePath(opts);
+  const hanja = hanjaLessonsOn(opts);
   const open = openLevels(index, items, opts);
   const gOpen = openGrammarStages(index, items, opts);
   const unlocked = new Set<ItemId>();
   const consider = (L: number, filter: Filter) => {
     for (const it of index.byLevel.get(L) ?? []) {
       if (!filter(it)) continue;
-      if (it.kind === 'hanja' || depsSatisfied(index, items, it)) unlocked.add(it.id);
+      if (it.kind === 'hanja') { if (hanja) unlocked.add(it.id); continue; }
+      if (depsSatisfied(index, items, it, opts)) unlocked.add(it.id);
     }
   };
   for (const L of open) consider(L, sep ? NOT_GRAMMAR : ALL);
   if (sep) for (const L of gOpen) consider(L, isGrammar);
   // Anything already learned stays unlocked (e.g. a custom item learned before its level opened).
-  for (const st of items.values()) if (st.lessonAt !== undefined && index.byId.has(st.itemId)) unlocked.add(st.itemId);
+  // Hanja with old lesson events stay out when hanja lessons are off (D63).
+  for (const st of items.values()) {
+    if (st.lessonAt !== undefined && index.byId.has(st.itemId) && (hanja || st.kind !== 'hanja')) unlocked.add(st.itemId);
+  }
   return {
     userLevel: open.length ? open[open.length - 1]! : 1,
     grammarStage: gOpen.length ? gOpen[gOpen.length - 1]! : null,
@@ -176,17 +190,19 @@ export function grammarProgress(index: ContentIndex, s: ProgressState): GrammarP
 }
 
 /**
- * Unlocked items without a lesson. `path: 'vocab'` is everything except grammar; `path: 'grammar'`
+ * Unlocked items without a lesson. Hanja only with `hanja.lessons` on (D63). `path: 'vocab'` is everything except grammar; `path: 'grammar'`
  * is grammar only, by level then content order. Without `path`, everything (combined order).
  * Vocab/combined order: hanja first, then by level, kind (vocab, grammar, expression), content order,
  * with imported extras interleaved (D60).
  */
-export function availableLessons(index: ContentIndex, s: Pick<DerivedState, 'items' | 'unlocked'>,
+export function availableLessons(index: ContentIndex, s: Pick<DerivedState, 'items' | 'unlocked'> & { settings?: PathSettings },
                                  opts: { path?: LessonPath } = {}): ItemId[] {
+  const hanjaOn = hanjaLessonsOn(s.settings);
   const out: Item[] = [];
   for (const id of s.unlocked) {
     const it = index.byId.get(id);
     if (!it || s.items.get(id)?.lessonAt !== undefined) continue;
+    if (it.kind === 'hanja' && !hanjaOn) continue;
     if (opts.path === 'vocab' && isGrammar(it)) continue;
     if (opts.path === 'grammar' && !isGrammar(it)) continue;
     out.push(it);

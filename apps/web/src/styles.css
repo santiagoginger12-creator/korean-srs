@@ -2,7 +2,6 @@
 
 :root {
   --font-ui: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", "Noto Sans CJK KR", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-hanja: "Noto Serif KR", "Noto Serif CJK KR", "AppleMyungjo", "Batang", "Source Han Serif K", serif;
 
   --bg: #f7f6f2;
   --surface: #ffffff;
@@ -18,11 +17,9 @@
   --accent-soft: #dfeaf2;
 
   /* Per-kind accents: distinct but muted. */
-  --k-hanja: #8b6aa8;
   --k-vocab: #3f86a6;
   --k-grammar: #4f9478;
   --k-expression: #b07a43;
-  --k-hanja-soft: #efe8f5;
   --k-vocab-soft: #e4f0f5;
   --k-grammar-soft: #e5f2ec;
   --k-expression-soft: #f6ece1;
@@ -46,8 +43,8 @@
   :root:not([data-theme="light"]) {
     --bg: #16181d; --surface: #1f2228; --surface-2: #272a31; --text: #e6e6e3; --text-2: #b4b6ba; --muted: #868991;
     --line: #33363e; --focus: #8fb0e0; --primary: #c9d3e2; --primary-text: #16181d; --accent: #8bb8d8; --accent-soft: #22303a;
-    --k-hanja: #b79ad1; --k-vocab: #78b6d1; --k-grammar: #82c2a6; --k-expression: #d6a774;
-    --k-hanja-soft: #2c2635; --k-vocab-soft: #1f2d34; --k-grammar-soft: #1f2e28; --k-expression-soft: #33291f;
+    --k-vocab: #78b6d1; --k-grammar: #82c2a6; --k-expression: #d6a774;
+    --k-vocab-soft: #1f2d34; --k-grammar-soft: #1f2e28; --k-expression-soft: #33291f;
     --ok: #7cc496; --ok-soft: #1f3127; --bad: #e08b85; --bad-soft: #3a2324; --warn: #d9b062; --warn-soft: #362e1c;
     --shadow: none; color-scheme: dark;
   }
@@ -55,13 +52,10 @@
 :root[data-theme="dark"] {
   --bg: #16181d; --surface: #1f2228; --surface-2: #272a31; --text: #e6e6e3; --text-2: #b4b6ba; --muted: #868991;
   --line: #33363e; --focus: #8fb0e0; --primary: #c9d3e2; --primary-text: #16181d; --accent: #8bb8d8; --accent-soft: #22303a;
-  --k-hanja: #b79ad1; --k-vocab: #78b6d1; --k-grammar: #82c2a6; --k-expression: #d6a774;
-  --k-hanja-soft: #2c2635; --k-vocab-soft: #1f2d34; --k-grammar-soft: #1f2e28; --k-expression-soft: #33291f;
   --ok: #7cc496; --ok-soft: #1f3127; --bad: #e08b85; --bad-soft: #3a2324; --warn: #d9b062; --warn-soft: #362e1c;
   --shadow: none; color-scheme: dark;
 }
 
-.k-hanja { --k: var(--k-hanja); --k-soft: var(--k-hanja-soft); }
 .k-vocab { --k: var(--k-vocab); --k-soft: var(--k-vocab-soft); }
 .k-grammar { --k: var(--k-grammar); --k-soft: var(--k-grammar-soft); }
 .k-expression { --k: var(--k-expression); --k-soft: var(--k-expression-soft); }
@@ -128,25 +122,16 @@ main { max-width: 760px; margin: 0 auto; padding: 16px 16px 48px; }
 .details .hero { text-align: center; padding: 8px 0 18px; border-bottom: 1px solid var(--line); margin-bottom: 16px; }
 .headword { font-size: 2.6rem; font-weight: 650; color: var(--k); letter-spacing: -0.01em; }
 .headword-long { font-size: 1.8rem; }
-.hanja-glyph { font-family: var(--font-hanja); font-size: 6rem; line-height: 1.15; color: var(--k); }
-.hun-eum { font-size: 1.4rem; }
-.hun-eum .eum { font-weight: 700; }
 .meanings { font-size: 1.1rem; color: var(--text); margin-top: 6px; }
 .meta { display: flex; justify-content: center; gap: 12px; color: var(--muted); font-size: .9rem; }
 .subtype { color: var(--k); font-weight: 600; margin: 0; }
-.hanja-text { font-family: var(--font-hanja); color: var(--text-2); font-size: 1.2rem; }
+.hanja-line { margin: 2px 0 0; font-size: .85rem; color: var(--muted); letter-spacing: .08em; font-weight: 400; }
 .literal { color: var(--text-2); font-style: italic; }
 .label { font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-style: normal; margin-right: 6px; }
 .section { margin: 18px 0; }
 .section-head { display: flex; justify-content: space-between; align-items: center; }
 .section-head h3 { margin: 0; }
 .prose { color: var(--text); }
-.breakdown { list-style: none; padding: 0; margin: 0; display: flex; gap: 10px; flex-wrap: wrap; }
-.breakdown li a, .breakdown li > span:first-child { text-decoration: none; color: inherit; }
-.breakdown li { background: var(--k-hanja-soft); border-radius: var(--radius-s); padding: 8px 12px; display: flex; align-items: baseline; gap: 8px; }
-.hanja-small { font-family: var(--font-hanja); font-size: 1.6rem; color: var(--k-hanja); }
-.breakdown .syl { font-weight: 600; }
-.breakdown .gloss { color: var(--text-2); font-size: .85rem; }
 .collocations, .examples, .contrasts { list-style: none; padding: 0; margin: 0; }
 .collocations li { display: flex; flex-direction: column; padding: 8px 0; border-bottom: 1px solid var(--line); }
 .collocations .en, .examples .en { color: var(--text-2); font-size: .95rem; }
@@ -314,10 +299,6 @@ textarea { resize: vertical; }
 .dep.met { color: var(--ok); }
 .dep a { font-weight: 600; }
 .related h3 + * { margin-top: 4px; }
-.rel-group { padding: 8px 0; border-bottom: 1px solid var(--line); }
-.rel-group:last-child { border-bottom: 0; }
-.rel-hanja { display: inline-flex; align-items: baseline; gap: 8px; text-decoration: none; color: var(--text); margin-bottom: 6px; }
-.hanja-inline { font-family: var(--font-hanja); font-size: 1.2em; color: var(--k-hanja); text-transform: none; }
 .rel-list { list-style: none; padding: 0; margin: 0; }
 .rel-list li { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
 .rel-gloss { flex: 1; color: var(--text-2); font-size: .92rem; min-width: 8em; }
@@ -335,7 +316,6 @@ textarea { resize: vertical; }
 .browse-sub { font-size: .8rem; color: var(--text-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .browse-stage { font-size: .7rem; color: var(--muted); }
 
-.breakdown li a { display: flex; align-items: baseline; gap: 8px; }
 
 /* ---- M5: TTS */
 .headword-row { display: flex; align-items: center; justify-content: center; gap: 8px; }
@@ -391,3 +371,31 @@ textarea { resize: vertical; }
 .master h4 { margin: 18px 0 6px; font-size: .95rem; }
 .master textarea { width: 100%; font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace); font-size: .85rem; }
 .master .sessions { margin-top: 10px; }
+
+/* ---- grammar path (separate path, hint ladder, ghosts, #/grammar) */
+.grammar-card .section-head h3 { display: flex; gap: 8px; align-items: baseline; }
+.grammar-row { display: grid; grid-template-columns: 1fr 1fr auto; gap: 12px; align-items: start; margin: 8px 0 4px; }
+.grammar-row .tile-count { font-size: 2.2rem; color: var(--k); margin: 0 0 4px; }
+.grammar-row .tile-note { min-height: 0; font-size: .85rem; }
+.grammar-card .meter { margin-top: 26px; }
+.grammar-card .meter-fill { background: var(--k); }
+@media (max-width: 420px) { .grammar-row { grid-template-columns: 1fr 1fr; } .grammar-row .btn { grid-column: 1 / -1; } }
+.hint-btn { margin-left: auto; }
+.cue-pattern { font-weight: 700; }
+.hint-meaning { color: var(--text-2); font-size: .95rem; margin: 6px 0 4px; font-style: italic; text-align: left; }
+.htsk { font-size: .88rem; margin-top: 14px; }
+.htsk a { color: var(--k-grammar); }
+.stage-list, .pattern-list, .contrast-sets { list-style: none; padding: 0; margin: 0; }
+.stage-list li { display: grid; grid-template-columns: 2.2em 4.5em 1fr 4.2em; gap: 10px; align-items: center; padding: 6px 0; }
+.stage-list li > .small:last-child { text-align: right; }
+.stage-list li.locked { color: var(--muted); }
+.stage-list .mini-meter { position: relative; overflow: visible; }
+.stage-list .mini-meter i { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--text-2); }
+.stage-list .chip-stage, .pattern-row .chip-stage { margin-left: 0; }
+.pattern-row { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 4px 8px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.pattern-row:last-child { border-bottom: 0; }
+.pattern-row .item-link { justify-self: start; padding: 3px 10px; font-size: 1.02rem; }
+.pattern-row .rel-gloss { grid-column: 1 / -1; grid-row: 2; font-size: .85rem; color: var(--text-2); }
+.contrast-sets li { padding: 8px 0; border-bottom: 1px solid var(--line); }
+.contrast-sets li:last-child { border-bottom: 0; }
+.cs-label { display: block; font-size: .85rem; color: var(--text-2); margin-bottom: 6px; }

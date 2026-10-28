@@ -31,9 +31,9 @@ describe('relatedItems', () => {
     assert.deepEqual(relatedItems(I, 'v:덤').byHanja, []);
   });
 
-  test('vocab: implicit hanja-lesson deps are unlockedBy; hanja list what they unlock', () => {
-    assert.deepEqual(relatedItems(I, 'v:결정').unlockedBy, [{ id: 'h:決', require: 'lesson' }, { id: 'h:定', require: 'lesson' }]);
-    assert.deepEqual(relatedItems(I, 'h:定').unlocks, ['v:결정', 'v:안정']);
+  test('hanja are not lesson nodes (D63): no implicit hanja-lesson deps, hanja unlock nothing', () => {
+    assert.deepEqual(relatedItems(I, 'v:결정').unlockedBy, []);
+    assert.deepEqual(relatedItems(I, 'h:定').unlocks, []);
   });
 
   test('hanja: one group listing all of its vocab', () => {

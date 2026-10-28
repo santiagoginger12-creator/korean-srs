@@ -2,7 +2,8 @@ import { describe, test } from 'node:test';
 import assert from 'node:assert/strict';
 import type { ItemId } from '@ksrs/content';
 import {
-  availableLessons, buildContentIndex, computeUnlocks, dueItems, levelProgress, replayAll, type AppEvent, type ItemState,
+  availableLessons, buildContentIndex, computeUnlocks, dailyLessonCap, dueItems, forecast, levelProgress, replayAll, settingPayload,
+  stageCounts, type AppEvent, type ItemState,
 } from '../src/index.ts';
 import { DAY, HOUR } from '../src/util.ts';
 import { advance, answerP, bulkBundle, bundle, device, FIXTURE, hanja, lessonP, passAll, T0, vocab } from './fixtures.ts';
@@ -10,9 +11,39 @@ import { advance, answerP, bulkBundle, bundle, device, FIXTURE, hanja, lessonP, 
 const MP = ['meaning', 'production'] as const;
 const MC = ['meaning', 'cloze'] as const;
 
+/** Legacy mode: `hanja.lessons` on (hanja are lesson nodes again, D12). */
+const HANJA_ON = { 'hanja.lessons': true } as const;
+const hanjaOn = () => device('settings')(settingPayload('hanja.lessons', true), T0 - 1000);
+
 describe('unlocks (§7.3)', () => {
-  test('at start: level 1 open; hanja, deps-free vocab/grammar/expressions unlocked; Sino-Korean vocab waits for hanja', () => {
+  test('default (D63): hanja are never unlocked or offered; Sino-Korean vocab needs no hanja lesson', () => {
     const s = replayAll(FIXTURE, []);
+    assert.equal([...s.unlocked].some((id) => id.startsWith('h:')), false);
+    assert.ok(s.unlocked.has('v:결정'));
+    assert.deepEqual(availableLessons(s.index, s, { path: 'vocab' }), ['v:결정', 'v:망설이다', 'v:결제', 'v:결재', 'v:덤', 'x:눈코-뜰-새-없다']);
+    // Explicit deps on a hanja are dropped too.
+    const b = bundle([hanja('一', 1), vocab('일', 1, { unlockDeps: [{ id: 'h:一', require: 'lesson' }] })]);
+    assert.ok(replayAll(b, []).unlocked.has('v:일'));
+  });
+
+  test('default (D63): old hanja lesson.completed events replay harmlessly and never count', () => {
+    const d = device('d');
+    const log = [d(lessonP('h:決'), T0), d(lessonP('h:定'), T0 + 1), d(lessonP('v:망설이다'), T0 + 2),
+      d(answerP('h:決', 'meaning', 'correct'), T0 + 5 * HOUR)];
+    const s = replayAll(FIXTURE, log);
+    assert.equal(s.items.get('h:決')!.stage, 0);
+    assert.equal(s.unlocked.has('h:決'), false);
+    assert.deepEqual(dueItems(s, T0 + 100 * DAY), ['v:망설이다']);
+    assert.deepEqual(stageCounts(s), { apprentice: 1, guru: 0, master: 0, enlightened: 0, burned: 0 });
+    assert.equal(forecast(s, T0, 168, 'day').reduce((a, b) => a + b.count, 0), 1);
+    const r = dailyLessonCap(s, log, T0 + HOUR, s.settings, 0);
+    assert.equal(r.lessonsDoneToday, 1, 'only the vocab lesson counts');
+    assert.ok(!availableLessons(s.index, s).some((id) => id.startsWith('h:')));
+    assert.equal(levelProgress(s.index, s, 1).gatingTotal, 5); // 4 gating vocab + 1 expression; hanja never gate
+  });
+
+  test('at start: level 1 open; hanja, deps-free vocab/grammar/expressions unlocked; Sino-Korean vocab waits for hanja', () => {
+    const s = replayAll(FIXTURE, [hanjaOn()]);
     assert.equal(s.userLevel, 1);
     assert.deepEqual([...s.unlocked].sort(), ['g:는-바람에', 'h:決', 'h:定', 'v:결재', 'v:결제', 'v:덤', 'v:망설이다', 'x:눈코-뜰-새-없다'].sort());
     assert.equal(s.unlocked.has('v:결정'), false);
@@ -22,9 +53,9 @@ describe('unlocks (§7.3)', () => {
 
   test('hanja lessons unlock their vocab (all referenced hanja required)', () => {
     const d = device('d');
-    const one = replayAll(FIXTURE, [d(lessonP('h:決'), T0)]);
+    const one = replayAll(FIXTURE, [hanjaOn(), d(lessonP('h:決'), T0)]);
     assert.equal(one.unlocked.has('v:결정'), false);
-    const both = replayAll(FIXTURE, [d(lessonP('h:決'), T0), d(lessonP('h:定'), T0 + 1)]);
+    const both = replayAll(FIXTURE, [hanjaOn(), d(lessonP('h:決'), T0), d(lessonP('h:定'), T0 + 1)]);
     assert.equal(both.unlocked.has('v:결정'), true);
   });
 
@@ -61,9 +92,10 @@ describe('unlocks (§7.3)', () => {
     const r89 = computeUnlocks(index, mk(89));
     assert.equal(r89.userLevel, 1);
     assert.equal(r89.unlocked.has('v:lvl2a'), false);
-    const r90 = computeUnlocks(index, mk(90));
+    const r90 = computeUnlocks(index, mk(90), HANJA_ON);
     assert.equal(r90.userLevel, 2);
     assert.ok(r90.unlocked.has('v:lvl2a') && r90.unlocked.has('h:二'));
+    assert.equal(computeUnlocks(index, mk(90)).unlocked.has('h:二'), false);
     assert.deepEqual(levelProgress(index, { items: mk(89) }, 1), { gatingTotal: 100, gatingPassed: 89, threshold: 0.9, unlocksNext: false });
     assert.deepEqual(levelProgress(index, { items: mk(90) }, 1), { gatingTotal: 100, gatingPassed: 90, threshold: 0.9, unlocksNext: true });
   });
@@ -113,9 +145,9 @@ describe('unlocks (§7.3)', () => {
 
   test('availableLessons order: hanja first, then level, kind (vocab, grammar, expression), content order', () => {
     const d = device('d');
-    const s = replayAll(FIXTURE, [d(lessonP('h:定'), T0)]);
+    const s = replayAll(FIXTURE, [hanjaOn(), d(lessonP('h:定'), T0)]);
     assert.deepEqual(availableLessons(s.index, s), ['h:決', 'v:망설이다', 'v:결제', 'v:결재', 'v:덤', 'g:는-바람에', 'x:눈코-뜰-새-없다']);
-    const s2 = replayAll(FIXTURE, [d(lessonP('h:定'), T0), d(lessonP('h:決'), T0)]);
+    const s2 = replayAll(FIXTURE, [hanjaOn(), d(lessonP('h:定'), T0), d(lessonP('h:決'), T0)]);
     assert.deepEqual(availableLessons(s2.index, s2).slice(0, 2), ['v:결정', 'v:망설이다']);
   });
 });
@@ -128,12 +160,12 @@ test('imported non-gating extras interleave 3 curriculum : 2 extras after hanja 
     ...Array.from({ length: 5 }, (_, i) => vocab(`x${i}`, 1, { gating: false, source: imp })),
   ];
   const b = bundle(items);
-  const s = replayAll(b, []);
+  const s = replayAll(b, [hanjaOn()]);
   const order = availableLessons(s.index, s);
   assert.deepEqual(order, [
     'h:一', 'v:c0', 'v:c1', 'v:c2', 'v:x0', 'v:x1', 'v:c3', 'v:c4', 'v:c5', 'v:x2', 'v:x3', 'v:x4',
   ]);
   // With no extras the order is unchanged.
-  const plain = replayAll(bundle(items.slice(0, 7)), []);
+  const plain = replayAll(bundle(items.slice(0, 7)), [hanjaOn()]);
   assert.deepEqual(availableLessons(plain.index, plain), ['h:一', 'v:c0', 'v:c1', 'v:c2', 'v:c3', 'v:c4', 'v:c5']);
 });

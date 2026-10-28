@@ -13,10 +13,9 @@ export const OVERRIDE_STEP = 5;
 export interface LessonOverride { dayStart: number; extra: number }
 
 export interface LessonPlan {
-  /** Lessons the user may take now, in engine order (hanja are never capped). */
+  /** Lessons the user may take now, in engine order. Hanja are never lessons in the app (D63). */
   queue: ItemId[];
-  hanjaAvailable: number;
-  /** Non-hanja lessons unlocked (before the cap). */
+  /** Lessons unlocked (before the cap). */
   otherAvailable: number;
   /** Non-hanja lessons still allowed now = max(0, limit − lessons done today). */
   allowance: number;
@@ -50,17 +49,15 @@ export function planLessons(s: DerivedState, events: readonly AppEvent[], now: n
   const allowance = Math.max(0, limit - report.lessonsDoneToday);
   const all = availableLessons(s.index, s, separateGrammar(s) ? { path: 'vocab' } : {});
   const queue: ItemId[] = [];
-  let hanjaAvailable = 0;
   let otherAvailable = 0;
-  let others = 0;
   for (const id of all) {
     const it = s.index.byId.get(id);
-    if (!it) continue;
-    if (it.kind === 'hanja') { hanjaAvailable++; queue.push(id); continue; }
+    // The UI has no hanja lessons (D63); even with the engine's `hanja.lessons` rollback on, they're skipped here.
+    if (!it || it.kind === 'hanja') continue;
     otherAvailable++;
-    if (others < allowance) { queue.push(id); others++; }
+    if (queue.length < allowance) queue.push(id);
   }
-  return { queue, hanjaAvailable, otherAvailable, allowance, baseLimit, limit, overrideExtra, report };
+  return { queue, otherAvailable, allowance, baseLimit, limit, overrideExtra, report };
 }
 
 /**

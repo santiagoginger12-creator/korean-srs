@@ -22,6 +22,8 @@ export interface ExtraSettings {
   'grammar.dailyLessons': number;
   /** Grammar paced on its own path (stages, lessons, allowance). false = the pre-split combined behaviour. */
   'grammar.separatePath': boolean;
+  /** Hanja as lesson nodes (the old WaniKani-style radicals layer). Off by default (D63). */
+  'hanja.lessons': boolean;
 }
 export type AppSettings = Settings & ExtraSettings;
 export type AppSettingKey = keyof AppSettings;
@@ -33,6 +35,7 @@ export const EXTRA_SETTING_DEFAULTS: Readonly<ExtraSettings> = Object.freeze({
   'tts.voiceURI': '',
   'grammar.dailyLessons': 3,
   'grammar.separatePath': true,
+  'hanja.lessons': false,
 });
 
 export function defaultAppSettings(): AppSettings {
@@ -52,6 +55,7 @@ export function coerceAppSetting(key: string, value: unknown): unknown {
     case 'tts.voiceURI': return typeof value === 'string' && value.length <= 512 ? value : undefined;
     case 'grammar.dailyLessons': return typeof value === 'number' && Number.isInteger(value) && value >= 0 && value <= 50 ? value : undefined;
     case 'grammar.separatePath': return typeof value === 'boolean' ? value : undefined;
+    case 'hanja.lessons': return typeof value === 'boolean' ? value : undefined;
     default: return coerceSetting(key as SettingKey, value);
   }
 }

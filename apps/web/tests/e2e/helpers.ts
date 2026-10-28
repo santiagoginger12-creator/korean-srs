@@ -83,9 +83,9 @@ export async function answerAllCorrectly(page: Page, b: Bundle, doneTestId: stri
   throw new Error('session never finished');
 }
 
-/** Teach pages → quiz → finish. Returns the item ids of the batch. */
-export async function doLessonBatch(page: Page, b: Bundle): Promise<string[]> {
-  await page.getByTestId('start-lessons').click();
+/** Teach pages → quiz → finish. Returns the item ids of the batch. `grammar` uses the Grammar card's button. */
+export async function doLessonBatch(page: Page, b: Bundle, path: 'vocab' | 'grammar' = 'vocab'): Promise<string[]> {
+  await page.getByTestId(path === 'grammar' ? 'start-grammar-lessons' : 'start-lessons').click();
   const ids: string[] = [];
   for (let guard = 0; guard < 50; guard++) {
     const lp = page.getByTestId('lesson-page');
@@ -101,6 +101,17 @@ export async function doLessonBatch(page: Page, b: Bundle): Promise<string[]> {
   }
   await expect(page.getByTestId('lessons-done')).toBeVisible();
   return ids;
+}
+
+/** Learns every lesson on offer on both paths (pressing "+5 anyway" for vocab when capped). */
+export async function learnAllLessons(page: Page, b: Bundle): Promise<void> {
+  for (let i = 0; i < 8; i++) {
+    await goHome(page);
+    if (Number(await page.getByTestId('grammar-lessons-count').innerText()) > 0) { await doLessonBatch(page, b, 'grammar'); continue; }
+    if (await page.getByTestId('lessons-override').isVisible()) await page.getByTestId('lessons-override').click();
+    if (Number(await page.getByTestId('lessons-count').innerText()) === 0) return;
+    await doLessonBatch(page, b);
+  }
 }
 
 export async function readEvents(page: Page): Promise<any[]> {
