@@ -1,0 +1,2260 @@
+[
+  {
+    "id": "v:가혹하다",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["sino-korean", "freq:6477"],
+    "word": "가혹하다",
+    "meanings": ["harsh, cruel (treatment or conditions)", "severe, punishing"],
+    "pos": "형용사",
+    "register": "neutral",
+    "hanjaBreakdown": [{"syllable": "가", "hanja": "苛"}, {"syllable": "혹", "hanja": "酷"}],
+    "collocations": [
+      {"ko": "가혹한 처벌", "en": "harsh punishment"},
+      {"ko": "가혹 행위", "en": "cruel treatment, abuse"},
+      {"ko": "가혹한 운명", "en": "a cruel fate"}
+    ],
+    "examples": [
+      {
+        "ko": "신입한테 그런 일을 혼자 다 맡기는 건 너무 가혹하잖아요.",
+        "en": "Leaving all that to a new hire alone is way too harsh.",
+        "register": "spoken"
+      },
+      {
+        "ko": "군대 내 가혹 행위를 근절하기 위한 대책이 발표되었다.",
+        "en": "Measures to root out abuse in the military were announced.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {"accepted": ["harsh", "cruel", "severe", "brutal", "punishing", "merciless", "draconian", "hard"]},
+      "production": {
+        "promptEn": "harsh, cruel (treatment, punishment, conditions)",
+        "contextHint": "done to someone; an indifferent world is 냉혹하다",
+        "accepted": ["가혹하다"]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "실수 한 번에 해고라니, 그건 너무 {{}} 처사다.",
+          "en": "Firing someone over a single mistake is far too harsh.",
+          "cue": "가혹하다 · harsh",
+          "accepted": ["가혹한"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:누리다",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["native", "freq:6496"],
+    "word": "누리다",
+    "meanings": ["to enjoy (benefits, freedom, popularity)", "to live in (prosperity)"],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {"ko": "자유를 누리다", "en": "to enjoy freedom"},
+      {"ko": "인기를 누리다", "en": "to enjoy popularity"},
+      {"ko": "혜택을 누리다", "en": "to enjoy benefits"}
+    ],
+    "examples": [
+      {
+        "ko": "그 드라마는 해외에서도 큰 인기를 누렸다.",
+        "en": "The drama enjoyed huge popularity overseas too.",
+        "register": "written"
+      },
+      {
+        "ko": "은퇴하고 나서야 비로소 여유를 누리고 있어요.",
+        "en": "Only now that I've retired am I finally enjoying some free time.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": ["enjoy", "have", "benefit from", "savor", "revel in", "possess", "savour", "to live in (prosperity)"]
+      },
+      "production": {
+        "promptEn": "to enjoy (a benefit, freedom, or popularity one has)",
+        "contextHint": "native verb; having fun at a party is 즐기다",
+        "accepted": ["누리다"],
+        "rejected": ["즐기다"]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "지금 우리가 {{}} 자유는 앞 세대의 희생 덕분이다.",
+          "en": "The freedom we enjoy today was won by the sacrifices of the generation before us.",
+          "cue": "누리다 · enjoy",
+          "accepted": ["누리는"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:은폐하다",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["sino-korean", "freq:6496"],
+    "word": "은폐하다",
+    "meanings": ["to cover up, conceal (wrongdoing or facts)", "to hush up"],
+    "pos": "동사",
+    "register": "neutral",
+    "hanjaBreakdown": [{"syllable": "은", "hanja": "隱"}, {"syllable": "폐", "hanja": "蔽"}],
+    "collocations": [
+      {"ko": "사실을 은폐하다", "en": "to cover up the facts"},
+      {"ko": "은폐 의혹", "en": "cover-up allegations"},
+      {"ko": "증거를 은폐하다", "en": "to conceal evidence"}
+    ],
+    "examples": [
+      {
+        "ko": "회사는 사고 사실을 은폐하려다 오히려 일을 키웠다.",
+        "en": "The company tried to cover up the accident and only made things worse.",
+        "register": "written"
+      },
+      {
+        "ko": "그런 걸 숨기면 은폐가 되는 거예요. 그냥 솔직하게 말하세요.",
+        "en": "If you hide that, it becomes a cover-up. Just be upfront about it.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {"accepted": ["cover up", "conceal", "hide", "hush up", "suppress", "whitewash", "sweep under the rug"]},
+      "production": {
+        "promptEn": "to cover up (wrongdoing, an accident, evidence)",
+        "contextHint": "news register; everyday hiding is 숨기다",
+        "accepted": ["은폐하다"]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "경찰은 조직적으로 사건을 {{}} 의혹을 받고 있다.",
+          "en": "Police are suspected of an organized effort to cover up the incident.",
+          "cue": "은폐하다 · cover up",
+          "accepted": ["은폐하려 한", "은폐한", "은폐하려는"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:눈살",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["native", "freq:6501"],
+    "word": "눈살",
+    "meanings": ["the furrow between the brows", "(___을 찌푸리다) to frown in disapproval"],
+    "pos": "명사",
+    "register": "neutral",
+    "collocations": [
+      {"ko": "눈살을 찌푸리다", "en": "to frown"},
+      {"ko": "눈살이 찌푸려지다", "en": "to make one wince"},
+      {"ko": "눈살을 찌푸리게 하다", "en": "to draw frowns"}
+    ],
+    "examples": [
+      {
+        "ko": "지하철에서 큰 소리로 통화하는 사람 때문에 다들 눈살을 찌푸렸다.",
+        "en": "Everyone frowned at the person talking loudly on the phone on the subway.",
+        "register": "written"
+      },
+      {
+        "ko": "관광지에 쓰레기 버리고 가는 거 보면 눈살이 찌푸려져요.",
+        "en": "Seeing people leave trash at tourist spots makes me wince.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": ["frown", "brow", "furrowed brow", "scowl", "frowning", "knitted brows", "the furrow between the brows"]
+      },
+      "production": {
+        "promptEn": "the furrow between the brows (___을 찌푸리다, \"to frown in disapproval\")",
+        "contextHint": "native noun",
+        "accepted": ["눈살"]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "일부 관람객의 무례한 행동이 {{}}을 찌푸리게 했다.",
+          "en": "Some visitors' rude behavior drew frowns.",
+          "cue": "눈살 · frown",
+          "accepted": ["눈살"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:눈여겨보다",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["native", "freq:6502"],
+    "word": "눈여겨보다",
+    "meanings": ["to watch closely, take careful note of", "to keep an eye on (someone promising)"],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {"ko": "유심히 눈여겨보다", "en": "to watch carefully"},
+      {"ko": "눈여겨볼 만하다", "en": "to be worth noting"},
+      {"ko": "눈여겨보던 신인", "en": "a newcomer one had one's eye on"}
+    ],
+    "examples": [
+      {
+        "ko": "감독은 그 선수를 고등학교 때부터 눈여겨봤다고 한다.",
+        "en": "The coach says he had his eye on that player since high school.",
+        "register": "written"
+      },
+      {
+        "ko": "이번 발표에서 눈여겨볼 부분은 가격이에요.",
+        "en": "The part of this announcement worth noting is the price.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": [
+          "watch closely",
+          "take note of",
+          "keep an eye on",
+          "observe carefully",
+          "pay attention to",
+          "notice",
+          "scrutinize",
+          "have one's eye on"
+        ]
+      },
+      "production": {
+        "promptEn": "to watch closely, take careful note of",
+        "contextHint": "one word; native compound",
+        "accepted": ["눈여겨보다"]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "면접관들은 지원자의 태도를 특히 {{}}.",
+          "en": "The interviewers paid particular attention to the applicants' attitude.",
+          "cue": "눈여겨보다 · watch closely",
+          "accepted": ["눈여겨봤다", "눈여겨보았다"],
+          "nearMiss": [{"answer": "눈여겨 봤다", "hint": "눈여겨보다 is one word: no space."}],
+          "particleTolerance": "none",
+          "spacingStrict": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:눈총",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["freq:6504"],
+    "word": "눈총",
+    "meanings": ["a dirty look, a glare", "(___을 받다) to be frowned upon"],
+    "pos": "명사",
+    "register": "neutral",
+    "collocations": [
+      {"ko": "눈총을 받다", "en": "to get dirty looks"},
+      {"ko": "눈총을 주다", "en": "to glare at"},
+      {"ko": "따가운 눈총", "en": "withering looks"}
+    ],
+    "examples": [
+      {
+        "ko": "도서관에서 과자 먹다가 주변 사람들 눈총을 받았어요.",
+        "en": "I was eating snacks in the library and got dirty looks from everyone around me.",
+        "register": "spoken"
+      },
+      {
+        "ko": "그 업체는 과대 포장으로 소비자들의 따가운 눈총을 받았다.",
+        "en": "The company drew withering looks from consumers over excessive packaging.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": ["dirty look", "glare", "disapproving look", "scowl", "evil eye", "stare", "dirty looks", "withering look"]
+      },
+      "production": {
+        "promptEn": "a dirty look, a glare (___을 받다, \"to get dirty looks\")",
+        "contextHint": "a look shot like a bullet (총)",
+        "accepted": ["눈총"]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "그는 회의 중에 휴대폰 게임을 하다가 상사의 {{}}을 받았다.",
+          "en": "He got a glare from his boss for playing a phone game during the meeting.",
+          "cue": "눈총 · dirty look",
+          "accepted": ["눈총", "눈치"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:뉘우치다",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["native", "freq:6506"],
+    "word": "뉘우치다",
+    "meanings": ["to repent, regret (one's wrongdoing)", "to feel remorse"],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {"ko": "잘못을 뉘우치다", "en": "to repent of one's wrongs"},
+      {"ko": "깊이 뉘우치다", "en": "to be deeply remorseful"},
+      {"ko": "뉘우치는 기색", "en": "signs of remorse"}
+    ],
+    "examples": [
+      {
+        "ko": "재판부는 피고인이 잘못을 깊이 뉘우치고 있다는 점을 참작했다.",
+        "en": "The court took into account that the defendant was deeply remorseful.",
+        "register": "written"
+      },
+      {"ko": "혼나고 나서 진심으로 뉘우치는 것 같더라고요.", "en": "After getting scolded, he seemed truly sorry.", "register": "spoken"}
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {"accepted": ["repent", "regret", "feel remorse", "be remorseful", "be penitent", "be sorry", "rue", "atone"]},
+      "production": {
+        "promptEn": "to repent, feel remorse (for a moral wrong)",
+        "contextHint": "native verb; regretting a choice is 후회하다",
+        "accepted": ["뉘우치다"],
+        "rejected": ["후회하다"]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "그는 법정에서 끝까지 자신의 잘못을 {{}} 않았다.",
+          "en": "In court he showed no remorse for what he had done, to the very end.",
+          "cue": "뉘우치다 · repent",
+          "accepted": ["뉘우치지"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:늘어뜨리다",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["native", "freq:6508"],
+    "word": "늘어뜨리다",
+    "meanings": ["to let hang down, dangle", "to let (hair) fall loose"],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {"ko": "머리를 늘어뜨리다", "en": "to let one's hair hang down"},
+      {"ko": "팔을 늘어뜨리다", "en": "to let one's arms dangle"},
+      {"ko": "커튼을 늘어뜨리다", "en": "to let a curtain hang"}
+    ],
+    "examples": [
+      {
+        "ko": "그녀는 긴 머리를 어깨 아래로 늘어뜨리고 있었다.",
+        "en": "She wore her long hair loose below her shoulders.",
+        "register": "written"
+      },
+      {
+        "ko": "강아지가 혀를 길게 늘어뜨리고 헥헥거려요.",
+        "en": "The puppy is panting with its tongue hanging way out.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": [
+          "let hang",
+          "dangle",
+          "let hang down",
+          "hang down",
+          "drape",
+          "let fall",
+          "droop",
+          "let down",
+          "to let (hair) fall loose"
+        ]
+      },
+      "production": {
+        "promptEn": "to let hang down, dangle (hair, arms, a rope)",
+        "contextHint": "native verb; 늘어지다 is the intransitive \"sag\"",
+        "accepted": ["늘어뜨리다"],
+        "rejected": ["늘어지다"]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "창문 밖으로 밧줄을 {{}} 아래층으로 내려갔다.",
+          "en": "He let a rope dangle out the window and climbed down to the floor below.",
+          "cue": "늘어뜨리다 · let hang",
+          "accepted": ["늘어뜨리고", "늘어뜨려"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:늠름하다",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["sino-korean", "freq:6509"],
+    "word": "늠름하다",
+    "meanings": ["dashing, gallant", "commanding, imposing (in bearing)"],
+    "pos": "형용사",
+    "register": "neutral",
+    "hanjaBreakdown": [{"syllable": "늠", "hanja": "凜"}, {"syllable": "름", "hanja": "凜"}],
+    "collocations": [
+      {"ko": "늠름한 모습", "en": "a dashing figure"},
+      {"ko": "늠름하게 서다", "en": "to stand tall"},
+      {"ko": "늠름한 군인", "en": "a gallant soldier"}
+    ],
+    "examples": [
+      {"ko": "군복 입은 아들 모습이 정말 늠름하더라고요.", "en": "My son looked so dashing in his uniform.", "register": "spoken"},
+      {
+        "ko": "입장하는 선수단의 늠름한 모습에 관중은 큰 박수를 보냈다.",
+        "en": "The crowd applauded the team as they marched in, looking tall and proud.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": ["dashing", "gallant", "imposing", "commanding", "valiant", "dignified", "stately", "majestic", "manly"]
+      },
+      "production": {
+        "promptEn": "dashing, gallant (bearing that commands respect)",
+        "contextHint": "said of people (and animals) standing tall",
+        "accepted": ["늠름하다"]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "훈련을 마친 신병들의 모습이 {{}} 보였다.",
+          "en": "Fresh from training, the new recruits looked dashing.",
+          "cue": "늠름하다 · dashing",
+          "accepted": ["늠름해", "늠름하게"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:능통하다",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["sino-korean", "freq:6513"],
+    "word": "능통하다",
+    "meanings": ["fluent, proficient (in a language)", "well versed (in a field)"],
+    "pos": "형용사",
+    "register": "neutral",
+    "hanjaBreakdown": [{"syllable": "능", "hanja": "能"}, {"syllable": "통", "hanja": "通"}],
+    "collocations": [
+      {"ko": "외국어에 능통하다", "en": "to be fluent in a foreign language"},
+      {"ko": "3개 국어에 능통하다", "en": "to be fluent in three languages"},
+      {"ko": "실무에 능통하다", "en": "to be well versed in practice"}
+    ],
+    "examples": [
+      {
+        "ko": "영어와 중국어에 능통한 분을 찾고 있어요.",
+        "en": "We're looking for someone fluent in English and Chinese.",
+        "register": "spoken"
+      },
+      {
+        "ko": "그는 법률과 회계에 모두 능통한 드문 인재다.",
+        "en": "He is a rare talent, well versed in both law and accounting.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {"accepted": ["fluent", "proficient", "well versed", "skilled", "expert", "conversant", "adept", "versed"]},
+      "production": {
+        "promptEn": "fluent, proficient (in a language or field: ~에 ___)",
+        "contextHint": "résumés and job ads",
+        "accepted": ["능통하다"]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "지원 자격: 영어에 {{}} 자.",
+          "en": "Qualifications: fluency in English.",
+          "cue": "능통하다 · fluent",
+          "accepted": ["능통한"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:다분히",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["sino-korean", "freq:6521"],
+    "word": "다분히",
+    "meanings": ["quite, to a large degree", "very much (likely, intentional)"],
+    "pos": "부사",
+    "register": "neutral",
+    "hanjaBreakdown": [{"syllable": "다", "hanja": "多"}, {"syllable": "분", "hanja": "分"}],
+    "collocations": [
+      {"ko": "다분히 의도적이다", "en": "to be largely intentional"},
+      {"ko": "다분히 감정적이다", "en": "to be rather emotional"},
+      {"ko": "다분히 정치적", "en": "very much political"}
+    ],
+    "examples": [
+      {"ko": "그 발언은 다분히 의도적이었다고 봐요.", "en": "I think that remark was very much intentional.", "register": "spoken"},
+      {
+        "ko": "이번 인사는 다분히 정치적인 고려에 따른 것으로 보인다.",
+        "en": "This round of appointments appears to have been driven largely by political considerations.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": ["quite", "largely", "considerably", "very much", "to a large extent", "rather", "decidedly", "highly"]
+      },
+      "production": {
+        "promptEn": "quite, to a large degree (___ 의도적, ___ 정치적)",
+        "contextHint": "mostly before a judgment word ending in -적",
+        "accepted": ["다분히"]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "그의 해명은 {{}} 변명처럼 들렸다.",
+          "en": "His explanation sounded very much like an excuse.",
+          "cue": "다분히 · very much",
+          "accepted": ["다분히"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:다시금",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["native", "freq:6522"],
+    "word": "다시금",
+    "meanings": ["once again, anew", "afresh"],
+    "pos": "부사",
+    "register": "written",
+    "collocations": [
+      {"ko": "다시금 깨닫다", "en": "to realize anew"},
+      {"ko": "다시금 확인하다", "en": "to confirm once again"},
+      {"ko": "다시금 떠올리다", "en": "to recall once more"}
+    ],
+    "examples": [
+      {
+        "ko": "이번 일로 가족의 소중함을 다시금 깨달았다.",
+        "en": "This experience made me realize once again how precious family is.",
+        "register": "written"
+      },
+      {
+        "ko": "오랜만에 그 노래를 들으니 그때 기억이 다시금 떠오르네요.",
+        "en": "Hearing that song after so long brings those memories back again.",
+        "register": "neutral"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {"accepted": ["once again", "anew", "afresh", "once more", "again"]},
+      "production": {
+        "promptEn": "once again, anew (emphatic, literary 다시)",
+        "contextHint": "native adverb; essays and speeches",
+        "accepted": ["다시금"]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "그 사고는 안전의 중요성을 {{}} 일깨워 주었다.",
+          "en": "The accident reminded us once again how important safety is.",
+          "cue": "다시금 · once again",
+          "accepted": ["다시금", "다시 한번"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:다짜고짜",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": true,
+    "tags": ["native", "freq:6527"],
+    "word": "다짜고짜",
+    "meanings": ["without asking or explaining first", "barging in, point-blank"],
+    "pos": "부사",
+    "register": "neutral",
+    "collocations": [
+      {"ko": "다짜고짜 화를 내다", "en": "to blow up without asking what happened"},
+      {"ko": "다짜고짜 따지다", "en": "to lay into someone straightaway"},
+      {"ko": "다짜고짜 들이닥치다", "en": "to barge in"}
+    ],
+    "examples": [
+      {
+        "ko": "사정도 안 듣고 다짜고짜 소리부터 지르면 어떡해요?",
+        "en": "How can you start yelling without even hearing what happened?",
+        "register": "spoken"
+      },
+      {
+        "ko": "낯선 남자가 다짜고짜 사무실로 들어와 사장을 찾았다.",
+        "en": "A strange man barged into the office and demanded to see the boss.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": [
+          "without asking",
+          "without explanation",
+          "point-blank",
+          "abruptly",
+          "without warning",
+          "out of the blue",
+          "just like that",
+          "without a word",
+          "without asking or explaining first"
+        ]
+      },
+      "production": {
+        "promptEn": "without asking or explaining first (charging straight in)",
+        "contextHint": "native adverb; skips the questions. 대뜸 is just \"right off the bat\"",
+        "accepted": ["다짜고짜"],
+        "rejected": ["대뜸"]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "전화를 받자마자 그는 {{}} 욕부터 했다.",
+          "en": "The moment I picked up, he started cursing at me without so much as a hello.",
+          "cue": "다짜고짜 · without asking first",
+          "accepted": ["다짜고짜", "대뜸"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:다채롭다",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["sino-korean", "freq:6528"],
+    "word": "다채롭다",
+    "meanings": ["varied, colorful (a program or range)", "rich and diverse"],
+    "pos": "형용사",
+    "register": "neutral",
+    "hanjaBreakdown": [{"syllable": "다", "hanja": "多"}, {"syllable": "채", "hanja": "彩"}],
+    "collocations": [
+      {"ko": "다채로운 행사", "en": "a varied program of events"},
+      {"ko": "다채로운 볼거리", "en": "all kinds of attractions"},
+      {"ko": "다채롭게 꾸미다", "en": "to put together a rich lineup"}
+    ],
+    "examples": [
+      {
+        "ko": "이번 축제에는 공연, 체험, 먹거리 등 다채로운 프로그램이 마련됐다.",
+        "en": "The festival has a varied lineup, from performances and hands-on activities to food.",
+        "register": "written"
+      },
+      {
+        "ko": "메뉴가 생각보다 다채로워서 고르기 힘들었어요.",
+        "en": "The menu was more varied than I expected, so it was hard to choose.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": [
+          "varied",
+          "colorful",
+          "diverse",
+          "rich",
+          "multifaceted",
+          "wide-ranging",
+          "eclectic",
+          "colourful",
+          "rich and diverse"
+        ]
+      },
+      "production": {
+        "promptEn": "varied, colorful (a program, a lineup, a range of activities)",
+        "contextHint": "ㅂ-irregular: 다채로운",
+        "accepted": ["다채롭다"]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "연말을 맞아 시청 광장에서 {{}} 행사가 열린다.",
+          "en": "A varied program of events will be held in City Hall Plaza to mark the end of the year.",
+          "cue": "다채롭다 · varied",
+          "accepted": ["다채로운"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:단념",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["sino-korean", "freq:6535"],
+    "word": "단념",
+    "meanings": ["giving up (on a hope or plan)", "abandonment, resignation"],
+    "pos": "명사",
+    "register": "neutral",
+    "hanjaBreakdown": [{"syllable": "단", "hanja": "斷"}, {"syllable": "념", "hanja": "念"}],
+    "collocations": [
+      {"ko": "단념하다", "en": "to give up"},
+      {"ko": "꿈을 단념하다", "en": "to give up on a dream"},
+      {"ko": "쉽게 단념하지 않다", "en": "to not give up easily"}
+    ],
+    "examples": [
+      {
+        "ko": "비자 문제 때문에 유학을 단념할 수밖에 없었다.",
+        "en": "Because of visa problems, I had no choice but to give up on studying abroad.",
+        "register": "written"
+      },
+      {
+        "ko": "그렇게 쉽게 단념하지 말고 한 번만 더 해 봐요.",
+        "en": "Don't give up so easily. Give it one more try.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {"accepted": ["giving up", "abandonment", "resignation", "renunciation", "relinquishment", "give up"]},
+      "production": {
+        "promptEn": "giving up (on a hope or plan: ___하다)",
+        "contextHint": "a decision to stop; 체념 is resigned acceptance",
+        "accepted": ["단념"],
+        "rejected": ["체념"]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "그는 부상 때문에 선수 생활을 {{}}했다.",
+          "en": "Because of his injury, he gave up his playing career.",
+          "cue": "단념 · giving up",
+          "accepted": ["단념", "포기"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:단란하다",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["sino-korean", "freq:6537"],
+    "word": "단란하다",
+    "meanings": ["(a family) close and happy, harmonious", "cozy, convivial"],
+    "pos": "형용사",
+    "register": "neutral",
+    "hanjaBreakdown": [{"syllable": "단", "hanja": "團"}, {"syllable": "란", "hanja": "欒"}],
+    "collocations": [
+      {"ko": "단란한 가정", "en": "a happy home"},
+      {"ko": "단란한 한때", "en": "a cozy moment together"},
+      {"ko": "단란하게 지내다", "en": "to live together happily"}
+    ],
+    "examples": [
+      {
+        "ko": "그 사진 속 가족은 정말 단란해 보였다.",
+        "en": "The family in that photo looked truly happy together.",
+        "register": "written"
+      },
+      {
+        "ko": "주말마다 가족끼리 단란하게 저녁 먹는 게 저희 집 전통이에요.",
+        "en": "Having a cozy family dinner every weekend is a tradition in our house.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {"accepted": ["harmonious", "happy", "close-knit", "cozy", "convivial", "warm", "close", "cosy"]},
+      "production": {"promptEn": "(a family) close and happy together", "contextHint": "set phrase: ___한 가정", "accepted": ["단란하다"]},
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "그는 평범하지만 {{}} 가정을 꾸리는 게 꿈이었다.",
+          "en": "His dream was to make an ordinary but happy home.",
+          "cue": "단란하다 · close and happy",
+          "accepted": ["단란한"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:단연",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["sino-korean", "freq:6543"],
+    "word": "단연",
+    "meanings": ["by far, hands down", "decidedly, without question"],
+    "pos": "부사",
+    "register": "neutral",
+    "hanjaBreakdown": [{"syllable": "단", "hanja": "斷"}, {"syllable": "연", "hanja": "然"}],
+    "collocations": [
+      {"ko": "단연 돋보이다", "en": "to stand out by far"},
+      {"ko": "단연 최고", "en": "the best by far"},
+      {"ko": "단연 1위", "en": "first place hands down"}
+    ],
+    "examples": [
+      {
+        "ko": "이번 시즌 최고의 선수는 단연 그 신인이다.",
+        "en": "The best player this season is, without question, that rookie.",
+        "register": "written"
+      },
+      {
+        "ko": "제가 먹어 본 짜장면 중에 여기가 단연 최고예요.",
+        "en": "Of all the jajangmyeon I've had, this place is the best by far.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": ["by far", "hands down", "decidedly", "without question", "clearly", "undoubtedly", "easily", "definitely"]
+      },
+      "production": {
+        "promptEn": "by far, hands down (clearly the top)",
+        "contextHint": "단연코 is the emphatic \"absolutely\"",
+        "accepted": ["단연"]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "여러 후보작 가운데 그 작품이 {{}} 눈에 띄었다.",
+          "en": "Among the many nominated works, that one stood out by far.",
+          "cue": "단연 · by far",
+          "accepted": ["단연", "단연코"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:단호하다",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["sino-korean", "freq:6549"],
+    "word": "단호하다",
+    "meanings": ["firm, resolute", "decisive, unwavering"],
+    "pos": "형용사",
+    "register": "neutral",
+    "hanjaBreakdown": [{"syllable": "단", "hanja": "斷"}, {"syllable": "호", "hanja": "乎"}],
+    "collocations": [
+      {"ko": "단호한 태도", "en": "a firm stance"},
+      {"ko": "단호하게 거절하다", "en": "to refuse flatly"},
+      {"ko": "단호히 대처하다", "en": "to deal with resolutely"}
+    ],
+    "examples": [
+      {"ko": "싫으면 싫다고 단호하게 말해야 돼요.", "en": "If you don't want to, you have to say no firmly.", "register": "spoken"},
+      {
+        "ko": "정부는 불법 행위에 대해 단호히 대처하겠다고 밝혔다.",
+        "en": "The government said it would deal firmly with illegal acts.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": ["firm", "resolute", "decisive", "unwavering", "determined", "adamant", "flat", "firmly", "unyielding"]
+      },
+      "production": {"promptEn": "firm, resolute (a stance or refusal)", "accepted": ["단호하다"]},
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "그녀는 부당한 요구를 {{}} 거절했다.",
+          "en": "She flatly refused the unreasonable demand.",
+          "cue": "단호하다 · firmly",
+          "accepted": ["단호하게", "단호히"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:답례",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["sino-korean", "freq:6553"],
+    "word": "답례",
+    "meanings": ["a return gesture, something given in return", "a thank-you (gift)"],
+    "pos": "명사",
+    "register": "neutral",
+    "hanjaBreakdown": [{"syllable": "답", "hanja": "答"}, {"syllable": "례", "hanja": "禮"}],
+    "collocations": [
+      {"ko": "답례로", "en": "in return"},
+      {"ko": "답례품", "en": "a return gift, wedding favor"},
+      {"ko": "답례를 하다", "en": "to reciprocate"}
+    ],
+    "examples": [
+      {"ko": "결혼식 답례품으로 수건을 준비했어요.", "en": "We got towels as favors for the wedding guests.", "register": "spoken"},
+      {
+        "ko": "그는 도움을 받은 데 대한 답례로 마을에 도서관을 지어 주었다.",
+        "en": "In return for the help he had received, he built a library for the village.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": [
+          "return gesture",
+          "something in return",
+          "return gift",
+          "thank-you gift",
+          "reciprocation",
+          "in return",
+          "favor",
+          "favour",
+          "a thank-you (gift)"
+        ]
+      },
+      "production": {
+        "promptEn": "something given in return (a thank-you gift or gesture)",
+        "contextHint": "___로, ___품",
+        "accepted": ["답례"]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "이사 떡을 돌렸더니 이웃이 {{}}로 과일을 보내 주셨다.",
+          "en": "We handed out housewarming rice cakes, and a neighbor sent fruit in return.",
+          "cue": "답례 · in return",
+          "accepted": ["답례"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:당부",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["sino-korean", "freq:6561"],
+    "word": "당부",
+    "meanings": ["an earnest request, a word of advice (to do or not do)", "an exhortation"],
+    "pos": "명사",
+    "register": "neutral",
+    "hanjaBreakdown": [{"syllable": "당", "hanja": "當"}, {"syllable": "부", "hanja": "付"}],
+    "collocations": [
+      {"ko": "당부하다", "en": "to urge, ask earnestly"},
+      {"ko": "당부의 말씀", "en": "a few words of advice"},
+      {"ko": "거듭 당부하다", "en": "to urge again and again"}
+    ],
+    "examples": [
+      {
+        "ko": "어머니는 떠나는 아들에게 밥 잘 챙겨 먹으라고 몇 번이고 당부했다.",
+        "en": "His mother told her departing son again and again to make sure he ate properly.",
+        "register": "written"
+      },
+      {
+        "ko": "마지막으로 당부드릴 말씀은 안전에 각별히 유의해 달라는 겁니다.",
+        "en": "My last request is that you take special care to stay safe.",
+        "register": "formal"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": ["earnest request", "request", "advice", "exhortation", "urging", "entreaty", "word of advice", "injunction"]
+      },
+      "production": {
+        "promptEn": "an earnest request, a word of advice (to do or not do something)",
+        "contextHint": "from an elder or one in charge: ___하다",
+        "accepted": ["당부"]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "선생님은 졸업생들에게 건강을 잘 챙기라고 {{}}하셨다.",
+          "en": "The teacher urged the graduates to look after their health.",
+          "cue": "당부 · earnest request",
+          "accepted": ["당부"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:대거",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["sino-korean", "freq:6565"],
+    "word": "대거",
+    "meanings": ["en masse, in large numbers", "wholesale"],
+    "pos": "부사",
+    "register": "neutral",
+    "hanjaBreakdown": [{"syllable": "대", "hanja": "大"}, {"syllable": "거", "hanja": "擧"}],
+    "collocations": [
+      {"ko": "대거 참여하다", "en": "to participate in droves"},
+      {"ko": "대거 탈락하다", "en": "to be eliminated en masse"},
+      {"ko": "대거 영입하다", "en": "to recruit in bulk"}
+    ],
+    "examples": [
+      {
+        "ko": "이번 선거에는 신인 후보들이 대거 출마했다.",
+        "en": "New candidates ran in large numbers in this election.",
+        "register": "written"
+      },
+      {
+        "ko": "세일 소식 듣고 손님들이 대거 몰려왔어요.",
+        "en": "Customers flocked in droves when they heard about the sale.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": [
+          "en masse",
+          "in large numbers",
+          "in droves",
+          "wholesale",
+          "massively",
+          "in bulk",
+          "in great numbers",
+          "in force"
+        ]
+      },
+      "production": {
+        "promptEn": "en masse, in large numbers",
+        "contextHint": "news register; also a noun: ___ 탈락",
+        "accepted": ["대거"]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "구조 조정으로 간부들이 {{}} 교체되었다.",
+          "en": "Executives were replaced wholesale in the restructuring.",
+          "cue": "대거 · en masse",
+          "accepted": ["대거"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:대꾸",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["native", "freq:6570"],
+    "word": "대꾸",
+    "meanings": ["a retort, talking back", "a reply (often unwelcome)"],
+    "pos": "명사",
+    "register": "spoken",
+    "collocations": [
+      {"ko": "말대꾸", "en": "talking back"},
+      {"ko": "대꾸하다", "en": "to answer back"},
+      {"ko": "대꾸도 안 하다", "en": "to not even reply"}
+    ],
+    "examples": [
+      {"ko": "어른이 말씀하시는데 어디서 말대꾸야?", "en": "Your elder is talking, and you dare talk back?", "register": "spoken"},
+      {
+        "ko": "그는 비아냥거리는 질문에 아무 대꾸도 하지 않았다.",
+        "en": "He gave no reply to the sneering question.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {"accepted": ["retort", "reply", "answer", "talking back", "comeback", "rejoinder", "response", "backtalk"]},
+      "production": {
+        "promptEn": "a retort, talking back (말___)",
+        "contextHint": "native noun; neutral \"reply\" is 대답 or 답변",
+        "accepted": ["대꾸"],
+        "rejected": ["대답"]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "몇 번을 불렀는데도 그는 {{}}도 하지 않았다.",
+          "en": "I called him several times, but he didn't even answer.",
+          "cue": "대꾸 · reply",
+          "accepted": ["대꾸", "대답"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:대뜸",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["native", "freq:6581"],
+    "word": "대뜸",
+    "meanings": ["right off the bat, straightaway", "without a moment's pause"],
+    "pos": "부사",
+    "register": "spoken",
+    "collocations": [
+      {"ko": "대뜸 묻다", "en": "to ask straight off"},
+      {"ko": "대뜸 반말하다", "en": "to start talking down right away"},
+      {"ko": "대뜸 화부터 내다", "en": "to fly off the handle straightaway"}
+    ],
+    "examples": [
+      {
+        "ko": "처음 만난 자리에서 대뜸 나이부터 묻더라고요.",
+        "en": "The first time we met, he asked my age right off the bat.",
+        "register": "spoken"
+      },
+      {
+        "ko": "그는 사진을 보자마자 대뜸 범인을 알아보았다.",
+        "en": "He recognized the culprit the instant he saw the photo.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": [
+          "right off the bat",
+          "straightaway",
+          "immediately",
+          "right away",
+          "at once",
+          "off the bat",
+          "promptly",
+          "instantly",
+          "without a moment's pause"
+        ]
+      },
+      "production": {
+        "promptEn": "right off the bat (immediately, without a pause)",
+        "contextHint": "native adverb; barging in without asking is 다짜고짜",
+        "accepted": ["대뜸"],
+        "rejected": ["다짜고짜"]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "전화를 걸자 친구가 {{}} \"무슨 일 있어?\" 하고 물었다.",
+          "en": "When I called, my friend asked straightaway, \"Is something wrong?\"",
+          "cue": "대뜸 · right off the bat",
+          "accepted": ["대뜸", "다짜고짜"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:대수롭다",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": true,
+    "tags": ["freq:6588"],
+    "word": "대수롭다",
+    "meanings": ["(usually ___지 않다) a big deal, important"],
+    "pos": "형용사",
+    "register": "neutral",
+    "collocations": [
+      {"ko": "대수롭지 않다", "en": "to be no big deal"},
+      {"ko": "대수롭지 않게 여기다", "en": "to make light of"},
+      {"ko": "대수로운 일", "en": "a matter of consequence"}
+    ],
+    "examples": [
+      {"ko": "대수롭지 않은 일이니까 신경 쓰지 마세요.", "en": "It's no big deal, so don't worry about it.", "register": "spoken"},
+      {
+        "ko": "처음에는 대수롭지 않게 여긴 기침이 폐렴으로 번졌다.",
+        "en": "A cough he had at first shrugged off turned into pneumonia.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {"accepted": ["important", "significant", "a big deal", "serious", "of consequence", "no big deal", "trivial"]},
+      "production": {
+        "promptEn": "a big deal (almost always negated: ___지 않다, \"no big deal\")",
+        "contextHint": "adjective",
+        "accepted": ["대수롭다", "대수롭지 않다"]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "그는 그 경고를 {{}} 여겼다가 큰 손해를 봤다.",
+          "en": "He shrugged the warning off and ended up losing big.",
+          "cue": "대수롭다 · (not) a big deal",
+          "accepted": ["대수롭지 않게"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:더디다",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["native", "freq:6614"],
+    "word": "더디다",
+    "meanings": ["slow (progress, pace)", "sluggish"],
+    "pos": "형용사",
+    "register": "neutral",
+    "collocations": [
+      {"ko": "진행이 더디다", "en": "progress is slow"},
+      {"ko": "회복이 더디다", "en": "recovery is slow"},
+      {"ko": "더디게 흐르다", "en": "to pass slowly"}
+    ],
+    "examples": [
+      {
+        "ko": "공사 진행이 생각보다 더뎌서 입주가 늦어질 것 같아요.",
+        "en": "Construction is going slower than expected, so move-in looks like it'll be delayed.",
+        "register": "spoken"
+      },
+      {"ko": "경기 회복세가 더디다는 분석이 나왔다.", "en": "Analysts say the economic recovery is sluggish.", "register": "written"}
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {"accepted": ["slow", "sluggish", "tardy", "gradual", "slow-moving", "slowly", "lagging"]},
+      "production": {
+        "promptEn": "slow (progress or pace; less about speed than headway)",
+        "contextHint": "native adjective",
+        "accepted": ["더디다"]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "기다리는 사람에게는 시간이 유난히 {{}} 흐르는 법이다.",
+          "en": "For someone waiting, time always seems to crawl.",
+          "cue": "더디다 · slowly",
+          "accepted": ["더디게", "느리게"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:도맡다",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["native", "freq:6629"],
+    "word": "도맡다",
+    "meanings": ["to take on all (of a task) oneself", "to shoulder single-handedly"],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {"ko": "집안일을 도맡다", "en": "to do all the housework"},
+      {"ko": "도맡아 하다", "en": "to handle all by oneself"},
+      {"ko": "궂은일을 도맡다", "en": "to take on all the dirty work"}
+    ],
+    "examples": [
+      {
+        "ko": "동아리에서 궂은일은 항상 그 친구가 도맡아 했어요.",
+        "en": "In our club, that friend always took on all the dirty work.",
+        "register": "spoken"
+      },
+      {
+        "ko": "그녀는 어린 나이에 동생들 뒷바라지를 도맡았다.",
+        "en": "At a young age she took it on herself to provide for her younger siblings.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": [
+          "take on all",
+          "take full charge of",
+          "shoulder",
+          "take on",
+          "handle single-handedly",
+          "take care of everything",
+          "take sole charge",
+          "to take on all (of a task) oneself",
+          "to shoulder single-handedly"
+        ]
+      },
+      "production": {
+        "promptEn": "to take on all (of a task) oneself",
+        "contextHint": "native verb: 도 (all) + 맡다",
+        "accepted": ["도맡다"]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "맏이인 그는 어려서부터 집안 살림을 {{}} 했다.",
+          "en": "As the eldest, he took care of all the household chores from a young age.",
+          "cue": "도맡다 · take on all",
+          "accepted": ["도맡아"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:도모하다",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["sino-korean", "freq:6631"],
+    "word": "도모하다",
+    "meanings": ["to promote, seek (a goal: mutual benefit, friendship)", "to plan for"],
+    "pos": "동사",
+    "register": "formal",
+    "hanjaBreakdown": [{"syllable": "도", "hanja": "圖"}, {"syllable": "모", "hanja": "謀"}],
+    "collocations": [
+      {"ko": "친목을 도모하다", "en": "to promote fellowship"},
+      {"ko": "상호 발전을 도모하다", "en": "to pursue mutual development"},
+      {"ko": "편의를 도모하다", "en": "to seek convenience"}
+    ],
+    "examples": [
+      {
+        "ko": "이번 행사는 회원 간 친목을 도모하기 위해 마련되었습니다.",
+        "en": "This event was organized to promote fellowship among members.",
+        "register": "formal"
+      },
+      {
+        "ko": "두 기업은 기술 교류를 통해 상호 발전을 도모하기로 했다.",
+        "en": "The two companies agreed to pursue mutual development through technology exchange.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": ["promote", "seek", "pursue", "foster", "further", "plan for", "work toward", "aim for", "strive for"]
+      },
+      "production": {
+        "promptEn": "to promote, seek (fellowship, mutual benefit: formal)",
+        "contextHint": "formal; mission statements and notices",
+        "accepted": ["도모하다"]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "동창회는 회원 간의 친목을 {{}} 목적으로 한다.",
+          "en": "The alumni association aims to foster fellowship among its members.",
+          "cue": "도모하다 · foster",
+          "accepted": ["도모하는", "도모함을", "도모하기를"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:도처",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["sino-korean", "freq:6634"],
+    "word": "도처",
+    "meanings": ["everywhere, all over", "every quarter"],
+    "pos": "명사",
+    "register": "written",
+    "hanjaBreakdown": [{"syllable": "도", "hanja": "到"}, {"syllable": "처", "hanja": "處"}],
+    "collocations": [
+      {"ko": "도처에", "en": "everywhere"},
+      {"ko": "도처에 깔리다", "en": "to be all over the place"},
+      {"ko": "세계 도처", "en": "all over the world"}
+    ],
+    "examples": [
+      {
+        "ko": "이 도시에는 도처에 역사의 흔적이 남아 있다.",
+        "en": "Traces of history remain everywhere in this city.",
+        "register": "written"
+      },
+      {
+        "ko": "요즘은 도처에 감시 카메라가 있어서 숨을 데가 없어요.",
+        "en": "These days there are security cameras everywhere, so there's nowhere to hide.",
+        "register": "neutral"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": [
+          "everywhere",
+          "all over",
+          "all around",
+          "every corner",
+          "far and wide",
+          "throughout",
+          "all over the place",
+          "every quarter"
+        ]
+      },
+      "production": {"promptEn": "everywhere, all over (usually ___에)", "contextHint": "written", "accepted": ["도처"]},
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "인생의 {{}}에 함정이 도사리고 있다.",
+          "en": "Pitfalls lie in wait everywhere in life.",
+          "cue": "도처 · everywhere",
+          "accepted": ["도처", "곳곳"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:돈독하다",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["sino-korean", "freq:6646"],
+    "word": "돈독하다",
+    "meanings": ["close, warm (a friendship or bond)", "deep, solid (ties of trust)"],
+    "pos": "형용사",
+    "register": "neutral",
+    "hanjaBreakdown": [{"syllable": "돈", "hanja": "敦"}, {"syllable": "독", "hanja": "篤"}],
+    "collocations": [
+      {"ko": "우정이 돈독하다", "en": "to have a close friendship"},
+      {"ko": "관계를 돈독히 하다", "en": "to strengthen a relationship"},
+      {"ko": "돈독한 신뢰", "en": "deep trust"}
+    ],
+    "examples": [
+      {
+        "ko": "두 사람은 어릴 때부터 우정이 돈독했어요.",
+        "en": "Those two have been close friends since childhood.",
+        "register": "spoken"
+      },
+      {
+        "ko": "양국 정상은 이번 회담을 통해 우호 관계를 더욱 돈독히 했다.",
+        "en": "Through the summit, the two leaders further strengthened their friendly ties.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {"accepted": ["close", "warm", "deep", "solid", "strong", "cordial", "intimate", "tight"]},
+      "production": {
+        "promptEn": "close, warm (a friendship or bond of trust)",
+        "contextHint": "warmth of a bond; working ties between agencies are 긴밀하다",
+        "accepted": ["돈독하다"],
+        "rejected": ["긴밀하다"]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "함께 고생한 경험이 두 사람의 우정을 더욱 {{}} 했다.",
+          "en": "Going through hard times together made their friendship even closer.",
+          "cue": "돈독하다 · (make) close",
+          "accepted": ["돈독하게", "돈독히"],
+          "nearMiss": [{"answer": "긴밀하게", "hint": "긴밀 is close cooperation; a warm friendship is 돈독."}],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:두각",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["sino-korean", "freq:6672"],
+    "word": "두각",
+    "meanings": ["(___을 나타내다) standing out, making a name for oneself", "distinction"],
+    "pos": "명사",
+    "register": "neutral",
+    "hanjaBreakdown": [{"syllable": "두", "hanja": "頭"}, {"syllable": "각", "hanja": "角"}],
+    "collocations": [
+      {"ko": "두각을 나타내다", "en": "to stand out"},
+      {"ko": "두각을 드러내다", "en": "to distinguish oneself"},
+      {"ko": "일찍이 두각을 보이다", "en": "to shine early on"}
+    ],
+    "examples": [
+      {"ko": "그는 어릴 때부터 수학에 두각을 나타냈다.", "en": "He stood out in math from an early age.", "register": "written"},
+      {
+        "ko": "입사 1년 만에 영업에서 두각을 드러냈대요.",
+        "en": "They say she made a name for herself in sales within a year of joining.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": ["standing out", "distinction", "prominence", "stand out", "make a name", "excel", "shine", "eminence"]
+      },
+      "production": {
+        "promptEn": "standing out from the crowd (___을 나타내다)",
+        "contextHint": "literally \"a head and horns above the rest\"",
+        "accepted": ["두각"]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "그 감독은 데뷔작부터 {{}}을 나타내기 시작했다.",
+          "en": "The director began to stand out from her very first film.",
+          "cue": "두각 · standing out",
+          "accepted": ["두각"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:두루",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["native", "freq:6674"],
+    "word": "두루",
+    "meanings": ["widely, all around", "across the board, without exception"],
+    "pos": "부사",
+    "register": "neutral",
+    "collocations": [
+      {"ko": "두루 살피다", "en": "to look all around"},
+      {"ko": "두루 갖추다", "en": "to have all the bases covered"},
+      {"ko": "두루 쓰이다", "en": "to be widely used"}
+    ],
+    "examples": [
+      {"ko": "그 선수는 공격과 수비를 두루 잘해요.", "en": "That player is good at both offense and defense.", "register": "spoken"},
+      {
+        "ko": "이 단어는 구어와 문어에 두루 쓰인다.",
+        "en": "This word is widely used in both speech and writing.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": [
+          "widely",
+          "all around",
+          "across the board",
+          "universally",
+          "broadly",
+          "extensively",
+          "all over",
+          "without exception",
+          "in all respects"
+        ]
+      },
+      "production": {"promptEn": "widely, all around (across the board)", "contextHint": "native adverb", "accepted": ["두루"]},
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "그는 실력과 인성을 {{}} 갖춘 지도자로 평가받는다.",
+          "en": "He is regarded as a leader who has both skill and character.",
+          "cue": "두루 · all around",
+          "accepted": ["두루", "고루"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:뒤죽박죽",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["native", "freq:6681", "mimetic"],
+    "word": "뒤죽박죽",
+    "meanings": ["a jumble, a mess", "(as an adverb) all mixed up, in a jumble"],
+    "pos": "명사",
+    "register": "neutral",
+    "collocations": [
+      {"ko": "뒤죽박죽이 되다", "en": "to become a jumble"},
+      {"ko": "뒤죽박죽 섞이다", "en": "to be all mixed up"},
+      {"ko": "머릿속이 뒤죽박죽이다", "en": "one's head is a muddle"}
+    ],
+    "examples": [
+      {
+        "ko": "이사하고 나서 서랍 속이 완전히 뒤죽박죽이에요.",
+        "en": "Since the move, the drawers are a total jumble.",
+        "register": "spoken"
+      },
+      {
+        "ko": "기억이 뒤죽박죽 섞여 무엇이 먼저였는지 알 수 없었다.",
+        "en": "My memories were so jumbled that I could not tell what had happened first.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": ["jumble", "mess", "muddle", "chaos", "mix-up", "all mixed up", "topsy-turvy", "hodgepodge", "shambles"]
+      },
+      "production": {"promptEn": "a jumble, a mess (everything all mixed up)", "contextHint": "native", "accepted": ["뒤죽박죽"]},
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "갑작스러운 일정 변경으로 계획이 완전히 {{}}이 됐다.",
+          "en": "The sudden schedule change turned our plans into a total mess.",
+          "cue": "뒤죽박죽 · jumble",
+          "accepted": ["뒤죽박죽", "엉망"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:뒷바라지",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["native", "freq:6685"],
+    "word": "뒷바라지",
+    "meanings": ["looking after, supporting (someone through school or a career)", "behind-the-scenes care"],
+    "pos": "명사",
+    "register": "neutral",
+    "collocations": [
+      {"ko": "뒷바라지하다", "en": "to support, provide for"},
+      {"ko": "자식 뒷바라지", "en": "providing for one's children"},
+      {"ko": "뒷바라지에 헌신하다", "en": "to devote oneself to supporting someone"}
+    ],
+    "examples": [
+      {
+        "ko": "부모님이 제 유학 뒷바라지하느라 고생 많이 하셨어요.",
+        "en": "My parents went through a lot to support me while I studied abroad.",
+        "register": "spoken"
+      },
+      {
+        "ko": "그녀는 평생 남편의 연구를 뒷바라지했다.",
+        "en": "She spent her life supporting her husband's research.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": [
+          "support",
+          "looking after",
+          "providing for",
+          "care",
+          "backing",
+          "taking care of",
+          "devoted support",
+          "upkeep",
+          "behind-the-scenes care"
+        ]
+      },
+      "production": {
+        "promptEn": "looking after, supporting (someone through school, a career)",
+        "contextHint": "native noun; ___하다",
+        "accepted": ["뒷바라지"]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "어머니는 삼 남매 {{}}에 평생을 바치셨다.",
+          "en": "My mother devoted her whole life to raising and supporting her three children.",
+          "cue": "뒷바라지 · support",
+          "accepted": ["뒷바라지"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:들이닥치다",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["native", "freq:6693"],
+    "word": "들이닥치다",
+    "meanings": ["to burst in, descend on (unexpectedly)", "(a crisis) to hit suddenly"],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {"ko": "손님이 들이닥치다", "en": "guests descend unannounced"},
+      {"ko": "경찰이 들이닥치다", "en": "police storm in"},
+      {"ko": "한파가 들이닥치다", "en": "a cold snap hits"}
+    ],
+    "examples": [
+      {
+        "ko": "밤늦게 친구들이 연락도 없이 들이닥쳐서 당황했어요.",
+        "en": "My friends barged in late at night without warning, and I was caught off guard.",
+        "register": "spoken"
+      },
+      {
+        "ko": "새벽에 수사관들이 사무실에 들이닥쳐 서류를 압수했다.",
+        "en": "Investigators stormed the office at dawn and seized documents.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": [
+          "burst in",
+          "barge in",
+          "descend on",
+          "storm in",
+          "show up unannounced",
+          "rush in",
+          "swoop in",
+          "hit suddenly"
+        ]
+      },
+      "production": {"promptEn": "to burst in, descend on (unexpectedly)", "contextHint": "native verb", "accepted": ["들이닥치다"]},
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "예고도 없이 감사팀이 {{}} 사무실이 발칵 뒤집혔다.",
+          "en": "An audit team showed up unannounced, and the office was thrown into an uproar.",
+          "cue": "들이닥치다 · burst in",
+          "accepted": ["들이닥쳐서", "들이닥쳐", "들이닥치자", "들이닥치는 바람에"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:들통",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["native", "freq:6695"],
+    "word": "들통",
+    "meanings": ["(___나다) being found out, exposed", "the discovery (of a lie or secret)"],
+    "pos": "명사",
+    "register": "spoken",
+    "collocations": [
+      {"ko": "들통나다", "en": "to be found out"},
+      {"ko": "거짓말이 들통나다", "en": "a lie comes to light"},
+      {"ko": "들통날까 봐", "en": "for fear of being caught"}
+    ],
+    "examples": [
+      {
+        "ko": "몰래 게임하다가 엄마한테 들통났어요.",
+        "en": "I was sneaking in some gaming and my mom found out.",
+        "register": "spoken"
+      },
+      {
+        "ko": "경력을 부풀린 사실이 들통나면서 그는 결국 자리에서 물러났다.",
+        "en": "When it came out that he had padded his résumé, he finally stepped down.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": [
+          "being found out",
+          "exposure",
+          "discovery",
+          "being exposed",
+          "be found out",
+          "getting caught",
+          "coming to light"
+        ]
+      },
+      "production": {"promptEn": "being found out (___나다)", "contextHint": "native noun; one word: 들통나다", "accepted": ["들통"]},
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "그의 거짓말은 사흘 만에 {{}}났다.",
+          "en": "His lie was found out within three days.",
+          "cue": "들통 · being found out",
+          "accepted": ["들통"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:떳떳하다",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["native", "freq:6714"],
+    "word": "떳떳하다",
+    "meanings": ["having nothing to hide, with a clear conscience", "honorable, upright"],
+    "pos": "형용사",
+    "register": "neutral",
+    "collocations": [
+      {"ko": "떳떳하게 살다", "en": "to live with a clear conscience"},
+      {"ko": "떳떳하지 못하다", "en": "to have something to be ashamed of"},
+      {"ko": "떳떳한 돈", "en": "honestly earned money"}
+    ],
+    "examples": [
+      {
+        "ko": "잘못한 게 없으니까 떳떳하게 말하세요.",
+        "en": "You didn't do anything wrong, so speak up with your head held high.",
+        "register": "spoken"
+      },
+      {
+        "ko": "그는 떳떳하지 못한 돈은 단 한 푼도 받지 않았다.",
+        "en": "He never took a single won he could not account for with a clear conscience.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": [
+          "with a clear conscience",
+          "having nothing to hide",
+          "honorable",
+          "upright",
+          "unashamed",
+          "aboveboard",
+          "proud",
+          "honourable",
+          "clean"
+        ]
+      },
+      "production": {
+        "promptEn": "having nothing to hide (with a clear conscience)",
+        "contextHint": "native adjective",
+        "accepted": ["떳떳하다"]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "부끄러운 짓을 하지 않았으니 누구 앞에서도 {{}}.",
+          "en": "I haven't done anything shameful, so I can face anyone with my head held high.",
+          "cue": "떳떳하다 · have nothing to hide",
+          "accepted": ["떳떳하다", "떳떳해", "떳떳해요", "떳떳합니다"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:뜸하다",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["native", "freq:6718"],
+    "word": "뜸하다",
+    "meanings": ["infrequent, few and far between (contact, visits)", "having let up for a while"],
+    "pos": "형용사",
+    "register": "neutral",
+    "collocations": [
+      {"ko": "연락이 뜸하다", "en": "to be out of touch"},
+      {"ko": "발길이 뜸하다", "en": "visitors are few"},
+      {"ko": "뜸해지다", "en": "to let up"}
+    ],
+    "examples": [
+      {
+        "ko": "요즘 왜 이렇게 연락이 뜸해? 무슨 일 있어?",
+        "en": "Why have I barely heard from you lately? Is something up?",
+        "register": "spoken"
+      },
+      {
+        "ko": "장마가 끝나자 피서객들의 발길이 다시 뜸해졌다.",
+        "en": "Once the rainy season ended, vacationers became few and far between again.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": [
+          "infrequent",
+          "few and far between",
+          "rare",
+          "sporadic",
+          "scarce",
+          "out of touch",
+          "let up",
+          "occasional",
+          "having let up for a while"
+        ]
+      },
+      "production": {
+        "promptEn": "infrequent, few and far between (contact, visits)",
+        "contextHint": "native adjective; 연락이 ___",
+        "accepted": ["뜸하다"]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "졸업하고 나서 친구들과 연락이 점점 {{}}.",
+          "en": "After graduation, I heard from my friends less and less.",
+          "cue": "뜸하다 · infrequent",
+          "accepted": ["뜸해졌다", "뜸해졌어요", "뜸해졌어"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:마다하다",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["native", "freq:6724"],
+    "word": "마다하다",
+    "meanings": ["to turn down, refuse (usually negated)", "(___지 않다) to not shy away from"],
+    "pos": "동사",
+    "register": "neutral",
+    "collocations": [
+      {"ko": "마다하지 않다", "en": "to not shy away from"},
+      {"ko": "궂은일도 마다하지 않다", "en": "to not balk at the dirty work"},
+      {"ko": "마다할 이유가 없다", "en": "to have no reason to refuse"}
+    ],
+    "examples": [
+      {
+        "ko": "공짜로 준다는데 마다할 이유가 없죠.",
+        "en": "If they're giving it away for free, there's no reason to say no.",
+        "register": "spoken"
+      },
+      {
+        "ko": "그는 위험한 현장 취재도 마다하지 않는 기자였다.",
+        "en": "He was a reporter who never shied away from dangerous assignments.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": ["turn down", "refuse", "decline", "balk at", "shy away from", "say no to", "reject", "shrink from"]
+      },
+      "production": {
+        "promptEn": "to turn down (mostly negated: ___지 않다, \"not shy away from\")",
+        "contextHint": "native verb",
+        "accepted": ["마다하다"]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "그녀는 남들이 꺼리는 야간 근무도 {{}} 않았다.",
+          "en": "She never shied away from the night shifts others avoided.",
+          "cue": "마다하다 · shy away from",
+          "accepted": ["마다하지"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:막론하다",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["sino-korean", "freq:6731"],
+    "word": "막론하다",
+    "meanings": ["(___하고) regardless of, irrespective of", "without distinction"],
+    "pos": "동사",
+    "register": "written",
+    "hanjaBreakdown": [{"syllable": "막", "hanja": "莫"}, {"syllable": "론", "hanja": "論"}],
+    "collocations": [
+      {"ko": "고하를 막론하고", "en": "regardless of rank"},
+      {"ko": "남녀노소를 막론하고", "en": "regardless of age or sex"},
+      {"ko": "이유를 막론하고", "en": "for whatever reason"}
+    ],
+    "examples": [
+      {
+        "ko": "남녀노소를 막론하고 누구나 즐길 수 있는 축제입니다.",
+        "en": "It is a festival anyone can enjoy, young or old, male or female.",
+        "register": "formal"
+      },
+      {
+        "ko": "이유를 막론하고 폭력은 정당화될 수 없다.",
+        "en": "Violence cannot be justified, whatever the reason.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": ["regardless of", "irrespective of", "without distinction", "no matter", "whatever", "without exception"]
+      },
+      "production": {
+        "promptEn": "regardless of (___하고: 남녀노소를 ___하고)",
+        "contextHint": "written; almost only as ~를 막론하고",
+        "accepted": ["막론하다", "막론하고"]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "지위 고하를 {{}} 법은 누구에게나 공평해야 한다.",
+          "en": "The law must be equal for everyone, regardless of rank.",
+          "cue": "막론하다 · regardless of",
+          "accepted": ["막론하고"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  },
+  {
+    "id": "v:막무가내",
+    "kind": "vocab",
+    "level": 10,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["sino-korean", "freq:6732", "four-character"],
+    "word": "막무가내",
+    "meanings": ["bullheadedness, refusing to listen to reason", "(___로) stubbornly, no matter what anyone says"],
+    "pos": "명사",
+    "register": "neutral",
+    "hanjaBreakdown": [
+      {"syllable": "막", "hanja": "莫"},
+      {"syllable": "무", "hanja": "無"},
+      {"syllable": "가", "hanja": "可"},
+      {"syllable": "내", "hanja": "奈"}
+    ],
+    "collocations": [
+      {"ko": "막무가내로 우기다", "en": "to insist stubbornly"},
+      {"ko": "막무가내다", "en": "to be impossible to reason with"},
+      {"ko": "막무가내인 손님", "en": "an unreasonable customer"}
+    ],
+    "examples": [
+      {
+        "ko": "환불 안 된다고 해도 손님이 막무가내로 돈을 돌려 달래요.",
+        "en": "I told him refunds aren't possible, but the customer keeps insisting on his money back.",
+        "register": "spoken"
+      },
+      {
+        "ko": "아이는 집에 가자는 말에도 막무가내로 버텼다.",
+        "en": "The child stubbornly refused to budge even when told it was time to go home.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": [
+          "bullheadedness",
+          "stubbornness",
+          "obstinacy",
+          "stubbornly",
+          "unreasonably",
+          "pigheadedly",
+          "no matter what",
+          "intractable"
+        ]
+      },
+      "production": {
+        "promptEn": "bullheadedness (___로, \"stubbornly, no matter what anyone says\")",
+        "contextHint": "four-character idiom",
+        "accepted": ["막무가내"]
+      },
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "아무리 설명해도 그는 {{}}로 자기 말만 했다.",
+          "en": "No matter how much I explained, he stubbornly kept repeating his own point.",
+          "cue": "막무가내 · stubbornly",
+          "accepted": ["막무가내"],
+          "particleTolerance": "none"
+        }
+      ]
+    }
+  }
+]

@@ -42,3 +42,23 @@ Each of the 30 grammar items now has 9 cloze prompts, 2 nuance prompts, and (for
 | g:다니 | `nuance`, `questions.cloze[c1, c6, c7]` nearMiss | The item separates bare-stem -다니 (reacting to a fact: 그런 짓을 하다니) from quoted -ㄴ/는다니 (g:ㄴ다니, reacting to what was said: 한다니). The nearMiss hints grade 한다니 / 합격한다니 / 만든다니 **close** in fact-reaction frames. In a context with no hearsay, a native may hear 한다니 as equally fine. | If you'd use -ㄴ/는다니 freely for plain surprise, drop those three nearMiss entries (or move them to `accepted`) and loosen the nuance sentence. |
 
 **Schema friction (for the Architect):** there is no structured reference field, so the HTSK cross-reference lives in two places: tags (`htsk:<lesson>`, `htsk-unit:<n>`) and the last sentence of `nuance` ("See also HowtoStudyKorean Lesson N."). An optional `refs: {source, id, title?, url?}[]` on ItemBase would let the UI link it without parsing prose. Also, the single `meaning` string can't hold the per-reading split for multi-use patterns (-지 뭐, -(으)ㄹ 만하다), so those use numbered glosses.
+
+## Grammar QA (L01–L03, L05–L07, 2026-10-29)
+
+**Status:** all 5 author flags above are resolved, and every grammar `needs_review` is cleared. Details (before → after) are in REVIEW_LOG.md under "Grammar QA". Short version: 바쁜 바람에 distractor → swapped for a -느라고 meaning error · 머니만큼 → 힘드니만큼 · 있었었어요 → 다녔었어요, and the n1 결혼했었어 contrast is confirmed · 바쁘나 봐요 stays **close** with a softer hint · 한다니 / 만든다니 stay **close**, with hints that now call them "also natural if reacting to what you were told". Two questions remain for the owner:
+
+| item id | field | question (yes/no) | if yes / if no |
+|---|---|---|---|
+| g:나-보다 | `questions.cloze[c3]` nearMiss 바쁘나 봐요 | Should the app keep grading adjective + -나 보다 (바쁘나 봐요) as **close** (standard-first), not correct? | Yes: no change. No: move 바쁘나 봐요 to `accepted` and drop "the standard form" from the nuance. |
+| g:지-뭐 | `questions.cloze[c2]` nearMiss, `questions.nuance[n2]` option c | Do you treat 했지 뭐요 as wrong in the narrative "can you believe it" use (only 했지 뭐예요 is right)? | Yes: no change. No: move 했지 뭐요 to `accepted` and rewrite n2 option c to a meaning error. |
+
+## Frequency vocab L05–L10 (authored 2026-10-28/29)
+
+240 new vocab items (`track: "vocab-freq"`), 40 per level, drawn in rank order from the owner's never-drilled Anki gap (ranks ~5,100–6,730). Four items are flagged for a native check:
+
+| item id | field | concern | suggestion |
+|---|---|---|---|
+| v:골머리 | `meanings`, `questions.meaning` | The noun lives almost entirely inside 골머리를 앓다 / 골머리가 아프다, so a bare-word meaning prompt is awkward. Accepted answers lean on "headache"; the cloze also accepts 골치. | Keep, or drop `meaning` and make it cloze-led like L04 if the bare gloss feels artificial. |
+| v:공연히 | `register` | Tagged `written` as the fuller, more literary 괜히. It also occurs in older speakers' speech, and spoken example 1 uses it. | Retag `neutral` if it sounds natural in speech to you. |
+| v:다짜고짜 | `promptEn`, cloze c1 | Its boundary with 대뜸 (L10) is fine-grained: 다짜고짜 = without asking or explaining, 대뜸 = right off the bat. Both clozes cross-accept the other word. | Confirm that the cross-acceptance is right, or narrow one cloze so it only fits one word. |
+| v:대수롭다 | `tags` | No origin tag: I'm not certain whether 대수 is Sino-Korean. Production accepts 대수롭다 and 대수롭지 않다. | Add `native` or `sino-korean` if you know. |

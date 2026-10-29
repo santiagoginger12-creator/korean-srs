@@ -740,7 +740,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:5905", "homograph:監修"],
-    "mnemonic": "甘 sweet + 受 receive: taking the bitter as if it were sweet. On a book's copyright page, 감수 is 監修, editorial supervision.",
+    "mnemonic": "감수 has the 감 of 감미롭다 (sweet): taking the bitter as if it were sweet. On a book's copyright page, 감수 is editorial supervision, a different word.",
     "word": "감수하다",
     "meanings": ["to accept, be willing to bear (a risk, loss, or criticism)", "to put up with"],
     "pos": "동사",

@@ -352,3 +352,91 @@ New files: `seed/L05/grammar.json` (11), `seed/L06/grammar.json` (13), `seed/L07
 - **g:느라고 register:** core words reduced to 오시느라 / 많으셨, so 고생 → 수고 variants pass.
 
 **Skipped HTSK points:** 101–102 (slang, quoted abbreviations; vocabulary), 103 한/약/전반/당하다 (lexical; only -(으)므로 kept), 105 (miscellany), 107 ~도 revisited (no advanced nuance beyond 기는 하다 / 기도 하다), 110 어쩔 수 없다 (fixed phrase), 126 ~별(로) and 127 ~씩 (everyday morphology), 128 나다 and 129 넘다 (lexical senses), 130 large numbers, 131 사이시옷 (orthography, not a grammar pattern), 134 Konglish, 135 성, 136 -기에/-길래 and 147 -는 바람에 (already in L01–L02), 149 하필 and 150 어쩐지 (adverbs).
+
+
+## Grammar QA (L01–L03, L05–L07, independent review, 2026-10-29)
+
+Independent native-editor pass over all 67 grammar items: 524 cloze, 134 nuance, and 27 register prompts. Ids, `rev` (D39), and schema are unchanged. `npm run validate-content`: 0 errors, self-check 6444 cases, 0 failures, `needs_review` 0. Tags as in the L01 log (**[N] [A] [G] [Q] [S] [C]**, **(flag)**).
+
+**Totals:** 9 rewrites (sentences, distractors, examples) · 8 nuance/hint claims corrected or softened · 76 `accepted` forms added across 62 prompts · 8 sibling `nearMiss` entries added · 5 author flags resolved · 0 `fn:` tags changed.
+
+### Flags resolved
+- **g:는-바람에 n2 option b** (flag) [G]: 퇴근 직전에 일이 너무 바쁜 바람에 못 갔어 ("adjective can't take it") → 퇴근 직전에 급한 일이 생기느라고 못 갔어. The distractor now fails cleanly on meaning: -느라고 needs the subject's own activity, and 일이 생기다 is something that happened to you. `needs_review` cleared.
+- **g:니만큼 c3** (flag) [N]: 행사장이 시내에서 꽤 머니만큼 대중교통을… → 이번 산행 코스는 경사가 가팔라 꽤 힘드니만큼 등산화를 꼭 신고 오십시오 (cue 힘들다 + -(으)니만큼; nearMiss 힘들으니만큼 / 힘든 만큼 / 힘드니까). This keeps the ㄹ-drop drill without the stilted 머니만큼. The old sentence also nearly duplicated g:므로 c4 (행사장은 시내에서 멀므로…). `needs_review` cleared.
+- **g:었었다 c2** (flag) [N]: 작년까지만 해도 이 자리에 작은 서점이 있었었어요 → 작년까지만 해도 이 회사에 다녔었어요 (cue 다니다; nearMiss 다녔어요). **n1** kept: 결혼했어 (still married) vs 결혼했었어 (no longer) is sound. `needs_review` cleared.
+- **g:나-보다** (flag) [G]: standard-first grading kept (바쁘나 봐요 = close). Nuance "common in casual speech but nonstandard" → "very common in casual speech, but the standard form after an adjective is -(으)ㄴ가 보다"; the c3 hint is reworded to match. `needs_review` cleared. The owner policy question is in REVIEW_NOTES.
+- **g:다니** (flag) [G]: c1 한다니 and c7 만든다니 stay **close**, but each hint now says "Also natural if you're reacting to what you were told (the quoted -ㄴ/는다니). The cue asks for the bare stem." Before, the hints implied these were wrong. The c6 합격한다니 hint is unchanged because it is a real tense error. Nuance adds that the two forms overlap heavily in speech, and the bare stem is the one that needs no report behind it. `needs_review` cleared.
+
+### Other edits
+- **g:었었다 c3 + example** [G]: 그 배우는 데뷔 전에 은행원이었었다 → 지금은 배우지만 데뷔 전에는 은행에서 일했었어요 (cue 일하다). The old sentence used -었었- only to mark sequence ("before his debut"), which the item's own nuance warns against. The example sentence and the N이다 attachment example (은행원이었었다 → 학교였었다) were changed to match.
+- **g:는-바람에 nuance** [G]: "The form is always -는 … not *넘어진 바람에" → "stays -는 … (넘어진 바람에 is nonstandard)".
+- **g:ㄹ지언정** [G]: added attachment `V/A-았/었을지언정` (c6 졌을지언정 had no matching rule). Nuance adds the concessive "past fact before a redeeming point" use, which c6 drills.
+- **g:ㄴ-채로 nuance + 5 hints** [G]: "always uses the past modifier" → action verbs take -(으)ㄴ, but stative 모르다 and 있다 take -는 (모르는 채, 살아 있는 채로). Hints changed from "Always the past modifier:" to "The completed state takes the past modifier:".
+- **g:더라 nuance, n1 option c** [G]: "-더라요 doesn't exist" / "There is no -더라요" → "-더라요 is nonstandard".
+- **g:다-보면 nuance** [G]: "The main clause isn't past" → "is rarely a one-time past result". Past habitual is possible: 놀다 보면 해가 지곤 했다.
+- **g:는-길에 c7** [N]: 사장님은 방금 회의에 들어가시는 길이에요 → 지금 막 …. 방금 reads as "just did", which clashes with -는 길이다.
+- **g:었어도-되다 c5** [N][S]: 회의에 굳이 안 참석하셨어도 → 안 나오셨어도 (cue 나오다; nearMiss 나와도). 안 + Sino-Korean 하다 verb is weak in edited prose; 참석 안 하다 would be the standard order.
+- **Sibling nearMiss** [Q]: g:어-놓다 c1/c5/c6 now accept the -아/어 두다 forms (만들어 뒀어요, 적어 둬, 예약해 뒀어요) as close, with "Also natural; the cue asks for -아/어 놓다". g:어-두다 c2/c3/c4/c6 do the same in reverse (챙겨 놨어요, 저장해 놔야, 비워 놓을게요, 받아 놔). Before this, natural sibling answers fell through to jamo distance.
+- **`accepted` coverage** [Q] (D39, all reasonable levels for sentence-final blanks). The main gap was 합쇼체 across L05–L07: 자나/왔나/바쁜가/… 봅니다 (g:나-보다 c1–c8); …걸 그랬습니다 (g:ㄹ걸-그랬다 c1–c8, plus c4 그랬어요 and c8 그랬다); …리가 없습니다 (g:ㄹ-리가-없다 c1, c2, c4–c6); 했어야 했습니다 (g:었어야-했다 c1, c3, c8, plus c8 했어/했어요, c2 사과했어야죠); 잤어도 됐습니다; …곤 했습니다/합니다 (g:곤-하다 c1–c8, plus c6–c8 했어); 놓았습니다/뒀습니다, 놨어/뒀어/둘게 (g:어-놓다, g:어-두다); 만합니다 (g:ㄹ-만하다 c4–c6); 편입니다/편이었습니다/편이야 (g:는-편이다 c4, c6, c8); 길입니다/길이야 (g:는-길에 c6, c7); 었었습니다 (g:었었다 c4, c6, c7); 일어나야죠/일어나야지요 (g:어야 c9); 타자니까요. Non-final blanks with valid tense alternates: g:기에 c1 않았기에, c4 부르기에, c5 방대했기에; g:길래 c9 어두워졌길래; g:는-둥-마는-둥 c1 들은 둥 만 둥; g:다-보니 c4/c6/c7 -다가 보니. L03: 이르렀어 (g:ㄹ-지경이다 c4), 끝내 버려요 / 끝내 버리죠 (g:어-버리다 c1), 지워 버려라 (c8).
+
+### Reviewed and left as is
+- **Retrospective family:** -더라 (first-hand), -던가 (recall, rhetorical), -던 (읽던 / 읽은 / 읽었던), -더니 (third person) vs -았/었더니 (first person), and the nearMiss hints are accurate. "Normally" and "rarely" are already used where the rule has exceptions.
+- **-(으)로서 / -(으)로써**, **-느라고** (same subject, no tense, no command; n1 and n2 test each constraint), **-(으)ㄹ수록** (no tense), and **-다니까 / -ㄴ다니 / -다니**: correct.
+- **Registers without 합쇼체:** -더라, -던가, -지 뭐, -(으)ㄹ걸요, and -다니(까) were intentionally not given 합쇼 forms.
+- **`fn:` tags:** no clear mis-tags. Arguable but defensible: 셈/격/마찬가지 → manner-comparison; 마련/법/십상 → conjecture; 어-놓다/두다 and 곤-하다 → sequence-time; 로써 → manner-comparison.
+- **g:는-양 c9** (무슨 상사인 양, literary 양 in casual 반말): kept. The pose reading is the point, and the mix is attested.
+- **Stock frames:** the proverb clozes (g:는-격이다), 급할수록 돌아가라, and 고객 여러분의 성원이 있었기에 are set phrases used as the frame on purpose. No sentence reproduces a dictionary, textbook, or HTSK example.
+
+## Hanja removal (content side, 2026-10-28)
+
+Owner direction: drop the WaniKani-style hanja element and focus on Hangul vocabulary.
+- Deleted `seed/L01–L03/hanja.json` (30 items). The loader walks `seed/**/*.json`, so no empty placeholder files are needed.
+- Stripped `hanjaId` from every vocab `hanjaBreakdown` entry (71 entries). `syllable` + `hanja` stay as a subtle annotation.
+- Removed the `hanja:<char>` tags from x:환골탈태, x:고육지책, x:전화위복. No `unlockDeps` pointed at hanja ids.
+- `validate.ts` is unchanged. It never required hanja items, and the `hanjaId` checks still apply to custom or imported items.
+- `test/import.test.ts`: the CSV round-trip tests for the `hanja` kind sampled the real seed, so they now use six in-test hanja fixtures. The import/export path still supports the kind.
+
+## Hangul-first mnemonics (2026-10-28/29)
+
+Owner direction: hanja may stay only as a subtle hint, never as the main device.
+- **L01–L03 vocab:** rewrote all 81 mnemonics that opened with characters (決 decide + 裁 judge…). Each one now anchors on a Hangul word the learner already knows that shares the syllable (결제 ↔ 경제, 재 ↔ 재판, 지양 ↔ 중지, 지향 ↔ 방향, 임대 ↔ 대출, 임차 ↔ 차용), on a collocation, or on a meaning contrast. None of them contains a hanja character any more.
+  - Contrast pairs were kept: 결재/결제, 갱신/경신, 일체/일절, 유래/유례, 혼동/혼돈, 지양/지향, 임대/임차, 소환/소집.
+  - **v:결딴나다:** now relies on the sound contrast (hard ㄸ = hard landing) rather than "not 決斷".
+  - **v:간담회:** added the 간담이 서늘하다 homograph warning, which is useful for a translator.
+  - Native-word mnemonics and L04 were already Hangul-only and were left untouched.
+  - Expressions (사자성어) keep their character breakdowns. There, the characters are the idiom.
+- **L05–L10:** mnemonics only where they add something: homographs a translator will meet (발효 law/fermentation, 공모 contest/conspiracy, 관용 tolerance/idiom, 고찰 study/temple, 감수 accept/supervise), and spelling traps (게재, 곰곰이, 금세, 낱낱이). They were written Hangul-first from the start, with homographs flagged by their collocation, not their characters.
+
+## Frequency vocab L05–L10 (author self-pass, 2026-10-28/29)
+
+Source: `data-private/vocab-candidates.tsv`, the owner's never-drilled Anki words in approximate frequency order. It was used as a word list only, and nothing from it is copied into the seed. Every gloss, collocation, example and prompt is original.
+
+| level | words | rank range |
+|---|---|---|
+| L05 | 40 | 5,097–5,668 |
+| L06 | 40 | 5,669–5,993 |
+| L07 | 40 | 5,995–6,108 |
+| L08 | 40 | 6,114–6,304 |
+| L09 | 40 | 6,307–6,474 |
+| L10 | 40 | 6,477–6,732 |
+
+**Skipped**
+- Loanwords and Konglish: 피시, 가이드, 카운터, 크림, 테이프, 파트너, 가스, 코스, 매너, 그래프, 오페라, 렌즈, 스튜디오, 샐러드, 헬멧, 노크, 오버하다, 레저, 리더십, 마케팅…
+- Transparent compounds and derivations an advanced speaker infers: 작은집/큰집, 촬영지, 경비실, 상담실, 성적표, 수리비, 아랫집, 여고, 초가을/초겨울, 경고문, 결승선, 고가품, 고교생, 기행문, 기념회, 낚시터, 논밭, 농어촌…
+- Proper nouns and nationalities: 대한민국, 아프리카, 북미, 그리스, 경찰청, 국세청, 기상청, 법무부.
+- Interjections and fragments: 아냐, 아하, 어머, 어휴, 년생.
+- Concrete everyday nouns: 깍두기, 팬티, 벤치, 요구르트, 단무지, 너구리, 캥거루, 족발, 저금통, 털실…
+- Offensive terms: 병신.
+- Near-duplicates of app items or of a picked sibling: 지향하다 and 개입하다 (already in L01–L03), 권장 (as 권장하다), 당면 (as 당면하다), 끼얹다 (in x:찬물을-끼얹다), 기피 (as 기피하다), and others.
+- Low-yield Sino-Korean nouns where a 하다 verb or adverb sat nearby were dropped in favor of the verb or adverb. The owner asked for a preference for 하다/되다 verbs, adverbs, mimetics and register-marked words.
+
+**Design notes**
+- **Contrast pairs:** each is built inside the band, with `rejected` set in both directions and nearMiss hints on the clozes:
+  - 간략/간소, 강인/강직, 경멸/경시, 고달프다/고되다, 결여/결핍, 과감/과격, 광범위/광활, 냉담/냉혹, 다짜고짜/대뜸, 곤욕/곤혹
+  - links to earlier items: 간과/묵과, 거침없이/서슴없이, 관여/개입, 추락/전락, 선발/발탁, 복구/회복
+- **Homographs:** tagged `homograph:<hanja>` so the UI can surface them. In meaning prompts, the other sense is a `rejected` answer: 발효 → "ferment", 양산 → "parasol", 공모 → "conspiracy", 관용 → "idiom".
+- **Spelling:** spelling items carry the misspelling as a production `rejected` and a cloze nearMiss: 곰곰히, 금새, 낱낱히, 게제. 게을리하다, 그때그때 and 눈여겨보다 have spacing-strict clozes, with the spaced form as a nearMiss.
+- **Clozes:** a cloze appears only where there is a strong frame (~___을 금치 못하다, ___를 앓다, 고하를 ___하고). Sentence-final blanks accept the common speech levels (D39).
+- **hanjaBreakdown:** used only for Sino-Korean words where I'm certain of the characters. Mixed words are left without one (그간), as are uncertain etymologies (대수롭다; 눈총, which may be 눈 + 銃). 기필코 is tagged `mixed` and broken down for 기필 only.
+- **꺼림칙하다:** production also accepts 께름칙하다 (both are standard).
+- **Removed during self-review:** 꼬빡 as a cloze variant (not sure it's standard). Rewrote an English gloss ("lived off a friend" → "crashed at a friend's place") and one 고수하다 example that repeated 고집.
