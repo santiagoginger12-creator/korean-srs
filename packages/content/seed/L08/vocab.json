@@ -288,7 +288,7 @@
     "unlockDeps": [],
     "gating": true,
     "source": {"kind": "original", "license": "original-owned"},
-    "needs_review": true,
+    "needs_review": false,
     "tags": ["sino-korean", "freq:6135"],
     "word": "공연히",
     "meanings": ["for no reason, needlessly", "in vain, for nothing"],
@@ -315,7 +315,7 @@
       },
       "production": {
         "promptEn": "needlessly, for no reason (the fuller, more literary form of 괜히)",
-        "contextHint": "___ 걱정하다",
+        "contextHint": "___ 걱정하다; in speech, mostly older speakers",
         "accepted": ["공연히"]
       },
       "cloze": [
@@ -324,7 +324,8 @@
           "sentence": "{{}} 남의 일에 끼어들었다가 욕만 먹었다.",
           "en": "I needlessly stuck my nose into someone else's business and just got an earful.",
           "cue": "공연히 · needlessly",
-          "accepted": ["공연히", "괜히"],
+          "accepted": ["공연히"],
+          "nearMiss": [{"answer": "괜히", "hint": "괜히 is the everyday contraction and fits too; the cue asks for the fuller 공연히."}],
           "particleTolerance": "none"
         }
       ]
@@ -1631,7 +1632,8 @@
           "sentence": "{{}}의 노고에 진심으로 감사드립니다.",
           "en": "Thank you sincerely for all your hard work over this time.",
           "cue": "그간 · all this while",
-          "accepted": ["그간", "그동안"],
+          "accepted": ["그간"],
+          "nearMiss": [{"answer": "그동안", "hint": "그동안 means the same; the cue asks for the slightly formal 그간."}],
           "particleTolerance": "none"
         }
       ]
@@ -2075,7 +2077,8 @@
           "sentence": "주가가 연일 곤두박질치더니 {{}} 거래가 정지되었다.",
           "en": "The stock plunged day after day until trading was finally suspended.",
           "cue": "급기야 · in the end",
-          "accepted": ["급기야", "결국"],
+          "accepted": ["급기야"],
+          "nearMiss": [{"answer": "결국", "hint": "결국 also fits; the cue asks for 급기야, 'until it finally came to this'."}],
           "particleTolerance": "none"
         }
       ]

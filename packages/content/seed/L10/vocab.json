@@ -154,7 +154,7 @@
           "sentence": "경찰은 조직적으로 사건을 {{}} 의혹을 받고 있다.",
           "en": "Police are suspected of an organized effort to cover up the incident.",
           "cue": "은폐하다 · cover up",
-          "accepted": ["은폐하려 한", "은폐한", "은폐하려는"],
+          "accepted": ["은폐하려 한", "은폐한", "은폐하려는", "은폐했다는", "은폐하려 했다는"],
           "particleTolerance": "none"
         }
       ]
@@ -271,7 +271,7 @@
           "sentence": "면접관들은 지원자의 태도를 특히 {{}}.",
           "en": "The interviewers paid particular attention to the applicants' attitude.",
           "cue": "눈여겨보다 · watch closely",
-          "accepted": ["눈여겨봤다", "눈여겨보았다"],
+          "accepted": ["눈여겨봤다", "눈여겨보았다", "눈여겨봤습니다", "눈여겨보았습니다", "눈여겨봤어요"],
           "nearMiss": [{"answer": "눈여겨 봤다", "hint": "눈여겨보다 is one word: no space."}],
           "particleTolerance": "none",
           "spacingStrict": true
@@ -289,7 +289,7 @@
     "gating": true,
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
-    "tags": ["freq:6504"],
+    "tags": ["mixed", "freq:6504"],
     "word": "눈총",
     "meanings": ["a dirty look, a glare", "(___을 받다) to be frowned upon"],
     "pos": "명사",
@@ -327,7 +327,8 @@
           "sentence": "그는 회의 중에 휴대폰 게임을 하다가 상사의 {{}}을 받았다.",
           "en": "He got a glare from his boss for playing a phone game during the meeting.",
           "cue": "눈총 · dirty look",
-          "accepted": ["눈총", "눈치"],
+          "accepted": ["눈총"],
+          "nearMiss": [{"answer": "눈치", "hint": "눈치 is reading the room (눈치를 보다); the glare you get is 눈총."}],
           "particleTolerance": "none"
         }
       ]
@@ -648,7 +649,8 @@
           "sentence": "그 사고는 안전의 중요성을 {{}} 일깨워 주었다.",
           "en": "The accident reminded us once again how important safety is.",
           "cue": "다시금 · once again",
-          "accepted": ["다시금", "다시 한번"],
+          "accepted": ["다시금"],
+          "nearMiss": [{"answer": "다시 한번", "hint": "다시 한번 also fits; the cue asks for the literary 다시금."}],
           "particleTolerance": "none"
         }
       ]
@@ -663,7 +665,7 @@
     "unlockDeps": [],
     "gating": true,
     "source": {"kind": "original", "license": "original-owned"},
-    "needs_review": true,
+    "needs_review": false,
     "tags": ["native", "freq:6527"],
     "word": "다짜고짜",
     "meanings": ["without asking or explaining first", "barging in, point-blank"],
@@ -713,7 +715,8 @@
           "sentence": "전화를 받자마자 그는 {{}} 욕부터 했다.",
           "en": "The moment I picked up, he started cursing at me without so much as a hello.",
           "cue": "다짜고짜 · without asking first",
-          "accepted": ["다짜고짜", "대뜸"],
+          "accepted": ["다짜고짜"],
+          "nearMiss": [{"answer": "대뜸", "hint": "대뜸 (right off the bat) also fits; the cue asks for 다짜고짜, which adds 'without asking or explaining'."}],
           "particleTolerance": "none"
         }
       ]
@@ -832,7 +835,8 @@
           "sentence": "그는 부상 때문에 선수 생활을 {{}}했다.",
           "en": "Because of his injury, he gave up his playing career.",
           "cue": "단념 · giving up",
-          "accepted": ["단념", "포기"],
+          "accepted": ["단념"],
+          "nearMiss": [{"answer": "포기", "hint": "포기 also fits; the cue asks for 단념."}],
           "particleTolerance": "none"
         }
       ]
@@ -1212,7 +1216,8 @@
           "sentence": "몇 번을 불렀는데도 그는 {{}}도 하지 않았다.",
           "en": "I called him several times, but he didn't even answer.",
           "cue": "대꾸 · reply",
-          "accepted": ["대꾸", "대답"],
+          "accepted": ["대꾸"],
+          "nearMiss": [{"answer": "대답", "hint": "대답 also fits; the cue asks for 대꾸, a reply that's often curt."}],
           "particleTolerance": "none"
         }
       ]
@@ -1277,7 +1282,8 @@
           "sentence": "전화를 걸자 친구가 {{}} \"무슨 일 있어?\" 하고 물었다.",
           "en": "When I called, my friend asked straightaway, \"Is something wrong?\"",
           "cue": "대뜸 · right off the bat",
-          "accepted": ["대뜸", "다짜고짜"],
+          "accepted": ["대뜸"],
+          "nearMiss": [{"answer": "다짜고짜", "hint": "다짜고짜 is charging in without asking; your friend is asking. Right off the bat is 대뜸."}],
           "particleTolerance": "none"
         }
       ]
@@ -1292,7 +1298,7 @@
     "unlockDeps": [],
     "gating": true,
     "source": {"kind": "original", "license": "original-owned"},
-    "needs_review": true,
+    "needs_review": false,
     "tags": ["freq:6588"],
     "word": "대수롭다",
     "meanings": ["(usually ___지 않다) a big deal, important"],
@@ -1373,7 +1379,8 @@
           "sentence": "기다리는 사람에게는 시간이 유난히 {{}} 흐르는 법이다.",
           "en": "For someone waiting, time always seems to crawl.",
           "cue": "더디다 · slowly",
-          "accepted": ["더디게", "느리게"],
+          "accepted": ["더디게"],
+          "nearMiss": [{"answer": "느리게", "hint": "느리게 also fits; the cue asks for 더디다."}],
           "particleTolerance": "none"
         }
       ]
@@ -1492,7 +1499,8 @@
           "sentence": "동창회는 회원 간의 친목을 {{}} 목적으로 한다.",
           "en": "The alumni association aims to foster fellowship among its members.",
           "cue": "도모하다 · foster",
-          "accepted": ["도모하는", "도모함을", "도모하기를"],
+          "accepted": ["도모함을", "도모하는 것을"],
+          "nearMiss": [{"answer": "도모하는", "hint": "목적으로 하다 needs a noun phrase: 도모함을 or 도모하는 것을."}],
           "particleTolerance": "none"
         }
       ]
@@ -1552,7 +1560,8 @@
           "sentence": "인생의 {{}}에 함정이 도사리고 있다.",
           "en": "Pitfalls lie in wait everywhere in life.",
           "cue": "도처 · everywhere",
-          "accepted": ["도처", "곳곳"],
+          "accepted": ["도처"],
+          "nearMiss": [{"answer": "곳곳", "hint": "곳곳 also fits; the cue asks for the written 도처."}],
           "particleTolerance": "none"
         }
       ]
@@ -1714,7 +1723,8 @@
           "sentence": "그는 실력과 인성을 {{}} 갖춘 지도자로 평가받는다.",
           "en": "He is regarded as a leader who has both skill and character.",
           "cue": "두루 · all around",
-          "accepted": ["두루", "고루"],
+          "accepted": ["두루"],
+          "nearMiss": [{"answer": "고루", "hint": "고루 (evenly) also fits; the cue asks for 두루."}],
           "particleTolerance": "none"
         }
       ]
@@ -1764,7 +1774,8 @@
           "sentence": "갑작스러운 일정 변경으로 계획이 완전히 {{}}이 됐다.",
           "en": "The sudden schedule change turned our plans into a total mess.",
           "cue": "뒤죽박죽 · jumble",
-          "accepted": ["뒤죽박죽", "엉망"],
+          "accepted": ["뒤죽박죽"],
+          "nearMiss": [{"answer": "엉망", "hint": "엉망이 되다 also fits; the cue asks for 뒤죽박죽."}],
           "particleTolerance": "none"
         }
       ]
@@ -2073,7 +2084,7 @@
           "sentence": "졸업하고 나서 친구들과 연락이 점점 {{}}.",
           "en": "After graduation, I heard from my friends less and less.",
           "cue": "뜸하다 · infrequent",
-          "accepted": ["뜸해졌다", "뜸해졌어요", "뜸해졌어"],
+          "accepted": ["뜸해졌다", "뜸해졌어요", "뜸해졌어", "뜸해졌습니다"],
           "particleTolerance": "none"
         }
       ]

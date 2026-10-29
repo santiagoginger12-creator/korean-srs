@@ -104,7 +104,8 @@
           "sentence": "그는 소방관이라는 직업에 큰 {{}}를 가지고 있다.",
           "en": "He takes great pride in being a firefighter.",
           "cue": "긍지 · pride",
-          "accepted": ["긍지", "자부심"],
+          "accepted": ["긍지"],
+          "nearMiss": [{"answer": "자부심", "hint": "자부심 also fits; the cue asks for 긍지."}],
           "particleTolerance": "none"
         }
       ]
@@ -203,7 +204,8 @@
           "sentence": "대회에 참가한 학생들은 그동안 갈고닦은 {{}}을 마음껏 뽐냈다.",
           "en": "The students in the contest showed off the skills they had honed.",
           "cue": "기량 · skill",
-          "accepted": ["기량", "실력"],
+          "accepted": ["기량"],
+          "nearMiss": [{"answer": "실력", "hint": "실력 also fits; the cue asks for 기량, skill on display."}],
           "particleTolerance": "none"
         }
       ]
@@ -227,7 +229,7 @@
     "collocations": [
       {"ko": "넋을 기리다", "en": "to honor the souls (of the dead)"},
       {"ko": "업적을 기리다", "en": "to honor achievements"},
-      {"ko": "뜻을 기리다", "en": "to honor someone's wishes"}
+      {"ko": "뜻을 기리다", "en": "to honor what someone stood for"}
     ],
     "examples": [
       {
@@ -237,7 +239,7 @@
       },
       {
         "ko": "할아버지의 뜻을 기리려고 장학금을 만들었어요.",
-        "en": "We set up a scholarship to honor my grandfather's wishes.",
+        "en": "We set up a scholarship to honor what my grandfather stood for.",
         "register": "neutral"
       }
     ],
@@ -571,7 +573,7 @@
           "sentence": "아이가 스스로 방 청소를 하다니 정말 {{}}.",
           "en": "The kid cleaned his room all by himself. How admirable.",
           "cue": "기특하다 · admirable",
-          "accepted": ["기특하다", "기특해", "기특하네", "기특하네요", "기특해요"],
+          "accepted": ["기특하다", "기특해", "기특하네", "기특하네요", "기특해요", "기특합니다", "기특하구나"],
           "particleTolerance": "none"
         }
       ]
@@ -619,7 +621,8 @@
           "sentence": "이번 협약은 두 나라 협력의 {{}}를 마련했다는 평가를 받는다.",
           "en": "The agreement is credited with laying the groundwork for cooperation between the two countries.",
           "cue": "기틀 · groundwork",
-          "accepted": ["기틀", "토대"],
+          "accepted": ["기틀"],
+          "nearMiss": [{"answer": "토대", "hint": "토대 also fits; the cue asks for the native 기틀."}],
           "particleTolerance": "none"
         }
       ]
@@ -724,7 +727,8 @@
           "sentence": "다음 대회에서는 {{}} 우승하고 말겠다.",
           "en": "Next tournament I'm going to win, no matter what.",
           "cue": "기필코 · without fail",
-          "accepted": ["기필코", "반드시", "꼭"],
+          "accepted": ["기필코"],
+          "nearMiss": [{"answer": "반드시", "hint": "반드시 also fits; the cue asks for 기필코."}, {"answer": "꼭", "hint": "꼭 also fits; the cue asks for 기필코."}],
           "particleTolerance": "none"
         }
       ]
@@ -765,7 +769,8 @@
       "production": {
         "promptEn": "close, tight (cooperation, ties, links between organizations)",
         "contextHint": "institutional; a warm friendship is 돈독하다",
-        "accepted": ["긴밀하다"]
+        "accepted": ["긴밀하다"],
+        "rejected": ["돈독하다"]
       },
       "cloze": [
         {
@@ -1053,7 +1058,7 @@
           "sentence": "구단은 감독 교체로 분위기 쇄신을 {{}}.",
           "en": "The club sought to change the mood by replacing its manager.",
           "cue": "꾀하다 · seek",
-          "accepted": ["꾀했다", "꾀하였다"],
+          "accepted": ["꾀했다", "꾀하였다", "꾀했습니다", "꾀했어요"],
           "particleTolerance": "none"
         }
       ]
@@ -1146,7 +1151,8 @@
           "sentence": "아기가 {{}} 자라는 모습을 보면 신기하다.",
           "en": "It's amazing to watch the baby grow day by day.",
           "cue": "나날이 · day by day",
-          "accepted": ["나날이", "날로"],
+          "accepted": ["나날이"],
+          "nearMiss": [{"answer": "날로", "hint": "날로 means the same; the cue asks for 나날이."}],
           "particleTolerance": "none"
         }
       ]
@@ -1198,7 +1204,7 @@
           "sentence": "봄볕이 따뜻해서 그런지 온몸이 {{}}.",
           "en": "Maybe it's the warm spring sun, but my whole body feels heavy and drowsy.",
           "cue": "나른하다 · drowsy",
-          "accepted": ["나른하다", "나른해", "나른해요", "나른하네", "나른하네요"],
+          "accepted": ["나른하다", "나른해", "나른해요", "나른하네", "나른하네요", "나른합니다"],
           "particleTolerance": "none"
         }
       ]
@@ -1250,7 +1256,8 @@
           "sentence": "성벽 위로 붉은 깃발이 {{}} 있었다.",
           "en": "Red banners were fluttering above the fortress walls.",
           "cue": "나부끼다 · flutter",
-          "accepted": ["나부끼고", "휘날리고"],
+          "accepted": ["나부끼고"],
+          "nearMiss": [{"answer": "휘날리고", "hint": "휘날리다 also fits; the cue asks for 나부끼다."}],
           "particleTolerance": "none"
         }
       ]
@@ -1309,7 +1316,8 @@
           "sentence": "그는 몇 번의 실패에도 {{}}하지 않고 다시 도전했다.",
           "en": "Despite several failures, he did not lose heart and tried again.",
           "cue": "낙심 · losing heart",
-          "accepted": ["낙심", "낙담"],
+          "accepted": ["낙심"],
+          "nearMiss": [{"answer": "낙담", "hint": "낙담 is a near twin; the cue asks for 낙심."}],
           "particleTolerance": "none"
         }
       ]
@@ -1370,7 +1378,7 @@
           "sentence": "지은 지 50년이 넘은 학교라 시설이 많이 {{}}.",
           "en": "The school is over fifty years old, so its facilities are badly outdated.",
           "cue": "낙후되다 · be outdated",
-          "accepted": ["낙후됐다", "낙후되었다", "낙후됐어요", "낙후돼 있다", "낙후되어 있다"],
+          "accepted": ["낙후됐다", "낙후되었다", "낙후됐어요", "낙후됐습니다", "낙후됐어", "낙후돼 있다", "낙후되어 있다", "낙후돼 있어요"],
           "particleTolerance": "none"
         }
       ]
@@ -1479,7 +1487,8 @@
           "sentence": "골목에서 {{}} 고양이가 튀어나와 깜짝 놀랐다.",
           "en": "A cat shot out of the alley out of nowhere and gave me a fright.",
           "cue": "난데없이 · out of nowhere",
-          "accepted": ["난데없이", "갑자기"],
+          "accepted": ["난데없이"],
+          "nearMiss": [{"answer": "갑자기", "hint": "갑자기 also fits; the cue asks for 난데없이, 'out of nowhere'."}],
           "particleTolerance": "none"
         }
       ]
@@ -1584,7 +1593,8 @@
           "sentence": "갑자기 해고된 이유가 도무지 {{}}이 가지 않는다.",
           "en": "I just can't make sense of why I was suddenly fired.",
           "cue": "납득 · making sense",
-          "accepted": ["납득", "이해"],
+          "accepted": ["납득"],
+          "nearMiss": [{"answer": "이해", "hint": "이해가 가다 also works; the cue asks for 납득."}],
           "particleTolerance": "none"
         }
       ]
@@ -1810,7 +1820,8 @@
           "sentence": "반대할 줄 알았는데 부모님도 {{}} 반기시는 눈치였다.",
           "en": "I expected them to object, but my parents seemed quietly pleased.",
           "cue": "내심 · inwardly",
-          "accepted": ["내심", "속으로"],
+          "accepted": ["내심"],
+          "nearMiss": [{"answer": "속으로", "hint": "속으로 also fits; the cue asks for 내심."}],
           "particleTolerance": "none"
         }
       ]
@@ -1930,7 +1941,7 @@
           "sentence": "새 정책에 대한 여론은 예상보다 {{}}.",
           "en": "Public opinion on the new policy was cooler than expected.",
           "cue": "냉담하다 · cool, indifferent",
-          "accepted": ["냉담했다", "냉담하였다"],
+          "accepted": ["냉담했다", "냉담하였다", "냉담했습니다", "냉담했어요"],
           "nearMiss": [{"answer": "냉혹했다", "hint": "냉혹 is merciless and harsh; a cool, indifferent response is 냉담."}],
           "particleTolerance": "none"
         }

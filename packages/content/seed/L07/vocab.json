@@ -1904,16 +1904,16 @@
     "unlockDeps": [],
     "gating": true,
     "source": {"kind": "original", "license": "original-owned"},
-    "needs_review": true,
+    "needs_review": false,
     "tags": ["native", "freq:6105"],
     "word": "골머리",
     "meanings": ["(fig.) one's head, as in a headache over a problem", "(___를 앓다) to be at one's wits' end"],
     "pos": "명사",
-    "register": "spoken",
+    "register": "neutral",
     "collocations": [
       {"ko": "골머리를 앓다", "en": "to have a real headache over"},
-      {"ko": "골머리가 아프다", "en": "to have one's head spin (from a problem)"},
-      {"ko": "골머리를 썩이다", "en": "to rack one's brains"}
+      {"ko": "골머리가 아프다", "en": "to have a real headache (over a problem)"},
+      {"ko": "골머리를 썩이다", "en": "to worry oneself sick (over)"}
     ],
     "examples": [
       {
@@ -1927,12 +1927,11 @@
         "register": "spoken"
       }
     ],
-    "questionTypes": ["meaning", "production", "cloze"],
+    "questionTypes": ["production", "cloze"],
     "questions": {
-      "meaning": {"accepted": ["headache", "head", "racking one's brain", "trouble", "pain", "brains"]},
       "production": {
-        "promptEn": "(fig.) one's head, as in a headache over a problem: ___를 앓다",
-        "contextHint": "native noun, informal",
+        "promptEn": "a headache (over a problem): ___를 앓다, 'to be plagued by'",
+        "contextHint": "native noun, colloquial in origin but standard in headlines; not 골치",
         "accepted": ["골머리"]
       },
       "cloze": [
@@ -1941,7 +1940,17 @@
           "sentence": "시는 늘어나는 관광객 쓰레기 때문에 {{}}를 앓고 있다.",
           "en": "The city is struggling with the growing amount of tourist litter.",
           "cue": "골머리 · headache",
-          "accepted": ["골머리", "골치"],
+          "accepted": ["골머리"],
+          "nearMiss": [{"answer": "골치", "hint": "골치를 앓다 means the same; the cue asks for 골머리."}],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "새로 맡은 프로젝트 때문에 요즘 {{}}가 아파 죽겠어요.",
+          "en": "This new project I've taken on is giving me a splitting headache.",
+          "cue": "골머리 · headache",
+          "accepted": ["골머리"],
+          "nearMiss": [{"answer": "골치", "hint": "골치가 아프다 means the same; the cue asks for 골머리."}],
           "particleTolerance": "none"
         }
       ]

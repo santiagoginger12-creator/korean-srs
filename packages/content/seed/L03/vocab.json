@@ -1351,7 +1351,7 @@
     "questionTypes": ["meaning", "production"],
     "questions": {
       "meaning": { "accepted": ["without hesitation", "unhesitatingly", "readily", "without a second thought", "without reservation", "freely"] },
-      "production": { "promptEn": "without hesitation; unhesitatingly", "contextHint": "native adverb; from 서슴다 'to hesitate'", "accepted": ["서슴없이"] }
+      "production": { "promptEn": "without hesitation; unhesitatingly", "contextHint": "native adverb; from 서슴다 'to hesitate'. Nothing in the way (unstoppable) is 거침없이", "accepted": ["서슴없이"], "rejected": ["거침없이"] }
     }
   },
   {

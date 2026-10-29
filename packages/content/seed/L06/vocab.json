@@ -471,7 +471,7 @@
           "sentence": "출석 확인을 하지 않은 학생은 결석으로 {{}} 점수가 깎인다.",
           "en": "Students who don't check in are counted as absent and lose points.",
           "cue": "간주되다 · be counted as",
-          "accepted": ["간주되어", "간주돼", "간주되고"],
+          "accepted": ["간주되어", "간주돼", "간주되고", "간주되며"],
           "particleTolerance": "none"
         }
       ]
@@ -2046,7 +2046,7 @@
     ],
     "questionTypes": ["meaning", "production", "cloze"],
     "questions": {
-      "meaning": {"accepted": ["perch", "sit on the edge", "sit on", "sit astride", "perch on", "to sit with legs dangling"]},
+      "meaning": {"accepted": ["perch", "sit on the edge", "sit on", "perch on", "to sit with legs dangling"]},
       "production": {"promptEn": "to perch, sit on the edge of (a bed, ledge, railing)", "accepted": ["걸터앉다"]},
       "cloze": [
         {

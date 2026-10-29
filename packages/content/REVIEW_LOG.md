@@ -440,3 +440,46 @@ Source: `data-private/vocab-candidates.tsv`, the owner's never-drilled Anki word
 - **hanjaBreakdown:** used only for Sino-Korean words where I'm certain of the characters. Mixed words are left without one (그간), as are uncertain etymologies (대수롭다; 눈총, which may be 눈 + 銃). 기필코 is tagged `mixed` and broken down for 기필 only.
 - **꺼림칙하다:** production also accepts 께름칙하다 (both are standard).
 - **Removed during self-review:** 꼬빡 as a cloze variant (not sure it's standard). Rewrote an English gloss ("lived off a friend" → "crashed at a friend's place") and one 고수하다 example that repeated 고집.
+
+## Vocab QA (L05–L10 frequency vocab, L01–L03 mnemonics, independent review, 2026-10-29)
+
+Independent native-editor pass over all 240 `vocab-freq` items (glosses, collocations, examples, clozes, production prompts, `hanjaBreakdown`) and the 120 L01–L03 mnemonics. Ids (except the two swaps), `rev` (D39), and schema are unchanged. `npm run validate-content`: 0 errors, self-check 6466 cases, 0 failures, `needs_review` 0. `npm run check`: green. Tags as in the L01 log.
+
+**Totals:** 2 words swapped · 25 cross-accepted synonyms moved from `accepted` to `nearMiss` (24 clozes) · 20 speech-level/tense forms added to `accepted` (10 clozes) · 1 cloze grammar fix · 6 production prompts tightened (`rejected` / `contextHint`) · 7 gloss/collocation/example fixes · 2 tag/register fixes · 5 mnemonics deleted, 2 rewritten · 3 author flags resolved, 1 turned into an owner question.
+
+### Flags resolved
+- **v:골머리** (flag) [Q]: dropped the `meaning` question (a bare gloss of "one's head" is artificial; the word lives in 골머리를 앓다 / 골머리가 아프다), so the item is cloze-led like L04. Added c2 (새로 맡은 프로젝트 때문에 요즘 ___가 아파 죽겠어요). 골치 moved from `accepted` to `nearMiss` on both clozes ("means the same; the cue asks for 골머리"). `register` spoken → neutral (D39: 골머리를 앓다 is everyday headline usage). Collocations: 골머리가 아프다 "to have one's head spin" → "to have a real headache (over a problem)"; 골머리를 썩이다 "to rack one's brains" → "to worry oneself sick (over)". Production `promptEn` → "a headache (over a problem): ___를 앓다, 'to be plagued by'", `contextHint` names 골치 as the word not wanted. `needs_review` cleared.
+- **v:공연히** (flag) [Q]: `register` stays `written`. In current speech it's the older speaker's word, and 괜히 is the default, which the spoken example reflects. `contextHint` adds "in speech, mostly older speakers". c1: 괜히 moved to `nearMiss` ("the everyday contraction and fits too; the cue asks for the fuller 공연히"). `needs_review` cleared.
+- **v:다짜고짜 / v:대뜸** (flag) [Q]: the cross-acceptance was half wrong. In 대뜸 c1 (친구가 ___ "무슨 일 있어?" 하고 물었다) the friend *is* asking, so 다짜고짜 doesn't fit and is now a `nearMiss` with that explanation. In 다짜고짜 c1 (전화를 받자마자 ___ 욕부터 했다) 대뜸 is natural too, so it becomes a `nearMiss` that says so. Production `rejected` was already set in both directions. `needs_review` cleared.
+- **v:대수롭다** (flag): `needs_review` cleared (the content is sound). The origin tag stays open as an owner question in REVIEW_NOTES.
+
+### Selection (swaps)
+- **v:개봉하다 → v:반박하다** (rank 5,609) and **v:초과하다 → v:약탈하다** (rank 5,649), both L05. 개봉하다 and 초과하다 are single-sense TOPIK-intermediate words (movie releases, 초과 근무), well inside "everyday and news vocabulary" (VOCAB_PROFILE). The replacements are the next candidates in rank order that are not loanwords, transparent compounds, basic verbs (낙서하다, 재수하다, 선언하다, 편집하다…), or duplicates (복용, 수행, 양산). Both new items are original and follow the band's format: meaning + production + cloze, 反駁 / 掠奪, 반박하다 contrasted with 반론 (L01) in the hint. They're placed in rank order, and the L05 count is unchanged.
+
+### Gradeability: synonyms that were graded correct [Q]
+Clozes whose cue names the headword were accepting a different word as **correct**, so a learner could pass without producing the target. Each one is now a `nearMiss` ("X also fits; the cue asks for Y"), following the Grammar QA sibling pattern: 골치 (골머리), 괜히 (공연히), 그동안 (그간), 결국 (급기야), 자부심 (긍지), 실력 (기량), 토대 (기틀), 반드시 / 꼭 (기필코), 날로 (나날이), 휘날리고 (나부끼다), 낙담 (낙심), 갑자기 (난데없이), 이해 (납득), 속으로 (내심), 다시 한번 (다시금), 대뜸 / 다짜고짜 (see flags), 포기 (단념), 대답 (대꾸; it was also a production `rejected`, which contradicted the cloze), 느리게 (더디다), 곳곳 (도처), 고루 (두루), 엉망 (뒤죽박죽).
+- **v:눈총 c1** [A]: 눈치 was accepted, but 상사의 눈치를 받다 isn't Korean (눈치를 보다/주다). Now a `nearMiss`: "눈치 is reading the room; the glare you get is 눈총."
+- 단연코 (v:단연 c1) stays accepted: it is the emphatic form of the same word.
+
+### Other edits
+- **`accepted` coverage** [Q] (D39): 합쇼체 and other levels for sentence-final blanks: 기특합니다 / 기특하구나; 꾀했습니다 / 꾀했어요; 나른합니다; 낙후됐습니다 / 낙후됐어 / 낙후돼 있어요; 냉담했습니다 / 냉담했어요; 눈여겨봤습니다 / 눈여겨보았습니다 / 눈여겨봤어요; 뜸해졌습니다. Non-final: 불우한 (불우한 이웃 is as common as 불우 이웃), 간주되며, 은폐했다는 / 은폐하려 했다는.
+- **v:도모하다 c1** [G]: 친목을 ___ 목적으로 한다 accepted 도모하는 and 도모하기를, but 목적으로 하다 needs a noun phrase. `accepted` → 도모함을 / 도모하는 것을 (the 회칙 frame), and 도모하는 is a `nearMiss` that explains why.
+- **Production pins** [Q]: v:중계되다 adds a `contextHint` ("live sports and events; airing a program is 방송되다 or 방영되다") and `rejected` 방송되다 / 방영되다. v:권장하다 `rejected` + 권고하다, and the hint now separates 권유 / 권고. Reciprocal `rejected` added: v:긴밀하다 → 돈독하다, and v:서슴없이 (L03) → 거침없이 with a matching hint. v:기필코 → 기어이 needs no reciprocal, because 기어이 (L04) has no production question.
+- **v:주최하다 meaning** [A]: "sponsor" moved from `accepted` to `rejected` (+ "be sponsored"). Sponsoring is 후원, and a translator has to keep 주최 / 주관 / 후원 apart.
+- **v:걸터앉다 meaning** [A]: removed "sit astride". 걸터앉다 is sitting on an edge with your legs hanging, not straddling.
+- **v:기리다** [A]: 뜻을 기리다 "to honor someone's wishes" → "to honor what someone stood for", and the example's English is changed to match. Honoring someone's wishes is 뜻을 받들다/따르다.
+- **v:양산하다 collocation** [S]: 대량 양산 is a 겹말 (量 twice) → 양산에 들어가다 "to go into mass production".
+- **v:발효되다 spoken example** [N]: …경보가 발효되니까 단단히 입고 나가 → 경보가 발효된대. 단단히 입고 나가. The news verb is natural in speech when it's being relayed.
+- **v:대변하다** [A]: English "captured, intact" → "gave perfect voice to".
+- **v:눈총 tags**: + `mixed` (눈 + 銃, 표준 눈-총). No breakdown, following the 그간 convention for mixed words.
+
+### Mnemonics (L01–L03)
+- All 120 mnemonics (115 after the deletions) were checked for hanja characters (none) and for anchors. Every Hangul anchor that implies a shared morpheme (결제 ↔ 경제, 지양 ↔ 중지, 현안 ↔ 현수막, 발탁 ↔ 발치…) does share the character.
+- **v:일체 / v:일절** [A]: "체, as in 전체" implied a shared character, but 일체's 체 is 切 and 전체's is 體. Both mnemonics are rewritten as "one word, two readings", with 전체 kept only as a sound hook ("rhymes with").
+- **Deleted as forced** (each relied on a sound or link that doesn't exist): v:시큰둥하다 ("hear the sniff in 시큰"), v:머쓱하다 ("the sound of a hand coming down"), v:들먹이다 ("think 'dredge'"), v:짐짓 ("the little pause before a performance"), v:오롯이 (candle flame).
+
+### Reviewed and left as is
+- **hanjaBreakdown:** all 165 breakdowns are correct, including 看做, 甘言利說, 巨創, 參見, 涉外, 鞏固, 空然, 技倆, 團欒, 當付, 莫無可奈.
+- **Homograph mnemonics** (발효, 공모, 관용, 고찰, 감수, 사색, 당면, 수행, 습득, 교감, 양산, 대변, 소식, 고수, 공고) and **spelling items** (게재, 곰곰이, 금세, 낱낱이, 꺼림칙하다): accurate. Their Hangul anchors (고찰 = 고려 + 관찰, 곤욕 ↔ 모욕, 게재 ↔ 연재 / 기재, 공고 ↔ 견고) share the character.
+- **Contrast pairs** (간략/간소, 강인/강직, 경멸/경시, 고달프다/고되다, 결여/결핍, 과감/과격, 광범위/광활, 냉담/냉혹, 곤욕/곤혹): `rejected` is set in both directions, and the nearMiss hints are accurate.
+- **Basic but kept:** 출동하다, 추락하다, 참견하다, 복용하다, 임명되다 (see the owner question in REVIEW_NOTES).

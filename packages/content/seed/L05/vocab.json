@@ -145,9 +145,9 @@
       "meaning": {"accepted": ["recommend", "encourage", "advise", "promote", "urge", "suggest"]},
       "production": {
         "promptEn": "to recommend, encourage (as officially advisable: guidelines, labels)",
-        "contextHint": "public guidance, not a personal nudge (that is 권유하다)",
+        "contextHint": "public guidance, not a personal nudge (권유하다) or an authority's formal call to a specific party (권고하다)",
         "accepted": ["권장하다"],
-        "rejected": ["권유하다"]
+        "rejected": ["권유하다", "권고하다"]
       }
     }
   },
@@ -307,7 +307,7 @@
     ],
     "questionTypes": ["meaning", "production"],
     "questions": {
-      "meaning": {"accepted": ["host", "organize", "hold", "sponsor", "put on", "stage", "organise"]},
+      "meaning": {"accepted": ["host", "organize", "hold", "put on", "stage", "organise"], "rejected": ["sponsor", "be sponsored"]},
       "production": {
         "promptEn": "to host (an event, as the organizer named on the poster)",
         "contextHint": "the body that runs it day to day 주관하다",
@@ -363,7 +363,7 @@
           "broadcast"
         ]
       },
-      "production": {"promptEn": "(a game or event) to be broadcast, relayed (often live)", "accepted": ["중계되다"]}
+      "production": {"promptEn": "(a game or event) to be broadcast, relayed (often live)", "contextHint": "live sports and events; airing a program is 방송되다 or 방영되다", "accepted": ["중계되다"], "rejected": ["방송되다", "방영되다"]}
     }
   },
   {
@@ -708,8 +708,8 @@
         "register": "written"
       },
       {
-        "ko": "내일 0시부터 한파 경보가 발효되니까 단단히 입고 나가.",
-        "en": "A cold-wave warning goes into effect at midnight, so bundle up before you go out.",
+        "ko": "내일 0시부터 한파 경보가 발효된대. 단단히 입고 나가.",
+        "en": "They say a cold-wave warning takes effect at midnight. Bundle up before you go out.",
         "register": "spoken"
       }
     ],
@@ -768,7 +768,7 @@
     "examples": [
       {
         "ko": "이 노래는 당시 청춘들의 불안을 고스란히 대변했다.",
-        "en": "The song captured, intact, the anxieties of the young people of that time.",
+        "en": "The song gave perfect voice to the anxieties of the young people of that time.",
         "register": "written"
       },
       {
@@ -960,57 +960,6 @@
           "en": "The biggest task facing the government is stabilizing prices.",
           "cue": "당면하다 · face (a task)",
           "accepted": ["당면한"],
-          "particleTolerance": "none"
-        }
-      ]
-    }
-  },
-  {
-    "id": "v:개봉하다",
-    "kind": "vocab",
-    "level": 5,
-    "track": "vocab-freq",
-    "rev": 1,
-    "unlockDeps": [],
-    "gating": true,
-    "source": {"kind": "original", "license": "original-owned"},
-    "needs_review": false,
-    "tags": ["sino-korean", "freq:5491"],
-    "word": "개봉하다",
-    "meanings": ["to release (a film)", "to open (a sealed package)"],
-    "pos": "동사",
-    "register": "neutral",
-    "hanjaBreakdown": [{"syllable": "개", "hanja": "開"}, {"syllable": "봉", "hanja": "封"}],
-    "collocations": [
-      {"ko": "영화를 개봉하다", "en": "to release a film"},
-      {"ko": "개봉 박두", "en": "coming soon"},
-      {"ko": "개봉 후 냉장 보관", "en": "refrigerate after opening"}
-    ],
-    "examples": [
-      {
-        "ko": "그 영화 다음 달에 개봉한대요. 같이 보러 갈래요?",
-        "en": "That movie comes out next month. Want to go see it together?",
-        "register": "spoken"
-      },
-      {
-        "ko": "개봉 후에는 냉장 보관하고 가급적 빨리 드십시오.",
-        "en": "After opening, keep refrigerated and consume as soon as possible.",
-        "register": "formal"
-      }
-    ],
-    "questionTypes": ["meaning", "production", "cloze"],
-    "questions": {
-      "meaning": {
-        "accepted": ["release", "open", "premiere", "come out", "unseal", "be released", "hit theaters", "hit theatres"]
-      },
-      "production": {"promptEn": "to release (a film); to open (a sealed package)", "accepted": ["개봉하다"]},
-      "cloze": [
-        {
-          "id": "c1",
-          "sentence": "그 영화는 {{}} 첫 주에만 관객 200만 명을 모았다.",
-          "en": "The film drew two million viewers in its first week of release alone.",
-          "cue": "개봉하다 (noun form) · release",
-          "accepted": ["개봉"],
           "particleTolerance": "none"
         }
       ]
@@ -1307,7 +1256,7 @@
           "sentence": "구청은 매년 겨울 {{}} 이웃을 위한 김장 나눔 행사를 연다.",
           "en": "Every winter the district office holds a kimchi-sharing event for neighbors in need.",
           "cue": "불우하다 · needy",
-          "accepted": ["불우"],
+          "accepted": ["불우", "불우한"],
           "particleTolerance": "none"
         }
       ]
@@ -1606,7 +1555,7 @@
     }
   },
   {
-    "id": "v:초과하다",
+    "id": "v:반박하다",
     "kind": "vocab",
     "level": 5,
     "track": "vocab-freq",
@@ -1615,44 +1564,42 @@
     "gating": true,
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
-    "tags": ["sino-korean", "freq:5610"],
-    "word": "초과하다",
-    "meanings": ["to exceed, go over (a limit)", "to surpass (a target)"],
+    "tags": ["sino-korean", "freq:5609"],
+    "word": "반박하다",
+    "meanings": ["to refute, rebut (an argument or claim)", "to argue back, counter"],
     "pos": "동사",
     "register": "neutral",
-    "hanjaBreakdown": [{"syllable": "초", "hanja": "超"}, {"syllable": "과", "hanja": "過"}],
+    "hanjaBreakdown": [{"syllable": "반", "hanja": "反"}, {"syllable": "박", "hanja": "駁"}],
     "collocations": [
-      {"ko": "정원을 초과하다", "en": "to exceed capacity"},
-      {"ko": "예산을 초과하다", "en": "to go over budget"},
-      {"ko": "초과 근무", "en": "overtime"}
+      {"ko": "주장을 반박하다", "en": "to rebut a claim"},
+      {"ko": "조목조목 반박하다", "en": "to refute point by point"},
+      {"ko": "반박의 여지가 없다", "en": "to be beyond dispute"}
     ],
     "examples": [
       {
-        "ko": "수하물 무게가 기준을 초과하면 추가 요금이 붙어요.",
-        "en": "If your luggage goes over the weight limit, there's an extra charge.",
+        "ko": "듣고 보니 맞는 말이라 반박할 수가 없더라고요.",
+        "en": "Once I'd heard him out, he had a point, so I couldn't argue.",
         "register": "spoken"
       },
       {
-        "ko": "올해 수출액은 처음으로 목표치를 초과했다.",
-        "en": "Exports exceeded the target for the first time this year.",
+        "ko": "야당은 정부의 해명을 조목조목 반박하는 성명을 냈다.",
+        "en": "The opposition issued a statement rebutting the government's explanation point by point.",
         "register": "written"
       }
     ],
     "questionTypes": ["meaning", "production", "cloze"],
     "questions": {
-      "meaning": {"accepted": ["exceed", "go over", "surpass", "be in excess of", "go beyond", "overrun", "top"]},
-      "production": {
-        "promptEn": "to exceed (a set limit or quota)",
-        "contextHint": "everyday speech often just says 넘다",
-        "accepted": ["초과하다"]
+      "meaning": {
+        "accepted": ["refute", "rebut", "counter", "argue back", "contradict", "dispute", "argue against", "counter-argue"]
       },
+      "production": {"promptEn": "to refute, rebut (a claim or argument)", "contextHint": "Sino-Korean verb for the act; the counterargument itself is 반론", "accepted": ["반박하다"]},
       "cloze": [
         {
           "id": "c1",
-          "sentence": "제한 속도를 {{}} 차량은 자동으로 단속된다.",
-          "en": "Vehicles that exceed the speed limit are automatically ticketed.",
-          "cue": "초과하다 · exceed",
-          "accepted": ["초과한", "초과하는"],
+          "sentence": "변호인은 검찰의 주장을 조목조목 {{}} 나섰다.",
+          "en": "The defense counsel came out rebutting the prosecution's claims point by point.",
+          "cue": "반박하다 · rebut",
+          "accepted": ["반박하고"],
           "particleTolerance": "none"
         }
       ]
@@ -1875,7 +1822,7 @@
     "register": "neutral",
     "hanjaBreakdown": [{"syllable": "양", "hanja": "量"}, {"syllable": "산", "hanja": "産"}],
     "collocations": [
-      {"ko": "대량 양산", "en": "large-scale mass production"},
+      {"ko": "양산에 들어가다", "en": "to go into mass production"},
       {"ko": "양산 체제", "en": "a mass-production setup"},
       {"ko": "실업자를 양산하다", "en": "to churn out jobless people"}
     ],
@@ -1986,6 +1933,57 @@
         "accepted": ["추락하다"],
         "rejected": ["전락하다"]
       }
+    }
+  },
+  {
+    "id": "v:약탈하다",
+    "kind": "vocab",
+    "level": 5,
+    "track": "vocab-freq",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {"kind": "original", "license": "original-owned"},
+    "needs_review": false,
+    "tags": ["sino-korean", "freq:5649"],
+    "word": "약탈하다",
+    "meanings": ["to plunder, loot", "to pillage (by force)"],
+    "pos": "동사",
+    "register": "neutral",
+    "hanjaBreakdown": [{"syllable": "약", "hanja": "掠"}, {"syllable": "탈", "hanja": "奪"}],
+    "collocations": [
+      {"ko": "문화재를 약탈하다", "en": "to plunder cultural treasures"},
+      {"ko": "약탈당하다", "en": "to be looted"},
+      {"ko": "약탈적 대출", "en": "predatory lending"}
+    ],
+    "examples": [
+      {
+        "ko": "폭동이 일어나자 상점들이 줄줄이 약탈당했대요.",
+        "en": "They say once the riot broke out, store after store got looted.",
+        "register": "spoken"
+      },
+      {
+        "ko": "전쟁 중에 약탈된 문화재 가운데 상당수가 아직 돌아오지 못했다.",
+        "en": "Many of the cultural treasures plundered during the war have yet to be returned.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": ["meaning", "production", "cloze"],
+    "questions": {
+      "meaning": {
+        "accepted": ["plunder", "loot", "pillage", "ransack", "despoil", "sack", "maraud", "rob", "raid"]
+      },
+      "production": {"promptEn": "to plunder, loot (armies, rioters, colonial powers)", "contextHint": "Sino-Korean verb; the victim is ___당하다", "accepted": ["약탈하다"]},
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "침략군은 마을을 {{}} 불을 질렀다.",
+          "en": "The invaders plundered the village and set it on fire.",
+          "cue": "약탈하다 · plunder",
+          "accepted": ["약탈하고", "약탈한 뒤", "약탈한 후"],
+          "particleTolerance": "none"
+        }
+      ]
     }
   },
   {

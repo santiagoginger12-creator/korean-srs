@@ -62,3 +62,21 @@ Each of the 30 grammar items now has 9 cloze prompts, 2 nuance prompts, and (for
 | v:공연히 | `register` | Tagged `written` as the fuller, more literary 괜히. It also occurs in older speakers' speech, and spoken example 1 uses it. | Retag `neutral` if it sounds natural in speech to you. |
 | v:다짜고짜 | `promptEn`, cloze c1 | Its boundary with 대뜸 (L10) is fine-grained: 다짜고짜 = without asking or explaining, 대뜸 = right off the bat. Both clozes cross-accept the other word. | Confirm that the cross-acceptance is right, or narrow one cloze so it only fits one word. |
 | v:대수롭다 | `tags` | No origin tag: I'm not certain whether 대수 is Sino-Korean. Production accepts 대수롭다 and 대수롭지 않다. | Add `native` or `sino-korean` if you know. |
+
+## Vocab QA (L05–L10, L01–L03 mnemonics, 2026-10-29)
+
+**Status:** the four author flags above are handled, and every vocab `needs_review` is cleared. Details (before → after) are in REVIEW_LOG.md under "Vocab QA". Short version:
+- 골머리: now cloze-led, with no `meaning` question; 골치 is graded close.
+- 공연히: stays `written`, and 괜히 is graded close.
+- 다짜고짜 / 대뜸: each cloze grades the other word close. 다짜고짜 doesn't fit the 대뜸 frame, and the hint says why.
+- 대수롭다: the content is fine; the tag question is below.
+
+Also: 개봉하다 and 초과하다 were swapped for 반박하다 and 약탈하다. In 24 clozes, synonyms that had been graded correct (자부심 for 긍지, 갑자기 for 난데없이…) are now graded close.
+
+Three questions remain for the owner:
+
+| item id | field | question (yes/no) | if yes / if no |
+|---|---|---|---|
+| v:대수롭다 | `tags` | Is the 대수 in 대수롭다 the Sino-Korean 大數 of "그게 대수야?" (표준 대수 「2」 '대단한 것')? | Yes: add `sino-korean` (no breakdown needed for a -롭다 word). No: add `native`. |
+| L05–L10 clozes | `nearMiss` | Should a real synonym typed into a headword-cued cloze (자부심 for 긍지, 대답 for 대꾸, 결국 for 급기야) be graded **close** with "also fits; the cue asks for X", not correct? | Yes: no change. No: move those 25 forms back to `accepted` (list in REVIEW_LOG). |
+| v:출동하다, v:추락하다, v:참견하다, v:복용하다, v:임명되다 (L05) | selection | Are these too basic to be worth drilling, like the two words already swapped (개봉하다, 초과하다)? | Yes: swap each for the next candidate in rank order (the L05 band is thin; candidates may come from the L06 range). No: keep them. |
