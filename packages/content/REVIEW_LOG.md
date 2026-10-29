@@ -300,3 +300,55 @@ Totals: 24 items edited. N 6 · A 5 · G 3 · Q 9 · flag-only 1 (counted by pri
 - **Cue collision ㅁㅊ:** 미처 and 마침 share 초성. The sense hints ("always with a negative" vs "just then") disambiguate.
 - **Stock-frame risk:** 고인의 명복을 빕니다 and 사랑에 빠지다 are fixed formulas, kept because the frame is the target (as the author noted). No other sentence matches a dictionary or textbook stock example closely enough to flag.
 - **Spacing spot-checks:** 한잔, 데려다주다, 결혼반지, 잘되다, 빌려주다, 들여놓다 are single 표준 entries and are written solid. 짚고 넘어가다, 짚어 주다, 맞춰 보다 and 마무리 짓다 are spaced.
+
+---
+
+## Grammar banks (L01–L03, 2026-10-28)
+
+Bunpro-style sentence banks for the 30 grammar items. Ids, `rev` and schema are unchanged; existing prompts are kept. The validator reports 0 errors in L01–L03, and the self-check passes with 0 failures.
+
+**Added:** 241 cloze (29 → 270, 9 per item), 31 nuance (29 → 60, 2 per item), 10 register (10 → 20, a second prompt on every item that already had one). Every new cloze blank requires applying the attachment rule. Stems are mixed per pattern: vowel, consonant, ㄹ-drop, and ㅂ/ㄷ/ㅅ/르/ㅎ irregulars wherever the pattern conjugates (plus 러-irregular 이르다 in g:ㄹ-지경이다 c4). Conjugation slips (덥은, 듣은, 짓은, 살을, 놀는…) and sibling patterns are `nearMiss` entries with hints. Sentence-final blanks accept 해라 / 반말 / 해요 / 합쇼 (D39).
+
+**Tags:** every item gets exactly one `fn:` tag. Debatable calls: g:기는커녕 and g:느니-차라리 → fn:contrast. The three inevitability items (g:기-마련이다, g:는-법이다, g:기-십상이다) → fn:conjecture. g:어-버리다 and g:고-말다 → fn:emphasis-attitude. The 셈/격/마찬가지 set → fn:manner-comparison.
+
+**Schema-level edits**
+- **g:는-탓에** `questionTypes`: [nuance, register] → [cloze, nuance, register]. It had no cloze.
+- **g:는-통에** `questionTypes`: [cloze] → [cloze, nuance]. It had no nuance.
+
+**Existing prompts edited** [Q]: cues normalized to "<dictionary form> + <pattern>" with exactly one " + ", for the UI hint ladder. Tense and speech level now come from the sentence and `en`, not the cue.
+- **g:는-데다가 c1** cue: 설치다 (past) + -(으)ㄴ 데다가 → 설치다 + -(으)ㄴ 데다가.
+- **g:니만큼 c1** cue: 참석하시다 + … → 참석하다 + -(으)니만큼. Added nearMiss 참석하니만큼 (honorific -시- needed for 대표님).
+- **g:는-셈이다 c1** cue: (past) dropped. accepted + 셈이에요 / 셈입니다.
+- **g:는-격이다 c1**, **g:는-법이다 c1**: accepted + 해요 / 합쇼 forms (D39).
+- **g:거나-마찬가지다 c1** cue: (past) and (반말) dropped. accepted = 다 / 야 / 예요 / 입니다, for both 거나 and 것이나.
+- **g:기-마련이다 c1**: accepted = all four levels for both -기 and -게 마련이다.
+- **g:기-십상이다 c1** cue: (반말) dropped. accepted + 해요 / 합쇼.
+- **g:ㄹ-지경이다 c1** cue: (past) dropped. accepted + 이었습니다.
+- **g:어-버리다 c1** cue: (suggestion, -자) dropped (en says "let's"). accepted + 끝내 버립시다.
+- **g:고-말다 c1** cue: (past) dropped. accepted + 말았습니다.
+- **g:다시피 c1** cue: 살다 + -다시피 (하다) → 살다 + -다시피 하다.
+
+**Author self-review notes (for the owner's skim)**
+- **Proverb clozes** (g:는-격이다 c2–c9): the proverbs are fixed, but each blank tests the -는 / -(으)ㄴ choice and stem changes (부는, 붓는, 온, 뿌린).
+- **Honorific clozes:** two accept only the honorific form and grade the plain form close: g:다시피 c2 (아시다시피) and c5 (들으셨다시피), both addressed to an audience in 합쇼체.
+- **-다 못해 with adjectives** (파랗다/뜨겁다/짜다/어이없다 못해): the blank is the dictionary form + 못해. That is inherent to the pattern; these prompts test choosing the pattern, not conjugation.
+- **Spacing:** 참다못해 is solid (표준 adverb). 들은 양했다 is solid because 양하다 is a 보조용언. 부실기업 is solid (표준 entry). -(으)ㄹ뿐더러 prompts keep `spacingStrict: true`.
+- **Flags:** 2 (see REVIEW_NOTES).
+
+
+## HTSK grammar (L05–L07, author self-pass, 2026-10-28)
+
+New files: `seed/L05/grammar.json` (11), `seed/L06/grammar.json` (13), `seed/L07/grammar.json` (13). `track: "grammar"`, all gating, all `original-owned`. HTSK was used only as a coverage checklist; every sentence and explanation is original. Each cloze `cue` follows "<dictionary form> + <pattern>". Each item has exactly one `fn:` tag.
+
+**Notable self-review edits**
+- **g:므로 n1:** dropped a register-only distractor ("too formal for a text") per D39. The prompt now tests -(으)므로 vs -(으)ㅁ으로써 (reason vs means).
+- **g:ㄹ걸-그랬다 n1:** reframed as "scold your sibling" (reproach), so the distractor fails on meaning, not on a claim that -(으)ㄹ걸 그랬다 can never be about others.
+- **g:는-길에:** removed the planned claim "*온 길에 is wrong". 온 길에 exists ("since I came all this way", ≈ -(으)ㄴ 김에); the nearMiss hint and nuance say so.
+- **g:이라도 n1:** replaced the distractor 차라도 한잔 드렸어요, which is actually natural ("at least I served tea"), with 차까지 (oversells).
+- **g:ㄴ다니 n2:** replaced 결혼한다니까 / 결혼하다니 distractors, both of which are defensible, with a form error (결혼하는다니).
+- **g:었어야-했다:** nuance softened. -아/어야 했는데 can also imply an unmet obligation, so the nearMiss hint says the form "first reads as 'had to'" rather than "is wrong".
+- **g:었어도-되다 n2:** dropped a 쉬어도 됐는데 vs 쉬었어도 됐는데 contrast; both are natural.
+- **g:어-두다:** dropped a 어질러 두고 distractor (marginal, not wrong).
+- **g:느라고 register:** core words reduced to 오시느라 / 많으셨, so 고생 → 수고 variants pass.
+
+**Skipped HTSK points:** 101–102 (slang, quoted abbreviations; vocabulary), 103 한/약/전반/당하다 (lexical; only -(으)므로 kept), 105 (miscellany), 107 ~도 revisited (no advanced nuance beyond 기는 하다 / 기도 하다), 110 어쩔 수 없다 (fixed phrase), 126 ~별(로) and 127 ~씩 (everyday morphology), 128 나다 and 129 넘다 (lexical senses), 130 large numbers, 131 사이시옷 (orthography, not a grammar pattern), 134 Konglish, 135 성, 136 -기에/-길래 and 147 -는 바람에 (already in L01–L02), 149 하필 and 150 어쩐지 (adverbs).

@@ -253,9 +253,11 @@ test('real seed validates with zero errors', () => {
   const r = validateBundle(seed.raws, { origins: seed.origins, idRedirects: seed.idRedirects });
   assert.deepEqual(r.errors, []);
   // M2 seed scope (§9.4): levels 1–3, plus L04 (native-verb track: 64 sense-level vocab items).
-  assert.equal(r.counts.total, 264);
-  assert.deepEqual(r.counts.byKind, { vocab: 184, grammar: 30, expression: 20, hanja: 30 });
+  assert.equal(r.counts.total, 391);
+  assert.deepEqual(r.counts.byKind, { vocab: 304, grammar: 67, expression: 20, hanja: 0 });
   assert.deepEqual(r.counts.byLevel[4], { vocab: 64, grammar: 0, expression: 0, hanja: 0 });
+  // HTSK-aligned grammar stages (Units 5–6): grammar only, independent of vocab levels.
+  assert.deepEqual([5, 6, 7].map((l) => r.counts.byLevel[l]?.grammar), [11, 13, 13]);
 });
 
 test('real seed passes the answer-check self-check (when available)', async (t) => {

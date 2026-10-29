@@ -11,7 +11,17 @@ import { stableJson } from '../src/import/pipeline.ts';
 import { canonicalJson, sha256Hex } from '../../srs-engine/src/util.ts';
 import { loadSeed, PKG_DIR } from '../bin/lib.ts';
 
-const SEED = loadSeed().raws as Item[];
+// The curriculum no longer ships hanja items (vocab-first direction), but the import/export
+// path still supports the hanja kind for personal items. These fixtures stand in for them.
+const HANJA_FIXTURES: Item[] = [
+  ['決', '결단할', '결', 'decide'], ['裁', '마를', '재', 'judge'], ['認', '알', '인', 'recognize'],
+  ['論', '논할', '론', 'discuss'], ['構', '얽을', '구', 'frame'], ['換', '바꿀', '환', 'exchange'],
+].map(([char, hun, eum, m]) => ({
+  id: `h:${char}`, kind: 'hanja', level: 1, track: 'core', rev: 1, unlockDeps: [], gating: false,
+  source: { kind: 'original', license: 'original-owned' }, needs_review: false, tags: [],
+  char: char!, hun: hun!, eum: eum!, meanings: [m!], mnemonic: `${char} test fixture`,
+} as Item));
+const SEED = [...(loadSeed().raws as Item[]), ...HANJA_FIXTURES];
 const SEED_MAP: ReadonlyMap<ItemId, Item> = new Map(SEED.map((it) => [it.id, it] as const));
 const USER_SRC = { kind: 'user' as const, license: 'original-owned' };
 const ctx = (existing: ReadonlyMap<ItemId, Item> = SEED_MAP, o: Partial<ImportContext> = {}): ImportContext =>
@@ -22,6 +32,7 @@ const errors = (r: ImportResult) => r.issues.filter((i) => i.severity === 'error
 /** Every 3rd seed item of a kind, plus the first and last (covers hanjaBreakdown ± ids, cloze ± nearMiss, JSON-only prompts). */
 function sample(kind: ImportKind): Item[] {
   const all = SEED.filter((it) => it.kind === kind);
+  if (all.length < 15) return all;
   return all.filter((_, i) => i % 3 === 0 || i === all.length - 1);
 }
 

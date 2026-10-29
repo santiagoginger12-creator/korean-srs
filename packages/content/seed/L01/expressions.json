@@ -130,7 +130,7 @@
     "gating": true,
     "source": { "kind": "original", "license": "original-owned" },
     "needs_review": false,
-    "tags": ["사자성어", "hanja:換", "change"],
+    "tags": ["사자성어", "change"],
     "mnemonic": "換 swap + 骨 bones + 奪 seize + 胎 womb: not a facelift but new bones and a new birth.",
     "subtype": "사자성어",
     "text": "환골탈태",

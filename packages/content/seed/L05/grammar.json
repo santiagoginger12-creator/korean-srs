@@ -1,0 +1,2778 @@
+[
+  {
+    "id": "g:므로",
+    "kind": "grammar",
+    "level": 5,
+    "track": "grammar",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "fn:cause",
+      "contrast-set:grounds",
+      "htsk:103",
+      "htsk-unit:5"
+    ],
+    "pattern": "-(으)므로",
+    "meaning": "because, since (formal written cause: reports, notices, rules, academic prose)",
+    "attachment": [
+      {
+        "stem": "V/A",
+        "final": "any",
+        "tense": "present",
+        "form": "V/A-(으)므로",
+        "example": "위험하므로"
+      },
+      {
+        "stem": "V/A",
+        "final": "any",
+        "tense": "past",
+        "form": "V/A-았/었으므로",
+        "example": "끝났으므로"
+      },
+      {
+        "stem": "N이다",
+        "final": "any",
+        "tense": "any",
+        "form": "N(이)므로",
+        "example": "미성년자이므로"
+      }
+    ],
+    "nuance": "A neutral, logical \"because\" at home in writing: notices, contracts, reports, papers. In casual talk it sounds stilted; speech uses -(으)니까 or -아/어서. Unlike -아/어서 it takes past tense freely (끝났으므로). Formal notices can follow it with a polite instruction (위험하므로 들어가지 마십시오). ㄹ-stems keep the ㄹ (멀므로), and irregular stems change before 으 (미끄러우므로, 나으므로). Don't confuse it with -(으)ㅁ으로(써), nominalizer + particle, which means \"by doing\": 노력하므로 = because one tries; 노력함으로써 = by trying. See also HowtoStudyKorean Lesson 103.",
+    "contrasts": [
+      {
+        "id": "g:기에",
+        "note": "-기에 also gives grounds in writing, but it often frames why the speaker acted or judged a certain way and sounds more narrative; -(으)므로 is the neutral \"since/therefore\" of reports."
+      },
+      {
+        "id": "g:니만큼",
+        "note": "-(으)니만큼 adds \"so it is only fitting\"; -(으)므로 just states the cause."
+      },
+      {
+        "id": "g:로써",
+        "note": "-(으)ㅁ으로써 (by doing) looks similar on the page but marks a means, not a reason."
+      }
+    ],
+    "examples": [
+      {
+        "ko": "본 제품은 습기에 약하므로 서늘하고 건조한 곳에 보관하십시오.",
+        "en": "This product is sensitive to moisture, so store it in a cool, dry place.",
+        "register": "formal"
+      },
+      {
+        "ko": "피고인은 범행 당시 미성년자였으므로 형을 감경한다.",
+        "en": "Since the defendant was a minor at the time of the offense, the sentence is reduced.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance",
+      "register"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "본 제품은 고온에 {{}} 직사광선을 피해 보관하십시오.",
+          "en": "This product is sensitive to heat; keep it out of direct sunlight.",
+          "cue": "약하다 + -(으)므로",
+          "accepted": [
+            "약하므로"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "약함으로",
+              "hint": "-(으)ㅁ으로 is nominalizer + particle (\"by being weak\"). The causal ending is -(으)므로: 약하므로."
+            },
+            {
+              "answer": "약해서",
+              "hint": "Grammatical, but the cue asks for -(으)므로, which fits a printed product notice."
+            }
+          ]
+        },
+        {
+          "id": "c2",
+          "sentence": "회의가 이미 {{}} 추가 안건은 다음 주에 논의하겠습니다.",
+          "en": "Since the meeting has already ended, we will discuss further items next week.",
+          "cue": "끝나다 + -(으)므로",
+          "accepted": [
+            "끝났으므로"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "끝나므로",
+              "hint": "The meeting is already over: put the past tense before -(으)므로 (끝났으므로)."
+            }
+          ]
+        },
+        {
+          "id": "c3",
+          "sentence": "피고인은 범행 당시 {{}} 형을 감경한다.",
+          "en": "Since the defendant was a minor at the time of the offense, the sentence is reduced.",
+          "cue": "미성년자이다 + -(으)므로",
+          "accepted": [
+            "미성년자였으므로",
+            "미성년자이므로"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "미성년자임으로",
+              "hint": "That is 이다 + nominalizer -ㅁ + 으로. The causal ending is -(으)므로: 미성년자였으므로."
+            }
+          ]
+        },
+        {
+          "id": "c4",
+          "sentence": "행사장은 시내에서 {{}} 대중교통 이용을 권장합니다.",
+          "en": "The venue is far from downtown, so we recommend public transportation.",
+          "cue": "멀다 + -(으)므로",
+          "accepted": [
+            "멀므로"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "멀으므로",
+              "hint": "ㄹ-stems take -므로 with no 으: 멀므로."
+            }
+          ]
+        },
+        {
+          "id": "c5",
+          "sentence": "해당 구간은 노면이 {{}} 서행하시기 바랍니다.",
+          "en": "The road surface in this section is slippery; please drive slowly.",
+          "cue": "미끄럽다 + -(으)므로",
+          "accepted": [
+            "미끄러우므로"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "미끄럽으므로",
+              "hint": "ㅂ-irregular: 미끄럽- becomes 미끄러우- before 으: 미끄러우므로."
+            }
+          ]
+        },
+        {
+          "id": "c6",
+          "sentence": "비용 면에서는 B안이 {{}} B안을 채택하기로 하였다.",
+          "en": "Since Plan B is better in terms of cost, it was decided to adopt Plan B.",
+          "cue": "낫다 + -(으)므로",
+          "accepted": [
+            "나으므로"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "낫으므로",
+              "hint": "ㅅ-irregular: 낫- drops ㅅ before 으: 나으므로."
+            }
+          ]
+        },
+        {
+          "id": "c7",
+          "sentence": "본 연구는 표본 수가 적다는 한계가 {{}} 결과를 일반화하는 데 신중해야 한다.",
+          "en": "This study is limited by its small sample, so caution is needed in generalizing the results.",
+          "cue": "있다 + -(으)므로",
+          "accepted": [
+            "있으므로"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "있기에",
+              "hint": "Grammatical and literary; the cue asks for -(으)므로, the neutral \"since\" of academic prose."
+            }
+          ]
+        },
+        {
+          "id": "c8",
+          "sentence": "지역마다 기준이 {{}} 신청 전에 반드시 확인하시기 바랍니다.",
+          "en": "Criteria differ by region, so be sure to check before applying.",
+          "cue": "다르다 + -(으)므로",
+          "accepted": [
+            "다르므로"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "달라서",
+              "hint": "Natural in speech; for a printed notice the cue asks for -(으)므로: 다르므로."
+            }
+          ]
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "보고서에 \"꾸준한 운동이라는 방법을 통해 체력을 길렀다\"라는 뜻을 쓰려고 해요. (In a report, you want to say the exercise was the method.)",
+          "options": [
+            {
+              "text": "규칙적으로 운동함으로써 체력을 길렀다.",
+              "correct": true,
+              "why": "-(으)ㅁ으로써 = \"by doing\": the exercise is the means."
+            },
+            {
+              "text": "규칙적으로 운동하므로 체력을 길렀다.",
+              "correct": false,
+              "why": "-(으)므로 makes the exercise a reason, not a method, and its present tense jars with a finished result."
+            }
+          ]
+        },
+        {
+          "id": "n2",
+          "situation": "공사 현장 입구에 붙일 안내문이에요. (A sign for a construction-site entrance.)",
+          "options": [
+            {
+              "text": "공사 중이므로 출입을 금합니다.",
+              "correct": true,
+              "why": "-(으)므로 is the standard causal link in written notices, and a formal prohibition can follow it."
+            },
+            {
+              "text": "공사 중인 바람에 출입을 금합니다.",
+              "correct": false,
+              "why": "-는 바람에 reports an unexpected cause of something that already went wrong; it can't introduce a rule."
+            },
+            {
+              "text": "공사 중이므로써 출입을 금합니다.",
+              "correct": false,
+              "why": "-(으)므로 takes no 써; 써 belongs to the particle (으)로써, \"by means of\"."
+            }
+          ]
+        }
+      ],
+      "register": [
+        {
+          "id": "r1",
+          "from": "haera",
+          "to": "hapsyo",
+          "source": "기상 악화가 예상되므로 오늘 야외 행사는 취소한다.",
+          "accepted": [
+            "기상 악화가 예상되므로 오늘 야외 행사는 취소합니다.",
+            "기상 악화가 예상되므로 오늘 야외 행사는 취소하겠습니다.",
+            "기상 악화가 예상되므로 오늘 야외 행사를 취소합니다."
+          ],
+          "features": [
+            {
+              "kind": "endsWith",
+              "any": [
+                "ㅂ니다",
+                "습니다"
+              ],
+              "label": "Ending must be 합쇼체 (-ㅂ니다/-습니다)"
+            },
+            {
+              "kind": "contains",
+              "any": [
+                "므로"
+              ],
+              "scope": "all",
+              "label": "Keep the -(으)므로 clause"
+            }
+          ],
+          "coreWords": [
+            "기상",
+            "악화",
+            "예상되므로",
+            "야외",
+            "행사",
+            "취소"
+          ],
+          "particleTolerance": "allomorph",
+          "finalPunctOptional": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "g:기는-하다",
+    "kind": "grammar",
+    "level": 5,
+    "track": "grammar",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "fn:concession",
+      "contrast-set:concession",
+      "htsk:104",
+      "htsk-unit:5"
+    ],
+    "pattern": "-기는 하다",
+    "meaning": "it is/does … (I grant that much), but …: concedes one point with contrastive focus",
+    "attachment": [
+      {
+        "stem": "V/A",
+        "final": "any",
+        "tense": "present",
+        "form": "V/A-기는 하다 (spoken -긴 하다)",
+        "example": "비싸기는 하다"
+      },
+      {
+        "stem": "V/A",
+        "final": "any",
+        "tense": "past",
+        "form": "V/A-기는 했다",
+        "example": "가기는 했다"
+      }
+    ],
+    "nuance": "Here 는 puts contrastive focus on the predicate itself: the speaker grants exactly this much and no more, so a -지만/-는데 clause or an unspoken reservation follows. Tense and usually the honorific go on 하다, not on the stem: 가기는 했다 (갔기는 했다 is rarely heard and sounds off). The same contrastive 는 attaches inside other complex predicates: 먹어는 봤다 (I have tried it, at least), 좋지는 않다, 가 보지는 못했다. In speech -기는 contracts to -긴. See also HowtoStudyKorean Lesson 104.",
+    "contrasts": [
+      {
+        "id": "g:기는커녕",
+        "note": "-기는커녕 denies the first point (\"far from …\"); -기는 하다 grants it before adding a \"but\"."
+      },
+      {
+        "id": "g:ㄹ뿐더러",
+        "note": "-(으)ㄹ뿐더러 stacks two points pulling the same way; -기는 하다 sets up a point against the first."
+      }
+    ],
+    "examples": [
+      {
+        "ko": "가격이 비싸기는 하지만 품질을 생각하면 그만한 값을 해요.",
+        "en": "It is expensive, but given the quality, it's worth the price.",
+        "register": "neutral"
+      },
+      {
+        "ko": "보고서를 다 쓰긴 했는데 아직 팀장님께 보내지는 않았어요.",
+        "en": "I did finish the report, but I haven't sent it to my manager yet.",
+        "register": "spoken"
+      },
+      {
+        "ko": "이 방안은 효과가 있기는 하나 비용 대비 효율이 낮다.",
+        "en": "This plan does work, but it is inefficient for the cost.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "그 영화 {{}} 너무 졸려서 끝까지 못 봤어요.",
+          "en": "I did watch that movie, but I was so sleepy I couldn't finish it.",
+          "cue": "보다 + -기는 하다",
+          "accepted": [
+            "보기는 했는데",
+            "보긴 했는데",
+            "보기는 했지만",
+            "보긴 했지만"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "봤기는 했는데",
+              "hint": "Tense goes on 하다, not the stem: 보기는 했는데."
+            }
+          ]
+        },
+        {
+          "id": "c2",
+          "sentence": "가격이 {{}} 품질을 생각하면 그만한 값을 해요.",
+          "en": "It is expensive, but given the quality, it's worth it.",
+          "cue": "비싸다 + -기는 하다",
+          "accepted": [
+            "비싸기는 하지만",
+            "비싸긴 하지만",
+            "비싸기는 한데",
+            "비싸긴 한데"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c3",
+          "sentence": "보고서를 다 {{}} 아직 팀장님께 보내지는 않았어요.",
+          "en": "I did write the whole report, but I haven't sent it yet.",
+          "cue": "쓰다 + -기는 하다",
+          "accepted": [
+            "쓰기는 했는데",
+            "쓰긴 했는데",
+            "쓰기는 했지만",
+            "쓰긴 했지만"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "썼기는 했는데",
+              "hint": "Tense goes on 하다, not the stem: 쓰기는 했는데."
+            }
+          ]
+        },
+        {
+          "id": "c4",
+          "sentence": "그 사람 말이 {{}} 증거가 하나도 없잖아요.",
+          "en": "What he says does sound plausible, but there's no evidence at all.",
+          "cue": "그럴듯하다 + -기는 하다",
+          "accepted": [
+            "그럴듯하기는 한데",
+            "그럴듯하긴 한데",
+            "그럴듯하기는 하지만",
+            "그럴듯하긴 하지만"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c5",
+          "sentence": "날씨가 {{}} 바람이 많이 불어서 체감 온도는 낮아요.",
+          "en": "It is warm, but it's windy, so it feels colder.",
+          "cue": "따뜻하다 + -기는 하다",
+          "accepted": [
+            "따뜻하기는 한데",
+            "따뜻하긴 한데",
+            "따뜻하기는 하지만",
+            "따뜻하긴 하지만"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c6",
+          "sentence": "할아버지께서 병원에 {{}} 검사는 끝까지 안 받으셨대요.",
+          "en": "Grandpa did go to the hospital, but apparently he didn't finish the tests.",
+          "cue": "가다 + -기는 하다",
+          "accepted": [
+            "가시기는 하셨는데",
+            "가시긴 하셨는데",
+            "가기는 하셨는데",
+            "가긴 하셨는데",
+            "가시기는 하셨지만",
+            "가기는 하셨지만"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "가셨기는 했는데",
+              "hint": "Tense (and usually the honorific) goes on 하다: 가기는 하셨는데."
+            }
+          ]
+        },
+        {
+          "id": "c7",
+          "sentence": "그 얘기를 {{}} 자세히는 몰라요.",
+          "en": "I did hear about it, but I don't know the details.",
+          "cue": "듣다 + -기는 하다",
+          "accepted": [
+            "듣기는 했는데",
+            "듣긴 했는데",
+            "듣기는 했지만",
+            "듣긴 했지만"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "들었기는 했는데",
+              "hint": "Tense goes on 하다, not the stem: 듣기는 했는데."
+            }
+          ]
+        },
+        {
+          "id": "c8",
+          "sentence": "이 방안은 효과가 {{}} 비용 대비 효율이 낮다는 단점이 있다.",
+          "en": "This plan does work, but it has the drawback of being inefficient for the cost.",
+          "cue": "있다 + -기는 하다",
+          "accepted": [
+            "있기는 하나",
+            "있기는 하지만",
+            "있긴 하지만"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "친구가 \"그 식당 맛있어?\"라고 물어요. 맛은 괜찮은데 너무 비싸서 추천하고 싶지 않아요. (The food is good, but it's too expensive to recommend.)",
+          "options": [
+            {
+              "text": "맛있기는 한데 너무 비싸.",
+              "correct": true,
+              "why": "-기는 하다 grants the point (it is tasty) and sets up the reservation."
+            },
+            {
+              "text": "맛있기는커녕 너무 비싸.",
+              "correct": false,
+              "why": "-기는커녕 denies the first point (\"far from tasty\"), which isn't what you think."
+            },
+            {
+              "text": "맛있을뿐더러 너무 비싸.",
+              "correct": false,
+              "why": "-(으)ㄹ뿐더러 stacks points pulling the same way; tasty and overpriced pull in opposite directions."
+            }
+          ]
+        },
+        {
+          "id": "n2",
+          "situation": "어제 회의에 가긴 갔지만 일찍 나왔어요. 어떻게 말할까요? (You went to the meeting but left early.)",
+          "options": [
+            {
+              "text": "회의에 가기는 했는데 일찍 나왔어요.",
+              "correct": true,
+              "why": "Tense sits on 하다, and contrastive 는 sets up the \"but\"."
+            },
+            {
+              "text": "회의에 갔기는 하는데 일찍 나왔어요.",
+              "correct": false,
+              "why": "The tense is on the wrong part: it belongs on 하다 (가기는 했는데)."
+            },
+            {
+              "text": "회의에 가기도 했는데 일찍 나왔어요.",
+              "correct": false,
+              "why": "-기도 하다 adds (\"I also went\"); it doesn't concede a point before a \"but\"."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "g:든지",
+    "kind": "grammar",
+    "level": 5,
+    "track": "grammar",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "fn:concession",
+      "contrast-set:concession",
+      "htsk:106",
+      "htsk-unit:5"
+    ],
+    "pattern": "-든지 (간에)",
+    "meaning": "whether … or …; no matter (what/who/how) … (the choice makes no difference)",
+    "attachment": [
+      {
+        "stem": "V/A",
+        "final": "any",
+        "tense": "present",
+        "form": "V/A-든지",
+        "example": "가든지 말든지"
+      },
+      {
+        "stem": "V/A",
+        "final": "any",
+        "tense": "past",
+        "form": "V/A-았/었든지",
+        "example": "누가 했든지"
+      },
+      {
+        "stem": "N",
+        "final": "any",
+        "tense": "any",
+        "form": "N(이)든지",
+        "example": "커피든지 차든지"
+      }
+    ],
+    "nuance": "Lists alternatives (A-든지 B-든지, often A-든지 말든지) or pairs with a question word (뭘 하든지, 어디에 가든지) to say the choice doesn't matter; 간에 or 상관없이 can follow for emphasis. Speech often shortens it to -든 (뭘 하든). After nouns: vowel 든지, consonant 이든지. The classic spelling trap: -든지 (choice) vs -던지 (retrospective, as in 얼마나 춥던지 \"it was so cold that\"). A command or suggestion can follow (가든지 말든지 마음대로 해). See also HowtoStudyKorean Lesson 106.",
+    "contrasts": [
+      {
+        "id": "g:더라도",
+        "note": "-더라도 concedes a single (often hypothetical) fact; -든지 is indifference across alternatives."
+      },
+      {
+        "id": "g:이라도",
+        "note": "N(이)라도 offers one second-best option; N(이)든지 says any of the options will do."
+      },
+      {
+        "id": "g:던",
+        "note": "The retrospective -던 family (-던지, -던가) is a different ending; mixing up 든/던 is a common spelling error."
+      }
+    ],
+    "examples": [
+      {
+        "ko": "가든지 말든지 네가 알아서 해.",
+        "en": "Go or don't, it's up to you.",
+        "register": "spoken"
+      },
+      {
+        "ko": "어떤 이유가 있든지 간에 폭력은 정당화될 수 없다.",
+        "en": "Whatever the reason, violence cannot be justified.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "{{}} 말든지 네가 알아서 해.",
+          "en": "Go or don't, it's up to you.",
+          "cue": "가다 + -든지",
+          "accepted": [
+            "가든지",
+            "가든"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "가던지",
+              "hint": "-던지 is the retrospective ending (얼마나 춥던지…). For \"whether or not\", write -든지."
+            }
+          ]
+        },
+        {
+          "id": "c2",
+          "sentence": "누가 {{}} 결과는 똑같았을 거예요.",
+          "en": "No matter who did it, the result would have been the same.",
+          "cue": "하다 + -든지",
+          "accepted": [
+            "하든지",
+            "했든지",
+            "하든",
+            "했든"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "하던지",
+              "hint": "Spelling: indifference is -든지, not the retrospective -던지."
+            }
+          ]
+        },
+        {
+          "id": "c3",
+          "sentence": "무슨 일이 {{}} 간에 연락은 꼭 해.",
+          "en": "Whatever happens, make sure you get in touch.",
+          "cue": "있다 + -든지",
+          "accepted": [
+            "있든지",
+            "있든"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "있던지",
+              "hint": "Spelling: indifference is -든지, not -던지."
+            }
+          ]
+        },
+        {
+          "id": "c4",
+          "sentence": "{{}} 차든지 아무거나 주세요.",
+          "en": "Coffee or tea, anything is fine.",
+          "cue": "커피 + -(이)든지",
+          "accepted": [
+            "커피든지",
+            "커피든"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "커피던지",
+              "hint": "Spelling: choosing between options is -든지."
+            },
+            {
+              "answer": "커피이든지",
+              "hint": "After a vowel, use 든지: 커피든지."
+            }
+          ]
+        },
+        {
+          "id": "c5",
+          "sentence": "{{}} 택시든지 편한 걸로 타고 와.",
+          "en": "Subway or taxi, come by whatever is convenient.",
+          "cue": "지하철 + -(이)든지",
+          "accepted": [
+            "지하철이든지",
+            "지하철이든"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "지하철든지",
+              "hint": "After a consonant, use 이든지: 지하철이든지."
+            }
+          ]
+        },
+        {
+          "id": "c6",
+          "sentence": "케이크를 직접 {{}} 사 오든지 하나는 정해야 해.",
+          "en": "We need to decide: either make the cake ourselves or buy one.",
+          "cue": "만들다 + -든지",
+          "accepted": [
+            "만들든지",
+            "만들든"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "만드든지",
+              "hint": "ㄹ is kept before -든지: 만들든지."
+            }
+          ]
+        },
+        {
+          "id": "c7",
+          "sentence": "방이 {{}} 좁든지 일단 이번 주 안에는 구해야 해요.",
+          "en": "Big room or small, I have to find one this week.",
+          "cue": "넓다 + -든지",
+          "accepted": [
+            "넓든지",
+            "넓든"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "넓던지",
+              "hint": "Spelling: alternatives take -든지, not -던지."
+            }
+          ]
+        },
+        {
+          "id": "c8",
+          "sentence": "결과가 어떻게 {{}} 간에 최선을 다했다면 후회는 없다.",
+          "en": "However it turns out, if you did your best there's nothing to regret.",
+          "cue": "나오다 + -든지",
+          "accepted": [
+            "나오든지",
+            "나오든"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "나오던지",
+              "hint": "Spelling: \"however it turns out\" is -든지, not -던지."
+            }
+          ]
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "동생이 여행을 가도 되냐고 물어요. 당신은 정말 상관없어요. (You genuinely don't mind whether your sibling goes.)",
+          "options": [
+            {
+              "text": "가든지 말든지 네 마음대로 해.",
+              "correct": true,
+              "why": "A-든지 말든지 leaves the choice entirely to them."
+            },
+            {
+              "text": "가던지 말던지 네 마음대로 해.",
+              "correct": false,
+              "why": "-던지 is the retrospective form; \"whether or not\" is spelled -든지."
+            },
+            {
+              "text": "가더라도 말더라도 네 마음대로 해.",
+              "correct": false,
+              "why": "-더라도 concedes one hypothetical; it doesn't pair alternatives with 말다."
+            }
+          ]
+        },
+        {
+          "id": "n2",
+          "situation": "어젯밤이 정말 추워서 잠을 못 잤다는 걸 말하려고 해요. (Last night was so cold you couldn't sleep.)",
+          "options": [
+            {
+              "text": "어젯밤에 얼마나 춥던지 잠을 못 잤어요.",
+              "correct": true,
+              "why": "얼마나 …-던지 recalls an experience as intense: the retrospective -던지."
+            },
+            {
+              "text": "어젯밤에 얼마나 춥든지 잠을 못 잤어요.",
+              "correct": false,
+              "why": "-든지 marks indifference among options; it can't express \"so … that\" about a past experience."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "g:었었다",
+    "kind": "grammar",
+    "level": 5,
+    "track": "grammar",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": true,
+    "tags": [
+      "fn:sequence-time",
+      "contrast-set:past-aspect",
+      "htsk:108",
+      "htsk-unit:5"
+    ],
+    "pattern": "-았/었었다",
+    "meaning": "had …; used to … (a past situation that no longer holds, or one set further back in the past)",
+    "attachment": [
+      {
+        "stem": "V/A",
+        "final": "any",
+        "tense": "past",
+        "form": "V/A-았/었었다",
+        "example": "살았었다"
+      },
+      {
+        "stem": "N이다",
+        "final": "any",
+        "tense": "past",
+        "form": "N이었었다 / N였었다",
+        "example": "은행원이었었다"
+      }
+    ],
+    "nuance": "Korean has no obligatory past perfect. -았/었었- signals discontinuity: the past situation is over or reversed, or it lies further back than another past point. 서울에 살았다 just reports; 서울에 살았었다 implies you don't live there now. With one-off events whose result normally persists, it suggests the result was undone: 결혼했다 (and still married) vs 결혼했었다 (no longer). Translators often overuse it for English \"had + past participle\". When the English past perfect only marks sequence, plain -았/었다 is usually better Korean. See also HowtoStudyKorean Lesson 108.",
+    "contrasts": [
+      {
+        "id": "g:던",
+        "note": "The modifier -았/었던 also points to a closed-off past, but inside a noun phrase (살았던 집)."
+      },
+      {
+        "id": "g:곤-하다",
+        "note": "-곤 했다 means \"used to\" for repeated episodes; -았/었었다 marks a state or event as over, repeated or not."
+      }
+    ],
+    "examples": [
+      {
+        "ko": "어렸을 때는 오이를 싫어했었는데 지금은 잘 먹어요.",
+        "en": "I used to hate cucumbers as a kid, but now I eat them just fine.",
+        "register": "neutral"
+      },
+      {
+        "ko": "그 배우는 데뷔 전에 은행원이었었다.",
+        "en": "Before debuting, the actor had been a bank teller.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "어렸을 때는 오이를 {{}} 지금은 잘 먹어요.",
+          "en": "I used to hate cucumbers as a kid, but now I eat them fine.",
+          "cue": "싫어하다 + -았/었었다",
+          "accepted": [
+            "싫어했었는데",
+            "싫어했었지만"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "싫어했는데",
+              "hint": "Grammatical, but the cue asks for -었었-, which underlines that the dislike is over."
+            }
+          ]
+        },
+        {
+          "id": "c2",
+          "sentence": "작년까지만 해도 이 자리에 작은 서점이 {{}}.",
+          "en": "Until just last year, there was a small bookstore on this spot.",
+          "cue": "있다 + -았/었었다",
+          "accepted": [
+            "있었었어요",
+            "있었었다",
+            "있었었어",
+            "있었었는데"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c3",
+          "sentence": "그 배우는 데뷔 전에 {{}}.",
+          "en": "Before debuting, that actor had been a bank teller.",
+          "cue": "은행원이다 + -았/었었다",
+          "accepted": [
+            "은행원이었었어요",
+            "은행원이었었다",
+            "은행원이었었어",
+            "은행원이었었대요"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "은행원였었어요",
+              "hint": "After a consonant, 이다 keeps 이: 은행원이었었어요."
+            }
+          ]
+        },
+        {
+          "id": "c4",
+          "sentence": "이 건물은 원래 {{}}.",
+          "en": "This building was originally a school.",
+          "cue": "학교이다 + -았/었었다",
+          "accepted": [
+            "학교였었어요",
+            "학교였었다",
+            "학교였었어",
+            "학교이었었어요"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c5",
+          "sentence": "그때는 그 문제가 정말 {{}} 지금 보니 별거 아니네요.",
+          "en": "Back then that problem seemed so hard, but now it's nothing.",
+          "cue": "어렵다 + -았/었었다",
+          "accepted": [
+            "어려웠었는데",
+            "어려웠었지만"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "어렵었었는데",
+              "hint": "ㅂ-irregular: 어려웠었는데."
+            }
+          ]
+        },
+        {
+          "id": "c6",
+          "sentence": "그 노래, 학생 때 정말 많이 {{}}.",
+          "en": "I used to listen to that song a lot as a student.",
+          "cue": "듣다 + -았/었었다",
+          "accepted": [
+            "들었었어요",
+            "들었었어",
+            "들었었다",
+            "들었었지"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "듣었었어요",
+              "hint": "ㄷ-irregular: 들었었어요."
+            }
+          ]
+        },
+        {
+          "id": "c7",
+          "sentence": "그때는 그게 얼마나 소중한지 {{}}.",
+          "en": "Back then I didn't know how precious it was.",
+          "cue": "모르다 + -았/었었다",
+          "accepted": [
+            "몰랐었어요",
+            "몰랐었어",
+            "몰랐었다",
+            "몰랐었지"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "모르었었어요",
+              "hint": "르-irregular: 몰랐었어요."
+            }
+          ]
+        },
+        {
+          "id": "c8",
+          "sentence": "아버지께서 젊으셨을 때는 담배를 {{}} 지금은 끊으셨어요.",
+          "en": "My father used to smoke when he was young, but he has quit.",
+          "cue": "피우다 + -았/었었다",
+          "accepted": [
+            "피우셨었는데",
+            "피우셨었지만"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "피웠었는데",
+              "hint": "Keep the honorific -시- for 아버지: 피우셨었는데."
+            }
+          ]
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "친구가 \"너 결혼했어?\"라고 물어요. 당신은 결혼한 적이 있지만 지금은 이혼했어요. (You were married but are now divorced.)",
+          "options": [
+            {
+              "text": "응, 결혼했었어.",
+              "correct": true,
+              "why": "-었었- places the marriage in a past that no longer holds."
+            },
+            {
+              "text": "응, 결혼했어.",
+              "correct": false,
+              "why": "결혼했다 means you are married now: the result of the event holds."
+            }
+          ]
+        },
+        {
+          "id": "n2",
+          "situation": "지금도 서울에 살고 있는 사람이 \"I've lived in Seoul since 2015\"라고 말하려고 해요. (They still live there.)",
+          "options": [
+            {
+              "text": "2015년부터 서울에 살았었어요.",
+              "correct": false,
+              "why": "-었었- implies you no longer live there, which contradicts the situation."
+            },
+            {
+              "text": "2015년부터 서울에 살고 있어요.",
+              "correct": true,
+              "why": "The situation is ongoing, so present tense (살고 있다 / 살아요) keeps it alive."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "g:나-보다",
+    "kind": "grammar",
+    "level": 5,
+    "track": "grammar",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": true,
+    "tags": [
+      "fn:conjecture",
+      "contrast-set:conjecture",
+      "htsk:109",
+      "htsk-unit:5"
+    ],
+    "pattern": "-나 보다 / -(으)ㄴ가 보다",
+    "meaning": "it seems …; I guess … (an inference from something the speaker has just noticed)",
+    "attachment": [
+      {
+        "stem": "V",
+        "final": "any",
+        "tense": "present",
+        "form": "V-나 보다 (also -는가 보다)",
+        "example": "자나 보다"
+      },
+      {
+        "stem": "A",
+        "final": "any",
+        "tense": "present",
+        "form": "A-(으)ㄴ가 보다",
+        "example": "바쁜가 보다"
+      },
+      {
+        "stem": "V/A",
+        "final": "any",
+        "tense": "past",
+        "form": "V/A-았/었나 보다",
+        "example": "왔나 보다"
+      },
+      {
+        "stem": "N이다",
+        "final": "any",
+        "tense": "present",
+        "form": "N인가 보다",
+        "example": "관광객인가 보다"
+      }
+    ],
+    "nuance": "Draws a conclusion from evidence in front of the speaker: the lights are off, so 다들 자나 봐요. Verbs and 있다/없다 take -나 (or the more formal -는가); adjectives take -(으)ㄴ가 (바쁜가 봐요). 바쁘나 봐요 is common in casual speech but nonstandard. With yourself as subject it sounds like discovering something about yourself (제가 요즘 좀 피곤한가 봐요), which is fine but marked. It doesn't state what you already know, and it isn't used for evidence-free predictions; that is -(으)ㄹ 것 같다 or -(으)ㄹ걸요. -(으)ㄴ/는 것 같다 covers both inference and opinion and is softer. See also HowtoStudyKorean Lesson 109.",
+    "contrasts": [
+      {
+        "id": "g:ㄹ걸요",
+        "note": "-(으)ㄹ걸요 is a confident guess, often from background knowledge rather than fresh evidence."
+      },
+      {
+        "id": "g:ㄹ-리가-없다",
+        "note": "-(으)ㄹ 리가 없다 rules a possibility out; -나 보다 leans toward it."
+      },
+      {
+        "id": "g:더라",
+        "note": "-더라 reports what you actually saw; -나 보다 infers from clues."
+      }
+    ],
+    "examples": [
+      {
+        "ko": "불이 다 꺼져 있네. 다들 벌써 자나 봐.",
+        "en": "The lights are all off. I guess everyone's already asleep.",
+        "register": "spoken"
+      },
+      {
+        "ko": "길이 젖어 있는 걸 보니 밤사이 비가 왔나 봐요.",
+        "en": "The streets are wet, so it must have rained overnight.",
+        "register": "neutral"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "불이 다 꺼져 있네. 다들 벌써 {{}}.",
+          "en": "The lights are all off. I guess everyone's asleep.",
+          "cue": "자다 + -나 보다",
+          "accepted": [
+            "자나 봐",
+            "자나 봐요",
+            "자나 보다",
+            "자나 보네",
+            "자는가 봐",
+            "자는가 봐요"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "길이 젖어 있는 걸 보니 밤사이 비가 {{}}.",
+          "en": "The streets are wet, so it must have rained overnight.",
+          "cue": "오다 + -나 보다",
+          "accepted": [
+            "왔나 봐요",
+            "왔나 봐",
+            "왔나 보다",
+            "왔나 보네"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "오나 봐요",
+              "hint": "The rain fell overnight: put the past tense before -나: 왔나 봐요."
+            }
+          ]
+        },
+        {
+          "id": "c3",
+          "sentence": "민수 씨가 요즘 통 연락이 없네요. 많이 {{}}.",
+          "en": "Minsu hasn't been in touch lately. He must be really busy.",
+          "cue": "바쁘다 + -(으)ㄴ가 보다",
+          "accepted": [
+            "바쁜가 봐요",
+            "바쁜가 봐",
+            "바쁜가 보다",
+            "바쁜가 보네요"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "바쁘나 봐요",
+              "hint": "Common in casual speech, but the standard form after an adjective is -(으)ㄴ가 보다: 바쁜가 봐요."
+            }
+          ]
+        },
+        {
+          "id": "c4",
+          "sentence": "저 사람 아까부터 계속 사진을 찍고 있네요. {{}}.",
+          "en": "That person has been taking pictures nonstop. Must be a tourist.",
+          "cue": "관광객이다 + -(으)ㄴ가 보다",
+          "accepted": [
+            "관광객인가 봐요",
+            "관광객인가 봐",
+            "관광객인가 보다",
+            "관광객인가 보네요"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c5",
+          "sentence": "아이가 자꾸 이불을 걷어차네. {{}}.",
+          "en": "The baby keeps kicking off the blanket. Must be hot.",
+          "cue": "덥다 + -(으)ㄴ가 보다",
+          "accepted": [
+            "더운가 봐",
+            "더운가 봐요",
+            "더운가 보다",
+            "더운가 보네"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "덥은가 봐",
+              "hint": "ㅂ-irregular: 더운가 봐."
+            }
+          ]
+        },
+        {
+          "id": "c6",
+          "sentence": "옆집에서 계속 좋은 냄새가 나네. 뭘 {{}}.",
+          "en": "Something smells great next door. They must be making something.",
+          "cue": "만들다 + -나 보다",
+          "accepted": [
+            "만드나 봐",
+            "만드나 봐요",
+            "만드나 보다",
+            "만드나 보네"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "만들나 봐",
+              "hint": "ㄹ drops before -나: 만드나 봐."
+            }
+          ]
+        },
+        {
+          "id": "c7",
+          "sentence": "다들 택시를 타는 걸 보니 역이 꽤 {{}}.",
+          "en": "Everyone's taking a taxi, so the station must be pretty far.",
+          "cue": "멀다 + -(으)ㄴ가 보다",
+          "accepted": [
+            "먼가 봐요",
+            "먼가 봐",
+            "먼가 보다",
+            "먼가 보네요"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "멀은가 봐요",
+              "hint": "ㄹ-stems drop ㄹ and take -ㄴ가: 먼가 봐요."
+            }
+          ]
+        },
+        {
+          "id": "c8",
+          "sentence": "가게 앞에 줄이 하나도 없네요. 오늘은 손님이 {{}}.",
+          "en": "There's no line at all outside. They must not have many customers today.",
+          "cue": "없다 + -나 보다",
+          "accepted": [
+            "없나 봐요",
+            "없나 봐",
+            "없나 보다",
+            "없나 보네요",
+            "없는가 봐요"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "없은가 봐요",
+              "hint": "있다/없다 take -나 (or -는가), like verbs: 없나 봐요."
+            }
+          ]
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "동료 책상 위에 빈 커피 컵이 세 개나 있어요. 당신의 추측은? (Three empty coffee cups on a coworker's desk.)",
+          "options": [
+            {
+              "text": "어젯밤에 잠을 못 잤나 봐요.",
+              "correct": true,
+              "why": "An inference from evidence in front of you: -나 보다 fits."
+            },
+            {
+              "text": "어젯밤에 잠을 못 잤을 리가 없어요.",
+              "correct": false,
+              "why": "-(으)ㄹ 리가 없다 rules the idea out; the cups point toward it."
+            },
+            {
+              "text": "어젯밤에 잠을 못 잤더라고요.",
+              "correct": false,
+              "why": "-더라고요 reports something you witnessed; you didn't see them lying awake."
+            }
+          ]
+        },
+        {
+          "id": "n2",
+          "situation": "당신은 내일 출장을 간다는 걸 이미 알고 있어요. 친구에게 말할 때? (You already know about your own trip.)",
+          "options": [
+            {
+              "text": "나 내일 출장 가.",
+              "correct": true,
+              "why": "It's your own known plan, so you just state it."
+            },
+            {
+              "text": "나 내일 출장 가나 봐.",
+              "correct": false,
+              "why": "-나 보다 marks an inference from clues; about your own plan it sounds as if you just found out from somewhere."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "g:이라도",
+    "kind": "grammar",
+    "level": 5,
+    "track": "grammar",
+    "rev": 1,
+    "unlockDeps": [
+      {
+        "id": "g:더라도",
+        "require": "guru"
+      }
+    ],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "fn:concession",
+      "contrast-set:concession",
+      "htsk:111",
+      "htsk-unit:5"
+    ],
+    "pattern": "N(이)라도 / V-아/어서라도",
+    "meaning": "(1) at least, even if only (a second-best option); (2) with question words: any … at all; (3) V-아/어서라도: even if it means …-ing",
+    "attachment": [
+      {
+        "stem": "N",
+        "final": "any",
+        "tense": "any",
+        "form": "N(이)라도",
+        "example": "커피라도 / 빵이라도"
+      },
+      {
+        "stem": "N",
+        "final": "any",
+        "tense": "any",
+        "form": "누구/언제/무엇 + (이)라도",
+        "example": "누구라도"
+      },
+      {
+        "stem": "V",
+        "final": "any",
+        "tense": "any",
+        "form": "V-아/어서라도",
+        "example": "빌려서라도"
+      }
+    ],
+    "nuance": "Offers something as an acceptable fallback: 커피라도 마실래요? (\"at least some coffee?\"), which is softer and more modest than a plain object. Vowel 라도, consonant 이라도. With question words it means \"any … at all\" (누구라도, 언제라도), close to 누구든지. After a verb, -아/어서라도 shows willingness to go to lengths: 빚을 내서라도. Compare N이나, which can sound offhand or dismissive (커피나 마시자). 지금이라도 is a fixed \"even now (better late than never)\". See also HowtoStudyKorean Lesson 111.",
+    "contrasts": [
+      {
+        "id": "g:더라도",
+        "note": "-더라도 concedes a whole clause (\"even if …\"); N(이)라도 works on a noun or, as -아/어서라도, on the means."
+      },
+      {
+        "id": "g:든지",
+        "note": "N(이)든지 says any option will do; N(이)라도 offers one modest option."
+      }
+    ],
+    "examples": [
+      {
+        "ko": "점심을 못 먹었으면 빵이라도 좀 먹어요.",
+        "en": "If you skipped lunch, at least have some bread.",
+        "register": "neutral"
+      },
+      {
+        "ko": "늦었지만 지금이라도 찾아뵙고 인사드리고 싶습니다.",
+        "en": "It's late, but I'd like to come and pay my respects, even now.",
+        "register": "formal"
+      },
+      {
+        "ko": "돈을 빌려서라도 그 공연은 꼭 보고 싶어요.",
+        "en": "I want to see that show even if I have to borrow money.",
+        "register": "neutral"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "점심을 못 먹었으면 {{}} 좀 먹어요.",
+          "en": "If you skipped lunch, at least have some bread.",
+          "cue": "빵 + -(이)라도",
+          "accepted": [
+            "빵이라도"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "빵라도",
+              "hint": "After a consonant: 빵이라도."
+            }
+          ]
+        },
+        {
+          "id": "c2",
+          "sentence": "전화할 시간이 없으면 {{}} 보내 주세요.",
+          "en": "If you don't have time to call, at least send a text.",
+          "cue": "문자 + -(이)라도",
+          "accepted": [
+            "문자라도"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "문자이라도",
+              "hint": "After a vowel: 문자라도."
+            }
+          ]
+        },
+        {
+          "id": "c3",
+          "sentence": "궁금한 점이 있으면 {{}} 연락 주세요.",
+          "en": "If you have any questions, contact me anytime.",
+          "cue": "언제 + -(이)라도",
+          "accepted": [
+            "언제라도"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "언제든지",
+              "hint": "Same meaning; the cue asks for -(이)라도: 언제라도."
+            }
+          ]
+        },
+        {
+          "id": "c4",
+          "sentence": "이 정도 문제는 {{}} 풀 수 있을 거예요.",
+          "en": "Anyone could solve a problem like this.",
+          "cue": "누구 + -(이)라도",
+          "accepted": [
+            "누구라도"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c5",
+          "sentence": "밤을 {{}} 이번 마감은 꼭 맞출게요.",
+          "en": "I'll meet this deadline even if I have to stay up all night.",
+          "cue": "새우다 + -아/어서라도",
+          "accepted": [
+            "새워서라도"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "새우더라도",
+              "hint": "Close in meaning, but the cue asks for -아/어서라도 (willing to go to lengths): 새워서라도."
+            }
+          ]
+        },
+        {
+          "id": "c6",
+          "sentence": "돈을 {{}} 그 공연은 꼭 보고 싶어요.",
+          "en": "I want to see that show even if I have to borrow money.",
+          "cue": "빌리다 + -아/어서라도",
+          "accepted": [
+            "빌려서라도"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "빌리라도",
+              "hint": "Verbs take -아/어서라도: 빌려서라도."
+            }
+          ]
+        },
+        {
+          "id": "c7",
+          "sentence": "주말에 바쁘면 평일 {{}} 잠깐 만나요.",
+          "en": "If you're busy on the weekend, let's meet briefly on a weekday evening at least.",
+          "cue": "저녁 + -(이)라도",
+          "accepted": [
+            "저녁이라도"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c8",
+          "sentence": "늦었지만 {{}} 찾아뵙고 인사드리고 싶습니다.",
+          "en": "It's late, but I'd like to come and pay my respects even now.",
+          "cue": "지금 + -(이)라도",
+          "accepted": [
+            "지금이라도"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "지금라도",
+              "hint": "After a consonant: 지금이라도."
+            }
+          ]
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "손님이 왔는데 대접할 게 별로 없어요. 겸손하게 권하려면? (You have little to offer a guest.)",
+          "options": [
+            {
+              "text": "차라도 한잔 드릴까요?",
+              "correct": true,
+              "why": "-(이)라도 offers tea as a modest stand-in: \"at least some tea\"."
+            },
+            {
+              "text": "차까지 한잔 드릴까요?",
+              "correct": false,
+              "why": "-까지 means \"even, on top of everything\", so it oversells the tea instead of downplaying it."
+            },
+            {
+              "text": "차도 한잔 드릴까요?",
+              "correct": false,
+              "why": "-도 (\"also\") implies something else was already offered; it lacks the modest \"at least\"."
+            }
+          ]
+        },
+        {
+          "id": "n2",
+          "situation": "\"돈을 빌려야 하더라도 꼭 갈 거야\"라는 뜻으로 말하려면? (You'll go even if you have to borrow money.)",
+          "options": [
+            {
+              "text": "돈을 빌려서라도 갈 거야.",
+              "correct": true,
+              "why": "-아/어서라도 = even if it takes that means."
+            },
+            {
+              "text": "돈을 빌리기라도 갈 거야.",
+              "correct": false,
+              "why": "-기라도 needs 하다 after it (빌리기라도 해서); as written the clause has no predicate."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "g:는-편이다",
+    "kind": "grammar",
+    "level": 5,
+    "track": "grammar",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "fn:degree-extent",
+      "contrast-set:tendency",
+      "htsk:112",
+      "htsk-unit:5"
+    ],
+    "pattern": "-(으)ㄴ/는 편이다",
+    "meaning": "tends to …; is on the … side; is fairly … (a hedged, relative judgment)",
+    "attachment": [
+      {
+        "stem": "V",
+        "final": "any",
+        "tense": "present",
+        "form": "V-는 편이다",
+        "example": "잘 먹는 편이다"
+      },
+      {
+        "stem": "A",
+        "final": "any",
+        "tense": "present",
+        "form": "A-(으)ㄴ 편이다",
+        "example": "조용한 편이다"
+      },
+      {
+        "stem": "V",
+        "final": "any",
+        "tense": "past",
+        "form": "V-(으)ㄴ 편이다 (rates one finished event)",
+        "example": "잘 본 편이다"
+      },
+      {
+        "stem": "V/A",
+        "final": "any",
+        "tense": "past",
+        "form": "V-는 / A-(으)ㄴ 편이었다",
+        "example": "추운 편이었다"
+      }
+    ],
+    "nuance": "Places a claim on a scale (\"rather\", \"relatively\"), which makes it modest. It's typical for describing yourself or your habits. Verbs usually need a degree word or a scale (잘, 많이, 자주, 일찍, 빨리): 많이 먹는 편이다 is natural; 밥을 먹는 편이다 has nothing to measure. For one completed event, V-(으)ㄴ 편이다 rates it (시험을 잘 본 편이다 = did fairly well). For a past habit or state, the tense goes on 이다 (빠지는 편이었다). Rarely used for absolute facts. See also HowtoStudyKorean Lesson 112.",
+    "contrasts": [
+      {
+        "id": "g:곤-하다",
+        "note": "-곤 하다 describes repeated episodes; -는 편이다 rates a general tendency."
+      },
+      {
+        "id": "g:는-셈이다",
+        "note": "-(으)ㄴ/는 셈이다 sums up what something amounts to; -는 편이다 hedges a trait or tendency."
+      }
+    ],
+    "examples": [
+      {
+        "ko": "저는 아침을 꼭 챙겨 먹는 편이에요.",
+        "en": "I tend to make sure I eat breakfast.",
+        "register": "neutral"
+      },
+      {
+        "ko": "이 지역의 출산율은 전국 평균에 비해 높은 편이다.",
+        "en": "The birth rate here is relatively high compared with the national average.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "저는 아침을 꼭 챙겨 {{}}.",
+          "en": "I'm the type who makes sure to eat breakfast.",
+          "cue": "먹다 + -는 편이다",
+          "accepted": [
+            "먹는 편이에요",
+            "먹는 편이야",
+            "먹는 편이다",
+            "먹는 편입니다"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "먹은 편이에요",
+              "hint": "For a habit, use present -는 편이다: 먹는 편이에요."
+            }
+          ]
+        },
+        {
+          "id": "c2",
+          "sentence": "이 동네는 밤에 꽤 {{}}.",
+          "en": "This neighborhood is fairly quiet at night.",
+          "cue": "조용하다 + -(으)ㄴ 편이다",
+          "accepted": [
+            "조용한 편이에요",
+            "조용한 편이야",
+            "조용한 편이다",
+            "조용한 편입니다"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "조용하는 편이에요",
+              "hint": "Adjectives take -(으)ㄴ: 조용한 편이에요."
+            }
+          ]
+        },
+        {
+          "id": "c3",
+          "sentence": "생각보다 시험을 잘 {{}}.",
+          "en": "I did fairly well on the exam, better than I expected.",
+          "cue": "보다 + -(으)ㄴ 편이다",
+          "accepted": [
+            "본 편이에요",
+            "본 편이야",
+            "본 편이다",
+            "본 편입니다"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "보는 편이에요",
+              "hint": "This rates one exam you already took: past modifier 본 편이에요."
+            }
+          ]
+        },
+        {
+          "id": "c4",
+          "sentence": "올해 겨울은 작년보다 덜 {{}}.",
+          "en": "This winter is relatively less cold than last year.",
+          "cue": "춥다 + -(으)ㄴ 편이다",
+          "accepted": [
+            "추운 편이에요",
+            "추운 편이야",
+            "추운 편이다",
+            "추운 편이네요"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "춥은 편이에요",
+              "hint": "ㅂ-irregular: 추운 편이에요."
+            }
+          ]
+        },
+        {
+          "id": "c5",
+          "sentence": "회사가 집에서 좀 {{}} 일찍 나와야 해요.",
+          "en": "My office is rather far from home, so I have to leave early.",
+          "cue": "멀다 + -(으)ㄴ 편이다",
+          "accepted": [
+            "먼 편이라서",
+            "먼 편이어서",
+            "먼 편이라"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "멀은 편이라서",
+              "hint": "ㄹ-stems drop ㄹ before -ㄴ: 먼 편이라서."
+            }
+          ]
+        },
+        {
+          "id": "c6",
+          "sentence": "학생 때 저는 수업에 거의 안 {{}}.",
+          "en": "As a student, I hardly ever skipped class.",
+          "cue": "빠지다 + -는 편이다",
+          "accepted": [
+            "빠지는 편이었어요",
+            "빠지는 편이었어",
+            "빠지는 편이었다"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "빠진 편이었어요",
+              "hint": "A past habit keeps -는 and puts the tense on 이다: 빠지는 편이었어요."
+            }
+          ]
+        },
+        {
+          "id": "c7",
+          "sentence": "저도 이 분야는 좀 {{}}.",
+          "en": "I know this field fairly well, too.",
+          "cue": "알다 + -는 편이다",
+          "accepted": [
+            "아는 편이에요",
+            "아는 편이야",
+            "아는 편이다",
+            "아는 편입니다"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "알는 편이에요",
+              "hint": "ㄹ drops before -는: 아는 편이에요."
+            }
+          ]
+        },
+        {
+          "id": "c8",
+          "sentence": "이 지역의 출산율은 전국 평균에 비해 {{}}.",
+          "en": "The birth rate here is relatively high compared with the national average.",
+          "cue": "높다 + -(으)ㄴ 편이다",
+          "accepted": [
+            "높은 편이다",
+            "높은 편이에요",
+            "높은 편입니다"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "면접관이 성격을 물어요. 겸손하게 \"꼼꼼하다\"고 말하려면? (A modest self-description in an interview.)",
+          "options": [
+            {
+              "text": "제가 좀 꼼꼼한 편입니다.",
+              "correct": true,
+              "why": "-(으)ㄴ 편이다 hedges the self-description: modest but clear."
+            },
+            {
+              "text": "제가 좀 꼼꼼하는 편입니다.",
+              "correct": false,
+              "why": "Adjectives take -(으)ㄴ 편이다; -는 is for verbs."
+            },
+            {
+              "text": "제가 좀 꼼꼼한 셈입니다.",
+              "correct": false,
+              "why": "-(으)ㄴ/는 셈이다 means \"it works out to\" after weighing facts; it doesn't describe a trait."
+            }
+          ]
+        },
+        {
+          "id": "n2",
+          "situation": "어느 문장이 자연스러워요? (Which sentence is natural?)",
+          "options": [
+            {
+              "text": "저는 밥을 먹는 편이에요.",
+              "correct": false,
+              "why": "Eating isn't on a scale here: without a degree word (많이, 빨리, 자주), the \"tendency\" has nothing to measure."
+            },
+            {
+              "text": "저는 밥을 빨리 먹는 편이에요.",
+              "correct": true,
+              "why": "빨리 gives the scale, so \"I tend to eat fast\" works."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "g:는-길에",
+    "kind": "grammar",
+    "level": 5,
+    "track": "grammar",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "fn:sequence-time",
+      "contrast-set:occasion",
+      "htsk:113",
+      "htsk-unit:5"
+    ],
+    "pattern": "-는 길에 / -는 길이다",
+    "meaning": "on the way (to/from) …; (be) on one's way …",
+    "attachment": [
+      {
+        "stem": "V",
+        "final": "any",
+        "tense": "present",
+        "form": "V-는 길에",
+        "example": "퇴근하는 길에"
+      },
+      {
+        "stem": "V",
+        "final": "any",
+        "tense": "present",
+        "form": "V-는 길이다",
+        "example": "가는 길이에요"
+      }
+    ],
+    "nuance": "Works with movement verbs: 가다, 오다, 나가다, 들어가다, 돌아오다, 내려오다, 출근하다, 퇴근하다. 공부하는 길에 makes no sense. -는 길에 introduces something done en route; -는 길이다 says where you're headed right now (지금 집에 가는 길이야). For an en-route event it stays -는 even in past narration (학교에 오는 길에 만났다). 온 길에 is a different idea (\"since I came all this way\"), close to -(으)ㄴ 김에. See also HowtoStudyKorean Lesson 113.",
+    "contrasts": [
+      {
+        "id": "g:는-김에",
+        "note": "-는 김에 is \"while (I'm) at it\" with any action; -는 길에 is strictly \"en route\"."
+      }
+    ],
+    "examples": [
+      {
+        "ko": "퇴근하는 길에 마트에 들러서 우유 좀 사 올래?",
+        "en": "Could you stop by the store on your way home from work and pick up some milk?",
+        "register": "spoken"
+      },
+      {
+        "ko": "지금 회사에서 집에 가는 길이에요.",
+        "en": "I'm on my way home from the office now.",
+        "register": "neutral"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "{{}} 마트에 들러서 우유 좀 사 올래?",
+          "en": "Could you stop by the store on your way home from work and get some milk?",
+          "cue": "퇴근하다 + -는 길에",
+          "accepted": [
+            "퇴근하는 길에"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "퇴근한 길에",
+              "hint": "En route, keep -는: 퇴근하는 길에."
+            },
+            {
+              "answer": "퇴근하는 김에",
+              "hint": "Close: -는 김에 means \"while you're at it\". For \"on the way\", the cue asks for -는 길에."
+            }
+          ]
+        },
+        {
+          "id": "c2",
+          "sentence": "지금 회사에서 집에 {{}}.",
+          "en": "I'm on my way home from the office now.",
+          "cue": "가다 + -는 길이다",
+          "accepted": [
+            "가는 길이에요",
+            "가는 길이야",
+            "가는 길입니다",
+            "가는 길이다"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "가는 길에요",
+              "hint": "길이다 needs 이다: 가는 길이에요."
+            }
+          ]
+        },
+        {
+          "id": "c3",
+          "sentence": "학교에 {{}} 우연히 옛날 선생님을 만났어요.",
+          "en": "On my way to school I ran into my old teacher.",
+          "cue": "오다 + -는 길에",
+          "accepted": [
+            "오는 길에"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "온 길에",
+              "hint": "For something that happened en route use -는 길에: 오는 길에. (온 길에 means \"since I came all this way\".)"
+            }
+          ]
+        },
+        {
+          "id": "c4",
+          "sentence": "공항에서 {{}} 차가 많이 막혔어요.",
+          "en": "Traffic was bad on the way back from the airport.",
+          "cue": "돌아오다 + -는 길에",
+          "accepted": [
+            "돌아오는 길에"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c5",
+          "sentence": "산에서 {{}} 발목을 삐었어요.",
+          "en": "I sprained my ankle on the way down the mountain.",
+          "cue": "내려오다 + -는 길에",
+          "accepted": [
+            "내려오는 길에"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c6",
+          "sentence": "잠깐만 기다려. 나 지금 {{}}.",
+          "en": "Hang on, I'm just heading out.",
+          "cue": "나가다 + -는 길이다",
+          "accepted": [
+            "나가는 길이야",
+            "나가는 길이에요",
+            "나가는 길이다"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c7",
+          "sentence": "사장님은 방금 회의에 {{}}.",
+          "en": "The president is just going into a meeting.",
+          "cue": "들어가다 + -는 길이다",
+          "accepted": [
+            "들어가시는 길이에요",
+            "들어가시는 길입니다",
+            "들어가시는 길이세요"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "들어가는 길이에요",
+              "hint": "Keep the honorific -시- for 사장님: 들어가시는 길이에요."
+            }
+          ]
+        },
+        {
+          "id": "c8",
+          "sentence": "집까지 {{}} 비를 쫄딱 맞았다.",
+          "en": "I got soaked walking home.",
+          "cue": "걸어가다 + -는 길에",
+          "accepted": [
+            "걸어가는 길에"
+          ],
+          "particleTolerance": "none"
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "어느 문장이 자연스러워요? (Which sentence is natural?)",
+          "options": [
+            {
+              "text": "도서관에서 공부하는 길에 친구를 만났어요.",
+              "correct": false,
+              "why": "공부하다 isn't a trip; -는 길에 needs a movement verb."
+            },
+            {
+              "text": "도서관에 가는 길에 친구를 만났어요.",
+              "correct": true,
+              "why": "가다 is movement, so \"on the way to the library\" works."
+            }
+          ]
+        },
+        {
+          "id": "n2",
+          "situation": "친구가 전화로 \"어디야?\"라고 물어요. 지금 집으로 가고 있어요. (You're heading home right now.)",
+          "options": [
+            {
+              "text": "지금 집에 가는 길이야.",
+              "correct": true,
+              "why": "-는 길이다 = \"I'm on my way (there) right now.\""
+            },
+            {
+              "text": "지금 집에 가는 김이야.",
+              "correct": false,
+              "why": "김 only works as -는 김에 (\"while I'm at it\"); it can't end a sentence with 이다."
+            },
+            {
+              "text": "지금 집에 간 길이야.",
+              "correct": false,
+              "why": "The past modifier doesn't describe being en route; use 가는 길이야."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "g:는-김에",
+    "kind": "grammar",
+    "level": 5,
+    "track": "grammar",
+    "rev": 1,
+    "unlockDeps": [
+      {
+        "id": "g:는-길에",
+        "require": "guru"
+      }
+    ],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "fn:sequence-time",
+      "contrast-set:occasion",
+      "htsk:114",
+      "htsk-unit:5"
+    ],
+    "pattern": "-(으)ㄴ/는 김에",
+    "meaning": "while (I'm) at it; since (I'm) already …, (I'll also) … (using an occasion for a second action)",
+    "attachment": [
+      {
+        "stem": "V",
+        "final": "any",
+        "tense": "present",
+        "form": "V-는 김에",
+        "example": "나가는 김에"
+      },
+      {
+        "stem": "V",
+        "final": "any",
+        "tense": "past",
+        "form": "V-(으)ㄴ 김에",
+        "example": "온 김에"
+      }
+    ],
+    "nuance": "The first action creates an opportunity, and the second is tacked on because it's convenient. Use -는 김에 when the first action is under way or about to happen, and -(으)ㄴ 김에 when it's done and you're making use of it (부산까지 온 김에). Set phrases: 말이 나온 김에 (\"since we're on the subject\"), 생각난 김에. The second action is chosen, often a plan, offer, or request (나가는 김에 이것 좀 버려 줄래?); accidents don't fit (넘어졌다). Unlike -는 길에, no movement is needed (청소하는 김에 창문도 닦았다). See also HowtoStudyKorean Lesson 114.",
+    "contrasts": [
+      {
+        "id": "g:는-길에",
+        "note": "-는 길에 needs travel; -는 김에 takes any action that opens an opportunity."
+      },
+      {
+        "id": "g:는-바람에",
+        "note": "-는 바람에 reports an unexpected cause with an unwanted result; -는 김에 is a deliberate add-on."
+      }
+    ],
+    "examples": [
+      {
+        "ko": "편의점에 가는 김에 내 것도 하나 사다 줄래?",
+        "en": "Since you're going to the convenience store, could you get me one too?",
+        "register": "spoken"
+      },
+      {
+        "ko": "부산까지 온 김에 바다도 보고 가자.",
+        "en": "Since we've come all the way to Busan, let's see the ocean before we go.",
+        "register": "spoken"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "편의점에 {{}} 내 것도 하나 사다 줄래?",
+          "en": "Since you're going to the store, could you get me one too?",
+          "cue": "가다 + -는 김에",
+          "accepted": [
+            "가는 김에"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "가는 길에",
+              "hint": "Also natural for an errand on the way; the cue asks for -는 김에 (\"since you're going anyway\")."
+            }
+          ]
+        },
+        {
+          "id": "c2",
+          "sentence": "말이 {{}} 하나 더 물어봐도 돼요?",
+          "en": "Since we're on the subject, can I ask one more thing?",
+          "cue": "나오다 + -(으)ㄴ 김에",
+          "accepted": [
+            "나온 김에"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "나오는 김에",
+              "hint": "The topic has already come up: past modifier 나온 김에 (a set phrase)."
+            }
+          ]
+        },
+        {
+          "id": "c3",
+          "sentence": "부산까지 {{}} 바다도 보고 가자.",
+          "en": "Since we've come all the way to Busan, let's see the ocean too.",
+          "cue": "오다 + -(으)ㄴ 김에",
+          "accepted": [
+            "온 김에"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "오는 김에",
+              "hint": "You're already here: 온 김에."
+            }
+          ]
+        },
+        {
+          "id": "c4",
+          "sentence": "방 {{}} 창문도 좀 닦아야겠다.",
+          "en": "While I'm cleaning the room, I should wipe the windows too.",
+          "cue": "청소하다 + -는 김에",
+          "accepted": [
+            "청소하는 김에"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c5",
+          "sentence": "{{}} 지금 바로 예약해 둘게요.",
+          "en": "Now that I've thought of it, I'll book it right away.",
+          "cue": "생각나다 + -(으)ㄴ 김에",
+          "accepted": [
+            "생각난 김에"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "생각나는 김에",
+              "hint": "The thought has already come to mind: 생각난 김에."
+            }
+          ]
+        },
+        {
+          "id": "c6",
+          "sentence": "빵 {{}} 쿠키도 같이 만들어 보자.",
+          "en": "Since we're making bread, let's make some cookies too.",
+          "cue": "만들다 + -는 김에",
+          "accepted": [
+            "만드는 김에"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "만들는 김에",
+              "hint": "ㄹ drops before -는: 만드는 김에."
+            }
+          ]
+        },
+        {
+          "id": "c7",
+          "sentence": "커피 {{}} 내 것도 한 잔 부탁해.",
+          "en": "While you're making coffee, make me a cup too, please.",
+          "cue": "내리다 + -는 김에",
+          "accepted": [
+            "내리는 김에"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c8",
+          "sentence": "선생님, 시내에 {{}} 서점에 좀 들러 주실 수 있을까요?",
+          "en": "Sir, since you're going downtown, could you stop by the bookstore?",
+          "cue": "나가다 + -는 김에",
+          "accepted": [
+            "나가시는 김에"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "나가는 김에",
+              "hint": "Keep the honorific -시- for 선생님: 나가시는 김에."
+            }
+          ]
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "어느 문장이 자연스러워요? (Which sentence is natural?)",
+          "options": [
+            {
+              "text": "마트에 가는 김에 넘어졌어요.",
+              "correct": false,
+              "why": "-는 김에 needs a second action you choose to do; tripping is an accident (use -다가)."
+            },
+            {
+              "text": "마트에 가는 김에 쓰레기도 버렸어요.",
+              "correct": true,
+              "why": "Taking out the trash is a deliberate add-on to the trip."
+            }
+          ]
+        },
+        {
+          "id": "n2",
+          "situation": "집에서 대청소를 하다가 오래된 책들도 정리했어요. (While deep-cleaning, you also sorted old books.)",
+          "options": [
+            {
+              "text": "청소하는 김에 오래된 책들도 정리했어요.",
+              "correct": true,
+              "why": "Cleaning gave the occasion; no travel is needed."
+            },
+            {
+              "text": "청소하는 길에 오래된 책들도 정리했어요.",
+              "correct": false,
+              "why": "-는 길에 is for trips (가다, 오다…); cleaning isn't movement."
+            },
+            {
+              "text": "청소하는 바람에 오래된 책들도 정리했어요.",
+              "correct": false,
+              "why": "-는 바람에 reports an unexpected cause with an unwanted result; sorting the books was your choice."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "g:ㄹ걸-그랬다",
+    "kind": "grammar",
+    "level": 5,
+    "track": "grammar",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "fn:regret-counterfactual",
+      "contrast-set:regret",
+      "htsk:115",
+      "htsk-unit:5"
+    ],
+    "pattern": "-(으)ㄹ걸 (그랬다)",
+    "meaning": "I should have …; I wish I had … (wistful regret over one's own choice)",
+    "attachment": [
+      {
+        "stem": "V",
+        "final": "any",
+        "tense": "any",
+        "form": "V-(으)ㄹ걸 (그랬다)",
+        "example": "일찍 올걸 그랬다"
+      },
+      {
+        "stem": "V",
+        "final": "any",
+        "tense": "any",
+        "form": "V-지 말걸 (그랬다)",
+        "example": "말하지 말걸"
+      }
+    ],
+    "nuance": "Regret about the speaker's own past choice (or \"we\"), often half muttered to oneself, with falling intonation. -(으)ㄹ걸 is one ending, written attached (할걸 그랬다; 할 걸 is a spacing error here). For negative regret use -지 말걸 (안 -(으)ㄹ걸 also occurs in speech). Politeness goes on 그랬다: 할걸 그랬어요. Plain 할걸요 means something else, a guess (\"I bet …\"). It is wistful rather than critical. To blame someone, or for a firmer \"ought to have\", use -았/었어야 했다 / -았/었어야지. See also HowtoStudyKorean Lesson 115.",
+    "contrasts": [
+      {
+        "id": "g:었어야-했다",
+        "note": "-았/었어야 했다 is firmer and can reproach others; -(으)ㄹ걸 그랬다 is wistful and mostly self-directed."
+      },
+      {
+        "id": "g:ㄹ걸요",
+        "note": "-(으)ㄹ걸요 (rising, conjecture) looks the same in 반말 but means \"I bet …\"."
+      }
+    ],
+    "examples": [
+      {
+        "ko": "비가 올 줄 알았으면 우산을 챙길걸 그랬어.",
+        "en": "If I'd known it would rain, I'd have brought an umbrella.",
+        "register": "spoken"
+      },
+      {
+        "ko": "표가 다 팔렸네요. 미리 예매할걸 그랬어요.",
+        "en": "They're sold out. I should have booked ahead.",
+        "register": "neutral"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance",
+      "register"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "비가 올 줄 알았으면 우산을 {{}}.",
+          "en": "If I'd known it would rain, I'd have brought an umbrella.",
+          "cue": "챙기다 + -(으)ㄹ걸 그랬다",
+          "accepted": [
+            "챙길걸 그랬어",
+            "챙길걸 그랬어요",
+            "챙길걸 그랬다",
+            "챙길걸 그랬네",
+            "챙길걸"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "챙겼어야 했어",
+              "hint": "Also \"should have\", but firmer; the cue asks for the wistful -(으)ㄹ걸 그랬다."
+            }
+          ],
+          "spacingStrict": true
+        },
+        {
+          "id": "c2",
+          "sentence": "어제 그 말은 {{}}.",
+          "en": "I shouldn't have said that yesterday.",
+          "cue": "하다 + -지 말걸 그랬다",
+          "accepted": [
+            "하지 말걸 그랬어",
+            "하지 말걸 그랬어요",
+            "하지 말걸 그랬다",
+            "하지 말걸"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "안 할걸 그랬어",
+              "hint": "Also heard; the cue asks for -지 말걸, the standard negative."
+            }
+          ]
+        },
+        {
+          "id": "c3",
+          "sentence": "이렇게 맛있는 줄 알았으면 더 {{}}.",
+          "en": "If I'd known it was this good, I'd have ordered more.",
+          "cue": "시키다 + -(으)ㄹ걸 그랬다",
+          "accepted": [
+            "시킬걸 그랬다",
+            "시킬걸 그랬어",
+            "시킬걸 그랬어요",
+            "시킬걸 그랬네",
+            "시킬걸"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c4",
+          "sentence": "배고프다. 아까 점심을 많이 {{}}.",
+          "en": "I'm starving. I should have eaten more at lunch.",
+          "cue": "먹다 + -(으)ㄹ걸 그랬다",
+          "accepted": [
+            "먹을걸 그랬다",
+            "먹을걸 그랬어",
+            "먹을걸 그랬네",
+            "먹을걸"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c5",
+          "sentence": "방이 이렇게 답답할 줄 알았으면 창문을 미리 {{}}.",
+          "en": "If I'd known the room would be this stuffy, I'd have opened the window earlier.",
+          "cue": "열다 + -(으)ㄹ걸 그랬다",
+          "accepted": [
+            "열걸 그랬다",
+            "열걸 그랬어",
+            "열걸 그랬어요",
+            "열걸"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "열을걸 그랬다",
+              "hint": "ㄹ-stems take -ㄹ걸 directly: 열걸."
+            }
+          ]
+        },
+        {
+          "id": "c6",
+          "sentence": "결국 이렇게 될 줄 알았으면 선배 말을 {{}}.",
+          "en": "If I'd known it would end like this, I'd have listened to my senior.",
+          "cue": "듣다 + -(으)ㄹ걸 그랬다",
+          "accepted": [
+            "들을걸 그랬어요",
+            "들을걸 그랬어",
+            "들을걸 그랬다",
+            "들을걸"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "듣을걸 그랬어요",
+              "hint": "ㄷ-irregular: 들을걸."
+            }
+          ]
+        },
+        {
+          "id": "c7",
+          "sentence": "그때 친구를 좀 {{}}.",
+          "en": "I should have helped my friend back then.",
+          "cue": "돕다 + -(으)ㄹ걸 그랬다",
+          "accepted": [
+            "도울걸 그랬어",
+            "도울걸 그랬어요",
+            "도울걸 그랬다",
+            "도울걸"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "돕을걸 그랬어",
+              "hint": "ㅂ-irregular: 도울걸."
+            }
+          ]
+        },
+        {
+          "id": "c8",
+          "sentence": "표가 다 팔렸네요. 미리 {{}}.",
+          "en": "They're sold out. I should have booked ahead.",
+          "cue": "예매하다 + -(으)ㄹ걸 그랬다",
+          "accepted": [
+            "예매할걸 그랬어요",
+            "예매할걸 그랬네요",
+            "예매할걸 그랬어",
+            "예매할걸"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "예매할걸요",
+              "hint": "In 해요체, -(으)ㄹ걸요 alone is a guess (\"I bet …\"); for regret say 예매할걸 그랬어요."
+            }
+          ]
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "동생이 또 지각했어요. 동생을 나무라며 \"좀 일찍 나왔어야지\"라는 뜻을 전하려면? (You want to scold your sibling for being late.)",
+          "options": [
+            {
+              "text": "너 좀 일찍 나왔어야지.",
+              "correct": true,
+              "why": "-았/었어야지 carries the reproach you want."
+            },
+            {
+              "text": "너 좀 일찍 나올걸 그랬어.",
+              "correct": false,
+              "why": "-(으)ㄹ걸 그랬다 is wistful regret, mostly about the speaker's own choices; it doesn't scold."
+            }
+          ]
+        },
+        {
+          "id": "n2",
+          "situation": "시험이 끝나고 혼잣말로 아쉬워해요. (After the exam, you mutter a regret to yourself.)",
+          "options": [
+            {
+              "text": "공부 좀 더 할걸.",
+              "correct": true,
+              "why": "Regret over your own choice, muttered to yourself."
+            },
+            {
+              "text": "공부 좀 더 할걸요.",
+              "correct": false,
+              "why": "-(으)ㄹ걸요 is a guess (\"I bet they'll study more\"); it doesn't express regret."
+            }
+          ]
+        }
+      ],
+      "register": [
+        {
+          "id": "r1",
+          "from": "hae",
+          "to": "haeyo",
+          "source": "그냥 집에 있을걸 그랬어.",
+          "accepted": [
+            "그냥 집에 있을걸 그랬어요.",
+            "그냥 집에 있을걸 그랬네요."
+          ],
+          "features": [
+            {
+              "kind": "endsWith",
+              "any": [
+                "요"
+              ],
+              "label": "Ending must be 해요체 (-요)"
+            },
+            {
+              "kind": "contains",
+              "any": [
+                "그랬"
+              ],
+              "scope": "all",
+              "label": "Keep 그랬- (있을걸요 alone would be a guess, not regret)"
+            }
+          ],
+          "coreWords": [
+            "집에",
+            "있을걸"
+          ],
+          "particleTolerance": "allomorph",
+          "finalPunctOptional": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "g:ㄴ-채로",
+    "kind": "grammar",
+    "level": 5,
+    "track": "grammar",
+    "rev": 1,
+    "unlockDeps": [],
+    "gating": true,
+    "source": {
+      "kind": "original",
+      "license": "original-owned"
+    },
+    "needs_review": false,
+    "tags": [
+      "fn:manner-comparison",
+      "contrast-set:resultant-state",
+      "htsk:116",
+      "htsk-unit:5"
+    ],
+    "pattern": "-(으)ㄴ 채(로)",
+    "meaning": "with … still …; in the state of having … (a resulting state kept during the next action)",
+    "attachment": [
+      {
+        "stem": "V",
+        "final": "any",
+        "tense": "past",
+        "form": "V-(으)ㄴ 채(로)",
+        "example": "신발을 신은 채로"
+      },
+      {
+        "stem": "V",
+        "final": "any",
+        "tense": "past",
+        "form": "V-지 않은 채(로) / 못한 채",
+        "example": "아무 말도 하지 않은 채"
+      }
+    ],
+    "nuance": "The first action is complete and its resulting state carries over while the main action happens, often implying it shouldn't have: 불을 켠 채로 잠들었다. It always uses the past modifier -(으)ㄴ (켜는 채로 is wrong). It's typical with state-creating verbs (입다, 신다, 쓰다, 켜다, 열다, 앉다, 눕다) and negatives (하지 않은 채). 채 is a dependent noun, so it is spaced (신은 채로). Don't confuse it with the adverb 채 (\"not even\": 채 1분도 안 돼서) or the suffix -째 (\"whole\": 껍질째). See also HowtoStudyKorean Lesson 116.",
+    "contrasts": [
+      {
+        "id": "g:어-놓다",
+        "note": "-아/어 놓다 leaves a result in place on purpose; -(으)ㄴ 채로 describes doing something else while that state lasts."
+      },
+      {
+        "id": "g:는-김에",
+        "note": "-(으)ㄴ 김에 uses a finished action as an opportunity; -(으)ㄴ 채로 just keeps its state."
+      }
+    ],
+    "examples": [
+      {
+        "ko": "어젯밤에 불을 켠 채로 잠들어 버렸어요.",
+        "en": "Last night I fell asleep with the light on.",
+        "register": "neutral"
+      },
+      {
+        "ko": "그 사건은 범인을 찾지 못한 채 미제 사건으로 남았다.",
+        "en": "The case remained unsolved, the culprit never found.",
+        "register": "written"
+      }
+    ],
+    "questionTypes": [
+      "cloze",
+      "nuance"
+    ],
+    "questions": {
+      "cloze": [
+        {
+          "id": "c1",
+          "sentence": "어젯밤에 불을 {{}} 잠들어 버렸어요.",
+          "en": "Last night I fell asleep with the light on.",
+          "cue": "켜다 + -(으)ㄴ 채로",
+          "accepted": [
+            "켠 채로",
+            "켠 채"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "켜는 채로",
+              "hint": "Always the past modifier: 켠 채로."
+            }
+          ]
+        },
+        {
+          "id": "c2",
+          "sentence": "신발을 {{}} 방에 들어오면 안 돼요.",
+          "en": "You can't come into the room with your shoes on.",
+          "cue": "신다 + -(으)ㄴ 채로",
+          "accepted": [
+            "신은 채로",
+            "신은 채"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "신는 채로",
+              "hint": "Always the past modifier: 신은 채로."
+            }
+          ]
+        },
+        {
+          "id": "c3",
+          "sentence": "창문을 {{}} 외출했다.",
+          "en": "I went out with the window open.",
+          "cue": "열다 + -(으)ㄴ 채로",
+          "accepted": [
+            "연 채로",
+            "연 채"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "열은 채로",
+              "hint": "ㄹ-stems drop ㄹ before -ㄴ: 연 채로."
+            }
+          ]
+        },
+        {
+          "id": "c4",
+          "sentence": "그는 아무 말도 {{}} 자리를 떴다.",
+          "en": "He left without saying a word.",
+          "cue": "하지 않다 + -(으)ㄴ 채로",
+          "accepted": [
+            "하지 않은 채",
+            "하지 않은 채로"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "하지 않는 채",
+              "hint": "Always the past modifier: 하지 않은 채."
+            }
+          ]
+        },
+        {
+          "id": "c5",
+          "sentence": "아이는 소파에 {{}} 잠이 들었다.",
+          "en": "The child fell asleep lying on the sofa.",
+          "cue": "눕다 + -(으)ㄴ 채로",
+          "accepted": [
+            "누운 채로",
+            "누운 채"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "눕은 채로",
+              "hint": "ㅂ-irregular: 누운 채로."
+            }
+          ]
+        },
+        {
+          "id": "c6",
+          "sentence": "고기를 {{}} 먹으면 배탈이 날 수 있어요.",
+          "en": "Eating meat that isn't cooked through can upset your stomach.",
+          "cue": "익히지 않다 + -(으)ㄴ 채로",
+          "accepted": [
+            "익히지 않은 채로",
+            "익히지 않은 채"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c7",
+          "sentence": "그 사건은 범인을 {{}} 미제 사건으로 남았다.",
+          "en": "The case remained unsolved, the culprit never found.",
+          "cue": "찾지 못하다 + -(으)ㄴ 채로",
+          "accepted": [
+            "찾지 못한 채",
+            "찾지 못한 채로"
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c8",
+          "sentence": "그는 모자를 {{}} 인사를 했다.",
+          "en": "He bowed with his hat still on.",
+          "cue": "쓰다 + -(으)ㄴ 채로",
+          "accepted": [
+            "쓴 채로",
+            "쓴 채"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "쓰는 채로",
+              "hint": "Always the past modifier: 쓴 채로."
+            }
+          ]
+        }
+      ],
+      "nuance": [
+        {
+          "id": "n1",
+          "situation": "어느 문장이 맞아요? (Which sentence is correct?)",
+          "options": [
+            {
+              "text": "옷을 입은 채로 물에 뛰어들었다.",
+              "correct": true,
+              "why": "The completed state (clothes on) is kept: 입은 채로."
+            },
+            {
+              "text": "옷을 입는 채로 물에 뛰어들었다.",
+              "correct": false,
+              "why": "-(으)ㄴ 채로 needs the completed state: 입은, not 입는."
+            },
+            {
+              "text": "옷을 입은 째로 물에 뛰어들었다.",
+              "correct": false,
+              "why": "-째 means \"whole, including\" (껍질째); the state noun is 채."
+            }
+          ]
+        },
+        {
+          "id": "n2",
+          "situation": "\"He left with the door open\"을 옮기려면? (Translate the sentence.)",
+          "options": [
+            {
+              "text": "그는 문을 연 채로 나갔다.",
+              "correct": true,
+              "why": "The door stays open as he leaves: -(으)ㄴ 채로."
+            },
+            {
+              "text": "그는 문을 연 김에 나갔다.",
+              "correct": false,
+              "why": "-(으)ㄴ 김에 means \"since he'd already opened it, he (also) left\"; it doesn't say the door stayed open."
+            }
+          ]
+        }
+      ]
+    }
+  }
+]
