@@ -8,13 +8,13 @@
     "unlockDeps": [],
     "gating": true,
     "source": { "kind": "original", "license": "original-owned" },
-    "needs_review": true,
+    "needs_review": false,
     "tags": ["cause", "contrast-set:unwanted-cause", "fn:cause"],
     "mnemonic": "바람 = a gust of wind: something sudden knocks your plans over, and the damage is already done.",
     "pattern": "-는 바람에",
     "meaning": "because of a sudden, unexpected event, with an unwanted result (\"…, and so I ended up …\")",
     "attachment": [{ "stem": "V", "final": "any", "tense": "present", "form": "V-는 바람에", "example": "급하게 나오는 바람에" }],
-    "nuance": "The cause is typically a sudden or unforeseen event, and its (usually unwanted) result has already happened. The form is always -는, even for past events: 넘어지는 바람에, not *넘어진 바람에. The main clause is normally past tense and cannot be a command or suggestion (-(으)세요, -자, -(으)ㅂ시다). The tone is neutral: it reports what happened without blaming anyone or describing the atmosphere.",
+    "nuance": "The cause is typically a sudden or unforeseen event, and its (usually unwanted) result has already happened. The modifier stays -는 even for past events: 넘어지는 바람에 (넘어진 바람에 is nonstandard). The main clause is normally past tense and cannot be a command or suggestion (-(으)세요, -자, -(으)ㅂ시다). The tone is neutral: it reports what happened without blaming anyone or describing the atmosphere.",
     "contrasts": [
       { "id": "g:는-탓에", "note": "-(으)ㄴ/는 탓에 points a finger: the cause is held responsible. -는 바람에 just reports a sudden cause." },
       { "id": "g:는-통에", "note": "-는 통에 blames a hectic, chaotic scene (noise, crowds, commotion); -는 바람에 is typically a single sudden event." }
@@ -142,9 +142,9 @@
               "why": "A sudden event (urgent work cropping up) with an unwanted result that has already happened: exactly what -는 바람에 reports."
             },
             {
-              "text": "퇴근 직전에 일이 너무 바쁜 바람에 못 갔어. 미안해.",
+              "text": "퇴근 직전에 급한 일이 생기느라고 못 갔어. 미안해.",
               "correct": false,
-              "why": "-는 바람에 attaches to verbs in the -는 form; an adjective like 바쁘다 can't take it. Say 바빠서."
+              "why": "-느라고 needs the subject's own time-consuming activity (일하느라고 못 갔어). Something that happened to you, like 일이 생기다, can't take it."
             },
             {
               "text": "퇴근 직전에 급한 일이 생긴 덕분에 못 갔어. 미안해.",
@@ -1341,9 +1341,10 @@
     "meaning": "even if …, (I will) never …; would sooner … than …",
     "attachment": [
       { "stem": "V/A", "final": "any", "tense": "present", "form": "V/A-(으)ㄹ지언정", "example": "굶을지언정" },
+      { "stem": "V/A", "final": "any", "tense": "past", "form": "V/A-았/었을지언정", "example": "졌을지언정" },
       { "stem": "N이다", "final": "any", "tense": "present", "form": "N일지언정", "example": "꼴찌일지언정" }
     ],
-    "nuance": "An emphatic, somewhat literary concession: the speaker accepts the first (bad) scenario and flatly rules out the second. The main clause is typically a refusal or negation (-지 않겠다, 못 하다, -(으)ㄹ 수 없다), often reinforced by 차라리 in the first clause. At home in speeches, op-eds, and dramatic declarations.",
+    "nuance": "An emphatic, somewhat literary concession: the speaker accepts the first (bad) scenario and flatly rules out the second. The main clause is typically a refusal or negation (-지 않겠다, 못 하다, -(으)ㄹ 수 없다), often reinforced by 차라리 in the first clause. Like -(으)ㄹ망정, it can also concede a past fact before a redeeming point (졌을지언정 정신력만큼은 뒤지지 않았다). At home in speeches, op-eds, and dramatic declarations.",
     "contrasts": [
       { "id": "g:ㄹ망정", "note": "Near-synonym in both uses; -(으)ㄹ망정 is a little less emphatic and more conversational." },
       { "id": "g:느니-차라리", "note": "The same choice seen from the other side: -느니 attaches to the option rejected, -(으)ㄹ지언정 to the hardship accepted." }

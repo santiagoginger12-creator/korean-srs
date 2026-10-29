@@ -813,7 +813,7 @@
       "kind": "original",
       "license": "original-owned"
     },
-    "needs_review": true,
+    "needs_review": false,
     "tags": [
       "fn:sequence-time",
       "contrast-set:past-aspect",
@@ -835,7 +835,7 @@
         "final": "any",
         "tense": "past",
         "form": "N이었었다 / N였었다",
-        "example": "은행원이었었다"
+        "example": "학교였었다"
       }
     ],
     "nuance": "Korean has no obligatory past perfect. -았/었었- signals discontinuity: the past situation is over or reversed, or it lies further back than another past point. 서울에 살았다 just reports; 서울에 살았었다 implies you don't live there now. With one-off events whose result normally persists, it suggests the result was undone: 결혼했다 (and still married) vs 결혼했었다 (no longer). Translators often overuse it for English \"had + past participle\". When the English past perfect only marks sequence, plain -았/었다 is usually better Korean. See also HowtoStudyKorean Lesson 108.",
@@ -856,8 +856,8 @@
         "register": "neutral"
       },
       {
-        "ko": "그 배우는 데뷔 전에 은행원이었었다.",
-        "en": "Before debuting, the actor had been a bank teller.",
+        "ko": "지금은 배우지만 그는 데뷔 전에 은행에서 일했었다.",
+        "en": "He's an actor now, but before his debut he had worked at a bank.",
         "register": "written"
       }
     ],
@@ -886,33 +886,40 @@
         },
         {
           "id": "c2",
-          "sentence": "작년까지만 해도 이 자리에 작은 서점이 {{}}.",
-          "en": "Until just last year, there was a small bookstore on this spot.",
-          "cue": "있다 + -았/었었다",
+          "sentence": "작년까지만 해도 이 회사에 {{}}.",
+          "en": "Until just last year, I worked at this company.",
+          "cue": "다니다 + -았/었었다",
           "accepted": [
-            "있었었어요",
-            "있었었다",
-            "있었었어",
-            "있었었는데"
-          ],
-          "particleTolerance": "none"
-        },
-        {
-          "id": "c3",
-          "sentence": "그 배우는 데뷔 전에 {{}}.",
-          "en": "Before debuting, that actor had been a bank teller.",
-          "cue": "은행원이다 + -았/었었다",
-          "accepted": [
-            "은행원이었었어요",
-            "은행원이었었다",
-            "은행원이었었어",
-            "은행원이었었대요"
+            "다녔었어요",
+            "다녔었다",
+            "다녔었어",
+            "다녔었습니다"
           ],
           "particleTolerance": "none",
           "nearMiss": [
             {
-              "answer": "은행원였었어요",
-              "hint": "After a consonant, 이다 keeps 이: 은행원이었었어요."
+              "answer": "다녔어요",
+              "hint": "Grammatical, but the cue asks for -었었-, which underlines that you no longer work there."
+            }
+          ]
+        },
+        {
+          "id": "c3",
+          "sentence": "지금은 배우지만 데뷔 전에는 은행에서 {{}}.",
+          "en": "He's an actor now, but before his debut he worked at a bank.",
+          "cue": "일하다 + -았/었었다",
+          "accepted": [
+            "일했었어요",
+            "일했었다",
+            "일했었어",
+            "일했었대요",
+            "일했었습니다"
+          ],
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "일했어요",
+              "hint": "Grammatical, but the cue asks for -었었-, which stresses that the bank job is over."
             }
           ]
         },
@@ -925,7 +932,8 @@
             "학교였었어요",
             "학교였었다",
             "학교였었어",
-            "학교이었었어요"
+            "학교이었었어요",
+            "학교였었습니다"
           ],
           "particleTolerance": "none"
         },
@@ -955,7 +963,8 @@
             "들었었어요",
             "들었었어",
             "들었었다",
-            "들었었지"
+            "들었었지",
+            "들었었습니다"
           ],
           "particleTolerance": "none",
           "nearMiss": [
@@ -974,7 +983,8 @@
             "몰랐었어요",
             "몰랐었어",
             "몰랐었다",
-            "몰랐었지"
+            "몰랐었지",
+            "몰랐었습니다"
           ],
           "particleTolerance": "none",
           "nearMiss": [
@@ -1050,7 +1060,7 @@
       "kind": "original",
       "license": "original-owned"
     },
-    "needs_review": true,
+    "needs_review": false,
     "tags": [
       "fn:conjecture",
       "contrast-set:conjecture",
@@ -1089,7 +1099,7 @@
         "example": "관광객인가 보다"
       }
     ],
-    "nuance": "Draws a conclusion from evidence in front of the speaker: the lights are off, so 다들 자나 봐요. Verbs and 있다/없다 take -나 (or the more formal -는가); adjectives take -(으)ㄴ가 (바쁜가 봐요). 바쁘나 봐요 is common in casual speech but nonstandard. With yourself as subject it sounds like discovering something about yourself (제가 요즘 좀 피곤한가 봐요), which is fine but marked. It doesn't state what you already know, and it isn't used for evidence-free predictions; that is -(으)ㄹ 것 같다 or -(으)ㄹ걸요. -(으)ㄴ/는 것 같다 covers both inference and opinion and is softer. See also HowtoStudyKorean Lesson 109.",
+    "nuance": "Draws a conclusion from evidence in front of the speaker: the lights are off, so 다들 자나 봐요. Verbs and 있다/없다 take -나 (or the more formal -는가); adjectives take -(으)ㄴ가 (바쁜가 봐요). 바쁘나 봐요 is very common in casual speech, but the standard form after an adjective is -(으)ㄴ가 보다. With yourself as subject it sounds like discovering something about yourself (제가 요즘 좀 피곤한가 봐요), which is fine but marked. It doesn't state what you already know, and it isn't used for evidence-free predictions; that is -(으)ㄹ 것 같다 or -(으)ㄹ걸요. -(으)ㄴ/는 것 같다 covers both inference and opinion and is softer. See also HowtoStudyKorean Lesson 109.",
     "contrasts": [
       {
         "id": "g:ㄹ걸요",
@@ -1133,7 +1143,8 @@
             "자나 보다",
             "자나 보네",
             "자는가 봐",
-            "자는가 봐요"
+            "자는가 봐요",
+            "자나 봅니다"
           ],
           "particleTolerance": "none"
         },
@@ -1146,7 +1157,8 @@
             "왔나 봐요",
             "왔나 봐",
             "왔나 보다",
-            "왔나 보네"
+            "왔나 보네",
+            "왔나 봅니다"
           ],
           "particleTolerance": "none",
           "nearMiss": [
@@ -1165,13 +1177,14 @@
             "바쁜가 봐요",
             "바쁜가 봐",
             "바쁜가 보다",
-            "바쁜가 보네요"
+            "바쁜가 보네요",
+            "바쁜가 봅니다"
           ],
           "particleTolerance": "none",
           "nearMiss": [
             {
               "answer": "바쁘나 봐요",
-              "hint": "Common in casual speech, but the standard form after an adjective is -(으)ㄴ가 보다: 바쁜가 봐요."
+              "hint": "Very common in casual speech, but the standard form after an adjective is -(으)ㄴ가 보다: 바쁜가 봐요."
             }
           ]
         },
@@ -1184,7 +1197,8 @@
             "관광객인가 봐요",
             "관광객인가 봐",
             "관광객인가 보다",
-            "관광객인가 보네요"
+            "관광객인가 보네요",
+            "관광객인가 봅니다"
           ],
           "particleTolerance": "none"
         },
@@ -1197,7 +1211,8 @@
             "더운가 봐",
             "더운가 봐요",
             "더운가 보다",
-            "더운가 보네"
+            "더운가 보네",
+            "더운가 봅니다"
           ],
           "particleTolerance": "none",
           "nearMiss": [
@@ -1216,7 +1231,8 @@
             "만드나 봐",
             "만드나 봐요",
             "만드나 보다",
-            "만드나 보네"
+            "만드나 보네",
+            "만드나 봅니다"
           ],
           "particleTolerance": "none",
           "nearMiss": [
@@ -1235,7 +1251,8 @@
             "먼가 봐요",
             "먼가 봐",
             "먼가 보다",
-            "먼가 보네요"
+            "먼가 보네요",
+            "먼가 봅니다"
           ],
           "particleTolerance": "none",
           "nearMiss": [
@@ -1255,7 +1272,8 @@
             "없나 봐",
             "없나 보다",
             "없나 보네요",
-            "없는가 봐요"
+            "없는가 봐요",
+            "없나 봅니다"
           ],
           "particleTolerance": "none",
           "nearMiss": [
@@ -1694,7 +1712,8 @@
             "추운 편이에요",
             "추운 편이야",
             "추운 편이다",
-            "추운 편이네요"
+            "추운 편이네요",
+            "추운 편입니다"
           ],
           "particleTolerance": "none",
           "nearMiss": [
@@ -1730,7 +1749,8 @@
           "accepted": [
             "빠지는 편이었어요",
             "빠지는 편이었어",
-            "빠지는 편이었다"
+            "빠지는 편이었다",
+            "빠지는 편이었습니다"
           ],
           "particleTolerance": "none",
           "nearMiss": [
@@ -1767,7 +1787,8 @@
           "accepted": [
             "높은 편이다",
             "높은 편이에요",
-            "높은 편입니다"
+            "높은 편입니다",
+            "높은 편이야"
           ],
           "particleTolerance": "none"
         }
@@ -1958,19 +1979,21 @@
           "accepted": [
             "나가는 길이야",
             "나가는 길이에요",
-            "나가는 길이다"
+            "나가는 길이다",
+            "나가는 길입니다"
           ],
           "particleTolerance": "none"
         },
         {
           "id": "c7",
-          "sentence": "사장님은 방금 회의에 {{}}.",
+          "sentence": "사장님은 지금 막 회의에 {{}}.",
           "en": "The president is just going into a meeting.",
           "cue": "들어가다 + -는 길이다",
           "accepted": [
             "들어가시는 길이에요",
             "들어가시는 길입니다",
-            "들어가시는 길이세요"
+            "들어가시는 길이세요",
+            "들어가시는 길이야"
           ],
           "particleTolerance": "none",
           "nearMiss": [
@@ -2338,7 +2361,8 @@
             "챙길걸 그랬어요",
             "챙길걸 그랬다",
             "챙길걸 그랬네",
-            "챙길걸"
+            "챙길걸",
+            "챙길걸 그랬습니다"
           ],
           "particleTolerance": "none",
           "nearMiss": [
@@ -2358,7 +2382,8 @@
             "하지 말걸 그랬어",
             "하지 말걸 그랬어요",
             "하지 말걸 그랬다",
-            "하지 말걸"
+            "하지 말걸",
+            "하지 말걸 그랬습니다"
           ],
           "particleTolerance": "none",
           "nearMiss": [
@@ -2378,7 +2403,8 @@
             "시킬걸 그랬어",
             "시킬걸 그랬어요",
             "시킬걸 그랬네",
-            "시킬걸"
+            "시킬걸",
+            "시킬걸 그랬습니다"
           ],
           "particleTolerance": "none"
         },
@@ -2391,7 +2417,9 @@
             "먹을걸 그랬다",
             "먹을걸 그랬어",
             "먹을걸 그랬네",
-            "먹을걸"
+            "먹을걸",
+            "먹을걸 그랬어요",
+            "먹을걸 그랬습니다"
           ],
           "particleTolerance": "none"
         },
@@ -2404,7 +2432,8 @@
             "열걸 그랬다",
             "열걸 그랬어",
             "열걸 그랬어요",
-            "열걸"
+            "열걸",
+            "열걸 그랬습니다"
           ],
           "particleTolerance": "none",
           "nearMiss": [
@@ -2423,7 +2452,8 @@
             "들을걸 그랬어요",
             "들을걸 그랬어",
             "들을걸 그랬다",
-            "들을걸"
+            "들을걸",
+            "들을걸 그랬습니다"
           ],
           "particleTolerance": "none",
           "nearMiss": [
@@ -2442,7 +2472,8 @@
             "도울걸 그랬어",
             "도울걸 그랬어요",
             "도울걸 그랬다",
-            "도울걸"
+            "도울걸",
+            "도울걸 그랬습니다"
           ],
           "particleTolerance": "none",
           "nearMiss": [
@@ -2461,7 +2492,9 @@
             "예매할걸 그랬어요",
             "예매할걸 그랬네요",
             "예매할걸 그랬어",
-            "예매할걸"
+            "예매할걸",
+            "예매할걸 그랬습니다",
+            "예매할걸 그랬다"
           ],
           "particleTolerance": "none",
           "nearMiss": [
@@ -2580,7 +2613,7 @@
         "example": "아무 말도 하지 않은 채"
       }
     ],
-    "nuance": "The first action is complete and its resulting state carries over while the main action happens, often implying it shouldn't have: 불을 켠 채로 잠들었다. It always uses the past modifier -(으)ㄴ (켜는 채로 is wrong). It's typical with state-creating verbs (입다, 신다, 쓰다, 켜다, 열다, 앉다, 눕다) and negatives (하지 않은 채). 채 is a dependent noun, so it is spaced (신은 채로). Don't confuse it with the adverb 채 (\"not even\": 채 1분도 안 돼서) or the suffix -째 (\"whole\": 껍질째). See also HowtoStudyKorean Lesson 116.",
+    "nuance": "The first action is complete and its resulting state carries over while the main action happens, often implying it shouldn't have: 불을 켠 채로 잠들었다. Action verbs take the past modifier -(으)ㄴ (켜는 채로 is wrong); only stative verbs like 모르다 and 있다 take -는 (모르는 채, 살아 있는 채로). It's typical with state-creating verbs (입다, 신다, 쓰다, 켜다, 열다, 앉다, 눕다) and negatives (하지 않은 채). 채 is a dependent noun, so it is spaced (신은 채로). Don't confuse it with the adverb 채 (\"not even\": 채 1분도 안 돼서) or the suffix -째 (\"whole\": 껍질째). See also HowtoStudyKorean Lesson 116.",
     "contrasts": [
       {
         "id": "g:어-놓다",
@@ -2622,7 +2655,7 @@
           "nearMiss": [
             {
               "answer": "켜는 채로",
-              "hint": "Always the past modifier: 켠 채로."
+              "hint": "The completed state takes the past modifier: 켠 채로."
             }
           ]
         },
@@ -2639,7 +2672,7 @@
           "nearMiss": [
             {
               "answer": "신는 채로",
-              "hint": "Always the past modifier: 신은 채로."
+              "hint": "The completed state takes the past modifier: 신은 채로."
             }
           ]
         },
@@ -2673,7 +2706,7 @@
           "nearMiss": [
             {
               "answer": "하지 않는 채",
-              "hint": "Always the past modifier: 하지 않은 채."
+              "hint": "The completed state takes the past modifier: 하지 않은 채."
             }
           ]
         },
@@ -2729,7 +2762,7 @@
           "nearMiss": [
             {
               "answer": "쓰는 채로",
-              "hint": "Always the past modifier: 쓴 채로."
+              "hint": "The completed state takes the past modifier: 쓴 채로."
             }
           ]
         }

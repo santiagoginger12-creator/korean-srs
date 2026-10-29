@@ -327,7 +327,8 @@
             "잊었을 리가 없어요",
             "잊었을 리 없어",
             "잊었을 리가 없다",
-            "잊을 리가 없어"
+            "잊을 리가 없어",
+            "잊었을 리가 없습니다"
           ],
           "particleTolerance": "none"
         },
@@ -342,7 +343,8 @@
             "할 리가 없어요",
             "할 리가 없어",
             "할 리 없어요",
-            "할 리가 없다"
+            "할 리가 없다",
+            "했을 리가 없습니다"
           ],
           "particleTolerance": "none"
         },
@@ -374,7 +376,8 @@
             "거짓말일 리가 없어",
             "거짓말일 리가 없어요",
             "거짓말일 리 없어",
-            "거짓말일 리가 없다"
+            "거짓말일 리가 없다",
+            "거짓말일 리가 없습니다"
           ],
           "particleTolerance": "none"
         },
@@ -387,7 +390,8 @@
             "어려울 리가 없어요",
             "어려울 리가 없어",
             "어려울 리 없어요",
-            "어려울 리가 없다"
+            "어려울 리가 없다",
+            "어려울 리가 없습니다"
           ],
           "particleTolerance": "none",
           "nearMiss": [
@@ -406,7 +410,8 @@
             "들었을 리가 없어",
             "들었을 리가 없어요",
             "들었을 리 없어",
-            "들었을 리가 없다"
+            "들었을 리가 없다",
+            "들었을 리가 없습니다"
           ],
           "particleTolerance": "none",
           "nearMiss": [
@@ -674,7 +679,9 @@
           "en": "From tomorrow I really must get up early.",
           "cue": "일어나다 + -아/어야지",
           "accepted": [
-            "일어나야지"
+            "일어나야지",
+            "일어나야죠",
+            "일어나야지요"
           ],
           "particleTolerance": "none"
         }
@@ -809,7 +816,8 @@
             "예약했어야 했어요",
             "예약했어야 했다",
             "예약했어야 했는데",
-            "예약했어야 됐어"
+            "예약했어야 됐어",
+            "예약했어야 했습니다"
           ],
           "particleTolerance": "none",
           "nearMiss": [
@@ -825,7 +833,8 @@
           "en": "You should have apologized first! Why did you just sit there?",
           "cue": "사과하다 + -았/었어야지",
           "accepted": [
-            "사과했어야지"
+            "사과했어야지",
+            "사과했어야죠"
           ],
           "particleTolerance": "none",
           "nearMiss": [
@@ -844,7 +853,8 @@
             "하지 말았어야 했어",
             "하지 말았어야 했는데",
             "하지 말았어야 했다",
-            "하지 말았어야 했어요"
+            "하지 말았어야 했어요",
+            "하지 말았어야 했습니다"
           ],
           "particleTolerance": "none"
         },
@@ -915,7 +925,10 @@
           "en": "The government should have disclosed the facts right after the accident.",
           "cue": "공개하다 + -았/었어야 했다",
           "accepted": [
-            "공개했어야 했다"
+            "공개했어야 했다",
+            "공개했어야 했어",
+            "공개했어야 했어요",
+            "공개했어야 했습니다"
           ],
           "particleTolerance": "none"
         }
@@ -1086,7 +1099,8 @@
             "잤어도 됐는데",
             "잤어도 됐어",
             "잤어도 됐어요",
-            "잤어도 됐잖아"
+            "잤어도 됐잖아",
+            "잤어도 됐습니다"
           ],
           "particleTolerance": "none"
         },
@@ -1120,13 +1134,19 @@
         {
           "id": "c5",
           "sentence": "회의에 굳이 안 {{}} 됐어요. 별 내용 없었거든요.",
-          "en": "You didn't need to attend the meeting. There wasn't much to it.",
-          "cue": "참석하다 + -았/었어도 되다",
+          "en": "You didn't need to come to the meeting. There wasn't much to it.",
+          "cue": "나오다 + -았/었어도 되다",
           "accepted": [
-            "참석하셨어도",
-            "참석했어도"
+            "나오셨어도",
+            "나왔어도"
           ],
-          "particleTolerance": "none"
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "나와도",
+              "hint": "나와도 돼요 = \"you may come (now)\". Looking back: 안 나오셨어도 됐어요."
+            }
+          ]
         },
         {
           "id": "c6",
@@ -3003,7 +3023,8 @@
             "가곤 했어",
             "가곤 했다",
             "가고는 했어요",
-            "가고는 했다"
+            "가고는 했다",
+            "가곤 했습니다"
           ],
           "particleTolerance": "none",
           "nearMiss": [
@@ -3022,7 +3043,8 @@
             "듣곤 했어요",
             "듣곤 했다",
             "듣곤 해요",
-            "듣곤 했어"
+            "듣곤 했어",
+            "듣곤 했습니다"
           ],
           "particleTolerance": "none",
           "nearMiss": [
@@ -3041,7 +3063,8 @@
             "나누곤 했다",
             "나누곤 했어요",
             "나누곤 했지",
-            "나누고는 했다"
+            "나누고는 했다",
+            "나누곤 했습니다"
           ],
           "particleTolerance": "none"
         },
@@ -3054,7 +3077,8 @@
             "놀곤 했어요",
             "놀곤 했다",
             "놀곤 했어",
-            "놀고는 했다"
+            "놀고는 했다",
+            "놀곤 했습니다"
           ],
           "particleTolerance": "none"
         },
@@ -3067,7 +3091,8 @@
             "나곤 해요",
             "나곤 해",
             "나곤 한다",
-            "나고는 해요"
+            "나고는 해요",
+            "나곤 합니다"
           ],
           "particleTolerance": "none"
         },
@@ -3080,7 +3105,9 @@
             "사 오시곤 했다",
             "사 오시곤 했어요",
             "사 오곤 하셨다",
-            "사 오곤 하셨어요"
+            "사 오곤 하셨어요",
+            "사 오시곤 했어",
+            "사 오시곤 했습니다"
           ],
           "particleTolerance": "none"
         },
@@ -3093,7 +3120,9 @@
             "물어뜯곤 했다",
             "물어뜯곤 했어요",
             "물어뜯곤 해요",
-            "물어뜯곤 한다"
+            "물어뜯곤 한다",
+            "물어뜯곤 했어",
+            "물어뜯곤 했습니다"
           ],
           "particleTolerance": "none"
         },
@@ -3105,7 +3134,9 @@
           "accepted": [
             "걷곤 했다",
             "걷곤 했어요",
-            "걷곤 한다"
+            "걷곤 한다",
+            "걷곤 했어",
+            "걷곤 했습니다"
           ],
           "particleTolerance": "none",
           "nearMiss": [

@@ -404,7 +404,7 @@
           "sentence": "적자가 누적되면서 그 회사는 결국 문을 {{}}.",
           "en": "As losses piled up, the company was eventually brought to the brink of closing.",
           "cue": "닫다 + -(으)ㄹ 지경에 이르다",
-          "accepted": ["닫을 지경에 이르렀다", "닫을 지경에 이르렀습니다", "닫을 지경에 이르렀어요"],
+          "accepted": ["닫을 지경에 이르렀다", "닫을 지경에 이르렀습니다", "닫을 지경에 이르렀어요", "닫을 지경에 이르렀어"],
           "nearMiss": [{ "answer": "닫을 지경에 이렀다", "hint": "이르다 'reach' is 러-irregular: 이르러, 이르렀다." }],
           "particleTolerance": "none"
         },
@@ -517,7 +517,7 @@
           "sentence": "마감이 내일이니까 오늘 밤에 다 {{}}.",
           "en": "The deadline's tomorrow, so let's just get it all done tonight.",
           "cue": "끝내다 + -아/어 버리다",
-          "accepted": ["끝내 버리자", "끝내버리자", "끝내 버립시다"],
+          "accepted": ["끝내 버리자", "끝내버리자", "끝내 버립시다", "끝내 버려요", "끝내 버리죠"],
           "nearMiss": [
             { "answer": "끝내고 말자", "hint": "Possible as a show of grim determination, but for a brisk 'let's just get it over with', the cue asks for -아/어 버리다." }
           ],
@@ -582,7 +582,7 @@
           "sentence": "그 사진이 마음에 안 들면 그냥 {{}}.",
           "en": "If you don't like that photo, just delete it.",
           "cue": "지우다 + -아/어 버리다",
-          "accepted": ["지워 버려", "지워 버려요", "지워 버리세요", "지워 버리십시오"],
+          "accepted": ["지워 버려", "지워 버려요", "지워 버리세요", "지워 버리십시오", "지워 버려라"],
           "nearMiss": [{ "answer": "지우고 말아", "hint": "-고 말다 doesn't work as a breezy \"just do it\" command; the cue asks for -아/어 버리다." }],
           "particleTolerance": "none"
         },
@@ -1310,7 +1310,7 @@
           "sentence": "회의 내내 그는 발표를 {{}} 하며 노트북만 들여다봤다.",
           "en": "Throughout the meeting he barely listened to the presentation, staring at his laptop.",
           "cue": "듣다 + -는 둥 마는 둥",
-          "accepted": ["듣는 둥 마는 둥"],
+          "accepted": ["듣는 둥 마는 둥", "들은 둥 만 둥"],
           "nearMiss": [{ "answer": "듣다시피", "hint": "-다시피 하다 would mean he practically listened in full; here it's the opposite." }],
           "particleTolerance": "none"
         },

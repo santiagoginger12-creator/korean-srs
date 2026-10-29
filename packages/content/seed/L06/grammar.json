@@ -43,7 +43,7 @@
         "example": "후배더라"
       }
     ],
-    "nuance": "The retrospective -더- reports a past perception as it struck the speaker at the time, so the source must be first-hand (seen, heard, felt, tasted). The 해요체 form is -더라고요; -더라요 doesn't exist. With the speaker's own deliberate actions it is rare (어제 나는 공부하더라 sounds odd), but it is fine for your own feelings or for reactions you observed in yourself (나도 모르게 눈물이 나더라). Past -았/었더라 reports a state already completed when you got there (가 보니 다 팔렸더라). As a question, -더라? is the speaker searching memory (이름이 뭐더라?). See also HowtoStudyKorean Lesson 118.",
+    "nuance": "The retrospective -더- reports a past perception as it struck the speaker at the time, so the source must be first-hand (seen, heard, felt, tasted). The 해요체 form is -더라고요; -더라요 is nonstandard. With the speaker's own deliberate actions it is rare (어제 나는 공부하더라 sounds odd), but it is fine for your own feelings or for reactions you observed in yourself (나도 모르게 눈물이 나더라). Past -았/었더라 reports a state already completed when you got there (가 보니 다 팔렸더라). As a question, -더라? is the speaker searching memory (이름이 뭐더라?). See also HowtoStudyKorean Lesson 118.",
     "contrasts": [
       {
         "id": "g:나-보다",
@@ -210,7 +210,7 @@
             {
               "text": "가 봤는데 양이 많더라요.",
               "correct": false,
-              "why": "There is no -더라요; in 해요체 say -더라고요."
+              "why": "-더라요 is nonstandard; in 해요체 say -더라고요."
             }
           ]
         },
@@ -1193,7 +1193,7 @@
       "kind": "original",
       "license": "original-owned"
     },
-    "needs_review": true,
+    "needs_review": false,
     "tags": [
       "fn:emphasis-attitude",
       "contrast-set:reaction",
@@ -1225,7 +1225,7 @@
         "example": "거짓말이라니"
       }
     ],
-    "nuance": "Reacts to a fact the speaker finds hard to believe or remarkable. In this use, verbs take the bare stem (그런 짓을 하다니), unlike the quoted -ㄴ/는다니 (한다니 = \"to hear that he does …\"), which reacts to someone's words. It can end the sentence (벌써 끝나다니!) or be followed by an evaluation (…믿을 수 없다, 대단하다, 말도 안 돼). After 이다 it becomes (이)라니: 그게 다 거짓말이라니. For adjectives the two forms coincide (비싸다니). See also HowtoStudyKorean Lesson 120.",
+    "nuance": "Reacts to a fact the speaker finds hard to believe or remarkable. In this use, verbs take the bare stem (그런 짓을 하다니), unlike the quoted -ㄴ/는다니 (한다니 = \"to hear that he does …\"), which reacts to someone's words. Since surprising news usually reaches us as a report, the two overlap heavily in speech; the bare stem is the form that needs no report behind it. It can end the sentence (벌써 끝나다니!) or be followed by an evaluation (…믿을 수 없다, 대단하다, 말도 안 돼). After 이다 it becomes (이)라니: 그게 다 거짓말이라니. For adjectives the two forms coincide (비싸다니). See also HowtoStudyKorean Lesson 120.",
     "contrasts": [
       {
         "id": "g:ㄴ다니",
@@ -1267,7 +1267,7 @@
           "nearMiss": [
             {
               "answer": "한다니",
-              "hint": "한다니 reacts to something you've heard said (\"to hear that he lies\"). For the fact itself use the bare stem: 하다니 (or 했다니)."
+              "hint": "Also natural if you are reacting to what you were told (the quoted -ㄴ/는다니, a separate pattern). The cue asks for the bare-stem -다니: 하다니 (or 했다니)."
             }
           ]
         },
@@ -1349,7 +1349,7 @@
           "nearMiss": [
             {
               "answer": "만든다니",
-              "hint": "만든다니 reacts to what someone told you; for the fact itself use the bare stem: 만들다니."
+              "hint": "Also natural if you are reacting to what someone told you (the quoted -ㄴ/는다니). The cue asks for the bare-stem -다니: 만들다니."
             }
           ]
         },
@@ -1437,7 +1437,7 @@
         "example": "바쁘다 보면"
       }
     ],
-    "nuance": "Continuing or repeating the first action leads to a natural result or realization. The main clause is a general truth, prediction, or advice (-게 되다, -(으)ㄹ 거예요, -기도 하다, -(으)ㄹ 수 있다, -기 마련이다). One-off acts don't fit (문을 열다 보면). The main clause isn't past; for a result that already happened, use -다 보니. With adjectives it means \"when one is (constantly) …\" (바쁘다 보면 연락을 못 할 때도 있다). See also HowtoStudyKorean Lesson 121.",
+    "nuance": "Continuing or repeating the first action leads to a natural result or realization. The main clause is a general truth, prediction, or advice (-게 되다, -(으)ㄹ 거예요, -기도 하다, -(으)ㄹ 수 있다, -기 마련이다). One-off acts don't fit (문을 열다 보면). The main clause is rarely a one-time past result; for a result that already happened, use -다 보니. With adjectives it means \"when one is (constantly) …\" (바쁘다 보면 연락을 못 할 때도 있다). See also HowtoStudyKorean Lesson 121.",
     "contrasts": [
       {
         "id": "g:다-보니",
@@ -1734,7 +1734,8 @@
           "cue": "반복하다 + -다 보니",
           "accepted": [
             "반복하다 보니",
-            "반복하다 보니까"
+            "반복하다 보니까",
+            "반복하다가 보니"
           ],
           "particleTolerance": "none"
         },
@@ -1757,7 +1758,8 @@
           "cue": "듣다 + -다 보니",
           "accepted": [
             "듣다 보니",
-            "듣다 보니까"
+            "듣다 보니까",
+            "듣다가 보니"
           ],
           "particleTolerance": "none"
         },
@@ -1768,7 +1770,8 @@
           "cue": "키우다 + -다 보니",
           "accepted": [
             "키우다 보니",
-            "키우다 보니까"
+            "키우다 보니까",
+            "키우다가 보니"
           ],
           "particleTolerance": "none"
         },
@@ -2149,7 +2152,8 @@
             "날 만도 해요",
             "날 만도 하다",
             "날 만하네",
-            "날 만해요"
+            "날 만해요",
+            "날 만도 합니다"
           ],
           "particleTolerance": "none"
         },
@@ -2161,7 +2165,8 @@
           "accepted": [
             "걸을 만해요",
             "걸을 만해",
-            "걸을 만하다"
+            "걸을 만하다",
+            "걸을 만합니다"
           ],
           "particleTolerance": "none",
           "nearMiss": [
@@ -2179,7 +2184,8 @@
           "accepted": [
             "들 만해요",
             "들 만해",
-            "들 만하다"
+            "들 만하다",
+            "들 만합니다"
           ],
           "particleTolerance": "none",
           "nearMiss": [
@@ -2461,7 +2467,8 @@
           "en": "I said let's just take a taxi. We'll be late waiting for the bus.",
           "cue": "타다 + -자니까",
           "accepted": [
-            "타자니까"
+            "타자니까",
+            "타자니까요"
           ],
           "particleTolerance": "none"
         },
@@ -2641,9 +2648,17 @@
             "만들어 놓았어요",
             "만들어 놨어",
             "만들어 놓았다",
-            "만들어 놨다"
+            "만들어 놨다",
+            "만들어 놓았습니다",
+            "만들어 놨습니다"
           ],
-          "particleTolerance": "none"
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "만들어 뒀어요",
+              "hint": "Also natural; the cue asks for -아/어 놓다."
+            }
+          ]
         },
         {
           "id": "c2",
@@ -2703,7 +2718,13 @@
             "적어 놓으세요",
             "적어 놓아요"
           ],
-          "particleTolerance": "none"
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "적어 둬",
+              "hint": "Also natural; the cue asks for -아/어 놓다."
+            }
+          ]
         },
         {
           "id": "c6",
@@ -2716,9 +2737,17 @@
             "예약해 놓았습니다",
             "예약해 놨습니다",
             "예약해 놓을게요",
-            "예약해 놓겠습니다"
+            "예약해 놓겠습니다",
+            "예약해 놨어",
+            "예약해 놓았어"
           ],
-          "particleTolerance": "none"
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "예약해 뒀어요",
+              "hint": "Also natural; the cue asks for -아/어 놓다."
+            }
+          ]
         },
         {
           "id": "c7",
@@ -2876,9 +2905,17 @@
             "챙겨 두었어요",
             "챙겨 뒀어",
             "챙겨 두었다",
-            "챙겨 뒀다"
+            "챙겨 뒀다",
+            "챙겨 두었습니다",
+            "챙겨 뒀습니다"
           ],
-          "particleTolerance": "none"
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "챙겨 놨어요",
+              "hint": "Also natural; the cue asks for -아/어 두다, which stresses keeping it for later."
+            }
+          ]
         },
         {
           "id": "c3",
@@ -2889,7 +2926,13 @@
             "저장해 둬야",
             "저장해 두어야"
           ],
-          "particleTolerance": "none"
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "저장해 놔야",
+              "hint": "Also natural; the cue asks for -아/어 두다."
+            }
+          ]
         },
         {
           "id": "c4",
@@ -2902,9 +2945,17 @@
             "비워 뒀어요",
             "비워 두었어요",
             "비워 뒀습니다",
-            "비워 두었습니다"
+            "비워 두었습니다",
+            "비워 둘게",
+            "비워 뒀어"
           ],
-          "particleTolerance": "none"
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "비워 놓을게요",
+              "hint": "Also natural; the cue asks for -아/어 두다."
+            }
+          ]
         },
         {
           "id": "c5",
@@ -2929,7 +2980,13 @@
             "받아 둬요",
             "받아 두어"
           ],
-          "particleTolerance": "none"
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "받아 놔",
+              "hint": "Also natural; the cue asks for -아/어 두다."
+            }
+          ]
         },
         {
           "id": "c7",

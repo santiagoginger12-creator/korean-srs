@@ -39,7 +39,7 @@
           "sentence": "후보자의 해명이 앞뒤가 맞지 {{}} 위원들은 추가 자료를 요구했다.",
           "en": "Because the nominee's explanation didn't add up, the committee members demanded more documents.",
           "cue": "않다 + -기에",
-          "accepted": ["않기에"],
+          "accepted": ["않기에", "않았기에"],
           "nearMiss": [{ "answer": "않길래", "hint": "-길래 is colloquial; in this written report style the cue asks for -기에." }],
           "particleTolerance": "none"
         },
@@ -68,7 +68,7 @@
           "sentence": "사회자가 갑자기 내 이름을 {{}} 얼떨결에 무대 위로 올라갔다.",
           "en": "The host suddenly called my name, so I went up onstage in a daze.",
           "cue": "부르다 + -았/었기에",
-          "accepted": ["불렀기에"],
+          "accepted": ["불렀기에", "부르기에"],
           "nearMiss": [
             { "answer": "부렀기에", "hint": "부르다 is 르-irregular: 불렀기에." },
             { "answer": "불렀길래", "hint": "The colloquial counterpart; in this written narrative the cue asks for -기에." }
@@ -80,7 +80,7 @@
           "sentence": "자료가 워낙 {{}} 분석에 예상보다 시간이 오래 걸렸다.",
           "en": "The data was so vast that the analysis took longer than expected.",
           "cue": "방대하다 + -기에",
-          "accepted": ["방대하기에"],
+          "accepted": ["방대하기에", "방대했기에"],
           "particleTolerance": "none"
         },
         {
@@ -260,7 +260,7 @@
           "sentence": "하늘이 갑자기 {{}} 우산을 챙겨 나왔어.",
           "en": "The sky suddenly went dark, so I grabbed an umbrella on my way out.",
           "cue": "어두워지다 + -길래",
-          "accepted": ["어두워지길래"],
+          "accepted": ["어두워지길래", "어두워졌길래"],
           "particleTolerance": "none"
         }
       ],
@@ -333,7 +333,7 @@
     "unlockDeps": [],
     "gating": true,
     "source": { "kind": "original", "license": "original-owned" },
-    "needs_review": true,
+    "needs_review": false,
     "tags": ["reason", "contrast-set:grounds", "formal", "fn:cause"],
     "mnemonic": "-(으)니 'since' + 만큼 'to that degree': since it matters this much, act to match.",
     "pattern": "-(으)니만큼",
@@ -384,13 +384,14 @@
         },
         {
           "id": "c3",
-          "sentence": "행사장이 시내에서 꽤 {{}} 대중교통을 이용해 주시기 바랍니다.",
-          "en": "Since the venue is quite far from downtown, please use public transportation.",
-          "cue": "멀다 + -(으)니만큼",
-          "accepted": ["머니만큼"],
+          "sentence": "이번 산행 코스는 경사가 가팔라 꽤 {{}} 등산화를 꼭 신고 오십시오.",
+          "en": "This hiking route is steep and fairly demanding, so be sure to wear hiking boots.",
+          "cue": "힘들다 + -(으)니만큼",
+          "accepted": ["힘드니만큼"],
           "nearMiss": [
-            { "answer": "멀으니만큼", "hint": "An ㄹ-stem drops its ㄹ before -니: 머니만큼." },
-            { "answer": "먼 만큼", "hint": "Also natural (-(으)ㄴ 만큼, spaced); the cue asks for -(으)니만큼, written as one word." }
+            { "answer": "힘들으니만큼", "hint": "An ㄹ-stem drops its ㄹ before -니: 힘드니만큼." },
+            { "answer": "힘든 만큼", "hint": "Also natural (-(으)ㄴ 만큼, spaced); the cue asks for -(으)니만큼, written as one word." },
+            { "answer": "힘드니까", "hint": "Fine in everyday speech; the cue asks for the more formal -(으)니만큼." }
           ],
           "particleTolerance": "none"
         },
