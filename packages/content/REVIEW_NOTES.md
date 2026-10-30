@@ -99,3 +99,13 @@ The niche Sino-Korean starter set is now L11–L13 (ids unchanged). New L01–L0
 | v:겨우 | cloze c1 | The cloze targets "only, a mere" (겨우 세 개), and examples[0] covers "barely". It's a guess which sense causes the misses. | If "barely" is the problem sense, change c1 to a 겨우 시간에 맞추다-type frame with 간신히 as nearMiss. |
 | v:십상 | `meanings`, tags | Only the -기 십상이다 sense is taught. There is no hanja breakdown or origin tag, since I'm not certain 十常 covers both senses (표준 also lists a "just right" 십상). | If 十常 is right for this sense, add `sino-korean` and the breakdown. |
 | v:지나치다 | `pos`, `meaning` | One item covers both the adjective (excessive) and the verb (pass by). `pos` is 형용사·동사, `meaning` accepts both senses, and production and cloze target "excessive". | If you'd rather split it, make it two sense items (v:지나치다:excessive / :pass), following the L04 pattern. |
+
+## Starter QA (2026-10-30)
+
+**Status:** all four author flags above are resolved, and every L01–L03 `needs_review` is cleared (details in REVIEW_LOG.md under "Starter QA"). In short: 경우 is kept as is (경우가 없다 is everyday speech). 겨우 gets a second cloze, so both "barely" and "a mere" are tested. 십상 is tagged 十常 (표준 십상팔구 sense) and catches the misspelling 쉽상. 지나치다 stays one item with `pos` 동사, since 표준 has one 동사 headword for both senses.
+
+One question remains for the owner:
+
+| item id | field | question (yes/no) | if yes / if no |
+|---|---|---|---|
+| v:서두르다, v:우연히, v:혼나다, v:망치다, v:자녀, v:편찮다 | selection | These are TOPIK-I-level words. Keep them in the starter set because they're proven Anki leeches? | Yes: no change. No: swap each for the next unused candidate in data-private/starter-candidates.tsv. |

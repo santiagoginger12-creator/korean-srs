@@ -274,7 +274,6 @@
           "the cost of living",
           "price level",
           "commodity prices",
-          "inflation",
           "waterside",
           "water's edge"
         ]
@@ -722,8 +721,8 @@
       "cloze": [
         {
           "id": "c1",
-          "sentence": "그 사람이 왜 갑자기 친절하게 구는지 {{}}를 모르겠어.",
-          "en": "I can't figure out why he's suddenly being so nice. What's his angle?",
+          "sentence": "갑자기 왜 이렇게 친절하게 굴지? 무슨 {{}}가 있는 거 아니야?",
+          "en": "Why is he suddenly being so nice? Is he up to something?",
           "cue": "의도 · intention, angle",
           "accepted": [
             "의도"
@@ -732,6 +731,10 @@
             {
               "answer": "속셈",
               "hint": "속셈 also fits (and sounds more suspicious); the cue asks for 의도."
+            },
+            {
+              "answer": "꿍꿍이",
+              "hint": "꿍꿍이 also fits (and sounds more suspicious); the cue asks for 의도."
             }
           ],
           "particleTolerance": "none"
@@ -1059,6 +1062,10 @@
             {
               "answer": "관심",
               "hint": "관심 also fits; the cue asks for 시선."
+            },
+            {
+              "answer": "눈",
+              "hint": "눈 also fits; the cue asks for 시선."
             }
           ],
           "particleTolerance": "none"
@@ -1187,7 +1194,7 @@
       "kind": "original",
       "license": "original-owned"
     },
-    "needs_review": true,
+    "needs_review": false,
     "tags": [
       "native",
       "freq:3666",
@@ -1195,10 +1202,10 @@
     ],
     "word": "지나치다",
     "meanings": [
-      "(adjective) excessive, too much, going too far",
-      "(verb) to pass by (without stopping), overlook"
+      "excessive, too much, going too far (지나친 걱정, 지나치게)",
+      "to pass by (without stopping), miss (a stop); to overlook"
     ],
-    "pos": "형용사·동사",
+    "pos": "동사",
     "register": "neutral",
     "collocations": [
       {
@@ -1252,7 +1259,7 @@
       },
       "production": {
         "promptEn": "excessive, going too far (a joke, worry, spending)",
-        "contextHint": "native word; also 'to pass by (a stop)'. Simply passing along is 지나가다",
+        "contextHint": "native verb (표준: 동사, hence 지나친 걱정, not 지나치는); also 'to pass by (a stop)'. Simply passing along is 지나가다",
         "accepted": [
           "지나치다"
         ],
@@ -1375,7 +1382,12 @@
             "쐬어요",
             "쐐요",
             "쐬세요",
-            "쐬어라"
+            "쐬어라",
+            "쐬고 와",
+            "쐬고 와요",
+            "쐬고 오세요",
+            "쐬고 와라",
+            "쐬십시오"
           ],
           "nearMiss": [
             {
@@ -2633,7 +2645,7 @@
       "cloze": [
         {
           "id": "c1",
-          "sentence": "손님 하나 없는 시골 정류장이 왠지 {{}} 보였다.",
+          "sentence": "사람 하나 없는 시골 정류장이 왠지 {{}} 보였다.",
           "en": "The country bus stop, with no one around, looked somehow desolate.",
           "cue": "쓸쓸하다 · desolate",
           "accepted": [
@@ -3230,8 +3242,8 @@
         "register": "spoken"
       },
       {
-        "ko": "그 집 할머니 손맛이 여간 아니에요.",
-        "en": "That grandma's cooking is really something.",
+        "ko": "그 집 막내, 어린데도 말하는 거 보면 여간 아니에요.",
+        "en": "That family's youngest is really something. You should hear how she talks, young as she is.",
         "register": "spoken"
       }
     ],

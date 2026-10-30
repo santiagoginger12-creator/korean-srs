@@ -517,3 +517,37 @@ Owner feedback: the starting vocab was "slightly too advanced and niche to make 
 
 ### Flags (needs_review: 4; see REVIEW_NOTES)
 v:경우, v:겨우, v:십상, v:지나치다.
+
+## Starter QA (L01–L03 `vocab-core`, independent review, 2026-10-30)
+
+Independent native-editor pass over all 120 new starter items: glosses, collocations, examples, clozes, production prompts, `rejected` reciprocity, level fit, 맞춤법/띄어쓰기. Ids, `rev` (D39), and schema are unchanged. `npm run validate-content` after each level: 0 errors, self-check 8347 cases, 0 failures, `needs_review` 0. `npm run check`: green (502 tests). Tags as in the L01 log.
+
+**Totals:** 17 items edited. 4 author flags resolved (no owner question needed for any of them) · 2 clozes rewritten [N] · 2 examples rewritten [N] · 1 cloze added [Q] · accepted / nearMiss additions on 6 clozes [Q] · 3 gloss / pos fixes [A] · 1 spelling trap added [S].
+
+### Flags resolved
+- **v:경우** (flag): **kept** as authored. 경우(境遇) 「2」 '사리나 도리' is the same dictionary word, and 경우가 없다 / 경우 없는 사람 / 경우가 바르다 are everyday speech, not marked usage. It's listed second, and the production prompt and cloze test only the "case" sense, so it can't crowd out the main sense. `needs_review` cleared.
+- **v:겨우** (flag) [Q]: no need to guess which sense causes the misses; test both. Added **c2** (막차 놓칠 뻔했는데 뛰어가서 ___ 탔어, cue ㄱㅇ · barely) with 간신히 / 가까스로 as `nearMiss`. c1 keeps "a mere" with 고작 as `nearMiss`. D68 rotation alternates them. `needs_review` cleared.
+- **v:십상** (flag) [A][S]: 표준 십상(十常) = '열에 여덟이나 아홉 정도로 거의 예외가 없음' (≒십상팔구) is exactly the -기 십상이다 sense. The "just right" 십상 is a separate headword, and this item doesn't teach it. Added `sino-korean` + breakdown 十常. Also added cloze `nearMiss` **쉽상** (the very common misspelling, by folk link to 쉽다) with a spelling hint, and the production `contextHint` now says "spelled 십, not 쉽". `needs_review` cleared.
+- **v:지나치다** (flag) [A]: no split. In 표준 지나치다 is a single **동사** headword with both senses (「1」 pass by, 「2」 '일정한 한도를 넘어 정도가 심하다'). They are not homonyms, so the L04 sense-split pattern doesn't apply. `pos` 형용사·동사 → **동사**. Meanings no longer say "(adjective)/(verb)". The production `contextHint` now explains why the modifier is 지나친 걱정, not 지나치는. `needs_review` cleared.
+
+### Naturalness [N]
+- **v:모시다 c1**: 손님을 회의실로 ___ 드릴게요 (모셔다 드리다 for walking a guest down the hall sounds off; the stock phrase is 회의실로 모시겠습니다 / 안내해 드릴게요, and 안내해 wasn't handled) → 할머니를 댁까지 ___ 드리고 올게 (accepted 모셔다; 데려다 = nearMiss). This also matches the item's elder-focused gloss.
+- **v:의도 c1**: 그 사람이 왜 갑자기 친절하게 구는지 ___를 모르겠어 (왜 … -는지 + 의도를 모르겠다 says "why" twice) → 갑자기 왜 이렇게 친절하게 굴지? 무슨 ___가 있는 거 아니야? + nearMiss 꿍꿍이.
+- **v:어쨌든 ex[0]**: 이유가 뭐든 어쨌든 늦은 건 늦은 거야 (뭐든 + 어쨌든 is redundant) → 변명은 됐고, 어쨌든 늦은 건 늦은 거야.
+- **v:쓸쓸하다 c1**: 손님 하나 없는 시골 정류장 → 사람 하나 없는 (a bus stop has no 손님).
+- **v:여간 ex[1]**: 할머니 손맛이 여간 아니에요 → 그 집 막내, 어린데도 말하는 거 보면 여간 아니에요. Bare 여간 아니다 'something else' is said of people. For a thing, you'd say 보통이 아니다 or 여간 ~지 않다.
+
+### Gradeability [Q]
+- `accepted` additions: v:알아보다 c1 + 알아봐 줄게 / 알아봐 줄게요 / 알아봐 드릴게요; v:쐬다 c1 + 쐬고 와 / 쐬고 와요 / 쐬고 오세요 / 쐬고 와라 / 쐬십시오 (D69: 합쇼체 included).
+- `nearMiss` additions (real synonyms previously graded wrong): v:자녀 c1 아이 / 애; v:시선 c1 눈 (모든 사람의 눈이 쏠렸어); v:의도 c1 꿍꿍이; v:괴롭다 c1 힘들었어요 (only 힘들었어 was listed).
+
+### Glosses [A]
+- **v:편찮다** meanings[1]: "(honorific) to be uncomfortable" → "(마음이 편찮다) uneasy, not at ease (편하지 않다; not honorific, mostly written)". 표준 「2」 is the plain 편하지 않다 sense, not an honorific.
+- **v:재우다** meanings[2]: dropped the claim "the standard word is 재다". 고기를 재우다 is in wide use, and I can't confirm a 표준 ruling either way, so it now reads "재다 is also used".
+- **v:물가** meaning: removed "inflation" from `accepted`. Inflation is 물가 상승 / 인플레이션, and 물가 alone is the price level.
+
+### Reviewed and left as is
+- **Reciprocal `rejected`**: all 13 pairs listed in the author pass were verified in both directions.
+- **Spelling and spacing**: 건네주다, 바래다주다, 못지않다, 못되다, 끼어들다, 들려주다, and 틀림없다 are single 표준 words, and 얼마나 쓴지 / 구경 삼아 are spaced correctly. The misspelling `nearMiss` hints (일부로, 어쨋든, 왠일, 왠만하면, 담궈, 건냈어, 끼여들지, 어짜피, 쇄, 괜이) are accurate.
+- **Level fit**: nothing is too niche. 여부, 실체, 전망, and 대책 are news-leaning, but every Korean speaker uses them. A few are TOPIK-I basic (서두르다, 우연히, 혼나다, 망치다, 자녀, 편찮다). They stay because they're proven leeches (8+ misses), but that's raised as the one owner question in REVIEW_NOTES.
+- **Polysemy order**: 지내다 leads with "get along", not "be doing / spend time". That's deliberate (the author's leech hypothesis), and meaning grading accepts every sense, so it's left as is.

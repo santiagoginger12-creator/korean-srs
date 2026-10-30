@@ -11,7 +11,7 @@
       "kind": "original",
       "license": "original-owned"
     },
-    "needs_review": true,
+    "needs_review": false,
     "tags": [
       "sino-korean",
       "freq:4098",
@@ -333,7 +333,7 @@
     "word": "편찮다",
     "meanings": [
       "(honorific) to be unwell, sick (of an elder)",
-      "(honorific) to be uncomfortable"
+      "(마음이 편찮다) uneasy, not at ease (편하지 않다; not honorific, mostly written)"
     ],
     "pos": "형용사",
     "register": "neutral",
@@ -424,7 +424,7 @@
       "kind": "original",
       "license": "original-owned"
     },
-    "needs_review": true,
+    "needs_review": false,
     "tags": [
       "native",
       "freq:4092",
@@ -502,6 +502,26 @@
             {
               "answer": "고작",
               "hint": "고작 also fits; the cue asks for 겨우."
+            }
+          ],
+          "particleTolerance": "none"
+        },
+        {
+          "id": "c2",
+          "sentence": "막차 놓칠 뻔했는데 뛰어가서 {{}} 탔어.",
+          "en": "I almost missed the last train, but I ran and barely made it.",
+          "cue": "ㄱㅇ · barely",
+          "accepted": [
+            "겨우"
+          ],
+          "nearMiss": [
+            {
+              "answer": "간신히",
+              "hint": "간신히 also fits; the cue asks for 겨우."
+            },
+            {
+              "answer": "가까스로",
+              "hint": "가까스로 also fits; the cue asks for 겨우."
             }
           ],
           "particleTolerance": "none"
@@ -702,16 +722,16 @@
       "cloze": [
         {
           "id": "c1",
-          "sentence": "손님을 회의실로 {{}} 드릴게요.",
-          "en": "I'll show the guest to the meeting room.",
-          "cue": "모시다 · take, show (a guest)",
+          "sentence": "할머니를 댁까지 {{}} 드리고 올게.",
+          "en": "I'll take Grandma home and then come back.",
+          "cue": "모시다 · take (an elder)",
           "accepted": [
             "모셔다"
           ],
           "nearMiss": [
             {
               "answer": "데려다",
-              "hint": "데려다 is the plain form; for a guest, the cue asks for 모시다."
+              "hint": "데려다 is the plain form; for an elder, the cue asks for 모시다."
             }
           ],
           "particleTolerance": "none"
@@ -824,6 +844,10 @@
           "nearMiss": [
             {
               "answer": "힘들었어",
+              "hint": "힘들다 also fits; the cue asks for 괴롭다."
+            },
+            {
+              "answer": "힘들었어요",
               "hint": "힘들다 also fits; the cue asks for 괴롭다."
             }
           ],
@@ -1393,8 +1417,8 @@
     ],
     "examples": [
       {
-        "ko": "이유가 뭐든 어쨌든 늦은 건 늦은 거야.",
-        "en": "Whatever the reason, late is late.",
+        "ko": "변명은 됐고, 어쨌든 늦은 건 늦은 거야.",
+        "en": "Spare me the excuses. Late is late, no matter what.",
         "register": "spoken"
       },
       {
@@ -1660,6 +1684,14 @@
             {
               "answer": "자식",
               "hint": "자식 also fits but is blunter; the cue asks for 자녀."
+            },
+            {
+              "answer": "아이",
+              "hint": "아이 also fits; the cue asks for 자녀."
+            },
+            {
+              "answer": "애",
+              "hint": "애 also fits (and is casual); the cue asks for 자녀."
             }
           ],
           "particleTolerance": "none"
@@ -2587,7 +2619,10 @@
             "알아보겠습니다",
             "알아볼 거야",
             "알아볼 거예요",
-            "알아보겠어"
+            "알아보겠어",
+            "알아봐 줄게",
+            "알아봐 줄게요",
+            "알아봐 드릴게요"
           ],
           "nearMiss": [
             {

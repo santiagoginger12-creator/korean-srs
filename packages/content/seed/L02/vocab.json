@@ -964,8 +964,9 @@
       "kind": "original",
       "license": "original-owned"
     },
-    "needs_review": true,
+    "needs_review": false,
     "tags": [
+      "sino-korean",
       "freq:3044",
       "anki-leech"
     ],
@@ -975,6 +976,16 @@
     ],
     "pos": "명사",
     "register": "neutral",
+    "hanjaBreakdown": [
+      {
+        "syllable": "십",
+        "hanja": "十"
+      },
+      {
+        "syllable": "상",
+        "hanja": "常"
+      }
+    ],
     "collocations": [
       {
         "ko": "오해받기 십상이다",
@@ -1021,7 +1032,7 @@
       },
       "production": {
         "promptEn": "bound to, all too likely to (-기 ___이다: something bad)",
-        "contextHint": "noun used almost only in -기 ___이다",
+        "contextHint": "noun used almost only in -기 ___이다 (十常, short for 십상팔구); spelled 십, not 쉽",
         "accepted": [
           "십상"
         ]
@@ -1035,7 +1046,13 @@
           "accepted": [
             "십상"
           ],
-          "particleTolerance": "none"
+          "particleTolerance": "none",
+          "nearMiss": [
+            {
+              "answer": "쉽상",
+              "hint": "Spelled 십상 (十常, from 십상팔구 \"eight or nine in ten\"), not 쉽상."
+            }
+          ]
         }
       ]
     }
@@ -1158,7 +1175,7 @@
     "meanings": [
       "to put (someone) to sleep, put to bed",
       "to let (someone) stay the night, put (someone) up",
-      "(colloquial) to marinate (meat); the standard word is 재다"
+      "(고기를 재우다) to marinate (meat); 재다 is also used"
     ],
     "pos": "동사",
     "register": "neutral",
