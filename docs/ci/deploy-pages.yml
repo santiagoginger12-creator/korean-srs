@@ -1,0 +1,45 @@
+name: Deploy to GitHub Pages
+on:
+  push: { branches: [main] }
+  workflow_dispatch:
+permissions: { contents: read, pages: write, id-token: write }
+concurrency: { group: pages, cancel-in-progress: true }
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      # Root: tsx + typescript. apps/web: react, esbuild, @playwright/test (D29: npm, not pnpm;
+      # no workspaces yet, so the app installs separately).
+      - run: npm install --no-audit --no-fund
+      - run: npm install --no-audit --no-fund --prefix apps/web
+      - run: npm run check
+      - run: npm run test:web
+      - run: npm run build:web
+        env: { BASE: "/${{ github.event.repository.name }}/" }
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: apps/web/dist }
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: { name: github-pages, url: "${{ steps.d.outputs.page_url }}" }
+    steps:
+      - id: d
+        uses: actions/deploy-pages@v4
+  e2e:
+    # Not a deploy gate yet: Chromium-only, informational until the suite has a CI track record.
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm install --no-audit --no-fund
+      - run: npm install --no-audit --no-fund --prefix apps/web
+      - run: npx --prefix apps/web playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: e2e-screenshots, path: apps/web/test-results }

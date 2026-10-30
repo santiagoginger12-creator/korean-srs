@@ -155,3 +155,7 @@ Append-only log of tradeoffs. Newest at the bottom.
     - **No origin labels when the etymology is uncertain.**
 
     Future content follows these conventions.
+
+## Hosting (2026-10-30)
+
+70. **D70: GitHub Pages deploys from a `gh-pages` branch, not from GitHub Actions.** The Claude GitHub App can't write `.github/workflows/`, so the workflow files were removed from history and kept under `docs/ci/` for reference. Each release is built locally with `BASE=/korean-srs/` and the contents of `dist/` are pushed to `gh-pages`. The site is `https://santiagoginger12-creator.github.io/korean-srs/`.
