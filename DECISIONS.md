@@ -145,3 +145,13 @@ Append-only log of tradeoffs. Newest at the bottom.
 66. **D66: Hint ladder.** The cue format is "<dictionary form> + <pattern>". Level 0 shows the dictionary form; level 1 shows the meaning without revealing the pattern; level 2 shows the full pattern. A correct answer after level 2 counts as a miss. The hint level is recorded in `check.layer` (e.g. `exact+hint2`), so the event format is unchanged.
 67. **D67: Ghost reviews.** A grammar miss schedules practice at +2 h and +24 h, derived from the review log. Ghost sessions write no events, completion is tracked per device, and ghosts expire after 7 days.
 68. **D68: Sentence banks rotate.** Each item and question type has a fixed shuffled order of prompts, and review n shows prompt n mod length. Every sentence appears once before any repeat, and the same sentence never appears in back-to-back reviews. Grammar items have 9 cloze + 2 nuance prompts (L1–L3).
+
+## Owner rulings (2026-10-30)
+
+69. **D69: Standing grading conventions.**
+    - **Standard-first.** A colloquial but nonstandard form is graded close, not correct (e.g. adjective + -나 보다).
+    - **Synonyms in headword-cued clozes are graded close**, with an "also fits; the cue asks for X" hint. The learner must produce the target word.
+    - **Narrative -지 뭐예요.** 했지 뭐요 is wrong in that use.
+    - **No origin labels when the etymology is uncertain.**
+
+    Future content follows these conventions.

@@ -80,3 +80,11 @@ Three questions remain for the owner:
 | v:대수롭다 | `tags` | Is the 대수 in 대수롭다 the Sino-Korean 大數 of "그게 대수야?" (표준 대수 「2」 '대단한 것')? | Yes: add `sino-korean` (no breakdown needed for a -롭다 word). No: add `native`. |
 | L05–L10 clozes | `nearMiss` | Should a real synonym typed into a headword-cued cloze (자부심 for 긍지, 대답 for 대꾸, 결국 for 급기야) be graded **close** with "also fits; the cue asks for X", not correct? | Yes: no change. No: move those 25 forms back to `accepted` (list in REVIEW_LOG). |
 | v:출동하다, v:추락하다, v:참견하다, v:복용하다, v:임명되다 (L05) | selection | Are these too basic to be worth drilling, like the two words already swapped (개봉하다, 초과하다)? | Yes: swap each for the next candidate in rank order (the L05 band is thin; candidates may come from the L06 range). No: keep them. |
+
+## Owner rulings (2026-10-30). All open rows above are closed.
+
+- g:나-보다: **keep** 바쁘나 봐요 as close (standard-first).
+- g:지-뭐: **keep** 했지 뭐요 as wrong in the narrative use; only 했지 뭐예요 is correct.
+- L05–L10 clozes: **keep** synonyms typed into a headword-cued cloze as close ("also fits; the cue asks for X").
+- 출동하다, 추락하다, 참견하다, 복용하다, 임명되다: **keep**. They are not too basic.
+- v:대수롭다: **no origin label.** The item stays untagged, with no hanja annotation.
