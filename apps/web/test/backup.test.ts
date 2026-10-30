@@ -58,8 +58,8 @@ test('reminder after 7 days (or never backed up), but not with an empty log', ()
 });
 
 test('file names are safe and say whether they are gzipped', () => {
-  const n = backupFilename(Date.UTC(2026, 9, 23, 3, 5), 'Santi’s iPhone / 15', true);
-  assert.match(n, /^ksrs-Santi-s-iPhone-15-\d{8}-\d{4}\.ksrs\.json\.gz$/);
+  const n = backupFilename(Date.UTC(2026, 9, 23, 3, 5), 'My iPhone / 15', true);
+  assert.match(n, /^ksrs-My-iPhone-15-\d{8}-\d{4}\.ksrs\.json\.gz$/);
   assert.match(backupFilename(0, '', false), /^ksrs-device-\d{8}-\d{4}\.ksrs\.json$/);
 });
 

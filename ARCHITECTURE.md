@@ -1,7 +1,7 @@
 # ARCHITECTURE.md: 한국어 SRS (working name "ksrs")
 
 A personal, single-user, local-first, WaniKani-style SRS for advanced Korean (TOPIK 5–6).
-Status: v0.1 (initial architecture, pre-M1). Owner: Santi. The architecture is maintained by the Architect agent. Changes to any public package API, or to the event or backup format, require an entry in `DECISIONS.md`.
+Status: v0.1 (initial architecture, pre-M1). Owner: the project owner. The architecture is maintained by the Architect agent. Changes to any public package API, or to the event or backup format, require an entry in `DECISIONS.md`.
 
 ---
 
