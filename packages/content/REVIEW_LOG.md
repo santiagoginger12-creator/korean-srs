@@ -483,3 +483,37 @@ Clozes whose cue names the headword were accepting a different word as **correct
 - **Homograph mnemonics** (발효, 공모, 관용, 고찰, 감수, 사색, 당면, 수행, 습득, 교감, 양산, 대변, 소식, 고수, 공고) and **spelling items** (게재, 곰곰이, 금세, 낱낱이, 꺼림칙하다): accurate. Their Hangul anchors (고찰 = 고려 + 관찰, 곤욕 ↔ 모욕, 게재 ↔ 연재 / 기재, 공고 ↔ 견고) share the character.
 - **Contrast pairs** (간략/간소, 강인/강직, 경멸/경시, 고달프다/고되다, 결여/결핍, 과감/과격, 광범위/광활, 냉담/냉혹, 곤욕/곤혹): `rejected` is set in both directions, and the nearMiss hints are accurate.
 - **Basic but kept:** 출동하다, 추락하다, 참견하다, 복용하다, 임명되다 (see the owner question in REVIEW_NOTES).
+
+## Practical starter levels (L01–L03 vocab, author self-pass, 2026-10-30)
+
+Owner feedback: the starting vocab was "slightly too advanced and niche to make for useful language practice."
+
+### Move
+- The original hanja-derived L01–L03 vocab (120 items: 결재, 재량, 결렬, 묵인, 식견, 미제 사건…) moved to **L11, L12, L13** (L01 → L11, L02 → L12, L03 → L13). Only `level` changed. Ids, `rev`, track `core`, and all other fields are untouched, so any progress on them carries over. The "## L01 / L02 / L03" vocab entries earlier in this log now refer to those items at L11–L13.
+- L01–L03 `grammar.json` and `expressions.json` stay where they were.
+- Dependencies: no item anywhere in the seed had an `unlockDep` or grammar `contrast` on a moved item, so no deps changed.
+
+### New L01–L03 (120 items, track `vocab-core`)
+- Source: data-private/starter-candidates.tsv (587 common words, rank < 5,000, missed 8+ times in Anki). Every gloss, collocation, example, prompt, and hint is original.
+- Each level has about 10 nouns, 11 verbs, 9 adjectives, and 10 adverbs or discourse words. L01 holds the most-missed, highest-use words.
+- Format follows L05–L10: meaning + production + one cloze each, tags `<origin>` (only where certain), `freq:<rank>`, `anki-leech`. Adverb clozes use a 초성 cue (the L04 pattern), because a headword cue would give the answer away.
+- **Polysemy:** the gloss order and cloze target the sense most likely behind the misses: 경우 (+ 경우가 없다), 지내다 (get along), 모시다 (take / live with an elder), 성질 (temper), 알아보다 (look into vs. recognize), 겨우 (a mere), 한참 (a long way to go), 재우다 (put someone up), 기르다 (grow hair), 지나치다 (excessive), 괜히 (I shouldn't have), 대책 (대책 없다), 웬만하다 (웬만하면).
+- **Grading (D39, D69):** sentence-final blanks accept 해요체, 반말, 합쇼체, and 한다체 forms (plus -네, -더라 where natural). Synonyms are `nearMiss` with "X also fits; the cue asks for Y" (간신히-type pairs: 섭섭하다, 어느덧, 그제야, 장만하다, 걸리다…). Common misspellings are `nearMiss` with a spelling hint: 일부로, 어쨋든, 왠일, 왠만하면, 담궈, 건냈어, 끼여들지, 어짜피, 쇄, 괜이. Two clozes use `spacingStrict` so the spacing contrast is graded: 못되게 vs. 못 되게, and 못지않게 vs. 못지 않게.
+- **Confusables, `rejected` in both directions:** 대략/대충, 곧장/곧잘, 당장/당분간, 차라리/어차피, 억지로/마지못해, 심각하다/진지하다, 속상하다/서운하다, 서운하다/억울하다, 적성/자격, 사정/사연, 살피다/둘러보다, 둘러보다/돌아다니다, 알아보다/몰라보다. Pins against older seed items: 기르다 → 기리다 and 괜히 → 공연히 (L08/L09 already reject the reverse). Pins against non-seed look-alikes: 혼내다, 망하다, 건너다, 담다, 쬐다, 적당하다, 순수하다, 소소하다, 못나다, 의존하다, 넘어지다, 돌아보다, 들르다, 내려다보다, 지나가다.
+- **Mnemonics** (3, Hangul-first): 유치하다 (유치원 vs. 투자 유치), 물가 (物價 vs. 물 + 가), 못되다 (vs. spaced 못 되다).
+- **Avoided:** 푯값 (the sentences use 요금 / 돈 instead of the commonly misspelled 표값); 재우다 for marinating is only mentioned in `meanings`, since the standard word is 재다.
+
+### Skipped from the candidate list
+- **Elementary** (no real usage problem to teach): 끄다, 모레, 그제, 그저께, 갈색, 회색, 검정, 검다, 좁다, 다치다, 줍다, 놓다, 다니다, 나가다, 드리다, 버리다, 놀라다, 밝다, 거실, 친절하다, 언제나, 아무도, 크기, 경치, 마음, 성격, 어른, 기자, 부럽다, and similar.
+- **Near-duplicates (one kept):** 간신히 (겨우), 어느덧 (어느새), 살펴보다 (살피다), 적극 (적극적), 섭섭하다 (서운하다), 자식 (자녀), 대개/대체로, 그제야 (비로소), 키우다 (기르다), 실시/실시하다, 몰려오다/몰려들다, 대강 (대충).
+- **Transparent or low conversational yield:** 발견하다, 찬성하다, 요구하다, 찾아오다, 넘어뜨리다, 공무원, 종업원, 전철, 정장, 상업, 보급.
+- **Close to an existing seed item:** 머뭇거리다 (망설이다, L04).
+- There was no overlap with L04–L13 or with the personal anki-shaky import.
+
+### Tests
+- packages/content/test/validate.test.ts: the counts are now 631 total / 544 vocab, L01–L03 = 40 each, and L11–L13 = 40 vocab each.
+- packages/content/test/import.test.ts: two tests had depended on the old L01 words. The CSV dependency test hard-coded v:얼버무리다 as a level-1 dep target, and it now picks any level-1 seed vocab item. The diffItems test assumed the first seed vocab item had a mnemonic, and it now picks the first vocab item that has one.
+- apps/web unit tests run on the frozen fixture seed, and real-seed.spec.ts asserts no specific items, so neither needed changes.
+
+### Flags (needs_review: 4; see REVIEW_NOTES)
+v:경우, v:겨우, v:십상, v:지나치다.

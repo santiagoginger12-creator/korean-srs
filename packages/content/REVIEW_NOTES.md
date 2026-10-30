@@ -88,3 +88,14 @@ Three questions remain for the owner:
 - L05–L10 clozes: **keep** synonyms typed into a headword-cued cloze as close ("also fits; the cue asks for X").
 - 출동하다, 추락하다, 참견하다, 복용하다, 임명되다: **keep**. They are not too basic.
 - v:대수롭다: **no origin label.** The item stays untagged, with no hanja annotation.
+
+## Practical starter levels L01–L03 (authored 2026-10-30)
+
+The niche Sino-Korean starter set is now L11–L13 (ids unchanged). New L01–L03 hold 120 common words from the owner's Anki leeches. Four items are flagged for a native check:
+
+| item id | field | concern | suggestion |
+|---|---|---|---|
+| v:경우 | `examples[1]`, `meanings[1]` | The second example teaches 경우가 없다 ("has no sense of decency"), on the guess that this sense is behind the 49 misses. It may be too marked for a starter item. | If the misses are really about -는 경우 (case), swap examples[1] for a second "case" sentence and drop the sense from meanings. |
+| v:겨우 | cloze c1 | The cloze targets "only, a mere" (겨우 세 개), and examples[0] covers "barely". It's a guess which sense causes the misses. | If "barely" is the problem sense, change c1 to a 겨우 시간에 맞추다-type frame with 간신히 as nearMiss. |
+| v:십상 | `meanings`, tags | Only the -기 십상이다 sense is taught. There is no hanja breakdown or origin tag, since I'm not certain 十常 covers both senses (표준 also lists a "just right" 십상). | If 十常 is right for this sense, add `sino-korean` and the breakdown. |
+| v:지나치다 | `pos`, `meaning` | One item covers both the adjective (excessive) and the verb (pass by). `pos` is 형용사·동사, `meaning` accepts both senses, and production and cloze target "excessive". | If you'd rather split it, make it two sense items (v:지나치다:excessive / :pass), following the L04 pattern. |

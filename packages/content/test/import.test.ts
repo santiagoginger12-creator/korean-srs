@@ -151,6 +151,8 @@ describe('importCsv', () => {
   });
 
   test('semantic errors against the merged set: unresolved refs, cycles, attribution, cascade', () => {
+    // Any level-1 seed vocab item (no specific word: content agents edit the seed).
+    const l1 = SEED.find((i) => i.kind === 'vocab' && i.level === 1)!.id;
     const csv = [
       'id,level,word,meanings,pos,examples,unlock_deps,source_kind,source_license',
       `v:a,1,가,a,명사,${ex2},v:b,user,original-owned`,
@@ -158,7 +160,7 @@ describe('importCsv', () => {
       `v:c,1,다,c,명사,${ex2},v:nope,user,original-owned`,              // unresolved
       `v:d,1,라,d,명사,${ex2},,import,CC-BY-4.0`,                       // attribution missing
       `v:e,1,마,e,명사,${ex2},v:d@lesson,user,original-owned`,          // depends on rejected d
-      `v:f,1,바,f,명사,${ex2},v:얼버무리다,user,original-owned`,          // resolves into existing
+      `v:f,1,바,f,명사,${ex2},${l1},user,original-owned`,                  // resolves into existing
     ].join('\n');
     const r = importCsv('vocab', csv, ctx());
     assert.deepEqual(errors(r).filter((i) => i.row === 7), []);
@@ -168,7 +170,7 @@ describe('importCsv', () => {
     assert.ok(msgs.some((m) => m === '4:unresolved reference v:nope'));
     assert.ok(msgs.some((m) => m.startsWith('5:attribution is required')));
     assert.ok(msgs.some((m) => m === '6:unresolved reference v:d'));
-    assert.deepEqual((r.items[0] as VocabItem).unlockDeps, [{ id: 'v:얼버무리다', require: 'guru' }]);
+    assert.deepEqual((r.items[0] as VocabItem).unlockDeps, [{ id: l1, require: 'guru' }]);
   });
 
   test('draft tolerance: user items with < 2 examples are a warning; seed (original) items stay strict', () => {
@@ -303,7 +305,8 @@ describe('importJson', () => {
 });
 
 describe('diffItems', () => {
-  const base = SEED.find((i) => i.kind === 'vocab') as VocabItem;
+  // A seed vocab item with a mnemonic, so the mnemonic-diff assertion below has something to drop.
+  const base = SEED.find((i) => i.kind === 'vocab' && i.mnemonic !== undefined) as VocabItem;
   test('added / changed (top-level fields) / unchanged; key order is irrelevant; duplicates counted once', () => {
     const existing = new Map<ItemId, Item>([[base.id, base]]);
     const reordered = JSON.parse(JSON.stringify(Object.fromEntries(Object.entries(base).reverse()))) as VocabItem;

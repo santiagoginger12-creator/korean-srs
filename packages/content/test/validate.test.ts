@@ -255,10 +255,14 @@ test('real seed validates with zero errors', () => {
   // M2 seed scope (§9.4): levels 1–3, plus L04 (native-verb track: 64 sense-level vocab items).
   // Hanja items were removed from the curriculum (vocab-first direction); L05–L10 add the
   // frequency-vocab track (40 words each, ranks ~5,100–6,730 from the owner's Anki gap).
-  assert.equal(r.counts.total, 511);
-  assert.deepEqual(r.counts.byKind, { vocab: 424, grammar: 67, expression: 20, hanja: 0 });
+  // L01–L03 vocab is the practical starter set (40 each, owner's common Anki leeches); the
+  // original niche Sino-Korean set moved to L11–L13 with ids unchanged.
+  assert.equal(r.counts.total, 631);
+  assert.deepEqual(r.counts.byKind, { vocab: 544, grammar: 67, expression: 20, hanja: 0 });
   assert.deepEqual(r.counts.byLevel[4], { vocab: 64, grammar: 0, expression: 0, hanja: 0 });
+  assert.deepEqual([1, 2, 3].map((l) => r.counts.byLevel[l]?.vocab), [40, 40, 40]);
   assert.deepEqual([5, 6, 7, 8, 9, 10].map((l) => r.counts.byLevel[l]?.vocab), [40, 40, 40, 40, 40, 40]);
+  assert.deepEqual([11, 12, 13].map((l) => r.counts.byLevel[l]), Array(3).fill({ vocab: 40, grammar: 0, expression: 0, hanja: 0 }));
   // HTSK-aligned grammar stages (Units 5–6): grammar only, independent of vocab levels.
   assert.deepEqual([5, 6, 7].map((l) => r.counts.byLevel[l]?.grammar), [11, 13, 13]);
 });
