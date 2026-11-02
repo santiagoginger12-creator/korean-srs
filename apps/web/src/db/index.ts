@@ -5,15 +5,19 @@
 //   content    keyPath key               { key: 'bundle', contentVersion, bundle }
 //   secrets    out-of-line string keys   API keys (KRDict). NEVER exported or backed up (§9, §11).
 //   quarantine keyPath key               future-version / malformed incoming events, kept (§12)
+//   syncState  keyPath path              GitHub sync: blob sha + line count per remote file (§11, v3)
+//   syncPushed out-of-line event ids     events known to be on the sync remote (v3). Kept apart from
+//                                        `events` because events are immutable (and checksummed in backups)
 // Derived state lives in memory (replayAll on load, applyEvents after writes); there are no
 // projection stores yet, so "Rebuild from log" is simply a fresh replayAll.
 
 import type { ContentBundle } from '@ksrs/content';
 import type { AppEvent } from '@ksrs/srs-engine';
+import type { SyncStateEntry } from '@ksrs/sync';
 import { openDb, reqP, tx } from './idb.ts';
 
 export const DB_NAME = 'ksrs';
-export const DB_VERSION = 2;
+export const DB_VERSION = 3;
 
 export const KV = {
   deviceId: 'deviceId',
@@ -25,7 +29,12 @@ export const KV = {
   lastBackupAt: 'lastBackupAt',
   /** Completed ghost-review slot keys (per device, never synced or backed up). */
   ghostsDone: 'ghostsDone',
+  /** GitHub sync settings for this device (repo, enabled, token expiry, last result). Never synced or backed up. */
+  sync: 'sync',
 } as const;
+
+/** `secrets` key for the GitHub fine-grained token. */
+export const SECRET_GITHUB_TOKEN = 'github.token';
 
 export interface QuarantineEntry { key: string; raw: unknown; reason: string; source: string; at: number }
 
@@ -48,6 +57,16 @@ export interface AppDb {
   quarantineAll(): Promise<QuarantineEntry[]>;
   /** Moves quarantined events the app can now read into the log, in one transaction. */
   quarantineResolve(events: readonly AppEvent[], keys: readonly string[]): Promise<void>;
+  /** Sync (§11): per-path remote bookkeeping. */
+  syncStateAll(): Promise<SyncStateEntry[]>;
+  syncStatePut(entries: readonly SyncStateEntry[]): Promise<void>;
+  /** Ids of events known to be on the sync remote. */
+  pushedIds(): Promise<string[]>;
+  markPushed(ids: readonly string[]): Promise<void>;
+  /** Remote events: appended (existing ids untouched) and marked pushed, in one transaction. */
+  appendRemote(events: readonly AppEvent[], kv?: Record<string, unknown>): Promise<void>;
+  /** Forget sync bookkeeping (another repo or namespace): everything is re-read and re-checked. */
+  syncReset(): Promise<void>;
   close(): void;
 }
 
@@ -62,6 +81,10 @@ export async function openAppDb(name = DB_NAME, factory?: IDBFactory): Promise<A
     if (oldVersion < 2) {
       d.createObjectStore('secrets');
       d.createObjectStore('quarantine', { keyPath: 'key' });
+    }
+    if (oldVersion < 3) {
+      d.createObjectStore('syncState', { keyPath: 'path' });
+      d.createObjectStore('syncPushed');
     }
   }, factory);
 
@@ -101,6 +124,15 @@ export async function openAppDb(name = DB_NAME, factory?: IDBFactory): Promise<A
       for (const e of events) s.events!.put(e);
       for (const k of keys) s.quarantine!.delete(k);
     }),
+    syncStateAll: () => tx(db, ['syncState'], 'readonly', (s) => reqP(s.syncState!.getAll() as IDBRequest<SyncStateEntry[]>)),
+    syncStatePut: (entries) => tx(db, ['syncState'], 'readwrite', (s) => { for (const e of entries) s.syncState!.put(e); }),
+    pushedIds: () => tx(db, ['syncPushed'], 'readonly', (s) => reqP(s.syncPushed!.getAllKeys() as IDBRequest<string[]>)),
+    markPushed: (ids) => tx(db, ['syncPushed'], 'readwrite', (s) => { for (const id of ids) s.syncPushed!.put(1, id); }),
+    appendRemote: (events, kv) => tx(db, ['events', 'syncPushed', 'kv'], 'readwrite', (s) => {
+      for (const e of events) { s.events!.put(e); s.syncPushed!.put(1, e.id); }
+      if (kv) putKv(s.kv!, kv);
+    }),
+    syncReset: () => tx(db, ['syncState', 'syncPushed'], 'readwrite', (s) => { s.syncState!.clear(); s.syncPushed!.clear(); }),
     close: () => db.close(),
   };
 }

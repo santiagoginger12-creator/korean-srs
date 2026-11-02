@@ -11,6 +11,7 @@ import { GrammarPage } from './features/grammar/GrammarPage.tsx';
 import { Ghosts } from './features/ghosts/Ghosts.tsx';
 import { Reviews } from './features/reviews/Reviews.tsx';
 import { Settings } from './features/settings/Settings.tsx';
+import { SyncBanners, SyncPage } from './features/settings/SyncPage.tsx';
 import { applyUpdate, updateReady } from './pwa/register.ts';
 import { useRoute } from './router.ts';
 import { useApp } from './state/hooks.ts';
@@ -39,6 +40,7 @@ export function App(): JSX.Element {
       case 'ghosts': body = <Ghosts />; break;
       case 'reviews': body = <Reviews />; break;
       case 'settings': body = <Settings />; break;
+      case 'sync': body = <SyncPage />; break;
       case 'item': body = <ItemPage key={route.id} id={route.id} />; break;
       default: body = <div className="page narrow"><h1>Not found</h1><a href="#/">Home</a></div>;
     }
@@ -47,6 +49,7 @@ export function App(): JSX.Element {
   return (
     <>
       {app.persistError && <div className="banner banner-error" role="alert">{app.persistError}</div>}
+      {app.status === 'ready' && !inSession && route.name !== 'sync' && <SyncBanners />}
       <main data-route={route.name}>{body}</main>
       {update && (
         <div className="toast" role="status" data-testid="update-toast">

@@ -9,6 +9,7 @@
       "@ksrs/content": ["../../packages/content/src/index.ts"],
       "@ksrs/answer-check": ["../../packages/answer-check/src/index.ts"],
       "@ksrs/srs-engine": ["../../packages/srs-engine/src/index.ts"],
+      "@ksrs/sync": ["../../packages/sync/src/index.ts"],
       "react": ["./src/types/react-shim.d.ts"],
       "react/jsx-runtime": ["./src/types/react-jsx-runtime-shim.d.ts"],
       "react-dom/client": ["./src/types/react-dom-client-shim.d.ts"]

@@ -16,6 +16,9 @@
       ],
       "@ksrs/test-support": [
         "./packages/test-support/src/index.ts"
+      ],
+      "@ksrs/sync": [
+        "./packages/sync/src/index.ts"
       ]
     }
   },

@@ -4,11 +4,12 @@
 
 import type { ContentBundle, ItemId, QuestionType } from '@ksrs/content';
 import {
-  applyEvents, buildQuestions, pruneGhostDone, createEventFactory, createHlc, dueItems, emptySession, isUnknownFutureVersion, makeBackup, replayAll, serializeBackup, sessionReducer, settingPayload, sortEvents, upcastEvent, validateEvent,
+  applyEvents, buildQuestions, canonicalJson, pruneGhostDone, createEventFactory, createHlc, dueItems, emptySession, isUnknownFutureVersion, makeBackup, replayAll, serializeBackup, sessionReducer, settingPayload, sortEvents, upcastEvent, validateEvent,
   type AppSettingKey, type AppSettings,
   type AppEvent, type DerivedState, type EventPayload, type HlcClock, type NoteField, type ReviewSession,
   type SessionAction, type SessionCtx, type SettingKey, type Settings, type StartItem,
 } from '@ksrs/srs-engine';
+import type { EventStore, QuarantineItem } from '@ksrs/sync';
 import { KV, openAppDb, requestPersistence, type AppDb, type QuarantineEntry } from '../db/index.ts';
 import { backupFilename, encodeBackup, quarantineKey } from '../data/backup.ts';
 import { cryptoRng, now, randomDeviceId, tz } from './clock.ts';
@@ -72,6 +73,7 @@ export class AppStore {
   private hlc: HlcClock | null = null;
   private mk: ((p: EventPayload, at?: number) => AppEvent) | null = null;
   private writes: Promise<void> = Promise.resolve();
+  private sessionEndListeners = new Set<() => void>();
   readonly ctx: SessionCtx = { mkEvent: (p, at) => this.mkEvent(p, at) };
 
   constructor(private deps: StoreDeps = defaultDeps) {}
@@ -196,8 +198,12 @@ export class AppStore {
   }
 
   completeLessons(itemIds: ItemId[]): Promise<void> {
-    return this.emit(itemIds.map((itemId) => ({ type: 'lesson.completed', itemId })));
+    return this.emit(itemIds.map((itemId) => ({ type: 'lesson.completed', itemId }))).then(() => this.sessionEnded());
   }
+
+  /** Called after a review or lesson session ends (sync trigger, §11.3). */
+  onSessionEnd(cb: () => void): () => void { this.sessionEndListeners.add(cb); return () => this.sessionEndListeners.delete(cb); }
+  private sessionEnded(): void { for (const l of this.sessionEndListeners) { try { l(); } catch { /* a listener never breaks the app */ } } }
 
   setSetting<K extends SettingKey>(key: K, value: Settings[K]): Promise<void> {
     return this.emit([{ type: 'settings.set', key, value }]);
@@ -266,7 +272,7 @@ export class AppStore {
   }
 
   endReview(): Promise<void> {
-    return this.commit([], { [KV.session]: undefined }, { review: null });
+    return this.commit([], { [KV.session]: undefined }, { review: null }).then(() => this.sessionEnded());
   }
 
   // ------------------------------------------------------------------ data (M5)
@@ -340,6 +346,86 @@ export class AppStore {
   listQuarantine(): Promise<QuarantineEntry[]> { return this.db ? this.db.quarantineAll() : Promise.resolve([]); }
   getSecret(key: string): Promise<string | undefined> { return this.db ? this.db.secretGet(key) : Promise.resolve(undefined); }
   setSecret(key: string, value: string | undefined): Promise<void> { return this.db ? this.db.secretSet(key, value) : Promise.resolve(); }
+
+  // ------------------------------------------------------------------ GitHub sync (M6)
+
+  /**
+   * Remote events from @ksrs/sync: union by id (an id already here keeps the local copy, D58),
+   * applied in memory at once, then persisted in order with the other writes. Everything passed
+   * in is on the remote, so it is marked pushed too.
+   */
+  ingestRemote(incoming: readonly AppEvent[]): Promise<{ added: number; conflicts: number }> {
+    const { content, derived } = this.state;
+    const db = this.db;
+    if (!content || !derived || !db || !this.hlc) return Promise.reject(new Error('store not ready'));
+    const have = new Map(this.state.events.map((e) => [e.id, e] as const));
+    const fresh: AppEvent[] = [];
+    const known: string[] = [];
+    let conflicts = 0;
+    for (const e of incoming) {
+      this.hlc.observe(e.hlc);
+      const mine = have.get(e.id);
+      if (!mine) { fresh.push(e); have.set(e.id, e); continue; }
+      known.push(e.id);
+      if (mine !== e && canonicalJson(mine) !== canonicalJson(e)) conflicts++;
+    }
+    const kv: Record<string, unknown> = { [KV.hlc]: this.hlc.last() };
+    if (fresh.length) {
+      const events = sortEvents([...this.state.events, ...fresh]);
+      // A large first pull replays once; small ones only re-replay the touched items.
+      const next = fresh.length > 2000 ? replayAll(content, events) : applyEvents(derived, content, events, fresh).state;
+      const up = detectLevelUp(derived.userLevel, next.userLevel);
+      const patch: Partial<AppState> = { events, derived: next };
+      if (up) patch.levelUp = { from: this.state.levelUp?.from ?? up.from, to: up.to };
+      if (fresh.some((e) => e.type === 'settings.set')) kv[KV.settings] = next.settings;
+      this.set(patch);
+    }
+    const p = this.writes.then(async () => {
+      await db.appendRemote(fresh, kv);
+      if (known.length) await db.markPushed(known);
+    });
+    this.writes = p.catch((e: unknown) => {
+      this.set({ persistError: `Couldn't save synced data to this device's storage: ${(e as Error).message ?? e}` });
+    });
+    return p.then(() => ({ added: fresh.length, conflicts }));
+  }
+
+  /** The EventStore adapter @ksrs/sync runs against (§4 rule 3: sync never touches IndexedDB). */
+  syncStore(): EventStore {
+    const db = this.db;
+    if (!db || !this.state.deviceId) throw new Error('store not ready');
+    return {
+      deviceId: this.state.deviceId,
+      unpushed: async () => {
+        await this.writes;
+        const pushed = new Set(await db.pushedIds());
+        return this.state.events.filter((e) => !pushed.has(e.id));
+      },
+      markPushed: (ids) => db.markPushed(ids),
+      ingest: (events) => this.ingestRemote(events),
+      quarantine: async (items: readonly QuarantineItem[]) => {
+        const t = now();
+        await db.quarantineAdd(items.map((q) => ({ key: quarantineKey(q.raw, q.reason), raw: q.raw, reason: q.reason, source: q.source, at: t })));
+        this.set({ quarantineCount: (await db.quarantineAll()).length });
+      },
+      getEvents: async (ids) => {
+        const want = new Set(ids);
+        return want.size ? this.state.events.filter((e) => want.has(e.id)) : [];
+      },
+      syncState: () => db.syncStateAll(),
+      putSyncState: (entries) => db.syncStatePut(entries),
+    };
+  }
+
+  /** Device-local kv (never synced or backed up), e.g. the sync settings. */
+  kvGet<T>(key: string): Promise<T | undefined> { return this.db ? this.db.kvGet<T>(key) : Promise.resolve(undefined); }
+  kvSet(entries: Record<string, unknown>): Promise<void> { return this.db ? this.db.kvSet(entries) : Promise.resolve(); }
+
+  /** Advance the HLC past a remote timestamp (D4); persisted with the next write. */
+  observeHlc(h: string): void { this.hlc?.observe(h); }
+
+  /** Forget sync bookkeeping (new repo): every remote file is re-read and every event re-checked. */
+  resetSyncState(): Promise<void> { return this.db ? this.db.syncReset() : Promise.resolve(); }
 
   // ------------------------------------------------------------------ maintenance
 

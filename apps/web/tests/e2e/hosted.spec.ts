@@ -48,3 +48,16 @@ test('master list export on the hosted page uses the downloads capability', asyn
   await expect(page.getByTestId('last-export')).not.toHaveText('never');
   expect(anchorDownloads).toBe(0);
 });
+
+test('Sync is hidden on the hosted page with a one-line reason, and never calls GitHub', async ({ page }) => {
+  let github = 0;
+  await page.route('https://api.github.com/**', (r) => { github++; return r.abort(); });
+  await setup(page);
+  await page.evaluate(() => { location.hash = '#/settings'; });
+  await expect(page.getByTestId('sync-unavailable')).toContainText('security policy blocks connections to GitHub');
+  await expect(page.getByTestId('open-sync')).toHaveCount(0);
+  await page.evaluate(() => { location.hash = '#/settings/sync'; });
+  await expect(page.getByTestId('sync-unavailable')).toBeVisible();
+  await expect(page.getByTestId('sync-enable')).toHaveCount(0);
+  expect(github).toBe(0);
+});

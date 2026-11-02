@@ -5,6 +5,8 @@ import { store } from '../../state/store.ts';
 import { koVoices, speak, ttsAvailable, ttsPrefs } from '../../tts/tts.ts';
 import { DEFAULT_SOURCE } from '../../data/examples.ts';
 import { useExamplesData } from '../../components/DictExamples.tsx';
+import { isArtifact } from '../../host.ts';
+import { SYNC_UNAVAILABLE, useSync } from './SyncPage.tsx';
 
 const SAMPLE = '천천히 또박또박 읽어 볼게요.';
 
@@ -59,6 +61,7 @@ export function Settings(): JSX.Element {
           onChange={(e: { target: HTMLInputElement }) => void store.setAppSetting('examples.dictionary', e.target.checked)} /> Dictionary examples in reviews</label>
         <p className="muted small">After you answer, a vocab or expression review shows one example, rotating through the item's own examples and 한국어기초사전 examples. Off: only the item's own.</p>
       </div>
+      <SyncCard />
       <div className="card form">
         <h3>Data</h3>
         <p><a className="btn btn-quiet" href="#/data" data-testid="open-data">Backup, sync and import →</a></p>
@@ -71,6 +74,21 @@ export function Settings(): JSX.Element {
         <p className="muted small">Device {app.deviceId}</p>
       </div>
       <ExamplesCredit />
+    </div>
+  );
+}
+
+function SyncCard(): JSX.Element {
+  const s = useSync();
+  return (
+    <div className="card form" data-testid="sync-settings">
+      <h3>Sync</h3>
+      {isArtifact ? <p className="muted small" data-testid="sync-unavailable">{SYNC_UNAVAILABLE}</p> : (
+        <>
+          <p><a className="btn btn-quiet" href="#/settings/sync" data-testid="open-sync">GitHub sync: {s.config.enabled ? 'on' : 'off'} →</a></p>
+          <p className="muted small">Keep your phone and laptop in step through your private GitHub repository.</p>
+        </>
+      )}
     </div>
   );
 }

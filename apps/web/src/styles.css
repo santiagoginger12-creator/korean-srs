@@ -237,6 +237,18 @@ textarea { resize: vertical; }
 
 .banner { padding: 10px 16px; text-align: center; font-size: .92rem; }
 .banner-error { background: var(--bad-soft); color: var(--bad); }
+.banner-warn { background: var(--warn-soft); color: var(--warn); }
+.banner-link { color: inherit; font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+.sync-banner { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center; justify-content: center; }
+.banner-close { background: none; border: 0; color: inherit; font: inherit; font-size: 1.2rem; line-height: 1; min-width: 32px; min-height: 32px; cursor: pointer; }
+.sync-head { display: flex; gap: 10px; align-items: center; margin-bottom: 4px; }
+.sync-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--line); flex: none; }
+.sync-dot.is-on { background: var(--ok); }
+.sync-dot.is-bad { background: var(--bad); }
+.sync-status .kv { margin: 6px 0 14px; }
+.sync-help summary { cursor: pointer; font-weight: 600; min-height: 32px; }
+.sync-help ol { padding-left: 1.2em; margin: 10px 0 0; display: grid; gap: 6px; }
+.sync-page code { overflow-wrap: anywhere; }
 .toast { position: fixed; left: 50%; bottom: calc(16px + env(safe-area-inset-bottom)); transform: translateX(-50%); display: flex; gap: 12px; align-items: center; background: var(--primary); color: var(--primary-text); padding: 8px 8px 8px 18px; border-radius: 999px; box-shadow: var(--shadow); z-index: 10; }
 .toast .btn { background: var(--primary-text); color: var(--primary); }
 
@@ -341,7 +353,7 @@ textarea { resize: vertical; }
 .field.inline { flex-direction: row; align-items: center; margin: 0; }
 .field.inline select { width: auto; }
 .field.danger > span { color: var(--bad); }
-.form input[type="text"], .form input[type="password"], .form input[type="search"], .form input[type="number"] { font: inherit; color: var(--text); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-s); padding: 10px 12px; min-height: 44px; flex: 1; min-width: 0; width: 100%; }
+.form input[type="text"], .form input[type="password"], .form input[type="search"], .form input[type="number"], .form input[type="date"] { font: inherit; color: var(--text); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-s); padding: 10px 12px; min-height: 44px; flex: 1; min-width: 0; width: 100%; }
 .form .row > input { width: auto; }
 .diff-table { border-collapse: collapse; width: 100%; font-size: .88rem; margin: 8px 0; }
 .diff-table td, .diff-table th { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); }

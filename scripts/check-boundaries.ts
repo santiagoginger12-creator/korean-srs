@@ -2,11 +2,12 @@
 import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 
-const PURE = ['packages/srs-engine/src', 'packages/answer-check/src', 'packages/content/src/schema'];
+const PURE = ['packages/srs-engine/src', 'packages/answer-check/src', 'packages/content/src/schema', 'packages/sync/src'];
 const ALLOWED: Record<string, string[]> = {
   content: [],
   'answer-check': ['@ksrs/content'],
   'srs-engine': ['@ksrs/content'],
+  sync: ['@ksrs/srs-engine'],
 };
 const BANNED_IN_PURE: [RegExp, string][] = [
   [/\bDate\.now\(/, 'Date.now() — inject a clock'],

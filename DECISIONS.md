@@ -168,3 +168,17 @@ Append-only log of tradeoffs. Newest at the bottom.
     - **Rotation.** After each answer, `pickExample` rotates through the item's original examples plus the dictionary bank, in a fixed per-item order, and shows one. Every sentence appears once before any repeats. Nothing is shown before the answer is submitted.
     - **Display.** Each sentence is credited to its source and linked to the dictionary entry. A setting, `examples.dictionary` (default on), turns them off.
     - **Updating.** Rebuild with a newer KRDict download via scripts/krdict/README.md.
+
+## M6 sync (2026-11-02)
+
+72. **D72: GitHub sync.**
+    - **Package.** `packages/sync` is pure TS; fetch and the clock are injected.
+    - **Remote layout.** It follows §11.2. Listing uses the git trees API, and reads and writes use the contents API with sha checks.
+    - **No changes to stored events.** "Already pushed" is tracked in a separate `syncPushed` store.
+    - **Segments.** They are keyed by the ISO week of the *event*, so a first upload of history doesn't create one big file that gets re-sent all week.
+    - **Conflicts.** A sha conflict is retried up to 3 times by re-reading and taking the union.
+    - **Device-only settings.** Repo, enabled flag and token expiry are stored only on the device and never synced.
+    - **Token.** It lives only in the IndexedDB `secrets` store and is never in backups, exports or the repo.
+    - **When it runs.** Sync is off on the artifact target (CSP). It runs after first paint, after a session ends, on tab focus (at most every 15 s), and on demand. It never runs during a session.
+    - **Schema.** The IndexedDB schema is now v3.
+    - **Setup.** See docs/SYNC.md.

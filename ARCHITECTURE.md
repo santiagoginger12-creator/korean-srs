@@ -92,7 +92,7 @@ ksrs/
 │  │  └─ src/{events,hlc,uuid7,replay,scheduler/{wk,fsrs},unlock,queue,
 │  │          session,forecast,load,leech,questions,upcast}.ts
 │  └─ sync/           # OWNER: Sync agent (deps: srs-engine event types)
-│     └─ src/{segments,merge,syncOnce,transports/{github,file,memory}}.ts
+│     └─ src/{segments,syncOnce,errors,base64,types,transports/{github,memory,fake-github}}.ts
 ├─ apps/web/          # OWNER: UI agent
 │  └─ src/{db/,features/{dashboard,lessons,reviews,items,settings,import,sync},
 │          components/HangulInput.tsx, tts/, pwa/, theme/}
@@ -473,11 +473,12 @@ After any incorrect result, the UI shows **"I was right"**, which emits an overr
 
 ```ts
 db.version(1).stores({
-  events:      '&id, hlc, [itemId+hlc], type, deviceId, pushed',   // SOURCE OF TRUTH
+  events:      '&id, hlc, [itemId+hlc], type, deviceId',   // SOURCE OF TRUTH (pushed state: syncPushed)
   itemState:   '&itemId, availableAt, stage, [level+kind], passedAt, leechScore', // projection
   content:     '&id, level, kind, needs_review',                    // bundle + custom (projection)
   kv:          '&key',   // projections: settings, notes, userAnswers; meta: deviceId, hlc, schema, contentVersion
-  syncState:   '&path',  // remote blob sha, line count, last sync
+  syncState:   '&path',  // remote blob sha, line count, last-line fingerprint (v3)
+  syncPushed:  '',       // ids of events known to be on the sync remote (v3; events stay immutable)
   quarantine:  '&id',    // malformed or future-version remote events (kept, never dropped)
   secrets:     '&key',   // github PAT, krdict key: excluded from backups and exports
 });
@@ -512,17 +513,22 @@ ksrs/v1/log/<deviceId>/<YYYY>-W<ww>.jsonl  one event per line, append-only, ≈ 
 Each device writes **only its own files**, so remote write conflicts are impossible across devices. Two tabs on the same device are serialized with `navigator.locks.request('ksrs-sync')`, plus a sha-mismatch retry that re-reads and unions by id.
 
 ### 11.3 Algorithm (`syncOnce(store, transport, clock)`)
-1. `GET /git/trees/HEAD?recursive=1` (one request) gives each path and blob sha.
-2. For each foreign `log/*` file whose sha changed: fetch the raw blob and parse only the lines past the cached line count. Then upcast, Zod-validate, and `hlc.observe()`. Valid events are bulk-put, ignoring existing ids; invalid ones go to quarantine.
-3. Push local events where `pushed=0`, grouped by week: GET own file (sha), append lines, PUT with sha. On 409/422, refetch, union, and retry (up to 3 times). Then mark them pushed.
-4. `applyEvents` over the changed items. Unlocks and level are recomputed. A full replay runs only if an SRS `settings.set` arrived.
-5. Compare server `Date` headers. If clock skew exceeds 5 min, show a warning banner.
+*As built in M6 (`packages/sync`); differences from the original plan are marked ‡.*
 
-**Triggers:** app open, end of a review or lesson session, `visibilitychange→hidden` (best effort), and a manual button. There is no polling.
+1. `GET /git/trees/HEAD?recursive=1` (one request) gives each path and blob sha. An empty repo answers 409, which counts as "no files". If the tree is truncated, the transport walks the `contents` directories instead. The manifest is created if missing, and a manifest with `version > 1` stops sync with `newer-format`.
+2. For each foreign `log/*` segment whose sha changed: `GET /contents/{path}` returns base64; files over 1 MB come through `/git/blobs/{sha}`. Only lines past the cached line count are parsed. ‡ The cache also keeps a fingerprint of the last counted line; a mismatch, or a file shorter than the cached count, means the file was rewritten, so it is re-read from the top (union by id makes that safe). A final line with no newline that doesn't parse is a truncated write: it is neither counted nor quarantined. Lines go through the engine's `upcastEvent` + `validateEvent`. Future-version or invalid events go to quarantine with reason and source. `clock.observe(max hlc)` runs, then a union by id (the local copy wins on an id conflict, D58). Ingested events are marked pushed. The `syncState` entries for those paths are written **after** the events, so a crash just re-reads.
+3. Push events not yet on the remote. ‡ "Pushed" lives in a separate `syncPushed` store, not as a field on events (events are immutable and checksummed in backups). Events are grouped by the ISO week (UTC) of each event's `at`. In practice that is the current week; offline work or a first upload of old history goes to that week's file, so no single file grows without bound. For each group: GET own file, skip ids already in it, append (dropping a truncated tail), and PUT with the sha. On 409/422 (stale or missing sha), re-read, union, and retry up to 3 times. Then mark the group pushed. A crash between the PUT and the marking causes no duplicates, because the next run sees the ids in the file.
+4. Refresh `devices/<id>.json` at most once a day, or when the device name or app version changes.
+5. ‡ Skew check: browsers can't read GitHub's `Date` header (CORS doesn't expose it), so skew comes from the PUT response's `commit.committer.date`. If it exceeds 5 min, the Sync screen shows a warning. `applyEvents` handles changed items, and a full replay runs only when a pull exceeds 2,000 events or touches SRS settings or custom items.
+
+**Interfaces.** `EventStore` (unpushed, markPushed, ingest, quarantine, getEvents, syncState, putSyncState) is implemented by `AppStore.syncStore()` in apps/web. `SyncTransport` (list, get, put) has two implementations: `github` (REST v3, injected `fetch` and clock, `Authorization: Bearer`) and `memory`. Typed `SyncError` codes: `bad-token` 401, `no-access` 403, `repo-missing` 404, `conflict` 409/422-sha, `rate-limited` (403 with remaining 0, 429, or Retry-After; later calls short-circuit until reset), `network`, `server` 5xx, `newer-format`, `invalid`. The token never appears in error text. `createFakeGithub` serves the same REST subset over a `MemoryRemote` for unit tests and Playwright routes.
+
+**Triggers:** after the first paint on app open; after a review or lesson session ends (‡ deferred until the session screen is left); `visibilitychange→visible` (‡ not `hidden`; at most every 15 s); the **Sync now** button. There is no polling. Runs are single-flight per tab, plus `navigator.locks.request('ksrs-sync', {ifAvailable})` across tabs. When sync is disabled, nothing runs. ‡ Sync is unavailable on the artifact target (D59) because the claude.ai CSP blocks api.github.com.
 **Security:**
 - CSP `connect-src 'self' https://api.github.com https://krdict.korean.go.kr`.
 - No third-party scripts.
-- The PAT lives in `secrets` and is never exported. Settings shows the token expiry.
+- The PAT lives in `secrets` (key `github.token`) and is never exported or backed up. Repo, enabled, and token-expiry settings live in device-local kv `sync`, which is not an event and not synced. A reminder banner shows 14 days before the user-entered expiry.
+- Changing the repo clears `syncState` and `syncPushed`.
 
 **Manual sync (d)** uses the backup format below. Import is always a union merge, so "export on phone, import on laptop" has the same semantics as GitHub sync.
 

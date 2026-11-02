@@ -16,7 +16,7 @@ async function pickRestoreFile(page: Page, file: string): Promise<void> {
   await page.getByTestId('restore-file').setInputFiles(file);
 }
 
-test('IndexedDB v1 (m3-era) data survives the v2 upgrade intact', async ({ page, browser }) => {
+test('IndexedDB v1 (m3-era) data survives the upgrades (v2, v3) intact', async ({ page, browser }) => {
   const b = await setup(page);
   await doLessonBatch(page, b);
   const events = await readEvents(page);
@@ -49,8 +49,12 @@ test('IndexedDB v1 (m3-era) data survives the v2 upgrade intact', async ({ page,
   }), { evs: events, dev: deviceId });
   await p2.goto('./');
   await expect(p2.getByTestId('lessons-tile')).toBeVisible();
-  const version = await p2.evaluate(() => new Promise<number>((ok) => { const r = indexedDB.open('ksrs'); r.onsuccess = () => { ok(r.result.version); r.result.close(); }; }));
-  expect(version).toBe(2);
+  const { version, stores } = await p2.evaluate(() => new Promise<{ version: number; stores: string[] }>((ok) => {
+    const r = indexedDB.open('ksrs');
+    r.onsuccess = () => { ok({ version: r.result.version, stores: [...r.result.objectStoreNames].sort() }); r.result.close(); };
+  }));
+  expect(version).toBe(3);
+  expect(stores).toEqual(['content', 'events', 'kv', 'quarantine', 'secrets', 'syncPushed', 'syncState']);
   expect(await readEvents(p2)).toEqual(events);
   expect(await peek.deviceId(p2)).toBe(deviceId);
   expect(await peek.projection(p2)).toEqual(await peek.projection(page));
