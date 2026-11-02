@@ -39,7 +39,7 @@ export function ItemPage({ id }: { id: string }): JSX.Element {
       <div className="card teach">
         <div className="q-head"><KindTag kind={item.kind} /><NeedsReview item={item} /><span className="muted">Level {item.level}</span>
           <UnlockBadge status={unlock.status} /></div>
-        <ItemDetails item={item} index={d.index} hideRelations />
+        <ItemDetails item={item} index={d.index} hideRelations moreExamplesOpen />
       </div>
 
       {(unlock.deps.length > 0 || unlock.levelLocked !== null) && (

@@ -5,6 +5,7 @@ import { headword, type ContentIndex } from '@ksrs/srs-engine';
 import { itemHref, KIND_KO, KIND_LABEL, REGISTER_LABEL } from '../state/format.ts';
 import { Speaker } from '../tts/Speaker.tsx';
 import { displayNuance, htskRefs } from '../state/htsk.ts';
+import { MoreExamples } from './DictExamples.tsx';
 
 export function KindTag({ kind }: { kind: Item['kind'] }): JSX.Element {
   return <span className={`kind-tag k-${kind}`}>{KIND_KO[kind]} · {KIND_LABEL[kind]}</span>;
@@ -169,9 +170,14 @@ export function HtskLinks({ item }: { item: Item }): JSX.Element | null {
   );
 }
 
-/** `hideRelations`: the item page renders richer related-item sections itself (M3). */
-export function ItemDetails(props: { item: Item; index: ContentIndex; hideRelations?: boolean }): JSX.Element {
-  return <>{renderDetails(props)}<HtskLinks item={props.item} /><Attribution item={props.item} /></>;
+/**
+ * `hideRelations`: the item page renders richer related-item sections itself (M3).
+ * `moreExamplesOpen`: the 한국어기초사전 section starts expanded (item page) or collapsed (lessons).
+ */
+export function ItemDetails(props: { item: Item; index: ContentIndex; hideRelations?: boolean; moreExamplesOpen?: boolean }): JSX.Element {
+  return (<>{renderDetails(props)}
+    <MoreExamples key={props.item.id} item={props.item} defaultOpen={!!props.moreExamplesOpen} />
+    <HtskLinks item={props.item} /><Attribution item={props.item} /></>);
 }
 
 function renderDetails({ item, index, hideRelations }: { item: Item; index: ContentIndex; hideRelations?: boolean }): JSX.Element {

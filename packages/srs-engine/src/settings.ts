@@ -24,6 +24,8 @@ export interface ExtraSettings {
   'grammar.separatePath': boolean;
   /** Hanja as lesson nodes (the old WaniKani-style radicals layer). Off by default (D63). */
   'hanja.lessons': boolean;
+  /** Include 한국어기초사전 examples in the example shown after answering (on by default). */
+  'examples.dictionary': boolean;
 }
 export type AppSettings = Settings & ExtraSettings;
 export type AppSettingKey = keyof AppSettings;
@@ -36,6 +38,7 @@ export const EXTRA_SETTING_DEFAULTS: Readonly<ExtraSettings> = Object.freeze({
   'grammar.dailyLessons': 3,
   'grammar.separatePath': true,
   'hanja.lessons': false,
+  'examples.dictionary': true,
 });
 
 export function defaultAppSettings(): AppSettings {
@@ -56,6 +59,7 @@ export function coerceAppSetting(key: string, value: unknown): unknown {
     case 'grammar.dailyLessons': return typeof value === 'number' && Number.isInteger(value) && value >= 0 && value <= 50 ? value : undefined;
     case 'grammar.separatePath': return typeof value === 'boolean' ? value : undefined;
     case 'hanja.lessons': return typeof value === 'boolean' ? value : undefined;
+    case 'examples.dictionary': return typeof value === 'boolean' ? value : undefined;
     default: return coerceSetting(key as SettingKey, value);
   }
 }

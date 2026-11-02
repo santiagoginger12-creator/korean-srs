@@ -177,8 +177,15 @@ test('TTS: speaker buttons call speechSynthesis.speak; autoplay only after submi
     await expect(page.getByTestId('feedback')).toBeVisible();
     expect(await count()).toBe(n0 + 1);
     // The feedback panel's speaker reads the same answer on demand.
-    await page.getByTestId('feedback').getByTestId('speaker').click();
+    await page.getByTestId('feedback').locator('.fb-actions').getByTestId('speaker').click();
     expect(await count()).toBe(n0 + 2);
+    // Vocab/expression feedback also has an example sentence with its own speaker.
+    const ex = page.getByTestId('fb-example');
+    if (await ex.count()) {
+      await ex.getByTestId('speaker').first().click();
+      expect(await count()).toBe(n0 + 3);
+      expect(await page.evaluate(() => (window as any).__spoken.at(-1) as string)).not.toBe('');
+    }
     await next(page);
   }
 });

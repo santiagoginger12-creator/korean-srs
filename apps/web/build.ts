@@ -4,8 +4,8 @@
 // Flags: --dev (no minify, sourcemaps, no service worker registration), --out <dir>.
 //
 // Emits dist/: index.html, assets/main-[hash].{js,css}, content.bundle.json (from
-// packages/content/seed, validated), manifest.webmanifest, icons/, sw.js (precache list +
-// content-derived version).
+// packages/content/seed, validated), examples.json (optional dictionary examples, see
+// examplesFile()), manifest.webmanifest, icons/, sw.js (precache list + content-derived version).
 
 import { createHash } from 'node:crypto';
 import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';
@@ -20,6 +20,29 @@ const ROOT = resolve(WEB_DIR, '../..');
 /** Seed to bundle: KSRS_SEED_DIR (absolute, or relative to the repo root), default the real seed. */
 export const seedDir = (): string => resolve(ROOT, process.env.KSRS_SEED_DIR ?? 'packages/content/seed');
 export const PRETENDARD_CSS = 'https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css';
+
+/**
+ * Dictionary examples to ship as dist/examples.json: KSRS_EXAMPLES_FILE (absolute, or relative to
+ * the repo root), default packages/content/examples/krdict-examples.json. Optional: when the file
+ * is missing the app runs without dictionary examples.
+ */
+export const examplesFile = (): string => resolve(ROOT, process.env.KSRS_EXAMPLES_FILE ?? 'packages/content/examples/krdict-examples.json');
+
+/** Copies the examples file (minified) into outDir. Returns the item count, or null when skipped. */
+export function emitExamples(outDir: string, file = examplesFile()): number | null {
+  if (!existsSync(file)) return null;
+  let data: { format?: unknown; items?: unknown };
+  try { data = JSON.parse(readFileSync(file, 'utf8')) as typeof data; } catch (e) {
+    console.warn(`! ${relative(ROOT, file)}: not valid JSON, examples.json skipped (${(e as Error).message})`);
+    return null;
+  }
+  if (data?.format !== 1 || typeof data.items !== 'object' || data.items === null || Array.isArray(data.items)) {
+    console.warn(`! ${relative(ROOT, file)}: not an examples file (format 1 with an items object), skipped`);
+    return null;
+  }
+  writeFileSync(join(outDir, 'examples.json'), JSON.stringify(data));
+  return Object.keys(data.items).length;
+}
 
 /** KSRS_BUILD_ID (CI: commit sha) or the app package version. Shown on the Data page. */
 export const buildId = (): string => process.env.KSRS_BUILD_ID
@@ -122,6 +145,8 @@ export async function build(opts: BuildOptions = {}): Promise<{ outDir: string; 
   // Content bundle.
   const content = buildContent();
   writeFileSync(join(outDir, 'content.bundle.json'), JSON.stringify(content));
+  // Dictionary examples (optional; fetched lazily by the app, precached by the service worker).
+  const exampleItems = emitExamples(outDir);
 
   // Static assets.
   cpSync(join(WEB_DIR, 'public'), outDir, { recursive: true });
@@ -201,6 +226,7 @@ ${css ? `<link rel="stylesheet" href="${url(css)}">` : ''}
     console.log(`built ${relative(ROOT, outDir)} (base ${base}${dev ? ', dev' : ''}) in ${Date.now() - t0} ms`);
     console.log(`  ${relative(outDir, js)} ${kb(js)} KB${css ? `, ${relative(outDir, css)} ${kb(css)} KB` : ''}`);
     console.log(`  content ${content.items.length} items from ${relative(ROOT, seedDir())} (${content.contentVersion.slice(0, 12)}), sw ${version}, ${precache.length} precached`);
+    console.log(exampleItems === null ? '  examples: none (no examples file)' : `  examples: ${exampleItems} items from ${relative(ROOT, examplesFile())}`);
   }
   return { outDir, base, files: precache };
 }

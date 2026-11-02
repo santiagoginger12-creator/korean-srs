@@ -4,6 +4,7 @@ import { App } from './App.tsx';
 import { registerSW } from './pwa/register.ts';
 import { store } from './state/store.ts';
 import { isArtifact } from './host.ts';
+import { scheduleExamplesLoad } from './data/examples.ts';
 import './styles.css';
 
 declare const __BASE__: string;
@@ -15,3 +16,5 @@ if (!__DEV__ && !isArtifact) registerSW(`${__BASE__}sw.js`, __BASE__);
 (window as unknown as { __ksrs?: unknown }).__ksrs = { store };
 
 createRoot(document.getElementById('root')!).render(<StrictMode><App /></StrictMode>);
+// Dictionary examples (optional examples.json): fetched once the first paint is done.
+scheduleExamplesLoad();

@@ -17,6 +17,7 @@ import { now } from '../../state/clock.ts';
 import { itemHref, KIND_KO, QTYPE_LABEL, SPEECH_LEVEL } from '../../state/format.ts';
 import { useApp } from '../../state/hooks.ts';
 import { Speaker } from '../../tts/Speaker.tsx';
+import { FeedbackExample } from '../../components/DictExamples.tsx';
 import { speak, ttsPrefs } from '../../tts/tts.ts';
 
 export interface Feedback {
@@ -27,6 +28,8 @@ export interface Feedback {
   overridden: boolean;
   /** Correct, but after the full (level-2) cloze hint: graded as a miss. */
   hintPenalty?: boolean;
+  /** The item's completed-review count when this answer was submitted (picks the example). */
+  reviewCount: number;
 }
 
 interface Props {
@@ -76,6 +79,8 @@ export function QuizRunner({ sess, dispatch, index, mode, done, onWrapUp, onExit
     // Cloze hint ladder: the level goes into check.layer; a correct answer at level 2 is a miss.
     const { hintPenalty, ...result } = q.qtype === 'cloze' ? withHint(checked, hintLevel) : { ...checked, hintPenalty: false };
     const at = now();
+    // Read before dispatching: completing the item's review group bumps the count.
+    const reviewCount = app.derived?.items.get(q.itemId)?.stats.reviews ?? 0;
     if (result.outcome === 'close') {
       setHint({ text: result.hint ?? 'Almost. Try again.', converted: result.converted });
       setShake((n) => n + 1);
@@ -90,7 +95,7 @@ export function QuizRunner({ sess, dispatch, index, mode, done, onWrapUp, onExit
       const prefs = ttsPrefs(app.derived.settings);
       if (prefs.autoplay) speak(spokenAnswer(q, result), prefs);
     }
-    setFeedback({ q, response, result, grade: result.outcome, overridden: false, hintPenalty });
+    setFeedback({ q, response, result, grade: result.outcome, overridden: false, hintPenalty, reviewCount });
   };
 
   const next = () => {
@@ -207,7 +212,7 @@ export function QuizRunner({ sess, dispatch, index, mode, done, onWrapUp, onExit
       )}
 
       {feedback && (
-        <FeedbackPanel fb={feedback} index={index} acceptFuture={acceptFuture} setAcceptFuture={setAcceptFuture}
+        <FeedbackPanel fb={feedback} index={index} includeDict={app.derived?.settings['examples.dictionary'] !== false} acceptFuture={acceptFuture} setAcceptFuture={setAcceptFuture}
                        persists={mode === 'review'} onUndo={undo} onRight={iWasRight} onNext={next} nextRef={nextBtn} />
       )}
 
@@ -288,13 +293,13 @@ function NuanceOptions({ q, feedback, onPick }: { q: Extract<QuestionInstance, {
 }
 
 interface FbProps {
-  fb: Feedback; index: ContentIndex; acceptFuture: boolean; setAcceptFuture: (v: boolean) => void;
+  fb: Feedback; index: ContentIndex; includeDict: boolean; acceptFuture: boolean; setAcceptFuture: (v: boolean) => void;
   /** False in practice and lesson quizzes, which emit no events: nothing is saved, so don't offer to. */
   persists: boolean;
   onUndo: () => void; onRight: () => void; onNext: () => void; nextRef: { current: HTMLButtonElement | null };
 }
 
-function FeedbackPanel({ fb, acceptFuture, setAcceptFuture, persists, onUndo, onRight, onNext, nextRef }: FbProps): JSX.Element {
+function FeedbackPanel({ fb, index, includeDict, acceptFuture, setAcceptFuture, persists, onUndo, onRight, onNext, nextRef }: FbProps): JSX.Element {
   const { q, result } = fb;
   const correct = fb.grade === 'correct';
   const shown = q.qtype === 'nuance' ? q.options.find((o) => o.key === q.correctKey)?.text : result.matched ?? acceptedOf(q)[0];
@@ -314,6 +319,7 @@ function FeedbackPanel({ fb, acceptFuture, setAcceptFuture, persists, onUndo, on
       )}
       {!correct && result.hint && !fb.hintPenalty && <p className="fb-hint">{result.hint}</p>}
       {result.notes.length > 0 && <ul className="fb-notes">{result.notes.map((n, i) => <li key={i} lang="ko">{n}</li>)}</ul>}
+      <FeedbackExample item={index.byId.get(q.itemId)} reviewCount={fb.reviewCount} includeDict={includeDict} />
       <div className="fb-actions">
         <button type="button" className="btn btn-quiet" onClick={onUndo}>Undo</button>
         {!correct && (

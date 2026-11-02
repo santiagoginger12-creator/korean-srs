@@ -159,3 +159,12 @@ Append-only log of tradeoffs. Newest at the bottom.
 ## Hosting (2026-10-30)
 
 70. **D70: GitHub Pages deploys from a `gh-pages` branch, not from GitHub Actions.** The Claude GitHub App can't write `.github/workflows/`, so the workflow files were removed from history and kept under `docs/ci/` for reference. Each release is built locally with `BASE=/korean-srs/` and the contents of `dist/` are pushed to `gh-pages`. The site is `https://santiagoginger12-creator.github.io/korean-srs/`.
+
+## Dictionary examples (2026-11-02)
+
+71. **D71: Dynamic example sentences from 한국어기초사전.**
+    - **Source and license.** Each vocab or expression item has a bank of up to 12 verbatim KRDict sentences and dialogues (2019-06-26 snapshot, CC BY-SA 2.0 KR) in `packages/content/examples/`. That folder has its own LICENSE.md, and the share-alike terms apply to the folder only.
+    - **Sense matching.** `scripts/krdict/sense-map.json` decides which KRDict senses match each app item. When unsure, it includes fewer senses. QA found 0.4% wrong-sense examples, all of them fixed.
+    - **Rotation.** After each answer, `pickExample` rotates through the item's original examples plus the dictionary bank, in a fixed per-item order, and shows one. Every sentence appears once before any repeats. Nothing is shown before the answer is submitted.
+    - **Display.** Each sentence is credited to its source and linked to the dictionary entry. A setting, `examples.dictionary` (default on), turns them off.
+    - **Updating.** Rebuild with a newer KRDict download via scripts/krdict/README.md.

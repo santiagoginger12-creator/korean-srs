@@ -399,3 +399,23 @@ textarea { resize: vertical; }
 .contrast-sets li { padding: 8px 0; border-bottom: 1px solid var(--line); }
 .contrast-sets li:last-child { border-bottom: 0; }
 .cs-label { display: block; font-size: .85rem; color: var(--text-2); margin-bottom: 6px; }
+
+/* ---- example sentences (feedback strip, 한국어기초사전 section) */
+mark.ex-hit { background: var(--k-soft, var(--accent-soft)); color: inherit; border-radius: 4px; padding: 0 2px; font-weight: 600; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.fb-example { margin: 8px 0 0; padding: 8px 0 0; border-top: 1px solid var(--line); }
+.fb-example .label { display: block; margin-bottom: 2px; }
+.fb-example .ko { margin: 0; font-size: 1rem; line-height: 1.55; }
+.fb-example .en { margin: 2px 0 0; color: var(--text-2); font-size: .9rem; }
+.fb-example .btn-reveal { margin-top: 4px; min-height: 28px; padding: 2px 10px; }
+.fb-example .speaker-inline { width: 28px; height: 28px; }
+.fb-example .dialogue-line { margin: 0; }
+.ex-credit { margin: 4px 0 0; font-size: .75rem; color: var(--muted); }
+.ex-credit a { color: var(--muted); }
+.dialogue .dialogue-line { margin: 0 0 2px; }
+.more-examples > summary { cursor: pointer; list-style: revert; }
+.more-examples > summary h3 { display: inline; margin: 0; }
+.more-examples .dict-examples { margin-top: 6px; }
+.more-examples .ex-credit { margin-top: 8px; }
+.ex-line { display: flex; align-items: flex-start; gap: 6px; }
+.ex-line .ex-text { flex: 1; min-width: 0; }
+.ex-line .speaker-inline { margin-left: 0; flex: none; }

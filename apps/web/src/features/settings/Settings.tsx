@@ -3,6 +3,8 @@ import type { Settings as S } from '@ksrs/srs-engine';
 import { useApp } from '../../state/hooks.ts';
 import { store } from '../../state/store.ts';
 import { koVoices, speak, ttsAvailable, ttsPrefs } from '../../tts/tts.ts';
+import { DEFAULT_SOURCE } from '../../data/examples.ts';
+import { useExamplesData } from '../../components/DictExamples.tsx';
 
 const SAMPLE = '천천히 또박또박 읽어 볼게요.';
 
@@ -51,6 +53,12 @@ export function Settings(): JSX.Element {
         </fieldset>
       </div>
       <TtsSettings />
+      <div className="card form" data-testid="examples-settings">
+        <h3>Example sentences</h3>
+        <label className="check"><input type="checkbox" checked={s['examples.dictionary'] !== false} data-testid="set-dict-examples"
+          onChange={(e: { target: HTMLInputElement }) => void store.setAppSetting('examples.dictionary', e.target.checked)} /> Dictionary examples in reviews</label>
+        <p className="muted small">After you answer, a vocab or expression review shows one example, rotating through the item's own examples and 한국어기초사전 examples. Off: only the item's own.</p>
+      </div>
       <div className="card form">
         <h3>Data</h3>
         <p><a className="btn btn-quiet" href="#/data" data-testid="open-data">Backup, sync and import →</a></p>
@@ -62,6 +70,7 @@ export function Settings(): JSX.Element {
         {rebuilt && <p className="muted" role="status">{rebuilt}</p>}
         <p className="muted small">Device {app.deviceId}</p>
       </div>
+      <ExamplesCredit />
     </div>
   );
 }
@@ -98,6 +107,21 @@ function TtsSettings(): JSX.Element {
           <p><button type="button" className="btn btn-quiet btn-small" onClick={() => speak(SAMPLE, { rate, voiceURI: prefs.voiceURI })} data-testid="tts-test">Test voice</button></p>
         </>
       )}
+    </div>
+  );
+}
+
+/** About: where the dictionary example sentences come from (CC BY-SA attribution). */
+function ExamplesCredit(): JSX.Element {
+  const src = useExamplesData()?.source ?? DEFAULT_SOURCE;
+  return (
+    <div className="card form about" data-testid="examples-credit">
+      <h3>About</h3>
+      <p className="small"><strong>Example sentences.</strong> Additional examples come from{' '}
+        <a href={src.url} target="_blank" rel="noopener">{src.name}</a> ({src.publisher}), licensed{' '}
+        <a href={src.licenseUrl} target="_blank" rel="noopener license">{src.license}</a>
+        {src.snapshot ? <>, snapshot {src.snapshot}</> : null}. They are shown as published, without English.
+        The items' own examples and translations are original to this app.</p>
     </div>
   );
 }

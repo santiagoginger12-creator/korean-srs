@@ -551,3 +551,23 @@ Independent native-editor pass over all 120 new starter items: glosses, collocat
 - **Spelling and spacing**: 건네주다, 바래다주다, 못지않다, 못되다, 끼어들다, 들려주다, and 틀림없다 are single 표준 words, and 얼마나 쓴지 / 구경 삼아 are spaced correctly. The misspelling `nearMiss` hints (일부로, 어쨋든, 왠일, 왠만하면, 담궈, 건냈어, 끼여들지, 어짜피, 쇄, 괜이) are accurate.
 - **Level fit**: nothing is too niche. 여부, 실체, 전망, and 대책 are news-leaning, but every Korean speaker uses them. A few are TOPIK-I basic (서두르다, 우연히, 혼나다, 망치다, 자녀, 편찮다). They stay because they're proven leeches (8+ misses), but that's raised as the one owner question in REVIEW_NOTES.
 - **Polysemy order**: 지내다 leads with "get along", not "be doing / spend time". That's deliberate (the author's leech hypothesis), and meaning grading accepts every sense, so it's left as is.
+
+## KRDict examples QA (`krdict-examples.json`, independent review, 2026-11-02)
+
+**Scope:** 134 items, 766 KRDict examples. That is all 114 L01–L04 items with an entry in `sense-map.json`, plus 20 random L05–L13 items (seed 20261102). For each item I read its meanings and app examples against every assigned KRDict sense and example. Separately, the whole file (557 items, 2,214 examples) got script checks for `match` placement and dialogue structure. Before any change, a rebuild from the 2019-06-26 snapshot was byte-identical to the committed file.
+
+**Result:** 1 sense misalignment in 134 items, 3 of 766 examples (0.4%). There were no bad matches and no bad dialogue groupings.
+
+### Fixed (sense-map.json, rebuilt per scripts/krdict/README.md)
+- **v:빠지다:absent**: dropped `66637:3`, "fall short by an amount" (백만 원에서 조금 빠지는 돈, 한 달에서 삼일 정도 빠졌다). None of the item's meanings (left out / missing / skip / sit out) covers it, and 「6」 already supplies "missing". This removed 3 examples, leaving 2,211.
+
+### Mechanical checks (whole file)
+- **`match`**: no match starts mid-eojeol, so nothing like 사정 inside 사정없이 slipped through. Every noun match with an unusual tail is a copula or particle (구체적**인**, 녹초**입니다요**, 관행**대로**, 깜냥**껏**). Where a sentence contains more than one possible predicate match, both are the same verb (모시고 … 모시러). Lemma-fallback items (마뜩잖다→마뜩하다, 개의치 않다→개의하다, 상쇄, 자의적→자의) highlight the right word.
+- **Dialogues**: all 638 have 2 lines labelled 가/나, and `matchLine` points at the line that contains `match`. Upstream keeps each dialogue inside a single `SenseExample`, so the build can't mis-group lines.
+
+### Reviewed and left as is
+- **v:어긋나다:contrary**: KRDict 「2」 also files 계획이 어긋났다, which in practice means "fall through" (the :awry sense). The map can only include or exclude a whole sense, and dropping 「2」 would also lose 기대에 어긋나다, so I left it.
+- **v:꺼내다:bring-up**, **v:내려놓다:let-go**: these show literal examples (지갑을 꺼내다, 잔을 내려놓다). Both items list the literal meaning, and neither has a sibling item.
+- **v:짚다:point-out**: kept 「4」 '어림잡아 짐작하다' (헛다리를 짚다) because the item's collocations include 잘못 짚다.
+- **v:내심**, **v:한참**, **v:당장**: KRDict lists these only as nouns, so some examples use the noun form (내심은 따뜻한 사람). It's the same sense with a different part of speech.
+- **v:혼나다** 「1」: 어머니는 … 아이에게 혼났다 means the mother had a hard time, not that she was scolded. It's a correct example, but learners may misread it.

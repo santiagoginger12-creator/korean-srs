@@ -1,0 +1,38 @@
+{
+  "format": 1,
+  "source": {
+    "name": "한국어기초사전",
+    "publisher": "국립국어원",
+    "license": "CC BY-SA 2.0 KR",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/kr/",
+    "url": "https://krdict.korean.go.kr/",
+    "snapshot": "2019-06-26"
+  },
+  "items": {
+    "v:망설이다": [
+      { "kind": "sentence", "ko": "나는 무슨 말을 해야 할지 몰라 한참을 망설였다.", "match": "망설였다" },
+      { "kind": "sentence", "ko": "지수는 선물을 받을지 말지 망설였다.", "match": "망설였다" },
+      { "kind": "dialogue", "lines": ["가: 그 회사에 지원할 거야?", "나: 아직 망설이고 있어."], "match": "망설이고", "matchLine": 1 }
+    ],
+    "v:결재": [
+      { "kind": "sentence", "ko": "부장님께 서류 결재를 받았다.", "match": "결재" },
+      { "kind": "sentence", "ko": "사장의 결재가 나자 공사가 시작되었다.", "match": "결재" }
+    ],
+    "v:결제": [
+      { "kind": "sentence", "ko": "물건값을 카드로 결제했다.", "match": "결제" }
+    ],
+    "v:재량": [
+      { "kind": "sentence", "ko": "이 일은 담당자의 재량에 맡긴다.", "match": "재량" }
+    ],
+    "v:얼버무리다": [
+      { "kind": "sentence", "ko": "그는 내 질문에 대충 얼버무리고 자리를 떴다.", "match": "얼버무리고" }
+    ],
+    "v:덤": [
+      { "kind": "sentence", "ko": "가게 주인이 귤 몇 개를 덤으로 얹어 주었다.", "match": "덤" },
+      { "kind": "dialogue", "lines": ["가: 아주머니, 하나만 더 주세요.", "나: 그래요, 이건 덤이에요."], "match": "덤", "matchLine": 1 }
+    ],
+    "x:발등에-불이-떨어지다": [
+      { "kind": "sentence", "ko": "시험이 내일이라 발등에 불이 떨어진 학생들이 도서관에 몰렸다.", "match": "발등에 불이 떨어진" }
+    ]
+  }
+}

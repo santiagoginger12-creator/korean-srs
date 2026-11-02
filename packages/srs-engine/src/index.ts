@@ -57,6 +57,8 @@ export {
   type VariantEntry, type ExtraStudySource,
 } from './study.ts';
 
+export { pickExample, type DictExample, type PickedExample } from './examples.ts';
+
 export { localDayStart, nextLocalDayStart, localDayBoundaries, type TzOffset } from './time.ts';
 export { floorHour, seededShuffle, canonicalJson, sha256Hex, MINUTE, HOUR, DAY } from './util.ts';
 export {
