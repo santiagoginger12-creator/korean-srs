@@ -47,7 +47,7 @@
           "id": "c1",
           "sentence": "1인 가구가 요즘 소비 트렌드를 {{}} 있다.",
           "en": "Single-person households are driving consumer trends these days.",
-          "cue": "주도하다 · drive (a trend)",
+          "cue": "drive, lead (a trend)",
           "accepted": ["주도하고"],
           "particleTolerance": "none"
         }
@@ -65,6 +65,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:5105"],
+    "mnemonic": "회복 is recovering; this is the finish line.",
     "word": "완치되다",
     "meanings": ["to be fully cured", "to make a full recovery"],
     "pos": "동사",
@@ -102,7 +103,7 @@
       },
       "production": {
         "promptEn": "to be completely cured (of an illness)",
-        "contextHint": "Sino-Korean verb; 회복 is recovering, this is the finish line",
+        "contextHint": "Sino-Korean verb; not recovering, but reaching the finish line",
         "accepted": ["완치되다"],
         "rejected": ["회복되다"]
       }
@@ -119,6 +120,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:5110"],
+    "mnemonic": "Not a personal nudge (권유하다) or an authority's formal call to a specific party (권고하다).",
     "word": "권장하다",
     "meanings": ["to recommend (as advisable)", "to encourage (a practice)"],
     "pos": "동사",
@@ -145,7 +147,7 @@
       "meaning": {"accepted": ["recommend", "encourage", "advise", "promote", "urge", "suggest"]},
       "production": {
         "promptEn": "to recommend, encourage (as officially advisable: guidelines, labels)",
-        "contextHint": "public guidance, not a personal nudge (권유하다) or an authority's formal call to a specific party (권고하다)",
+        "contextHint": "public guidance, not a personal nudge or an authority's formal call to a specific party",
         "accepted": ["권장하다"],
         "rejected": ["권유하다", "권고하다"]
       }
@@ -200,7 +202,7 @@
         ]
       },
       "production": {
-        "promptEn": "unavoidable (said apologetically: ___한 사정으로…)",
+        "promptEn": "unavoidable (said apologetically: 'due to unavoidable circumstances…')",
         "contextHint": "formal; notices and apologies",
         "accepted": ["부득이하다"]
       },
@@ -209,7 +211,7 @@
           "id": "c1",
           "sentence": "회사 사정으로 {{}} 일정을 변경하게 되었습니다.",
           "en": "Owing to circumstances at the company, we have had no choice but to change the schedule.",
-          "cue": "부득이하다 · unavoidably",
+          "cue": "unavoidably, regrettably",
           "accepted": ["부득이하게"],
           "particleTolerance": "none"
         }
@@ -282,7 +284,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:5192"],
-    "mnemonic": "주최 is the name on the poster; the body that actually runs the event is the 주관. Translators: \"주최 OO, 주관 OO\" = \"hosted by OO, organized by OO.\"",
+    "mnemonic": "주최 is the name on the poster; the body that actually runs the event is the 주관. Translators: \"주최 OO, 주관 OO\" = \"hosted by OO, organized by OO.\". The body that runs an event day to day is 주관하다.",
     "word": "주최하다",
     "meanings": ["to host, organize (an event, as the named organizer)", "to hold (a contest or conference)"],
     "pos": "동사",
@@ -310,7 +312,7 @@
       "meaning": {"accepted": ["host", "organize", "hold", "put on", "stage", "organise"], "rejected": ["sponsor", "be sponsored"]},
       "production": {
         "promptEn": "to host (an event, as the organizer named on the poster)",
-        "contextHint": "the body that runs it day to day 주관하다",
+        "contextHint": "the named host, not the body that runs it day to day",
         "accepted": ["주최하다"],
         "rejected": ["주관하다"]
       }
@@ -327,6 +329,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:5196"],
+    "mnemonic": "Airing a program is 방송되다 or 방영되다.",
     "word": "중계되다",
     "meanings": ["to be broadcast (often live)", "to be relayed"],
     "pos": "동사",
@@ -363,7 +366,7 @@
           "broadcast"
         ]
       },
-      "production": {"promptEn": "(a game or event) to be broadcast, relayed (often live)", "contextHint": "live sports and events; airing a program is 방송되다 or 방영되다", "accepted": ["중계되다"], "rejected": ["방송되다", "방영되다"]}
+      "production": {"promptEn": "(a game or event) to be broadcast, relayed (often live)", "contextHint": "live sports and events, not airing a program in general", "accepted": ["중계되다"], "rejected": ["방송되다", "방영되다"]}
     }
   },
   {
@@ -377,6 +380,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:5332"],
+    "mnemonic": "Leaving an ordinary job is 퇴사.",
     "word": "사퇴하다",
     "meanings": ["to resign, step down (from a public post)", "to withdraw (from a race)"],
     "pos": "동사",
@@ -404,7 +408,7 @@
       "meaning": {"accepted": ["resign", "step down", "quit", "withdraw", "stand down", "step aside", "drop out"]},
       "production": {
         "promptEn": "to step down, resign (from an office or a race)",
-        "contextHint": "public posts and candidacies; leaving an ordinary job is 퇴사",
+        "contextHint": "public posts and candidacies, not leaving an ordinary job",
         "accepted": ["사퇴하다"],
         "rejected": ["퇴사하다"]
       },
@@ -413,7 +417,7 @@
           "id": "c1",
           "sentence": "그는 기자 회견을 열고 후보직을 {{}} 뜻을 밝혔다.",
           "en": "He held a press conference and announced his intention to withdraw his candidacy.",
-          "cue": "사퇴하다 · withdraw (from a race)",
+          "cue": "withdraw (from a race), step down",
           "accepted": ["사퇴하겠다는", "사퇴한다는", "사퇴할"],
           "particleTolerance": "none"
         }
@@ -485,6 +489,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:5366"],
+    "mnemonic": "The clinic's word for treatment is 치료하다.",
     "word": "치유하다",
     "meanings": ["to heal (especially emotionally or socially)", "to cure"],
     "pos": "동사",
@@ -512,7 +517,7 @@
       "meaning": {"accepted": ["heal", "cure", "mend", "restore"], "rejected": ["treat"]},
       "production": {
         "promptEn": "to heal (wounds, especially emotional or social ones)",
-        "contextHint": "not the clinic's word for treatment (치료하다)",
+        "contextHint": "not the clinic's word for medical treatment",
         "accepted": ["치유하다"],
         "rejected": ["치료하다"]
       }
@@ -568,7 +573,7 @@
       },
       "production": {
         "promptEn": "to contemplate, reflect deeply (quiet, philosophical thinking)",
-        "contextHint": "written; ___에 잠기다",
+        "contextHint": "written; one can be 'sunk in' it",
         "accepted": ["사색하다"]
       },
       "cloze": [
@@ -576,7 +581,7 @@
           "id": "c1",
           "sentence": "그녀는 창가에 앉아 깊은 {{}}에 잠겼다.",
           "en": "She sat by the window, lost in deep thought.",
-          "cue": "사색하다 (noun form) · contemplation",
+          "cue": "contemplation, deep thought (noun)",
           "accepted": ["사색"],
           "particleTolerance": "none"
         }
@@ -645,6 +650,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:5433"],
+    "mnemonic": "In speech the shot itself is often just 맞다.",
     "word": "접종하다",
     "meanings": ["to vaccinate, inoculate", "to get vaccinated"],
     "pos": "동사",
@@ -674,7 +680,7 @@
       },
       "production": {
         "promptEn": "to vaccinate, inoculate",
-        "contextHint": "Sino-Korean; in speech the shot itself is often just 맞다",
+        "contextHint": "Sino-Korean; in speech the shot itself is often just 'get' (a shot)",
         "accepted": ["접종하다"]
       }
     }
@@ -690,7 +696,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:5453", "homograph:醱酵", "law"],
-    "mnemonic": "Laws and weather warnings 발효되다: they switch on (효력이 생기다). Kimchi 발효 is a different word, fermentation; context tells you which.",
+    "mnemonic": "Laws and weather warnings 발효되다: they switch on (효력이 생기다). Kimchi 발효 is a different word, fermentation; context tells you which. The other 발효 is fermentation.",
     "word": "발효되다",
     "meanings": ["(a law, treaty, or warning) to take effect", "to come into force"],
     "pos": "동사",
@@ -728,7 +734,7 @@
       },
       "production": {
         "promptEn": "(a law, treaty, or weather warning) to take effect",
-        "contextHint": "the other 발효 is fermentation",
+        "contextHint": "its homonym means fermentation",
         "accepted": ["발효되다"]
       },
       "cloze": [
@@ -736,7 +742,7 @@
           "id": "c1",
           "sentence": "새 협정은 양국 의회의 비준을 거쳐 내년 1월부터 {{}} 예정이다.",
           "en": "After ratification by both legislatures, the new agreement is set to take effect in January.",
-          "cue": "발효되다 · take effect",
+          "cue": "take effect, come into force",
           "accepted": ["발효될"],
           "particleTolerance": "none"
         }
@@ -806,6 +812,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:5479"],
+    "mnemonic": "Shrinking size or scope is 축소.",
     "word": "단축하다",
     "meanings": ["to shorten, cut (time or distance)", "to reduce (hours, a period)"],
     "pos": "동사",
@@ -833,7 +840,7 @@
       "meaning": {"accepted": ["shorten", "cut", "reduce", "cut down", "curtail", "shave off", "abbreviate"]},
       "production": {
         "promptEn": "to shorten, cut (a duration: time, hours, a period)",
-        "contextHint": "shrinking size or scope is 축소",
+        "contextHint": "duration, not shrinking size or scope",
         "accepted": ["단축하다"],
         "rejected": ["축소하다"]
       },
@@ -842,7 +849,7 @@
           "id": "c1",
           "sentence": "그는 자신의 기록을 0.3초나 {{}} 금메달을 땄다.",
           "en": "He cut a full 0.3 seconds off his own record and took the gold.",
-          "cue": "단축하다 · cut (a time)",
+          "cue": "cut (a time), shorten",
           "accepted": ["단축하며", "단축해", "단축해서", "단축하고"],
           "particleTolerance": "none"
         }
@@ -893,7 +900,7 @@
           "id": "c1",
           "sentence": "며칠째 잠을 못 자서 눈이 빨갛게 {{}} 있었다.",
           "en": "He hadn't slept for days, and his eyes were red and bloodshot.",
-          "cue": "충혈되다 · be bloodshot",
+          "cue": "be bloodshot",
           "accepted": ["충혈되어", "충혈돼"],
           "particleTolerance": "none"
         }
@@ -949,8 +956,8 @@
         ]
       },
       "production": {
-        "promptEn": "to face, be confronted with (an immediate problem: ___한 과제)",
-        "contextHint": "formal; mostly 당면한 + noun or 당면 + noun",
+        "promptEn": "to face, be confronted with (an immediate problem: 'the task at hand')",
+        "contextHint": "formal; mostly as a modifier before a noun",
         "accepted": ["당면하다"]
       },
       "cloze": [
@@ -958,7 +965,7 @@
           "id": "c1",
           "sentence": "정부가 {{}} 최대 과제는 물가 안정이다.",
           "en": "The biggest task facing the government is stabilizing prices.",
-          "cue": "당면하다 · face (a task)",
+          "cue": "face, be confronted with (a task)",
           "accepted": ["당면한"],
           "particleTolerance": "none"
         }
@@ -1003,7 +1010,7 @@
       "meaning": {"accepted": ["diligent", "industrious", "hardworking", "hard working", "assiduous", "sedulous"]},
       "production": {
         "promptEn": "diligent, industrious (a virtue word: résumés and eulogies)",
-        "contextHint": "set phrase ___ 성실",
+        "contextHint": "paired in a set phrase with 'sincere'",
         "accepted": ["근면하다"]
       }
     }
@@ -1019,6 +1026,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:5529"],
+    "mnemonic": "Being hand-picked by a boss is 발탁.",
     "word": "선발하다",
     "meanings": ["to select, pick (by screening or competition)"],
     "pos": "동사",
@@ -1042,7 +1050,7 @@
       "meaning": {"accepted": ["select", "pick", "choose", "recruit", "screen and select", "single out", "draft"]},
       "production": {
         "promptEn": "to select (from a pool of candidates, by tryouts or exams)",
-        "contextHint": "an open selection; being hand-picked by a boss is 발탁",
+        "contextHint": "an open selection, not being hand-picked by a boss",
         "accepted": ["선발하다"],
         "rejected": ["발탁하다"]
       },
@@ -1051,7 +1059,7 @@
           "id": "c1",
           "sentence": "이번 공채의 {{}} 인원은 총 20명이며 서류와 면접으로 진행된다.",
           "en": "This round of open recruitment will select 20 people in total, through document screening and interviews.",
-          "cue": "선발하다 (noun form) · selection",
+          "cue": "selection, number selected (noun)",
           "accepted": ["선발"],
           "particleTolerance": "none"
         }
@@ -1069,6 +1077,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:5530"],
+    "mnemonic": "Everyday speech says 약을 먹다.",
     "word": "복용하다",
     "meanings": ["to take (medicine)"],
     "pos": "동사",
@@ -1096,7 +1105,7 @@
       "meaning": {"accepted": ["take medicine", "take", "take medication", "take a drug", "dose"]},
       "production": {
         "promptEn": "to take (medicine), as on a label or in a clinic",
-        "contextHint": "everyday speech says 약을 먹다",
+        "contextHint": "everyday speech uses 'eat' for this",
         "accepted": ["복용하다"]
       }
     }
@@ -1112,7 +1121,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:5536", "homograph:消息"],
-    "mnemonic": "Same spelling as 소식 \"news,\" but this 소 means \"small\": small meals, a light eater. The opposite is 과식, overeating.",
+    "mnemonic": "Same spelling as 소식 \"news,\" but this 소 means \"small\": small meals, a light eater. The opposite is 과식, overeating. This 소식 isn't 'news'; its opposite is 과식.",
     "word": "소식하다",
     "meanings": ["to eat light, eat sparingly", "to keep meals small"],
     "pos": "동사",
@@ -1150,7 +1159,7 @@
       },
       "production": {
         "promptEn": "to eat light, eat sparingly (as a health habit)",
-        "contextHint": "this 소식 isn't 'news'; its opposite is 과식",
+        "contextHint": "not the homonym for 'news'; the opposite of overeating",
         "accepted": ["소식하다"]
       }
     }
@@ -1247,7 +1256,7 @@
       },
       "production": {
         "promptEn": "underprivileged; unfortunate (in one's circumstances)",
-        "contextHint": "charity drives: ___ 이웃",
+        "contextHint": "charity drives: 'neighbors in need'",
         "accepted": ["불우하다"]
       },
       "cloze": [
@@ -1255,7 +1264,7 @@
           "id": "c1",
           "sentence": "구청은 매년 겨울 {{}} 이웃을 위한 김장 나눔 행사를 연다.",
           "en": "Every winter the district office holds a kimchi-sharing event for neighbors in need.",
-          "cue": "불우하다 · needy",
+          "cue": "needy, underprivileged",
           "accepted": ["불우", "불우한"],
           "particleTolerance": "none"
         }
@@ -1324,7 +1333,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:5580", "homograph:校監"],
-    "mnemonic": "교감 = 교류 + 감정: feelings passing both ways. 교감 선생님 (vice principal) is a different word.",
+    "mnemonic": "교감 = 교류 + 감정: feelings passing both ways. 교감 선생님 (vice principal) is a different word. A school's 교감 선생님 is a different word.",
     "word": "교감하다",
     "meanings": ["to connect emotionally, commune (with)", "to share a rapport"],
     "pos": "동사",
@@ -1365,7 +1374,7 @@
       },
       "production": {
         "promptEn": "to connect emotionally, commune (with an audience, an animal, nature)",
-        "contextHint": "a school's 교감 선생님 is a different word",
+        "contextHint": "not the homonym for a vice principal",
         "accepted": ["교감하다"]
       }
     }
@@ -1381,7 +1390,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:5588"],
-    "mnemonic": "조종사 (pilot) has their hands on the controls. Not 조정 (adjust: 일정 조정) or 조절 (regulate: 온도 조절).",
+    "mnemonic": "조종사 (pilot) has their hands on the controls. Not 조정 (adjust: 일정 조정) or 조절 (regulate: 온도 조절). Not 조정 (adjust) or 조절 (regulate).",
     "word": "조종하다",
     "meanings": ["to fly, pilot, operate (a plane or machine)", "to manipulate, pull the strings of (a person)"],
     "pos": "동사",
@@ -1407,7 +1416,7 @@
       },
       "production": {
         "promptEn": "to pilot (a plane); to manipulate (a person from behind)",
-        "contextHint": "not 조정 (adjust) or 조절 (regulate)",
+        "contextHint": "not the near-homophones for 'adjust' or 'regulate'",
         "accepted": ["조종하다"],
         "rejected": ["조정하다", "조절하다"]
       },
@@ -1416,9 +1425,9 @@
           "id": "c1",
           "sentence": "그 회장은 측근들을 앞세워 회사를 뒤에서 {{}} 있었다.",
           "en": "The chairman was running the company from behind the scenes, using his close aides as a front.",
-          "cue": "조종하다 · pull the strings",
+          "cue": "pull the strings, control from behind",
           "accepted": ["조종하고"],
-          "nearMiss": [{"answer": "조정하고", "hint": "조정 is adjusting; pulling the strings is 조종."}],
+          "nearMiss": [{"answer": "조정하고", "hint": "조정 is adjusting; the cue wants pulling the strings."}],
           "particleTolerance": "none"
         }
       ]
@@ -1435,6 +1444,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:5596"],
+    "mnemonic": "A healthy body is 건강하다.",
     "word": "건전하다",
     "meanings": ["sound, wholesome (in a moral sense)", "healthy, sound (finances, criticism)"],
     "pos": "형용사",
@@ -1458,7 +1468,7 @@
       "meaning": {"accepted": ["sound", "wholesome", "healthy", "constructive", "decent", "clean", "sane"]},
       "production": {
         "promptEn": "sound, wholesome (healthy in a moral or financial sense)",
-        "contextHint": "habits, culture, finances; a healthy body is 건강하다",
+        "contextHint": "habits, culture, finances; not a healthy body",
         "accepted": ["건전하다"],
         "rejected": ["건강하다"]
       }
@@ -1475,6 +1485,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:5599"],
+    "mnemonic": "Being voted in is 선출되다.",
     "word": "임명되다",
     "meanings": ["to be appointed (to a post)", "to be named (to a position)"],
     "pos": "동사",
@@ -1498,7 +1509,7 @@
       "meaning": {"accepted": ["be appointed", "be named", "be installed", "be designated", "appointed"]},
       "production": {
         "promptEn": "to be appointed (to a post by an authority)",
-        "contextHint": "being voted in is 선출되다",
+        "contextHint": "appointed, not voted in",
         "accepted": ["임명되다"],
         "rejected": ["선출되다"]
       },
@@ -1507,7 +1518,7 @@
           "id": "c1",
           "sentence": "새로 {{}} 장관이 첫 기자 회견을 열었다.",
           "en": "The newly appointed minister held his first press conference.",
-          "cue": "임명되다 · be appointed",
+          "cue": "be appointed (to a post)",
           "accepted": ["임명된"],
           "particleTolerance": "none"
         }
@@ -1565,6 +1576,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:5609"],
+    "mnemonic": "The counterargument itself is 반론.",
     "word": "반박하다",
     "meanings": ["to refute, rebut (an argument or claim)", "to argue back, counter"],
     "pos": "동사",
@@ -1592,13 +1604,13 @@
       "meaning": {
         "accepted": ["refute", "rebut", "counter", "argue back", "contradict", "dispute", "argue against", "counter-argue"]
       },
-      "production": {"promptEn": "to refute, rebut (a claim or argument)", "contextHint": "Sino-Korean verb for the act; the counterargument itself is 반론", "accepted": ["반박하다"]},
+      "production": {"promptEn": "to refute, rebut (a claim or argument)", "contextHint": "Sino-Korean verb for the act, not the counterargument itself", "accepted": ["반박하다"]},
       "cloze": [
         {
           "id": "c1",
           "sentence": "변호인은 검찰의 주장을 조목조목 {{}} 나섰다.",
           "en": "The defense counsel came out rebutting the prosecution's claims point by point.",
-          "cue": "반박하다 · rebut",
+          "cue": "rebut, refute (point by point)",
           "accepted": ["반박하고"],
           "particleTolerance": "none"
         }
@@ -1655,7 +1667,7 @@
           "id": "c1",
           "sentence": "남의 일에 {{}} 좋을 거 하나 없어.",
           "en": "Nothing good comes of butting into other people's business.",
-          "cue": "참견하다 · butt in",
+          "cue": "butt in, meddle",
           "accepted": ["참견해서", "참견해 봤자", "참견해 봐야"],
           "particleTolerance": "none"
         }
@@ -1710,7 +1722,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:5631", "homograph:拾得"],
-    "mnemonic": "습득 shares its 습 with 학습 and 연습: what you gain by practicing. A lost-and-found's 습득물 (\"found items\") is a different 습득, \"picked up.\"",
+    "mnemonic": "습득 shares its 습 with 학습 and 연습: what you gain by practicing. A lost-and-found's 습득물 (\"found items\") is a different 습득, \"picked up.\". The 습득물 at a lost-and-found is another 습득 (拾得).",
     "word": "습득하다",
     "meanings": ["to acquire, learn (a skill or language)", "to pick up (know-how)"],
     "pos": "동사",
@@ -1738,7 +1750,7 @@
       "meaning": {"accepted": ["acquire", "learn", "master", "pick up", "gain", "attain"]},
       "production": {
         "promptEn": "to acquire (a skill or language through learning)",
-        "contextHint": "the 습득물 at a lost-and-found is another 습득 (拾得)",
+        "contextHint": "its homonym means finding lost property",
         "accepted": ["습득하다"]
       }
     }
@@ -1788,7 +1800,7 @@
         ]
       },
       "production": {
-        "promptEn": "touch-and-go, nail-biting; (___하게) just barely, by a hair",
+        "promptEn": "touch-and-go, nail-biting; (as an adverb) just barely, by a hair",
         "contextHint": "mimetic adjective",
         "accepted": ["아슬아슬하다"]
       },
@@ -1797,7 +1809,7 @@
           "id": "c1",
           "sentence": "우리 팀이 1점 차로 {{}} 이겼다.",
           "en": "Our team won by a single point, just barely.",
-          "cue": "아슬아슬하다 · by a hair",
+          "cue": "by a hair, just barely",
           "accepted": ["아슬아슬하게"],
           "particleTolerance": "none"
         }
@@ -1815,7 +1827,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:5640", "homograph:陽傘"],
-    "mnemonic": "양산 = 대량 생산 squeezed: mass production. 양산을 쓰다 (to carry a parasol) is a different 양산.",
+    "mnemonic": "양산 = 대량 생산 squeezed: mass production. 양산을 쓰다 (to carry a parasol) is a different 양산. The 양산 that blocks the sun is a parasol (陽傘).",
     "word": "양산하다",
     "meanings": ["to mass-produce", "(fig.) to churn out, spawn (in large numbers)"],
     "pos": "동사",
@@ -1846,7 +1858,7 @@
       },
       "production": {
         "promptEn": "to mass-produce; (fig.) to churn out (often critical)",
-        "contextHint": "the 양산 that blocks the sun is a parasol (陽傘)",
+        "contextHint": "its homonym is a parasol",
         "accepted": ["양산하다"]
       }
     }
@@ -1862,6 +1874,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:5642"],
+    "mnemonic": "Health or trust is 회복.",
     "word": "복구하다",
     "meanings": ["to restore, repair (to the former state)", "to recover (data)"],
     "pos": "동사",
@@ -1885,7 +1898,7 @@
       "meaning": {"accepted": ["restore", "repair", "recover", "rebuild", "reinstate", "bring back", "fix", "reconstruct"]},
       "production": {
         "promptEn": "to restore (to its former state: damaged roads, deleted files)",
-        "contextHint": "health or trust is 회복; infrastructure and data are ___",
+        "contextHint": "infrastructure and data, not health or trust",
         "accepted": ["복구하다"],
         "rejected": ["회복하다"]
       }
@@ -1902,6 +1915,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:5647"],
+    "mnemonic": "Sinking into a lower status is 전락.",
     "word": "추락하다",
     "meanings": ["to crash, fall (from a height)", "(fig.) to plummet (reputation, ratings)"],
     "pos": "동사",
@@ -1929,7 +1943,7 @@
       "meaning": {"accepted": ["crash", "fall", "plummet", "plunge", "nosedive", "drop", "come down", "fall down"]},
       "production": {
         "promptEn": "to crash, fall from a height (a plane, a person); (fig.) to plummet",
-        "contextHint": "sinking into a lower status is 전락",
+        "contextHint": "not sinking into a lower status",
         "accepted": ["추락하다"],
         "rejected": ["전락하다"]
       }
@@ -1973,13 +1987,13 @@
       "meaning": {
         "accepted": ["plunder", "loot", "pillage", "ransack", "despoil", "sack", "maraud", "rob", "raid"]
       },
-      "production": {"promptEn": "to plunder, loot (armies, rioters, colonial powers)", "contextHint": "Sino-Korean verb; the victim is ___당하다", "accepted": ["약탈하다"]},
+      "production": {"promptEn": "to plunder, loot (armies, rioters, colonial powers)", "contextHint": "Sino-Korean verb; the victim takes the passive 'suffer' suffix", "accepted": ["약탈하다"]},
       "cloze": [
         {
           "id": "c1",
           "sentence": "침략군은 마을을 {{}} 불을 질렀다.",
           "en": "The invaders plundered the village and set it on fire.",
-          "cue": "약탈하다 · plunder",
+          "cue": "plunder, loot",
           "accepted": ["약탈하고", "약탈한 뒤", "약탈한 후"],
           "particleTolerance": "none"
         }
@@ -1997,6 +2011,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:5668"],
+    "mnemonic": "Stepping in from outside is 개입.",
     "word": "관여하다",
     "meanings": ["to be involved (in), have a hand in", "to take part (in)"],
     "pos": "동사",
@@ -2032,7 +2047,7 @@
       },
       "production": {
         "promptEn": "to be involved in, have a hand in (a matter or decision)",
-        "contextHint": "being part of it; stepping in from outside is 개입",
+        "contextHint": "being part of it, not stepping in from outside",
         "accepted": ["관여하다"],
         "rejected": ["개입하다"]
       }

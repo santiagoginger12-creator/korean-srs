@@ -85,9 +85,9 @@
           "id": "c1",
           "sentence": "그는 바쁜 와중에도 연습을 {{}} 않았다.",
           "en": "Busy as he was, he never slacked off on practice.",
-          "cue": "게을리하다 · neglect",
+          "cue": "neglect, slack off on (practice)",
           "accepted": ["게을리하지"],
-          "nearMiss": [{"answer": "게을리 하지", "hint": "게을리하다 is one word: no space."}],
+          "nearMiss": [{"answer": "게을리 하지", "hint": "It's one word: no space."}],
           "particleTolerance": "none",
           "spacingStrict": true
         }
@@ -105,7 +105,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:6003", "spelling", "media"],
-    "mnemonic": "게재 has the 재 of 연재 (serialization) and 기재 (entry): it's printed. Spelled 게재, never 게제.",
+    "mnemonic": "게재 has the 재 of 연재 (serialization) and 기재 (entry): it's printed. Spelled 게재, never 게제. Passive: 게재되다. Spelled 게재, not 계재.",
     "word": "게재",
     "meanings": ["publication, running (of an article, paper, or ad)", "posting (in a periodical)"],
     "pos": "명사",
@@ -131,7 +131,7 @@
       },
       "production": {
         "promptEn": "publication, running (of an article, paper, or ad in a periodical)",
-        "contextHint": "noun; ___되다; mind the spelling",
+        "contextHint": "Sino-Korean noun; mind the spelling of the first syllable",
         "accepted": ["게재"],
         "rejected": ["게제"]
       }
@@ -178,7 +178,7 @@
           "id": "c1",
           "sentence": "이번 광고는 20대 직장인을 {{}} 만든 것이다.",
           "en": "This ad was made with office workers in their twenties in mind.",
-          "cue": "겨냥하다 · target",
+          "cue": "target, aim at (an audience)",
           "accepted": ["겨냥해", "겨냥해서", "겨냥하여", "겨냥하고"],
           "particleTolerance": "none"
         }
@@ -234,7 +234,7 @@
           "id": "c1",
           "sentence": "전국에서 모인 요리사들이 솜씨를 {{}} 대회가 열렸다.",
           "en": "A contest was held where cooks from all over the country pitted their skills against each other.",
-          "cue": "겨루다 · compete",
+          "cue": "compete, pit (skills) against each other",
           "accepted": ["겨루는"],
           "particleTolerance": "none"
         }
@@ -277,7 +277,7 @@
     "questions": {
       "meaning": {"accepted": ["spare moment", "time", "chance", "leisure", "moment", "breathing room", "spare time"]},
       "production": {
-        "promptEn": "a spare moment (to do something; almost always ___가 없다)",
+        "promptEn": "a spare moment (to do something; almost always 'have no ~')",
         "contextHint": "native noun",
         "accepted": ["겨를"]
       },
@@ -286,7 +286,7 @@
           "id": "c1",
           "sentence": "일이 한꺼번에 몰려서 숨 돌릴 {{}}가 없었다.",
           "en": "The work all piled up at once, and there was no time to catch my breath.",
-          "cue": "겨를 · a spare moment",
+          "cue": "a spare moment (no time to breathe)",
           "accepted": ["겨를"],
           "particleTolerance": "none"
         }
@@ -304,6 +304,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:6007"],
+    "mnemonic": "A vivid color or impression is 강렬하다.",
     "word": "격렬하다",
     "meanings": ["fierce, violent (a fight, protest, or debate)", "strenuous (exercise)"],
     "pos": "형용사",
@@ -331,7 +332,7 @@
       "meaning": {"accepted": ["fierce", "violent", "intense", "vehement", "heated", "strenuous", "furious", "vigorous"]},
       "production": {
         "promptEn": "fierce, violent (a fight, protest, debate); strenuous (exercise)",
-        "contextHint": "clashing force; a vivid color or impression is 강렬하다",
+        "contextHint": "clashing force, not a vivid color or impression",
         "accepted": ["격렬하다"],
         "rejected": ["강렬하다"]
       }
@@ -348,6 +349,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:6009"],
+    "mnemonic": "Grammar's 격식체 is the formal style.",
     "word": "격식",
     "meanings": ["formality, protocol", "proper form, etiquette"],
     "pos": "명사",
@@ -373,7 +375,7 @@
       },
       "production": {
         "promptEn": "formality, protocol (proper form and etiquette)",
-        "contextHint": "___을 차리다; grammar's 격식체 is the formal style",
+        "contextHint": "Sino-Korean noun; you 'stand on' it; also the name of the formal speech style",
         "accepted": ["격식"]
       },
       "cloze": [
@@ -381,7 +383,7 @@
           "id": "c1",
           "sentence": "가족끼리 하는 자리니까 너무 {{}} 차리지 마세요.",
           "en": "It's just family, so don't be too formal.",
-          "cue": "격식 · formality",
+          "cue": "formality, standing on ceremony",
           "accepted": ["격식"],
           "particleTolerance": "none"
         }
@@ -430,7 +432,7 @@
           "id": "c1",
           "sentence": "도시와 농촌의 소득 {{}}가 해마다 커지고 있다.",
           "en": "The income gap between cities and rural areas grows every year.",
-          "cue": "격차 · gap",
+          "cue": "gap, disparity",
           "accepted": ["격차"],
           "particleTolerance": "none"
         }
@@ -481,7 +483,7 @@
           "id": "c1",
           "sentence": "입법부와 사법부가 행정부를 {{}} 장치가 필요하다.",
           "en": "We need mechanisms by which the legislature and judiciary can keep the executive in check.",
-          "cue": "견제하다 · keep in check",
+          "cue": "keep in check, counterbalance",
           "accepted": ["견제할", "견제하는"],
           "particleTolerance": "none"
         }
@@ -504,6 +506,7 @@
     "pos": "동사",
     "register": "neutral",
     "collocations": [
+      {"ko": "견줄 만하다", "en": "to rival, be on a par with"},
       {"ko": "어디에 견주어도", "en": "compared with anything"},
       {"ko": "~에 견줄 만하다", "en": "to rival ~"},
       {"ko": "키를 견주다", "en": "to compare heights"}
@@ -526,7 +529,7 @@
         "accepted": ["compare", "measure against", "rival", "match", "compare with", "stack up against", "bear comparison"]
       },
       "production": {
-        "promptEn": "to compare, measure against (often ___ 만하다, \"to rival\")",
+        "promptEn": "to compare, measure against (often 'worth comparing with' = to rival)",
         "contextHint": "native verb",
         "accepted": ["견주다"]
       },
@@ -535,7 +538,7 @@
           "id": "c1",
           "sentence": "그 신인의 연기는 베테랑 배우에 {{}} 손색이 없었다.",
           "en": "The newcomer's acting held up against that of veteran actors.",
-          "cue": "견주다 · compare against",
+          "cue": "compare against, measure up to",
           "accepted": ["견주어도", "견줘도"],
           "particleTolerance": "none"
         }
@@ -553,6 +556,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:6019"],
+    "mnemonic": "Friends just say 헤어지다.",
     "word": "결별하다",
     "meanings": ["to break up, part ways (for good)", "to break with (the past or an ideology)"],
     "pos": "동사",
@@ -582,7 +586,7 @@
       },
       "production": {
         "promptEn": "to break up, part ways (couples in the news; breaking with the past)",
-        "contextHint": "news register; friends just say 헤어지다",
+        "contextHint": "news register; friends just use the everyday 'break up'",
         "accepted": ["결별하다"]
       }
     }
@@ -662,13 +666,13 @@
     "questionTypes": ["meaning", "production", "cloze"],
     "questions": {
       "meaning": {"accepted": ["unity", "solidarity", "cohesion", "bond", "bonding", "togetherness", "cohesiveness"]},
-      "production": {"promptEn": "unity, solidarity (what holds a group together)", "contextHint": "___을 다지다", "accepted": ["결속"]},
+      "production": {"promptEn": "unity, solidarity (what holds a group together)", "contextHint": "Sino-Korean noun; you 'firm it up'", "accepted": ["결속"]},
       "cloze": [
         {
           "id": "c1",
           "sentence": "주장은 경기 전 선수들의 {{}}을 다지는 데 힘썼다.",
           "en": "Before the match, the captain worked to bring the players together.",
-          "cue": "결속 · unity",
+          "cue": "unity, solidarity",
           "accepted": ["결속"],
           "particleTolerance": "none"
         }
@@ -686,6 +690,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:6024"],
+    "mnemonic": "A shortage of something one needs is 결핍.",
     "word": "결여",
     "meanings": ["a lack, absence (of a quality)"],
     "pos": "명사",
@@ -708,8 +713,8 @@
     "questions": {
       "meaning": {"accepted": ["lack", "absence", "want", "deficiency", "being lacking", "lack of"]},
       "production": {
-        "promptEn": "a lack, absence (of a quality: ___되다)",
-        "contextHint": "a missing quality; a shortage of something one needs is 결핍",
+        "promptEn": "a lack, absence (of a quality; also as a passive verb)",
+        "contextHint": "a missing quality, not a shortage of something one needs",
         "accepted": ["결여"],
         "rejected": ["결핍"]
       },
@@ -718,12 +723,12 @@
           "id": "c1",
           "sentence": "이 보고서는 객관성이 {{}} 신뢰하기 어렵다.",
           "en": "This report lacks objectivity, so it's hard to trust.",
-          "cue": "결여되다 · be lacking",
+          "cue": "be lacking (a quality), passive",
           "accepted": ["결여되어", "결여돼서", "결여되어서", "결여돼"],
           "nearMiss": [
             {
               "answer": "결핍되어",
-              "hint": "결핍 is a shortage of something needed (vitamins, affection); a missing quality is 결여."
+              "hint": "결핍 is a shortage of something needed (vitamins, affection); the cue wants a missing quality."
             }
           ],
           "particleTolerance": "none"
@@ -742,6 +747,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:6030"],
+    "mnemonic": "A missing quality in an argument or person is 결여.",
     "word": "결핍",
     "meanings": ["a deficiency, deprivation (of something one needs)", "want"],
     "pos": "명사",
@@ -769,7 +775,7 @@
       "meaning": {"accepted": ["deficiency", "deprivation", "lack", "shortage", "want", "insufficiency", "scarcity"]},
       "production": {
         "promptEn": "a deficiency, deprivation (of something one needs)",
-        "contextHint": "a missing quality in an argument or person is 결여",
+        "contextHint": "not a missing quality in an argument or person",
         "accepted": ["결핍"],
         "rejected": ["결여"]
       }
@@ -817,7 +823,7 @@
           "id": "c1",
           "sentence": "출시 직후 배터리에서 치명적인 {{}}이 발견되었다.",
           "en": "Right after launch, a fatal flaw was found in the battery.",
-          "cue": "결함 · defect",
+          "cue": "defect, flaw",
           "accepted": ["결함"],
           "particleTolerance": "none"
         }
@@ -872,7 +878,7 @@
       },
       "production": {
         "promptEn": "humble (accepting criticism or results with humility)",
-        "contextHint": "a politician's concession: ___히 받아들이다",
+        "contextHint": "a politician's concession: 'humbly accept'",
         "accepted": ["겸허하다"]
       },
       "cloze": [
@@ -880,7 +886,7 @@
           "id": "c1",
           "sentence": "저희는 이번 선거 결과를 {{}} 받아들이겠습니다.",
           "en": "We will humbly accept the results of this election.",
-          "cue": "겸허하다 · humbly",
+          "cue": "humbly",
           "accepted": ["겸허히", "겸허하게"],
           "particleTolerance": "none"
         }
@@ -927,7 +933,7 @@
       },
       "production": {
         "promptEn": "alertness to danger (a sense that something is wrong)",
-        "contextHint": "___을 일깨우다",
+        "contextHint": "Sino-Korean noun; something can 'awaken' it",
         "accepted": ["경각심"]
       },
       "cloze": [
@@ -935,7 +941,7 @@
           "id": "c1",
           "sentence": "전문가들은 이번 사태가 사회 전체에 {{}}을 일깨웠다고 평가했다.",
           "en": "Experts said the incident was a wake-up call for society as a whole.",
-          "cue": "경각심 · alertness",
+          "cue": "alertness to danger, vigilance",
           "accepted": ["경각심"],
           "particleTolerance": "none"
         }
@@ -992,6 +998,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:6040"],
+    "mnemonic": "Treating as unimportant is 경시.",
     "word": "경멸하다",
     "meanings": ["to despise, scorn", "to hold in contempt"],
     "pos": "동사",
@@ -1014,7 +1021,7 @@
       },
       "production": {
         "promptEn": "to despise, scorn (feel contempt for)",
-        "contextHint": "treating as unimportant is 경시",
+        "contextHint": "contempt, not treating as unimportant",
         "accepted": ["경멸하다"],
         "rejected": ["경시하다"]
       }
@@ -1031,6 +1038,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:6042"],
+    "mnemonic": "Contempt is 경멸.",
     "word": "경시하다",
     "meanings": ["to make light of, downplay", "to underrate, treat as unimportant"],
     "pos": "동사",
@@ -1071,7 +1079,7 @@
       },
       "production": {
         "promptEn": "to make light of, underrate (treat as unimportant)",
-        "contextHint": "about importance, not contempt (that is 경멸)",
+        "contextHint": "about importance, not contempt",
         "accepted": ["경시하다"],
         "rejected": ["경멸하다"]
       },
@@ -1080,7 +1088,7 @@
           "id": "c1",
           "sentence": "안전 수칙을 {{}} 풍조가 결국 대형 참사를 불렀다.",
           "en": "A culture of making light of safety rules ended in a major disaster.",
-          "cue": "경시하다 · make light of",
+          "cue": "make light of, downplay",
           "accepted": ["경시하는", "경시한"],
           "particleTolerance": "none"
         }
@@ -1130,13 +1138,13 @@
           "appalled astonishment"
         ]
       },
-      "production": {"promptEn": "shock, horror (appalled astonishment)", "contextHint": "news: ___을 금치 못하다", "accepted": ["경악"]},
+      "production": {"promptEn": "shock, horror (appalled astonishment)", "contextHint": "news: 'could not hide their shock'", "accepted": ["경악"]},
       "cloze": [
         {
           "id": "c1",
           "sentence": "전문가들조차 그 결과에 {{}}을 금치 못했다.",
           "en": "Even the experts were aghast at the results.",
-          "cue": "경악 · shock",
+          "cue": "shock, horror",
           "accepted": ["경악"],
           "particleTolerance": "none"
         }
@@ -1195,6 +1203,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["native", "freq:6065"],
+    "mnemonic": "A job or a task is 고되다.",
     "word": "고달프다",
     "meanings": ["weary, hard (of life or existence)", "wearisome"],
     "pos": "형용사",
@@ -1217,7 +1226,7 @@
       "meaning": {"accepted": ["weary", "wearisome", "hard", "tough", "tiring", "trying", "exhausting", "toilsome"]},
       "production": {
         "promptEn": "weary, hard (of life or existence: worn down over time)",
-        "contextHint": "a life is 고달프다; a job or a task is 고되다",
+        "contextHint": "said of a life, not a job or a task",
         "accepted": ["고달프다"],
         "rejected": ["고되다"]
       }
@@ -1234,6 +1243,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["native", "freq:6066"],
+    "mnemonic": "A weary life overall is 고달프다.",
     "word": "고되다",
     "meanings": ["grueling, backbreaking (work or training)", "arduous"],
     "pos": "형용사",
@@ -1262,7 +1272,7 @@
       },
       "production": {
         "promptEn": "grueling, backbreaking (work or training)",
-        "contextHint": "a weary life overall is 고달프다",
+        "contextHint": "said of work, not a weary life overall",
         "accepted": ["고되다"],
         "rejected": ["고달프다"]
       },
@@ -1271,7 +1281,7 @@
           "id": "c1",
           "sentence": "하루 종일 {{}} 일을 하고 나면 손가락 하나 까딱하기 싫다.",
           "en": "After a full day of backbreaking work, I don't want to lift a finger.",
-          "cue": "고되다 · grueling",
+          "cue": "grueling, backbreaking",
           "accepted": ["고된"],
           "particleTolerance": "none"
         }
@@ -1356,7 +1366,7 @@
       },
       "production": {
         "promptEn": "the critical point, the hump (in an illness, crisis, or task)",
-        "contextHint": "native noun; ___를 넘기다",
+        "contextHint": "native noun; you 'get over' it",
         "accepted": ["고비"]
       },
       "cloze": [
@@ -1364,7 +1374,7 @@
           "id": "c1",
           "sentence": "환자는 위험한 {{}}를 넘기고 회복 중이다.",
           "en": "The patient is past the critical point and recovering.",
-          "cue": "고비 · critical point",
+          "cue": "critical point, the hump",
           "accepted": ["고비"],
           "particleTolerance": "none"
         }
@@ -1405,7 +1415,7 @@
       "meaning": {
         "accepted": ["refined", "elegant", "noble", "lofty", "highbrow", "dignified", "classy", "genteel", "sophisticated"]
       },
-      "production": {"promptEn": "refined, highbrow (genteel tastes; often ironic: ___한 척하다)", "accepted": ["고상하다"]}
+      "production": {"promptEn": "refined, highbrow (genteel tastes; often ironic: 'act all refined')", "accepted": ["고상하다"]}
     }
   },
   {
@@ -1419,7 +1429,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:6077", "homograph:高手"],
-    "mnemonic": "고수하다 has the 고 of 고정 and 고집: dig in and refuse to budge. A 바둑 고수 is a master; the 고수 in your 쌀국수 is cilantro.",
+    "mnemonic": "고수하다 has the 고 of 고정 and 고집: dig in and refuse to budge. A 바둑 고수 is a master; the 고수 in your 쌀국수 is cilantro. The 고수 who is a master, and the herb, are different words.",
     "word": "고수하다",
     "meanings": ["to stick to, hold fast to (a position, principle, or method)"],
     "pos": "동사",
@@ -1459,7 +1469,7 @@
       },
       "production": {
         "promptEn": "to stick to, hold fast to (a position, principle, or method)",
-        "contextHint": "the 고수 who is a master, and the herb, are different words",
+        "contextHint": "not the homonyms for 'master' or the herb",
         "accepted": ["고수하다"]
       },
       "cloze": [
@@ -1467,7 +1477,7 @@
           "id": "c1",
           "sentence": "정부는 당분간 금리 동결 기조를 {{}} 방침이다.",
           "en": "The government plans to stick with its rate freeze for the time being.",
-          "cue": "고수하다 · stick to",
+          "cue": "stick to, hold fast to (a stance)",
           "accepted": ["고수할"],
           "particleTolerance": "none"
         }
@@ -1524,7 +1534,7 @@
       },
       "production": {
         "promptEn": "to agonize over, rack one's brains (about a hard decision)",
-        "contextHint": "___ 끝에",
+        "contextHint": "Sino-Korean; 'after much agonizing'",
         "accepted": ["고심하다"]
       },
       "cloze": [
@@ -1532,9 +1542,9 @@
           "id": "c1",
           "sentence": "오랜 {{}} 끝에 그는 회사를 떠나기로 결정했다.",
           "en": "After much agonizing, he decided to leave the company.",
-          "cue": "고심 · agonizing",
+          "cue": "agonizing, much deliberation (noun)",
           "accepted": ["고심"],
-          "nearMiss": [{"answer": "고민", "hint": "고민 fits too; this item is the weightier 고심."}],
+          "nearMiss": [{"answer": "고민", "hint": "고민 fits too; the cue wants a weightier word."}],
           "particleTolerance": "none"
         }
       ]
@@ -1590,6 +1600,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:6087", "law"],
+    "mnemonic": "In speech: 일부러.",
     "word": "고의",
     "meanings": ["intent, deliberateness", "(___로) on purpose"],
     "pos": "명사",
@@ -1627,8 +1638,8 @@
         ]
       },
       "production": {
-        "promptEn": "intent, deliberateness (___로 = \"on purpose\")",
-        "contextHint": "legal register; in speech 일부러",
+        "promptEn": "intent, deliberateness (with the 'by' particle: on purpose)",
+        "contextHint": "legal register; in speech, the everyday 'on purpose'",
         "accepted": ["고의"]
       },
       "cloze": [
@@ -1636,7 +1647,7 @@
           "id": "c1",
           "sentence": "{{}}로 낸 사고인지 단순 과실인지가 재판의 쟁점이다.",
           "en": "At issue in the trial is whether the accident was deliberate or simple negligence.",
-          "cue": "고의 · intent",
+          "cue": "intent (on purpose)",
           "accepted": ["고의"],
           "particleTolerance": "none"
         }
@@ -1677,7 +1688,7 @@
       "meaning": {"accepted": ["the deceased", "the late", "the departed", "the dead"]},
       "production": {
         "promptEn": "the deceased, the departed (respectful)",
-        "contextHint": "condolences: ___의 명복을 빕니다",
+        "contextHint": "used in condolences: 'may the deceased rest in peace'",
         "accepted": ["고인"]
       },
       "cloze": [
@@ -1685,7 +1696,7 @@
           "id": "c1",
           "sentence": "유족들은 {{}}의 뜻에 따라 조의금을 받지 않기로 했다.",
           "en": "Following the wishes of the deceased, the family decided not to accept condolence money.",
-          "cue": "고인 · the deceased",
+          "cue": "the deceased, the late",
           "accepted": ["고인"],
           "particleTolerance": "none"
         }
@@ -1729,7 +1740,7 @@
       },
       "production": {
         "promptEn": "a scholarly examination, study (of a topic)",
-        "contextHint": "academic titles: '~에 대한 ___'",
+        "contextHint": "academic titles: 'A Study of ~'",
         "accepted": ["고찰"]
       }
     }
@@ -1778,7 +1789,7 @@
           "id": "c1",
           "sentence": "신입 사원들이 면담 시간에 그동안의 {{}}을 털어놓았다.",
           "en": "At their one-on-ones, the new hires opened up about what they had been struggling with.",
-          "cue": "고충 · difficulties",
+          "cue": "difficulties, troubles (one has been having)",
           "accepted": ["고충"],
           "particleTolerance": "none"
         }
@@ -1823,13 +1834,13 @@
       "meaning": {
         "accepted": ["predicament", "plight", "trouble", "dilemma", "fix", "jam", "difficult situation", "bind", "tight spot"]
       },
-      "production": {"promptEn": "a predicament, a fix (___에 처하다)", "accepted": ["곤경"]},
+      "production": {"promptEn": "a predicament, a fix (to find oneself in one)", "accepted": ["곤경"]},
       "cloze": [
         {
           "id": "c1",
           "sentence": "갑작스러운 환율 급등으로 수입 업체들이 {{}}에 처했다.",
           "en": "A sudden spike in the exchange rate has put importers in a predicament.",
-          "cue": "곤경 · predicament",
+          "cue": "predicament, a fix",
           "accepted": ["곤경"],
           "particleTolerance": "none"
         }
@@ -1847,7 +1858,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:6102"],
-    "mnemonic": "곤욕 has the 욕 of 모욕 (insult): an ordeal you sit through (곤욕을 치르다). 곤혹 (곤란 + 당혹) is the cornered feeling of 곤혹스럽다.",
+    "mnemonic": "곤욕 has the 욕 of 모욕 (insult): an ordeal you sit through (곤욕을 치르다). 곤혹 (곤란 + 당혹) is the cornered feeling of 곤혹스럽다. 곤혹 is the bewildered, cornered feeling.",
     "word": "곤욕",
     "meanings": ["an ordeal, a rough time", "humiliation"],
     "pos": "명사",
@@ -1877,8 +1888,8 @@
         "rejected": ["perplexity", "bewilderment"]
       },
       "production": {
-        "promptEn": "an ordeal, a rough time (___을 치르다)",
-        "contextHint": "곤혹 is the bewildered, cornered feeling",
+        "promptEn": "an ordeal, a rough time (that you 'go through')",
+        "contextHint": "not the bewildered, cornered feeling",
         "accepted": ["곤욕"],
         "rejected": ["곤혹"]
       },
@@ -1887,9 +1898,9 @@
           "id": "c1",
           "sentence": "공항에서 짐을 잃어버려 한바탕 {{}}을 치렀다.",
           "en": "I lost my luggage at the airport and went through quite an ordeal.",
-          "cue": "곤욕 · ordeal",
+          "cue": "ordeal, a rough time",
           "accepted": ["곤욕"],
-          "nearMiss": [{"answer": "곤혹", "hint": "곤혹 is bewilderment (곤혹스럽다); what you 치르다 is an ordeal, 곤욕."}],
+          "nearMiss": [{"answer": "곤혹", "hint": "곤혹 is bewilderment (곤혹스럽다); what you 치르다 is an ordeal, a different word."}],
           "particleTolerance": "none"
         }
       ]
@@ -1906,6 +1917,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["native", "freq:6105"],
+    "mnemonic": "Not 골치.",
     "word": "골머리",
     "meanings": ["(fig.) one's head, as in a headache over a problem", "(___를 앓다) to be at one's wits' end"],
     "pos": "명사",
@@ -1930,8 +1942,8 @@
     "questionTypes": ["production", "cloze"],
     "questions": {
       "production": {
-        "promptEn": "a headache (over a problem): ___를 앓다, 'to be plagued by'",
-        "contextHint": "native noun, colloquial in origin but standard in headlines; not 골치",
+        "promptEn": "a headache (over a problem): 'to be plagued by'",
+        "contextHint": "native noun, colloquial in origin but standard in headlines; not the more common synonym",
         "accepted": ["골머리"]
       },
       "cloze": [
@@ -1939,18 +1951,18 @@
           "id": "c1",
           "sentence": "시는 늘어나는 관광객 쓰레기 때문에 {{}}를 앓고 있다.",
           "en": "The city is struggling with the growing amount of tourist litter.",
-          "cue": "골머리 · headache",
+          "cue": "headache (be plagued by)",
           "accepted": ["골머리"],
-          "nearMiss": [{"answer": "골치", "hint": "골치를 앓다 means the same; the cue asks for 골머리."}],
+          "nearMiss": [{"answer": "골치", "hint": "골치를 앓다 means the same; the cue wants a different word."}],
           "particleTolerance": "none"
         },
         {
           "id": "c2",
           "sentence": "새로 맡은 프로젝트 때문에 요즘 {{}}가 아파 죽겠어요.",
           "en": "This new project I've taken on is giving me a splitting headache.",
-          "cue": "골머리 · headache",
+          "cue": "headache (my head hurts over it)",
           "accepted": ["골머리"],
-          "nearMiss": [{"answer": "골치", "hint": "골치가 아프다 means the same; the cue asks for 골머리."}],
+          "nearMiss": [{"answer": "골치", "hint": "골치가 아프다 means the same; the cue wants a different word."}],
           "particleTolerance": "none"
         }
       ]
@@ -2003,9 +2015,9 @@
           "id": "c1",
           "sentence": "{{}} 생각해 보니 그 말이 맞는 것 같다.",
           "en": "Thinking it over carefully, I think he's right.",
-          "cue": "곰곰이 · carefully",
+          "cue": "carefully, long and hard (thinking)",
           "accepted": ["곰곰이"],
-          "nearMiss": [{"answer": "곰곰히", "hint": "Spelling: 곰곰이 ends in 이."}],
+          "nearMiss": [{"answer": "곰곰히", "hint": "Check the spelling of the last syllable."}],
           "particleTolerance": "none"
         }
       ]

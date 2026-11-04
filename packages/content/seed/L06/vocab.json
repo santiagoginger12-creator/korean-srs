@@ -92,7 +92,7 @@
           "id": "c1",
           "sentence": "부상에서 회복한 주장이 다음 주 대표팀에 {{}} 예정이다.",
           "en": "Recovered from injury, the captain is set to join the national team next week.",
-          "cue": "합류하다 · join",
+          "cue": "join (a group already underway)",
           "accepted": ["합류할"],
           "particleTolerance": "none"
         }
@@ -197,7 +197,7 @@
           "id": "c1",
           "sentence": "{{}}의 사람들이 광장을 가득 메웠다.",
           "en": "People of every kind packed the square.",
-          "cue": "각양각색 · every sort",
+          "cue": "all kinds, every sort (of people)",
           "accepted": ["각양각색"],
           "particleTolerance": "none"
         }
@@ -215,6 +215,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:5883"],
+    "mnemonic": "Knowingly letting something slide is 묵과.",
     "word": "간과하다",
     "meanings": ["to overlook, fail to notice", "to miss (something important)"],
     "pos": "동사",
@@ -241,7 +242,7 @@
       },
       "production": {
         "promptEn": "to overlook (fail to notice or give due weight to)",
-        "contextHint": "unintentional; knowingly letting it slide is 묵과",
+        "contextHint": "unintentional, not knowingly letting it slide",
         "accepted": ["간과하다"],
         "rejected": ["묵과하다"]
       },
@@ -250,9 +251,9 @@
           "id": "c1",
           "sentence": "설계 단계에서 작은 결함을 {{}} 것이 대형 사고로 이어졌다.",
           "en": "Overlooking a small defect at the design stage led to a major accident.",
-          "cue": "간과하다 · overlook",
+          "cue": "overlook (by oversight)",
           "accepted": ["간과한"],
-          "nearMiss": [{"answer": "묵과한", "hint": "묵과 is knowingly letting something pass; missing it by oversight is 간과."}],
+          "nearMiss": [{"answer": "묵과한", "hint": "묵과 is knowingly letting something pass; the cue wants missing it by oversight."}],
           "particleTolerance": "none"
         }
       ]
@@ -269,6 +270,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:5885"],
+    "mnemonic": "A no-frills ceremony is 간소하다.",
     "word": "간략하다",
     "meanings": ["brief, concise (an account or explanation)", "simplified"],
     "pos": "형용사",
@@ -296,7 +298,7 @@
       "meaning": {"accepted": ["brief", "concise", "short", "simplified", "succinct", "briefly", "abridged", "summary"]},
       "production": {
         "promptEn": "brief, concise (an explanation, summary, or account)",
-        "contextHint": "how much is said; a no-frills ceremony is 간소하다",
+        "contextHint": "how much is said, not a no-frills ceremony",
         "accepted": ["간략하다"],
         "rejected": ["간소하다"]
       },
@@ -305,12 +307,12 @@
           "id": "c1",
           "sentence": "자세한 내용은 생략하고 {{}} 설명드리겠습니다.",
           "en": "I'll skip the details and explain briefly.",
-          "cue": "간략하다 · briefly",
+          "cue": "briefly, concisely",
           "accepted": ["간략하게", "간략히"],
           "nearMiss": [
             {
               "answer": "간소하게",
-              "hint": "간소하다 is for procedures and ceremonies stripped of frills; a short explanation is 간략하다."
+              "hint": "간소하다 is for procedures and ceremonies stripped of frills; the cue wants a short explanation."
             }
           ],
           "particleTolerance": "none"
@@ -355,7 +357,7 @@
       "meaning": {"accepted": ["last night", "overnight", "the previous night", "during the night", "the night before"]},
       "production": {
         "promptEn": "last night, overnight (the night just past; a bit literary)",
-        "contextHint": "native noun; usually ___에",
+        "contextHint": "native noun; usually with the time particle",
         "accepted": ["간밤"]
       },
       "cloze": [
@@ -363,9 +365,9 @@
           "id": "c1",
           "sentence": "{{}}에 내린 비로 강물이 크게 불어났다.",
           "en": "The river rose sharply with the rain that fell overnight.",
-          "cue": "간밤 · last night (literary)",
+          "cue": "last night (literary)",
           "accepted": ["간밤"],
-          "nearMiss": [{"answer": "어젯밤", "hint": "어젯밤 means the same; this item is the more literary 간밤."}],
+          "nearMiss": [{"answer": "어젯밤", "hint": "어젯밤 means the same; the cue wants the more literary word."}],
           "particleTolerance": "none"
         }
       ]
@@ -382,6 +384,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:5888"],
+    "mnemonic": "A short explanation is 간략하다.",
     "word": "간소하다",
     "meanings": ["simple, no-frills (a ceremony, procedure, or lifestyle)", "plain, modest"],
     "pos": "형용사",
@@ -411,7 +414,7 @@
       },
       "production": {
         "promptEn": "simple, no-frills (a ceremony, procedure, or lifestyle)",
-        "contextHint": "a short explanation is 간략하다",
+        "contextHint": "stripped of frills, not a short explanation",
         "accepted": ["간소하다"],
         "rejected": ["간략하다"]
       },
@@ -420,9 +423,9 @@
           "id": "c1",
           "sentence": "장례는 고인의 뜻에 따라 {{}} 치러졌다.",
           "en": "In keeping with the deceased's wishes, the funeral was a simple one.",
-          "cue": "간소하다 · simply",
+          "cue": "simply, without frills",
           "accepted": ["간소하게"],
-          "nearMiss": [{"answer": "간략하게", "hint": "간략하다 is about the length of an account; a modest ceremony is 간소하다."}],
+          "nearMiss": [{"answer": "간략하게", "hint": "간략하다 is about the length of an account; the cue wants a modest ceremony."}],
           "particleTolerance": "none"
         }
       ]
@@ -464,13 +467,13 @@
     "questionTypes": ["meaning", "production", "cloze"],
     "questions": {
       "meaning": {"accepted": ["regard as", "consider", "deem", "treat as", "view as", "count as", "take as", "regard"]},
-      "production": {"promptEn": "to regard, deem (something) as (formal: ___로 ___)", "accepted": ["간주하다"]},
+      "production": {"promptEn": "to regard, deem (something) as (formal: 'deem X as Y')", "accepted": ["간주하다"]},
       "cloze": [
         {
           "id": "c1",
           "sentence": "출석 확인을 하지 않은 학생은 결석으로 {{}} 점수가 깎인다.",
           "en": "Students who don't check in are counted as absent and lose points.",
-          "cue": "간주되다 · be counted as",
+          "cue": "be counted as, be deemed (passive)",
           "accepted": ["간주되어", "간주돼", "간주되고", "간주되며"],
           "particleTolerance": "none"
         }
@@ -714,7 +717,7 @@
       },
       "production": {
         "promptEn": "a deep impression (being moved and inspired)",
-        "contextHint": "___ 깊다, ___을 받다",
+        "contextHint": "Sino-Korean noun; it can be 'deep', and you 'receive' it",
         "accepted": ["감명"]
       },
       "cloze": [
@@ -722,7 +725,7 @@
           "id": "c1",
           "sentence": "그건 학창 시절에 가장 {{}} 깊게 본 영화였다.",
           "en": "It was the film that moved me most in my school days.",
-          "cue": "감명 · deep impression",
+          "cue": "deep impression (moved and inspired)",
           "accepted": ["감명"],
           "particleTolerance": "none"
         }
@@ -740,7 +743,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:5905", "homograph:監修"],
-    "mnemonic": "감수 has the 감 of 감미롭다 (sweet): taking the bitter as if it were sweet. On a book's copyright page, 감수 is editorial supervision, a different word.",
+    "mnemonic": "감수 has the 감 of 감미롭다 (sweet): taking the bitter as if it were sweet. On a book's copyright page, 감수 is editorial supervision, a different word. A dictionary's 감수 (editorial supervision) is another word.",
     "word": "감수하다",
     "meanings": ["to accept, be willing to bear (a risk, loss, or criticism)", "to put up with"],
     "pos": "동사",
@@ -777,7 +780,7 @@
       },
       "production": {
         "promptEn": "to accept, be willing to bear (a risk, loss, or criticism)",
-        "contextHint": "a dictionary's 감수 (editorial supervision) is another word",
+        "contextHint": "not the homonym for a dictionary's editorial supervision",
         "accepted": ["감수하다"]
       },
       "cloze": [
@@ -785,7 +788,7 @@
           "id": "c1",
           "sentence": "어느 정도의 위험은 {{}} 각오가 되어 있다.",
           "en": "I'm prepared to accept a certain amount of risk.",
-          "cue": "감수하다 · accept (a risk)",
+          "cue": "accept, be willing to bear (a risk)",
           "accepted": ["감수할"],
           "particleTolerance": "none"
         }
@@ -841,7 +844,7 @@
           "id": "c1",
           "sentence": "연세를 {{}} 체력이 정말 대단하시네요.",
           "en": "Considering your age, your stamina is amazing.",
-          "cue": "감안하다 · considering",
+          "cue": "considering, taking into account",
           "accepted": ["감안하면"],
           "particleTolerance": "none"
         }
@@ -901,7 +904,7 @@
           "id": "c1",
           "sentence": "{{}}에 넘어가 계약서에 도장을 찍고 말았다.",
           "en": "I fell for the sweet talk and ended up signing the contract.",
-          "cue": "감언이설 · sweet talk",
+          "cue": "sweet talk, honeyed words",
           "accepted": ["감언이설"],
           "particleTolerance": "none"
         }
@@ -992,7 +995,7 @@
       },
       "production": {
         "promptEn": "without a trace; so seamlessly no one could tell",
-        "contextHint": "native adverb; ___ 사라지다, ___ 속다",
+        "contextHint": "native adverb; 'vanish without a trace', 'be completely fooled'",
         "accepted": ["감쪽같이"]
       },
       "cloze": [
@@ -1000,7 +1003,7 @@
           "id": "c1",
           "sentence": "친구들이 깜짝 파티를 준비하는 줄 나는 {{}} 몰랐다.",
           "en": "I had absolutely no idea my friends were planning a surprise party.",
-          "cue": "감쪽같이 · completely (fooled)",
+          "cue": "completely (fooled), without a clue",
           "accepted": ["감쪽같이"],
           "particleTolerance": "none"
         }
@@ -1018,6 +1021,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:5914"],
+    "mnemonic": "Shortening a time span is 단축.",
     "word": "감축",
     "meanings": ["a cut, reduction (in staff, budget, or emissions)", "cutback, downsizing"],
     "pos": "명사",
@@ -1045,7 +1049,7 @@
       "meaning": {"accepted": ["cut", "reduction", "cutback", "downsizing", "curtailment", "cuts", "retrenchment"]},
       "production": {
         "promptEn": "a cut, reduction (in staff, budget, or emissions)",
-        "contextHint": "shortening a time span is 단축",
+        "contextHint": "Sino-Korean noun; not shortening a time span",
         "accepted": ["감축"],
         "rejected": ["단축"]
       }
@@ -1100,13 +1104,13 @@
           "nostalgic emotions"
         ]
       },
-      "production": {"promptEn": "the feelings stirred up on looking back (___가 새롭다)", "accepted": ["감회"]},
+      "production": {"promptEn": "the feelings stirred up on looking back (they 'feel fresh' again)", "accepted": ["감회"]},
       "cloze": [
         {
           "id": "c1",
           "sentence": "10년 만에 고향 역에 내리니 {{}}가 새로웠다.",
           "en": "Stepping off at my hometown station after ten years, I was flooded with feelings.",
-          "cue": "감회 · nostalgic feelings",
+          "cue": "nostalgic feelings (welling up anew)",
           "accepted": ["감회"],
           "particleTolerance": "none"
         }
@@ -1145,7 +1149,7 @@
     "questions": {
       "meaning": {"accepted": ["worth", "value", "merit", "monetary value", "what something is worth"]},
       "production": {
-        "promptEn": "worth, value (what something is worth: ___를 하다)",
+        "promptEn": "worth, value (what something is worth: 'be worth it')",
         "contextHint": "native noun",
         "accepted": ["값어치"]
       },
@@ -1154,7 +1158,7 @@
           "id": "c1",
           "sentence": "가격이 좀 세지만 {{}}를 충분히 한다.",
           "en": "It's a bit steep, but it's well worth the price.",
-          "cue": "값어치 · worth",
+          "cue": "worth (it's worth the price)",
           "accepted": ["값어치"],
           "particleTolerance": "none"
         }
@@ -1172,6 +1176,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:5925"],
+    "mnemonic": "A violent clash or protest is 격렬하다.",
     "word": "강렬하다",
     "meanings": ["intense, striking (light, color, an impression)", "vivid, powerful"],
     "pos": "형용사",
@@ -1198,7 +1203,7 @@
       "meaning": {"accepted": ["intense", "striking", "vivid", "strong", "fierce", "powerful", "bold", "glaring"]},
       "production": {
         "promptEn": "intense, striking (light, color, an impression)",
-        "contextHint": "a violent clash or protest is 격렬하다",
+        "contextHint": "not a violent clash or protest",
         "accepted": ["강렬하다"],
         "rejected": ["격렬하다"]
       },
@@ -1207,7 +1212,7 @@
           "id": "c1",
           "sentence": "붉은색과 검은색이 대비된 포스터가 {{}} 인상을 준다.",
           "en": "The poster, with its contrasting red and black, makes a striking impression.",
-          "cue": "강렬하다 · striking",
+          "cue": "striking, intense",
           "accepted": ["강렬한"],
           "particleTolerance": "none"
         }
@@ -1262,7 +1267,7 @@
       },
       "production": {
         "promptEn": "coercive, heavy-handed (forcing rather than persuading)",
-        "contextHint": "Sino-Korean, ends in -적",
+        "contextHint": "Sino-Korean, with the '-ic' suffix",
         "accepted": ["강압적"]
       }
     }
@@ -1278,6 +1283,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:5929"],
+    "mnemonic": "An upright, incorruptible character is 강직하다.",
     "word": "강인하다",
     "meanings": ["tough, resilient", "tenacious, indomitable"],
     "pos": "형용사",
@@ -1307,7 +1313,7 @@
       },
       "production": {
         "promptEn": "tough, resilient (in body or spirit)",
-        "contextHint": "an upright, incorruptible character is 강직하다",
+        "contextHint": "toughness, not an upright, incorruptible character",
         "accepted": ["강인하다"],
         "rejected": ["강직하다"]
       }
@@ -1324,6 +1330,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:5934"],
+    "mnemonic": "Toughness or resilience is 강인하다.",
     "word": "강직하다",
     "meanings": ["upright and uncompromising", "principled, incorruptible"],
     "pos": "형용사",
@@ -1364,7 +1371,7 @@
       },
       "production": {
         "promptEn": "upright and uncompromising (incorruptible in character)",
-        "contextHint": "toughness or resilience is 강인하다",
+        "contextHint": "character, not toughness or resilience",
         "accepted": ["강직하다"],
         "rejected": ["강인하다"]
       }
@@ -1408,7 +1415,7 @@
         "accepted": ["all sorts of", "every kind of", "all kinds of", "every possible", "every conceivable", "all manner of"]
       },
       "production": {
-        "promptEn": "all sorts of, every kind of (___ 고생, ___ 양념)",
+        "promptEn": "all sorts of, every kind of (hardship, seasoning)",
         "contextHint": "native determiner",
         "accepted": ["갖은"]
       },
@@ -1417,7 +1424,7 @@
           "id": "c1",
           "sentence": "{{}} 고생 끝에 마침내 가게를 열었다.",
           "en": "After every kind of hardship, she finally opened her shop.",
-          "cue": "갖은 · every kind of",
+          "cue": "every kind of (hardship)",
           "accepted": ["갖은"],
           "particleTolerance": "none"
         }
@@ -1461,7 +1468,7 @@
       "meaning": {"accepted": ["general", "broad", "overview", "outline", "in outline", "broad-brush", "summary", "sweeping"]},
       "production": {
         "promptEn": "general, in outline (giving the broad picture)",
-        "contextHint": "Sino-Korean, ends in -적",
+        "contextHint": "Sino-Korean, with the '-ic' suffix",
         "accepted": ["개괄적"]
       }
     }
@@ -1517,9 +1524,9 @@
           "id": "c1",
           "sentence": "{{}} 생활에 지쳐 고향으로 돌아갈까 고민 중이다.",
           "en": "Worn out by life away from home, I'm thinking about going back.",
-          "cue": "객지 · away from home",
+          "cue": "a place away from home",
           "accepted": ["객지"],
-          "nearMiss": [{"answer": "타지", "hint": "타지 is close; this item is 객지."}],
+          "nearMiss": [{"answer": "타지", "hint": "타지 is close; the cue wants a different word."}],
           "particleTolerance": "none"
         }
       ]
@@ -1536,6 +1543,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["native", "freq:5959"],
+    "mnemonic": "ㄹ-irregular: 거니는, 거닐며.",
     "word": "거닐다",
     "meanings": ["to stroll, amble", "to wander leisurely"],
     "pos": "동사",
@@ -1564,7 +1572,7 @@
       },
       "production": {
         "promptEn": "to stroll, amble (leisurely, with no destination)",
-        "contextHint": "native verb; ㄹ-irregular: 거니는, 거닐며",
+        "contextHint": "native verb; its final consonant drops before some endings",
         "accepted": ["거닐다"]
       },
       "cloze": [
@@ -1572,7 +1580,7 @@
           "id": "c1",
           "sentence": "달빛 아래 바닷가를 {{}} 옛 생각에 잠겼다.",
           "en": "Strolling along the shore in the moonlight, I sank into memories.",
-          "cue": "거닐다 · stroll",
+          "cue": "stroll, amble",
           "accepted": ["거닐며", "거닐면서"],
           "particleTolerance": "none"
         }
@@ -1629,7 +1637,7 @@
       },
       "production": {
         "promptEn": "mobility, getting around (of the elderly or ill); behavior",
-        "contextHint": "___이 불편하다",
+        "contextHint": "Sino-Korean noun; it can be 'uncomfortable' (impaired)",
         "accepted": ["거동"]
       },
       "cloze": [
@@ -1637,7 +1645,7 @@
           "id": "c1",
           "sentence": "아버지는 수술 후 {{}}이 불편하셔서 휠체어를 쓰신다.",
           "en": "Since his surgery my father has trouble getting around, so he uses a wheelchair.",
-          "cue": "거동 · getting around",
+          "cue": "getting around, mobility",
           "accepted": ["거동"],
           "particleTolerance": "none"
         }
@@ -1678,7 +1686,7 @@
         "accepted": ["again and again", "repeatedly", "over and over", "once again", "once more", "time and again", "again"]
       },
       "production": {
-        "promptEn": "repeatedly, once more (emphatically: ___ 강조하다)",
+        "promptEn": "repeatedly, once more (emphatically: 'stress it again')",
         "contextHint": "native adverb",
         "accepted": ["거듭"]
       },
@@ -1687,7 +1695,7 @@
           "id": "c1",
           "sentence": "회사 측은 피해 고객들에게 {{}} 사과의 뜻을 전했다.",
           "en": "The company apologized again and again to the affected customers.",
-          "cue": "거듭 · repeatedly",
+          "cue": "repeatedly, again",
           "accepted": ["거듭"],
           "particleTolerance": "none"
         }
@@ -1743,7 +1751,7 @@
       },
       "production": {
         "promptEn": "to grate on, bother (one's eyes, ears, or nerves)",
-        "contextHint": "native verb; 눈에/귀에 ___",
+        "contextHint": "native verb; it grates 'on the eyes' or 'on the ears'",
         "accepted": ["거슬리다"]
       },
       "cloze": [
@@ -1751,7 +1759,7 @@
           "id": "c1",
           "sentence": "선풍기 돌아가는 소리가 자꾸 귀에 {{}} 잠이 안 왔다.",
           "en": "The whir of the fan kept grating on my ears, and I couldn't sleep.",
-          "cue": "거슬리다 · grate on",
+          "cue": "grate on (the ears)",
           "accepted": ["거슬려서", "거슬려"],
           "particleTolerance": "none"
         }
@@ -1769,6 +1777,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:5971"],
+    "mnemonic": "Opposite: 미시적.",
     "word": "거시적",
     "meanings": ["macro, big-picture", "macroscopic"],
     "pos": "관형사·명사",
@@ -1799,7 +1808,7 @@
       },
       "production": {
         "promptEn": "big-picture, macro (looking at the whole)",
-        "contextHint": "its opposite is 미시적",
+        "contextHint": "the opposite of 'micro'",
         "accepted": ["거시적"],
         "rejected": ["미시적"]
       }
@@ -1849,7 +1858,7 @@
           "id": "c1",
           "sentence": "{{}} 이벤트는 필요 없고 마음만 전하면 돼.",
           "en": "You don't need a big production. Just let her know how you feel.",
-          "cue": "거창하다 · grand, elaborate",
+          "cue": "grand, elaborate",
           "accepted": ["거창한"],
           "particleTolerance": "none"
         }
@@ -1904,7 +1913,7 @@
           "lodgings"
         ]
       },
-      "production": {"promptEn": "a place to live or stay (often temporary)", "contextHint": "___를 옮기다", "accepted": ["거처"]}
+      "production": {"promptEn": "a place to live or stay (often temporary)", "contextHint": "Sino-Korean noun; you 'move' it", "accepted": ["거처"]}
     }
   },
   {
@@ -1918,7 +1927,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["native", "freq:5977"],
-    "mnemonic": "Nothing to 거치다 (snag on), so everything just flows. 서슴없이 is about not hesitating; 거침없이 is about not being stopped.",
+    "mnemonic": "Nothing to 거치다 (snag on), so everything just flows. 서슴없이 is about not hesitating; 거침없이 is about not being stopped. Built on 거치다 (nothing to snag on). 서슴없이 = no hesitation.",
     "word": "거침없이",
     "meanings": ["unstoppably, without anything in the way", "freely, without holding back"],
     "pos": "부사",
@@ -1956,7 +1965,7 @@
       },
       "production": {
         "promptEn": "unstoppably, without holding back (nothing in the way)",
-        "contextHint": "native adverb: nothing to snag on (거치다); 서슴없이 = no hesitation",
+        "contextHint": "native adverb: nothing to snag on; not 'without hesitation'",
         "accepted": ["거침없이"],
         "rejected": ["서슴없이"]
       }
@@ -1973,6 +1982,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["native", "freq:5991"],
+    "mnemonic": "Opposite: 디딤돌 (stepping stone).",
     "word": "걸림돌",
     "meanings": ["a stumbling block, obstacle", "a hindrance"],
     "pos": "명사",
@@ -2001,7 +2011,7 @@
       },
       "production": {
         "promptEn": "a stumbling block (what holds a plan back)",
-        "contextHint": "native compound; its opposite is 디딤돌 (stepping stone)",
+        "contextHint": "native compound; its opposite is 'stepping stone'",
         "accepted": ["걸림돌"]
       },
       "cloze": [
@@ -2009,7 +2019,7 @@
           "id": "c1",
           "sentence": "높은 집값이 결혼의 가장 큰 {{}}로 꼽혔다.",
           "en": "High housing prices were named the biggest obstacle to marriage.",
-          "cue": "걸림돌 · stumbling block",
+          "cue": "stumbling block, obstacle",
           "accepted": ["걸림돌"],
           "particleTolerance": "none"
         }
@@ -2053,7 +2063,7 @@
           "id": "c1",
           "sentence": "아이는 담장 위에 {{}} 다리를 흔들었다.",
           "en": "The child perched on top of the wall, swinging her legs.",
-          "cue": "걸터앉다 · perch",
+          "cue": "perch, sit on the edge",
           "accepted": ["걸터앉아", "걸터앉아서"],
           "particleTolerance": "none"
         }
@@ -2110,7 +2120,7 @@
           "id": "c1",
           "sentence": "동생은 어릴 때 {{}} 울어서 별명이 울보였다.",
           "en": "My little brother cried at the drop of a hat as a kid, so his nickname was Crybaby.",
-          "cue": "걸핏하면 · at the drop of a hat",
+          "cue": "at the drop of a hat",
           "accepted": ["걸핏하면"],
           "particleTolerance": "none"
         }

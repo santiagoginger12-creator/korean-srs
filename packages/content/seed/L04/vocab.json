@@ -61,7 +61,7 @@
           "id": "c1",
           "sentence": "저녁엔 쌀쌀하니까 뭐라도 하나 {{}} 나가.",
           "en": "It gets chilly in the evening, so throw something on before you go out.",
-          "cue": "걸치다 · throw on (clothing)",
+          "cue": "throw on (some clothing)",
           "accepted": [
             "걸치고",
             "걸쳐 입고"
@@ -72,7 +72,7 @@
           "id": "c2",
           "sentence": "회의실이 추워서 다들 재킷을 어깨에 {{}} 앉아 있었다.",
           "en": "The meeting room was cold, so everyone sat with their jackets draped over their shoulders.",
-          "cue": "걸치다 · drape over the shoulders",
+          "cue": "drape (over the shoulders)",
           "accepted": [
             "걸치고",
             "걸친 채",
@@ -177,7 +177,7 @@
           "id": "c1",
           "sentence": "회사는 두 차례에 {{}} 공식 사과문을 발표했다.",
           "en": "The company issued an official apology on two separate occasions.",
-          "cue": "걸치다 · span (occasions / a period)",
+          "cue": "over, spanning (two occasions)",
           "accepted": [
             "걸쳐",
             "걸쳐서"
@@ -188,7 +188,7 @@
           "id": "c2",
           "sentence": "경제 전반에 {{}} 구조 개혁이 필요하다는 목소리가 높다.",
           "en": "There are growing calls for structural reform spanning the entire economy.",
-          "cue": "걸치다 · span (an area)",
+          "cue": "spanning (the whole economy)",
           "accepted": [
             "걸친",
             "걸쳐"
@@ -288,7 +288,7 @@
           "id": "c1",
           "sentence": "소파에 제대로 앉지도 못하고 팔걸이에 {{}} 앉아서 밥을 먹었다.",
           "en": "I couldn't even sit on the sofa properly, so I ate perched on the armrest.",
-          "cue": "걸치다 · perch on an edge",
+          "cue": "perch (on the armrest)",
           "accepted": [
             "걸쳐"
           ],
@@ -296,7 +296,7 @@
           "nearMiss": [
             {
               "answer": "걸터",
-              "hint": "걸터앉다 (one word) paints the same picture, but the cue asks for 걸치다: 걸쳐 앉다."
+              "hint": "걸터앉다 (one word) paints the same picture, but the cue is after another verb."
             }
           ]
         },
@@ -304,7 +304,7 @@
           "id": "c2",
           "sentence": "젖은 수건은 욕조 가장자리에 {{}} 말려.",
           "en": "Hang the wet towel over the edge of the tub to dry.",
-          "cue": "걸치다 · hang over an edge",
+          "cue": "hang over (an edge) to dry",
           "accepted": [
             "걸쳐",
             "걸쳐서",
@@ -412,7 +412,7 @@
           "id": "c1",
           "sentence": "다들 바쁘니까 회의 시간은 제일 늦게 끝나는 사람 일정에 {{}} 정하죠.",
           "en": "Everyone's busy, so let's set the meeting time to fit whoever finishes latest.",
-          "cue": "맞추다 · fit to (a schedule)",
+          "cue": "fit to (someone's schedule)",
           "accepted": [
             "맞춰",
             "맞춰서",
@@ -425,7 +425,7 @@
           "id": "c2",
           "sentence": "시계를 서울 시간에 {{}} 놓는 걸 깜빡했다.",
           "en": "I forgot to set my watch to Seoul time.",
-          "cue": "맞추다 · set to (a time)",
+          "cue": "set to (a time zone)",
           "accepted": [
             "맞춰",
             "맞추어"
@@ -535,7 +535,7 @@
           "id": "c1",
           "sentence": "카드 명세서와 영수증을 한 장씩 {{}} 보면서 빠진 내역이 없는지 확인했다.",
           "en": "I checked the receipts against the card statement one by one to make sure nothing was missing.",
-          "cue": "맞추다 · check against",
+          "cue": "check (one against the other)",
           "accepted": [
             "맞춰",
             "맞추어"
@@ -546,7 +546,7 @@
           "id": "c2",
           "sentence": "천 피스짜리 퍼즐을 주말 내내 {{}} 겨우 완성했다.",
           "en": "I spent the whole weekend putting together a 1,000-piece puzzle and only just finished it.",
-          "cue": "맞추다 · fit pieces together",
+          "cue": "fit (puzzle pieces) together",
           "accepted": [
             "맞춰서",
             "맞춰",
@@ -652,7 +652,7 @@
           "id": "c1",
           "sentence": "축제 때 입을 단체 티셔츠를 인쇄소에 {{}} 놨어.",
           "en": "I've put in an order at the print shop for group T-shirts for the festival.",
-          "cue": "맞추다 · order custom-made",
+          "cue": "have (T-shirts) made to order",
           "accepted": [
             "맞춰",
             "맞추어"
@@ -663,7 +663,7 @@
           "id": "c2",
           "sentence": "엄마 환갑 선물로 금반지를 하나 {{}} 드렸다.",
           "en": "For Mom's sixtieth birthday, I had a gold ring made for her.",
-          "cue": "맞추다 · have (something) made",
+          "cue": "have (a ring) custom-made",
           "accepted": [
             "맞춰",
             "맞추어"
@@ -763,7 +763,7 @@
           "id": "c1",
           "sentence": "그 조치는 형평성 원칙에 {{}} 것이어서 거센 비판을 받았다.",
           "en": "The measure ran counter to the principle of fairness and drew fierce criticism.",
-          "cue": "어긋나다 · go against (a principle)",
+          "cue": "go against (a principle)",
           "accepted": [
             "어긋나는",
             "어긋난"
@@ -774,7 +774,7 @@
           "id": "c2",
           "sentence": "개인 정보를 동의 없이 공유하는 건 회사 규정에도 {{}}.",
           "en": "Sharing personal data without consent also violates company rules.",
-          "cue": "어긋나다 · violate (rules)",
+          "cue": "violate (company rules)",
           "accepted": [
             "어긋나요",
             "어긋나",
@@ -879,7 +879,7 @@
           "id": "c1",
           "sentence": "날씨 때문에 여행 계획이 완전히 {{}} 버렸다.",
           "en": "The weather threw our travel plans completely off.",
-          "cue": "어긋나다 · go awry",
+          "cue": "go awry, fall through",
           "accepted": [
             "어긋나"
           ],
@@ -889,7 +889,7 @@
           "id": "c2",
           "sentence": "역 앞에서 만나기로 했는데 출구를 잘못 알아서 길이 {{}} 말았다.",
           "en": "We'd agreed to meet in front of the station, but I had the wrong exit and we ended up missing each other.",
-          "cue": "어긋나다 · miss each other",
+          "cue": "miss each other (on the way)",
           "accepted": [
             "어긋나고"
           ],
@@ -897,7 +897,7 @@
           "nearMiss": [
             {
               "answer": "엇갈리고",
-              "hint": "길이 엇갈리다 is just as natural here, but the cue asks for 어긋나다: 길이 어긋나고."
+              "hint": "길이 엇갈리다 is just as natural here, but the cue is after another verb."
             }
           ]
         }
@@ -971,7 +971,7 @@
           "id": "c1",
           "sentence": "필요한 서류를 다 {{}} 다시 방문해 주세요.",
           "en": "Please come back once you have all the required documents.",
-          "cue": "갖추다 · have in place",
+          "cue": "have (documents) all in order",
           "accepted": [
             "갖춰서",
             "갖추어서",
@@ -989,7 +989,7 @@
           "id": "c2",
           "sentence": "중소기업도 기술력을 {{}} 대기업과 충분히 경쟁할 수 있다.",
           "en": "Smaller firms can compete with the big players too, as long as they have the technology.",
-          "cue": "갖추다 · possess (capability)",
+          "cue": "possess (capability), be equipped with",
           "accepted": [
             "갖추면",
             "갖춘다면"
@@ -1092,7 +1092,7 @@
           "id": "c1",
           "sentence": "보고서는 내부용이니까 너무 격식을 {{}} 쓸 필요는 없어요.",
           "en": "The report is for internal use, so there's no need to write it too formally.",
-          "cue": "갖추다 · observe (formalities)",
+          "cue": "observe (formalities)",
           "accepted": [
             "갖춰서",
             "갖춰",
@@ -1103,11 +1103,11 @@
           "nearMiss": [
             {
               "answer": "차려",
-              "hint": "격식을 차리다 is also idiomatic, but the cue asks for 갖추다: 격식을 갖춰."
+              "hint": "격식을 차리다 is also idiomatic, but the cue is after another verb."
             },
             {
               "answer": "차려서",
-              "hint": "격식을 차리다 is also idiomatic, but the cue asks for 갖추다: 격식을 갖춰서."
+              "hint": "격식을 차리다 is also idiomatic, but the cue is after another verb."
             }
           ]
         },
@@ -1115,7 +1115,7 @@
           "id": "c2",
           "sentence": "드레스 코드가 있는 자리라서 오랜만에 정장을 {{}} 입고 갔다.",
           "en": "There was a dress code, so for once I went in a proper suit.",
-          "cue": "갖추다 · dress (properly)",
+          "cue": "dress (formally), properly",
           "accepted": [
             "갖춰",
             "갖추어"
@@ -1187,7 +1187,7 @@
           "id": "c1",
           "sentence": "이 버스는 시내를 {{}} 공항까지 갑니다.",
           "en": "This bus goes to the airport by way of downtown.",
-          "cue": "거치다 · go via (a place)",
+          "cue": "go via (downtown)",
           "accepted": [
             "거쳐",
             "거쳐서"
@@ -1291,7 +1291,7 @@
           "id": "c1",
           "sentence": "법안은 상임위원회 심사를 {{}} 본회의에 상정되었다.",
           "en": "After standing committee review, the bill was put before the plenary session.",
-          "cue": "거치다 · go through (a review)",
+          "cue": "go through (committee review)",
           "accepted": [
             "거쳐",
             "거쳐서",
@@ -1306,7 +1306,7 @@
           "id": "c2",
           "sentence": "수많은 시행착오를 {{}} 지금의 방식이 자리를 잡았다.",
           "en": "The current method only took hold after a great deal of trial and error.",
-          "cue": "거치다 · go through (a process)",
+          "cue": "go through (trial and error)",
           "accepted": [
             "거쳐",
             "거쳐서",
@@ -1403,7 +1403,7 @@
           "id": "c1",
           "sentence": "비가 오니까 현관 바로 앞에 차를 {{}} 줄게.",
           "en": "It's raining, so I'll pull the car right up to the entrance for you.",
-          "cue": "대다 · pull up (a car)",
+          "cue": "pull up (the car)",
           "accepted": [
             "대",
             "대어"
@@ -1414,7 +1414,7 @@
           "id": "c2",
           "sentence": "주차장이 꽉 차서 차를 어디에 {{}} 할지 모르겠어요.",
           "en": "The lot is full, so I don't know where I'm supposed to park.",
-          "cue": "대다 · park",
+          "cue": "park (the car somewhere)",
           "accepted": [
             "대야"
           ],
@@ -1494,7 +1494,7 @@
           "id": "c1",
           "sentence": "숙제를 안 해 온 학생들은 저마다 그럴듯한 핑계를 {{}} 바빴다.",
           "en": "The students who hadn't done their homework were all busy coming up with plausible excuses.",
-          "cue": "대다 · make (an excuse)",
+          "cue": "make (excuses)",
           "accepted": [
             "대느라",
             "대기에",
@@ -1506,7 +1506,7 @@
           "id": "c2",
           "sentence": "근거를 {{}} 못하면 그 주장은 받아들일 수 없어요.",
           "en": "If you can't give any grounds, that claim can't be accepted.",
-          "cue": "대다 · give (grounds)",
+          "cue": "give, produce (grounds)",
           "accepted": [
             "대지"
           ],
@@ -1595,7 +1595,7 @@
           "id": "c1",
           "sentence": "국물은 남기고 건더기만 {{}} 먹었다.",
           "en": "I left the broth and fished out just the solids to eat.",
-          "cue": "건지다 · fish out (of liquid)",
+          "cue": "fish out (the solids)",
           "accepted": [
             "건져",
             "건져서"
@@ -1700,7 +1700,7 @@
           "id": "c1",
           "sentence": "주식으로 손해만 보다가 겨우 본전을 {{}} 바로 다 팔았다.",
           "en": "After nothing but losses on stocks, I finally got back to break-even and sold everything right away.",
-          "cue": "건지다 · get back (one's money)",
+          "cue": "get back (one's money), break even",
           "accepted": [
             "건지고",
             "건지자",
@@ -1713,7 +1713,7 @@
           "id": "c2",
           "sentence": "세 시간짜리 세미나였는데 솔직히 {{}} 게 하나도 없었어.",
           "en": "It was a three-hour seminar, and honestly I didn't get a single thing out of it.",
-          "cue": "건지다 · come away with",
+          "cue": "come away with (something worthwhile)",
           "accepted": [
             "건진"
           ],
@@ -1811,7 +1811,7 @@
           "id": "c1",
           "sentence": "손이 시려서 장갑을 두 겹이나 {{}} 나왔다.",
           "en": "My hands were freezing, so I came out wearing two pairs of gloves.",
-          "cue": "끼다 · put on (gloves)",
+          "cue": "put on (gloves)",
           "accepted": [
             "끼고"
           ],
@@ -1821,7 +1821,7 @@
           "id": "c2",
           "sentence": "눈이 너무 건조해서 렌즈를 {{}} 수가 없어.",
           "en": "My eyes are so dry I can't put my contacts in.",
-          "cue": "끼다 · put in (lenses)",
+          "cue": "put in (contact lenses)",
           "accepted": [
             "낄"
           ],
@@ -1924,7 +1924,7 @@
           "id": "c1",
           "sentence": "하늘에 구름이 잔뜩 {{}} 있어서 별이 하나도 안 보였다.",
           "en": "The sky was so overcast that not a single star was visible.",
-          "cue": "끼다 · (cloud) hang over",
+          "cue": "(clouds) hang heavy",
           "accepted": [
             "껴",
             "끼어"
@@ -1935,7 +1935,7 @@
           "id": "c2",
           "sentence": "물때가 {{}} 욕실 타일을 주말에 박박 닦았다.",
           "en": "Over the weekend I gave the bathroom tiles, crusted with soap scum, a hard scrub.",
-          "cue": "끼다 · (grime) build up",
+          "cue": "(grime) build up",
           "accepted": [
             "낀"
           ],
@@ -2029,7 +2029,7 @@
           "id": "c1",
           "sentence": "올해 세운 목표를 다 {{}} 못했지만 절반은 해냈다.",
           "en": "I didn't achieve every goal I set this year, but I got halfway.",
-          "cue": "이루다 · achieve",
+          "cue": "achieve, accomplish (goals)",
           "accepted": [
             "이루지"
           ],
@@ -2039,7 +2039,7 @@
           "id": "c2",
           "sentence": "작은 목표라도 하나씩 {{}} 가다 보면 자신감이 붙는다.",
           "en": "If you keep achieving goals one at a time, however small, your confidence builds.",
-          "cue": "이루다 · achieve (goals)",
+          "cue": "achieve (one at a time)",
           "accepted": [
             "이뤄",
             "이루어"
@@ -2146,7 +2146,7 @@
           "id": "c1",
           "sentence": "이 도시는 오래된 한옥과 현대식 건물이 묘한 조화를 {{}} 있다.",
           "en": "In this city, old hanok and modern buildings sit together in a curious harmony.",
-          "cue": "이루다 · form (harmony)",
+          "cue": "form (harmony)",
           "accepted": [
             "이루고"
           ],
@@ -2156,7 +2156,7 @@
           "id": "c2",
           "sentence": "그 시절 문단의 주류를 {{}} 것은 참여 문학이었다.",
           "en": "What made up the literary mainstream in those days was socially engaged literature.",
-          "cue": "이루다 · make up",
+          "cue": "make up (the mainstream)",
           "accepted": [
             "이룬",
             "이루던",
@@ -2240,7 +2240,7 @@
           "id": "c1",
           "sentence": "합격 발표 날, 어머니는 아침부터 두 손을 모으고 {{}} 계셨다.",
           "en": "On the day the results came out, my mother sat with her hands clasped in prayer from the morning on.",
-          "cue": "빌다 · pray",
+          "cue": "pray (hands together)",
           "accepted": [
             "빌고"
           ],
@@ -2250,7 +2250,7 @@
           "id": "c2",
           "sentence": "다들 시험 잘 보길 {{}}.",
           "en": "I hope you all do well on the exam.",
-          "cue": "빌다 · wish",
+          "cue": "wish (someone luck)",
           "accepted": [
             "빌게",
             "빌게요",
@@ -2263,7 +2263,7 @@
           "nearMiss": [
             {
               "answer": "빌께",
-              "hint": "Spelled 빌게: -(으)ㄹ게 is written with ㄱ."
+              "hint": "Check the spelling: -(으)ㄹ게 is written with ㄱ."
             }
           ],
           "particleTolerance": "none"
@@ -2360,14 +2360,14 @@
           "id": "c1",
           "sentence": "이제 와서 잘못했다고 {{}} 봐야 이미 늦었어.",
           "en": "There's no point begging forgiveness now. It's too late.",
-          "cue": "빌다 · beg (forgiveness)",
+          "cue": "beg (forgiveness), plead",
           "accepted": [
             "빌어"
           ],
           "nearMiss": [
             {
               "answer": "빌려",
-              "hint": "빌려 is from 빌리다 (borrow). Begging is 빌다 → 빌어."
+              "hint": "빌려 is from 빌리다 (borrow); begging is a different verb."
             }
           ],
           "particleTolerance": "none"
@@ -2376,7 +2376,7 @@
           "id": "c2",
           "sentence": "아이는 다시는 안 그러겠다며 엄마에게 {{}}.",
           "en": "The child begged his mother's forgiveness, promising never to do it again.",
-          "cue": "빌다 · beg (forgiveness)",
+          "cue": "beg (forgiveness), past tense",
           "accepted": [
             "빌었다",
             "빌었어",
@@ -2459,7 +2459,7 @@
           "id": "c1",
           "sentence": "작가는 수상 소감에서 이 자리를 {{}} 번역가에게 고마움을 전했다.",
           "en": "In her acceptance speech, the author took the opportunity to thank her translator.",
-          "cue": "빌리다 · take (the opportunity)",
+          "cue": "take (this opportunity) to",
           "accepted": [
             "빌려",
             "빌려서"
@@ -2470,7 +2470,7 @@
           "id": "c2",
           "sentence": "어느 시인의 표현을 {{}} 그 시절 우리는 '눈부시게 가난했다.'",
           "en": "To borrow a poet's phrase, in those days we were \"dazzlingly poor.\"",
-          "cue": "빌리다 · borrow (words)",
+          "cue": "borrow (a poet's words)",
           "accepted": [
             "빌리자면",
             "빌리면",
@@ -2562,7 +2562,7 @@
           "id": "c1",
           "sentence": "아이가 하도 졸라서 강아지를 키우고 싶다는 소원을 {{}} 수밖에 없었다.",
           "en": "My kid begged so much that I had no choice but to grant her wish for a puppy.",
-          "cue": "들어주다 · grant (a wish)",
+          "cue": "grant (a wish)",
           "accepted": [
             "들어줄"
           ],
@@ -2572,7 +2572,7 @@
           "id": "c2",
           "sentence": "그렇게 무리한 요구를 다 {{}} 계약할 이유는 없다.",
           "en": "There's no reason to sign if it means giving in to such unreasonable demands.",
-          "cue": "들어주다 · give in to (demands)",
+          "cue": "give in to (demands)",
           "accepted": [
             "들어주면서",
             "들어주고",
@@ -2681,7 +2681,7 @@
           "id": "c1",
           "sentence": "주문한 것과 다른 색이 와서 상품을 판매자에게 {{}} 했다.",
           "en": "The wrong color arrived, so I had to send the item back to the seller.",
-          "cue": "돌려보내다 · send back",
+          "cue": "send back (to the seller)",
           "accepted": [
             "돌려보내야"
           ],
@@ -2691,7 +2691,7 @@
           "id": "c2",
           "sentence": "서류 하나 빠졌다고 민원인을 그냥 {{}} 건 너무하잖아요.",
           "en": "Sending someone away just because one document was missing is a bit much.",
-          "cue": "돌려보내다 · turn away",
+          "cue": "turn away (a visitor)",
           "accepted": [
             "돌려보낸",
             "돌려보내는"
@@ -2799,7 +2799,7 @@
           "id": "c1",
           "sentence": "오래 몰던 차를 중고 시장에 {{}} 일주일 만에 팔렸다.",
           "en": "I put the car I'd driven for years on the used market, and it sold within a week.",
-          "cue": "내놓다 · put up for sale",
+          "cue": "put up for sale",
           "accepted": [
             "내놨더니",
             "내놓았더니",
@@ -2813,7 +2813,7 @@
           "id": "c2",
           "sentence": "그 출판사는 해마다 번역 시리즈를 꾸준히 {{}} 있다.",
           "en": "That publisher has been steadily bringing out a translation series every year.",
-          "cue": "내놓다 · bring out (a product)",
+          "cue": "bring out (books, products)",
           "accepted": [
             "내놓고"
           ],
@@ -2917,7 +2917,7 @@
           "id": "c1",
           "sentence": "논란이 커지자 구단은 공식 입장을 {{}} 사태 수습에 나섰다.",
           "en": "As the controversy grew, the club issued an official statement and set about damage control.",
-          "cue": "내놓다 · issue (a statement)",
+          "cue": "issue (an official statement)",
           "accepted": [
             "내놓고",
             "내놓으며",
@@ -2929,7 +2929,7 @@
           "id": "c2",
           "sentence": "비판만 하지 말고 대안을 {{}} 봐.",
           "en": "Don't just criticize. Come up with an alternative.",
-          "cue": "내놓다 · come up with",
+          "cue": "come up with (an alternative)",
           "accepted": [
             "내놔",
             "내놓아"
@@ -3020,7 +3020,7 @@
           "id": "c1",
           "sentence": "전시품은 손으로 {{}} 마시고 눈으로만 감상해 주세요.",
           "en": "Please don't touch the exhibits. Look only.",
-          "cue": "건드리다 · touch",
+          "cue": "touch (exhibits)",
           "accepted": [
             "건드리지",
             "건들지"
@@ -3031,7 +3031,7 @@
           "id": "c2",
           "sentence": "설정을 잘못 {{}} 프로그램이 아예 안 켜진다.",
           "en": "I messed with the settings and now the program won't even start.",
-          "cue": "건드리다 · mess with",
+          "cue": "mess with (settings)",
           "accepted": [
             "건드렸더니",
             "건드려서",
@@ -3115,7 +3115,7 @@
           "id": "c1",
           "sentence": "그 사람 지금 예민하니까 괜히 {{}} 말고 가만히 있어.",
           "en": "He's touchy right now, so don't go provoking him. Just leave it.",
-          "cue": "건드리다 · provoke",
+          "cue": "provoke, poke (someone touchy)",
           "accepted": [
             "건드리지",
             "건들지"
@@ -3126,7 +3126,7 @@
           "id": "c2",
           "sentence": "기자의 질문이 감독의 신경을 {{}} 듯했다.",
           "en": "The reporter's question seemed to get on the coach's nerves.",
-          "cue": "건드리다 · get on (someone's) nerves",
+          "cue": "get on (someone's) nerves",
           "accepted": [
             "건드린",
             "건드리는"
@@ -3221,7 +3221,7 @@
           "id": "c1",
           "sentence": "누가 부르는 것 같아서 뒤를 {{}} 아무도 없었다.",
           "en": "I thought someone called my name, but when I looked back there was no one there.",
-          "cue": "돌아보다 · look back",
+          "cue": "look back (over one's shoulder)",
           "accepted": [
             "돌아봤는데",
             "돌아보았는데",
@@ -3235,7 +3235,7 @@
           "id": "c2",
           "sentence": "이번 실패를 계기로 그동안의 운영 방식을 차분히 {{}} 한다.",
           "en": "We should use this failure as a chance to take a calm look back at how we've been running things.",
-          "cue": "돌아보다 · reflect on",
+          "cue": "reflect on, look back on",
           "accepted": [
             "돌아봐야",
             "돌아보아야"
@@ -3329,7 +3329,7 @@
           "id": "c1",
           "sentence": "시장은 취임 첫날 공사 현장 여러 곳을 직접 {{}}.",
           "en": "On her first day in office, the mayor personally toured several construction sites.",
-          "cue": "돌아보다 · tour (sites)",
+          "cue": "tour, inspect (sites)",
           "accepted": [
             "돌아봤다",
             "돌아보았다",
@@ -3346,7 +3346,7 @@
           "id": "c2",
           "sentence": "경비원은 밤 열 시가 되면 층마다 한 바퀴씩 {{}} 문이 잠겼는지 확인한다.",
           "en": "At ten every night the security guard makes a round of each floor, checking that the doors are locked.",
-          "cue": "돌아보다 · make the rounds",
+          "cue": "make the rounds (floor by floor)",
           "accepted": [
             "돌아보며",
             "돌아보면서",
@@ -3421,7 +3421,7 @@
           "id": "c1",
           "sentence": "형이 겁쟁이라고 하도 {{}} 울음을 터뜨렸다.",
           "en": "My older brother teased me so much for being a scaredy-cat that I burst into tears.",
-          "cue": "놀리다 · tease",
+          "cue": "tease",
           "accepted": [
             "놀려서",
             "놀리는 바람에",
@@ -3433,7 +3433,7 @@
           "id": "c2",
           "sentence": "장난으로 한 말인데, {{}} 것처럼 들렸다면 미안해.",
           "en": "I only meant it as a joke, but I'm sorry if it sounded like I was making fun of you.",
-          "cue": "놀리다 · make fun of",
+          "cue": "make fun of",
           "accepted": [
             "놀리는",
             "놀린"
@@ -3532,7 +3532,7 @@
           "id": "c1",
           "sentence": "빈방을 그냥 {{}} 아까우니까 서재로 쓰자.",
           "en": "It's a waste to leave the spare room unused, so let's make it a study.",
-          "cue": "놀리다 · leave unused",
+          "cue": "leave (a room) unused",
           "accepted": [
             "놀리기",
             "놀리긴",
@@ -3546,7 +3546,7 @@
           "id": "c2",
           "sentence": "비싼 장비를 {{}} 두는 대신 다른 팀에 빌려주기로 했다.",
           "en": "Instead of leaving the expensive equipment sitting idle, we decided to lend it to another team.",
-          "cue": "놀리다 · leave idle",
+          "cue": "leave (equipment) idle",
           "accepted": [
             "놀려"
           ],
@@ -3622,7 +3622,7 @@
           "id": "c1",
           "sentence": "연봉 얘기를 먼저 {{}} 게 좀 눈치 보여서 가만히 있었어.",
           "en": "I felt awkward bringing up salary first, so I kept quiet.",
-          "cue": "꺼내다 · bring up",
+          "cue": "bring up (a topic)",
           "accepted": [
             "꺼내는"
           ],
@@ -3632,7 +3632,7 @@
           "id": "c2",
           "sentence": "회의 막바지에 누군가 예산 문제를 {{}} 분위기가 싸해졌다.",
           "en": "Toward the end of the meeting someone raised the budget issue, and the mood went cold.",
-          "cue": "꺼내다 · raise (an issue)",
+          "cue": "raise (an issue)",
           "accepted": [
             "꺼내자",
             "꺼내는 바람에",
@@ -3746,7 +3746,7 @@
           "id": "c1",
           "sentence": "완벽하게 하겠다는 욕심을 {{}} 오히려 일이 잘 풀렸다.",
           "en": "Once I let go of the urge to do it perfectly, things actually went more smoothly.",
-          "cue": "내려놓다 · let go of",
+          "cue": "let go of (a desire)",
           "accepted": [
             "내려놓으니까",
             "내려놓으니",
@@ -3760,7 +3760,7 @@
           "id": "c2",
           "sentence": "무거운 장바구니를 현관에 {{}} 한숨 돌렸다.",
           "en": "I set the heavy shopping bags down in the entryway and caught my breath.",
-          "cue": "내려놓다 · put down",
+          "cue": "put down (bags)",
           "accepted": [
             "내려놓고"
           ],
@@ -3871,7 +3871,7 @@
           "id": "c1",
           "sentence": "교정지를 보니 3장 마지막 문단이 통째로 {{}} 있었다.",
           "en": "Looking at the proofs, I found the last paragraph of chapter 3 was missing entirely.",
-          "cue": "빠지다 · be missing",
+          "cue": "be missing (from the proofs)",
           "accepted": [
             "빠져"
           ],
@@ -3881,7 +3881,7 @@
           "id": "c2",
           "sentence": "중요한 회의니까 웬만하면 {{}} 말고 꼭 참석해 주세요.",
           "en": "It's an important meeting, so unless you really can't, please don't skip it.",
-          "cue": "빠지다 · skip",
+          "cue": "skip, miss (a meeting)",
           "accepted": [
             "빠지지"
           ],
@@ -3989,7 +3989,7 @@
           "id": "c1",
           "sentence": "그는 창밖을 바라보며 한동안 깊은 생각에 {{}} 있었다.",
           "en": "He gazed out the window, lost in thought for a while.",
-          "cue": "빠지다 · be lost in (thought)",
+          "cue": "be lost in (thought)",
           "accepted": [
             "빠져"
           ],
@@ -3999,7 +3999,7 @@
           "id": "c2",
           "sentence": "어느 쪽을 택해도 손해라 완전히 딜레마에 {{}}.",
           "en": "Whichever way we go, we lose. We're well and truly caught in a dilemma.",
-          "cue": "빠지다 · be caught in",
+          "cue": "be caught in (a dilemma)",
           "accepted": [
             "빠졌다",
             "빠졌어",
@@ -4107,7 +4107,7 @@
           "id": "c1",
           "sentence": "한 달 동안 야식을 끊었더니 살이 {{}} 바지가 헐렁해졌다.",
           "en": "I cut out late-night snacks for a month and lost so much weight my pants are loose.",
-          "cue": "빠지다 · (weight) come off",
+          "cue": "(weight) come off",
           "accepted": [
             "빠져서",
             "빠져"
@@ -4118,7 +4118,7 @@
           "id": "c2",
           "sentence": "범인을 미리 알고 읽는 추리 소설은 김이 {{}} 끝까지 읽기 힘들다.",
           "en": "A mystery novel where you already know the culprit falls flat, and it's hard to read to the end.",
-          "cue": "빠지다 · go flat",
+          "cue": "(the fizz) go out, go flat",
           "accepted": [
             "빠져서",
             "빠져"
@@ -4194,7 +4194,7 @@
           "id": "c1",
           "sentence": "그런 뻔한 수법에 {{}} 사람이 아직도 있다니 놀랍다.",
           "en": "It's amazing there are still people who fall for such an obvious scam.",
-          "cue": "넘어가다 · fall for",
+          "cue": "fall for (a trick)",
           "accepted": [
             "넘어가는"
           ],
@@ -4204,7 +4204,7 @@
           "id": "c2",
           "sentence": "아무리 꼬드겨도 이번에는 안 {{}}.",
           "en": "No matter how you try to sweet-talk me, I'm not falling for it this time.",
-          "cue": "넘어가다 · fall for",
+          "cue": "be taken in (this time)",
           "accepted": [
             "넘어가",
             "넘어가요",
@@ -4312,7 +4312,7 @@
           "id": "c1",
           "sentence": "이 부분은 다들 아는 내용이니까 빨리 {{}}.",
           "en": "Everyone knows this part, so let's move on quickly.",
-          "cue": "넘어가다 · move on",
+          "cue": "move on (to the next part)",
           "accepted": [
             "넘어갈게요",
             "넘어가죠",
@@ -4330,7 +4330,7 @@
           "id": "c2",
           "sentence": "회계 오류를 대충 {{}} 나중에 감사에서 크게 문제가 됐다.",
           "en": "They glossed over the accounting error, and it blew up into a major problem at the audit.",
-          "cue": "넘어가다 · gloss over",
+          "cue": "gloss over",
           "accepted": [
             "넘어갔다가",
             "넘어갔더니",
@@ -4407,7 +4407,7 @@
           "id": "c1",
           "sentence": "납부 기한을 {{}} 연체료가 붙는다.",
           "en": "If you go past the payment due date, a late fee is added.",
-          "cue": "넘기다 · go past (a deadline)",
+          "cue": "go past (the due date)",
           "accepted": [
             "넘기면"
           ],
@@ -4417,7 +4417,7 @@
           "id": "c2",
           "sentence": "공연은 자정을 {{}} 끝났다.",
           "en": "The concert ran past midnight.",
-          "cue": "넘기다 · go past (a time)",
+          "cue": "go past (midnight)",
           "accepted": [
             "넘겨서",
             "넘겨",
@@ -4515,7 +4515,7 @@
           "id": "c1",
           "sentence": "대출 덕분에 가게는 겨우 고비를 {{}} 숨을 돌렸다.",
           "en": "Thanks to the loan, the shop barely got through the crisis and could breathe again.",
-          "cue": "넘기다 · get through (a crisis)",
+          "cue": "get through (a crisis)",
           "accepted": [
             "넘기고",
             "넘겨",
@@ -4527,7 +4527,7 @@
           "id": "c2",
           "sentence": "화분을 실내에 들여놨더니 겨울을 무사히 {{}}.",
           "en": "I brought the potted plant inside, and it made it through the winter just fine.",
-          "cue": "넘기다 · make it through",
+          "cue": "make it through (the winter)",
           "accepted": [
             "넘겼다",
             "넘겼어",
@@ -4629,7 +4629,7 @@
           "id": "c1",
           "sentence": "번역 일정이 빠듯해서 장마다 세부 일정을 따로 {{}} 작업하고 있다.",
           "en": "The translation schedule is tight, so I've drawn up a separate schedule for each chapter and am working to it.",
-          "cue": "세우다 · draw up (a schedule)",
+          "cue": "draw up (a detailed schedule)",
           "accepted": [
             "세워",
             "세워서",
@@ -4642,7 +4642,7 @@
           "id": "c2",
           "sentence": "재발 방지 대책을 {{}} 전까지는 공사를 재개할 수 없다.",
           "en": "Construction can't resume until measures to prevent a recurrence are drawn up.",
-          "cue": "세우다 · draw up (measures)",
+          "cue": "draw up (measures)",
           "accepted": [
             "세우기"
           ],
@@ -4718,7 +4718,7 @@
           "id": "c1",
           "sentence": "사장은 거래처 앞에서 체면을 {{}} 무리한 약속을 했다.",
           "en": "The boss made an unreasonable promise to save face in front of the client.",
-          "cue": "세우다 · save (face)",
+          "cue": "save (face)",
           "accepted": [
             "세우려고",
             "세우려다",
@@ -4731,7 +4731,7 @@
           "id": "c2",
           "sentence": "그렇게 고집만 {{}} 아무도 안 도와준다.",
           "en": "If you just dig your heels in like that, nobody's going to help you.",
-          "cue": "세우다 · dig one's heels in",
+          "cue": "dig one's heels in",
           "accepted": [
             "세우면"
           ],
@@ -4831,7 +4831,7 @@
           "id": "c1",
           "sentence": "지난번 회의에서 나온 문제는 오늘 한 번 더 {{}} 넘어갑시다.",
           "en": "Let's go over the issue from last meeting once more before we move on.",
-          "cue": "짚다 · address (an issue)",
+          "cue": "address (an issue) before moving on",
           "accepted": [
             "짚고"
           ],
@@ -4841,7 +4841,7 @@
           "id": "c2",
           "sentence": "선생님은 내 글의 약점을 정확히 {{}} 주셨다.",
           "en": "My teacher pinpointed exactly the weak spots in my writing.",
-          "cue": "짚다 · point out",
+          "cue": "point out, put a finger on",
           "accepted": [
             "짚어"
           ],
@@ -4953,7 +4953,7 @@
           "id": "c1",
           "sentence": "산 정상에 {{}} 바다가 보였다.",
           "en": "Only when we reached the summit could we see the sea.",
-          "cue": "이르다 · reach (a place)",
+          "cue": "reach (a summit)",
           "accepted": [
             "이르러서야",
             "이르러서",
@@ -4962,7 +4962,7 @@
           "nearMiss": [
             {
               "answer": "일러서야",
-              "hint": "That's the 르-irregular 이르다 (tell / early). \"Reach\" is 러-irregular: 이르러, 이르렀다."
+              "hint": "That's the 르-irregular homonym (tell / early). 'Reach' is 러-irregular."
             }
           ],
           "particleTolerance": "none"
@@ -4971,7 +4971,7 @@
           "id": "c2",
           "sentence": "양측은 긴 협상 끝에 합의에 {{}}.",
           "en": "After long negotiations, the two sides came to an agreement.",
-          "cue": "이르다 · reach (agreement)",
+          "cue": "reach (an agreement)",
           "accepted": [
             "이르렀다",
             "이르렀어요",
@@ -4981,7 +4981,7 @@
           "nearMiss": [
             {
               "answer": "일렀다",
-              "hint": "일렀다 is the past of 이르다 \"tell / early\". \"Reach\" keeps the stem: 이르렀다."
+              "hint": "일렀다 is the past of the homonym 'tell / early'. 'Reach' is 러-irregular and keeps its stem."
             }
           ],
           "particleTolerance": "none"
@@ -5085,14 +5085,14 @@
           "id": "c1",
           "sentence": "동생이 내가 몰래 게임한 걸 아빠한테 {{}} 버렸다.",
           "en": "My little brother went and told Dad that I'd been sneaking in games.",
-          "cue": "이르다 · tell on",
+          "cue": "tell on (someone)",
           "accepted": [
             "일러"
           ],
           "nearMiss": [
             {
               "answer": "이르러",
-              "hint": "이르러 is \"reach\" (러-irregular). \"Tell on\" is 르-irregular: 일러, 일렀다."
+              "hint": "That form is 'reach' (러-irregular). 'Tell on' is 르-irregular."
             }
           ],
           "particleTolerance": "none"
@@ -5101,7 +5101,7 @@
           "id": "c2",
           "sentence": "그거 선생님한테 {{}} 안 돼, 알았지?",
           "en": "You can't tell the teacher about that, okay?",
-          "cue": "이르다 · tell on",
+          "cue": "tell on, tattle",
           "accepted": [
             "이르면"
           ],
@@ -5203,7 +5203,7 @@
           "id": "c1",
           "sentence": "그는 스물셋이라는 {{}} 나이에 첫 소설을 발표했다.",
           "en": "He published his first novel at the early age of twenty-three.",
-          "cue": "이르다 · early (adjective)",
+          "cue": "early (an early age)",
           "accepted": [
             "이른"
           ],
@@ -5211,7 +5211,7 @@
           "nearMiss": [
             {
               "answer": "어린",
-              "hint": "어린 나이에 is also natural, but the cue asks for 이르다: 이른 나이에."
+              "hint": "어린 나이에 is also natural, but the cue is after another word."
             }
           ]
         },
@@ -5219,7 +5219,7 @@
           "id": "c2",
           "sentence": "아직 포기하기엔 {{}}. 결과 나올 때까지 기다려 보자.",
           "en": "It's too early to give up. Let's wait until the results are out.",
-          "cue": "이르다 · too early",
+          "cue": "too early (to give up)",
           "accepted": [
             "일러",
             "일러요",
@@ -5232,7 +5232,7 @@
           "nearMiss": [
             {
               "answer": "이르러",
-              "hint": "이르러 is \"reach\". The adjective \"early\" is 르-irregular: 일러."
+              "hint": "That form is 'reach'. The adjective 'early' is 르-irregular."
             }
           ],
           "particleTolerance": "none"
@@ -5302,7 +5302,7 @@
           "id": "c1",
           "sentence": "합격 소식을 들은 그는 어리둥절한 표정을 {{}} 한참 말이 없었다.",
           "en": "On hearing he'd passed, he wore a dazed look and said nothing for a long while.",
-          "cue": "짓다 · wear (a look)",
+          "cue": "wear (a puzzled look)",
           "accepted": [
             "지으며",
             "지은 채",
@@ -5313,7 +5313,7 @@
           "nearMiss": [
             {
               "answer": "짖고",
-              "hint": "짖다 is \"bark\". Facial expressions are 짓다 (ㅅ-irregular): 짓고, 지으며."
+              "hint": "짖다 is 'bark'. Facial expressions take a ㅅ-irregular verb."
             }
           ],
           "particleTolerance": "none"
@@ -5322,7 +5322,7 @@
           "id": "c2",
           "sentence": "통장 잔고를 보던 엄마가 깊은 한숨을 {{}}.",
           "en": "Looking at the bank balance, Mom heaved a deep sigh.",
-          "cue": "짓다 · heave (a sigh)",
+          "cue": "heave (a deep sigh)",
           "accepted": [
             "지으셨다",
             "지었다",
@@ -5336,11 +5336,11 @@
           "nearMiss": [
             {
               "answer": "쉬셨다",
-              "hint": "한숨을 쉬다 is the everyday verb; the cue asks for the more literary 한숨을 짓다 (ㅅ-irregular: 지었다)."
+              "hint": "한숨을 쉬다 is the everyday verb; the cue wants the more literary one (ㅅ-irregular)."
             },
             {
               "answer": "쉬었다",
-              "hint": "한숨을 쉬다 is the everyday verb; the cue asks for the more literary 한숨을 짓다 (ㅅ-irregular: 지었다)."
+              "hint": "한숨을 쉬다 is the everyday verb; the cue wants the more literary one (ㅅ-irregular)."
             }
           ]
         }
@@ -5442,7 +5442,7 @@
           "id": "c1",
           "sentence": "올해 안에 원고 마무리를 {{}} 내년 봄에 출간할 예정이다.",
           "en": "The plan is to wrap up work on the manuscript this year and publish next spring.",
-          "cue": "짓다 · wrap up",
+          "cue": "wrap up (a manuscript)",
           "accepted": [
             "짓고",
             "지어"
@@ -5450,7 +5450,7 @@
           "nearMiss": [
             {
               "answer": "짖고",
-              "hint": "짖다 is \"bark\". Wrapping up is 짓다: 마무리를 짓고."
+              "hint": "짖다 is 'bark'. Wrapping up takes a ㅅ-irregular verb."
             }
           ],
           "particleTolerance": "none"
@@ -5459,7 +5459,7 @@
           "id": "c2",
           "sentence": "두 사람은 오늘 결판을 {{}} 작정인지 회의실에서 나오지 않았다.",
           "en": "The two of them stayed in the meeting room, apparently set on settling it once and for all today.",
-          "cue": "짓다 · settle (once and for all)",
+          "cue": "settle (it once and for all)",
           "accepted": [
             "지을"
           ],
@@ -5467,7 +5467,7 @@
           "nearMiss": [
             {
               "answer": "낼",
-              "hint": "결판을 내다 is just as idiomatic, but the cue asks for 짓다: 결판을 지을."
+              "hint": "결판을 내다 is just as idiomatic, but the cue is after another verb."
             }
           ]
         }
@@ -5558,7 +5558,7 @@
           "id": "c1",
           "sentence": "도예가는 물레 앞에서 흙을 {{}} 그릇의 형태를 잡아 갔다.",
           "en": "At the wheel, the potter shaped the clay and gradually formed the bowl.",
-          "cue": "빚다 · shape (clay)",
+          "cue": "shape (clay)",
           "accepted": [
             "빚어",
             "빚으며",
@@ -5570,7 +5570,7 @@
           "id": "c2",
           "sentence": "명절 음식 중에서 만두 {{}} 게 제일 재밌어.",
           "en": "Of all the holiday cooking, making dumplings is the most fun.",
-          "cue": "빚다 · make (dumplings)",
+          "cue": "make (dumplings) by hand",
           "accepted": [
             "빚는"
           ],
@@ -5678,7 +5678,7 @@
           "id": "c1",
           "sentence": "안내 문자가 두 번이나 바뀌는 바람에 현장에서 큰 혼선을 {{}}.",
           "en": "The notification text changed twice, causing major confusion on site.",
-          "cue": "빚다 · cause (confusion)",
+          "cue": "cause (confusion)",
           "accepted": [
             "빚었다",
             "빚었어요",
@@ -5691,7 +5691,7 @@
           "id": "c2",
           "sentence": "폭설로 항공편 운항이 차질을 {{}} 있다.",
           "en": "Heavy snow is disrupting flight operations.",
-          "cue": "빚다 · suffer (a setback)",
+          "cue": "suffer (disruption)",
           "accepted": [
             "빚고"
           ],
@@ -5795,7 +5795,7 @@
           "id": "c1",
           "sentence": "이번 할인 행사가 일회성에 {{}} 않도록 정기적으로 열 계획이다.",
           "en": "We plan to hold the sale regularly so that it isn't just a one-off.",
-          "cue": "그치다 · stop at",
+          "cue": "stop at (a one-off)",
           "accepted": [
             "그치지"
           ],
@@ -5805,7 +5805,7 @@
           "id": "c2",
           "sentence": "투표율은 30%에 {{}} 역대 최저를 기록했다.",
           "en": "Turnout stopped at just 30 percent, a record low.",
-          "cue": "그치다 · amount only to",
+          "cue": "amount only to (30%)",
           "accepted": [
             "그쳐",
             "그쳐서",
@@ -5895,7 +5895,7 @@
           "id": "c1",
           "sentence": "서울 가는 길에 대전에 잠깐 {{}} 친구를 만나고 갔다.",
           "en": "On the way to Seoul I stopped off briefly in Daejeon to see a friend.",
-          "cue": "들르다 · drop by",
+          "cue": "drop by (on the way)",
           "accepted": [
             "들러서",
             "들러",
@@ -5904,7 +5904,7 @@
           "nearMiss": [
             {
               "answer": "들려서",
-              "hint": "들려서 is from 들리다 (be heard). \"Drop by\" is 들르다 → 들러서, 들렀다."
+              "hint": "들려서 is from 들리다 (be heard). 'Drop by' is a different verb."
             }
           ],
           "particleTolerance": "none"
@@ -5913,7 +5913,7 @@
           "id": "c2",
           "sentence": "오늘 회사 앞 카페에 {{}} 네 생각이 나서 쿠키 샀어.",
           "en": "I stopped by the café in front of the office today, thought of you, and bought you a cookie.",
-          "cue": "들르다 · stop by",
+          "cue": "stop by (a café)",
           "accepted": [
             "들렀는데",
             "들렀다가"
@@ -5921,7 +5921,7 @@
           "nearMiss": [
             {
               "answer": "들렸는데",
-              "hint": "들렸는데 is from 들리다 (be heard). \"Stop by\" is 들르다 → 들렀는데."
+              "hint": "들렸는데 is from 들리다 (be heard). 'Stop by' is a different verb."
             }
           ],
           "particleTolerance": "none"
@@ -6019,14 +6019,14 @@
           "id": "c1",
           "sentence": "등산객들은 무거운 배낭을 {{}} 산길을 올랐다.",
           "en": "The hikers climbed the trail with heavy packs on their backs.",
-          "cue": "메다 · carry on the back",
+          "cue": "carry on the back (a backpack)",
           "accepted": [
             "메고"
           ],
           "nearMiss": [
             {
               "answer": "매고",
-              "hint": "매다 means to tie (넥타이를 매다, 신발 끈을 매다). Bags on the shoulder or back take 메다: 메고."
+              "hint": "매다 means to tie (넥타이를 매다, 신발 끈을 매다). Bags on the shoulder or back take a different verb."
             }
           ],
           "particleTolerance": "none"
@@ -6035,14 +6035,14 @@
           "id": "c2",
           "sentence": "가방을 한쪽 어깨에만 {{}} 자세가 나빠진다.",
           "en": "If you carry your bag on just one shoulder, your posture suffers.",
-          "cue": "메다 · carry on the shoulder",
+          "cue": "carry on (one) shoulder",
           "accepted": [
             "메면"
           ],
           "nearMiss": [
             {
               "answer": "매면",
-              "hint": "매다 means to tie. Carrying on the shoulder is 메다: 메면."
+              "hint": "매다 means to tie. Carrying on the shoulder takes a different verb."
             }
           ],
           "particleTolerance": "none"
@@ -6140,7 +6140,7 @@
           "id": "c1",
           "sentence": "아들의 이름을 부르던 아버지는 목이 {{}} 더 말을 잇지 못했다.",
           "en": "Calling out his son's name, the father choked up and couldn't go on.",
-          "cue": "메다 · choke up",
+          "cue": "choke up (with emotion)",
           "accepted": [
             "메어",
             "메어서"
@@ -6148,11 +6148,11 @@
           "nearMiss": [
             {
               "answer": "메여",
-              "hint": "A common but nonstandard form. 메다 → 메어: 목이 메어."
+              "hint": "A common but nonstandard form; check the conjugation."
             },
             {
               "answer": "매여",
-              "hint": "매이다 means to be tied. Choking up is 메다 → 메어."
+              "hint": "매이다 means to be tied. Choking up is a different verb."
             }
           ],
           "particleTolerance": "none"
@@ -6161,7 +6161,7 @@
           "id": "c2",
           "sentence": "고구마를 물도 없이 먹었더니 목이 {{}} 혼났네.",
           "en": "I ate sweet potato without any water and it got stuck in my throat. Awful.",
-          "cue": "메다 · (throat) clog",
+          "cue": "(throat) clog up",
           "accepted": [
             "메어서",
             "메어"
@@ -6259,7 +6259,7 @@
           "id": "c1",
           "sentence": "차가 너무 빨리 달려와서 {{}} 피할 겨를도 없었다.",
           "en": "The car came at us so fast there wasn't even time to get out of the way.",
-          "cue": "ㅁㅊ · (not) in time; always with a negative",
+          "cue": "(not) in time; always with a negative",
           "accepted": [
             "미처"
           ],
@@ -6269,7 +6269,7 @@
           "id": "c2",
           "sentence": "회의 자료에 오류가 있는 줄 {{}} 모르고 그대로 배포했다.",
           "en": "We distributed the meeting materials without having caught the error in time.",
-          "cue": "ㅁㅊ · (not) yet / in time",
+          "cue": "(not) yet; didn't realize in time",
           "accepted": [
             "미처"
           ],
@@ -6373,14 +6373,14 @@
           "id": "c1",
           "sentence": "별일 없을 텐데 {{}} 자꾸 마음이 불안하다.",
           "en": "Nothing's probably wrong, but for some reason I keep feeling uneasy.",
-          "cue": "ㅇㅈ · somehow, for some reason",
+          "cue": "somehow, for some reason",
           "accepted": [
             "왠지"
           ],
           "nearMiss": [
             {
               "answer": "웬지",
-              "hint": "왠지 = 왜인지 (\"why\" + -ㄴ지). 웬 is \"what sort of\" (웬일, 웬 떡)."
+              "hint": "Check the spelling: this word comes from 왜인지 ('why' + -ㄴ지). 웬 is 'what sort of' (웬일, 웬 떡)."
             }
           ],
           "particleTolerance": "none"
@@ -6389,14 +6389,14 @@
           "id": "c2",
           "sentence": "그 사람 목소리가 {{}} 모르게 익숙했다.",
           "en": "There was something oddly familiar about his voice.",
-          "cue": "ㅇㅈ · for some reason",
+          "cue": "unaccountably (familiar)",
           "accepted": [
             "왠지"
           ],
           "nearMiss": [
             {
               "answer": "웬지",
-              "hint": "왠지 = 왜인지 (\"why\" + -ㄴ지). 웬 is \"what sort of\" (웬일, 웬 떡)."
+              "hint": "Check the spelling: this word comes from 왜인지 ('why' + -ㄴ지). 웬 is 'what sort of' (웬일, 웬 떡)."
             }
           ],
           "particleTolerance": "none"
@@ -6501,7 +6501,7 @@
           "id": "c1",
           "sentence": "배가 고프던 참에 {{}} 친구가 떡볶이를 사 왔다.",
           "en": "Just when I was getting hungry, my friend showed up with tteokbokki.",
-          "cue": "ㅁㅊ · just then, as it happens",
+          "cue": "just then, as it happened",
           "accepted": [
             "마침",
             "때마침"
@@ -6512,7 +6512,7 @@
           "id": "c2",
           "sentence": "다음 주에 서울 간다고? {{}} 잘됐다, 부탁할 게 있었거든.",
           "en": "You're going to Seoul next week? Perfect. I had a favor to ask.",
-          "cue": "ㅁㅊ · conveniently",
+          "cue": "conveniently, good timing",
           "accepted": [
             "마침"
           ],
@@ -6616,7 +6616,7 @@
           "id": "c1",
           "sentence": "열이 계속 나는 걸 보니 {{}} 병원에 가 봐야 할 것 같아.",
           "en": "Since the fever won't go down, I think I'd better see a doctor after all.",
-          "cue": "ㅇㅁㄹㄷ · all things considered (+ a guess)",
+          "cue": "all things considered (+ a guess)",
           "accepted": [
             "아무래도"
           ],
@@ -6626,7 +6626,7 @@
           "id": "c2",
           "sentence": "이 정도 예산으로는 {{}} 무리겠어요.",
           "en": "On a budget like this, I'm afraid it's just not doable.",
-          "cue": "ㅇㅁㄹㄷ · I'm afraid",
+          "cue": "I'm afraid (it won't work)",
           "accepted": [
             "아무래도"
           ],
@@ -6730,7 +6730,7 @@
           "id": "c1",
           "sentence": "비 오는 날 등산은 위험하다고 그렇게 말렸는데 {{}} 가더니 감기에 걸려 왔다.",
           "en": "We begged him not to go hiking in the rain, but he went anyway and came back with a cold.",
-          "cue": "ㄱㅇㅇ · anyway, despite everything",
+          "cue": "anyway, despite everything",
           "accepted": [
             "기어이",
             "기어코"
@@ -6741,7 +6741,7 @@
           "id": "c2",
           "sentence": "몇 번이나 떨어졌지만 그녀는 {{}} 꿈을 이뤘다.",
           "en": "She failed several times, but in the end she made her dream come true.",
-          "cue": "ㄱㅇㅇ · in the end, no matter what",
+          "cue": "in the end, no matter what",
           "accepted": [
             "기어이",
             "기어코"
@@ -6847,7 +6847,7 @@
           "id": "c1",
           "sentence": "밤새 내리던 눈이 그치고 {{}} 동쪽 하늘이 밝아 오기 시작했다.",
           "en": "The snow that had fallen all night stopped, and before long the eastern sky began to brighten.",
-          "cue": "ㅇㅇㄱ · presently, before long (narration)",
+          "cue": "presently, before long (narration)",
           "accepted": [
             "이윽고"
           ],
@@ -6857,7 +6857,7 @@
           "id": "c2",
           "sentence": "멀리서 기차 소리가 들리더니 {{}} 열차가 승강장으로 들어왔다.",
           "en": "We heard a train in the distance, and presently it pulled into the platform.",
-          "cue": "ㅇㅇㄱ · presently",
+          "cue": "presently, at length",
           "accepted": [
             "이윽고"
           ],
@@ -6967,7 +6967,7 @@
           "id": "c1",
           "sentence": "우산을 늘 들고 다니다가 {{}} 비 오는 날엔 놓고 나왔다.",
           "en": "I always carry an umbrella, but on the one day it actually rained I left it at home.",
-          "cue": "ㅈㅈ · (when it) actually (came to it)",
+          "cue": "(when it) actually (came to it)",
           "accepted": [
             "정작"
           ],
@@ -6977,7 +6977,7 @@
           "id": "c2",
           "sentence": "말은 많았지만 {{}} 중요한 문제는 아무도 언급하지 않았다.",
           "en": "There was a lot of talk, but nobody mentioned the issue that actually mattered.",
-          "cue": "ㅈㅈ · what actually (matters)",
+          "cue": "what actually (matters)",
           "accepted": [
             "정작"
           ],
@@ -7084,14 +7084,14 @@
           "id": "c1",
           "sentence": "다 아는 얘기를 {{}} 또 설명할 필요는 없잖아요.",
           "en": "There's no need to go out of your way to explain what everyone already knows.",
-          "cue": "ㄱㅇ · go to the trouble of",
+          "cue": "go to the trouble of",
           "accepted": [
             "굳이"
           ],
           "nearMiss": [
             {
               "answer": "구지",
-              "hint": "Spelled 굳이 (굳다 + -이), pronounced [구지]."
+              "hint": "Check the spelling: it's built on 굳다 + -이 (pronounced [구지])."
             }
           ],
           "particleTolerance": "none"
@@ -7100,14 +7100,14 @@
           "id": "c2",
           "sentence": "{{}} 하나만 고르라면 저는 첫 번째 안이 낫다고 봐요.",
           "en": "If I had to pick just one, I'd go with the first option.",
-          "cue": "ㄱㅇ · if (I) had to",
+          "cue": "if (I) had to (pick)",
           "accepted": [
             "굳이"
           ],
           "nearMiss": [
             {
               "answer": "구지",
-              "hint": "Spelled 굳이 (굳다 + -이), pronounced [구지]."
+              "hint": "Check the spelling: it's built on 굳다 + -이 (pronounced [구지])."
             }
           ],
           "particleTolerance": "none"

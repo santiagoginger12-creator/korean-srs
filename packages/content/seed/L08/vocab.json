@@ -45,13 +45,13 @@
           "sympathy"
         ]
       },
-      "production": {"promptEn": "common ground, a shared understanding (___를 형성하다)", "accepted": ["공감대"]},
+      "production": {"promptEn": "common ground, a shared understanding (you 'form' it)", "accepted": ["공감대"]},
       "cloze": [
         {
           "id": "c1",
           "sentence": "정책을 밀어붙이기 전에 국민적 {{}}부터 형성해야 한다.",
           "en": "Before pushing a policy through, you need to build a national consensus.",
-          "cue": "공감대 · common ground",
+          "cue": "common ground, shared understanding",
           "accepted": ["공감대"],
           "particleTolerance": "none"
         }
@@ -69,7 +69,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:6118", "homograph:公告"],
-    "mnemonic": "공고하다 has the 고 of 견고하다 and 고정: firm, set fast (입지를 공고히 하다). A 채용 공고 (job posting) is a different word.",
+    "mnemonic": "공고하다 has the 고 of 견고하다 and 고정: firm, set fast (입지를 공고히 하다). A 채용 공고 (job posting) is a different word. A job-posting 공고 is a different word. A job-posting 공고 is a different word.",
     "word": "공고하다",
     "meanings": ["firm, solid, unshakable (an alliance or position)", "(___히 하다) to consolidate"],
     "pos": "형용사",
@@ -98,8 +98,8 @@
         "accepted": ["firm", "solid", "unshakable", "secure", "rock-solid", "consolidated", "robust", "strong", "unshakeable"]
       },
       "production": {
-        "promptEn": "firm, unshakable (alliances, positions: ___히 하다 \"to consolidate\")",
-        "contextHint": "written; a job-posting 공고 is a different word",
+        "promptEn": "firm, unshakable (alliances, positions; 'make firm' = to consolidate)",
+        "contextHint": "written; not the homonym for a job posting",
         "accepted": ["공고하다"]
       },
       "cloze": [
@@ -107,7 +107,7 @@
           "id": "c1",
           "sentence": "이번 협정은 양국 관계를 더욱 {{}} 할 것이다.",
           "en": "This agreement will further cement relations between the two countries.",
-          "cue": "공고하다 · firmly (consolidate)",
+          "cue": "firmly (consolidate)",
           "accepted": ["공고히"],
           "particleTolerance": "none"
         }
@@ -150,13 +150,13 @@
     "questionTypes": ["meaning", "production", "cloze"],
     "questions": {
       "meaning": {"accepted": ["open", "public", "overt", "openly", "publicly", "open secret", "undisguised", "blatant"]},
-      "production": {"promptEn": "open, out in the open (___한 비밀 = \"an open secret\")", "accepted": ["공공연하다"]},
+      "production": {"promptEn": "open, out in the open (as in 'an open secret')", "accepted": ["공공연하다"]},
       "cloze": [
         {
           "id": "c1",
           "sentence": "그가 곧 사표를 낸다는 건 이미 {{}} 비밀이었다.",
           "en": "It was already an open secret that he was about to hand in his resignation.",
-          "cue": "공공연하다 · open (secret)",
+          "cue": "open (an open secret)",
           "accepted": ["공공연한"],
           "particleTolerance": "none"
         }
@@ -174,7 +174,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:6127", "homograph:共謀"],
-    "mnemonic": "공모전: a public (공개) call for entries (모집). In a court report, 공모 means plotting together: 공모 혐의, \"conspiracy charges.\"",
+    "mnemonic": "공모전: a public (공개) call for entries (모집). In a court report, 공모 means plotting together: 공모 혐의, \"conspiracy charges.\". In a criminal case, 공모 means conspiracy (共謀). In a criminal case, 공모 means conspiracy (共謀).",
     "word": "공모",
     "meanings": ["an open call, public contest (for entries or applicants)", "public recruitment"],
     "pos": "명사",
@@ -215,7 +215,7 @@
       },
       "production": {
         "promptEn": "an open call, public contest (for entries, designs, applicants)",
-        "contextHint": "in a criminal case, 공모 means conspiracy (共謀)",
+        "contextHint": "in a criminal case, its homonym means conspiracy",
         "accepted": ["공모"]
       },
       "cloze": [
@@ -223,7 +223,7 @@
           "id": "c1",
           "sentence": "청소년 단편 영화 {{}}전에 작품을 출품했다.",
           "en": "I entered my film in a short-film contest for young people.",
-          "cue": "공모 · open contest",
+          "cue": "open call, public contest (for entries)",
           "accepted": ["공모"],
           "particleTolerance": "none"
         }
@@ -272,7 +272,7 @@
           "id": "c1",
           "sentence": "상대 팀은 후반 들어 거센 {{}}를 퍼부었다.",
           "en": "The opposing team launched a fierce offensive in the second half.",
-          "cue": "공세 · offensive",
+          "cue": "offensive, onslaught",
           "accepted": ["공세"],
           "particleTolerance": "none"
         }
@@ -290,6 +290,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:6135"],
+    "mnemonic": "The everyday contraction is 괜히. The everyday contraction is 괜히.",
     "word": "공연히",
     "meanings": ["for no reason, needlessly", "in vain, for nothing"],
     "pos": "부사",
@@ -314,8 +315,8 @@
         "accepted": ["for no reason", "needlessly", "unnecessarily", "for nothing", "in vain", "pointlessly", "without cause"]
       },
       "production": {
-        "promptEn": "needlessly, for no reason (the fuller, more literary form of 괜히)",
-        "contextHint": "___ 걱정하다; in speech, mostly older speakers",
+        "promptEn": "needlessly, for no reason (the fuller, more literary form of the everyday word)",
+        "contextHint": "Sino-Korean adverb; in speech, mostly older speakers",
         "accepted": ["공연히"]
       },
       "cloze": [
@@ -323,9 +324,9 @@
           "id": "c1",
           "sentence": "{{}} 남의 일에 끼어들었다가 욕만 먹었다.",
           "en": "I needlessly stuck my nose into someone else's business and just got an earful.",
-          "cue": "공연히 · needlessly",
+          "cue": "needlessly, for nothing",
           "accepted": ["공연히"],
-          "nearMiss": [{"answer": "괜히", "hint": "괜히 is the everyday contraction and fits too; the cue asks for the fuller 공연히."}],
+          "nearMiss": [{"answer": "괜히", "hint": "괜히 is the everyday contraction and fits too; the cue wants the fuller form."}],
           "particleTolerance": "none"
         }
       ]
@@ -342,6 +343,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:6150"],
+    "mnemonic": "Extreme or violent is 과격하다. Extreme or violent is 과격하다.",
     "word": "과감하다",
     "meanings": ["bold, decisive", "daring, drastic (in a positive sense)"],
     "pos": "형용사",
@@ -368,7 +370,7 @@
       },
       "production": {
         "promptEn": "bold, decisive (acting or cutting without dithering)",
-        "contextHint": "extreme or violent is 과격하다",
+        "contextHint": "not extreme or violent",
         "accepted": ["과감하다"],
         "rejected": ["과격하다"]
       },
@@ -377,9 +379,9 @@
           "id": "c1",
           "sentence": "적자가 계속되자 회사는 {{}} 구조 조정에 나섰다.",
           "en": "As the losses continued, the company launched a bold restructuring.",
-          "cue": "과감하다 · bold",
+          "cue": "bold, decisive",
           "accepted": ["과감한"],
-          "nearMiss": [{"answer": "과격한", "hint": "과격 means extreme or violent; a bold, decisive move is 과감."}],
+          "nearMiss": [{"answer": "과격한", "hint": "과격 means extreme or violent; the cue wants a bold, decisive move."}],
           "particleTolerance": "none"
         }
       ]
@@ -396,6 +398,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:6152"],
+    "mnemonic": "A bold, decisive move is 과감하다. A bold, decisive move is 과감하다.",
     "word": "과격하다",
     "meanings": ["radical, extreme", "violent, too rough"],
     "pos": "형용사",
@@ -426,7 +429,7 @@
       },
       "production": {
         "promptEn": "radical, extreme (protests, remarks); too rough",
-        "contextHint": "a bold, decisive move is 과감하다",
+        "contextHint": "not a bold, decisive move",
         "accepted": ["과격하다"],
         "rejected": ["과감하다"]
       }
@@ -467,13 +470,13 @@
     "questionTypes": ["meaning", "production", "cloze"],
     "questions": {
       "meaning": {"accepted": ["exaggeration", "overstatement", "hyperbole", "saying too much", "exaggerating"]},
-      "production": {"promptEn": "an overstatement (used in: ~라고 해도 ___이 아니다)", "accepted": ["과언"]},
+      "production": {"promptEn": "an overstatement (used in: 'it is no ~ to say…')", "accepted": ["과언"]},
       "cloze": [
         {
           "id": "c1",
           "sentence": "그 경기가 시즌의 분수령이었다고 해도 {{}}이 아니다.",
           "en": "It is no exaggeration to say that game was the turning point of the season.",
-          "cue": "과언 · overstatement",
+          "cue": "overstatement (it's no ~)",
           "accepted": ["과언"],
           "particleTolerance": "none"
         }
@@ -512,13 +515,13 @@
     "questionTypes": ["meaning", "production", "cloze"],
     "questions": {
       "meaning": {"accepted": ["excess", "surplus", "glut", "overabundance", "over", "too much", "overkill", "oversupply"]},
-      "production": {"promptEn": "excess, glut (too much of something: ___ 공급, ___ 반응)", "accepted": ["과잉"]},
+      "production": {"promptEn": "excess, glut (too much of something: oversupply, overreaction)", "accepted": ["과잉"]},
       "cloze": [
         {
           "id": "c1",
           "sentence": "아이를 지나치게 감싸는 {{}}보호가 오히려 독이 될 수 있다.",
           "en": "Overprotecting a child can actually do harm.",
-          "cue": "과잉 · over-",
+          "cue": "over- (overprotection)",
           "accepted": ["과잉"],
           "particleTolerance": "none"
         }
@@ -559,13 +562,13 @@
       "meaning": {
         "accepted": ["excessive praise", "overpraise", "too much praise", "flattery", "undeserved praise", "you flatter me"]
       },
-      "production": {"promptEn": "too much praise (said modestly: ___이세요)", "accepted": ["과찬"]},
+      "production": {"promptEn": "too much praise (said modestly: 'you flatter me')", "accepted": ["과찬"]},
       "cloze": [
         {
           "id": "c1",
           "sentence": "{{}}의 말씀이십니다. 저는 그저 맡은 일을 했을 뿐입니다.",
           "en": "You praise me too highly. I only did my job.",
-          "cue": "과찬 · too much praise",
+          "cue": "too much praise (said modestly)",
           "accepted": ["과찬"],
           "particleTolerance": "none"
         }
@@ -622,7 +625,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:6176", "homograph:慣用"],
-    "mnemonic": "관용 has the 관 of 관대하다 (lenient): room enough to accept others. 관용 표현 (\"idiom\") is a different word.",
+    "mnemonic": "관용 has the 관 of 관대하다 (lenient): room enough to accept others. 관용 표현 (\"idiom\") is a different word. 관용 표현, 'idiomatic expression,' is a different 관용 (慣用). 관용 표현, 'idiomatic expression,' is a different 관용 (慣用).",
     "word": "관용",
     "meanings": ["tolerance, forbearance", "clemency, leniency"],
     "pos": "명사",
@@ -652,8 +655,8 @@
         "rejected": ["idiom", "idiomatic usage", "common usage"]
       },
       "production": {
-        "promptEn": "tolerance, clemency (___을 베풀다)",
-        "contextHint": "관용 표현, \"idiomatic expression,\" is a different 관용 (慣用)",
+        "promptEn": "tolerance, clemency (you 'extend' it)",
+        "contextHint": "not the homonym in 'idiomatic expression'",
         "accepted": ["관용"]
       },
       "cloze": [
@@ -661,7 +664,7 @@
           "id": "c1",
           "sentence": "법원은 이번만은 {{}}을 베풀어 집행 유예를 선고했다.",
           "en": "This once, the court showed clemency and handed down a suspended sentence.",
-          "cue": "관용 · clemency",
+          "cue": "clemency, leniency",
           "accepted": ["관용"],
           "particleTolerance": "none"
         }
@@ -679,6 +682,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:6186"],
+    "mnemonic": "A vast stretch of land or sky is 광활하다. A vast stretch of land or sky is 광활하다.",
     "word": "광범위하다",
     "meanings": ["extensive, wide-ranging", "sweeping, far-reaching"],
     "pos": "형용사",
@@ -708,7 +712,7 @@
       },
       "production": {
         "promptEn": "extensive, wide-ranging (damage, investigation, scope)",
-        "contextHint": "a vast stretch of land or sky is 광활하다",
+        "contextHint": "scope, not a vast stretch of land or sky",
         "accepted": ["광범위하다"],
         "rejected": ["광활하다"]
       }
@@ -725,6 +729,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:6190"],
+    "mnemonic": "A wide-ranging investigation is 광범위하다. A wide-ranging investigation is 광범위하다.",
     "word": "광활하다",
     "meanings": ["vast, boundless (land, sea, or sky)", "wide open"],
     "pos": "형용사",
@@ -752,7 +757,7 @@
       "meaning": {"accepted": ["vast", "boundless", "expansive", "immense", "wide open", "sweeping", "endless"]},
       "production": {
         "promptEn": "vast, boundless (of land, sea, or sky)",
-        "contextHint": "physical space; a wide-ranging investigation is 광범위하다",
+        "contextHint": "physical space, not a wide-ranging investigation",
         "accepted": ["광활하다"],
         "rejected": ["광범위하다"]
       }
@@ -819,6 +824,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:6196"],
+    "mnemonic": "More formal than 협상; set phrase 단체 교섭. More formal than 협상; set phrase 단체 교섭.",
     "word": "교섭",
     "meanings": ["negotiation, bargaining (formal)", "talks"],
     "pos": "명사",
@@ -846,7 +852,7 @@
       "meaning": {"accepted": ["negotiation", "negotiations", "bargaining", "talks", "dealings", "collective bargaining"]},
       "production": {
         "promptEn": "(formal) negotiation, bargaining (unions, governments)",
-        "contextHint": "more formal than 협상; set phrase 단체 ___",
+        "contextHint": "more formal than the everyday word for negotiation; as in 'collective bargaining'",
         "accepted": ["교섭"]
       },
       "cloze": [
@@ -854,7 +860,7 @@
           "id": "c1",
           "sentence": "노조는 사측에 단체 {{}}에 응하라고 요구했다.",
           "en": "The union demanded that management come to the table for collective bargaining.",
-          "cue": "교섭 · bargaining",
+          "cue": "bargaining, negotiation (collective)",
           "accepted": ["교섭"],
           "particleTolerance": "none"
         }
@@ -954,7 +960,7 @@
           "id": "c1",
           "sentence": "새엄마의 {{}}에도 그녀는 끝내 꿈을 포기하지 않았다.",
           "en": "Despite her stepmother's harsh treatment, she never gave up on her dream.",
-          "cue": "구박 · ill-treatment",
+          "cue": "ill-treatment, being picked on",
           "accepted": ["구박"],
           "particleTolerance": "none"
         }
@@ -1002,7 +1008,7 @@
           "id": "c1",
           "sentence": "{{}} 골목길을 따라 올라가면 작은 카페가 나온다.",
           "en": "Follow the winding alley up and you'll come to a little café.",
-          "cue": "구불구불하다 · winding",
+          "cue": "winding, twisting",
           "accepted": ["구불구불한"],
           "particleTolerance": "none"
         }
@@ -1092,7 +1098,7 @@
           "id": "c1",
           "sentence": "다양한 어휘를 자유자재로 {{}} 능력은 번역가에게 필수다.",
           "en": "The ability to wield a wide vocabulary at will is essential for a translator.",
-          "cue": "구사하다 · wield",
+          "cue": "wield, use with command",
           "accepted": ["구사하는", "구사할"],
           "particleTolerance": "none"
         }
@@ -1151,7 +1157,7 @@
         ]
       },
       "production": {
-        "promptEn": "a narrow escape from death (___으로 살아나다)",
+        "promptEn": "a narrow escape from death ('survive by a ~')",
         "contextHint": "four-character idiom: nine deaths, one life",
         "accepted": ["구사일생"]
       },
@@ -1160,7 +1166,7 @@
           "id": "c1",
           "sentence": "배가 침몰했지만 선원들은 {{}}으로 구조되었다.",
           "en": "The ship sank, but the crew were rescued against all odds.",
-          "cue": "구사일생 · narrow escape",
+          "cue": "a narrow escape (from death)",
           "accepted": ["구사일생"],
           "particleTolerance": "none"
         }
@@ -1222,7 +1228,7 @@
       },
       "production": {
         "promptEn": "the same old, hidebound (stuck in outdated ways)",
-        "contextHint": "four-character Sino-Korean + 하다",
+        "contextHint": "four-character Sino-Korean adjective",
         "accepted": ["구태의연하다"]
       },
       "cloze": [
@@ -1230,7 +1236,7 @@
           "id": "c1",
           "sentence": "{{}} 홍보 방식으로는 아무도 관심을 갖지 않는다.",
           "en": "Nobody pays attention to the same old promotional methods.",
-          "cue": "구태의연하다 · same old",
+          "cue": "the same old, hidebound",
           "accepted": ["구태의연한"],
           "particleTolerance": "none"
         }
@@ -1275,13 +1281,13 @@
       "meaning": {
         "accepted": ["be limited", "be confined", "be restricted", "be limited to", "be confined to", "be restricted to"]
       },
-      "production": {"promptEn": "to be limited, confined (to a group, area, or case: ~에 ___)", "accepted": ["국한되다"]},
+      "production": {"promptEn": "to be limited, confined (to a group, area, or case)", "accepted": ["국한되다"]},
       "cloze": [
         {
           "id": "c1",
           "sentence": "피해는 수도권에만 {{}} 않고 전국으로 번졌다.",
           "en": "The damage was not confined to the capital area; it spread nationwide.",
-          "cue": "국한되다 · be confined",
+          "cue": "be confined (to)",
           "accepted": ["국한되지"],
           "particleTolerance": "none"
         }
@@ -1327,7 +1333,7 @@
           "id": "c1",
           "sentence": "오래된 책은 {{}} 얼룩이 져 있었다.",
           "en": "The old book was stained here and there.",
-          "cue": "군데군데 · here and there",
+          "cue": "here and there, in patches",
           "accepted": ["군데군데"],
           "particleTolerance": "none"
         }
@@ -1431,7 +1437,7 @@
           "id": "c1",
           "sentence": "어떻게 하면 혼나지 않을까 이리저리 {{}}를 했다.",
           "en": "I racked my brains every which way for how to avoid getting in trouble.",
-          "cue": "궁리 · figuring out",
+          "cue": "figuring out (a way), scheming",
           "accepted": ["궁리"],
           "particleTolerance": "none"
         }
@@ -1449,6 +1455,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:6266"],
+    "mnemonic": "A general 'it's advisable' is 권장. A general 'it's advisable' is 권장.",
     "word": "권고하다",
     "meanings": ["to (formally) advise, recommend", "to urge (an authority telling someone to act)"],
     "pos": "동사",
@@ -1476,7 +1483,7 @@
       "meaning": {"accepted": ["recommend", "advise", "urge", "counsel", "call on", "advise formally", "call for"]},
       "production": {
         "promptEn": "to formally advise, recommend (an authority telling someone to act)",
-        "contextHint": "a directive with weight (사퇴 ___); a general 'it's advisable' is 권장",
+        "contextHint": "a directive with weight (e.g. urging a resignation), not a general 'it's advisable'",
         "accepted": ["권고하다"],
         "rejected": ["권장하다"]
       }
@@ -1518,13 +1525,13 @@
     "questionTypes": ["meaning", "production", "cloze"],
     "questions": {
       "meaning": {"accepted": ["ennui", "weariness", "boredom", "tedium", "listlessness", "monotony", "rut", "the doldrums"]},
-      "production": {"promptEn": "ennui, weariness (from routine; in a relationship, ___기)", "accepted": ["권태"]},
+      "production": {"promptEn": "ennui, weariness (from routine; in a relationship, the 'rut' phase)", "accepted": ["권태"]},
       "cloze": [
         {
           "id": "c1",
           "sentence": "연애 3년 차에 {{}}기가 찾아왔다.",
           "en": "Three years into our relationship, we hit a rut.",
-          "cue": "권태 · ennui",
+          "cue": "ennui, the itch (in a relationship)",
           "accepted": ["권태"],
           "particleTolerance": "none"
         }
@@ -1564,7 +1571,7 @@
     "questions": {
       "meaning": {"accepted": ["exemplar", "model", "paragon", "role model", "example", "shining example", "model to follow"]},
       "production": {
-        "promptEn": "an exemplar, a model to follow (___이 되다)",
+        "promptEn": "an exemplar, a model to follow (to 'become' one)",
         "contextHint": "written; tributes and citations",
         "accepted": ["귀감"]
       },
@@ -1573,7 +1580,7 @@
           "id": "c1",
           "sentence": "그의 헌신은 후배 의료진에게 큰 {{}}이 되었다.",
           "en": "His dedication became a great example for younger medical staff.",
-          "cue": "귀감 · model",
+          "cue": "a model, an example to follow",
           "accepted": ["귀감"],
           "particleTolerance": "none"
         }
@@ -1591,6 +1598,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["mixed", "freq:6284"],
+    "mnemonic": "A slightly formal 그동안. A slightly formal 그동안.",
     "word": "그간",
     "meanings": ["all this while, the meantime", "the time since (we last met)"],
     "pos": "명사",
@@ -1623,7 +1631,7 @@
       },
       "production": {
         "promptEn": "all this while, in the meantime (the time since we last met)",
-        "contextHint": "a slightly formal 그동안",
+        "contextHint": "a slightly formal version of the everyday word",
         "accepted": ["그간"]
       },
       "cloze": [
@@ -1631,9 +1639,9 @@
           "id": "c1",
           "sentence": "{{}}의 노고에 진심으로 감사드립니다.",
           "en": "Thank you sincerely for all your hard work over this time.",
-          "cue": "그간 · all this while",
+          "cue": "all this while, in the meantime",
           "accepted": ["그간"],
-          "nearMiss": [{"answer": "그동안", "hint": "그동안 means the same; the cue asks for the slightly formal 그간."}],
+          "nearMiss": [{"answer": "그동안", "hint": "그동안 means the same; the cue wants a slightly more formal word."}],
           "particleTolerance": "none"
         }
       ]
@@ -1690,9 +1698,9 @@
           "id": "c1",
           "sentence": "일정은 날씨를 보고 {{}} 정하자.",
           "en": "Let's decide the schedule as we go, depending on the weather.",
-          "cue": "그때그때 · as things come",
+          "cue": "each time, as things come",
           "accepted": ["그때그때"],
-          "nearMiss": [{"answer": "그때 그때", "hint": "그때그때 is one word: no space."}],
+          "nearMiss": [{"answer": "그때 그때", "hint": "It's one word: no space."}],
           "particleTolerance": "none",
           "spacingStrict": true
         }
@@ -1710,6 +1718,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["native", "freq:6287"],
+    "mnemonic": "After -기 it means 'extremely': 기쁘기 그지없다. After -기 it means 'extremely': 기쁘기 그지없다.",
     "word": "그지없다",
     "meanings": ["boundless, beyond measure", "(after -기) utterly, extremely"],
     "pos": "형용사",
@@ -1729,8 +1738,8 @@
         "accepted": ["boundless", "beyond measure", "infinite", "endless", "extremely", "utterly", "immeasurable", "no end"]
       },
       "production": {
-        "promptEn": "beyond measure, utterly (literary: 기쁘기 ___)",
-        "contextHint": "native adjective; after -기 it means \"extremely\"",
+        "promptEn": "beyond measure, utterly (literary: 'happy beyond measure')",
+        "contextHint": "native adjective; after a nominalized adjective it means 'extremely'",
         "accepted": ["그지없다"]
       },
       "cloze": [
@@ -1738,7 +1747,7 @@
           "id": "c1",
           "sentence": "부모님은 {{}} 사랑으로 우리 남매를 키우셨다.",
           "en": "Our parents raised us with boundless love.",
-          "cue": "그지없다 · boundless",
+          "cue": "boundless, beyond measure",
           "accepted": ["그지없는"],
           "particleTolerance": "none"
         }
@@ -1781,13 +1790,13 @@
     "questionTypes": ["meaning", "production", "cloze"],
     "questions": {
       "meaning": {"accepted": ["extreme", "utmost", "extreme degree", "extremely", "maximum", "the limit"]},
-      "production": {"promptEn": "the extreme degree (___로 \"extremely,\" ___의 \"extreme\")", "accepted": ["극도"]},
+      "production": {"promptEn": "the extreme degree (as an adverb: 'extremely'; as a modifier: 'extreme')", "accepted": ["극도"]},
       "cloze": [
         {
           "id": "c1",
           "sentence": "환자는 {{}}로 쇠약해진 상태였다.",
           "en": "The patient was extremely weak.",
-          "cue": "극도 · extreme degree",
+          "cue": "extreme degree (extremely)",
           "accepted": ["극도"],
           "particleTolerance": "none"
         }
@@ -1847,7 +1856,7 @@
           "id": "c1",
           "sentence": "그 배우가 SNS에 오랜만에 {{}}을 올렸다.",
           "en": "The actor posted an update on social media for the first time in ages.",
-          "cue": "근황 · recent news",
+          "cue": "recent news, how one's been doing",
           "accepted": ["근황"],
           "particleTolerance": "none"
         }
@@ -1865,7 +1874,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["mixed", "freq:6296", "spelling"],
-    "mnemonic": "금세 is 금시에 shortened, so it ends in 세. 금새 is a different, rare word (\"price of goods\").",
+    "mnemonic": "금세 is 금시에 shortened, so it ends in 세. 금새 is a different, rare word (\"price of goods\"). Spelling: short for 금시에. Spelling: short for 금시에.",
     "word": "금세",
     "meanings": ["in no time, right away", "soon, before long"],
     "pos": "부사",
@@ -1890,7 +1899,7 @@
       },
       "production": {
         "promptEn": "in no time, right away",
-        "contextHint": "spelling: short for 금시에",
+        "contextHint": "Sino-Korean in origin; mind the spelling of the last syllable",
         "accepted": ["금세"],
         "rejected": ["금새"]
       },
@@ -1899,9 +1908,9 @@
           "id": "c1",
           "sentence": "아이스크림이 햇볕에 {{}} 녹아 버렸다.",
           "en": "The ice cream melted in the sun in no time.",
-          "cue": "금세 · in no time",
+          "cue": "in no time",
           "accepted": ["금세"],
-          "nearMiss": [{"answer": "금새", "hint": "Spelling: 금세 is short for 금시에, so it ends in 세."}],
+          "nearMiss": [{"answer": "금새", "hint": "Check the spelling: it's short for 금시에, so it ends in ㅔ."}],
           "particleTolerance": "none"
         }
       ]
@@ -1952,7 +1961,7 @@
           "id": "c1",
           "sentence": "회의가 취소됐다니, 나는 {{}}이야.",
           "en": "The meeting's canceled? That's news to me.",
-          "cue": "금시초문 · news to me",
+          "cue": "news to me, first I've heard",
           "accepted": ["금시초문"],
           "particleTolerance": "none"
         }
@@ -2007,13 +2016,13 @@
           "scrambling just to (do X)"
         ]
       },
-      "production": {"promptEn": "to be wholly taken up with (just doing X: ~기에 ___)", "accepted": ["급급하다"]},
+      "production": {"promptEn": "to be wholly taken up with (just doing X)", "accepted": ["급급하다"]},
       "cloze": [
         {
           "id": "c1",
           "sentence": "눈앞의 이익에 {{}} 장기적인 계획을 세우지 못했다.",
           "en": "Fixated on short-term gain, they failed to make long-term plans.",
-          "cue": "급급하다 · be fixated on",
+          "cue": "be fixated on, wholly taken up with",
           "accepted": ["급급해", "급급해서", "급급하여"],
           "particleTolerance": "none"
         }
@@ -2076,9 +2085,9 @@
           "id": "c1",
           "sentence": "주가가 연일 곤두박질치더니 {{}} 거래가 정지되었다.",
           "en": "The stock plunged day after day until trading was finally suspended.",
-          "cue": "급기야 · in the end",
+          "cue": "in the end (it finally came to this)",
           "accepted": ["급기야"],
-          "nearMiss": [{"answer": "결국", "hint": "결국 also fits; the cue asks for 급기야, 'until it finally came to this'."}],
+          "nearMiss": [{"answer": "결국", "hint": "결국 also fits; the cue wants 'until it finally came to this'."}],
           "particleTolerance": "none"
         }
       ]

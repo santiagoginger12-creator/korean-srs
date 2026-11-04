@@ -51,7 +51,7 @@
           "id": "c1",
           "sentence": "기술이 {{}} 시대에는 평생 공부가 필수다.",
           "en": "In an age of rapidly changing technology, lifelong learning is a must.",
-          "cue": "급변하다 · change rapidly",
+          "cue": "change rapidly, shift fast",
           "accepted": ["급변하는"],
           "particleTolerance": "none"
         }
@@ -103,9 +103,9 @@
           "id": "c1",
           "sentence": "그는 소방관이라는 직업에 큰 {{}}를 가지고 있다.",
           "en": "He takes great pride in being a firefighter.",
-          "cue": "긍지 · pride",
+          "cue": "pride (in one's work)",
           "accepted": ["긍지"],
-          "nearMiss": [{"answer": "자부심", "hint": "자부심 also fits; the cue asks for 긍지."}],
+          "nearMiss": [{"answer": "자부심", "hint": "자부심 also fits, but the cue is after another word."}],
           "particleTolerance": "none"
         }
       ]
@@ -122,6 +122,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["native", "freq:6324"],
+    "mnemonic": "Unhesitating on the spot is 선뜻.",
     "word": "기꺼이",
     "meanings": ["gladly, willingly", "with pleasure"],
     "pos": "부사",
@@ -140,7 +141,7 @@
       "meaning": {"accepted": ["gladly", "willingly", "with pleasure", "happily", "readily", "ungrudgingly", "eagerly"]},
       "production": {
         "promptEn": "gladly, willingly (happy to do it, with no reluctance)",
-        "contextHint": "native adverb; unhesitating on the spot is 선뜻",
+        "contextHint": "native adverb; not unhesitating on the spot",
         "accepted": ["기꺼이"],
         "rejected": ["선뜻"]
       },
@@ -149,7 +150,7 @@
           "id": "c1",
           "sentence": "제가 할 수 있는 일이라면 {{}} 하겠습니다.",
           "en": "If it's something I can do, I'll gladly do it.",
-          "cue": "기꺼이 · gladly",
+          "cue": "gladly, willingly",
           "accepted": ["기꺼이"],
           "particleTolerance": "none"
         }
@@ -167,6 +168,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:6332"],
+    "mnemonic": "An organization's capability is 역량.",
     "word": "기량",
     "meanings": ["skill, ability (as shown in performance)", "caliber (of a player)"],
     "pos": "명사",
@@ -194,7 +196,7 @@
       "meaning": {"accepted": ["skill", "ability", "talent", "caliber", "skills", "prowess", "competence", "game", "calibre"]},
       "production": {
         "promptEn": "skill, ability (as displayed in a performance or match)",
-        "contextHint": "sports and arts; an organization's capability is 역량",
+        "contextHint": "sports and arts, not an organization's capability",
         "accepted": ["기량"],
         "rejected": ["역량"]
       },
@@ -203,9 +205,9 @@
           "id": "c1",
           "sentence": "대회에 참가한 학생들은 그동안 갈고닦은 {{}}을 마음껏 뽐냈다.",
           "en": "The students in the contest showed off the skills they had honed.",
-          "cue": "기량 · skill",
+          "cue": "skill (on display)",
           "accepted": ["기량"],
-          "nearMiss": [{"answer": "실력", "hint": "실력 also fits; the cue asks for 기량, skill on display."}],
+          "nearMiss": [{"answer": "실력", "hint": "실력 also fits; the cue wants skill on display."}],
           "particleTolerance": "none"
         }
       ]
@@ -222,6 +224,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["native", "freq:6334"],
+    "mnemonic": "Not 기르다 (raise).",
     "word": "기리다",
     "meanings": ["to honor, commemorate (a person or deed)", "to pay tribute to"],
     "pos": "동사",
@@ -250,7 +253,7 @@
       },
       "production": {
         "promptEn": "to honor, commemorate (the dead, a deed, someone's legacy)",
-        "contextHint": "native verb; not 기르다 (raise)",
+        "contextHint": "native verb; not the look-alike for 'raise'",
         "accepted": ["기리다"],
         "rejected": ["기르다"]
       },
@@ -259,7 +262,7 @@
           "id": "c1",
           "sentence": "독립운동가들의 정신을 {{}} 위해 기념관이 세워졌다.",
           "en": "A memorial hall was built to honor the spirit of the independence activists.",
-          "cue": "기리다 · honor",
+          "cue": "honor, commemorate",
           "accepted": ["기리기"],
           "particleTolerance": "none"
         }
@@ -304,7 +307,7 @@
       "meaning": {"accepted": ["deception", "deceit", "fraud", "hoodwinking", "trickery", "duplicity", "deceiving", "cheating"]},
       "production": {
         "promptEn": "deception, deceit (of the public, voters, or customers)",
-        "contextHint": "a weighty, accusatory word; ___하다",
+        "contextHint": "a weighty, accusatory word; also a verb",
         "accepted": ["기만"]
       }
     }
@@ -349,7 +352,7 @@
           "id": "c1",
           "sentence": "아이들은 어른들이 생각지도 못한 {{}} 답을 내놓았다.",
           "en": "The kids came up with ingenious answers the adults had never thought of.",
-          "cue": "기발하다 · ingenious",
+          "cue": "ingenious, out of the box",
           "accepted": ["기발한"],
           "particleTolerance": "none"
         }
@@ -459,7 +462,7 @@
         ]
       },
       "production": {
-        "promptEn": "to stem from, be attributable to (~에 ___)",
+        "promptEn": "to stem from, be attributable to",
         "contextHint": "written; reports and analysis",
         "accepted": ["기인하다"]
       },
@@ -468,7 +471,7 @@
           "id": "c1",
           "sentence": "경기 침체는 소비 위축에 {{}} 바가 크다.",
           "en": "The downturn is largely attributable to weak consumer spending.",
-          "cue": "기인하다 · stem from",
+          "cue": "stem from, be attributable to",
           "accepted": ["기인한", "기인하는"],
           "particleTolerance": "none"
         }
@@ -511,13 +514,13 @@
     "questionTypes": ["meaning", "production", "cloze"],
     "questions": {
       "meaning": {"accepted": ["temperament", "disposition", "nature", "streak", "character", "temper", "bent"]},
-      "production": {"promptEn": "temperament, disposition (one's inborn nature: 예술가 ___)", "accepted": ["기질"]},
+      "production": {"promptEn": "temperament, disposition (one's inborn nature: an artistic streak)", "accepted": ["기질"]},
       "cloze": [
         {
           "id": "c1",
           "sentence": "그는 어려서부터 예술가 {{}}이 다분했다.",
           "en": "From a young age he had a strong artistic streak.",
-          "cue": "기질 · temperament",
+          "cue": "temperament, streak (artistic)",
           "accepted": ["기질"],
           "particleTolerance": "none"
         }
@@ -572,7 +575,7 @@
           "id": "c1",
           "sentence": "아이가 스스로 방 청소를 하다니 정말 {{}}.",
           "en": "The kid cleaned his room all by himself. How admirable.",
-          "cue": "기특하다 · admirable",
+          "cue": "admirable, good of (a child)",
           "accepted": ["기특하다", "기특해", "기특하네", "기특하네요", "기특해요", "기특합니다", "기특하구나"],
           "particleTolerance": "none"
         }
@@ -614,15 +617,15 @@
     "questionTypes": ["meaning", "production", "cloze"],
     "questions": {
       "meaning": {"accepted": ["groundwork", "foundation", "framework", "basis", "cornerstone", "base", "footing"]},
-      "production": {"promptEn": "the groundwork, foundation (___를 마련하다)", "contextHint": "native noun", "accepted": ["기틀"]},
+      "production": {"promptEn": "the groundwork, foundation (you 'lay' it)", "contextHint": "native noun", "accepted": ["기틀"]},
       "cloze": [
         {
           "id": "c1",
           "sentence": "이번 협약은 두 나라 협력의 {{}}를 마련했다는 평가를 받는다.",
           "en": "The agreement is credited with laying the groundwork for cooperation between the two countries.",
-          "cue": "기틀 · groundwork",
+          "cue": "groundwork, foundation",
           "accepted": ["기틀"],
-          "nearMiss": [{"answer": "토대", "hint": "토대 also fits; the cue asks for the native 기틀."}],
+          "nearMiss": [{"answer": "토대", "hint": "토대 also fits; the cue wants the native word."}],
           "particleTolerance": "none"
         }
       ]
@@ -639,6 +642,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:6366"],
+    "mnemonic": "Heavier than 피하다; 병역 기피 is draft dodging.",
     "word": "기피하다",
     "meanings": ["to avoid, shun (out of reluctance)", "to evade (duty)"],
     "pos": "동사",
@@ -666,7 +670,7 @@
       "meaning": {"accepted": ["avoid", "shun", "evade", "steer clear of", "shirk", "dodge", "eschew"]},
       "production": {
         "promptEn": "to avoid, shun (out of distaste or to dodge a duty)",
-        "contextHint": "heavier than 피하다; 병역 ___",
+        "contextHint": "heavier than plain 'avoid'; also draft dodging",
         "accepted": ["기피하다"]
       },
       "cloze": [
@@ -674,7 +678,7 @@
           "id": "c1",
           "sentence": "3D 업종은 구직자들이 {{}} 경향이 있다.",
           "en": "Job seekers tend to shun \"3D\" (dirty, dangerous, difficult) jobs.",
-          "cue": "기피하다 · shun",
+          "cue": "shun, avoid (out of distaste)",
           "accepted": ["기피하는"],
           "particleTolerance": "none"
         }
@@ -692,6 +696,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["mixed", "freq:6367"],
+    "mnemonic": "기어이 is getting one's way in the end.",
     "word": "기필코",
     "meanings": ["without fail, no matter what", "by all means"],
     "pos": "부사",
@@ -717,7 +722,7 @@
       },
       "production": {
         "promptEn": "without fail, no matter what (a vow about the future)",
-        "contextHint": "a resolution; 기어이 is getting one's way in the end",
+        "contextHint": "a resolution, not getting one's way in the end",
         "accepted": ["기필코"],
         "rejected": ["기어이"]
       },
@@ -726,9 +731,9 @@
           "id": "c1",
           "sentence": "다음 대회에서는 {{}} 우승하고 말겠다.",
           "en": "Next tournament I'm going to win, no matter what.",
-          "cue": "기필코 · without fail",
+          "cue": "without fail, no matter what (a vow)",
           "accepted": ["기필코"],
-          "nearMiss": [{"answer": "반드시", "hint": "반드시 also fits; the cue asks for 기필코."}, {"answer": "꼭", "hint": "꼭 also fits; the cue asks for 기필코."}],
+          "nearMiss": [{"answer": "반드시", "hint": "반드시 also fits, but the cue is after another word."}, {"answer": "꼭", "hint": "꼭 also fits, but the cue is after another word."}],
           "particleTolerance": "none"
         }
       ]
@@ -745,6 +750,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:6373"],
+    "mnemonic": "A warm friendship is 돈독하다.",
     "word": "긴밀하다",
     "meanings": ["close (cooperation or ties)", "tight-knit"],
     "pos": "형용사",
@@ -768,7 +774,7 @@
       "meaning": {"accepted": ["close", "tight", "intimate", "closely knit", "tight-knit", "closely", "strong"]},
       "production": {
         "promptEn": "close, tight (cooperation, ties, links between organizations)",
-        "contextHint": "institutional; a warm friendship is 돈독하다",
+        "contextHint": "institutional, not a warm friendship",
         "accepted": ["긴밀하다"],
         "rejected": ["돈독하다"]
       },
@@ -777,7 +783,7 @@
           "id": "c1",
           "sentence": "양국은 이번 사태 해결을 위해 {{}} 협력하기로 했다.",
           "en": "The two countries agreed to cooperate closely to resolve the situation.",
-          "cue": "긴밀하다 · closely",
+          "cue": "closely (cooperate)",
           "accepted": ["긴밀히", "긴밀하게"],
           "particleTolerance": "none"
         }
@@ -795,6 +801,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["native", "freq:6381", "spelling"],
+    "mnemonic": "께름칙하다 is also standard.",
     "word": "꺼림칙하다",
     "meanings": ["uneasy, uncomfortable (about something not quite right)", "nagged by doubt"],
     "pos": "형용사",
@@ -834,7 +841,7 @@
       },
       "production": {
         "promptEn": "uneasy, nagged by a feeling that something isn't right",
-        "contextHint": "native adjective; 께름칙하다 is also standard",
+        "contextHint": "native adjective; a variant spelling is also standard",
         "accepted": ["꺼림칙하다", "께름칙하다"]
       }
     }
@@ -871,7 +878,7 @@
     "questions": {
       "meaning": {"accepted": ["full", "whole", "entire", "straight", "solid", "no less than", "without a break"]},
       "production": {
-        "promptEn": "a full, whole (stretch of time: ___ 사흘, ___ 밤을 새우다)",
+        "promptEn": "a full, whole (stretch of time: 'three whole days', 'stay up the whole night')",
         "contextHint": "native adverb",
         "accepted": ["꼬박"]
       },
@@ -880,7 +887,7 @@
           "id": "c1",
           "sentence": "서울에서 부산까지 걸어서 {{}} 열흘이 걸렸다.",
           "en": "Walking from Seoul to Busan took a full ten days.",
-          "cue": "꼬박 · a full",
+          "cue": "a full, a whole (ten days)",
           "accepted": ["꼬박"],
           "particleTolerance": "none"
         }
@@ -934,7 +941,7 @@
       },
       "production": {
         "promptEn": "(asking) in nosy detail, prying into every little thing",
-        "contextHint": "native adverb; ___ 캐묻다",
+        "contextHint": "native adverb; 'pry, grill'",
         "accepted": ["꼬치꼬치"]
       },
       "cloze": [
@@ -942,7 +949,7 @@
           "id": "c1",
           "sentence": "면접관이 이전 직장을 그만둔 이유를 {{}} 캐물었다.",
           "en": "The interviewer probed in great detail why I had left my last job.",
-          "cue": "꼬치꼬치 · in nosy detail",
+          "cue": "in nosy detail",
           "accepted": ["꼬치꼬치"],
           "particleTolerance": "none"
         }
@@ -1005,7 +1012,7 @@
           "id": "c1",
           "sentence": "폭설 때문에 산장에서 사흘 동안 {{}} 갇혀 지냈다.",
           "en": "Because of the heavy snow, we were trapped in the mountain lodge for three days.",
-          "cue": "꼼짝없이 · with no way out",
+          "cue": "with no way out, stuck",
           "accepted": ["꼼짝없이"],
           "particleTolerance": "none"
         }
@@ -1057,7 +1064,7 @@
           "id": "c1",
           "sentence": "구단은 감독 교체로 분위기 쇄신을 {{}}.",
           "en": "The club sought to change the mood by replacing its manager.",
-          "cue": "꾀하다 · seek",
+          "cue": "seek, aim for (a change)",
           "accepted": ["꾀했다", "꾀하였다", "꾀했습니다", "꾀했어요"],
           "particleTolerance": "none"
         }
@@ -1075,6 +1082,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["native", "freq:6392"],
+    "mnemonic": "More formal than 혼내다; 나무라다 is close.",
     "word": "꾸짖다",
     "meanings": ["to scold, reprimand", "to rebuke"],
     "pos": "동사",
@@ -1101,7 +1109,7 @@
       "meaning": {"accepted": ["scold", "reprimand", "rebuke", "reprove", "chide", "tell off", "admonish", "berate"]},
       "production": {
         "promptEn": "to scold, reprimand (an elder to someone younger)",
-        "contextHint": "native verb; more formal than 혼내다; 나무라다 is close",
+        "contextHint": "native verb; more formal than the everyday 'scold'",
         "accepted": ["꾸짖다"],
         "rejected": ["혼내다"]
       }
@@ -1150,9 +1158,9 @@
           "id": "c1",
           "sentence": "아기가 {{}} 자라는 모습을 보면 신기하다.",
           "en": "It's amazing to watch the baby grow day by day.",
-          "cue": "나날이 · day by day",
+          "cue": "day by day",
           "accepted": ["나날이"],
-          "nearMiss": [{"answer": "날로", "hint": "날로 means the same; the cue asks for 나날이."}],
+          "nearMiss": [{"answer": "날로", "hint": "날로 means the same; the cue wants a different word."}],
           "particleTolerance": "none"
         }
       ]
@@ -1195,7 +1203,7 @@
       "meaning": {"accepted": ["drowsy", "languid", "sluggish", "listless", "lethargic", "heavy", "lazy", "sleepy", "torpid"]},
       "production": {
         "promptEn": "drowsy, languid (pleasantly heavy in the body)",
-        "contextHint": "native adjective; ___한 오후",
+        "contextHint": "native adjective; 'a lazy afternoon'",
         "accepted": ["나른하다"]
       },
       "cloze": [
@@ -1203,7 +1211,7 @@
           "id": "c1",
           "sentence": "봄볕이 따뜻해서 그런지 온몸이 {{}}.",
           "en": "Maybe it's the warm spring sun, but my whole body feels heavy and drowsy.",
-          "cue": "나른하다 · drowsy",
+          "cue": "drowsy, languid",
           "accepted": ["나른하다", "나른해", "나른해요", "나른하네", "나른하네요", "나른합니다"],
           "particleTolerance": "none"
         }
@@ -1255,9 +1263,9 @@
           "id": "c1",
           "sentence": "성벽 위로 붉은 깃발이 {{}} 있었다.",
           "en": "Red banners were fluttering above the fortress walls.",
-          "cue": "나부끼다 · flutter",
+          "cue": "flutter (in the wind)",
           "accepted": ["나부끼고"],
-          "nearMiss": [{"answer": "휘날리고", "hint": "휘날리다 also fits; the cue asks for 나부끼다."}],
+          "nearMiss": [{"answer": "휘날리고", "hint": "휘날리다 also fits, but the cue is after another word."}],
           "particleTolerance": "none"
         }
       ]
@@ -1274,6 +1282,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:6407"],
+    "mnemonic": "Close to 낙담; 실망 is plain disappointment.",
     "word": "낙심",
     "meanings": ["discouragement, dejection", "losing heart"],
     "pos": "명사",
@@ -1306,8 +1315,8 @@
         ]
       },
       "production": {
-        "promptEn": "discouragement, losing heart (___하다)",
-        "contextHint": "close to 낙담; 실망 is plain disappointment",
+        "promptEn": "discouragement, losing heart (also as a verb)",
+        "contextHint": "close to a near twin; not plain disappointment",
         "accepted": ["낙심"]
       },
       "cloze": [
@@ -1315,9 +1324,9 @@
           "id": "c1",
           "sentence": "그는 몇 번의 실패에도 {{}}하지 않고 다시 도전했다.",
           "en": "Despite several failures, he did not lose heart and tried again.",
-          "cue": "낙심 · losing heart",
+          "cue": "losing heart, discouragement",
           "accepted": ["낙심"],
-          "nearMiss": [{"answer": "낙담", "hint": "낙담 is a near twin; the cue asks for 낙심."}],
+          "nearMiss": [{"answer": "낙담", "hint": "낙담 is a near twin; the cue wants a different word."}],
           "particleTolerance": "none"
         }
       ]
@@ -1377,7 +1386,7 @@
           "id": "c1",
           "sentence": "지은 지 50년이 넘은 학교라 시설이 많이 {{}}.",
           "en": "The school is over fifty years old, so its facilities are badly outdated.",
-          "cue": "낙후되다 · be outdated",
+          "cue": "be outdated, run-down",
           "accepted": ["낙후됐다", "낙후되었다", "낙후됐어요", "낙후됐습니다", "낙후됐어", "낙후돼 있다", "낙후되어 있다", "낙후돼 있어요"],
           "particleTolerance": "none"
         }
@@ -1416,13 +1425,13 @@
     "questionTypes": ["meaning", "production", "cloze"],
     "questions": {
       "meaning": {"accepted": ["obstacle", "hurdle", "difficulty", "barrier", "snag", "impasse", "stumbling block", "roadblock"]},
-      "production": {"promptEn": "an obstacle, hurdle (in a plan or negotiation: ___에 부딪히다)", "accepted": ["난관"]},
+      "production": {"promptEn": "an obstacle, hurdle (in a plan or negotiation: 'run into one')", "accepted": ["난관"]},
       "cloze": [
         {
           "id": "c1",
           "sentence": "예산 문제로 사업이 {{}}에 부딪혔다.",
           "en": "The project hit an obstacle over budget issues.",
-          "cue": "난관 · obstacle",
+          "cue": "obstacle, hurdle",
           "accepted": ["난관"],
           "particleTolerance": "none"
         }
@@ -1440,7 +1449,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["native", "freq:6416"],
-    "mnemonic": "난데 = 나온 데 (\"the place it came from\") + 없이: nobody can say where it came from.",
+    "mnemonic": "난데 = 나온 데 (\"the place it came from\") + 없이: nobody can say where it came from. An off-topic remark is 뜬금없다.",
     "word": "난데없이",
     "meanings": ["out of nowhere, out of the blue", "all of a sudden (unexpectedly)"],
     "pos": "부사",
@@ -1477,7 +1486,7 @@
       },
       "production": {
         "promptEn": "out of nowhere, out of the blue",
-        "contextHint": "native adverb; an off-topic remark is 뜬금없다",
+        "contextHint": "native adverb; not an off-topic remark",
         "accepted": ["난데없이"],
         "rejected": ["뜬금없이"]
       },
@@ -1486,9 +1495,9 @@
           "id": "c1",
           "sentence": "골목에서 {{}} 고양이가 튀어나와 깜짝 놀랐다.",
           "en": "A cat shot out of the alley out of nowhere and gave me a fright.",
-          "cue": "난데없이 · out of nowhere",
+          "cue": "out of nowhere",
           "accepted": ["난데없이"],
-          "nearMiss": [{"answer": "갑자기", "hint": "갑자기 also fits; the cue asks for 난데없이, 'out of nowhere'."}],
+          "nearMiss": [{"answer": "갑자기", "hint": "갑자기 also fits, but the cue is after another word."}],
           "particleTolerance": "none"
         }
       ]
@@ -1505,6 +1514,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["native", "freq:6424"],
+    "mnemonic": "'About' either way is 가량 or 쯤.",
     "word": "남짓",
     "meanings": ["a little over, odd (with numbers)", "-plus"],
     "pos": "명사",
@@ -1522,8 +1532,8 @@
     "questions": {
       "meaning": {"accepted": ["a little over", "odd", "plus", "slightly more than", "just over", "or so", "a bit more than"]},
       "production": {
-        "promptEn": "a little over (after a number: 한 시간 ___)",
-        "contextHint": "native; \"about\" either way is 가량 or 쯤",
+        "promptEn": "a little over (after a number: 'an hour and change')",
+        "contextHint": "native; not plain 'about'",
         "accepted": ["남짓"],
         "rejected": ["가량"]
       },
@@ -1532,7 +1542,7 @@
           "id": "c1",
           "sentence": "회의는 두 시간 {{}} 이어졌다.",
           "en": "The meeting went on for a little over two hours.",
-          "cue": "남짓 · a little over",
+          "cue": "a little over (a number)",
           "accepted": ["남짓"],
           "particleTolerance": "none"
         }
@@ -1586,15 +1596,15 @@
           "understanding and acceptance (being convinced)"
         ]
       },
-      "production": {"promptEn": "being convinced, accepting that it makes sense (___이 가다)", "accepted": ["납득"]},
+      "production": {"promptEn": "being convinced, accepting that it makes sense (it 'goes')", "accepted": ["납득"]},
       "cloze": [
         {
           "id": "c1",
           "sentence": "갑자기 해고된 이유가 도무지 {{}}이 가지 않는다.",
           "en": "I just can't make sense of why I was suddenly fired.",
-          "cue": "납득 · making sense",
+          "cue": "making sense, being convinced",
           "accepted": ["납득"],
-          "nearMiss": [{"answer": "이해", "hint": "이해가 가다 also works; the cue asks for 납득."}],
+          "nearMiss": [{"answer": "이해", "hint": "이해가 가다 also works, but the cue is after another word."}],
           "particleTolerance": "none"
         }
       ]
@@ -1638,13 +1648,13 @@
       "meaning": {
         "accepted": ["fix", "mess", "predicament", "setback", "embarrassment", "trouble", "fiasco", "disaster", "scrape"]
       },
-      "production": {"promptEn": "a fix, a mess (things going wrong: ___를 보다)", "accepted": ["낭패"]},
+      "production": {"promptEn": "a fix, a mess (things going wrong: to 'suffer' one)", "accepted": ["낭패"]},
       "cloze": [
         {
           "id": "c1",
           "sentence": "우산 없이 나갔다가 소나기를 만나 {{}}를 봤다.",
           "en": "I went out without an umbrella, got caught in a shower, and was in a sorry state.",
-          "cue": "낭패 · a fix",
+          "cue": "a fix, a mess",
           "accepted": ["낭패"],
           "particleTolerance": "none"
         }
@@ -1709,9 +1719,9 @@
           "id": "c1",
           "sentence": "검찰은 사건의 진상을 {{}} 밝히겠다고 했다.",
           "en": "Prosecutors vowed to bring every detail of the case to light.",
-          "cue": "낱낱이 · in full detail",
+          "cue": "in full detail, every last bit",
           "accepted": ["낱낱이"],
-          "nearMiss": [{"answer": "낱낱히", "hint": "Spelling: 낱낱이 ends in 이."}],
+          "nearMiss": [{"answer": "낱낱히", "hint": "Check the spelling of the last syllable."}],
           "particleTolerance": "none"
         }
       ]
@@ -1770,7 +1780,7 @@
           "id": "c1",
           "sentence": "사람들은 갑작스러운 사퇴의 {{}}을 궁금해했다.",
           "en": "People wondered about the real story behind the sudden resignation.",
-          "cue": "내막 · inside story",
+          "cue": "the inside story",
           "accepted": ["내막"],
           "particleTolerance": "none"
         }
@@ -1811,7 +1821,7 @@
       "meaning": {"accepted": ["inwardly", "secretly", "deep down", "at heart", "privately", "in one's heart", "inside"]},
       "production": {
         "promptEn": "inwardly, deep down (secretly hoping or feeling)",
-        "contextHint": "also a noun: 내심을 드러내다",
+        "contextHint": "Sino-Korean; also a noun ('reveal one's true feelings')",
         "accepted": ["내심"]
       },
       "cloze": [
@@ -1819,9 +1829,9 @@
           "id": "c1",
           "sentence": "반대할 줄 알았는데 부모님도 {{}} 반기시는 눈치였다.",
           "en": "I expected them to object, but my parents seemed quietly pleased.",
-          "cue": "내심 · inwardly",
+          "cue": "inwardly, deep down",
           "accepted": ["내심"],
-          "nearMiss": [{"answer": "속으로", "hint": "속으로 also fits; the cue asks for 내심."}],
+          "nearMiss": [{"answer": "속으로", "hint": "속으로 also fits, but the cue is after another word."}],
           "particleTolerance": "none"
         }
       ]
@@ -1874,7 +1884,7 @@
         ]
       },
       "production": {
-        "promptEn": "to feel like it, be in the mood (usually ___지 않다, \"reluctant\")",
+        "promptEn": "to feel like it, be in the mood (usually negated: 'reluctant')",
         "contextHint": "native verb",
         "accepted": ["내키다"]
       },
@@ -1883,7 +1893,7 @@
           "id": "c1",
           "sentence": "마음이 {{}} 않으면 억지로 가지 않아도 돼.",
           "en": "If you don't feel like it, you don't have to force yourself to go.",
-          "cue": "내키다 · feel like (it)",
+          "cue": "feel like (it)",
           "accepted": ["내키지"],
           "particleTolerance": "none"
         }
@@ -1901,6 +1911,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:6447"],
+    "mnemonic": "A harsh, merciless reality is 냉혹하다.",
     "word": "냉담하다",
     "meanings": ["cold, indifferent (in response)", "unenthusiastic, frosty"],
     "pos": "형용사",
@@ -1931,7 +1942,7 @@
       },
       "production": {
         "promptEn": "cold, indifferent (a reception or response)",
-        "contextHint": "lack of warmth; a harsh, merciless reality is 냉혹하다",
+        "contextHint": "lack of warmth, not a harsh, merciless reality",
         "accepted": ["냉담하다"],
         "rejected": ["냉혹하다"]
       },
@@ -1940,9 +1951,9 @@
           "id": "c1",
           "sentence": "새 정책에 대한 여론은 예상보다 {{}}.",
           "en": "Public opinion on the new policy was cooler than expected.",
-          "cue": "냉담하다 · cool, indifferent",
+          "cue": "cool, indifferent",
           "accepted": ["냉담했다", "냉담하였다", "냉담했습니다", "냉담했어요"],
-          "nearMiss": [{"answer": "냉혹했다", "hint": "냉혹 is merciless and harsh; a cool, indifferent response is 냉담."}],
+          "nearMiss": [{"answer": "냉혹했다", "hint": "냉혹 is merciless and harsh; the cue wants a cool, indifferent response."}],
           "particleTolerance": "none"
         }
       ]
@@ -1959,6 +1970,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["sino-korean", "freq:6450"],
+    "mnemonic": "A cool, indifferent reception is 냉담하다.",
     "word": "냉혹하다",
     "meanings": ["harsh, merciless", "cold-blooded, ruthless"],
     "pos": "형용사",
@@ -1985,7 +1997,7 @@
       },
       "production": {
         "promptEn": "harsh, merciless (reality, competition, a ruthless person)",
-        "contextHint": "a cool, indifferent reception is 냉담하다",
+        "contextHint": "not a cool, indifferent reception",
         "accepted": ["냉혹하다"],
         "rejected": ["냉담하다"]
       }
@@ -2027,7 +2039,7 @@
       },
       "production": {
         "promptEn": "blatant, undisguised (open about something usually hidden)",
-        "contextHint": "Sino-Korean, ends in -적",
+        "contextHint": "Sino-Korean, with the '-ic' suffix",
         "accepted": ["노골적"]
       },
       "cloze": [
@@ -2035,7 +2047,7 @@
           "id": "c1",
           "sentence": "그는 회의 내내 {{}}으로 불만을 드러냈다.",
           "en": "He made no attempt to hide his displeasure throughout the meeting.",
-          "cue": "노골적 · blatantly",
+          "cue": "blatantly, openly",
           "accepted": ["노골적"],
           "particleTolerance": "none"
         }
@@ -2089,13 +2101,13 @@
           "an undeserved stigma"
         ]
       },
-      "production": {"promptEn": "a false accusation (___를 쓰다 \"be framed,\" ___를 벗다 \"clear one's name\")", "accepted": ["누명"]},
+      "production": {"promptEn": "a false accusation (to 'wear' one = be framed; 'take it off' = clear one's name)", "accepted": ["누명"]},
       "cloze": [
         {
           "id": "c1",
           "sentence": "억울한 {{}}를 쓴 그는 끝까지 무죄를 주장했다.",
           "en": "Falsely accused, he maintained his innocence to the end.",
-          "cue": "누명 · false accusation",
+          "cue": "false accusation (be framed)",
           "accepted": ["누명"],
           "particleTolerance": "none"
         }
@@ -2113,7 +2125,7 @@
     "source": {"kind": "original", "license": "original-owned"},
     "needs_review": false,
     "tags": ["native", "freq:6474"],
-    "mnemonic": "녹은 초: a candle melted down to a puddle. That's you after moving day.",
+    "mnemonic": "녹은 초: a candle melted down to a puddle. That's you after moving day. Like a candle (초) melted (녹다) down.",
     "word": "녹초",
     "meanings": ["(___가 되다) to be completely worn out, dead tired"],
     "pos": "명사",
@@ -2139,8 +2151,8 @@
     "questions": {
       "meaning": {"accepted": ["worn out", "exhausted", "dead tired", "wiped out", "beat", "shattered", "spent", "pooped"]},
       "production": {
-        "promptEn": "completely worn out (___가 되다)",
-        "contextHint": "native noun; like a candle (초) melted (녹다) down",
+        "promptEn": "completely worn out (to 'become' it)",
+        "contextHint": "native noun; picture a melted-down candle",
         "accepted": ["녹초"]
       },
       "cloze": [
@@ -2148,7 +2160,7 @@
           "id": "c1",
           "sentence": "야근을 일주일 내내 했더니 {{}}가 됐다.",
           "en": "After a whole week of late nights at work, I was completely wiped out.",
-          "cue": "녹초 · worn out",
+          "cue": "worn out, dead tired",
           "accepted": ["녹초"],
           "particleTolerance": "none"
         }
