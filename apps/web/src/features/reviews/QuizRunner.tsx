@@ -12,7 +12,7 @@ import { check, type CheckResult } from '@ksrs/answer-check';
 import { currentQuestion, type ContentIndex, type ReviewSession, type SessionAction } from '@ksrs/srs-engine';
 import { HangulInput, type HangulInputHandle } from '../../components/HangulInput.tsx';
 import { checkOptionsFor } from '../../state/checkOpts.ts';
-import { HINT_MISS_TEXT, maxHintLevel, shortMeaning, splitCue, withHint, type HintLevel } from '../../state/hints.ts';
+import { dictForm, HINT_MISS_TEXT, initialsHint, isLexicalCloze, maxClozeHintLevel, shortMeaning, splitCue, withHint, type HintLevel } from '../../state/hints.ts';
 import { now } from '../../state/clock.ts';
 import { itemHref, KIND_KO, QTYPE_LABEL, SPEECH_LEVEL } from '../../state/format.ts';
 import { useApp } from '../../state/hooks.ts';
@@ -170,9 +170,9 @@ export function QuizRunner({ sess, dispatch, index, mode, done, onWrapUp, onExit
         <div className="q-head">
           <span className={`kind-tag k-${kind}`}>{KIND_KO[kind]}</span>
           <span className="qtype">{QTYPE_LABEL[q.qtype]}</span>
-          {q.qtype === 'cloze' && !feedback && hintLevel < maxHintLevel(q.cue) && (
+          {q.qtype === 'cloze' && !feedback && hintLevel < maxClozeHintLevel(q.itemId, item, q.cue) && (
             <button type="button" className="btn btn-small btn-quiet hint-btn" data-testid="hint-btn"
-                    onClick={() => { setHintLevel((l) => (Math.min(maxHintLevel(q.cue), l + 1) as HintLevel)); input.current?.focus(); }}>
+                    onClick={() => { setHintLevel((l) => (Math.min(maxClozeHintLevel(q.itemId, item, q.cue), l + 1) as HintLevel)); input.current?.focus(); }}>
               {hintLevel === 0 ? 'Hint' : 'More hint'}
             </button>
           )}
@@ -249,6 +249,18 @@ function Prompt({ q, item, hintLevel }: { q: QuestionInstance; item: Item | unde
         {q.contextHint ? <p className="context-hint">{q.contextHint}</p> : null}
         <p className="ask">Say it in Korean</p></>);
     case 'cloze': {
+      if (isLexicalCloze(q.itemId, item)) {
+        // Vocab/expression ladder (D74): English cue → 초성 + syllable count → dictionary form.
+        const initials = initialsHint(dictForm(item), q.before, q.after);
+        const dict = dictForm(item);
+        return (<>
+          <p className="cloze-sentence" lang="ko">{q.before}<span className="blank" aria-label="blank">　　　</span>{q.after}</p>
+          <p className="cue" lang="en" data-testid="cue-en">{q.cue}</p>
+          {hintLevel >= 1 && initials && <p className="hint-initials" lang="ko" data-testid="hint-initials" aria-label={`Initial consonants: ${initials}`}>{initials}</p>}
+          {hintLevel >= 2 && dict && <p className="hint-dict" lang="ko" data-testid="hint-dict">{dict}</p>}
+          <p className="gloss-en">{q.en}</p>
+        </>);
+      }
       const cue = splitCue(q.cue);
       const meaning = shortMeaning(item);
       return (<>

@@ -571,3 +571,36 @@ Independent native-editor pass over all 120 new starter items: glosses, collocat
 - **v:짚다:point-out**: kept 「4」 '어림잡아 짐작하다' (헛다리를 짚다) because the item's collocations include 잘못 짚다.
 - **v:내심**, **v:한참**, **v:당장**: KRDict lists these only as nouns, so some examples use the noun form (내심은 따뜻한 사람). It's the same sense with a different part of speech.
 - **v:혼나다** 「1」: 어머니는 … 아이에게 혼났다 means the mother had a hard time, not that she was scolded. It's a correct example, but learners may misread it.
+
+---
+
+## Answer-leak cleanup (all levels L01–L13, vocab + expressions, 2026-11-04)
+
+Owner rule (proposed D74): a question never shows its own answer, and hints are in the other language from the answer. Grammar clozes keep the D66 ladder and were not touched. No `accepted`, `nearMiss.answer` or `rejected` values changed; ids, `rev` and schema are unchanged. `npm run validate-content`: 0 errors after each level; self-check 8347 cases, 0 failures.
+
+**Counts**
+- Cloze `cue`: **431 of 431** rewritten to English only (427 contained Hangul: the headword, "word · gloss", 초성 like "ㄱㅇ · barely", or "expression + -고"; the other 4 were reworded for consistency). Each cue is a sense hint for the blank, not a translation of the sentence (that stays in `en`).
+- Cloze `sentence`: **0** changed. No sentence showed the headword or its -다 stem outside `{{}}`. Cloze `en`: **0** changed (none contained Hangul).
+- Production `promptEn` / `contextHint`: **347** items rewritten to English only. **11** of them showed the answer itself (십상, 유치하다, 격식, 고달프다, 공모, 관용, 꺼림칙하다, 내심, 단연, 들통, 막론하다). Hangul disambiguation became English ("not the homonym meaning 'to attract (investment)'"); category labels became English (관용구 → idiom, 사자성어 → four-character idiom).
+- Cloze `nearMiss[].hint`: **197** reworded so a close answer's retry hint no longer names the target ("때 also fits; the cue asks for 경우." → "때 also fits, but the cue is after another word."). Spelling hints point at the error without spelling out the answer ("Check the spelling: aspirated ㅊ, not ㅉ.").
+
+**Where the Korean guidance went** (it's shown only after answering, on the item page and lesson page). The schema has no post-answer field on the production or cloze spec, so:
+- Contrast words, spelling notes and conjugation notes for **vocab** went into `mnemonic`, the only free-text note field vocab has: 140 new, 41 appended (e.g. v:사정 "Not to be confused with 사연 (the story behind something).").
+- Collocation frames that weren't already listed went into `collocations`: 8 added (경우: 비가 올 경우에는; 전하다: 안부 전해 주세요; 둘러보다: 그냥 둘러보는 거예요; 인식: ~에 대한 인식; 상식: 상식적으로; 마련하다: 내 집 마련; 앞두다: ~을 앞두고; 견주다: 견줄 만하다). 근면 성실 and A를 B로 오인하다 were already listed.
+- Frames already covered by `collocations` or `meanings` (most "___을 내리다" style hints) were dropped as redundant. Expressions needed nothing moved: their `usage` already carries the frames.
+
+**Samples (before → after)**
+1. v:사정 `cloze[c1].cue`: 사정 · circumstances → circumstances (family situation)
+2. x:총대를-메다 `cloze[c1].cue`: 총대를 메다 + -고 → took it on for everyone (stuck their neck out), and then…
+3. v:겨우 `cloze[c2].cue`: ㄱㅇ · barely → barely, just managed
+4. v:걸치다:span `cloze[c1].cue`: 걸치다 · span (occasions / a period) → over, spanning (two occasions)
+5. v:사색하다 `cloze[c1].cue`: 사색하다 (noun form) · contemplation → contemplation, deep thought (noun)
+6. x:가랑비에-옷-젖는-줄-모른다 `cloze[c1].cue`: the kind of rain in the proverb + 에 → proverb: little by little you don't notice (the light rain, with its particle)
+7. v:유치하다 `production.contextHint`: Sino-Korean adjective; the 'attract (investment)' 유치하다 is a different word → Sino-Korean adjective; not the homonym meaning 'to attract (investment)' (the Korean note moved to `mnemonic`)
+8. v:여부 `production.promptEn`: whether or not (참석 ___, 사실 ___) → whether or not (as in 'attendance: yes or no', 'whether it's true')
+9. v:경우 `production.contextHint`: Sino-Korean noun; -(으)ㄹ ___에는 → Sino-Korean noun; follows a modifier: 'in the case that…' (frame added to `collocations`: 비가 올 경우에는)
+10. v:메다:shoulder `cloze[c1].nearMiss[매고].hint`: 매다 means to tie (…). Bags on the shoulder or back take 메다: 메고. → 매다 means to tie (넥타이를 매다, 신발 끈을 매다). Bags on the shoulder or back take a different verb.
+
+**Regression guard.** `validate.ts` now rejects, for vocab and expression seed items: a Hangul cloze `cue`, a Hangul cloze `en`, Hangul in production `promptEn`/`contextHint`, and the headword or its -다 stem (≥ 2 characters) in a cloze sentence outside `{{}}`. Draft sources (user/KRDict/import) get warnings instead (the KRDict importer still puts the Korean definition in `contextHint`).
+
+**For owner review.** The 181 `mnemonic` notes render under the "Mnemonic" heading although most are usage contrasts. The English cues are first drafts against the sentence; please skim L04 (polysemous verbs), where the cue has to tell senses apart.

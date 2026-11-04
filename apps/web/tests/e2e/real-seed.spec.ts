@@ -215,3 +215,87 @@ test('owner screenshots: M5 pages on the real seed (390×844)', async ({ browser
   await shot('practice-question', false);
   await context.close();
 });
+
+// D74: a vocab/expression question never shows its own answer. Lesson-quiz clozes walk the
+// English cue → 초성 → dictionary-form ladder (hint 2 counts as a miss); meaning prompts show only
+// the headword; production prompts are English only. Screenshots at hint levels 0 and 1.
+test('vocab cloze hint ladder and no answer leaks before submitting (390×844)', async ({ browser }) => {
+  mkdirSync(SHOTS, { recursive: true });
+  test.setTimeout(150_000);
+  const context = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true, timezoneId: 'Asia/Seoul' });
+  const page = await context.newPage();
+  const b = await setup(page);
+  const shot = (name: string) => page.screenshot({ path: join(SHOTS, `${name}-390x844.png`) });
+  const card = page.getByTestId('question');
+  const hasHangul = (s: string) => /\p{Script=Hangul}/u.test(s);
+  const headwordOf = (it: any): string => it.word ?? it.text;
+  let laddered = false;
+  const checked = { meaning: 0, production: 0, cloze: 0 };
+
+  for (let batch = 0; batch < 3 && !laddered; batch++) {
+    await goHome(page);
+    await page.getByTestId('start-lessons').click();
+    while (!(await page.getByTestId('start-quiz').isVisible())) await page.getByRole('button', { name: 'Next', exact: true }).click();
+    await page.getByTestId('start-quiz').click();
+    for (let g = 0; g < 200 && !(await page.getByTestId('quiz-done').isVisible()); g++) {
+      const q = await currentQ(page);
+      const it: any = b.items.find((i) => i.id === q.itemId)!;
+      const lexical = it.kind === 'vocab' || it.kind === 'expression';
+      if (lexical && q.qtype === 'meaning') {
+        await expect(page.locator('.prompt-ko')).toHaveText(headwordOf(it));
+        checked.meaning++;
+      }
+      if (lexical && q.qtype === 'production') {
+        const shown = `${await page.locator('.prompt-en').innerText()} ${await page.locator('.context-hint').count() ? await page.locator('.context-hint').innerText() : ''}`;
+        expect(hasHangul(shown), `${q.itemId}: production prompt is English only: ${shown}`).toBe(false);
+        checked.production++;
+      }
+      if (lexical && q.qtype === 'cloze') {
+        const spec = it.questions.cloze.find((p: any) => p.id === q.promptId);
+        const leaks = (text: string) => [headwordOf(it), ...spec.accepted].filter((a: string) => text.includes(a));
+        // Level 0: sentence, English translation, English cue; no initials, no dictionary form.
+        await expect(card).toHaveAttribute('data-hint-level', '0');
+        await expect(page.getByTestId('cue-en')).toHaveText(spec.cue);
+        await expect(page.getByTestId('hint-initials')).toHaveCount(0);
+        await expect(page.getByTestId('hint-dict')).toHaveCount(0);
+        expect(leaks(await card.innerText()), `${q.itemId} level 0`).toEqual([]);
+        checked.cloze++;
+        if (!laddered) {
+          await shot('vocab-cloze-hint0');
+          // Level 1: 초성 per word plus syllable counts; still no dictionary form.
+          await page.getByTestId('hint-btn').click();
+          await expect(card).toHaveAttribute('data-hint-level', '1');
+          await expect(page.getByTestId('hint-initials')).toHaveText(/^[ㄱ-ㅎ]+( [ㄱ-ㅎ]+)* \(\d+(\+\d+)*\)$/);
+          await expect(page.getByTestId('hint-dict')).toHaveCount(0);
+          expect(leaks(await card.innerText()), `${q.itemId} level 1`).toEqual([]);
+          await shot('vocab-cloze-hint1');
+          // A near-miss retry hint doesn't name the answer either (and keeps the hint level).
+          if (spec.nearMiss?.length) {
+            await submit(page, q, spec.nearMiss[0].answer);
+            await expect(page.getByTestId('hint')).toBeVisible();
+            expect(leaks(await page.getByTestId('hint').innerText()), `${q.itemId} near-miss hint`).toEqual([]);
+            await expect(page.getByTestId('feedback')).toHaveCount(0);
+            await expect(card).toHaveAttribute('data-hint-level', '1');
+          }
+          // Level 2: the dictionary form; no further hint. A correct answer now counts as a miss.
+          await page.getByTestId('hint-btn').click();
+          await expect(card).toHaveAttribute('data-hint-level', '2');
+          await expect(page.getByTestId('hint-dict')).toHaveText(headwordOf(it));
+          await expect(page.getByTestId('hint-btn')).toHaveCount(0);
+          await submit(page, q, correctAnswer(b, q));
+          await expect(page.getByTestId('feedback')).toHaveAttribute('data-hint-penalty', 'true');
+          laddered = true;
+          await next(page);
+          continue;
+        }
+      }
+      await submit(page, q, correctAnswer(b, q));
+      await expect(page.getByTestId('feedback')).toBeVisible();
+      await next(page);
+    }
+    if (await page.getByTestId('quiz-done').isVisible()) await page.getByRole('button', { name: 'Finish lessons' }).click();
+  }
+  expect(laddered, 'a vocab/expression cloze in the first lesson quizzes').toBe(true);
+  expect(checked.meaning + checked.production, 'meaning/production prompts were checked').toBeGreaterThan(0);
+  await context.close();
+});

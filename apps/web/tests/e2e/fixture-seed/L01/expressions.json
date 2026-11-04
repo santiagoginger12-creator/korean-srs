@@ -27,7 +27,7 @@
       },
       "production": {
         "promptEn": "to be faced with an urgent problem that can't wait (lit. fire falls on the top of one's foot)",
-        "contextHint": "관용구",
+        "contextHint": "idiom",
         "accepted": ["발등에 불이 떨어지다", "발등에 불 떨어지다"]
       }
     }

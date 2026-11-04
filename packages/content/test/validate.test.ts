@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { validateBundle, validateItem } from '../src/validate.ts';
+import { leakForms, validateBundle, validateItem } from '../src/validate.ts';
 import { buildBundle } from '../src/bundle.ts';
 import { canonicalJson, sha256Hex } from '../../srs-engine/src/util.ts';
 import { buildQuestions, loadSeed, runSelfCheck } from '../bin/lib.ts';
@@ -185,6 +185,68 @@ test('attribution present for a non-owned license passes', () => {
   const f = fixture();
   at(f, 'v:결제').source = { kind: 'krdict', license: 'CC-BY-SA-2.0-KR', attribution: '한국어기초사전 (국립국어원)', krdictTargetCode: 1 };
   assert.deepEqual(errs(f), []);
+});
+
+// ---------------------------------------------------------------- answer leaks (D74)
+
+/** Gives v:결제 a clean, English-cued cloze; returns the item. */
+function withVocabCloze(f: Record<string, any>[]): Record<string, any> {
+  const v = at(f, 'v:결제');
+  v.questionTypes = ['meaning', 'production', 'cloze'];
+  v.questions.cloze = [{ id: 'c1', sentence: '저녁값은 카드로 {{}}했어요.', en: 'I paid for dinner by card.', cue: 'payment (by card)', accepted: ['결제'], particleTolerance: 'none' }];
+  return v;
+}
+/** Gives the expression a clean, English-cued cloze; returns the item. */
+function withExprCloze(f: Record<string, any>[]): Record<string, any> {
+  const x = at(f, 'x:눈코-뜰-새-없다');
+  x.questionTypes = ['meaning', 'cloze'];
+  x.questions.cloze = [{ id: 'c1', sentence: '마감 주간이라 {{}}.', en: "It's deadline week, so I'm swamped.", cue: 'swamped, no time to breathe', accepted: ['눈코 뜰 새 없어'], particleTolerance: 'none' }];
+  return x;
+}
+
+test('answer leaks: English-only cues, prompts and translations pass', () => {
+  const f = fixture();
+  withVocabCloze(f);
+  withExprCloze(f);
+  at(f, 'v:결제').questions.production.contextHint = 'Sino-Korean noun; not the look-alike for approving a document';
+  assert.deepEqual(errs(f), []);
+});
+test('answer leaks: vocab cloze cue with Hangul', () =>
+  expectError((f) => { withVocabCloze(f).questions.cloze[0].cue = '결제 · payment'; }, /cloze\[0\]\.cue: cue must be English only/));
+test('answer leaks: initials (초성) in a cue count as Hangul', () =>
+  expectError((f) => { withVocabCloze(f).questions.cloze[0].cue = 'ㄱㅈ · payment'; }, /cue must be English only/));
+test('answer leaks: expression cloze cue with Hangul', () =>
+  expectError((f) => { withExprCloze(f).questions.cloze[0].cue = '눈코 뜰 새 없다 + -어'; }, /x:눈코-뜰-새-없다\.questions\.cloze\[0\]\.cue/));
+test('answer leaks: production promptEn with Hangul', () =>
+  expectError((f) => { at(f, 'v:결제').questions.production.promptEn = 'payment (카드 ___)'; }, /production\.promptEn: production prompt must be English only/));
+test('answer leaks: production contextHint with Hangul', () =>
+  expectError((f) => { at(f, 'v:결제').questions.production.contextHint = 'not 결재 (approval)'; }, /production\.contextHint: production hint must be English only/));
+test('answer leaks: headword in the cloze sentence outside {{}}', () =>
+  expectError((f) => { withVocabCloze(f).questions.cloze[0].sentence = '결제 수단은 카드로 {{}}했어요.'; }, /sentence shows the answer "결제" outside/));
+test('answer leaks: the -다 stem of an expression outside {{}}', () =>
+  expectError((f) => { withExprCloze(f).questions.cloze[0].sentence = '어제도 눈코 뜰 새 없이 바빴는데 오늘도 {{}}.'; }, /shows the answer "눈코 뜰 새 없" outside/));
+test('answer leaks: cloze en with Hangul', () =>
+  expectError((f) => { withVocabCloze(f).questions.cloze[0].en = 'I paid (결제) by card.'; }, /cloze\[0\]\.en: translation must be English only/));
+test('answer leaks: leakForms keeps a -다 stem only when it is 2+ characters', () => {
+  assert.deepEqual(leakForms('지내다'), ['지내다', '지내']);
+  assert.deepEqual(leakForms('쓰다'), ['쓰다']);
+  assert.deepEqual(leakForms('경우'), ['경우']);
+});
+test('answer leaks: grammar clozes are exempt (D66 ladder)', () => {
+  const f = fixture();
+  at(f, 'g:a').questions.cloze[0].cue = '오다 + -는 바람에';
+  at(f, 'g:a').questions.cloze[0].en = '비 = rain';
+  assert.deepEqual(errs(f), []);
+});
+test('answer leaks: draft (non-seed) items get warnings, not errors', () => {
+  const f = fixture();
+  const v = withVocabCloze(f);
+  v.source = { kind: 'user', license: 'user-owned', attribution: 'me' };
+  v.questions.cloze[0].cue = '결제 · payment';
+  v.questions.production.contextHint = '정의: 돈을 내는 일';
+  const r = validateBundle(f);
+  assert.deepEqual(r.errors, []);
+  assert.equal(r.warnings.filter((w) => /English only/.test(w.msg)).length, 2);
 });
 
 test('idRedirects: live source and dangling target', () => {

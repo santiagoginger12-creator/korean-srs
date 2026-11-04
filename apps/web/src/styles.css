@@ -405,6 +405,8 @@ textarea { resize: vertical; }
 .hint-btn { margin-left: auto; }
 .cue-pattern { font-weight: 700; }
 .hint-meaning { color: var(--text-2); font-size: .95rem; margin: 6px 0 4px; font-style: italic; text-align: left; }
+.hint-initials { font-size: 1.15rem; letter-spacing: .04em; margin: 8px 0 4px; text-align: left; color: var(--k); font-weight: 600; }
+.hint-dict { font-size: 1.05rem; margin: 4px 0; text-align: left; font-weight: 600; }
 .htsk { font-size: .88rem; margin-top: 14px; }
 .htsk a { color: var(--k-grammar); }
 .stage-list, .pattern-list, .contrast-sets { list-style: none; padding: 0; margin: 0; }
