@@ -17,7 +17,7 @@
       "policy",
       "news"
     ],
-    "mnemonic": "미봉 is darning a hole (봉, as in 봉합 'stitching up'); 책 is a plan (대책). The tear is stitched shut, but the fabric is still rotten.",
+    "mnemonic": "미봉 is darning a hole (봉, as in 봉합 'stitching up'); 책 is a plan (대책). The tear is stitched shut, but the fabric is still rotten. -책 = measure.",
     "word": "미봉책",
     "meanings": [
       "stopgap measure",
@@ -86,7 +86,7 @@
       },
       "production": {
         "promptEn": "a stopgap measure; a band-aid fix",
-        "contextHint": "Sino-Korean noun; -책 = measure",
+        "contextHint": "Sino-Korean noun; ends in the suffix for 'measure'",
         "accepted": [
           "미봉책"
         ]
@@ -173,7 +173,7 @@
       },
       "production": {
         "promptEn": "a clever solution; an ingenious plan",
-        "contextHint": "Sino-Korean noun; often in '뾰족한 ___이 없다'",
+        "contextHint": "Sino-Korean noun; often in 'there's no clever way out'",
         "accepted": [
           "묘책"
         ]
@@ -633,7 +633,7 @@
       },
       "production": {
         "promptEn": "defense / advocacy (speaking up for a person, cause, or position)",
-        "contextHint": "Sino-Korean noun, often + 하다",
+        "contextHint": "Sino-Korean noun, often as a verb",
         "accepted": [
           "옹호"
         ]
@@ -985,7 +985,7 @@
       },
       "production": {
         "promptEn": "skeptical",
-        "contextHint": "Sino-Korean, ends in -적",
+        "contextHint": "Sino-Korean, with the '-ic' suffix",
         "accepted": [
           "회의적"
         ]
@@ -1163,7 +1163,7 @@
       },
       "production": {
         "promptEn": "perplexed and uncomfortable; put on the spot",
-        "contextHint": "Sino-Korean adjective (-스럽다)",
+        "contextHint": "Sino-Korean root + adjective suffix",
         "accepted": [
           "곤혹스럽다"
         ]
@@ -1252,7 +1252,7 @@
       },
       "production": {
         "promptEn": "dazzling / luring into error (being taken in by glitter)",
-        "contextHint": "Sino-Korean noun; usually ___되다",
+        "contextHint": "Sino-Korean noun; usually passive ('be dazzled')",
         "accepted": [
           "현혹"
         ]
@@ -1336,7 +1336,7 @@
       },
       "production": {
         "promptEn": "mistaking (A for B); misidentification",
-        "contextHint": "Sino-Korean noun, usually A를 B로 ___하다",
+        "contextHint": "Sino-Korean noun, usually as a verb: 'mistake A for B'",
         "accepted": [
           "오인"
         ]
@@ -1426,7 +1426,7 @@
       },
       "production": {
         "promptEn": "a misjudgment; a bad call",
-        "contextHint": "Sino-Korean noun, often + 하다",
+        "contextHint": "Sino-Korean noun, often as a verb",
         "accepted": [
           "오판"
         ]
@@ -1515,7 +1515,7 @@
       },
       "production": {
         "promptEn": "an error / slip (esp. clerical or administrative)",
-        "contextHint": "Sino-Korean noun; also in 시행___ (trial and error)",
+        "contextHint": "Sino-Korean noun; also in 'trial and error'",
         "accepted": [
           "착오"
         ]
@@ -1540,7 +1540,7 @@
       "admin",
       "confusable:경신"
     ],
-    "mnemonic": "Contracts, licenses, visas: 갱신, a fresh start (think 갱생). Records: 경신, the record changes hands (think 변경).",
+    "mnemonic": "Contracts, licenses, visas: 갱신, a fresh start (think 갱생). Records: 경신, the record changes hands (think 변경). 更 read as 갱.",
     "word": "갱신",
     "meanings": [
       "renewal (of a contract, license, visa)",
@@ -1605,7 +1605,7 @@
       },
       "production": {
         "promptEn": "renewal (of a contract, license, or visa)",
-        "contextHint": "Sino-Korean; 更 read as 갱",
+        "contextHint": "Sino-Korean; the first character has an unusual reading here",
         "accepted": [
           "갱신"
         ],
@@ -1785,7 +1785,7 @@
       },
       "production": {
         "promptEn": "a fall / being reduced to (a lower, worse state)",
-        "contextHint": "Sino-Korean noun; ~(으)로 ___하다",
+        "contextHint": "Sino-Korean noun; as a verb, 'sink to (a lower state)'",
         "accepted": [
           "전락"
         ]
@@ -1873,7 +1873,7 @@
       },
       "production": {
         "promptEn": "shifting (blame, responsibility, or costs) onto others",
-        "contextHint": "Sino-Korean noun; formal, often 책임 ___",
+        "contextHint": "Sino-Korean noun; formal, often 'shifting responsibility'",
         "accepted": [
           "전가"
         ]
@@ -1965,7 +1965,7 @@
       },
       "production": {
         "promptEn": "improvement; a turn for the better (health, the economy, a situation)",
-        "contextHint": "Sino-Korean noun, usually ___되다",
+        "contextHint": "Sino-Korean noun, usually as a passive-like verb ('take a turn for the better')",
         "accepted": [
           "호전"
         ]
@@ -2183,7 +2183,7 @@
       "sino-korean",
       "confusable:유례"
     ],
-    "mnemonic": "유래 = where it comes (래, as in 미래 'what's to come') from (유, as in 이유). Its look-alike 유례 (례, as in 사례 'example') is a precedent.",
+    "mnemonic": "유래 = where it comes (래, as in 미래 'what's to come') from (유, as in 이유). Its look-alike 유례 (례, as in 사례 'example') is a precedent. Not 유례 (precedent).",
     "word": "유래",
     "meanings": [
       "origin",
@@ -2250,7 +2250,7 @@
       },
       "production": {
         "promptEn": "origin, derivation (where something comes from)",
-        "contextHint": "Sino-Korean noun; ~에서 ___하다",
+        "contextHint": "Sino-Korean noun; as a verb, 'derive from ~'; not the word for precedent",
         "accepted": [
           "유래"
         ],
@@ -2277,7 +2277,7 @@
       "sino-korean",
       "confusable:유래"
     ],
-    "mnemonic": "유례 has the 례 of 사례 (example): another example of the same kind. If there's none, it's 유례없다. 유래 (래, as in 미래) is an origin.",
+    "mnemonic": "유례 has the 례 of 사례 (example): another example of the same kind. If there's none, it's 유례없다. 유래 (래, as in 미래) is an origin. Not 유래 (origin).",
     "word": "유례",
     "meanings": [
       "precedent",
@@ -2341,7 +2341,7 @@
         ]
       },
       "production": {
-        "promptEn": "a precedent / parallel (usually as 'unprecedented': ___없다)",
+        "promptEn": "a precedent / parallel (usually as 'unprecedented')",
         "contextHint": "Sino-Korean noun; NOT the word for 'origin'",
         "accepted": [
           "유례"
@@ -2369,7 +2369,7 @@
       "native",
       "confusable:띠다"
     ],
-    "mnemonic": "띄다 is 뜨이다 squeezed together: something 뜨이다, comes into view, before your eyes. The sash-wearing 띠다 has no ㅢ.",
+    "mnemonic": "띄다 is 뜨이다 squeezed together: something 뜨이다, comes into view, before your eyes. The sash-wearing 띠다 has no ㅢ. Not 띠다 (to take on a quality).",
     "word": "띄다",
     "meanings": [
       "to catch the eye",
@@ -2426,7 +2426,7 @@
         ]
       },
       "production": {
-        "promptEn": "to catch the eye; to be noticeable (usually 눈에 ___)",
+        "promptEn": "to catch the eye; to be noticeable (usually with 'eye')",
         "contextHint": "native verb; NOT the near-homophone 'to take on (a quality)'",
         "accepted": [
           "띄다"
@@ -2656,7 +2656,7 @@
         ]
       },
       "production": {
-        "promptEn": "to say something indirectly / in a roundabout way (usually 에둘러 말하다)",
+        "promptEn": "to say something indirectly / in a roundabout way",
         "contextHint": "native verb",
         "accepted": [
           "에두르다"
@@ -2729,8 +2729,8 @@
         ]
       },
       "production": {
-        "promptEn": "glib, joking banter (to charm or deflect), as in ___를 떨다",
-        "contextHint": "native noun",
+        "promptEn": "glib, joking banter (to charm or deflect)",
+        "contextHint": "native noun; you 'shake it out'",
         "accepted": [
           "너스레"
         ]
@@ -2754,7 +2754,7 @@
       "native",
       "emotion"
     ],
-    "mnemonic": "볼 cheek + 멘 (볼이 메다, cheeks puffed up in a sulk): the voice that comes out of puffed cheeks.",
+    "mnemonic": "볼 cheek + 멘 (볼이 메다, cheeks puffed up in a sulk): the voice that comes out of puffed cheeks. The cheek (볼) is involved.",
     "word": "볼멘소리",
     "meanings": [
       "sulky complaint",
@@ -2805,7 +2805,7 @@
       },
       "production": {
         "promptEn": "a sulky complaint; grumbling",
-        "contextHint": "native noun; the cheek (볼) is involved",
+        "contextHint": "native noun; the cheek is involved",
         "accepted": [
           "볼멘소리"
         ]
@@ -2882,7 +2882,7 @@
       },
       "production": {
         "promptEn": "fizzling out; inconclusively (ending without result)",
-        "contextHint": "native mimetic adverb; often + 되다",
+        "contextHint": "native mimetic adverb; often as a verb ('fizzle out')",
         "accepted": [
           "흐지부지"
         ]
@@ -3033,7 +3033,7 @@
         ]
       },
       "production": {
-        "promptEn": "a pretext for criticism; something to nitpick (usually ___를 잡다)",
+        "promptEn": "a pretext for criticism; something to nitpick (usually 'grab' one)",
         "contextHint": "native noun; literally a bean pod",
         "accepted": [
           "꼬투리"
@@ -3059,7 +3059,7 @@
       "register:written",
       "emotion"
     ],
-    "mnemonic": "마뜩하다 'just right' + 않다: not quite right by the speaker's standards.",
+    "mnemonic": "마뜩하다 'just right' + 않다: not quite right by the speaker's standards. A contraction of 마뜩하지 않다.",
     "word": "마뜩잖다",
     "meanings": [
       "not to one's liking",
@@ -3112,7 +3112,7 @@
       },
       "production": {
         "promptEn": "not to one's liking; displeasing (felt as mild disapproval)",
-        "contextHint": "native adjective; written; a contraction of '___하지 않다'",
+        "contextHint": "native adjective; written; a contracted negative",
         "accepted": [
           "마뜩잖다"
         ]
@@ -3211,7 +3211,7 @@
       "native",
       "register:spoken"
     ],
-    "mnemonic": "되레 is 도리어 with the middle swallowed: same reversal, faster delivery.",
+    "mnemonic": "되레 is 도리어 with the middle swallowed: same reversal, faster delivery. Short form of 도리어.",
     "word": "되레",
     "meanings": [
       "instead",
@@ -3261,7 +3261,7 @@
       },
       "production": {
         "promptEn": "instead; on the contrary (the opposite of what you'd expect)",
-        "contextHint": "native adverb; short form of 도리어, common in speech and headlines",
+        "contextHint": "native adverb; a short form, common in speech and headlines",
         "accepted": [
           "되레"
         ]
@@ -3338,7 +3338,7 @@
       },
       "production": {
         "promptEn": "to dawdle; drag one's feet (on a decision or task)",
-        "contextHint": "native verb; mimetic stem + -거리다",
+        "contextHint": "native verb; mimetic stem + the 'keep doing' suffix",
         "accepted": [
           "미적거리다"
         ]

@@ -348,6 +348,7 @@ export function validateBundle(rawItems: readonly unknown[], opts: ValidateBundl
 
     if (it.kind === 'hanja') { checkHanjaSem(it, err); continue; }
     checkReviewableSem(it, err, warn);
+    if (it.kind === 'vocab' || it.kind === 'expression') checkAnswerLeaks(it, isDraftSource(it) ? warn : err);
 
     if (it.kind === 'vocab') {
       (it.hanjaBreakdown ?? []).forEach((h, i) => {
@@ -491,6 +492,41 @@ function checkReviewableSem(it: Reviewable, err: ErrFn, warn: ErrFn): void {
       }
     });
   });
+}
+
+// ---------------------------------------------------------------------------
+// Answer-leak rules (D74): a question never shows its own answer; hints are in the other
+// language from the answer. Vocab and expression items only (grammar keeps the D66 ladder).
+
+const HANGUL = /\p{Script=Hangul}/u;
+export const hasHangul = (s: string): boolean => HANGUL.test(s);
+
+/** The headword plus, for a -다 headword, its stem before 다 when that stem is ≥ 2 characters. */
+export function leakForms(headword: string): string[] {
+  const hw = headword.trim();
+  const out = [hw];
+  if (hw.endsWith('다') && [...hw].length - 1 >= 2) out.push(hw.slice(0, -1));
+  return out;
+}
+
+function checkAnswerLeaks(it: VocabItem | ExpressionItem, report: ErrFn): void {
+  const q = it.questions;
+  const forms = leakForms(it.kind === 'vocab' ? it.word : it.text);
+  (q.cloze ?? []).forEach((z: ClozePrompt, i) => {
+    const zp = `.questions.cloze[${i}]`;
+    if (hasHangul(z.cue)) report(it, `${zp}.cue`, `cue must be English only (no Hangul): "${z.cue}"`);
+    if (hasHangul(z.en)) report(it, `${zp}.en`, `translation must be English only (no Hangul): "${z.en}"`);
+    const outside = z.sentence.split(CLOZE_GAP);
+    const hit = forms.find((f) => outside.some((part) => part.includes(f)));
+    if (hit) report(it, `${zp}.sentence`, `the sentence shows the answer "${hit}" outside {{}}`);
+  });
+  const p = q.production;
+  if (p) {
+    if (hasHangul(p.promptEn)) report(it, '.questions.production.promptEn', `production prompt must be English only (no Hangul): "${p.promptEn}"`);
+    if (p.contextHint !== undefined && hasHangul(p.contextHint)) {
+      report(it, '.questions.production.contextHint', `production hint must be English only (no Hangul): "${p.contextHint}"`);
+    }
+  }
 }
 
 /** Returns each distinct cycle once, as a closed path [a, b, …, a]. */

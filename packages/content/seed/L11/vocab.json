@@ -547,7 +547,7 @@
       },
       "production": {
         "promptEn": "a bold decision; resolve (as in making the hard call)",
-        "contextHint": "Sino-Korean noun, as in ___을 내리다",
+        "contextHint": "Sino-Korean noun; you 'hand one down' (make the call)",
         "accepted": [
           "결단"
         ],
@@ -900,7 +900,7 @@
       },
       "production": {
         "promptEn": "tacit approval; turning a blind eye (to wrongdoing)",
-        "contextHint": "Sino-Korean noun, often + 하다",
+        "contextHint": "Sino-Korean noun, often as a verb",
         "accepted": [
           "묵인",
           "묵인하다"
@@ -1104,7 +1104,7 @@
       "sino-korean",
       "academia"
     ],
-    "mnemonic": "식견 = the 견해 (views) of someone with 지식 (knowledge): you see because you know what you're looking at.",
+    "mnemonic": "식견 = the 견해 (views) of someone with 지식 (knowledge): you see because you know what you're looking at. 짧은 식견 is a humble formula.",
     "word": "식견",
     "meanings": [
       "insight",
@@ -1167,7 +1167,7 @@
       },
       "production": {
         "promptEn": "insight, discernment (judgment informed by knowledge)",
-        "contextHint": "Sino-Korean noun; 짧은 ___ is a humble formula",
+        "contextHint": "Sino-Korean noun; 'my short ~' is a humble formula",
         "accepted": [
           "식견"
         ]
@@ -1336,7 +1336,7 @@
       },
       "production": {
         "promptEn": "identification; telling apart / making out (visually)",
-        "contextHint": "Sino-Korean noun, often + 하다",
+        "contextHint": "Sino-Korean noun, often as a verb",
         "accepted": [
           "식별"
         ]
@@ -1689,7 +1689,7 @@
       },
       "production": {
         "promptEn": "intervention; getting involved (in another party's affairs)",
-        "contextHint": "Sino-Korean noun, often + 하다",
+        "contextHint": "Sino-Korean noun, often as a verb",
         "accepted": [
           "개입"
         ]
@@ -1802,7 +1802,7 @@
       "workplace",
       "homograph:警衛"
     ],
-    "mnemonic": "경위 uses the 경 of 경도 (longitude) and the 위 of 위도 (latitude): the warp and weft, the whole weave of how it happened. 사건의 경위 = how the incident came about.",
+    "mnemonic": "경위 uses the 경 of 경도 (longitude) and the 위 of 위도 (latitude): the warp and weft, the whole weave of how it happened. 사건의 경위 = how the incident came about. 경위서 is an incident report.",
     "word": "경위",
     "meanings": [
       "the circumstances",
@@ -1865,7 +1865,7 @@
       },
       "production": {
         "promptEn": "the circumstances; how something came about (of an incident)",
-        "contextHint": "Sino-Korean noun; also in ___서 (incident report)",
+        "contextHint": "Sino-Korean noun; add a suffix for 'incident report'",
         "accepted": [
           "경위"
         ]
@@ -2049,7 +2049,7 @@
       },
       "production": {
         "promptEn": "relief / rescue (for victims or the distressed)",
-        "contextHint": "Sino-Korean noun; as in ___ 금융 (bailout)",
+        "contextHint": "Sino-Korean noun; as in 'bailout' (relief financing)",
         "accepted": [
           "구제"
         ]
@@ -2230,7 +2230,7 @@
       },
       "production": {
         "promptEn": "building / establishing (a system, network, or relationship)",
-        "contextHint": "Sino-Korean noun, often + 하다",
+        "contextHint": "Sino-Korean noun, often as a verb",
         "accepted": [
           "구축"
         ]
@@ -2401,7 +2401,7 @@
       },
       "production": {
         "promptEn": "conversion (of currency or units)",
-        "contextHint": "Sino-Korean noun, often + 하다",
+        "contextHint": "Sino-Korean noun, often as a verb",
         "accepted": [
           "환산"
         ]
@@ -2510,7 +2510,7 @@
       "sino-korean",
       "confusable:지향"
     ],
-    "mnemonic": "지양 has the 지 of 중지 (stop): what you steer clear of. Its look-alike 지향 has the 향 of 방향 (direction): where you're heading.",
+    "mnemonic": "지양 has the 지 of 중지 (stop): what you steer clear of. Its look-alike 지향 has the 향 of 방향 (direction): where you're heading. Not 지향 (aim for).",
     "word": "지양",
     "meanings": [
       "avoidance (of something undesirable)",
@@ -2580,7 +2580,7 @@
       },
       "production": {
         "promptEn": "avoiding / steering clear of (something undesirable)",
-        "contextHint": "Sino-Korean noun, often + 하다; NOT the near-homophone meaning 'aim for'",
+        "contextHint": "Sino-Korean noun, often as a verb; NOT the near-homophone meaning 'aim for'",
         "accepted": [
           "지양"
         ],
@@ -2607,7 +2607,7 @@
       "sino-korean",
       "confusable:지양"
     ],
-    "mnemonic": "지향 has the 향 of 방향 (direction): where you're heading (미래 지향적). Its look-alike 지양 has the 지 of 중지 (stop): what you steer clear of.",
+    "mnemonic": "지향 has the 향 of 방향 (direction): where you're heading (미래 지향적). Its look-alike 지양 has the 지 of 중지 (stop): what you steer clear of. Not 지양 (avoid).",
     "word": "지향",
     "meanings": [
       "orientation",
@@ -2677,7 +2677,7 @@
       },
       "production": {
         "promptEn": "aiming for; orientation toward (a goal or direction)",
-        "contextHint": "Sino-Korean noun, often + 하다; NOT the near-homophone meaning 'avoid'",
+        "contextHint": "Sino-Korean noun, often as a verb; NOT the near-homophone meaning 'avoid'",
         "accepted": [
           "지향"
         ],
@@ -2988,7 +2988,7 @@
       },
       "production": {
         "promptEn": "uncontrollable; (spreading) out of control",
-        "contextHint": "native; built on a verb that's always negated: ___을 수 없다",
+        "contextHint": "native; built on a verb that's always negated ('cannot ~')",
         "accepted": [
           "걷잡을 수 없다"
         ],

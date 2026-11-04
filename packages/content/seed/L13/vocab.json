@@ -166,7 +166,7 @@
       },
       "production": {
         "promptEn": "vast / marked (of a gap or difference)",
-        "contextHint": "Sino-Korean adjective; written; usually ___한 차이",
+        "contextHint": "Sino-Korean adjective; written; usually 'a marked difference'",
         "accepted": [
           "현격하다"
         ]
@@ -340,7 +340,7 @@
       },
       "production": {
         "promptEn": "bringing up / mentioning (a topic or a name for discussion)",
-        "contextHint": "Sino-Korean noun; often ___되다 (be floated)",
+        "contextHint": "Sino-Korean noun; often passive ('be floated')",
         "accepted": [
           "거론"
         ]
@@ -424,7 +424,7 @@
       },
       "production": {
         "promptEn": "enumeration; listing items one by one",
-        "contextHint": "Sino-Korean noun, often + 하다",
+        "contextHint": "Sino-Korean noun, often as a verb",
         "accepted": [
           "열거"
         ]
@@ -678,7 +678,7 @@
       },
       "production": {
         "promptEn": "deliberately ignoring / dismissing (a request or opinion)",
-        "contextHint": "Sino-Korean noun; often ___되다 or ___당하다",
+        "contextHint": "Sino-Korean noun; often passive ('be dismissed')",
         "accepted": [
           "묵살"
         ]
@@ -701,7 +701,7 @@
     "tags": [
       "sino-korean"
     ],
-    "mnemonic": "묵과 = 침묵 + 통과: letting it pass in silence. (묵인 goes one step further: silently consenting.)",
+    "mnemonic": "묵과 = 침묵 + 통과: letting it pass in silence. (묵인 goes one step further: silently consenting.) Tacit approval is 묵인.",
     "word": "묵과",
     "meanings": [
       "overlooking (wrongdoing)",
@@ -761,7 +761,7 @@
         ]
       },
       "production": {
-        "promptEn": "overlooking / letting (wrongdoing) pass unchallenged (usually ___할 수 없다)",
+        "promptEn": "overlooking / letting (wrongdoing) pass unchallenged (usually 'cannot ~')",
         "contextHint": "Sino-Korean noun; written; not the word for tacit approval",
         "accepted": [
           "묵과"
@@ -786,7 +786,7 @@
       "sino-korean",
       "economy"
     ],
-    "mnemonic": "상쇄 has the 상 of 상호 (mutual): two forces wear each other down to zero. Same spelling family as 쇄도; read it 쇄, not 살.",
+    "mnemonic": "상쇄 has the 상 of 상호 (mutual): two forces wear each other down to zero. Same spelling family as 쇄도; read it 쇄, not 살. 殺 read 쇄 here.",
     "word": "상쇄",
     "meanings": [
       "offsetting",
@@ -848,7 +848,7 @@
       },
       "production": {
         "promptEn": "offsetting; canceling out",
-        "contextHint": "Sino-Korean noun; 殺 read 쇄 here",
+        "contextHint": "Sino-Korean noun; the second character has an unusual reading here",
         "accepted": [
           "상쇄"
         ]
@@ -873,7 +873,7 @@
       "news",
       "business"
     ],
-    "mnemonic": "쇄도: everything 도착s (arrives) at once, in a crush. 주문이 쇄도하다 = orders pour in.",
+    "mnemonic": "쇄도: everything 도착s (arrives) at once, in a crush. 주문이 쇄도하다 = orders pour in. 殺 read 쇄.",
     "word": "쇄도",
     "meanings": [
       "flood (of orders, requests)",
@@ -936,7 +936,7 @@
       },
       "production": {
         "promptEn": "a flood / rush (of orders, inquiries, or complaints)",
-        "contextHint": "Sino-Korean noun, usually ___하다; 殺 read 쇄",
+        "contextHint": "Sino-Korean noun, usually as a verb; the first character has an unusual reading",
         "accepted": [
           "쇄도"
         ]
@@ -1025,7 +1025,7 @@
       },
       "production": {
         "promptEn": "coordinating / fine-tuning (schedules, positions); tuning (an instrument)",
-        "contextHint": "Sino-Korean noun, often + 하다",
+        "contextHint": "Sino-Korean noun, often as a verb",
         "accepted": [
           "조율"
         ]
@@ -1290,7 +1290,7 @@
       },
       "production": {
         "promptEn": "being picked / singled out (for a role, post, or team)",
-        "contextHint": "Sino-Korean noun; usually ___되다",
+        "contextHint": "Sino-Korean noun; usually passive ('be picked')",
         "accepted": [
           "발탁"
         ]
@@ -1380,7 +1380,7 @@
       },
       "production": {
         "promptEn": "excerpting; an excerpt (picking out passages)",
-        "contextHint": "Sino-Korean noun, often + 하다",
+        "contextHint": "Sino-Korean noun, often as a verb",
         "accepted": [
           "발췌"
         ]
@@ -1465,7 +1465,7 @@
       },
       "production": {
         "promptEn": "earnest, imploring (of a request or plea)",
-        "contextHint": "Sino-Korean adjective; usually 간곡히 + a verb of asking",
+        "contextHint": "Sino-Korean adjective; usually its adverb + a verb of asking",
         "accepted": [
           "간곡하다"
         ]
@@ -1490,7 +1490,7 @@
       "workplace",
       "media"
     ],
-    "mnemonic": "간담회 = a 회의 for frank, friendly 담화 (talk). Not the 간담 of 간담이 서늘하다 ('chilled to the bone'), which is liver and gallbladder.",
+    "mnemonic": "간담회 = a 회의 for frank, friendly 담화 (talk). Not the 간담 of 간담이 서늘하다 ('chilled to the bone'), which is liver and gallbladder. -회 = meeting.",
     "word": "간담회",
     "meanings": [
       "informal meeting (for discussion)",
@@ -1556,7 +1556,7 @@
       },
       "production": {
         "promptEn": "an informal meeting / roundtable (to talk things over)",
-        "contextHint": "Sino-Korean noun; -회 = meeting",
+        "contextHint": "Sino-Korean noun; ends in the suffix for 'meeting'",
         "accepted": [
           "간담회"
         ]
@@ -1735,7 +1735,7 @@
       },
       "production": {
         "promptEn": "convening / calling (people together for a meeting or duty)",
-        "contextHint": "Sino-Korean noun, often + 하다",
+        "contextHint": "Sino-Korean noun, often as a verb",
         "accepted": [
           "소집"
         ]
@@ -1759,7 +1759,7 @@
       "sino-korean",
       "law"
     ],
-    "mnemonic": "자의적 = 자기 마음대로, by whatever you feel like. Careful: 자의 alone usually means 'of one's own accord' (자의로 그만두다), a different word.",
+    "mnemonic": "자의적 = 자기 마음대로, by whatever you feel like. Careful: 자의 alone usually means 'of one's own accord' (자의로 그만두다), a different word. Not 自意 (of one's own accord).",
     "word": "자의적",
     "meanings": [
       "arbitrary",
@@ -1824,7 +1824,7 @@
       },
       "production": {
         "promptEn": "arbitrary (decided by whim rather than rule)",
-        "contextHint": "Sino-Korean, -적; NOT 自意 (of one's own accord)",
+        "contextHint": "Sino-Korean, with the '-ic' suffix; NOT the homonym 'of one's own accord'",
         "accepted": [
           "자의적"
         ]
@@ -1847,7 +1847,7 @@
     "tags": [
       "sino-korean"
     ],
-    "mnemonic": "방자하다 has the 방 of 방종 (license): let off the leash, answering to no one.",
+    "mnemonic": "방자하다 has the 방 of 방종 (license): let off the leash, answering to no one. Often in 오만방자하다.",
     "word": "방자하다",
     "meanings": [
       "insolent",
@@ -1909,7 +1909,7 @@
       },
       "production": {
         "promptEn": "insolent, impudent (behaving without restraint toward others)",
-        "contextHint": "Sino-Korean adjective; often in 오만___하다",
+        "contextHint": "Sino-Korean adjective; often paired with 'arrogant' in one word",
         "accepted": [
           "방자하다"
         ]
@@ -2277,7 +2277,7 @@
         ]
       },
       "production": {
-        "promptEn": "easy to handle, a pushover (almost always negated: ___지 않다, 'no easy matter')",
+        "promptEn": "easy to handle, a pushover (almost always negated: 'no easy matter')",
         "contextHint": "Sino-Korean adjective (碌碌)",
         "accepted": [
           "녹록하다",
@@ -2355,7 +2355,7 @@
       },
       "production": {
         "promptEn": "one's capacity / what one can handle (often said modestly)",
-        "contextHint": "native noun; 내 ___으로는",
+        "contextHint": "native noun; 'with my ~'",
         "accepted": [
           "깜냥"
         ]
@@ -2429,7 +2429,7 @@
       },
       "production": {
         "promptEn": "prematurely; in advance (before there's any reason to)",
-        "contextHint": "native adverb; ___ 겁먹다",
+        "contextHint": "native adverb; 'get scared prematurely'",
         "accepted": [
           "지레"
         ]
@@ -2957,7 +2957,7 @@
       },
       "production": {
         "promptEn": "let alone; much less (all the more so)",
-        "contextHint": "native adverb; written, often with ~(이)야 …겠는가",
+        "contextHint": "native adverb; written, often closing with a rhetorical question",
         "accepted": [
           "하물며"
         ]
@@ -3056,7 +3056,7 @@
     "tags": [
       "native"
     ],
-    "mnemonic": "서슴다 = to hesitate; 서슴없이 = with zero hesitation.",
+    "mnemonic": "서슴다 = to hesitate; 서슴없이 = with zero hesitation. From 서슴다 'to hesitate'. Nothing in the way (unstoppable) is 거침없이.",
     "word": "서슴없이",
     "meanings": [
       "without hesitation",
@@ -3108,7 +3108,7 @@
       },
       "production": {
         "promptEn": "without hesitation; unhesitatingly",
-        "contextHint": "native adverb; from 서슴다 'to hesitate'. Nothing in the way (unstoppable) is 거침없이",
+        "contextHint": "native adverb; from a verb meaning 'to hesitate'. Not 'unstoppable (nothing in the way)'",
         "accepted": [
           "서슴없이"
         ],
@@ -3185,7 +3185,7 @@
       },
       "production": {
         "promptEn": "innocent / the wrong (person): someone who doesn't deserve the blame or harm",
-        "contextHint": "native determiner (관형사), as in ___ 사람",
+        "contextHint": "native determiner, before a noun",
         "accepted": [
           "애먼"
         ]
@@ -3208,7 +3208,7 @@
     "tags": [
       "native"
     ],
-    "mnemonic": "들추다: lifting the lid to see what's hidden underneath.",
+    "mnemonic": "들추다: lifting the lid to see what's hidden underneath. Often 들춰내다.",
     "word": "들추다",
     "meanings": [
       "to dig up (past faults)",
@@ -3260,7 +3260,7 @@
       },
       "production": {
         "promptEn": "to dig up / rake up (past faults or secrets); to rummage through",
-        "contextHint": "native verb; often 들춰내다",
+        "contextHint": "native verb; often compounded with 'take out'",
         "accepted": [
           "들추다"
         ]
@@ -3283,7 +3283,7 @@
     "tags": [
       "native"
     ],
-    "mnemonic": "떠 (lift off) + 넘기다 (hand over): lift the load off your own back and over onto someone else's.",
+    "mnemonic": "떠 (lift off) + 넘기다 (hand over): lift the load off your own back and over onto someone else's. Everyday counterpart of 전가하다.",
     "word": "떠넘기다",
     "meanings": [
       "to foist (onto)",
@@ -3336,7 +3336,7 @@
       },
       "production": {
         "promptEn": "to foist / dump (a task, blame, or burden) onto someone else",
-        "contextHint": "native verb; everyday counterpart of 전가하다",
+        "contextHint": "native verb; everyday counterpart of the formal word for 'shift (blame)'",
         "accepted": [
           "떠넘기다"
         ]
