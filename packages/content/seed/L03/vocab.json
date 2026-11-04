@@ -73,7 +73,7 @@
       },
       "production": {
         "promptEn": "motivation, drive (the will to get things done)",
-        "contextHint": "Sino-Korean noun; ___이 없다 / 넘치다",
+        "contextHint": "Sino-Korean noun; you can have none, or be overflowing with it",
         "accepted": [
           "의욕"
         ]
@@ -83,7 +83,7 @@
           "id": "c1",
           "sentence": "칭찬을 들으니까 더 잘하고 싶은 {{}}이 생기더라.",
           "en": "Getting praised made me want to do even better.",
-          "cue": "의욕 · drive, motivation",
+          "cue": "drive, motivation",
           "accepted": [
             "의욕"
           ],
@@ -110,6 +110,7 @@
       "freq:4621",
       "anki-leech"
     ],
+    "mnemonic": "자격증 is a certificate. Aptitude is 적성.",
     "word": "자격",
     "meanings": [
       "qualification, credentials (a license, eligibility)",
@@ -176,7 +177,7 @@
       },
       "production": {
         "promptEn": "qualification(s); the right (to say or do something)",
-        "contextHint": "Sino-Korean noun; ___증 is a certificate. Aptitude is 적성",
+        "contextHint": "Sino-Korean noun; add a suffix for 'certificate'; not aptitude",
         "accepted": [
           "자격"
         ],
@@ -189,7 +190,7 @@
           "id": "c1",
           "sentence": "약속도 안 지키는 사람이 남한테 뭐라고 할 {{}}은 없지.",
           "en": "Someone who doesn't even keep his promises has no right to criticize others.",
-          "cue": "자격 · right, standing",
+          "cue": "the right, standing (to criticize)",
           "accepted": [
             "자격"
           ],
@@ -280,7 +281,7 @@
       },
       "production": {
         "promptEn": "prices, the cost of living",
-        "contextHint": "Sino-Korean noun; ___가 오르다",
+        "contextHint": "Sino-Korean noun; it 'goes up'",
         "accepted": [
           "물가"
         ]
@@ -290,14 +291,14 @@
           "id": "c1",
           "sentence": "월급은 그대로인데 {{}}만 계속 오르네.",
           "en": "My salary stays the same, but prices keep going up.",
-          "cue": "물가 · prices",
+          "cue": "prices, the cost of living",
           "accepted": [
             "물가"
           ],
           "nearMiss": [
             {
               "answer": "가격",
-              "hint": "가격 is the price of one item; the overall cost of living is 물가."
+              "hint": "가격 is the price of one item; the cue wants the overall cost of living."
             }
           ],
           "particleTolerance": "none"
@@ -389,8 +390,8 @@
         ]
       },
       "production": {
-        "promptEn": "measures, a plan to deal with something (___ 없다: hopeless, reckless)",
-        "contextHint": "Sino-Korean noun; ___을 세우다",
+        "promptEn": "measures, a plan to deal with something (with 'none': hopeless, reckless)",
+        "contextHint": "Sino-Korean noun; you 'set one up'",
         "accepted": [
           "대책"
         ]
@@ -400,14 +401,14 @@
           "id": "c1",
           "sentence": "정부는 집값을 잡기 위한 {{}}을 내놓았다.",
           "en": "The government unveiled measures to bring housing prices under control.",
-          "cue": "대책 · measures",
+          "cue": "measures (to curb prices)",
           "accepted": [
             "대책"
           ],
           "nearMiss": [
             {
               "answer": "방안",
-              "hint": "방안 also fits; the cue asks for 대책."
+              "hint": "방안 also fits, but the cue is after another word."
             }
           ],
           "particleTolerance": "none"
@@ -499,7 +500,7 @@
       },
       "production": {
         "promptEn": "dissatisfaction, complaints",
-        "contextHint": "Sino-Korean noun; ___이 있다 / 많다",
+        "contextHint": "Sino-Korean noun; you can 'have a lot of' it",
         "accepted": [
           "불만"
         ]
@@ -509,7 +510,7 @@
           "id": "c1",
           "sentence": "그 친구는 매사에 {{}}이 많아서 같이 일하기 피곤해.",
           "en": "He complains about everything, so he's exhausting to work with.",
-          "cue": "불만 · complaints",
+          "cue": "complaints, discontent",
           "accepted": [
             "불만"
           ],
@@ -536,6 +537,7 @@
       "freq:2791",
       "anki-leech"
     ],
+    "mnemonic": "Circumstances in general are 사정.",
     "word": "사연",
     "meanings": [
       "the story (behind something), the circumstances",
@@ -601,7 +603,7 @@
       },
       "production": {
         "promptEn": "the story behind something (a personal backstory)",
-        "contextHint": "Sino-Korean noun; ___이 있다. Circumstances in general are 사정",
+        "contextHint": "Sino-Korean noun; not circumstances in general",
         "accepted": [
           "사연"
         ],
@@ -614,14 +616,14 @@
           "id": "c1",
           "sentence": "저 가게 이름이 왜 저런지 무슨 {{}}이 있는 것 같아.",
           "en": "There seems to be some story behind why that shop is named that.",
-          "cue": "사연 · story behind it",
+          "cue": "the story behind it",
           "accepted": [
             "사연"
           ],
           "nearMiss": [
             {
               "answer": "이유",
-              "hint": "이유 also fits; the cue asks for 사연."
+              "hint": "이유 also fits, but the cue is after another word."
             }
           ],
           "particleTolerance": "none"
@@ -713,7 +715,7 @@
       },
       "production": {
         "promptEn": "intention, intent (what someone means to do)",
-        "contextHint": "Sino-Korean noun; ___적으로: on purpose",
+        "contextHint": "Sino-Korean noun; its adverb form means 'on purpose'",
         "accepted": [
           "의도"
         ]
@@ -723,18 +725,18 @@
           "id": "c1",
           "sentence": "갑자기 왜 이렇게 친절하게 굴지? 무슨 {{}}가 있는 거 아니야?",
           "en": "Why is he suddenly being so nice? Is he up to something?",
-          "cue": "의도 · intention, angle",
+          "cue": "intention, ulterior motive",
           "accepted": [
             "의도"
           ],
           "nearMiss": [
             {
               "answer": "속셈",
-              "hint": "속셈 also fits (and sounds more suspicious); the cue asks for 의도."
+              "hint": "속셈 also fits (and sounds more suspicious), but the cue is after another word."
             },
             {
               "answer": "꿍꿍이",
-              "hint": "꿍꿍이 also fits (and sounds more suspicious); the cue asks for 의도."
+              "hint": "꿍꿍이 also fits (and sounds more suspicious), but the cue is after another word."
             }
           ],
           "particleTolerance": "none"
@@ -824,7 +826,7 @@
       },
       "production": {
         "promptEn": "procedure, process (the steps you have to go through)",
-        "contextHint": "Sino-Korean noun; ___를 밟다",
+        "contextHint": "Sino-Korean noun; you 'go through' (lit. tread) it",
         "accepted": [
           "절차"
         ]
@@ -834,14 +836,14 @@
           "id": "c1",
           "sentence": "환불을 받으려면 몇 가지 {{}}를 거쳐야 합니다.",
           "en": "There are a few steps you have to go through to get a refund.",
-          "cue": "절차 · procedure",
+          "cue": "procedure, steps",
           "accepted": [
             "절차"
           ],
           "nearMiss": [
             {
               "answer": "과정",
-              "hint": "과정 also fits; the cue asks for 절차."
+              "hint": "과정 also fits, but the cue is after another word."
             }
           ],
           "particleTolerance": "none"
@@ -932,7 +934,7 @@
       },
       "production": {
         "promptEn": "the secret (to success, to staying young), the trick",
-        "contextHint": "Sino-Korean noun; ___이 뭐예요?",
+        "contextHint": "Sino-Korean noun; 'what's your secret?'",
         "accepted": [
           "비결"
         ]
@@ -942,14 +944,14 @@
           "id": "c1",
           "sentence": "두 분이 오십 년 동안 사이좋게 지내신 {{}}이 궁금해요.",
           "en": "I'm curious what the secret is to you two getting along so well for fifty years.",
-          "cue": "비결 · the secret",
+          "cue": "the secret (to it)",
           "accepted": [
             "비결"
           ],
           "nearMiss": [
             {
               "answer": "비밀",
-              "hint": "비밀 is a secret you keep; the secret to success is 비결."
+              "hint": "비밀 is a secret you keep; the cue wants the secret to success."
             }
           ],
           "particleTolerance": "none"
@@ -1043,8 +1045,8 @@
         ]
       },
       "production": {
-        "promptEn": "gaze, eyes (남의 ___: what other people will think)",
-        "contextHint": "Sino-Korean noun; ___을 끌다",
+        "promptEn": "gaze, eyes (others' gaze: what other people will think)",
+        "contextHint": "Sino-Korean noun; something can 'attract' it",
         "accepted": [
           "시선"
         ]
@@ -1054,18 +1056,18 @@
           "id": "c1",
           "sentence": "화려한 옷 때문에 들어오자마자 모든 사람의 {{}}이 그 사람한테 쏠렸어.",
           "en": "Because of her flashy outfit, all eyes turned to her the moment she walked in.",
-          "cue": "시선 · eyes, gaze",
+          "cue": "eyes, gaze (all eyes on)",
           "accepted": [
             "시선"
           ],
           "nearMiss": [
             {
               "answer": "관심",
-              "hint": "관심 also fits; the cue asks for 시선."
+              "hint": "관심 also fits, but the cue is after another word."
             },
             {
               "answer": "눈",
-              "hint": "눈 also fits; the cue asks for 시선."
+              "hint": "눈 also fits, but the cue is after another word."
             }
           ],
           "particleTolerance": "none"
@@ -1157,7 +1159,7 @@
       },
       "production": {
         "promptEn": "to be convinced, accept (that something makes sense)",
-        "contextHint": "Sino-Korean verb; ___이 가다 / 안 가다",
+        "contextHint": "Sino-Korean verb; its noun 'goes' (makes sense) or doesn't",
         "accepted": [
           "납득하다"
         ]
@@ -1167,14 +1169,14 @@
           "id": "c1",
           "sentence": "아무 설명도 없이 계약을 취소하다니, 저는 도저히 {{}} 수가 없어요.",
           "en": "Canceling the contract without any explanation? I simply can't accept that.",
-          "cue": "납득하다 · accept",
+          "cue": "accept, be convinced",
           "accepted": [
             "납득할"
           ],
           "nearMiss": [
             {
               "answer": "이해할",
-              "hint": "이해하다 also fits; the cue asks for 납득하다."
+              "hint": "이해하다 also fits, but the cue is after another word."
             }
           ],
           "particleTolerance": "none"
@@ -1200,6 +1202,7 @@
       "freq:3666",
       "anki-leech"
     ],
+    "mnemonic": "Standard Korean treats it as a verb, hence 지나친 걱정, not 지나치는. Simply passing along is 지나가다.",
     "word": "지나치다",
     "meanings": [
       "excessive, too much, going too far (지나친 걱정, 지나치게)",
@@ -1259,7 +1262,7 @@
       },
       "production": {
         "promptEn": "excessive, going too far (a joke, worry, spending)",
-        "contextHint": "native verb (표준: 동사, hence 지나친 걱정, not 지나치는); also 'to pass by (a stop)'. Simply passing along is 지나가다",
+        "contextHint": "native verb; also 'to pass by (a stop)'; not simply passing along",
         "accepted": [
           "지나치다"
         ],
@@ -1272,18 +1275,18 @@
           "id": "c1",
           "sentence": "건강에 좋다고 해도 뭐든 {{}} 먹으면 안 좋아.",
           "en": "Even if it's good for you, eating too much of anything is bad.",
-          "cue": "지나치다 · excessively",
+          "cue": "excessively, too much",
           "accepted": [
             "지나치게"
           ],
           "nearMiss": [
             {
               "answer": "너무",
-              "hint": "너무 also fits; the cue asks for 지나치다."
+              "hint": "너무 also fits, but the cue is after another word."
             },
             {
               "answer": "과하게",
-              "hint": "과하다 also fits; the cue asks for 지나치다."
+              "hint": "과하다 also fits, but the cue is after another word."
             }
           ],
           "particleTolerance": "none"
@@ -1309,6 +1312,7 @@
       "freq:3047",
       "anki-leech"
     ],
+    "mnemonic": "Sitting in the sun is 햇볕을 쬐다.",
     "word": "쐬다",
     "meanings": [
       "(바람을 쐬다) to get some fresh air, get out (for a change of scene)",
@@ -1361,8 +1365,8 @@
         ]
       },
       "production": {
-        "promptEn": "to get some air (바람을 ___: step out for a change of scene)",
-        "contextHint": "native verb; sitting in the sun is 햇볕을 쬐다",
+        "promptEn": "to get some air (step out for a change of scene)",
+        "contextHint": "native verb; air and wind, not sitting in the sun",
         "accepted": [
           "쐬다"
         ],
@@ -1375,7 +1379,7 @@
           "id": "c1",
           "sentence": "공부만 하지 말고 가끔 나가서 바람 좀 {{}}.",
           "en": "Don't just study; go out and get some air once in a while.",
-          "cue": "쐬다 · get (some air)",
+          "cue": "get (some fresh air)",
           "accepted": [
             "쐬어",
             "쐐",
@@ -1392,11 +1396,11 @@
           "nearMiss": [
             {
               "answer": "쇄",
-              "hint": "Spelled 쐬어 / 쐐 (쐬- + -어)."
+              "hint": "Check the spelling: the stem vowel is ㅚ."
             },
             {
               "answer": "쬐어",
-              "hint": "쬐다 is for sun or heat; for wind and air, it is 쐬다."
+              "hint": "쬐다 is for sun or heat; wind and air take a different verb."
             }
           ],
           "particleTolerance": "none"
@@ -1430,6 +1434,10 @@
     "pos": "동사",
     "register": "neutral",
     "collocations": [
+      {
+        "ko": "내 집 마련",
+        "en": "getting a home of one's own"
+      },
       {
         "ko": "돈을 마련하다",
         "en": "to come up with the money"
@@ -1480,7 +1488,7 @@
       },
       "production": {
         "promptEn": "to come up with (money, a place), arrange (an occasion)",
-        "contextHint": "native verb; 내 집 ___: to buy your own home",
+        "contextHint": "native verb; as in 'getting a home of one's own'",
         "accepted": [
           "마련하다"
         ]
@@ -1490,7 +1498,7 @@
           "id": "c1",
           "sentence": "결혼 십 년 만에 드디어 내 집을 {{}}.",
           "en": "Ten years into our marriage, we finally got a place of our own.",
-          "cue": "마련하다 · get (a home)",
+          "cue": "get, secure (a home of one's own)",
           "accepted": [
             "마련했어",
             "마련했어요",
@@ -1504,11 +1512,11 @@
           "nearMiss": [
             {
               "answer": "샀어",
-              "hint": "사다 also fits; the cue asks for 마련하다."
+              "hint": "사다 also fits, but the cue is after another word."
             },
             {
               "answer": "장만했어",
-              "hint": "장만하다 also fits; the cue asks for 마련하다."
+              "hint": "장만하다 also fits, but the cue is after another word."
             }
           ],
           "particleTolerance": "none"
@@ -1534,6 +1542,7 @@
       "freq:4452",
       "anki-leech"
     ],
+    "mnemonic": "The one who gets fooled is 속다.",
     "word": "속이다",
     "meanings": [
       "to deceive, fool, trick",
@@ -1593,7 +1602,7 @@
       },
       "production": {
         "promptEn": "to deceive, fool (someone); to lie about (one's age)",
-        "contextHint": "native verb; the one who gets fooled is 속다",
+        "contextHint": "native verb; the one doing the fooling",
         "accepted": [
           "속이다"
         ],
@@ -1606,7 +1615,7 @@
           "id": "c1",
           "sentence": "그 가게는 원산지를 {{}} 팔다가 걸려서 문을 닫았어.",
           "en": "That store got caught lying about where its products came from and had to close.",
-          "cue": "속이다 · lie about",
+          "cue": "lie about, misrepresent",
           "accepted": [
             "속여",
             "속여서",
@@ -1635,6 +1644,7 @@
       "freq:2594",
       "anki-leech"
     ],
+    "mnemonic": "Not 바라다 (to hope).",
     "word": "바래다주다",
     "meanings": [
       "to see (someone) home, walk (someone) to (the station)",
@@ -1691,7 +1701,7 @@
       },
       "production": {
         "promptEn": "to walk (someone) home or to the station, see them off",
-        "contextHint": "native verb, one word (not 바라다, to hope)",
+        "contextHint": "native verb, one word; not the verb for 'to hope'",
         "accepted": [
           "바래다주다"
         ]
@@ -1701,7 +1711,7 @@
           "id": "c1",
           "sentence": "밤길이 위험하니까 버스 정류장까지 {{}}.",
           "en": "It's not safe walking at night, so I'll walk you to the bus stop.",
-          "cue": "바래다주다 · walk (someone)",
+          "cue": "walk (someone) to, see off",
           "accepted": [
             "바래다줄게",
             "바래다줄게요",
@@ -1712,7 +1722,7 @@
           "nearMiss": [
             {
               "answer": "데려다줄게",
-              "hint": "데려다주다 also fits; the cue asks for 바래다주다."
+              "hint": "데려다주다 also fits, but the cue is after another word."
             },
             {
               "answer": "바래다줄께",
@@ -1800,7 +1810,7 @@
       },
       "production": {
         "promptEn": "to cut in (traffic, a line); to butt in (a conversation)",
-        "contextHint": "native verb; 끼어+들다",
+        "contextHint": "native compound verb (squeeze in + enter)",
         "accepted": [
           "끼어들다"
         ]
@@ -1810,18 +1820,18 @@
           "id": "c1",
           "sentence": "두 사람 문제니까 {{}} 말고 그냥 지켜보자.",
           "en": "It's between the two of them, so let's not butt in and just watch.",
-          "cue": "끼어들다 · butt in",
+          "cue": "butt in",
           "accepted": [
             "끼어들지"
           ],
           "nearMiss": [
             {
               "answer": "끼여들지",
-              "hint": "Spelled 끼어들다 (끼다 + -어 + 들다)."
+              "hint": "Check the spelling: 끼다 + -어 + 들다."
             },
             {
               "answer": "참견하지",
-              "hint": "참견하다 also fits; the cue asks for 끼어들다."
+              "hint": "참견하다 also fits, but the cue is after another word."
             }
           ],
           "particleTolerance": "none"
@@ -1847,6 +1857,7 @@
       "freq:4276",
       "anki-leech"
     ],
+    "mnemonic": "Colloquial 걸리다 overlaps.",
     "word": "들키다",
     "meanings": [
       "to get caught, be found out (doing something hidden)",
@@ -1902,7 +1913,7 @@
       },
       "production": {
         "promptEn": "to get caught, be found out (doing something on the sly)",
-        "contextHint": "native verb; colloquial 걸리다 overlaps",
+        "contextHint": "native verb; a colloquial near-synonym overlaps",
         "accepted": [
           "들키다"
         ]
@@ -1912,7 +1923,7 @@
           "id": "c1",
           "sentence": "수업 시간에 몰래 휴대폰 하다가 선생님한테 {{}}.",
           "en": "I got caught by the teacher sneaking a look at my phone in class.",
-          "cue": "들키다 · get caught",
+          "cue": "get caught",
           "accepted": [
             "들켰어",
             "들켰어요",
@@ -1925,11 +1936,11 @@
           "nearMiss": [
             {
               "answer": "걸렸어",
-              "hint": "걸리다 also fits; the cue asks for 들키다."
+              "hint": "걸리다 also fits, but the cue is after another word."
             },
             {
               "answer": "걸렸어요",
-              "hint": "걸리다 also fits; the cue asks for 들키다."
+              "hint": "걸리다 also fits, but the cue is after another word."
             }
           ],
           "particleTolerance": "none"
@@ -1955,6 +1966,7 @@
       "freq:3144",
       "anki-leech"
     ],
+    "mnemonic": "A notch more written than 생각하다.",
     "word": "여기다",
     "meanings": [
       "to regard (as), consider, think of (as)",
@@ -2014,7 +2026,7 @@
       },
       "production": {
         "promptEn": "to regard (as), think of (X as Y)",
-        "contextHint": "native verb; a notch more written than 생각하다",
+        "contextHint": "native verb; a notch more written than the everyday 'think'",
         "accepted": [
           "여기다"
         ]
@@ -2024,14 +2036,14 @@
           "id": "c1",
           "sentence": "돈보다 가족과 보내는 시간을 더 소중하게 {{}} 사람이에요.",
           "en": "He's someone who values time with his family more than money.",
-          "cue": "여기다 · regard, value",
+          "cue": "regard, value",
           "accepted": [
             "여기는"
           ],
           "nearMiss": [
             {
               "answer": "생각하는",
-              "hint": "생각하다 also fits; the cue asks for 여기다."
+              "hint": "생각하다 also fits, but the cue is after another word."
             }
           ],
           "particleTolerance": "none"
@@ -2065,6 +2077,10 @@
     "pos": "동사",
     "register": "neutral",
     "collocations": [
+      {
+        "ko": "~을 앞두고",
+        "en": "ahead of ~"
+      },
       {
         "ko": "시험을 앞두다",
         "en": "to have an exam coming up"
@@ -2112,8 +2128,8 @@
         ]
       },
       "production": {
-        "promptEn": "to have (an event) coming up; ahead of (~을 ___고)",
-        "contextHint": "native verb; almost always ~을 ___고 / ___고 있다",
+        "promptEn": "to have (an event) coming up; ahead of (an event)",
+        "contextHint": "native verb; almost always in its connective form, 'with X ahead'",
         "accepted": [
           "앞두다"
         ]
@@ -2123,7 +2139,7 @@
           "id": "c1",
           "sentence": "졸업을 몇 달 {{}} 취업이 확정됐어요.",
           "en": "A few months before graduation, I landed a job.",
-          "cue": "앞두다 · ahead of",
+          "cue": "with … ahead, ahead of",
           "accepted": [
             "앞두고"
           ],
@@ -2150,6 +2166,7 @@
       "freq:4231",
       "anki-leech"
     ],
+    "mnemonic": "ㅡ drops before -아 (담가). Putting things into a container is 담다.",
     "word": "담그다",
     "meanings": [
       "to make (kimchi, pickles, fruit wine) by steeping or fermenting",
@@ -2205,7 +2222,7 @@
       },
       "production": {
         "promptEn": "to make (kimchi, preserves) by steeping; to soak (in liquid)",
-        "contextHint": "native verb; ㅡ drops before -아. Putting things into a container is 담다",
+        "contextHint": "native verb; its stem vowel drops in conjugation; not putting things into a container",
         "accepted": [
           "담그다"
         ],
@@ -2218,14 +2235,14 @@
           "id": "c1",
           "sentence": "할머니가 {{}} 주신 김치가 제일 맛있어.",
           "en": "The kimchi my grandmother makes for us is the best.",
-          "cue": "담그다 · make (kimchi)",
+          "cue": "make (kimchi)",
           "accepted": [
             "담가"
           ],
           "nearMiss": [
             {
               "answer": "담궈",
-              "hint": "Spelled 담가: 담그- + -아 (ㅡ drops). 담궈 is a common misspelling."
+              "hint": "Check the spelling: the stem's ㅡ drops and the ending is -아, not -워. 담궈 is a common misspelling."
             }
           ],
           "particleTolerance": "none"
@@ -2251,6 +2268,7 @@
       "freq:3589",
       "anki-leech"
     ],
+    "mnemonic": "순수하다 is 'pure' in a positive sense.",
     "word": "순진하다",
     "meanings": [
       "naive, gullible (too trusting)",
@@ -2318,7 +2336,7 @@
       },
       "production": {
         "promptEn": "naive, gullible (too trusting)",
-        "contextHint": "Sino-Korean adjective; 순수하다 is 'pure' in a positive sense",
+        "contextHint": "Sino-Korean adjective; not 'pure' in a positive sense",
         "accepted": [
           "순진하다"
         ],
@@ -2331,14 +2349,14 @@
           "id": "c1",
           "sentence": "공짜로 준다는 말을 믿다니, 너무 {{}} 거 아니야?",
           "en": "You believed it when they said it was free? Aren't you being way too naive?",
-          "cue": "순진하다 · naive",
+          "cue": "naive, gullible",
           "accepted": [
             "순진한"
           ],
           "nearMiss": [
             {
               "answer": "순수한",
-              "hint": "순수하다 is 'pure'; 'naive, gullible' is 순진하다."
+              "hint": "순수하다 is 'pure'; the cue wants 'naive, gullible'."
             }
           ],
           "particleTolerance": "none"
@@ -2431,7 +2449,7 @@
       },
       "production": {
         "promptEn": "fickle, changeable (moods, the weather)",
-        "contextHint": "___스럽다 adjective built on 변덕 (whim)",
+        "contextHint": "adjective built on the noun for 'whim'",
         "accepted": [
           "변덕스럽다"
         ]
@@ -2441,7 +2459,7 @@
           "id": "c1",
           "sentence": "봄에는 날씨가 {{}} 감기 걸리기 쉬워요.",
           "en": "Spring weather is so changeable that it's easy to catch a cold.",
-          "cue": "변덕스럽다 · changeable",
+          "cue": "changeable, fickle (weather)",
           "accepted": [
             "변덕스러워서",
             "변덕스러워"
@@ -2449,7 +2467,7 @@
           "nearMiss": [
             {
               "answer": "변덕스럽어서",
-              "hint": "ㅂ-irregular: 변덕스럽다 → 변덕스러워서."
+              "hint": "ㅂ-irregular: ㅂ becomes 우 before a vowel."
             }
           ],
           "particleTolerance": "none"
@@ -2475,6 +2493,7 @@
       "freq:3752",
       "anki-leech"
     ],
+    "mnemonic": "Opposite: 유리하다.",
     "word": "불리하다",
     "meanings": [
       "disadvantageous, unfavorable",
@@ -2540,7 +2559,7 @@
       },
       "production": {
         "promptEn": "unfavorable, at a disadvantage",
-        "contextHint": "Sino-Korean adjective; the opposite is 유리하다",
+        "contextHint": "Sino-Korean adjective; the opposite of 'advantageous'",
         "accepted": [
           "불리하다"
         ],
@@ -2553,7 +2572,7 @@
           "id": "c1",
           "sentence": "원정 경기는 아무래도 우리 팀에 {{}} 수밖에 없어.",
           "en": "Away games are bound to put our team at a disadvantage.",
-          "cue": "불리하다 · unfavorable",
+          "cue": "unfavorable, at a disadvantage",
           "accepted": [
             "불리할"
           ],
@@ -2580,6 +2599,7 @@
       "freq:4495",
       "anki-leech"
     ],
+    "mnemonic": "Softer and more atmospheric than 외롭다.",
     "word": "쓸쓸하다",
     "meanings": [
       "lonely, forlorn, wistful (a feeling)",
@@ -2637,7 +2657,7 @@
       },
       "production": {
         "promptEn": "lonely, forlorn (a quiet, wistful loneliness; a desolate place)",
-        "contextHint": "native adjective; softer and more atmospheric than 외롭다",
+        "contextHint": "native adjective; softer and more atmospheric than plain 'lonely'",
         "accepted": [
           "쓸쓸하다"
         ]
@@ -2647,14 +2667,14 @@
           "id": "c1",
           "sentence": "사람 하나 없는 시골 정류장이 왠지 {{}} 보였다.",
           "en": "The country bus stop, with no one around, looked somehow desolate.",
-          "cue": "쓸쓸하다 · desolate",
+          "cue": "desolate, forlorn",
           "accepted": [
             "쓸쓸해"
           ],
           "nearMiss": [
             {
               "answer": "외로워",
-              "hint": "외롭다 also fits; the cue asks for 쓸쓸하다."
+              "hint": "외롭다 also fits, but the cue is after another word."
             }
           ],
           "particleTolerance": "none"
@@ -2680,6 +2700,7 @@
       "freq:2292",
       "anki-leech"
     ],
+    "mnemonic": "Opposite: 급하다.",
     "word": "느긋하다",
     "meanings": [
       "relaxed, unhurried, easygoing",
@@ -2737,7 +2758,7 @@
       },
       "production": {
         "promptEn": "relaxed, unhurried (taking your time, not stressed)",
-        "contextHint": "native adjective; the opposite of 급하다",
+        "contextHint": "native adjective; the opposite of 'impatient, in a hurry'",
         "accepted": [
           "느긋하다"
         ]
@@ -2747,14 +2768,14 @@
           "id": "c1",
           "sentence": "급할 거 없으니까 {{}} 생각해 보고 연락 줘.",
           "en": "There's no rush, so take your time thinking it over and get back to me.",
-          "cue": "느긋하다 · unhurriedly",
+          "cue": "unhurriedly, taking one's time",
           "accepted": [
             "느긋하게"
           ],
           "nearMiss": [
             {
               "answer": "천천히",
-              "hint": "천천히 also fits; the cue asks for 느긋하다."
+              "hint": "천천히 also fits, but the cue is after another word."
             }
           ],
           "particleTolerance": "none"
@@ -2780,6 +2801,7 @@
       "freq:4577",
       "anki-leech"
     ],
+    "mnemonic": "Spelled with 웬, not 왠.",
     "word": "웬만하다",
     "meanings": [
       "(웬만하면) if at all possible, unless it's a problem",
@@ -2837,8 +2859,8 @@
         ]
       },
       "production": {
-        "promptEn": "(___면) if at all possible; decent, passable",
-        "contextHint": "native adjective; spelled with 웬, not 왠",
+        "promptEn": "(in its conditional form) if at all possible; decent, passable",
+        "contextHint": "native adjective",
         "accepted": [
           "웬만하다"
         ],
@@ -2851,18 +2873,18 @@
           "id": "c1",
           "sentence": "{{}} 택시 타지 말고 지하철 타. 그게 훨씬 빨라.",
           "en": "If you can, take the subway instead of a taxi. It's much faster.",
-          "cue": "웬만하다 · if possible",
+          "cue": "if at all possible",
           "accepted": [
             "웬만하면"
           ],
           "nearMiss": [
             {
               "answer": "왠만하면",
-              "hint": "Spelled 웬만하면: 웬 = 'what sort of'. 왠 appears only in 왠지 (왜인지)."
+              "hint": "Check the spelling: 웬 = 'what sort of'. 왠 appears only in 왠지 (왜인지)."
             },
             {
               "answer": "가능하면",
-              "hint": "가능하면 also fits; the cue asks for 웬만하다."
+              "hint": "가능하면 also fits, but the cue is after another word."
             }
           ],
           "particleTolerance": "none"
@@ -2943,8 +2965,8 @@
         ]
       },
       "production": {
-        "promptEn": "easy to push around, a pushover (___하게 보다: take someone lightly)",
-        "contextHint": "native adjective; ___치 않다: 'no easy task'",
+        "promptEn": "easy to push around, a pushover (take someone lightly)",
+        "contextHint": "native adjective; negated, it means 'no easy task'",
         "accepted": [
           "만만하다"
         ]
@@ -2954,7 +2976,7 @@
           "id": "c1",
           "sentence": "처음엔 쉬워 보였는데 막상 해 보니까 {{}} 않더라.",
           "en": "It looked easy at first, but once I actually tried it, it was no walk in the park.",
-          "cue": "만만하다 · easy (no easy task)",
+          "cue": "easy (it's no easy task)",
           "accepted": [
             "만만치",
             "만만하지"
@@ -2962,7 +2984,7 @@
           "nearMiss": [
             {
               "answer": "쉽지",
-              "hint": "쉽다 also fits; the cue asks for 만만하다."
+              "hint": "쉽다 also fits, but the cue is after another word."
             }
           ],
           "particleTolerance": "none"
@@ -3044,8 +3066,8 @@
         ]
       },
       "production": {
-        "promptEn": "no less than, every bit as good as (~ ___게)",
-        "contextHint": "native adjective, one word; ~ ___게",
+        "promptEn": "no less than, every bit as good as",
+        "contextHint": "native adjective, one word; usually adverbial: 'every bit as'",
         "accepted": [
           "못지않다"
         ]
@@ -3055,18 +3077,18 @@
           "id": "c1",
           "sentence": "이 동네 빵집은 유명한 제과점 {{}} 맛있어.",
           "en": "This neighborhood bakery is every bit as good as the famous ones.",
-          "cue": "못지않다 · every bit as",
+          "cue": "every bit as (good as)",
           "accepted": [
             "못지않게"
           ],
           "nearMiss": [
             {
               "answer": "못지 않게",
-              "hint": "Write 못지않다 as one word."
+              "hint": "Write it as one word, no space."
             },
             {
               "answer": "만큼",
-              "hint": "만큼 also fits; the cue asks for 못지않다."
+              "hint": "만큼 also fits, but the cue is after another word."
             }
           ],
           "particleTolerance": "none",
@@ -3093,6 +3115,7 @@
       "freq:3690",
       "anki-leech"
     ],
+    "mnemonic": "A bad, grave situation is 심각하다.",
     "word": "진지하다",
     "meanings": [
       "serious, earnest (not joking)",
@@ -3158,7 +3181,7 @@
       },
       "production": {
         "promptEn": "serious, earnest (not joking around)",
-        "contextHint": "Sino-Korean adjective; a bad, grave situation is 심각하다",
+        "contextHint": "Sino-Korean adjective; an earnest person, not a grave situation",
         "accepted": [
           "진지하다"
         ],
@@ -3171,14 +3194,14 @@
           "id": "c1",
           "sentence": "평소엔 장난만 치던 애가 그날은 웬일로 {{}} 얘기하더라.",
           "en": "He usually just goofs around, but that day, for once, he talked seriously.",
-          "cue": "진지하다 · seriously",
+          "cue": "seriously, in earnest",
           "accepted": [
             "진지하게"
           ],
           "nearMiss": [
             {
               "answer": "심각하게",
-              "hint": "심각하다 is 'grave, severe'; 'in earnest' is 진지하다."
+              "hint": "심각하다 is 'grave, severe'; the cue wants 'in earnest'."
             }
           ],
           "particleTolerance": "none"
@@ -3268,7 +3291,7 @@
         ]
       },
       "production": {
-        "promptEn": "very, really (only with a negative: ___ ~지 않다 / ___ ~이 아니다)",
+        "promptEn": "very, really (only with a negative: 'not ordinarily…')",
         "contextHint": "Sino-Korean adverb; needs a negative to finish",
         "accepted": [
           "여간"
@@ -3279,7 +3302,7 @@
           "id": "c1",
           "sentence": "매일 왕복 세 시간씩 출퇴근하는 게 {{}} 피곤한 일이 아니야.",
           "en": "Commuting three hours round-trip every day is seriously exhausting.",
-          "cue": "ㅇㄱ · very (with a negative)",
+          "cue": "very (with a negative: no ordinary…)",
           "accepted": [
             "여간"
           ],
@@ -3371,8 +3394,8 @@
         ]
       },
       "production": {
-        "promptEn": "since (we're already doing it), might as well (___이면 / ___ ~ㄴ 김에)",
-        "contextHint": "Sino-Korean; ___이면 / ___ ~ㄴ 김에",
+        "promptEn": "since (we're already doing it), might as well",
+        "contextHint": "Sino-Korean; 'if it's all the same' or 'since we're at it'",
         "accepted": [
           "이왕"
         ]
@@ -3382,14 +3405,14 @@
           "id": "c1",
           "sentence": "{{}}이면 창가 자리로 주세요.",
           "en": "If it's all the same, I'd like a window seat.",
-          "cue": "ㅇㅇ · if it's all the same",
+          "cue": "if it's all the same, since I'm at it",
           "accepted": [
             "이왕"
           ],
           "nearMiss": [
             {
               "answer": "기왕",
-              "hint": "기왕 also fits; the cue asks for 이왕."
+              "hint": "기왕 also fits, but the cue is after another word."
             }
           ],
           "particleTolerance": "none"
@@ -3469,7 +3492,7 @@
       },
       "production": {
         "promptEn": "at least (a small consolation); even that little",
-        "contextHint": "native adverb; ___ 다행이다",
+        "contextHint": "native adverb; 'at least that's a relief'",
         "accepted": [
           "그나마"
         ]
@@ -3479,18 +3502,18 @@
           "id": "c1",
           "sentence": "지갑은 잃어버렸지만 {{}} 신분증은 안 들어 있어서 다행이야.",
           "en": "I lost my wallet, but at least my ID wasn't in it.",
-          "cue": "ㄱㄴㅁ · at least",
+          "cue": "at least (a small mercy)",
           "accepted": [
             "그나마"
           ],
           "nearMiss": [
             {
               "answer": "그래도",
-              "hint": "그래도 also fits; the cue asks for 그나마."
+              "hint": "그래도 also fits, but the cue is after another word."
             },
             {
               "answer": "다행히",
-              "hint": "다행히 also fits; the cue asks for 그나마."
+              "hint": "다행히 also fits, but the cue is after another word."
             }
           ],
           "particleTolerance": "none"
@@ -3515,6 +3538,7 @@
       "freq:2482",
       "anki-leech"
     ],
+    "mnemonic": "정작 singles out the one moment that mattered.",
     "word": "막상",
     "meanings": [
       "when it actually comes to it, once (one actually does it)",
@@ -3569,7 +3593,7 @@
       },
       "production": {
         "promptEn": "when it actually comes to it, once you really do it",
-        "contextHint": "adverb; ___ ~(으)니까. 정작 singles out the one moment that mattered",
+        "contextHint": "adverb; not the word that singles out the one moment that mattered",
         "accepted": [
           "막상"
         ],
@@ -3582,7 +3606,7 @@
           "id": "c1",
           "sentence": "헤어질 땐 아무렇지 않았는데 {{}} 혼자가 되니까 너무 허전해.",
           "en": "I felt fine when we broke up, but now that I am actually on my own, I feel so empty.",
-          "cue": "ㅁㅅ · when it actually comes to it",
+          "cue": "when it actually came to it",
           "accepted": [
             "막상"
           ],
@@ -3663,7 +3687,7 @@
       },
       "production": {
         "promptEn": "rather, would sooner (choosing the lesser evil)",
-        "contextHint": "native adverb; ___ ~는 게 낫다",
+        "contextHint": "native adverb; 'it'd be better to…'",
         "accepted": [
           "차라리"
         ],
@@ -3676,18 +3700,18 @@
           "id": "c1",
           "sentence": "그 돈 주고 그 영화 볼 바엔 {{}} 집에서 잠이나 잘래.",
           "en": "Rather than pay that much to see that movie, I'd sooner stay home and sleep.",
-          "cue": "ㅊㄹㄹ · would rather",
+          "cue": "would rather, would sooner",
           "accepted": [
             "차라리"
           ],
           "nearMiss": [
             {
               "answer": "어차피",
-              "hint": "어차피 means 'anyway (it's inevitable)'; 'I'd sooner' is 차라리."
+              "hint": "어차피 means 'anyway (it's inevitable)'; the cue wants 'I'd sooner'."
             },
             {
               "answer": "그냥",
-              "hint": "그냥 also fits; the cue asks for 차라리."
+              "hint": "그냥 also fits, but the cue is after another word."
             }
           ],
           "particleTolerance": "none"
@@ -3779,7 +3803,7 @@
           "id": "c1",
           "sentence": "{{}} 그 가격이면 사람들이 줄 설 만하지.",
           "en": "Well, at that price it's no wonder people line up.",
-          "cue": "ㅎㄱ · well, true",
+          "cue": "well, true (conceding)",
           "accepted": [
             "하긴",
             "하기는"
@@ -3787,11 +3811,11 @@
           "nearMiss": [
             {
               "answer": "하기야",
-              "hint": "하기야 also fits; the cue asks for 하긴."
+              "hint": "하기야 also fits, but the cue is after another word."
             },
             {
               "answer": "하지만",
-              "hint": "하지만 is 'but'; conceding a point is 하긴."
+              "hint": "하지만 is 'but'; the cue wants a word that concedes a point."
             }
           ],
           "particleTolerance": "none"
@@ -3872,7 +3896,7 @@
       },
       "production": {
         "promptEn": "quite, pretty (more than you'd expect)",
-        "contextHint": "adverb; ___이다: 'not bad at all'",
+        "contextHint": "adverb; with the copula: 'not bad at all'",
         "accepted": [
           "제법"
         ]
@@ -3882,14 +3906,14 @@
           "id": "c1",
           "sentence": "석 달 배웠다더니 기타 실력이 {{}} 늘었네.",
           "en": "You said you've only been at it three months, but your guitar has gotten pretty good.",
-          "cue": "ㅈㅂ · quite, pretty",
+          "cue": "quite, pretty (more than expected)",
           "accepted": [
             "제법"
           ],
           "nearMiss": [
             {
               "answer": "꽤",
-              "hint": "꽤 also fits; the cue asks for 제법."
+              "hint": "꽤 also fits, but the cue is after another word."
             }
           ],
           "particleTolerance": "none"
@@ -3973,7 +3997,7 @@
       },
       "production": {
         "promptEn": "(not) at all; altogether, from the outset",
-        "contextHint": "adverb; often with a negative (___ 안 하다)",
+        "contextHint": "adverb; often with a negative",
         "accepted": [
           "아예"
         ]
@@ -3983,14 +4007,14 @@
           "id": "c1",
           "sentence": "그 사람이랑은 연락을 {{}} 끊었어.",
           "en": "I cut off contact with him completely.",
-          "cue": "ㅇㅇ · completely, altogether",
+          "cue": "completely, altogether",
           "accepted": [
             "아예"
           ],
           "nearMiss": [
             {
               "answer": "완전히",
-              "hint": "완전히 also fits; the cue asks for 아예."
+              "hint": "완전히 also fits, but the cue is after another word."
             }
           ],
           "particleTolerance": "none"
@@ -4015,6 +4039,7 @@
       "freq:3126",
       "anki-leech"
     ],
+    "mnemonic": "'I'd sooner' is 차라리.",
     "word": "어차피",
     "meanings": [
       "anyway, in any case (it's going to happen regardless)",
@@ -4071,7 +4096,7 @@
       },
       "production": {
         "promptEn": "anyway (it's going to happen regardless), either way",
-        "contextHint": "adverb; ___ ~(으)ㄹ 거면. 'I'd sooner' is 차라리",
+        "contextHint": "adverb; 'if you're going to do it anyway'; not 'I'd sooner'",
         "accepted": [
           "어차피"
         ],
@@ -4085,18 +4110,18 @@
           "id": "c1",
           "sentence": "{{}} 내일 비 온다니까 세차는 다음 주에 하자.",
           "en": "It's supposed to rain tomorrow anyway, so let's wash the car next week.",
-          "cue": "ㅇㅊㅍ · anyway (regardless)",
+          "cue": "anyway (regardless)",
           "accepted": [
             "어차피"
           ],
           "nearMiss": [
             {
               "answer": "어짜피",
-              "hint": "Spelled 어차피, with ㅊ."
+              "hint": "Check the spelling: aspirated ㅊ, not ㅉ."
             },
             {
               "answer": "어쨌든",
-              "hint": "어쨌든 also fits loosely; the cue asks for 어차피."
+              "hint": "어쨌든 also fits loosely, but the cue is after another word."
             }
           ],
           "particleTolerance": "none"
@@ -4122,6 +4147,7 @@
       "freq:4895",
       "anki-leech"
     ],
+    "mnemonic": "Being forced is 억지로.",
     "word": "마지못해",
     "meanings": [
       "reluctantly, grudgingly (because one can't refuse)",
@@ -4177,7 +4203,7 @@
       },
       "production": {
         "promptEn": "reluctantly (giving in because you can't say no)",
-        "contextHint": "native adverb; giving in when you can't refuse. Being forced is 억지로",
+        "contextHint": "native adverb; giving in when you can't refuse, not being forced",
         "accepted": [
           "마지못해"
         ],
@@ -4190,14 +4216,14 @@
           "id": "c1",
           "sentence": "사장님이 회식에 다 오라고 해서 {{}} 참석했어요.",
           "en": "The boss told everyone to come to the staff dinner, so I went reluctantly.",
-          "cue": "ㅁㅈㅁㅎ · reluctantly",
+          "cue": "reluctantly",
           "accepted": [
             "마지못해"
           ],
           "nearMiss": [
             {
               "answer": "억지로",
-              "hint": "억지로 is being forced; giving in reluctantly is 마지못해."
+              "hint": "억지로 is being forced; the cue wants giving in reluctantly."
             }
           ],
           "particleTolerance": "none"

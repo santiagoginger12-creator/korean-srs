@@ -28,9 +28,9 @@
           "id": "c1",
           "sentence": "회사 측은 구조 조정 가능성에 대해 {{}}.",
           "en": "The company firmly ruled out the possibility of restructuring.",
-          "cue": "선을 긋다 (past)",
+          "cue": "drew a firm line (ruled it out), past tense",
           "accepted": ["선을 그었다"],
-          "nearMiss": [{ "answer": "못을 박았다", "hint": "Also natural (stating something firmly to settle it); the cue asks for 선을 긋다." }],
+          "nearMiss": [{ "answer": "못을 박았다", "hint": "Also natural (stating something firmly to settle it), but the cue is after another word." }],
           "particleTolerance": "loose"
         }
       ]
@@ -71,9 +71,9 @@
           "id": "c1",
           "sentence": "다들 들떠 있는데 굳이 {{}} 필요는 없잖아.",
           "en": "Everyone's so excited; there's no need to go throwing cold water on it.",
-          "cue": "찬물을 끼얹다 + -(으)ㄹ",
+          "cue": "throw cold water on things (modifier form, before 'no need to')",
           "accepted": ["찬물을 끼얹을"],
-          "nearMiss": [{ "answer": "산통을 깰", "hint": "Also fits (spoil the fun); the cue asks for 찬물을 끼얹다." }],
+          "nearMiss": [{ "answer": "산통을 깰", "hint": "Also fits (spoil the fun), but the cue is after another word." }],
           "particleTolerance": "loose"
         }
       ]
@@ -121,7 +121,7 @@
           "sense of a changed era"
         ]
       },
-      "production": { "promptEn": "the feeling that times have changed drastically (lit. a generation removed)", "contextHint": "사자성어", "accepted": ["격세지감"] }
+      "production": { "promptEn": "the feeling that times have changed drastically (lit. a generation removed)", "contextHint": "four-character idiom", "accepted": ["격세지감"] }
     }
   },
   {
@@ -153,7 +153,7 @@
     "questionTypes": ["meaning", "production"],
     "questions": {
       "meaning": { "accepted": ["blow out of proportion", "make a mountain out of a molehill", "exaggerate", "exaggeration", "overblow", "overstate"] },
-      "production": { "promptEn": "blowing something out of proportion (lit. making a needle into a club)", "contextHint": "사자성어", "accepted": ["침소봉대"] }
+      "production": { "promptEn": "blowing something out of proportion (lit. making a needle into a club)", "contextHint": "four-character idiom", "accepted": ["침소봉대"] }
     }
   },
   {
@@ -201,7 +201,7 @@
           "id": "c1",
           "sentence": "굴러온 돌이 {{}} 뺀다더니, 새로 들어온 업체가 오래된 거래처를 밀어냈다.",
           "en": "Just like the stone that rolls in and knocks out the one that was set, the new supplier pushed out the longtime vendor.",
-          "cue": "the other stone in the proverb",
+          "cue": "proverb: the newcomer pushes out the old-timer (the other stone)",
           "accepted": ["박힌 돌"],
           "particleTolerance": "loose"
         }
@@ -253,7 +253,7 @@
           "id": "c1",
           "sentence": "핑계 없는 {{}} 없다더니, 이번에도 차가 막혀서 늦었다고 하더라.",
           "en": "Every grave has its excuse, as they say: this time he was late because of traffic.",
-          "cue": "what the proverb says always has an excuse",
+          "cue": "proverb: everyone has an excuse (what always has one)",
           "accepted": ["무덤"],
           "particleTolerance": "none"
         }

@@ -27,7 +27,7 @@
       },
       "production": {
         "promptEn": "to be faced with an urgent problem that can't wait (lit. fire falls on the top of one's foot)",
-        "contextHint": "관용구",
+        "contextHint": "idiom",
         "accepted": ["발등에 불이 떨어지다", "발등에 불 떨어지다"]
       }
     }
@@ -75,9 +75,9 @@
           "id": "c1",
           "sentence": "결국 막내가 {{}} 팀장에게 업무 분담 문제를 건의했다.",
           "en": "In the end the most junior member stuck his neck out and raised the workload issue with the team lead.",
-          "cue": "총대를 메다 + -고",
+          "cue": "took it on for everyone (stuck their neck out), and then…",
           "accepted": ["총대를 메고"],
-          "nearMiss": [{ "answer": "총대를 매고", "hint": "메다 (to shoulder) vs 매다 (to tie): it's 총대를 메다." }],
+          "nearMiss": [{ "answer": "총대를 매고", "hint": "Spelling: the verb here means 'to shoulder', not the look-alike 'to tie'." }],
           "particleTolerance": "loose"
         }
       ]
@@ -115,7 +115,7 @@
       },
       "production": {
         "promptEn": "to talk around the point instead of saying it outright (lit. strike the rim)",
-        "contextHint": "관용구",
+        "contextHint": "idiom",
         "accepted": ["변죽을 울리다", "변죽만 울리다"]
       }
     }
@@ -164,7 +164,7 @@
           "transformed beyond recognition"
         ]
       },
-      "production": { "promptEn": "a complete transformation for the better; a total makeover", "contextHint": "사자성어", "accepted": ["환골탈태"] }
+      "production": { "promptEn": "a complete transformation for the better; a total makeover", "contextHint": "four-character idiom", "accepted": ["환골탈태"] }
     }
   },
   {
@@ -202,7 +202,7 @@
       "meaning": {
         "accepted": ["same bed different dreams", "different agendas", "different goals", "hidden agendas", "at cross purposes", "united in appearance only"]
       },
-      "production": { "promptEn": "outwardly together but with different aims (lit. same bed, different dreams)", "contextHint": "사자성어", "accepted": ["동상이몽"] }
+      "production": { "promptEn": "outwardly together but with different aims (lit. same bed, different dreams)", "contextHint": "four-character idiom", "accepted": ["동상이몽"] }
     }
   },
   {
@@ -251,9 +251,9 @@
           "id": "c1",
           "sentence": "{{}} 옷 젖는 줄 모른다더니, 커피값만 모아 보니 한 달에 이십만 원이 넘더라.",
           "en": "Like the proverb says, a drizzle soaks you before you know it: my coffee alone came to over two hundred thousand won a month.",
-          "cue": "the kind of rain in the proverb + 에",
+          "cue": "proverb: little by little you don't notice (the light rain, with its particle)",
           "accepted": ["가랑비에"],
-          "nearMiss": [{ "answer": "이슬비에", "hint": "Right idea, but the proverb uses 가랑비." }],
+          "nearMiss": [{ "answer": "이슬비에", "hint": "Right idea, but the proverb uses a different word for the drizzle." }],
           "particleTolerance": "none"
         }
       ]
@@ -298,7 +298,7 @@
           "id": "c1",
           "sentence": "사공이 많으면 배가 {{}} 간다더니, 다들 한마디씩 거들다 보니 디자인이 엉망이 됐다.",
           "en": "Too many boatmen and the boat ends up on a mountain: everyone chimed in, and the design became a mess.",
-          "cue": "where the boat ends up in the proverb",
+          "cue": "proverb: too many cooks (where the boat ends up)",
           "accepted": ["산으로"],
           "particleTolerance": "none"
         }

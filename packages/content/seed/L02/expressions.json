@@ -41,7 +41,7 @@
           "id": "c1",
           "sentence": "공공 기관의 과도한 성과급 지급 관행이 다시 {{}}.",
           "en": "Public institutions' practice of paying excessive bonuses has come under fire again.",
-          "cue": "도마 위에 오르다 (past)",
+          "cue": "came under public scrutiny (again), past tense",
           "accepted": ["도마 위에 올랐다", "도마에 올랐다"],
           "particleTolerance": "loose"
         }
@@ -81,7 +81,7 @@
           "id": "c1",
           "sentence": "이번 회담이 양국 관계 개선의 {{}} 계기가 될지 주목된다.",
           "en": "All eyes are on whether these talks will open the way to better relations between the two countries.",
-          "cue": "물꼬를 트다 + -는",
+          "cue": "that opens the way (for better relations), as a modifier",
           "accepted": ["물꼬를 트는"],
           "particleTolerance": "loose"
         }
@@ -120,7 +120,7 @@
     "questionTypes": ["meaning", "production"],
     "questions": {
       "meaning": { "accepted": ["gullible", "easily swayed", "easily persuaded", "credulous", "easily influenced", "suggestible"] },
-      "production": { "promptEn": "to be gullible; easily swayed by what others say (lit. thin ears)", "contextHint": "관용구", "accepted": ["귀가 얇다"] }
+      "production": { "promptEn": "to be gullible; easily swayed by what others say (lit. thin ears)", "contextHint": "idiom", "accepted": ["귀가 얇다"] }
     }
   },
   {
@@ -156,7 +156,7 @@
     "questionTypes": ["meaning", "production"],
     "questions": {
       "meaning": { "accepted": ["desperate measure", "last resort", "painful last resort", "drastic measure", "painful measure", "self sacrificing measure"] },
-      "production": { "promptEn": "a painful, self-sacrificing measure taken out of desperation", "contextHint": "사자성어", "accepted": ["고육지책"] }
+      "production": { "promptEn": "a painful, self-sacrificing measure taken out of desperation", "contextHint": "four-character idiom", "accepted": ["고육지책"] }
     }
   },
   {
@@ -200,7 +200,7 @@
           "every cloud has a silver lining"
         ]
       },
-      "production": { "promptEn": "a blessing in disguise; turning misfortune into good fortune", "contextHint": "사자성어", "accepted": ["전화위복"] }
+      "production": { "promptEn": "a blessing in disguise; turning misfortune into good fortune", "contextHint": "four-character idiom", "accepted": ["전화위복"] }
     }
   },
   {
@@ -236,7 +236,7 @@
       },
       "production": {
         "promptEn": "interpreting things to one's own advantage (lit. drawing water into one's own field)",
-        "contextHint": "사자성어",
+        "contextHint": "four-character idiom",
         "accepted": ["아전인수"]
       }
     }
@@ -286,7 +286,7 @@
           "id": "c1",
           "sentence": "급한 불만 끄는 이번 대책은 언 발에 {{}}에 불과하다는 비판을 받고 있다.",
           "en": "The measures, which only put out the immediate fire, are being criticized as a quick fix that will make things worse.",
-          "cue": "the act in the proverb",
+          "cue": "proverb: a stopgap that makes things worse (the act itself)",
           "accepted": ["오줌 누기"],
           "particleTolerance": "none"
         }
