@@ -55,3 +55,12 @@ test('examples.dictionary setting: default on, coerced, folded on replay (D53)',
   assert.equal(replayAll(bundle([]), [d(settingPayload('examples.dictionary', false), T0)]).settings['examples.dictionary'], false);
   assert.equal(replayAll(bundle([]), [d({ type: 'settings.set', key: 'examples.dictionary' as never, value: 0 }, T0)]).settings['examples.dictionary'], true);
 });
+
+test('input.autoConvert setting: default on, coerced, folded on replay (D53)', () => {
+  assert.equal(defaultAppSettings()['input.autoConvert'], true);
+  assert.equal(coerceAppSetting('input.autoConvert', false), false);
+  assert.equal(coerceAppSetting('input.autoConvert', 'off'), undefined);
+  const d = device('d');
+  assert.equal(replayAll(bundle([]), [d(settingPayload('input.autoConvert', false), T0)]).settings['input.autoConvert'], false);
+  assert.equal(replayAll(bundle([]), [d({ type: 'settings.set', key: 'input.autoConvert' as never, value: 0 }, T0)]).settings['input.autoConvert'], true);
+});

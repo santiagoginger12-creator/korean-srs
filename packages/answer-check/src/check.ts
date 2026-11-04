@@ -2,7 +2,7 @@
 import type { FeatureRule, ParticleTolerance, QuestionInstance } from '@ksrs/content';
 import { enTolerance, jamoDiff, jamoDistance, koTolerance, osaDistance, type EditOp } from './distance.ts';
 import { isKnownEnglishWord } from './en-words.ts';
-import { dubeolsikToHangul, looksLikeDubeolsik } from './dubeolsik.ts';
+import { dubeolsikToHangul, hangulToDubeolsik, looksLikeDubeolsik } from './dubeolsik.ts';
 import { checkCoreWords, checkFeatures, similarity, VARIANT_SIM } from './features.ts';
 import { toJamo } from './jamo.ts';
 import { enAlternatives, hasHangul, hasLatin, looseKoKey, normalizeEn, normalizeKo } from './normalize.ts';
@@ -82,7 +82,17 @@ export function check(q: QuestionInstance, response: string, opts: CheckOptions 
 // ---------------------------------------------------------------- meaning (EN)
 
 function checkMeaning(accepted: string[], rejected: string[], response: string, opts: CheckOptions): CheckResult {
-  if (hasHangul(response)) return res('close', 'script', { hint: 'Answer in English.' });
+  if (hasHangul(response)) {
+    // English typed with the Korean keyboard active (ㅗ디ㅣㅐ → hello): offer the Latin keys.
+    // Real Korean composes into whole syllables, so its keys look like dubeolsik; English
+    // leaves stranded jamo. Words of the accepted answers count as English too.
+    const converted = hangulToDubeolsik(response.trim()).toLowerCase();
+    const words = converted.match(/[a-z']+/g) ?? [];
+    const extra = new Set(accepted.flatMap((a) => normalizeEn(a).split(/\s+/)));
+    const english = !hasHangul(converted) && words.length > 0
+      && (!looksLikeDubeolsik(converted) || words.every((w) => isKnownEnglishWord(w, extra)));
+    return res('close', 'script', english ? { converted, hint: 'Switch to the English keyboard.' } : { hint: 'Answer in English.' });
+  }
   const r = normalizeEn(response);
   if (r === '') return res('close', 'empty', { hint: 'Type an answer.' });
   // "to be cumbersome" also accepts plain "cumbersome" (descriptive verbs).

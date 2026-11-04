@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { dubeolsikKey, dubeolsikToHangul, looksLikeDubeolsik, toJamo } from '../src/index.ts';
-import { forAll, pick, arrayOf } from '../../test-support/src/index.ts';
+import { dubeolsikKey, dubeolsikToHangul, hangulToDubeolsik, looksLikeDubeolsik, toJamo } from '../src/index.ts';
+import { forAll, pick, arrayOf, int, map } from '../../test-support/src/index.ts';
 
 test('dubeolsik examples', () => {
   assert.equal(dubeolsikToHangul('rkskek'), '가나다');
@@ -46,4 +46,29 @@ test('looksLikeDubeolsik', () => {
   assert.equal(looksLikeDubeolsik('zz'), false);
   assert.equal(looksLikeDubeolsik('망설이다'), false);
   assert.equal(looksLikeDubeolsik(''), false);
+});
+
+test('hangulToDubeolsik: Hangul typed on the Korean layout → the Latin keys', () => {
+  assert.equal(hangulToDubeolsik('ㅗ디ㅣㅐ'), 'hello');
+  assert.equal(hangulToDubeolsik('헬로'), 'gpffh');          // 헬 로 = g p f · f h
+  assert.equal(hangulToDubeolsik('망설이다'), 'akdtjfdlek');
+  assert.equal(hangulToDubeolsik('깎다'), 'RkRek');          // tense initial and tense final ㄲ
+  assert.equal(hangulToDubeolsik('얘기'), 'dOrl');
+  assert.equal(hangulToDubeolsik('읽다'), 'dlfrek');         // compound final ㄺ → f r
+  assert.equal(hangulToDubeolsik('과제'), 'rhkwp');          // compound vowel ㅘ → h k
+  assert.equal(hangulToDubeolsik('ㅅㅐ ㅡㄷ'), 'to me');      // spaces kept
+  assert.equal(hangulToDubeolsik('ㅁ ㅔ두 2!'), 'a pen 2!');  // digits, punctuation pass through
+  assert.equal(hangulToDubeolsik('abc'), 'abc');
+  assert.equal(hangulToDubeolsik(''), '');
+});
+
+test('hangulToDubeolsik inverts dubeolsikToHangul on whole syllables', () => {
+  const syl = map(int(0, 11171), (n) => String.fromCodePoint(0xac00 + n));
+  forAll(arrayOf(syl, 1, 6), (xs) => {
+    const s = xs.join('');
+    const keys = hangulToDubeolsik(s);
+    assert.match(keys, /^[A-Za-z]+$/);
+    // Re-typing the keys gives the same jamo (an IME may regroup e.g. 갃아 vs 갂사, never the letters).
+    assert.deepEqual(toJamo(dubeolsikToHangul(keys)), toJamo(s));
+  }, { runs: 300, seed: 'reverse' });
 });

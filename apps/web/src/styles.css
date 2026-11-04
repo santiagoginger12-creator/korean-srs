@@ -181,6 +181,16 @@ main { max-width: 760px; margin: 0 auto; padding: 16px 16px 48px; }
 .answer:focus { outline: none; border-color: var(--focus); }
 .answer.is-correct { border-color: var(--ok); background: var(--ok-soft); }
 .answer.is-incorrect { border-color: var(--bad); background: var(--bad-soft); }
+.answer-wrap { position: relative; flex: 1; min-width: 0; display: flex; }
+.answer-wrap > .answer { width: 100%; }
+/* Symmetric inset so centred text never runs under the chip. */
+.answer-wrap.has-chip > .answer { padding-inline: 46px; }
+.script-chip {
+  position: absolute; right: 12px; top: 50%; transform: translateY(-50%); pointer-events: none;
+  font-size: .72rem; font-weight: 650; line-height: 1; letter-spacing: .03em; padding: 4px 7px; border-radius: 999px;
+  color: var(--muted); background: var(--surface-2); border: 1px solid var(--line);
+}
+.script-chip:lang(ko) { font-size: .8rem; letter-spacing: 0; }
 .btn-submit { min-width: 56px; padding: 0 16px; font-size: 1.3rem; border-radius: var(--radius); }
 .shake { animation: shake .4s ease-in-out; }
 @keyframes shake { 0%, 100% { transform: translateX(0); } 20%, 60% { transform: translateX(-7px); } 40%, 80% { transform: translateX(7px); } }

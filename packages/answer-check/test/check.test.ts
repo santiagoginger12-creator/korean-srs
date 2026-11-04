@@ -109,6 +109,15 @@ describe('meaning', () => {
   test('Hangul in a meaning answer → close "answer in English"', () => {
     const r = check(meaning(['to hesitate']), '망설이다');
     assert.equal(r.outcome, 'close'); assert.equal(r.layer, 'script'); assert.match(r.hint ?? '', /English/);
+    assert.equal(r.converted, undefined); // real Korean: no "Use …" offer
+  });
+  test('English typed on the Korean layout → close with the Latin offered (ㅗㄷ냣ㅁㅅㄷ → hesitate)', () => {
+    const r = check(meaning(['to hesitate']), 'ㅅㅐ ㅗㄷ냣ㅁㅅㄷ');
+    assert.equal(r.outcome, 'close'); assert.equal(r.layer, 'script'); assert.equal(r.converted, 'to hesitate');
+    assert.match(r.hint ?? '', /English keyboard/);
+    assert.equal(check(meaning(['to hesitate']), r.converted!).outcome, 'correct');
+    assert.equal(check(meaning(['greeting']), 'ㅗ디ㅣㅐ').converted, 'hello');
+    assert.equal(check(meaning(['to hesitate']), '결재').converted, undefined); // Korean, not stray keys
   });
   test('rejected meaning is incorrect, and typo tolerance never lands on it', () => {
     const q = meaning(['to affect'], ['to effect']);

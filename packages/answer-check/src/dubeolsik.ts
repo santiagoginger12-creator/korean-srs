@@ -1,6 +1,6 @@
 // Dubeolsik (2-set) keyboard → Hangul, for answers typed with the wrong
 // keyboard layout active (ARCHITECTURE.md §8.3 layer 0).
-import { fromJamo, isCompatJamo, isSyllable } from './jamo.ts';
+import { fromJamo, isCompatJamo, isSyllable, toJamo } from './jamo.ts';
 
 const LOWER: Record<string, string> = {
   q: 'ㅂ', w: 'ㅈ', e: 'ㄷ', r: 'ㄱ', t: 'ㅅ', y: 'ㅛ', u: 'ㅕ', i: 'ㅑ', o: 'ㅐ', p: 'ㅔ',
@@ -9,6 +9,12 @@ const LOWER: Record<string, string> = {
 };
 /** Shifted keys that produce a different jamo; other capitals behave as lowercase (caps lock). */
 const SHIFT: Record<string, string> = { Q: 'ㅃ', W: 'ㅉ', E: 'ㄸ', R: 'ㄲ', T: 'ㅆ', O: 'ㅒ', P: 'ㅖ' };
+
+/** Jamo → the QWERTY key that types it (tense consonants and ㅒ/ㅖ need Shift). */
+const KEY_OF: Record<string, string> = {
+  ...Object.fromEntries(Object.entries(LOWER).map(([k, j]) => [j, k])),
+  ...Object.fromEntries(Object.entries(SHIFT).map(([k, j]) => [j, k])),
+};
 
 /** Map one QWERTY key to its dubeolsik jamo (or return it unchanged). */
 export function dubeolsikKey(ch: string): string {
@@ -44,3 +50,14 @@ export function looksLikeDubeolsik(s: string): boolean {
   }
   return syllables > 0 && lone <= Math.max(0, Math.floor(syllables / 4));
 }
+
+/**
+ * Inverse of `dubeolsikToHangul`: the QWERTY keys that type this Hangul on a dubeolsik
+ * layout, for English typed while the Korean keyboard was active. Compound vowels and
+ * finals split into their keystrokes; anything that isn't Hangul passes through.
+ * "ㅗ디ㅣㅐ" → "hello", "망설이다" → "akdtjfdlek", "깎다" → "RkRek".
+ */
+export function hangulToDubeolsik(s: string): string {
+  return toJamo(s).map((j) => KEY_OF[j] ?? j).join('');
+}
+

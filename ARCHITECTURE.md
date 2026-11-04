@@ -444,6 +444,7 @@ After any incorrect result, the UI shows **"I was right"**, which emits an overr
 - **Uncontrolled** `<input>` with a ref. React never writes `value` during composition. Attributes: `lang="ko"` (EN fields use `lang="en"`), `autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck={false} enterkeyhint="done"`.
 - Track `composing` via `compositionstart` and `compositionend`. Submit through a `<form onSubmit>`, which fires after commit on Android Gboard, where keydown reports `key: 'Unidentified'` / 229.
 - On `keydown Enter` while `e.isComposing || keyCode === 229`: set `submitPending` and submit on the next `compositionend` (iOS Safari fires compositionend after Enter), with a 50 ms microtask fallback.
+- **Live layout conversion (D73)** lives in the pure `state/liveConvert.ts` reducer (value, selection, run → next state); the input handles both `keydown` and `beforeinput` and repairs an uncancellable `beforeinput` on `input`. A small 한 / EN chip inside the field names the expected script.
 - Read `ref.current.value` only at submit, then run `normalizeKo`. The Playwright IME tests use CDP `Input.imeSetComposition` on Chromium, plus synthetic composition events on WebKit.
 
 ---

@@ -26,7 +26,7 @@ export default defineConfig({
   reporter: [['list']],
   use: { serviceWorkers: 'allow', trace: 'retain-on-failure' },
   projects: browsers.flatMap((b) => [
-    { name: `fixture-${b.name}`, testMatch: /(app|dashboard|data|study|pwa|m5-qa|master|grammar|examples|sync)\.spec\.ts/, use: { ...b.use, baseURL: url(PORT) } },
+    { name: `fixture-${b.name}`, testMatch: /(app|dashboard|data|study|pwa|m5-qa|master|grammar|examples|sync|keyboard)\.spec\.ts/, use: { ...b.use, baseURL: url(PORT) } },
     { name: `update-${b.name}`, testMatch: 'update.spec.ts', use: { ...b.use, baseURL: url(UPDATE_PORT) } },
     { name: `real-seed-${b.name}`, testMatch: 'real-seed.spec.ts', use: { ...b.use, baseURL: url(REAL_PORT) } },
     { name: `artifact-${b.name}`, testMatch: 'hosted.spec.ts', use: { ...b.use, baseURL: url(ARTIFACT_PORT) } },

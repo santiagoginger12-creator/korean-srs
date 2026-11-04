@@ -188,7 +188,8 @@ export function QuizRunner({ sess, dispatch, index, mode, done, onWrapUp, onExit
             handle={input}
             lang={isKoInput(q) ? 'ko' : 'en'}
             label={isKoInput(q) ? 'Answer in Korean' : 'Answer in English'}
-            placeholder={isKoInput(q) ? '한국어로' : 'in English'}
+            placeholder={isKoInput(q) ? '한글로 입력' : 'Type in English'}
+            autoConvert={app.derived?.settings['input.autoConvert'] !== false}
             readOnly={!!feedback}
             onSubmit={submit}
             autoFocus
@@ -205,7 +206,7 @@ export function QuizRunner({ sess, dispatch, index, mode, done, onWrapUp, onExit
           <span>{hint.text}</span>
           {hint.converted && (
             <button type="button" className="btn btn-small" onClick={() => { input.current?.setValue(hint.converted!); input.current?.focus(); setHint(null); }}>
-              Use <span lang="ko">{hint.converted}</span>
+              Use <span lang={q && !isKoInput(q) ? 'en' : 'ko'}>{hint.converted}</span>
             </button>
           )}
         </div>

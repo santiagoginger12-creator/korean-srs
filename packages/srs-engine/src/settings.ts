@@ -26,6 +26,8 @@ export interface ExtraSettings {
   'hanja.lessons': boolean;
   /** Include 한국어기초사전 examples in the example shown after answering (on by default). */
   'examples.dictionary': boolean;
+  /** Live-convert answers typed on the wrong keyboard layout (Latin keys → 두벌식 Hangul in Korean fields, and back in English fields). On by default. */
+  'input.autoConvert': boolean;
 }
 export type AppSettings = Settings & ExtraSettings;
 export type AppSettingKey = keyof AppSettings;
@@ -39,6 +41,7 @@ export const EXTRA_SETTING_DEFAULTS: Readonly<ExtraSettings> = Object.freeze({
   'grammar.separatePath': true,
   'hanja.lessons': false,
   'examples.dictionary': true,
+  'input.autoConvert': true,
 });
 
 export function defaultAppSettings(): AppSettings {
@@ -60,6 +63,7 @@ export function coerceAppSetting(key: string, value: unknown): unknown {
     case 'grammar.separatePath': return typeof value === 'boolean' ? value : undefined;
     case 'hanja.lessons': return typeof value === 'boolean' ? value : undefined;
     case 'examples.dictionary': return typeof value === 'boolean' ? value : undefined;
+    case 'input.autoConvert': return typeof value === 'boolean' ? value : undefined;
     default: return coerceSetting(key as SettingKey, value);
   }
 }
