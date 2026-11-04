@@ -1,5 +1,5 @@
 // Lesson batch: teach pages → lesson quiz (extra-study mode, no events) → lesson.completed.
-import { useEffect, useReducer, useState } from 'react';
+import { useEffect, useReducer, useRef, useState } from 'react';
 import type { Item } from '@ksrs/content';
 import { buildQuestions, emptySession, sessionReducer, type ReviewSession, type SessionAction, type StartItem } from '@ksrs/srs-engine';
 import { ItemDetails, KindTag, NeedsReview } from '../../components/ItemDetails.tsx';
@@ -45,18 +45,25 @@ export function Lessons({ path = 'vocab' }: { path?: LessonPath }): JSX.Element 
     void store.completeLessons(others.map((it) => it.id)).then(() => { setPhase('done'); setCompleting(false); });
   };
 
-  // Arrow keys page through teach pages.
+  // Arrow keys page through teach pages; → on the last page starts the quiz.
+  const startQuizRef = useRef(startQuiz);
+  startQuizRef.current = startQuiz;
   useEffect(() => {
     if (phase !== 'teach') return;
     const onKey = (e: KeyboardEvent) => {
       const tag = (e.target as HTMLElement | null)?.tagName;
       if (tag === 'INPUT' || tag === 'TEXTAREA') return;
-      if (e.key === 'ArrowRight') setPage((p) => Math.min(p + 1, batch.length - 1));
-      if (e.key === 'ArrowLeft') setPage((p) => Math.max(p - 1, 0));
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        if (page >= batch.length - 1) startQuizRef.current();
+        else setPage(page + 1);
+      }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); setPage(Math.max(page - 1, 0)); }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [phase, batch.length]);
+  }, [phase, page, batch.length]);
 
   if (batch.length === 0) {
     return (
