@@ -177,7 +177,7 @@ export function QuizRunner({ sess, dispatch, index, mode, done, onWrapUp, onExit
             </button>
           )}
         </div>
-        <Prompt q={q} item={item} hintLevel={feedback ? 2 : hintLevel} />
+        <Prompt q={q} item={item} hintLevel={feedback ? 2 : hintLevel} showEn={!!feedback || app.derived?.settings['grammar.showTranslation'] === true} />
       </article>
 
       {q.qtype === 'nuance'
@@ -240,7 +240,7 @@ export function spokenAnswer(q: QuestionInstance, result: { matched?: string }):
   }
 }
 
-function Prompt({ q, item, hintLevel }: { q: QuestionInstance; item: Item | undefined; hintLevel: HintLevel }): JSX.Element {
+function Prompt({ q, item, hintLevel, showEn }: { q: QuestionInstance; item: Item | undefined; hintLevel: HintLevel; showEn: boolean }): JSX.Element {
   switch (q.qtype) {
     case 'meaning':
       return (<><div className="prompt-ko" lang="ko">{q.promptKo}</div><p className="ask">What does it mean? <span className="muted">(English)</span></p></>);
@@ -268,7 +268,7 @@ function Prompt({ q, item, hintLevel }: { q: QuestionInstance; item: Item | unde
         <p className="cue" lang="ko"><span data-testid="cue-base">{cue.base}</span>
           {cue.pattern && hintLevel >= 2 && <> + <span className="cue-pattern" data-testid="hint-pattern">{cue.pattern}</span></>}</p>
         {hintLevel >= 1 && meaning && <p className="hint-meaning" data-testid="hint-meaning">{meaning}</p>}
-        <p className="gloss-en">{q.en}</p>
+        <GrammarTranslation key={`${q.itemId}|${q.before}|${q.after}`} en={q.en} show={showEn} />
       </>);
     }
     case 'register': {
@@ -283,6 +283,27 @@ function Prompt({ q, item, hintLevel }: { q: QuestionInstance; item: Item | unde
     case 'nuance':
       return (<><p className="situation" lang="ko">{q.situation}</p><p className="ask">Which fits best?</p></>);
   }
+}
+
+/**
+ * Grammar cloze translation (D76): hidden until answered unless the setting is on.
+ * "Show translation" (or the T key) reveals it for this question only.
+ */
+function GrammarTranslation({ en, show }: { en: string; show: boolean }): JSX.Element | null {
+  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    if (show || open) return;
+    const onKey = (e: KeyboardEvent) => {
+      const tag = (e.target as HTMLElement | null)?.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || e.metaKey || e.ctrlKey || e.altKey) return;
+      if (e.key.toLowerCase() === 't' || e.code === 'KeyT') { e.preventDefault(); setOpen(true); }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [show, open]);
+  if (!en) return null;
+  if (show || open) return <p className="gloss-en" data-testid="grammar-en">{en}</p>;
+  return <button type="button" className="btn-reveal" onClick={() => setOpen(true)} data-testid="show-translation">Show translation</button>;
 }
 
 function NuanceOptions({ q, feedback, onPick }: { q: Extract<QuestionInstance, { qtype: 'nuance' }>; feedback: Feedback | null; onPick: (key: string) => void }): JSX.Element {

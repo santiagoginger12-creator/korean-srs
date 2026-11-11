@@ -20,12 +20,14 @@ async function reviewWithHintLadder(page: Page, b: Bundle): Promise<void> {
     if (!laddered && q.itemId === G && q.qtype === 'cloze') {
       laddered = true;
       const card = page.getByTestId('question');
-      // Level 0: sentence, translation, dictionary form only.
+      // Level 0: sentence and dictionary form only; the translation waits behind a button (D76).
       await expect(card).toHaveAttribute('data-hint-level', '0');
       await expect(page.getByTestId('cue-base')).toHaveText('졸다');
       await expect(card).not.toContainText('바람에');
       await expect(page.getByTestId('hint-meaning')).toHaveCount(0);
-      await expect(card.locator('.gloss-en')).toBeVisible();
+      await expect(card.locator('.gloss-en')).toHaveCount(0);
+      await page.getByTestId('show-translation').click();
+      await expect(page.getByTestId('grammar-en')).toBeVisible();
       // Level 1: the short meaning, never the pattern.
       await page.getByTestId('hint-btn').click();
       await expect(card).toHaveAttribute('data-hint-level', '1');

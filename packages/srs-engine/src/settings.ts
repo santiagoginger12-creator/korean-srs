@@ -28,6 +28,8 @@ export interface ExtraSettings {
   'examples.dictionary': boolean;
   /** Live-convert answers typed on the wrong keyboard layout (Latin keys → 두벌식 Hangul in Korean fields, and back in English fields). On by default. */
   'input.autoConvert': boolean;
+  /** Show the English translation of grammar fill-in-the-blank sentences before answering. Off by default (D76). */
+  'grammar.showTranslation': boolean;
 }
 export type AppSettings = Settings & ExtraSettings;
 export type AppSettingKey = keyof AppSettings;
@@ -42,6 +44,7 @@ export const EXTRA_SETTING_DEFAULTS: Readonly<ExtraSettings> = Object.freeze({
   'hanja.lessons': false,
   'examples.dictionary': true,
   'input.autoConvert': true,
+  'grammar.showTranslation': false,
 });
 
 export function defaultAppSettings(): AppSettings {
@@ -64,6 +67,7 @@ export function coerceAppSetting(key: string, value: unknown): unknown {
     case 'hanja.lessons': return typeof value === 'boolean' ? value : undefined;
     case 'examples.dictionary': return typeof value === 'boolean' ? value : undefined;
     case 'input.autoConvert': return typeof value === 'boolean' ? value : undefined;
+    case 'grammar.showTranslation': return typeof value === 'boolean' ? value : undefined;
     default: return coerceSetting(key as SettingKey, value);
   }
 }

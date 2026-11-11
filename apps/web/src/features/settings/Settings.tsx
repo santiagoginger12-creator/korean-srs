@@ -60,6 +60,12 @@ export function Settings(): JSX.Element {
           onChange={(e: { target: HTMLInputElement }) => void store.setAppSetting('input.autoConvert', e.target.checked)} /> Auto-convert keyboard</label>
         <p className="muted small">Korean answers: type on the English layout and the keys turn into 한글 as you type (두벌식), so you never switch keyboards. English answers: 한글 from the Korean keyboard turns back into the letters you pressed. Off: answers are taken as typed, and a wrong-script answer gets a "Use …" fix.</p>
       </div>
+      <div className="card form" data-testid="grammar-translation-settings">
+        <h3>Grammar questions</h3>
+        <label className="check"><input type="checkbox" checked={s['grammar.showTranslation'] === true} data-testid="set-grammar-translation"
+          onChange={(e: { target: HTMLInputElement }) => void store.setAppSetting('grammar.showTranslation', e.target.checked)} /> Always show the English translation</label>
+        <p className="muted small">Off: fill-in-the-blank grammar sentences appear in Korean only. Tap "Show translation" (or press T) for a single question; it also appears after you answer.</p>
+      </div>
       <TtsSettings />
       <div className="card form" data-testid="examples-settings">
         <h3>Example sentences</h3>
