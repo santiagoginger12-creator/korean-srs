@@ -4,6 +4,7 @@
 
 import type { ContentBundle, ItemId, QuestionType } from '@ksrs/content';
 import {
+  applyDrillEvents, isDrillRelevant, replayDrill, type DrillState, type Rating,
   applyEvents, buildQuestions, canonicalJson, pruneGhostDone, createEventFactory, createHlc, dueItems, emptySession, isUnknownFutureVersion, makeBackup, replayAll, serializeBackup, sessionReducer, settingPayload, sortEvents, upcastEvent, validateEvent,
   type AppSettingKey, type AppSettings,
   type AppEvent, type DerivedState, type EventPayload, type HlcClock, type NoteField, type ReviewSession,
@@ -42,6 +43,10 @@ export interface AppState {
   quarantineCount: number;
   /** Ghost-review slots finished on this device (kv only; ghosts never write events). */
   ghostsDone: string[];
+  /** Anki-style drill projection (D80), derived from the drill events in the same log. */
+  drill: DrillState;
+  /** A drill session is on screen (sync waits, like for reviews). */
+  drillActive: boolean;
 }
 
 type Listener = () => void;
@@ -66,7 +71,7 @@ export class AppStore {
   private state: AppState = {
     status: 'loading', content: null, events: [], derived: null, review: null, lessonOverride: undefined,
     deviceId: '', bootTheme: 'system', levelUp: null, deviceName: '', lastBackupAt: undefined, persisted: null,
-    quarantineCount: 0, ghostsDone: [],
+    quarantineCount: 0, ghostsDone: [], drill: replayDrill([]), drillActive: false,
   };
   private listeners = new Set<Listener>();
   private db: AppDb | null = null;
@@ -115,7 +120,8 @@ export class AppStore {
       const quarantineCount = (await db.quarantineAll()).length;
       const storedGhosts = await db.kvGet<string[]>(KV.ghostsDone);
       const ghostsDone = Array.isArray(storedGhosts) ? pruneGhostDone(derived.index, events, now(), storedGhosts.filter((k) => typeof k === 'string')) : [];
-      this.set({ status: 'ready', content, events, derived, review, lessonOverride, deviceId, deviceName, lastBackupAt, quarantineCount, ghostsDone });
+      const drill = replayDrill(events);
+      this.set({ status: 'ready', content, events, derived, review, lessonOverride, deviceId, deviceName, lastBackupAt, quarantineCount, ghostsDone, drill });
       void db.kvSet({ [KV.settings]: derived.settings });
     } catch (e) {
       this.set({ status: 'error', error: (e as Error).message ?? String(e) });
@@ -177,6 +183,8 @@ export class AppStore {
       next = applyEvents(derived, content, events, newEvents).state;
       const up = detectLevelUp(derived.userLevel, next.userLevel);
       if (up) patch = { ...patch, levelUp: { from: this.state.levelUp?.from ?? up.from, to: up.to } };
+      const drill = nextDrill(this.state.drill, events, newEvents);
+      if (drill !== this.state.drill) patch = { ...patch, drill };
       kv = { ...kv, [KV.hlc]: this.hlc.last() };
       if (newEvents.some((e) => e.type === 'settings.set')) kv[KV.settings] = next.settings;
     }
@@ -275,6 +283,44 @@ export class AppStore {
     return this.commit([], { [KV.session]: undefined }, { review: null }).then(() => this.sessionEnded());
   }
 
+  // ------------------------------------------------------------------ drill (D78–D84)
+
+  /** Appends one event now and returns its id (used for the drill's undo stack). */
+  private emitOne(payload: EventPayload): string {
+    const e = this.mkEvent(payload, now());
+    void this.commit([e]);
+    return e.id;
+  }
+
+  drillAnswer(cardId: string, rating: Rating, durationMs: number): string {
+    return this.emitOne({ type: 'drill.review', cardId, rating, durationMs: Math.max(0, Math.round(durationMs)) });
+  }
+
+  drillUndo(targetId: string): string {
+    return this.emitOne({ type: 'drill.undo', targetId });
+  }
+
+  /** Marks cards known (placement or "I already know this"). Large lists go in chunks of 30,000. */
+  drillKnown(cardIds: readonly string[], reason: string): string[] {
+    const ids: string[] = [];
+    for (let i = 0; i < cardIds.length; i += DRILL_CHUNK) ids.push(this.emitOne({ type: 'drill.known', cardIds: cardIds.slice(i, i + DRILL_CHUNK), reason }));
+    return ids;
+  }
+
+  drillReset(cardIds?: string[]): string {
+    return this.emitOne(cardIds ? { type: 'drill.reset', cardIds } : { type: 'drill.reset' });
+  }
+
+  setDrillActive(drillActive: boolean): void {
+    if (this.state.drillActive !== drillActive) this.set({ drillActive });
+  }
+
+  /** A drill session ended (sync trigger, like a review session). */
+  drillSessionEnded(): Promise<void> {
+    this.setDrillActive(false);
+    return this.writes.then(() => this.sessionEnded());
+  }
+
   // ------------------------------------------------------------------ data (M5)
 
   async setDeviceName(name: string): Promise<void> {
@@ -339,7 +385,7 @@ export class AppStore {
     const settingsKv = { [KV.settings]: derived.settings };
     void this.db.kvSet(settingsKv);
     const quarantineCount = (await this.db.quarantineAll()).length;
-    this.set({ events, derived, review, quarantineCount, lessonOverride: mode === 'replace' ? undefined : this.state.lessonOverride });
+    this.set({ events, derived, review, quarantineCount, drill: replayDrill(events), lessonOverride: mode === 'replace' ? undefined : this.state.lessonOverride });
     return { added };
   }
 
@@ -376,6 +422,8 @@ export class AppStore {
       const next = fresh.length > 2000 ? replayAll(content, events) : applyEvents(derived, content, events, fresh).state;
       const up = detectLevelUp(derived.userLevel, next.userLevel);
       const patch: Partial<AppState> = { events, derived: next };
+      const drill = nextDrill(this.state.drill, events, fresh);
+      if (drill !== this.state.drill) patch.drill = drill;
       if (up) patch.levelUp = { from: this.state.levelUp?.from ?? up.from, to: up.to };
       if (fresh.some((e) => e.type === 'settings.set')) kv[KV.settings] = next.settings;
       this.set(patch);
@@ -437,10 +485,19 @@ export class AppStore {
     const events = await this.db.allEvents();
     const t0 = performance.now();
     const derived = replayAll(content, events);
+    const drill = replayDrill(events);
     const ms = performance.now() - t0;
-    this.set({ events, derived });
+    this.set({ events, derived, drill });
     return { events: events.length, ms };
   }
+}
+
+const DRILL_CHUNK = 30_000;
+
+/** The drill projection after `fresh` joined the log `events` (incremental when possible). */
+function nextDrill(prev: DrillState, events: readonly AppEvent[], fresh: readonly AppEvent[]): DrillState {
+  if (!fresh.some(isDrillRelevant)) return prev;
+  return applyDrillEvents(prev, fresh) ?? replayDrill(events);
 }
 
 declare const __BUILD_ID__: string;

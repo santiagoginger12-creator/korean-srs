@@ -7,6 +7,7 @@ import { DEFAULT_SOURCE } from '../../data/examples.ts';
 import { useExamplesData } from '../../components/DictExamples.tsx';
 import { isArtifact } from '../../host.ts';
 import { SYNC_UNAVAILABLE, useSync } from './SyncPage.tsx';
+import { ANSWER_MODES } from '../drill/modes/index.ts';
 
 const SAMPLE = '천천히 또박또박 읽어 볼게요.';
 
@@ -66,6 +67,7 @@ export function Settings(): JSX.Element {
           onChange={(e: { target: HTMLInputElement }) => void store.setAppSetting('grammar.showTranslation', e.target.checked)} /> Always show the English translation</label>
         <p className="muted small">Off: fill-in-the-blank grammar sentences appear in Korean only. Tap "Show translation" (or press T) for a single question; it also appears after you answer.</p>
       </div>
+      <DrillSettings />
       <TtsSettings />
       <div className="card form" data-testid="examples-settings">
         <h3>Example sentences</h3>
@@ -86,6 +88,46 @@ export function Settings(): JSX.Element {
         <p className="muted small">Device {app.deviceId}</p>
       </div>
       <ExamplesCredit />
+    </div>
+  );
+}
+
+const RETENTIONS = [0.8, 0.82, 0.85, 0.87, 0.9, 0.92, 0.94, 0.95, 0.97];
+
+/** Settings → Drill (D81): the Anki-style drill's own knobs; nothing here touches lessons or reviews. */
+function DrillSettings(): JSX.Element {
+  const s = useApp().derived!.settings;
+  const [newPerDay, setNewPerDay] = useState(String(s['drill.newPerDay']));
+  const commitNew = () => {
+    const n = Math.min(200, Math.max(0, Math.round(Number(newPerDay) || 0)));
+    setNewPerDay(String(n));
+    if (n !== s['drill.newPerDay']) void store.setAppSetting('drill.newPerDay', n);
+  };
+  const ret = s['drill.retention'];
+  const retOptions = RETENTIONS.includes(ret) ? RETENTIONS : [...RETENTIONS, ret].sort();
+  return (
+    <div className="card form" data-testid="drill-settings">
+      <h3>Drill</h3>
+      <label className="field"><span>New cards per day (0–200)</span>
+        <input type="number" min={0} max={200} step={1} inputMode="numeric" value={newPerDay} data-testid="set-drill-new"
+          onChange={(e: { target: HTMLInputElement }) => setNewPerDay(e.target.value)} onBlur={commitNew}
+          onKeyDown={(e: { key: string }) => { if (e.key === 'Enter') commitNew(); }} />
+      </label>
+      <label className="field"><span>Desired retention</span>
+        <select value={String(ret)} data-testid="set-drill-retention"
+          onChange={(e: { target: HTMLSelectElement }) => void store.setAppSetting('drill.retention', Number(e.target.value))}>
+          {retOptions.map((r) => <option key={r} value={r}>{Math.round(r * 100)}%{r === 0.9 ? ' (default)' : ''}</option>)}
+        </select>
+      </label>
+      <label className="field"><span>Answer mode</span>
+        <select value={ANSWER_MODES.some((m) => m.id === s['drill.answerMode']) ? s['drill.answerMode'] : 'flip'} data-testid="set-drill-mode"
+          onChange={(e: { target: HTMLSelectElement }) => void store.setAppSetting('drill.answerMode', e.target.value)}>
+          {ANSWER_MODES.map((m) => <option key={m.id} value={m.id}>{m.label}</option>)}
+        </select>
+      </label>
+      <label className="check"><input type="checkbox" checked={s['drill.reverse'] !== false} data-testid="set-drill-reverse"
+        onChange={(e: { target: HTMLInputElement }) => void store.setAppSetting('drill.reverse', e.target.checked)} /> Reverse cards (English → Korean)</label>
+      <p className="muted small">The drill is a separate flashcard deck (FSRS, like Anki); it doesn't change lessons, reviews or levels. Higher retention means more reviews. A reverse card unlocks the day after a word's Korean → English card reaches a 7-day interval, and doesn't count toward the new-card limit.</p>
     </div>
   );
 }

@@ -103,7 +103,7 @@ export class SyncController {
 
   /** A review/lesson/practice session is on screen or active. */
   busy(): boolean {
-    if (this.app.getState().review?.status === 'active') return true;
+    if (this.app.getState().review?.status === 'active' || this.app.getState().drillActive) return true;
     return SESSION_ROUTES.has(parseRoute(location.hash).name);
   }
 

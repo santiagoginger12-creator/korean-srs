@@ -44,6 +44,27 @@ export function emitExamples(outDir: string, file = examplesFile()): number | nu
   return Object.keys(data.items).length;
 }
 
+/**
+ * Drill deck to ship as dist/drill/deck.json (D83): KSRS_DRILL_DECK (absolute, or relative to the
+ * repo root), default packages/content/drill/deck.json. The app fetches it only when #/drill opens;
+ * the small tier summary (DrillMeta) is compiled into the main bundle so counts work without it.
+ */
+export const drillDeckFile = (): string => resolve(ROOT, process.env.KSRS_DRILL_DECK ?? 'packages/content/drill/deck.json');
+
+export interface DrillMeta { version: string; count: number; tiers: { tier: number; label: string; count: number; first: string; last: string }[] }
+
+/** Copies the deck (minified) into outDir/drill/. Returns its meta, or null when there is no deck file. */
+export function emitDrillDeck(outDir: string, file = drillDeckFile()): DrillMeta | null {
+  if (!existsSync(file)) return null;
+  const data = JSON.parse(readFileSync(file, 'utf8')) as { format?: unknown; version?: unknown; count?: unknown; tiers?: unknown; words?: unknown };
+  if (data.format !== 1 || !Array.isArray(data.words) || !Array.isArray(data.tiers) || typeof data.version !== 'string') {
+    throw new Error(`${relative(ROOT, file)}: not a drill deck (format 1 with words and tiers)`);
+  }
+  mkdirSync(join(outDir, 'drill'), { recursive: true });
+  writeFileSync(join(outDir, 'drill/deck.json'), JSON.stringify(data));
+  return { version: data.version, count: data.words.length, tiers: data.tiers as DrillMeta['tiers'] };
+}
+
 /** KSRS_BUILD_ID (CI: commit sha) or the app package version. Shown on the Data page. */
 export const buildId = (): string => process.env.KSRS_BUILD_ID
   ?? (JSON.parse(readFileSync(join(WEB_DIR, 'package.json'), 'utf8')) as { version: string }).version;
@@ -111,6 +132,8 @@ export async function build(opts: BuildOptions = {}): Promise<{ outDir: string; 
   const t0 = Date.now();
   if (existsSync(outDir)) rmSync(outDir, { recursive: true, force: true });
   mkdirSync(outDir, { recursive: true });
+  // Drill deck first: its tier summary is compiled into the bundle.
+  const drillMeta = emitDrillDeck(outDir);
 
   const res = await esbuild.build({
     entryPoints: { main: join(WEB_DIR, 'src/main.tsx') },
@@ -133,6 +156,7 @@ export async function build(opts: BuildOptions = {}): Promise<{ outDir: string; 
       __DEV__: JSON.stringify(dev),
       __BUILD_ID__: JSON.stringify(buildId()),
       __ARTIFACT__: JSON.stringify(artifact),
+      __DRILL_META__: JSON.stringify(drillMeta),
     },
     logLevel: opts.quiet ? 'silent' : 'warning',
   });
@@ -227,6 +251,7 @@ ${css ? `<link rel="stylesheet" href="${url(css)}">` : ''}
     console.log(`  ${relative(outDir, js)} ${kb(js)} KB${css ? `, ${relative(outDir, css)} ${kb(css)} KB` : ''}`);
     console.log(`  content ${content.items.length} items from ${relative(ROOT, seedDir())} (${content.contentVersion.slice(0, 12)}), sw ${version}, ${precache.length} precached`);
     console.log(exampleItems === null ? '  examples: none (no examples file)' : `  examples: ${exampleItems} items from ${relative(ROOT, examplesFile())}`);
+    console.log(drillMeta === null ? '  drill deck: none' : `  drill deck: ${drillMeta.count} words from ${relative(ROOT, drillDeckFile())} (${drillMeta.version})`);
   }
   return { outDir, base, files: precache };
 }

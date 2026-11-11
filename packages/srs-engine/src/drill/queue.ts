@@ -172,7 +172,7 @@ export function mixNew(forward: readonly string[], reverse: readonly string[]): 
   let fi = 0, ri = 0;
   for (let k = 0; k < total; k++) {
     // Place reverse card ri at evenly spaced positions.
-    const wantR = ri < reverse.length && (fi >= forward.length || (ri + 1) * total / (reverse.length + 1) <= k + 1);
+    const wantR = ri < reverse.length && (fi >= forward.length || (ri + 1) * total / (reverse.length + 1) < k + 1);
     if (wantR) out.push(reverse[ri++]!); else out.push(forward[fi++]!);
   }
   return out;

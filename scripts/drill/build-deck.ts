@@ -115,7 +115,7 @@ const SMALL_WORDS = new Set(['of', 'and', 'the', 'for', 'to', 'in', 'on', 'a', '
 export function sentenceLike(part: string, maybeTruncated: boolean): boolean {
   const words = part.split(' ');
   if (words.length >= 7) return true;
-  if (maybeTruncated && words.length >= 4) return true;
+  if (maybeTruncated) return true;
   const titleCase = words.every((w) => SMALL_WORDS.has(w) || /^[A-Z0-9(]/.test(w));
   return /^[A-Z]/.test(part) && words.length >= 3 && !titleCase;
 }

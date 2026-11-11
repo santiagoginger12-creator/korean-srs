@@ -12,6 +12,7 @@ import { backupDue } from '../../data/backup.ts';
 import { inboxEntries } from '../../data/contract.ts';
 import { troubleRows } from '../../state/trouble.ts';
 import { MasterLine } from './MasterLine.tsx';
+import { DrillTile } from './DrillTile.tsx';
 
 const MAX_REMAINING_CHIPS = 12;
 
@@ -111,6 +112,8 @@ export function Dashboard(): JSX.Element {
           <a className={`btn btn-primary ${due || active ? '' : 'is-disabled'}`} href="#/reviews" data-testid="start-reviews" aria-disabled={!(due || active)}
              onClick={(e: { preventDefault(): void }) => { if (!(due || active)) e.preventDefault(); }}>{active ? 'Resume reviews' : 'Start reviews'}</a>
         </section>
+
+        <DrillTile t={t} />
       </div>
 
       {gv.separate && (
