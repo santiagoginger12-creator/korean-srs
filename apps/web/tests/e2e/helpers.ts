@@ -175,7 +175,7 @@ export async function reviewRound(page: Page, b: Bundle, choose?: (q: Q) => stri
     await expect(page.getByTestId('feedback')).toBeVisible();
     await next(page);
   }
-  await page.getByRole('button', { name: 'Done' }).click();
+  await page.getByTestId('next-home').click();
   await expect(page.getByTestId('lessons-tile')).toBeVisible();
 }
 

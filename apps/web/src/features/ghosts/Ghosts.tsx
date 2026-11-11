@@ -8,6 +8,7 @@ import { now } from '../../state/clock.ts';
 import { useApp } from '../../state/hooks.ts';
 import { store } from '../../state/store.ts';
 import { QuizRunner } from '../reviews/QuizRunner.tsx';
+import { NextSteps } from '../../components/NextSteps.tsx';
 
 const reducer = (s: ReviewSession, a: SessionAction): ReviewSession => sessionReducer(s, a).sess;
 
@@ -53,7 +54,7 @@ export function Ghosts(): JSX.Element {
           <h1>Ghosts cleared</h1>
           <p className="big-stat"><span>{sess.tally.correct}</span> correct · <span>{sess.tally.incorrect}</span> incorrect</p>
           <p className="muted">Practice only: your review schedule is unchanged.</p>
-          <a className="btn btn-primary" href="#/">Home</a>
+          <NextSteps />
         </div>
       )} />
   );

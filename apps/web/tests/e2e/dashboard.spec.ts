@@ -29,7 +29,7 @@ async function reviewRound(page: Page, b: Bundle): Promise<void> {
   await goHome(page);
   await page.getByTestId('start-reviews').click();
   await answerAllCorrectly(page, b, 'review-summary');
-  await page.getByRole('button', { name: 'Done' }).click();
+  await page.getByTestId('next-home').click();
   await expect(page.getByTestId('lessons-tile')).toBeVisible();
 }
 
@@ -106,7 +106,7 @@ test('separate paths: vocab level 2 at 7/7 (not 6/7), grammar stage 2 at 2/2 (no
     }
   }
   expect(sawV6 && sawG1).toBe(true);
-  await page.getByRole('button', { name: 'Done' }).click();
+  await page.getByTestId('next-home').click();
   await goHome(page);
   await expect(page.getByTestId('level')).toHaveText('2');
   await expect(page.getByTestId('level-up-banner')).toContainText('Level 2');

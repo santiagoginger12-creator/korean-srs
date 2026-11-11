@@ -443,3 +443,7 @@ mark.ex-hit { background: var(--k-soft, var(--accent-soft)); color: inherit; bor
 .ex-line { display: flex; align-items: flex-start; gap: 6px; }
 .ex-line .ex-text { flex: 1; min-width: 0; }
 .ex-line .speaker-inline { margin-left: 0; flex: none; }
+
+/* Key hints on end-of-session buttons (D75). */
+.btn kbd { font: inherit; font-size: 0.75em; opacity: 0.7; margin-left: 6px; padding: 0 5px; border: 1px solid currentColor; border-radius: 4px; }
+@media (hover: none) { .btn kbd { display: none; } }

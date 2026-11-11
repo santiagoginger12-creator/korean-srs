@@ -80,7 +80,7 @@ test('2. time passes → reviews: close (shake), incorrect, undo, "I was right",
   // The closeAttempt is embedded in the answer, not an event (D7).
   expect(answers.find((e) => e.id === voids[0].targetId)?.check.closeAttempts).toBe(1);
 
-  await page.getByRole('button', { name: 'Done' }).click();
+  await page.getByTestId('next-home').click();
   await expect(page.getByTestId('reviews-count')).toHaveText('0');
 });
 

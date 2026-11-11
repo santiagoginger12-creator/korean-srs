@@ -521,7 +521,7 @@ async function reviewWithFix(page: Page, b: Bundle, fix: 'override' | 'undo'): P
     await next(page);
   }
   expect(fixed).toBe(true);
-  await page.getByRole('button', { name: 'Done' }).click();
+  await page.getByTestId('next-home').click();
   await expect(page.getByTestId('lessons-tile')).toBeVisible();
 }
 

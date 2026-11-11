@@ -78,7 +78,7 @@ async function reviewSession(page: Page, b: Bundle, onFeedback?: (q: { itemId: s
     }
     await next(page);
   }
-  await page.getByRole('button', { name: 'Done' }).click();
+  await page.getByTestId('next-home').click();
   await expect(page.getByTestId('lessons-tile')).toBeVisible();
   return seen;
 }

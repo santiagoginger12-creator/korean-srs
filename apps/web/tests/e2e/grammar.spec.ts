@@ -51,7 +51,7 @@ async function reviewWithHintLadder(page: Page, b: Bundle): Promise<void> {
     await next(page);
   }
   expect(laddered, 'the -는 바람에 cloze came up').toBe(true);
-  await page.getByRole('button', { name: 'Done' }).click();
+  await page.getByTestId('next-home').click();
 }
 
 test('hint ladder: levels 0/1/2, hint 2 counts as a miss (layer "+hint2"); ghosts at +2 h/+24 h write zero events', async ({ page }) => {

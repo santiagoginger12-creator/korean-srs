@@ -8,6 +8,7 @@ import { navigate } from '../../router.ts';
 import { now } from '../../state/clock.ts';
 import { useApp } from '../../state/hooks.ts';
 import { QuizRunner } from '../reviews/QuizRunner.tsx';
+import { NextSteps } from '../../components/NextSteps.tsx';
 
 const reducer = (s: ReviewSession, a: SessionAction): ReviewSession => sessionReducer(s, a).sess;
 const STAGE_GROUPS = ['apprentice', 'guru', 'master', 'enlightened', 'burned'] as const;
@@ -47,7 +48,8 @@ export function Practice({ preset }: { preset?: 'trouble' | 'recent' }): JSX.Ele
             <h1>Practice done</h1>
             <p className="big-stat"><span>{sess.tally.correct}</span> correct · <span>{sess.tally.incorrect}</span> incorrect</p>
             <p className="muted">Nothing was scheduled; your reviews are unchanged.</p>
-            <div className="row"><button type="button" className="btn btn-primary" onClick={() => dispatch({ type: 'start', mode: 'extra', items: [], seed: 'reset' })}>Practice more</button><a className="btn btn-quiet" href="#/">Home</a></div>
+            <NextSteps />
+            <p><button type="button" className="btn-text" onClick={() => dispatch({ type: 'start', mode: 'extra', items: [], seed: 'reset' })}>Practice more</button></p>
           </div>
         )} />
     );

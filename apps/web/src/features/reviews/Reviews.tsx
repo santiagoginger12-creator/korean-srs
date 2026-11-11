@@ -7,6 +7,7 @@ import { useApp } from '../../state/hooks.ts';
 import { store } from '../../state/store.ts';
 import { ItemLink } from '../../components/ItemDetails.tsx';
 import { QuizRunner } from './QuizRunner.tsx';
+import { NextSteps } from '../../components/NextSteps.tsx';
 
 export function Reviews(): JSX.Element {
   const app = useApp();
@@ -33,7 +34,6 @@ export function Reviews(): JSX.Element {
     );
   }
 
-  const finish = () => { void store.endReview().then(() => navigate('#/')); };
   const done = (
     <div className="page narrow summary" data-testid="review-summary">
       <h1>Session complete</h1>
@@ -44,7 +44,7 @@ export function Reviews(): JSX.Element {
           <p className="chips">{sess.tally.completed.map((id) => <ItemLink key={id} index={d.index} id={id} />)}</p>
         </section>
       )}
-      <button type="button" className="btn btn-primary" onClick={finish}>Done</button>
+      <NextSteps beforeLeave={() => store.endReview()} onReviews={() => { void store.endReview().then(() => { store.startReview(); }); }} />
     </div>
   );
 

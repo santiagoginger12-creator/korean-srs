@@ -10,6 +10,7 @@ import { nextBatch, queueFor } from '../../state/lessons.ts';
 import type { LessonPath } from '@ksrs/srs-engine';
 import { store } from '../../state/store.ts';
 import { QuizRunner } from '../reviews/QuizRunner.tsx';
+import { ArrowRightDoes, NextSteps } from '../../components/NextSteps.tsx';
 
 type Phase = 'teach' | 'quiz' | 'done';
 /** Beyond this many pages the dot row would crowd a phone screen; show just the counter. */
@@ -81,16 +82,12 @@ export function Lessons({ path = 'vocab' }: { path?: LessonPath }): JSX.Element 
       const fresh = nextBatch(queueFor(path, st.derived!, st.events, now(), tz, st.lessonOverride), st.derived!);
       setBatch(fresh); setPage(0); setPhase('teach');
     };
-    const more = queueFor(path, d, app.events, now(), tz, app.lessonOverride).queue.length;
     return (
       <div className="page narrow summary" data-testid="lessons-done">
         <h1>Lessons learned</h1>
         <p className="chips">{batch.map((it) => <a key={it.id} className={`item-link k-${it.kind}`} href={`#/item/${encodeURIComponent(it.id)}`}>{label(it)}</a>)}</p>
         <p className="muted">First reviews arrive in about 4 hours.</p>
-        <div className="row">
-          {more > 0 && <button type="button" className="btn btn-primary" onClick={again}>Next batch ({more})</button>}
-          <a className={`btn ${more > 0 ? 'btn-quiet' : 'btn-primary'}`} href="#/">Home</a>
-        </div>
+        <NextSteps {...(path === 'grammar' ? { onGrammar: again } : { onLessons: again })} />
       </div>
     );
   }
@@ -107,7 +104,8 @@ export function Lessons({ path = 'vocab' }: { path?: LessonPath }): JSX.Element 
           <div className="page narrow summary" data-testid="quiz-done">
             <h1>Quiz passed</h1>
             <p className="muted">{others.length} item{others.length === 1 ? '' : 's'} will enter your review schedule.</p>
-            <button type="button" className="btn btn-primary" onClick={finishQuiz} disabled={completing} autoFocus>Finish lessons</button>
+            <button type="button" className="btn btn-primary" onClick={finishQuiz} disabled={completing} autoFocus>Finish lessons <kbd>→</kbd></button>
+            <ArrowRightDoes run={finishQuiz} />
           </div>
         )}
       />
