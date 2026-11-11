@@ -68,3 +68,24 @@ export {
   type BaselineBlob, type SessionRowRec, type SessionRecord, type SessionSource, type LastExport, type MasterExt,
   type AppWord, type MasterInputs,
 } from './master.ts';
+
+// Anki-style drill (D78–D84): FSRS-5 scheduling, event-derived state, queue and counts.
+export type { DrillCardId } from './events.ts';
+export { DRILL_CARD_RE } from './events.ts';
+export {
+  FSRS5_DEFAULT_W, DEFAULT_FSRS_PARAMS, DEFAULT_RETENTION, MAX_IVL_DAYS, RATINGS, RATING_LABELS, DECAY, FACTOR,
+  retrievability, rawInterval, nextIntervalDays, initStability, initDifficulty, nextDifficulty, recallStability,
+  forgetStability, shortTermStability, nextMemory, fuzzRange, fuzzFactor, applyFuzz, newCardSched, scheduleAll, schedule,
+  formatInterval, type Rating, type FsrsParams, type CardSched, type CardPhase,
+} from './drill/fsrs.ts';
+export {
+  replayDrill, applyDrillEvents, emptyDrillState, drillParams, parseCardId, drillCardId, isDrillEvent, isDrillRelevant,
+  REVERSE_UNLOCK_DAYS, MATURE_DAYS,
+  type DrillState, type DrillCard, type DrillReviewRec, type DrillPlacement, type DrillDir,
+} from './drill/state.ts';
+export {
+  tierOf, dueLearning, dueReviews, nextLearningDue, newIntroducedToday, reviewsToday, drillRetention, unseenForward,
+  unseenByTier, effectiveStartTier, reverseNewIds, newLeftToday, drillCounts, newForwardIds, mixNew, pickNext, afterAnswer,
+  LEARN_AHEAD_MS,
+  type DeckMeta, type DeckTier, type DrillDay, type DrillCounts, type DrillSettingsView, type DrillSession, type DrillPick, type PickSource,
+} from './drill/queue.ts';

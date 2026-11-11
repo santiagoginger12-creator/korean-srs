@@ -33,7 +33,19 @@ export type EventPayload =
   | { type: 'userAnswer.add' | 'userAnswer.remove'; itemId: ItemId; qtype: QuestionType; answer: string }
   | { type: 'settings.set'; key: SettingKey; value: unknown }
   | { type: 'customItem.upsert'; item: Item } // user, CSV, and KRDict items
-  | { type: 'customItem.delete'; itemId: ItemId };
+  | { type: 'customItem.delete'; itemId: ItemId }
+  // Anki-style drill (D78–D80). Added after M1 with no version bump: an older app's validator
+  // rejects these as "unknown type", so sync and restore quarantine them (kept, never dropped)
+  // and they move into the log once that device updates (AppStore.resolveQuarantine).
+  | { type: 'drill.review'; cardId: DrillCardId; rating: 1 | 2 | 3 | 4; durationMs?: number }
+  | { type: 'drill.undo'; targetId: string } // voids one drill.review or drill.known
+  | { type: 'drill.known'; cardIds: DrillCardId[]; reason?: string } // placement / "I already know this"
+  | { type: 'drill.reset'; cardIds?: DrillCardId[] }; // back to new; no cardIds = the whole drill
+
+/** `<wordId>:f` (Korean → English) or `<wordId>:r` (English → Korean). */
+export type DrillCardId = string;
+export const DRILL_CARD_RE = /^[A-Za-z0-9_-]{1,40}:[fr]$/;
+export const DRILL_MAX_CARDS_PER_EVENT = 30_000;
 
 export type AppEvent = EventBase & EventPayload;
 export type EventType = EventPayload['type'];
@@ -155,6 +167,8 @@ const isStr = (x: unknown): x is string => typeof x === 'string';
 const isNonEmptyStr = (x: unknown): x is string => typeof x === 'string' && x.length > 0;
 const isQType = (x: unknown): x is QuestionType => QUESTION_TYPES.includes(x as QuestionType);
 const HLC_RE = /^[0-9a-z]{9}\.[0-9a-z]{4}\..+$/;
+const isCardList = (x: unknown, allowEmpty: boolean): x is string[] => Array.isArray(x) && (allowEmpty || x.length > 0)
+  && x.length <= DRILL_MAX_CARDS_PER_EVENT && x.every((c) => isStr(c) && DRILL_CARD_RE.test(c));
 const ITEM_KINDS = new Set(['vocab', 'grammar', 'expression', 'hanja']);
 
 /**
@@ -233,6 +247,24 @@ export function validateEvent(raw: unknown, lookup?: (id: string) => AppEvent | 
     }
     case 'customItem.delete':
       err = needItem();
+      break;
+    case 'drill.review':
+      if (!isStr(raw.cardId) || !DRILL_CARD_RE.test(raw.cardId)) err = 'bad cardId';
+      else if (!isInt(raw.rating, 1, 4)) err = 'bad rating';
+      else if (raw.durationMs !== undefined && (typeof raw.durationMs !== 'number' || !Number.isFinite(raw.durationMs) || raw.durationMs < 0)) err = 'bad durationMs';
+      break;
+    case 'drill.undo': {
+      if (!isNonEmptyStr(raw.targetId)) { err = 'missing targetId'; break; }
+      if (raw.targetId === raw.id) { err = 'undo of itself'; break; }
+      const t = lookup?.(raw.targetId);
+      if (t && t.type !== 'drill.review' && t.type !== 'drill.known') err = 'undo target is not a drill answer';
+      break;
+    }
+    case 'drill.known':
+      err = isCardList(raw.cardIds, false) ? (raw.reason === undefined || (isStr(raw.reason) && raw.reason.length <= 64) ? null : 'bad reason') : 'bad cardIds';
+      break;
+    case 'drill.reset':
+      err = raw.cardIds === undefined || isCardList(raw.cardIds, true) ? null : 'bad cardIds';
       break;
     default:
       err = `unknown type ${String(raw.type)}`;
