@@ -182,7 +182,7 @@
       },
       { "ko": "대체 무슨 말을 했길래 걔가 저렇게 화가 났어?", "en": "What on earth did you say to make her that angry?", "register": "spoken" }
     ],
-    "questionTypes": ["cloze", "nuance", "register"],
+    "questionTypes": ["cloze", "nuance"],
     "questions": {
       "cloze": [
         {
@@ -291,36 +291,6 @@
             { "text": "네가 좋아하는 빵이 보이는 통에 하나 사 왔어.", "correct": false, "why": "-는 통에 blames a commotion for an unwanted result. Spotting a pastry is neither." }
           ]
         }
-      ],
-      "register": [
-        {
-          "id": "r1",
-          "from": "written",
-          "to": "spoken",
-          "source": "평소보다 길이 많이 막히기에 지하철로 갈아탔다.",
-          "accepted": ["평소보다 길이 많이 막히길래 지하철로 갈아탔어요.", "평소보다 길이 많이 막히길래 지하철로 갈아탔어.", "평소보다 길이 너무 막히길래 지하철로 갈아탔어요."],
-          "features": [
-            { "kind": "contains", "any": ["길래"], "scope": "all", "label": "Use the colloquial -길래, not written -기에" },
-            { "kind": "endsWith", "any": ["요", "어"], "label": "Use a spoken ending (-아/어 or -아/어요), not written -다" }
-          ],
-          "coreWords": ["평소", "길이", "막히길래", "지하철", "갈아탔"],
-          "particleTolerance": "loose",
-          "finalPunctOptional": true
-        },
-        {
-          "id": "r2",
-          "from": "spoken",
-          "to": "written",
-          "source": "가격이 너무 싸길래 두 개나 샀어요.",
-          "accepted": ["가격이 너무 싸기에 두 개나 샀다.", "가격이 매우 싸기에 두 개나 샀다."],
-          "features": [
-            { "kind": "contains", "any": ["기에"], "scope": "all", "label": "Use written -기에, not colloquial -길래" },
-            { "kind": "endsWith", "any": ["다"], "label": "Use the written -다 ending" }
-          ],
-          "coreWords": ["가격", "싸기에", "두", "샀"],
-          "particleTolerance": "loose",
-          "finalPunctOptional": true
-        }
       ]
     }
   },
@@ -356,7 +326,7 @@
       },
       { "ko": "오랜만에 모이는 자리니만큼 다들 시간 맞춰 와 주세요.", "en": "Since it's been a while since we all got together, please be on time.", "register": "neutral" }
     ],
-    "questionTypes": ["cloze", "nuance", "register"],
+    "questionTypes": ["cloze", "nuance"],
     "questions": {
       "cloze": [
         {
@@ -479,40 +449,6 @@
             }
           ]
         }
-      ],
-      "register": [
-        {
-          "id": "r1",
-          "from": "haeyo",
-          "to": "hapsyo",
-          "source": "올해 마지막 회의니만큼 한 분도 빠짐없이 참석해 주세요.",
-          "accepted": [
-            "올해 마지막 회의니만큼 한 분도 빠짐없이 참석해 주십시오.",
-            "올해 마지막 회의이니만큼 한 분도 빠짐없이 참석해 주십시오.",
-            "올해 마지막 회의니만큼 한 분도 빠짐없이 참석해 주시기 바랍니다."
-          ],
-          "features": [
-            { "kind": "endsWith", "any": ["십시오", "ㅂ니다"], "label": "Use a 합쇼체 request (-(으)십시오 or -시기 바랍니다)" },
-            { "kind": "contains", "any": ["만큼"], "scope": "all", "label": "Keep the -(으)니만큼 clause" }
-          ],
-          "coreWords": ["마지막", "회의", "만큼", "빠짐없이", "참석"],
-          "particleTolerance": "allomorph",
-          "finalPunctOptional": true
-        },
-        {
-          "id": "r2",
-          "from": "written",
-          "to": "hapsyo",
-          "source": "이번 조사는 공정성이 생명이니만큼 외부 전문가를 참여시켜야 한다.",
-          "accepted": ["이번 조사는 공정성이 생명이니만큼 외부 전문가를 참여시켜야 합니다.", "이번 조사는 공정성이 생명이니만큼 외부 전문가를 참여시켜야 하겠습니다."],
-          "features": [
-            { "kind": "endsWith", "any": ["ㅂ니다", "습니다"], "label": "Ending must be 합쇼체 (-ㅂ니다/-습니다)" },
-            { "kind": "contains", "any": ["만큼"], "scope": "all", "label": "Keep the -(으)니만큼 clause" }
-          ],
-          "coreWords": ["조사", "공정성", "생명", "만큼", "외부", "전문가", "참여"],
-          "particleTolerance": "allomorph",
-          "finalPunctOptional": true
-        }
       ]
     }
   },
@@ -545,7 +481,7 @@
       { "ko": "한 달에 이틀밖에 못 쉬었으니 사실상 매일 출근한 셈이다.", "en": "I only had two days off all month, so in effect I went to work every day.", "register": "written" },
       { "ko": "할인 쿠폰까지 쓰면 반값에 산 셈이에요.", "en": "With the coupon on top, you've basically bought it at half price.", "register": "neutral" }
     ],
-    "questionTypes": ["cloze", "nuance", "register"],
+    "questionTypes": ["cloze", "nuance"],
     "questions": {
       "cloze": [
         {
@@ -654,36 +590,6 @@
             { "text": "그냥 기부한 셈 치려고.", "correct": true, "why": "셈 치다 is the set frame for \"treat it as\": count it as a donation." },
             { "text": "그냥 기부한 격 치려고.", "correct": false, "why": "격 has no \"treat it as\" use; that frame belongs to 셈 (셈 치다)." }
           ]
-        }
-      ],
-      "register": [
-        {
-          "id": "r1",
-          "from": "hae",
-          "to": "hapsyo",
-          "source": "이번 분기 목표는 거의 다 채운 셈이야.",
-          "accepted": ["이번 분기 목표는 거의 다 채운 셈입니다.", "이번 분기 목표를 거의 다 채운 셈입니다."],
-          "features": [
-            { "kind": "endsWith", "any": ["ㅂ니다"], "label": "Ending must be 합쇼체 (-ㅂ니다)" },
-            { "kind": "contains", "any": ["셈"], "scope": "all", "label": "Keep the -(으)ㄴ 셈이다 ending" }
-          ],
-          "coreWords": ["분기", "목표", "채운", "셈"],
-          "particleTolerance": "allomorph",
-          "finalPunctOptional": true
-        },
-        {
-          "id": "r2",
-          "from": "written",
-          "to": "hae",
-          "source": "결국 사흘 동안 한숨도 못 잔 셈이다.",
-          "accepted": ["결국 사흘 동안 한숨도 못 잔 셈이야.", "결국 사흘이나 한숨도 못 잔 셈이야."],
-          "features": [
-            { "kind": "endsWith", "any": ["야"], "label": "Use 반말 (-야), not written -다" },
-            { "kind": "contains", "any": ["셈"], "scope": "all", "label": "Keep the -(으)ㄴ 셈이다 ending" }
-          ],
-          "coreWords": ["사흘", "한숨", "잔", "셈"],
-          "particleTolerance": "allomorph",
-          "finalPunctOptional": true
         }
       ]
     }
@@ -1067,7 +973,7 @@
       },
       { "ko": "처음엔 누구나 헤매기 마련이니까 너무 걱정하지 마세요.", "en": "Everyone fumbles around at first, so don't worry too much.", "register": "neutral" }
     ],
-    "questionTypes": ["cloze", "nuance", "register"],
+    "questionTypes": ["cloze", "nuance"],
     "questions": {
       "cloze": [
         {
@@ -1255,36 +1161,6 @@
               "why": "-는 격이다 likens a situation to a stock scenario such as a proverb; it doesn't state a general truth."
             }
           ]
-        }
-      ],
-      "register": [
-        {
-          "id": "r1",
-          "from": "written",
-          "to": "haeyo",
-          "source": "소문은 퍼질수록 부풀려지기 마련이다.",
-          "accepted": ["소문은 퍼질수록 부풀려지기 마련이에요.", "소문은 퍼질수록 부풀려지기 마련이죠.", "소문은 퍼질수록 부풀려지게 마련이에요."],
-          "features": [
-            { "kind": "endsWith", "any": ["요"], "label": "Use 해요체 (-에요/-죠), not written -다" },
-            { "kind": "contains", "any": ["마련"], "scope": "all", "label": "Keep -기 마련이다" }
-          ],
-          "coreWords": ["소문", "퍼질수록", "부풀려지", "마련"],
-          "particleTolerance": "allomorph",
-          "finalPunctOptional": true
-        },
-        {
-          "id": "r2",
-          "from": "haeyo",
-          "to": "written",
-          "source": "가까운 사이일수록 서운한 일도 생기기 마련이에요.",
-          "accepted": ["가까운 사이일수록 서운한 일도 생기기 마련이다.", "가까운 사이일수록 서운한 일도 생기게 마련이다."],
-          "features": [
-            { "kind": "endsWith", "any": ["다"], "label": "Use the written -다 ending" },
-            { "kind": "contains", "any": ["마련"], "scope": "all", "label": "Keep -기 마련이다" }
-          ],
-          "coreWords": ["사이일수록", "서운한", "생기", "마련"],
-          "particleTolerance": "allomorph",
-          "finalPunctOptional": true
         }
       ]
     }

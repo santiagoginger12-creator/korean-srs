@@ -72,8 +72,7 @@
     ],
     "questionTypes": [
       "cloze",
-      "nuance",
-      "register"
+      "nuance"
     ],
     "questions": {
       "cloze": [
@@ -229,36 +228,6 @@
               "why": "The crowd is something you witnessed: a typical -더라 report."
             }
           ]
-        }
-      ],
-      "register": [
-        {
-          "id": "r1",
-          "from": "hae",
-          "to": "haeyo",
-          "source": "이 동네 집값이 생각보다 비싸더라.",
-          "accepted": [
-            "이 동네 집값이 생각보다 비싸더라고요.",
-            "이 동네 집값이 생각보다 비싸더군요."
-          ],
-          "features": [
-            {
-              "kind": "endsWith",
-              "any": [
-                "더라고요",
-                "더군요"
-              ],
-              "label": "Polite retrospective is -더라고요 (or -더군요)"
-            }
-          ],
-          "coreWords": [
-            "동네",
-            "집값",
-            "생각보다",
-            "비싸더"
-          ],
-          "particleTolerance": "allomorph",
-          "finalPunctOptional": true
         }
       ]
     }
@@ -2349,8 +2318,7 @@
     ],
     "questionTypes": [
       "cloze",
-      "nuance",
-      "register"
+      "nuance"
     ],
     "questions": {
       "cloze": [
@@ -2527,47 +2495,6 @@
               "why": "Adjective + -다니까: correct."
             }
           ]
-        }
-      ],
-      "register": [
-        {
-          "id": "r1",
-          "from": "hae",
-          "to": "haeyo",
-          "source": "내가 할 수 있다니까.",
-          "accepted": [
-            "제가 할 수 있다니까요."
-          ],
-          "features": [
-            {
-              "kind": "endsWith",
-              "any": [
-                "요"
-              ],
-              "label": "Ending must be 해요체 (-요)"
-            },
-            {
-              "kind": "contains",
-              "any": [
-                "다니까"
-              ],
-              "scope": "all",
-              "label": "Keep the -다니까 insistence"
-            },
-            {
-              "kind": "notContains",
-              "any": [
-                "내가"
-              ],
-              "scope": "all",
-              "label": "Use the humble 제가 in 해요체"
-            }
-          ],
-          "coreWords": [
-            "할 수 있다니까"
-          ],
-          "particleTolerance": "allomorph",
-          "finalPunctOptional": true
         }
       ]
     }

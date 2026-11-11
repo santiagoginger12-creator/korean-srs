@@ -72,8 +72,7 @@
     ],
     "questionTypes": [
       "cloze",
-      "nuance",
-      "register"
+      "nuance"
     ],
     "questions": {
       "cloze": [
@@ -248,47 +247,6 @@
               "why": "-(으)므로 takes no 써; 써 belongs to the particle (으)로써, \"by means of\"."
             }
           ]
-        }
-      ],
-      "register": [
-        {
-          "id": "r1",
-          "from": "haera",
-          "to": "hapsyo",
-          "source": "기상 악화가 예상되므로 오늘 야외 행사는 취소한다.",
-          "accepted": [
-            "기상 악화가 예상되므로 오늘 야외 행사는 취소합니다.",
-            "기상 악화가 예상되므로 오늘 야외 행사는 취소하겠습니다.",
-            "기상 악화가 예상되므로 오늘 야외 행사를 취소합니다."
-          ],
-          "features": [
-            {
-              "kind": "endsWith",
-              "any": [
-                "ㅂ니다",
-                "습니다"
-              ],
-              "label": "Ending must be 합쇼체 (-ㅂ니다/-습니다)"
-            },
-            {
-              "kind": "contains",
-              "any": [
-                "므로"
-              ],
-              "scope": "all",
-              "label": "Keep the -(으)므로 clause"
-            }
-          ],
-          "coreWords": [
-            "기상",
-            "악화",
-            "예상되므로",
-            "야외",
-            "행사",
-            "취소"
-          ],
-          "particleTolerance": "allomorph",
-          "finalPunctOptional": true
         }
       ]
     }
@@ -2346,8 +2304,7 @@
     ],
     "questionTypes": [
       "cloze",
-      "nuance",
-      "register"
+      "nuance"
     ],
     "questions": {
       "cloze": [
@@ -2537,41 +2494,6 @@
               "why": "-(으)ㄹ걸요 is a guess (\"I bet they'll study more\"); it doesn't express regret."
             }
           ]
-        }
-      ],
-      "register": [
-        {
-          "id": "r1",
-          "from": "hae",
-          "to": "haeyo",
-          "source": "그냥 집에 있을걸 그랬어.",
-          "accepted": [
-            "그냥 집에 있을걸 그랬어요.",
-            "그냥 집에 있을걸 그랬네요."
-          ],
-          "features": [
-            {
-              "kind": "endsWith",
-              "any": [
-                "요"
-              ],
-              "label": "Ending must be 해요체 (-요)"
-            },
-            {
-              "kind": "contains",
-              "any": [
-                "그랬"
-              ],
-              "scope": "all",
-              "label": "Keep 그랬- (있을걸요 alone would be a guess, not regret)"
-            }
-          ],
-          "coreWords": [
-            "집에",
-            "있을걸"
-          ],
-          "particleTolerance": "allomorph",
-          "finalPunctOptional": true
         }
       ]
     }

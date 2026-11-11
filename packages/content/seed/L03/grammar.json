@@ -34,7 +34,7 @@
         "register": "written"
       }
     ],
-    "questionTypes": ["cloze", "nuance", "register"],
+    "questionTypes": ["cloze", "nuance"],
     "questions": {
       "cloze": [
         {
@@ -151,40 +151,6 @@
             { "text": "너무 긴장하는 나머지 준비한 말을 다 잊어버렸대.", "correct": false, "why": "-(으)ㄴ 나머지 always takes -(으)ㄴ: 긴장한 나머지." },
             { "text": "너무 긴장한 덕분에 준비한 말을 다 잊어버렸대.", "correct": false, "why": "덕분에 credits a cause for a good result; blanking on your talk isn't one." }
           ]
-        }
-      ],
-      "register": [
-        {
-          "id": "r1",
-          "from": "written",
-          "to": "haeyo",
-          "source": "그는 당황한 나머지 엉뚱한 대답을 하고 말았다.",
-          "accepted": [
-            "그 사람은 당황한 나머지 엉뚱한 대답을 하고 말았어요.",
-            "그 사람은 당황한 나머지 엉뚱한 대답을 해 버렸어요.",
-            "걔는 당황한 나머지 엉뚱한 대답을 하고 말았어요."
-          ],
-          "features": [
-            { "kind": "endsWith", "any": ["요"], "label": "Use 해요체, not written -다" },
-            { "kind": "notContains", "any": ["그는"], "scope": "all", "label": "그는 is written-only; say 그 사람은 (or 걔는)" }
-          ],
-          "coreWords": ["당황한", "나머지", "엉뚱한", "대답"],
-          "particleTolerance": "loose",
-          "finalPunctOptional": true
-        },
-        {
-          "id": "r2",
-          "from": "haeyo",
-          "to": "written",
-          "source": "합격 소식에 너무 기쁜 나머지 눈물이 났어요.",
-          "accepted": ["합격 소식에 너무 기쁜 나머지 눈물이 났다.", "합격 소식에 너무 기쁜 나머지 눈물이 흘렀다."],
-          "features": [
-            { "kind": "endsWith", "any": ["다"], "label": "Use the written -다 ending" },
-            { "kind": "contains", "any": ["나머지"], "scope": "all", "label": "Keep the -(으)ㄴ 나머지 clause" }
-          ],
-          "coreWords": ["합격", "기쁜", "나머지", "눈물"],
-          "particleTolerance": "allomorph",
-          "finalPunctOptional": true
         }
       ]
     }
@@ -662,7 +628,7 @@
       },
       { "ko": "이번 프로젝트는 무슨 일이 있어도 성공시키고 말 거야.", "en": "Whatever happens, I'm going to make this project succeed.", "register": "spoken" }
     ],
-    "questionTypes": ["cloze", "nuance", "register"],
+    "questionTypes": ["cloze", "nuance"],
     "questions": {
       "cloze": [
         {
@@ -783,37 +749,6 @@
             { "text": "참으려고 했는데 결국 라면을 먹고 말겠어.", "correct": false, "why": "-고 말겠다 is a vow; it can't report something that already happened." },
             { "text": "참으려고 했는데 결국 라면을 먹기 십상이었어.", "correct": false, "why": "-기 십상이다 says something was likely; it doesn't report that it happened." }
           ]
-        }
-      ],
-      "register": [
-        {
-          "id": "r1",
-          "from": "haeyo",
-          "to": "hapsyo",
-          "source": "여러 번 확인했는데도 결국 실수를 하고 말았어요.",
-          "accepted": ["여러 번 확인했는데도 결국 실수를 하고 말았습니다.", "여러 번 확인했음에도 결국 실수를 하고 말았습니다."],
-          "features": [
-            { "kind": "endsWith", "any": ["습니다"], "label": "Ending must be 합쇼체 (-습니다)" },
-            { "kind": "contains", "any": ["고 말"], "scope": "all", "label": "Keep the -고 말다 ending" }
-          ],
-          "coreWords": ["확인했", "결국", "실수", "말았"],
-          "particleTolerance": "allomorph",
-          "finalPunctOptional": true
-        },
-        {
-          "id": "r2",
-          "from": "written",
-          "to": "hae",
-          "source": "그는 끝내 고향으로 돌아가고 말았다.",
-          "accepted": ["그 사람은 끝내 고향으로 돌아가고 말았어.", "걔는 끝내 고향으로 돌아가고 말았어.", "그 사람은 결국 고향으로 돌아가고 말았어."],
-          "features": [
-            { "kind": "endsWith", "any": ["어"], "label": "Use 반말 (-어), not written -다" },
-            { "kind": "contains", "any": ["고 말"], "scope": "all", "label": "Keep the -고 말다 ending" },
-            { "kind": "notContains", "any": ["그는"], "scope": "all", "label": "그는 is written-only; say 그 사람은 (or 걔는)" }
-          ],
-          "coreWords": ["고향", "돌아가고", "말았"],
-          "particleTolerance": "loose",
-          "finalPunctOptional": true
         }
       ]
     }
@@ -1436,7 +1371,7 @@
         "register": "written"
       }
     ],
-    "questionTypes": ["cloze", "nuance", "register"],
+    "questionTypes": ["cloze", "nuance"],
     "questions": {
       "cloze": [
         {
@@ -1555,41 +1490,6 @@
               "why": "-(으)ㄹ지언정 marks the hardship you accept, so it says you'd buy it and also not buy it."
             }
           ]
-        }
-      ],
-      "register": [
-        {
-          "id": "r1",
-          "from": "haeyo",
-          "to": "hapsyo",
-          "source": "어설프게 고치느니 차라리 처음부터 다시 만드는 게 나아요.",
-          "accepted": ["어설프게 고치느니 차라리 처음부터 다시 만드는 것이 낫습니다.", "어설프게 고치느니 차라리 처음부터 다시 만드는 게 낫습니다."],
-          "features": [
-            { "kind": "endsWith", "any": ["ㅂ니다", "습니다"], "label": "Ending must be 합쇼체 (-ㅂ니다/-습니다)" },
-            { "kind": "contains", "any": ["느니"], "scope": "all", "label": "Keep the -느니 clause" }
-          ],
-          "coreWords": ["어설프게", "고치느니", "처음부터", "만드는", "낫"],
-          "particleTolerance": "allomorph",
-          "finalPunctOptional": true
-        },
-        {
-          "id": "r2",
-          "from": "hae",
-          "to": "hapsyo",
-          "source": "그 사람한테 고개를 숙이느니 차라리 회사를 그만둘 거야.",
-          "accepted": [
-            "그 사람한테 고개를 숙이느니 차라리 회사를 그만두겠습니다.",
-            "그 사람한테 고개를 숙이느니 차라리 회사를 그만둘 겁니다.",
-            "그 사람에게 고개를 숙이느니 차라리 회사를 그만두겠습니다.",
-            "그분께 고개를 숙이느니 차라리 회사를 그만두겠습니다."
-          ],
-          "features": [
-            { "kind": "endsWith", "any": ["ㅂ니다", "습니다"], "label": "Ending must be 합쇼체 (-ㅂ니다/-습니다)" },
-            { "kind": "contains", "any": ["느니"], "scope": "all", "label": "Keep the -느니 clause" }
-          ],
-          "coreWords": ["고개", "숙이느니", "회사", "그만"],
-          "particleTolerance": "allomorph",
-          "finalPunctOptional": true
         }
       ]
     }

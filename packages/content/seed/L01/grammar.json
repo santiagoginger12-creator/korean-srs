@@ -193,7 +193,7 @@
         "register": "written"
       }
     ],
-    "questionTypes": ["cloze", "nuance", "register"],
+    "questionTypes": ["cloze", "nuance"],
     "questions": {
       "cloze": [
         {
@@ -317,36 +317,6 @@
               "why": "덕분에 credits a cause for a good result. Shops closing is bad news, so it reads as callous sarcasm."
             }
           ]
-        }
-      ],
-      "register": [
-        {
-          "id": "r1",
-          "from": "haeyo",
-          "to": "hapsyo",
-          "source": "제가 확인을 제대로 안 한 탓에 일정이 늦어졌어요.",
-          "accepted": ["제가 확인을 제대로 안 한 탓에 일정이 늦어졌습니다.", "제가 확인을 제대로 하지 않은 탓에 일정이 늦어졌습니다."],
-          "features": [
-            { "kind": "endsWith", "any": ["ㅂ니다", "습니다"], "label": "Ending must be 합쇼체 (-ㅂ니다/-습니다)" },
-            { "kind": "contains", "any": ["탓에"], "scope": "all", "label": "Keep the -(으)ㄴ 탓에 clause" }
-          ],
-          "coreWords": ["확인", "탓에", "일정", "늦어졌"],
-          "particleTolerance": "allomorph",
-          "finalPunctOptional": true
-        },
-        {
-          "id": "r2",
-          "from": "written",
-          "to": "haeyo",
-          "source": "밤늦게까지 휴대폰을 본 탓에 아침에 늦잠을 잤다.",
-          "accepted": ["밤늦게까지 휴대폰을 본 탓에 아침에 늦잠을 잤어요.", "밤늦게까지 핸드폰을 본 탓에 아침에 늦잠을 잤어요."],
-          "features": [
-            { "kind": "endsWith", "any": ["요"], "label": "Use 해요체, not written -다" },
-            { "kind": "contains", "any": ["탓에"], "scope": "all", "label": "Keep the -(으)ㄴ 탓에 clause" }
-          ],
-          "coreWords": ["밤늦게까지", "본", "탓에", "늦잠"],
-          "particleTolerance": "allomorph",
-          "finalPunctOptional": true
         }
       ]
     }
@@ -537,7 +507,7 @@
       },
       { "ko": "그 방법은 시간이 오래 걸릴뿐더러 비용도 만만치 않아요.", "en": "That approach takes a long time, and it isn't cheap either.", "register": "neutral" }
     ],
-    "questionTypes": ["cloze", "nuance", "register"],
+    "questionTypes": ["cloze", "nuance"],
     "questions": {
       "cloze": [
         {
@@ -668,36 +638,6 @@
               "why": "Late deliveries cut against the low price. -(으)ㄹ뿐더러 needs both points pulling the same way."
             }
           ]
-        }
-      ],
-      "register": [
-        {
-          "id": "r1",
-          "from": "haeyo",
-          "to": "hapsyo",
-          "source": "이번 개편안은 비용이 많이 들뿐더러 현장 의견도 반영하지 않았어요.",
-          "accepted": ["이번 개편안은 비용이 많이 들뿐더러 현장 의견도 반영하지 않았습니다.", "이번 개편안은 비용이 많이 들뿐더러 현장의 의견도 반영하지 않았습니다."],
-          "features": [
-            { "kind": "endsWith", "any": ["ㅂ니다", "습니다"], "label": "Ending must be 합쇼체 (-ㅂ니다/-습니다)" },
-            { "kind": "contains", "any": ["뿐더러"], "scope": "all", "label": "Keep the -(으)ㄹ뿐더러 clause" }
-          ],
-          "coreWords": ["개편안", "비용", "들뿐더러", "현장", "의견", "반영"],
-          "particleTolerance": "allomorph",
-          "finalPunctOptional": true
-        },
-        {
-          "id": "r2",
-          "from": "written",
-          "to": "haeyo",
-          "source": "그 후보는 경험이 부족할뿐더러 공약도 구체적이지 않다.",
-          "accepted": ["그 후보는 경험이 부족할뿐더러 공약도 구체적이지 않아요.", "그 후보는 경험이 부족할뿐더러 공약도 구체적이지 않네요."],
-          "features": [
-            { "kind": "endsWith", "any": ["요"], "label": "Use 해요체, not written -다" },
-            { "kind": "contains", "any": ["뿐더러"], "scope": "all", "label": "Keep the -(으)ㄹ뿐더러 clause" }
-          ],
-          "coreWords": ["후보", "경험", "부족할뿐더러", "공약", "구체적"],
-          "particleTolerance": "allomorph",
-          "finalPunctOptional": true
         }
       ]
     }
@@ -1357,7 +1297,7 @@
       },
       { "ko": "그는 질지언정 비겁한 방법은 쓰지 않는 선수였다.", "en": "He was the kind of player who'd rather lose than win dirty.", "register": "written" }
     ],
-    "questionTypes": ["cloze", "nuance", "register"],
+    "questionTypes": ["cloze", "nuance"],
     "questions": {
       "cloze": [
         {
@@ -1478,46 +1418,6 @@
               "why": "-는 바람에 reports a sudden cause of something that already happened; it can't concede, and no request can follow it."
             }
           ]
-        }
-      ],
-      "register": [
-        {
-          "id": "r1",
-          "from": "hae",
-          "to": "hapsyo",
-          "source": "회사를 그만둘지언정 부당한 지시는 따르지 않을 거야.",
-          "accepted": [
-            "회사를 그만둘지언정 부당한 지시는 따르지 않겠습니다.",
-            "회사를 그만둘지언정 부당한 지시는 따르지 않을 것입니다.",
-            "회사를 그만둘지언정 부당한 지시는 따르지 않을 겁니다."
-          ],
-          "features": [
-            { "kind": "endsWith", "any": ["ㅂ니다", "습니다"], "label": "Ending must be 합쇼체 (-ㅂ니다/-습니다)" },
-            { "kind": "contains", "any": ["지언정"], "scope": "all", "label": "Keep the -(으)ㄹ지언정 clause" }
-          ],
-          "coreWords": ["그만둘지언정", "부당한", "지시", "따르지"],
-          "particleTolerance": "allomorph",
-          "finalPunctOptional": true
-        },
-        {
-          "id": "r2",
-          "from": "hapsyo",
-          "to": "hae",
-          "source": "저는 해고를 당할지언정 장부를 조작하지는 않겠습니다.",
-          "accepted": [
-            "나는 해고를 당할지언정 장부를 조작하지는 않을 거야.",
-            "나는 해고를 당할지언정 장부를 조작하지는 않겠어.",
-            "난 해고를 당할지언정 장부를 조작하지는 않을 거야.",
-            "난 해고를 당할지언정 장부를 조작하지는 않겠어."
-          ],
-          "features": [
-            { "kind": "endsWith", "any": ["어", "야"], "label": "Use 반말 (-어 / -(으)ㄹ 거야)" },
-            { "kind": "contains", "any": ["지언정"], "scope": "all", "label": "Keep the -(으)ㄹ지언정 clause" },
-            { "kind": "notContains", "any": ["저는", "전 "], "scope": "all", "label": "In 반말, 저 becomes 나" }
-          ],
-          "coreWords": ["해고", "당할지언정", "장부", "조작"],
-          "particleTolerance": "allomorph",
-          "finalPunctOptional": true
         }
       ]
     }

@@ -801,8 +801,7 @@
     ],
     "questionTypes": [
       "cloze",
-      "nuance",
-      "register"
+      "nuance"
     ],
     "questions": {
       "cloze": [
@@ -965,43 +964,6 @@
               "why": "-(으)ㄹ걸 그랬다 voices wistful regret; it doesn't scold your sibling."
             }
           ]
-        }
-      ],
-      "register": [
-        {
-          "id": "r1",
-          "from": "haeyo",
-          "to": "hapsyo",
-          "source": "제가 좀 더 신중했어야 했어요.",
-          "accepted": [
-            "제가 좀 더 신중했어야 했습니다.",
-            "제가 더 신중했어야 했습니다."
-          ],
-          "features": [
-            {
-              "kind": "endsWith",
-              "any": [
-                "ㅂ니다",
-                "습니다"
-              ],
-              "label": "Ending must be 합쇼체 (-ㅂ니다/-습니다)"
-            },
-            {
-              "kind": "contains",
-              "any": [
-                "었어야",
-                "했어야"
-              ],
-              "scope": "all",
-              "label": "Keep the -았/었어야 (should have) form"
-            }
-          ],
-          "coreWords": [
-            "제가",
-            "신중했어야"
-          ],
-          "particleTolerance": "allomorph",
-          "finalPunctOptional": true
         }
       ]
     }
@@ -2270,8 +2232,7 @@
     ],
     "questionTypes": [
       "cloze",
-      "nuance",
-      "register"
+      "nuance"
     ],
     "questions": {
       "cloze": [
@@ -2413,44 +2374,6 @@
               "why": "The polite form is -지 뭐예요."
             }
           ]
-        }
-      ],
-      "register": [
-        {
-          "id": "r1",
-          "from": "haeyo",
-          "to": "hae",
-          "source": "글쎄 지갑을 집에 두고 왔지 뭐예요.",
-          "accepted": [
-            "글쎄 지갑을 집에 두고 왔지 뭐야.",
-            "지갑을 집에 두고 왔지 뭐야."
-          ],
-          "features": [
-            {
-              "kind": "endsWith",
-              "any": [
-                "뭐야"
-              ],
-              "label": "반말 narrative ending is -지 뭐야"
-            },
-            {
-              "kind": "notContains",
-              "any": [
-                "뭐요",
-                "뭐예요"
-              ],
-              "scope": "all",
-              "label": "Drop the polite ending"
-            }
-          ],
-          "coreWords": [
-            "지갑",
-            "집에",
-            "두고",
-            "왔지"
-          ],
-          "particleTolerance": "allomorph",
-          "finalPunctOptional": true
         }
       ]
     }
@@ -2742,8 +2665,7 @@
     ],
     "questionTypes": [
       "cloze",
-      "nuance",
-      "register"
+      "nuance"
     ],
     "questions": {
       "cloze": [
@@ -2903,42 +2825,6 @@
               "why": "No past tense before -느라고."
             }
           ]
-        }
-      ],
-      "register": [
-        {
-          "id": "r1",
-          "from": "haeyo",
-          "to": "hapsyo",
-          "source": "먼 길 오시느라 고생 많으셨어요.",
-          "accepted": [
-            "먼 길 오시느라 고생 많으셨습니다.",
-            "먼 길 오시느라 수고 많으셨습니다."
-          ],
-          "features": [
-            {
-              "kind": "endsWith",
-              "any": [
-                "ㅂ니다",
-                "습니다"
-              ],
-              "label": "Ending must be 합쇼체 (-ㅂ니다/-습니다)"
-            },
-            {
-              "kind": "contains",
-              "any": [
-                "시느라"
-              ],
-              "scope": "all",
-              "label": "Keep honorific 오시느라"
-            }
-          ],
-          "coreWords": [
-            "오시느라",
-            "많으셨"
-          ],
-          "particleTolerance": "allomorph",
-          "finalPunctOptional": true
         }
       ]
     }
