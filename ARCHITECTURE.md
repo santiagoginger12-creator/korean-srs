@@ -241,6 +241,10 @@ export type AppEvent = EventBase & (
   | { type: 'settings.set'; key: SettingKey; value: unknown }
   | { type: 'customItem.upsert'; item: Item }                           // user, CSV, and KRDict items
   | { type: 'customItem.delete'; itemId: ItemId }
+  // Added for the Anki-style drill (D80, still v1; older apps quarantine them until updated):
+  | { type: 'drill.review'; cardId: string /* <wordId>:f|r */; rating: 1 | 2 | 3 | 4; durationMs?: number }
+  | { type: 'drill.undo'; targetId: string } | { type: 'drill.known'; cardIds: string[]; reason?: string }
+  | { type: 'drill.reset'; cardIds?: string[] }
 );
 ```
 
@@ -371,6 +375,14 @@ Daily caps (`dailyLessonCap`): **one review budget T** (`targetReviewMin`, 45 mi
 - `leechScore = incorrectLast90d / max(1, streak)^1.5`. An item is a leech if the score is ≥ 3 and it has had ≥ 4 reviews. The trouble list is sorted by score, with actions: add a mnemonic note, reset to Apprentice 1 (`item.reset`), or drill in extra study.
 - **Extra study** draws from recent lessons, the trouble list, or a level/kind filter. It uses the same UI and checker, emits no events, and is labeled "practice — not scheduled".
 - **FSRS mode** maps outcomes as follows: 0 incorrect and 0 close → Good; 0 incorrect with ≥1 close → Hard; any incorrect → Again. For display, stages derive from the interval: `<1d` A1–4 by review count, `≥7d` Guru, `≥30d` Master, `≥120d` Enlightened, `≥365d` Burned. Gating uses `isGuruOrAbove`. Switching modes is a time-indexed `settings.set`.
+
+### 7.6 Anki-style drill (D78–D84)
+
+A separate flashcard program at `#/drill` over the 10,878-word bank (`packages/content/drill/deck.json`, built by `scripts/drill/build-deck.ts`). It shares storage, sync and backup but not state: `replayAll` ignores drill events, so WaniKani-style items, levels and lesson caps are unaffected.
+
+- **Engine** (`srs-engine/src/drill/`): `fsrs.ts` (FSRS-5 default weights, retention 0.9, max 36,500 d, steps 1m 10m / relearn 10m, seeded fuzz), `state.ts` (`replayDrill` / `applyDrillEvents`: cards keyed `<wordId>:f|r`, reviews, reverse unlocks at a 7-day forward interval, placements), `queue.ts` (counts, `pickNext` session order, new-card queue from `DeckMeta` tier id ranges).
+- **App:** `AppState.drill` is updated in `commit`, `ingestRemote`, `restore` and `rebuild`. `features/drill/` holds the page, the session and the answer modes (`modes/`, only `flip`). The deck is fetched lazily; its tier summary is compiled in (`__DRILL_META__`). NextSteps has a Drill destination (D); the dashboard has a Drill tile.
+- Owner guide: docs/DRILL.md.
 
 ---
 
@@ -561,7 +573,7 @@ Each device writes **only its own files**, so remote write conflicts are impossi
 
 ## 13. PWA and offline strategy
 
-- **Precache** (Workbox `generateSW`): app shell, JS/CSS, `content.bundle.json`, Pretendard Variable woff2, the Hanja subset font, and icons. `navigateFallback: index.html`.
+- **Precache** (Workbox `generateSW`): app shell, JS/CSS, `content.bundle.json`, `drill/deck.json` (fetched only by #/drill, D83), Pretendard Variable woff2, the Hanja subset font, and icons. `navigateFallback: index.html`.
 - **Hash routing** (`#/reviews`) means no server rewrites. Vite `base` comes from env: `/<repo>/` on GitHub Pages and `/` on Cloudflare Pages. The manifest uses relative `start_url: "./"` and `scope: "./"`, plus `display: standalone`, `lang: ko`, theme colors per scheme, and apple-touch-icon.
 - **Updates:** `registerType: 'prompt'`. A toast says "Update ready, reload when done." The app never auto-reloads during a session. Answers are durable events, so a reload mid-session loses nothing, and pending groups resume (§6.1).
 - **TTS:**

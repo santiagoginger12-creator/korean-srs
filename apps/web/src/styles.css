@@ -509,3 +509,6 @@ mark.ex-hit { background: var(--k-soft, var(--accent-soft)); color: inherit; bor
 .drill-wait { text-align: center; }
 .drill-summary .big-stat { margin-top: 8px; }
 @media (hover: none) { .drill-rate kbd, .drill-show kbd, .drill-start kbd { display: none; } }
+.drill-states .stage-count { font-size: 1.15rem; }
+.drill-head kbd, .drill-foot kbd, .drill-back kbd, .drill-summary .btn-text kbd { font: inherit; font-size: .72em; opacity: .7; margin-left: 6px; padding: 0 5px; border: 1px solid currentColor; border-radius: 4px; }
+@media (hover: none) { .drill-head kbd, .drill-foot kbd, .drill-back kbd, .drill-summary .btn-text kbd { display: none; } }

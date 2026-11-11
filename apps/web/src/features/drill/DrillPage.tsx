@@ -120,7 +120,7 @@ function DrillHome({ deck, onStart, app }: { deck: Deck; onStart: () => void; ap
         <ul className="stage-row drill-states" data-testid="drill-states">
           {([['new', 'New'], ['learning', 'Learning'], ['young', 'Young'], ['mature', 'Mature'], ['known', 'Known']] as const).map(([k, label]) => (
             <li key={k} className={`stage drill-state-${k}`} data-state={k}>
-              <span className="stage-count" data-testid={`drill-state-${k}`}>{c.byState[k]}</span>
+              <span className="stage-count" data-testid={`drill-state-${k}`} data-n={c.byState[k]} title={String(c.byState[k])}>{compact(c.byState[k])}</span>
               <span className="stage-label">{label}</span>
             </li>
           ))}
@@ -169,6 +169,9 @@ function DrillHome({ deck, onStart, app }: { deck: Deck; onStart: () => void; ap
     </div>
   );
 }
+
+/** 10878 → "10.9k" so five counts fit a phone row (the exact number is in the title). */
+const compact = (n: number): string => (n >= 10_000 ? `${(n / 1000).toFixed(1)}k` : String(n));
 
 function Batch({ p, t }: { p: DrillPlacement; t: number }): JSX.Element {
   const what = p.reason === 'anki' ? 'Anki-mastered words' : p.reason.startsWith('tier<') ? `words below tier ${p.reason.slice(5)}` : 'words';
