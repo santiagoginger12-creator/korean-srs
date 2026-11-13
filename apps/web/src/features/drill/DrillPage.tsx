@@ -10,6 +10,7 @@ import { useApp, useNow } from '../../state/hooks.ts';
 import { store } from '../../state/store.ts';
 import { DECK_META, useDeck, type Deck } from './deck.ts';
 import { DrillSession } from './DrillSession.tsx';
+import { Kbd, matches } from '../../state/hotkeys.tsx';
 
 export function DrillPage({ start }: { start: boolean }): JSX.Element {
   const { deck, error } = useDeck();
@@ -55,16 +56,16 @@ function DrillHome({ deck, onStart, app }: { deck: Deck; onStart: () => void; ap
   const ankiIds = useMemo(() => (baseline ? ankiMasteredIds(st, deck.words, baseline) : []), [baseline, st, deck]);
   const skipIds = useMemo(() => skipAheadIds(st, deck.words, skipTier), [st, deck, skipTier]);
 
-  // Space / Enter start a session from here (no field focused).
+  // Space / Enter (`drill.start`, D87) start a session from here (no field focused).
   const startRef = useRef({ onStart, waiting, confirm });
   startRef.current = { onStart, waiting, confirm };
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       const tag = (e.target as HTMLElement | null)?.tagName;
       if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || tag === 'BUTTON' || tag === 'A') return;
-      if (e.metaKey || e.ctrlKey || e.altKey || e.repeat) return;
+      if (e.repeat) return;
       const k = startRef.current;
-      if ((e.key === ' ' || e.key === 'Enter' || e.code === 'Space') && k.waiting > 0 && !k.confirm) { e.preventDefault(); k.onStart(); }
+      if (matches('drill.start', e) && k.waiting > 0 && !k.confirm) { e.preventDefault(); k.onStart(); }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
@@ -99,7 +100,7 @@ function DrillHome({ deck, onStart, app }: { deck: Deck; onStart: () => void; ap
           <div><p className="tile-count" data-testid="drill-new">{c.newToday}</p><p className="tile-note">new today <span className="muted">(limit {s['drill.newPerDay']}{c.newReverse ? ` + ${c.newReverse} reverse` : ''})</span></p></div>
         </div>
         <button type="button" className="btn btn-primary drill-start" onClick={onStart} disabled={waiting === 0} data-testid="drill-start">
-          {waiting ? 'Start' : 'Nothing due'} <kbd>Space</kbd>
+          {waiting ? 'Start' : 'Nothing due'} <Kbd id="drill.start" />
         </button>
         <label className="field drill-tier-field"><span>Start new cards at</span>
           <select value={String(s['drill.startTier'])} data-testid="drill-start-tier"

@@ -53,6 +53,12 @@ export {
   type AppSettings, type AppSettingKey, type ExtraSettings,
 } from './settings.ts';
 export {
+  HOTKEY_ACTIONS, HOTKEY_GROUPS, HOTKEY_BY_ID, RESERVED_CODES, MAX_KEYS_PER_ACTION,
+  isBindableCode, canonicalCode, codeMatches, formatCode, coerceBindings, resolveBindings, compactBindings,
+  conflictFor, findConflicts, bindKey, removeAlternate,
+  type HotkeyAction, type HotkeyGroup, type HotkeyScreen, type HotkeyBindings, type HotkeyConflict, type BindResult, type KeyLike,
+} from './hotkeys.ts';
+export {
   variantsInbox, extraStudyItems, resetCandidates, normalizeResponse, baseLayer,
   type VariantEntry, type ExtraStudySource,
 } from './study.ts';

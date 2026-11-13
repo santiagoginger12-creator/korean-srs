@@ -8,6 +8,7 @@ import { useExamplesData } from '../../components/DictExamples.tsx';
 import { isArtifact } from '../../host.ts';
 import { SYNC_UNAVAILABLE, useSync } from './SyncPage.tsx';
 import { ANSWER_MODES } from '../drill/modes/index.ts';
+import { KeyboardShortcuts } from './KeyboardShortcuts.tsx';
 
 const SAMPLE = '천천히 또박또박 읽어 볼게요.';
 
@@ -68,6 +69,7 @@ export function Settings(): JSX.Element {
         <p className="muted small">Off: fill-in-the-blank grammar sentences appear in Korean only. Tap "Show translation" (or press T) for a single question; it also appears after you answer.</p>
       </div>
       <DrillSettings />
+      <KeyboardShortcuts />
       <TtsSettings />
       <div className="card form" data-testid="examples-settings">
         <h3>Example sentences</h3>

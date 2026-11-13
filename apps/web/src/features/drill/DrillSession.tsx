@@ -2,7 +2,8 @@
 // with the session's new cards spread among them, then learning cards within the learn-ahead limit.
 // Every answer is a drill.review event, so leaving or reloading mid-session loses nothing.
 // Keys: Space/Enter show the answer, 1–4 grade (FlipMode); Z or Ctrl/Cmd+Z undo; K then K/Enter
-// marks the word known; Esc cancels. Held keys never repeat an action.
+// marks the word known; Esc cancels. Held keys never repeat an action. Z, K, reveal and grades are
+// rebindable shortcuts (D87); Ctrl/Cmd+Z, Enter/Y/Esc/N in the confirm stay fixed.
 import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   afterAnswer, drillParams, formatInterval, newCardSched, parseCardId, pickNext, RATINGS, scheduleAll,
@@ -17,6 +18,7 @@ import { speak, ttsPrefs } from '../../tts/tts.ts';
 import { CardBack, CardFront } from './CardFaces.tsx';
 import type { Deck } from './deck.ts';
 import { answerMode } from './modes/index.ts';
+import { Kbd, matches, useKeyLabel } from '../../state/hotkeys.tsx';
 
 interface Current { cardId: string; source: PickSource; shownAt: number }
 interface Tally { answered: number; again: number; newSeen: number; known: number; ms: number; ratings: Record<Rating, number> }
@@ -124,20 +126,28 @@ export function DrillSession({ deck, newQueue, onRestart, onHome }: {
       if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || e.repeat) return;
       const k = keys.current;
       const is = (c: string) => e.key.toLowerCase() === c || e.code === `Key${c.toUpperCase()}`;
-      if (is('z') && !e.altKey && !e.shiftKey) { e.preventDefault(); k.undoLast(); return; }
+      // Confirm keys (fixed apart from `drill.known`): Enter / Y confirm, Esc / N cancel.
+      const confirmYes = k.confirmKnown && !e.metaKey && !e.ctrlKey && !e.altKey
+        && (matches('drill.known', e) || e.key === 'Enter' || e.code === 'Enter' || e.code === 'NumpadEnter' || is('y'));
+      const confirmNo = k.confirmKnown && !e.metaKey && !e.ctrlKey && !e.altKey && (e.key === 'Escape' || is('n'));
+      // Undo: the `drill.undo` key (Z by default), plus Cmd/Ctrl+Z as a fixed extra binding.
+      const undoKey = !e.altKey && !e.shiftKey
+        && ((matches('drill.undo', e)) || ((e.metaKey || e.ctrlKey) && (e.key.toLowerCase() === 'z' || e.code === 'KeyZ')));
+      if (undoKey && !confirmYes && !confirmNo) { e.preventDefault(); k.undoLast(); return; }
       if (e.metaKey || e.ctrlKey || e.altKey) return;
       if (k.confirmKnown) {
-        if (is('k') || e.key === 'Enter' || e.code === 'Enter' || e.code === 'NumpadEnter' || is('y')) { e.preventDefault(); k.markKnown(); }
-        else if (e.key === 'Escape' || is('n')) { e.preventDefault(); k.setConfirmKnown(false); }
+        if (confirmYes) { e.preventDefault(); k.markKnown(); }
+        else if (confirmNo) { e.preventDefault(); k.setConfirmKnown(false); }
         else e.preventDefault();
         return;
       }
-      if (is('k') && k.current) { e.preventDefault(); k.setConfirmKnown(true); }
+      if (matches('drill.known', e) && k.current) { e.preventDefault(); k.setConfirmKnown(true); }
     };
     window.addEventListener('keydown', onKey, true);
     return () => window.removeEventListener('keydown', onKey, true);
   }, []);
 
+  const undoLabel = useKeyLabel('drill.undo');
   const st = app.drill;
   const t = now();
   const day = drillDay(t, settings, tz);
@@ -162,7 +172,7 @@ export function DrillSession({ deck, newQueue, onRestart, onHome }: {
           {tally.newSeen} new · {tally.known} marked known{mins > 0 ? ` · about ${mins} min` : ''}
           {tally.answered > 0 && ` · ${RATINGS.map((r) => `${tally.ratings[r]} ${['', 'Again', 'Hard', 'Good', 'Easy'][r]}`).join(', ')}`}
         </p>
-        {undo.length > 0 && <p><button type="button" className="btn-text" onClick={undoLast} data-testid="drill-undo">Undo last answer <kbd>Z</kbd></button></p>}
+        {undo.length > 0 && <p><button type="button" className="btn-text" onClick={undoLast} data-testid="drill-undo">Undo last answer <Kbd id="drill.undo" /></button></p>}
         <NextSteps beforeLeave={() => store.drillSessionEnded()} onDrill={() => { void store.drillSessionEnded().then(onRestart); }} />
       </div>
     );
@@ -185,7 +195,7 @@ export function DrillSession({ deck, newQueue, onRestart, onHome }: {
           <span className="rem-learn" title="Learning">{remaining.learning}</span>
           <span className="rem-review" title="Review">{remaining.review}</span>
         </p>
-        <button type="button" className="btn-text" onClick={undoLast} disabled={!undo.length} data-testid="drill-undo" aria-keyshortcuts="Z">Undo <kbd>Z</kbd></button>
+        <button type="button" className="btn-text" onClick={undoLast} disabled={!undo.length} data-testid="drill-undo" aria-keyshortcuts={undoLabel}>Undo <Kbd id="drill.undo" /></button>
       </header>
 
       {waitUntil !== null && !current && (
@@ -211,12 +221,12 @@ export function DrillSession({ deck, newQueue, onRestart, onHome }: {
           {confirmKnown ? (
             <div className="drill-confirm" role="alertdialog" aria-label="Mark as known" data-testid="drill-known-confirm">
               <span>Mark <strong lang="ko">{word.headword}</strong>{dir === 'r' ? ' (English → Korean)' : ''} as known? It won't be shown again.</span>
-              <button type="button" className="btn btn-primary btn-small" onClick={markKnown} data-testid="drill-known-yes">Yes, I know it <kbd>K</kbd></button>
+              <button type="button" className="btn btn-primary btn-small" onClick={markKnown} data-testid="drill-known-yes">Yes, I know it <Kbd id="drill.known" /></button>
               <button type="button" className="btn btn-quiet btn-small" onClick={() => setConfirmKnown(false)}>Cancel <kbd>Esc</kbd></button>
             </div>
           ) : (
             <p className="drill-foot">
-              <button type="button" className="btn-text small" onClick={() => setConfirmKnown(true)} data-testid="drill-known">I already know this <kbd>K</kbd></button>
+              <button type="button" className="btn-text small" onClick={() => setConfirmKnown(true)} data-testid="drill-known">I already know this <Kbd id="drill.known" /></button>
             </p>
           )}
         </>

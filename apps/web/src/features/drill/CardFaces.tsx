@@ -4,6 +4,7 @@
 import { useEffect, useState } from 'react';
 import { Speaker } from '../../tts/Speaker.tsx';
 import type { DeckWord } from './deck.ts';
+import { Kbd, matches } from '../../state/hotkeys.tsx';
 
 export const NO_GLOSS = 'No English gloss yet';
 
@@ -35,8 +36,8 @@ export function CardBack({ word, dir, credit }: { word: DeckWord; dir: 'f' | 'r'
     if (!word.example) return;
     const onKey = (e: KeyboardEvent) => {
       const tag = (e.target as HTMLElement | null)?.tagName;
-      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || e.metaKey || e.ctrlKey || e.altKey || e.repeat) return;
-      if (e.key.toLowerCase() === 't' || e.code === 'KeyT') { e.preventDefault(); setShowEn(true); }
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || e.repeat) return;
+      if (matches('drill.translation', e)) { e.preventDefault(); setShowEn(true); }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
@@ -66,7 +67,7 @@ export function CardBack({ word, dir, credit }: { word: DeckWord; dir: 'f' | 'r'
           {showEn
             ? <p className="muted" data-testid="drill-example-en">{word.example.en}</p>
             : <button type="button" className="btn-reveal" data-testid="drill-show-translation"
-                onClick={(e: { stopPropagation(): void }) => { e.stopPropagation(); setShowEn(true); }}>Show translation <kbd>T</kbd></button>}
+                onClick={(e: { stopPropagation(): void }) => { e.stopPropagation(); setShowEn(true); }}>Show translation <Kbd id="drill.translation" /></button>}
         </div>
       )}
       {word.gloss_source === 'krdict' && word.gloss && <p className="drill-credit" data-testid="drill-credit">{credit}</p>}

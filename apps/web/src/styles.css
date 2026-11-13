@@ -528,3 +528,25 @@ mark.ex-hit { background: var(--k-soft, var(--accent-soft)); color: inherit; bor
 .drill-verdict.v-close, .drill-verdict.v-headword { color: var(--warn); }
 .drill-verdict.v-blank { color: var(--text-2); }
 .drill-rate.is-suggested { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* ---- Keyboard shortcuts (D87) */
+.btn-reveal kbd { font: inherit; font-size: .8em; opacity: .7; margin-left: 6px; padding: 0 4px; border: 1px solid currentColor; border-radius: 4px; }
+@media (hover: none) { .btn-reveal kbd { display: none; } }
+.keys-touch-note { display: none; }
+@media (hover: none) { .keys-touch-note { display: block; } }
+.keys-group h4 { margin: 14px 0 4px; font-size: .95rem; color: var(--text-2); }
+.keys-list { list-style: none; margin: 0; padding: 0; }
+.key-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 12px; padding: 8px 0; border-top: 1px solid var(--line); }
+.key-label { display: flex; flex-direction: column; min-width: 0; flex: 1 1 12em; }
+.key-note { font-size: .8rem; }
+.key-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; }
+.key-chips { display: inline-flex; gap: 6px; }
+.key-chip { display: inline-flex; align-items: center; gap: 2px; }
+.key-chip kbd, .key-conflict kbd { font: inherit; font-size: .85rem; min-width: 1.8em; text-align: center; padding: 1px 7px; border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 5px; background: var(--surface-2); }
+.key-chip-x { background: none; border: 0; color: var(--muted); font: inherit; font-size: 1rem; line-height: 1; min-width: 28px; min-height: 32px; cursor: pointer; }
+.key-chip-x:hover, .key-chip-x:focus-visible { color: var(--text); }
+.key-capture { font-size: .9rem; }
+.key-msg, .key-conflict, .keys-warn { flex-basis: 100%; margin: 4px 0 0; font-size: .9rem; }
+.key-conflict { background: var(--surface-2); border-radius: var(--radius-s); padding: 8px 10px; }
+.key-conflict p { margin: 0 0 6px; }
+.key-msg, .keys-warn { color: var(--bad); }

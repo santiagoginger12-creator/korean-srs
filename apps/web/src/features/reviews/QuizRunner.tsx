@@ -4,9 +4,10 @@
 //
 // Keyboard: Enter submits; on the feedback panel Enter (or the Next button) advances and
 // Backspace undoes the answer (the input is read-only there, so Backspace can't mean "edit").
-// Nuance options: 1–3 pick an option.
+// Nuance options: 1–3 pick an option. "Next" and "undo" are the rebindable `quiz.next` /
+// `quiz.undo` shortcuts (D87); Enter in the answer field always submits/continues.
 
-import { useEffect, useRef, useState, type KeyboardEvent as RKeyboardEvent } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { Item, QuestionInstance } from '@ksrs/content';
 import { check, type CheckResult } from '@ksrs/answer-check';
 import { currentQuestion, type ContentIndex, type ReviewSession, type SessionAction } from '@ksrs/srs-engine';
@@ -18,6 +19,7 @@ import { itemHref, KIND_KO, QTYPE_LABEL, SPEECH_LEVEL } from '../../state/format
 import { useApp } from '../../state/hooks.ts';
 import { Speaker } from '../../tts/Speaker.tsx';
 import { FeedbackExample } from '../../components/DictExamples.tsx';
+import { Kbd, matches } from '../../state/hotkeys.tsx';
 import { speak, ttsPrefs } from '../../tts/tts.ts';
 
 export interface Feedback {
@@ -126,8 +128,12 @@ export function QuizRunner({ sess, dispatch, index, mode, done, onWrapUp, onExit
       const tag = t?.tagName;
       const editable = (tag === 'INPUT' && !(t as HTMLInputElement).readOnly) || tag === 'TEXTAREA' || tag === 'SELECT';
       if (feedback) {
-        if (e.key === 'Enter' && tag !== 'INPUT' && tag !== 'BUTTON' && tag !== 'A') { e.preventDefault(); next(); }
-        else if (e.key === 'Backspace' && !editable) { e.preventDefault(); undo(); }
+        if (e.repeat) return;
+        // Enter on a focused button/link activates it, and Enter in the (read-only) answer field is
+        // the form's submit; any other `quiz.next` key advances from a non-editable target.
+        const isEnter = e.key === 'Enter' || e.code === 'Enter' || e.code === 'NumpadEnter';
+        if (matches('quiz.next', e) && !editable && !(isEnter && (tag === 'INPUT' || tag === 'BUTTON' || tag === 'A'))) { e.preventDefault(); next(); }
+        else if (matches('quiz.undo', e) && !editable) { e.preventDefault(); undo(); }
         return;
       }
       if (q?.qtype === 'nuance' && !editable && /^[1-9]$/.test(e.key)) {
@@ -295,15 +301,15 @@ function GrammarTranslation({ en, show }: { en: string; show: boolean }): JSX.El
     if (show || open) return;
     const onKey = (e: KeyboardEvent) => {
       const tag = (e.target as HTMLElement | null)?.tagName;
-      if (tag === 'INPUT' || tag === 'TEXTAREA' || e.metaKey || e.ctrlKey || e.altKey) return;
-      if (e.key.toLowerCase() === 't' || e.code === 'KeyT') { e.preventDefault(); setOpen(true); }
+      if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+      if (matches('quiz.translation', e)) { e.preventDefault(); setOpen(true); }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [show, open]);
   if (!en) return null;
   if (show || open) return <p className="gloss-en" data-testid="grammar-en">{en}</p>;
-  return <button type="button" className="btn-reveal" onClick={() => setOpen(true)} data-testid="show-translation">Show translation</button>;
+  return <button type="button" className="btn-reveal" onClick={() => setOpen(true)} data-testid="show-translation">Show translation <Kbd id="quiz.translation" /></button>;
 }
 
 function NuanceOptions({ q, feedback, onPick }: { q: Extract<QuestionInstance, { qtype: 'nuance' }>; feedback: Feedback | null; onPick: (key: string) => void }): JSX.Element {
@@ -337,7 +343,6 @@ function FeedbackPanel({ fb, index, includeDict, acceptFuture, setAcceptFuture, 
   const { q, result } = fb;
   const correct = fb.grade === 'correct';
   const shown = q.qtype === 'nuance' ? q.options.find((o) => o.key === q.correctKey)?.text : result.matched ?? acceptedOf(q)[0];
-  const onKeyDownNext = (e: RKeyboardEvent<HTMLButtonElement>) => { if (e.key === 'Backspace') { e.preventDefault(); onUndo(); } };
   return (
     <section className={`feedback ${correct ? 'fb-correct' : 'fb-incorrect'}`} role="status" data-testid="feedback" data-grade={fb.grade}
              data-hint-penalty={fb.hintPenalty ? 'true' : undefined}>
@@ -366,7 +371,7 @@ function FeedbackPanel({ fb, index, includeDict, acceptFuture, setAcceptFuture, 
         )}
         <Speaker text={spokenAnswer(q, result)} label="Listen to the answer" />
         <a className="btn-text" href={itemHref(q.itemId)} target="_self">View item</a>
-        <button type="button" className="btn btn-primary" ref={nextRef} onClick={onNext} onKeyDown={onKeyDownNext}>Next</button>
+        <button type="button" className="btn btn-primary" ref={nextRef} onClick={onNext}>Next</button>
       </div>
     </section>
   );

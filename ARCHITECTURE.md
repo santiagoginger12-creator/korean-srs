@@ -381,7 +381,7 @@ Daily caps (`dailyLessonCap`): **one review budget T** (`targetReviewMin`, 45 mi
 A separate flashcard program at `#/drill` over the 10,878-word bank (`packages/content/drill/deck.json`, built by `scripts/drill/build-deck.ts`). It shares storage, sync and backup but not state: `replayAll` ignores drill events, so WaniKani-style items, levels and lesson caps are unaffected.
 
 - **Engine** (`srs-engine/src/drill/`): `fsrs.ts` (FSRS-5 default weights, retention 0.9, max 36,500 d, steps 1m 10m / relearn 10m, seeded fuzz), `state.ts` (`replayDrill` / `applyDrillEvents`: cards keyed `<wordId>:f|r`, reviews, reverse unlocks at a 7-day forward interval, placements), `queue.ts` (counts, `pickNext` session order, new-card queue from `DeckMeta` tier id ranges).
-- **App:** `AppState.drill` is updated in `commit`, `ingestRemote`, `restore` and `rebuild`. `features/drill/` holds the page, the session and the answer modes (`modes/`, only `flip`). The deck is fetched lazily; its tier summary is compiled in (`__DRILL_META__`). NextSteps has a Drill destination (D); the dashboard has a Drill tile.
+- **App:** `AppState.drill` is updated in `commit`, `ingestRemote`, `restore` and `rebuild`. `features/drill/` holds the page, the session and the answer modes (`modes/`, only `flip`). The deck is fetched lazily; its tier summary is compiled in (`__DRILL_META__`). NextSteps has a Drill destination (D); the dashboard has a Drill tile. Keys are rebindable (§8.7, D87).
 - Owner guide: docs/DRILL.md.
 
 ---
@@ -458,6 +458,11 @@ After any incorrect result, the UI shows **"I was right"**, which emits an overr
 - On `keydown Enter` while `e.isComposing || keyCode === 229`: set `submitPending` and submit on the next `compositionend` (iOS Safari fires compositionend after Enter), with a 50 ms microtask fallback.
 - **Live layout conversion (D73)** lives in the pure `state/liveConvert.ts` reducer (value, selection, run → next state); the input handles both `keydown` and `beforeinput` and repairs an uncancellable `beforeinput` on `input`. A small 한 / EN chip inside the field names the expected script.
 - Read `ref.current.value` only at submit, then run `normalizeKo`. The Playwright IME tests use CDP `Input.imeSetComposition` on Chromium, plus synthetic composition events on WebKit.
+
+### 8.7 Keyboard shortcuts (D87)
+- Registry, coercion, conflict rules and key matching are pure, in `srs-engine/src/hotkeys.ts` (`HOTKEY_ACTIONS`, `coerceBindings`, `bindKey`, `findConflicts`, `codeMatches`, `formatCode`). The synced setting `keys.bindings` holds overrides only.
+- `apps/web/src/state/hotkeys.tsx`: `matches(id, e)`, `useHotkey(id, handler, enabled, opts)`, `<Kbd id>` for hints. Every rebindable handler (lessons, QuizRunner, NextSteps, the drill page, session, modes and card faces, the dashboard Drill tile) goes through it; HangulInput's text entry is untouched.
+- Settings UI: `features/settings/KeyboardShortcuts.tsx`.
 
 ---
 

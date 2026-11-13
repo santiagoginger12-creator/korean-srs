@@ -11,6 +11,7 @@ import type { LessonPath } from '@ksrs/srs-engine';
 import { store } from '../../state/store.ts';
 import { QuizRunner } from '../reviews/QuizRunner.tsx';
 import { ArrowRightDoes, NextSteps } from '../../components/NextSteps.tsx';
+import { Kbd, matches } from '../../state/hotkeys.tsx';
 
 type Phase = 'teach' | 'quiz' | 'done';
 /** Beyond this many pages the dot row would crowd a phone screen; show just the counter. */
@@ -46,7 +47,7 @@ export function Lessons({ path = 'vocab' }: { path?: LessonPath }): JSX.Element 
     void store.completeLessons(others.map((it) => it.id)).then(() => { setPhase('done'); setCompleting(false); });
   };
 
-  // Arrow keys page through teach pages; → on the last page starts the quiz.
+  // Arrow keys page through teach pages; → on the last page starts the quiz (keys rebindable, D87).
   const startQuizRef = useRef(startQuiz);
   startQuizRef.current = startQuiz;
   useEffect(() => {
@@ -54,13 +55,12 @@ export function Lessons({ path = 'vocab' }: { path?: LessonPath }): JSX.Element 
     const onKey = (e: KeyboardEvent) => {
       const tag = (e.target as HTMLElement | null)?.tagName;
       if (tag === 'INPUT' || tag === 'TEXTAREA') return;
-      if (e.metaKey || e.ctrlKey || e.altKey) return;
-      if (e.key === 'ArrowRight') {
+      // `lesson.next` / `lesson.prev` (D87; → / ← by default). Held keys keep paging, as before.
+      if (matches('lesson.next', e)) {
         e.preventDefault();
         if (page >= batch.length - 1) startQuizRef.current();
         else setPage(page + 1);
-      }
-      if (e.key === 'ArrowLeft') { e.preventDefault(); setPage(Math.max(page - 1, 0)); }
+      } else if (matches('lesson.prev', e)) { e.preventDefault(); setPage(Math.max(page - 1, 0)); }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
@@ -104,7 +104,7 @@ export function Lessons({ path = 'vocab' }: { path?: LessonPath }): JSX.Element 
           <div className="page narrow summary" data-testid="quiz-done">
             <h1>Quiz passed</h1>
             <p className="muted">{others.length} item{others.length === 1 ? '' : 's'} will enter your review schedule.</p>
-            <button type="button" className="btn btn-primary" onClick={finishQuiz} disabled={completing} autoFocus>Finish lessons <kbd>→</kbd></button>
+            <button type="button" className="btn btn-primary" onClick={finishQuiz} disabled={completing} autoFocus>Finish lessons <Kbd id="finish.home" /></button>
             <ArrowRightDoes run={finishQuiz} />
           </div>
         )}

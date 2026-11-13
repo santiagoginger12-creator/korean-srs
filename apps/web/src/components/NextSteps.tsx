@@ -1,6 +1,6 @@
 // End-of-session actions (D75): Home, Lessons, Grammar lessons, Reviews, Drill, each with a key.
 // → goes Home; L / G / R / D jump straight to lessons, grammar lessons, reviews or the drill (D84)
-// when any are waiting.
+// when any are waiting. Keys are the `finish.*` shortcuts (D87), rebindable in Settings.
 import { useEffect, useRef } from 'react';
 import { dueItems } from '@ksrs/srs-engine';
 import { navigate } from '../router.ts';
@@ -9,6 +9,7 @@ import { useApp } from '../state/hooks.ts';
 import { planAll } from '../state/lessons.ts';
 import { drillSummary, drillWaiting } from '../state/drill.ts';
 import { DECK_META } from '../features/drill/deck.ts';
+import { inField, Kbd, matches, useHotkey } from '../state/hotkeys.tsx';
 
 type Action = () => void;
 
@@ -46,17 +47,14 @@ export function NextSteps(props: {
   useEffect(() => {
     let used = false; // one key press leaves once, even if held down
     const onKey = (e: KeyboardEvent) => {
-      const tag = (e.target as HTMLElement | null)?.tagName;
-      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
-      if (e.metaKey || e.ctrlKey || e.altKey || e.repeat || used) return;
+      if (inField(e) || e.repeat || used) return;
       const k = keys.current;
-      // e.code too, so L/G/R/D work while the Korean input source is on (ㅣ/ㅎ/ㄱ/ㅇ).
-      const is = (c: string) => e.key.toLowerCase() === c || e.code === `Key${c.toUpperCase()}`;
-      const act = e.key === 'ArrowRight' ? k.home
-        : is('l') ? k.toLessons
-        : is('g') ? k.toGrammar
-        : is('r') ? k.toReviews
-        : is('d') ? k.toDrill : null;
+      // Physical keys (e.code), so they work while the Korean input source is on (D75, D87).
+      const act = matches('finish.home', e) ? k.home
+        : matches('finish.lessons', e) ? k.toLessons
+        : matches('finish.grammar', e) ? k.toGrammar
+        : matches('finish.reviews', e) ? k.toReviews
+        : matches('finish.drill', e) ? k.toDrill : null;
       if (!act) return;
       e.preventDefault();
       used = true;
@@ -68,31 +66,17 @@ export function NextSteps(props: {
 
   return (
     <div className="row next-steps" data-testid="next-steps">
-      <button type="button" className="btn btn-primary" onClick={home} data-testid="next-home">Home <kbd>→</kbd></button>
-      {toLessons && <button type="button" className="btn btn-quiet" onClick={toLessons} data-testid="next-lessons">Lessons ({lessons}) <kbd>L</kbd></button>}
-      {toGrammar && <button type="button" className="btn btn-quiet" onClick={toGrammar} data-testid="next-grammar">Grammar lessons ({grammar}) <kbd>G</kbd></button>}
-      {toReviews && <button type="button" className="btn btn-quiet" onClick={toReviews} data-testid="next-reviews">Reviews ({due}) <kbd>R</kbd></button>}
-      {toDrill && <button type="button" className="btn btn-quiet" onClick={toDrill} data-testid="next-drill">Drill ({drill}) <kbd>D</kbd></button>}
+      <button type="button" className="btn btn-primary" onClick={home} data-testid="next-home">Home <Kbd id="finish.home" /></button>
+      {toLessons && <button type="button" className="btn btn-quiet" onClick={toLessons} data-testid="next-lessons">Lessons ({lessons}) <Kbd id="finish.lessons" /></button>}
+      {toGrammar && <button type="button" className="btn btn-quiet" onClick={toGrammar} data-testid="next-grammar">Grammar lessons ({grammar}) <Kbd id="finish.grammar" /></button>}
+      {toReviews && <button type="button" className="btn btn-quiet" onClick={toReviews} data-testid="next-reviews">Reviews ({due}) <Kbd id="finish.reviews" /></button>}
+      {toDrill && <button type="button" className="btn btn-quiet" onClick={toDrill} data-testid="next-drill">Drill ({drill}) <Kbd id="finish.drill" /></button>}
     </div>
   );
 }
 
-/** Presses `run` on → (used where one step remains, e.g. "Finish lessons"). Renders nothing. */
+/** Presses `run` on the finish-screen Home key (→; used where one step remains, e.g. "Finish lessons"). Renders nothing. */
 export function ArrowRightDoes({ run }: { run: Action }): null {
-  const ref = useRef(run);
-  ref.current = run;
-  useEffect(() => {
-    let used = false;
-    const onKey = (e: KeyboardEvent) => {
-      const tag = (e.target as HTMLElement | null)?.tagName;
-      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
-      if (e.key !== 'ArrowRight' || e.metaKey || e.ctrlKey || e.altKey || e.repeat || used) return;
-      e.preventDefault();
-      used = true;
-      ref.current();
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, []);
+  useHotkey('finish.home', () => run(), true, { once: true });
   return null;
 }

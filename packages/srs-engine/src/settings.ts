@@ -2,6 +2,7 @@
 // validation and replay ignores what it doesn't understand). Replay folds these LWW like the rest.
 
 import { coerceSetting, defaultSettings, type EventPayload, type SettingKey, type Settings } from './events.ts';
+import { coerceBindings, type HotkeyBindings } from './hotkeys.ts';
 
 /**
  * Namespace for extension data kept in `settings.set` events (D22): LWW per key, no coercion,
@@ -40,6 +41,8 @@ export interface ExtraSettings {
   'drill.reverse': boolean;
   /** Drill: tier new cards start from; 0 = the first tier with unseen cards. */
   'drill.startTier': number;
+  /** Keyboard shortcut overrides (D87): action id → 1–2 `KeyboardEvent.code`s. Only changed actions are stored. */
+  'keys.bindings': HotkeyBindings;
 }
 export type AppSettings = Settings & ExtraSettings;
 export type AppSettingKey = keyof AppSettings;
@@ -60,10 +63,11 @@ export const EXTRA_SETTING_DEFAULTS: Readonly<ExtraSettings> = Object.freeze({
   'drill.answerMode': 'flip',
   'drill.reverse': true,
   'drill.startTier': 0,
+  'keys.bindings': {} as HotkeyBindings,
 });
 
 export function defaultAppSettings(): AppSettings {
-  return { ...defaultSettings(), ...EXTRA_SETTING_DEFAULTS, 'inbox.dismissed': [] };
+  return { ...defaultSettings(), ...EXTRA_SETTING_DEFAULTS, 'inbox.dismissed': [], 'keys.bindings': {} };
 }
 
 /** Like `coerceSetting`, plus the extra keys. Returns undefined for unknown keys or invalid values. */
@@ -89,6 +93,8 @@ export function coerceAppSetting(key: string, value: unknown): unknown {
     case 'drill.answerMode': return typeof value === 'string' && /^[a-z][a-z0-9-]{0,31}$/.test(value) ? value : undefined;
     case 'drill.reverse': return typeof value === 'boolean' ? value : undefined;
     case 'drill.startTier': return typeof value === 'number' && Number.isInteger(value) && value >= 0 && value <= 99 ? value : undefined;
+    // Unknown action ids and unsafe codes are dropped per entry; an app without D87 ignores the key.
+    case 'keys.bindings': return coerceBindings(value);
     default: return coerceSetting(key as SettingKey, value);
   }
 }

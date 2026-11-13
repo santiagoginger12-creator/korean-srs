@@ -8,7 +8,8 @@ import { RATINGS, RATING_LABELS, type Rating } from '@ksrs/srs-engine';
 import { HangulInput, type HangulInputHandle } from '../../../components/HangulInput.tsx';
 import { useApp } from '../../../state/hooks.ts';
 import { findBlank, gradeBlank, type BlankVerdict } from './cloze.ts';
-import { FLIP_MODE, isRevealKey, ratingFromKey } from './FlipMode.tsx';
+import { FLIP_MODE, gradeAction, isRevealKey, ratingFromKey } from './FlipMode.tsx';
+import { Kbd, keyLabel } from '../../../state/hotkeys.tsx';
 import type { AnswerMode, AnswerModeProps } from './types.ts';
 
 const VERDICT_TEXT: Record<BlankVerdict, string> = {
@@ -105,10 +106,10 @@ function ClozeCard(p: AnswerModeProps & { blank: NonNullable<ReturnType<typeof f
         <div className="drill-actions drill-ratings" role="group" aria-label="How well did you know it?">
           {RATINGS.map((r) => (
             <button key={r} type="button" className={`btn drill-rate rate-${r} ${suggested === r ? 'is-suggested' : ''}`} onClick={() => p.grade(r)} disabled={p.paused}
-              data-testid={`drill-rate-${r}`} aria-keyshortcuts={String(r)}>
+              data-testid={`drill-rate-${r}`} aria-keyshortcuts={keyLabel(gradeAction(r))}>
               <span className="rate-ivl" data-testid={`drill-ivl-${r}`}>{p.intervals[r]}</span>
               <span className="rate-label">{RATING_LABELS[r]}</span>
-              <kbd>{r}</kbd>
+              <Kbd id={gradeAction(r)} />
             </button>
           ))}
         </div>

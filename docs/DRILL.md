@@ -59,6 +59,18 @@ When you finish, the summary shows what you did, and the usual buttons: **→** 
 The keys work with the Korean keyboard on (ㅋ is Z, ㅏ is K), and holding a key down never answers
 twice. On a phone or iPad without a keyboard, tap the buttons.
 
+### Changing the keys
+
+Settings → **Keyboard shortcuts** lets you pick different keys for any of the above (and for the
+lesson, review and finish-screen keys). Press **Change**, then the key you want; Esc cancels. Each
+action can have a second key (**+ Alternate**). If the key is already used on the same screen, the
+page names the other action and offers **Swap** or **Cancel**. **Reset** puts one action back, and
+**Reset all shortcuts** puts everything back. The buttons always show your current keys.
+
+These stay fixed: Esc (cancel), Ctrl/⌘+Z (undo), and Enter / Y / N in the "mark as known?" prompt.
+Your keys sync and are included in backups. Keys are matched by their position on the keyboard, so
+they work with the Korean keyboard on too.
+
 ## Placement: start where you are
 
 Starting at 하다 would waste your time, so the drill page has two ways to skip what you know.
