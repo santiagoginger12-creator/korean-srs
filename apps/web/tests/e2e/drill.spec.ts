@@ -254,3 +254,59 @@ test('drill events survive export → import on a fresh device (same counts and 
   await goHome(other.page);
   await other.close();
 });
+
+// Fill in the blank (D86): type the blanked word, Enter checks, 1–4 grade; Again is suggested after a miss.
+test('fill-in-the-blank mode: check, verdict, suggested rating, grade with keys', async ({ page }) => {
+  await setup(page);
+  await setNewPerDay(page, 2);
+  await page.evaluate(() => (window as any).__ksrs.store.setAppSetting('drill.answerMode', 'cloze'));
+  await openDrill(page);
+  await page.getByTestId('drill-start').click();
+  await expectCard(page, 'kw00001:f');
+  await expect(card(page)).toHaveAttribute('data-mode', 'cloze');
+  await expect(page.getByTestId('drill-cloze')).not.toContainText('거예요');
+  await expect(page.getByTestId('drill-cloze-en')).toHaveText('Whose is this?');
+  const box = page.getByLabel('The missing word');
+  await box.fill('거예요');
+  await box.press('Enter');
+  await expect(page.getByTestId('drill-verdict')).toHaveAttribute('data-verdict', 'correct');
+  await expect(page.getByTestId('drill-cloze-answer')).toHaveText('거예요');
+  await expect(page.getByTestId('drill-rate-3')).toHaveClass(/is-suggested/);
+  await page.keyboard.press('3');
+
+  await expectCard(page, 'kw00002:f');
+  await page.getByLabel('The missing word').fill('너');
+  await page.getByLabel('The missing word').press('Enter');
+  await expect(page.getByTestId('drill-verdict')).toHaveAttribute('data-verdict', 'wrong');
+  await expect(page.getByTestId('drill-rate-1')).toHaveClass(/is-suggested/);
+  await page.keyboard.press('1');
+  expect((await drillTypes(page)).filter((t) => t === 'drill.review').length).toBe(2);
+});
+
+// Reset (D85): in-page confirm clears drill progress; it can be undone from the same page.
+test('reset clears drill progress after a confirm, and Undo reset brings it back', async ({ page }) => {
+  await setup(page);
+  await setNewPerDay(page, 2);
+  await openDrill(page);
+  await expect(page.getByTestId('drill-reset-btn')).toBeDisabled();
+  await page.getByTestId('drill-start').click();
+  await expectCard(page, 'kw00001:f');
+  await gradeCurrent(page, '4');
+  await expectCard(page, 'kw00002:f');
+  await gradeCurrent(page, '4');
+  await page.getByTestId('next-home').click(); // both new cards done: the summary shows
+  await expect(page.getByTestId('drill-tile')).toBeVisible();
+  await openDrill(page);
+  await expect(page.getByTestId('drill-reviews-today')).toHaveText('2');
+
+  await page.getByTestId('drill-reset-btn').click();
+  await expect(page.getByTestId('drill-reset-confirm')).toContainText('2');
+  await page.getByTestId('drill-reset-yes').click();
+  await expect(page.getByTestId('drill-reviews-today')).toHaveText('0');
+  await expect(page.getByTestId('drill-new')).toHaveText('2');
+  expect(await drillTypes(page)).toContain('drill.reset');
+
+  await page.getByTestId('drill-reset-undo').click();
+  await expect(page.getByTestId('drill-reviews-today')).toHaveText('2');
+  await expect(page.getByTestId('drill-new')).toHaveText('0');
+});

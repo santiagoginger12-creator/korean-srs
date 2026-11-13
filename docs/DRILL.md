@@ -95,6 +95,20 @@ The drill page also shows: cards due, new cards available today, reviews done to
 retention (share of review answers that weren't Again), and how many cards are new, learning, young
 (interval under 21 days), mature (21 days or more), and known.
 
+## Fill in the blank
+
+Settings → Drill → Answer mode → **Fill in the blank** swaps the flip card for a sentence. You see one of the word's example sentences with the word blanked out, plus its English translation. Type the missing word as it appears in the sentence (conjugated, with or without its particle) and press Enter.
+
+- The site tells you how you did: **Correct**, **Close** (a small typo), **Right word but a different form** (you typed the dictionary form), or **Not quite**.
+- Enter on an empty box just shows the answer.
+- You still grade yourself with 1–4. The suggested grade is outlined: Good after a correct answer, Hard after a close one, Again after a miss.
+- Latin letters typed with a Korean keyboard layout are understood, and the auto-convert setting applies.
+- Only words with an example sentence can be blanked. Today that's Beginner 1. Every other word falls back to the normal flip card until its tier gets original sentences.
+
+## Reset
+
+At the bottom of the Drill page, **Reset drill progress…** clears every drill review, known mark and reverse card after an in-page confirm. Your WaniKani-style reviews are untouched. **Undo reset** appears right after, in case you didn't mean it. Like everything else, the reset syncs to your other devices.
+
 ## Notes
 
 - Everything you do is saved as it happens, so closing the app mid-session loses nothing.

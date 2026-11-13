@@ -166,7 +166,46 @@ function DrillHome({ deck, onStart, app }: { deck: Deck; onStart: () => void; ap
           </ul>
         )}
       </section>
+      <ResetDrill st={st} />
     </div>
+  );
+}
+
+/**
+ * Reset (D85): erases all drill progress (reviews, known marks, reverse unlocks) after an
+ * in-page confirm. The reset is an event, so it can be undone from this page afterwards.
+ */
+function ResetDrill({ st }: { st: ReturnType<typeof useApp>['drill'] }): JSX.Element {
+  const [stage, setStage] = useState<'idle' | 'confirm'>('idle');
+  const [lastReset, setLastReset] = useState<string | null>(null);
+  const studied = st.cards.size;
+  return (
+    <section className="card drill-reset" data-testid="drill-reset">
+      <h2>Reset</h2>
+      {lastReset
+        ? (
+          <p className="row" role="status">
+            <span className="muted small">Drill progress was reset.</span>
+            <button type="button" className="btn btn-quiet btn-small" data-testid="drill-reset-undo"
+              onClick={() => { store.drillUndo(lastReset); setLastReset(null); }}>Undo reset</button>
+          </p>
+        )
+        : stage === 'idle'
+          ? (
+            <>
+              <p className="muted small">Start the drill over from scratch: every review, known mark and reverse card is cleared. Your WaniKani-style reviews are not affected.</p>
+              <button type="button" className="btn btn-quiet" disabled={studied === 0 && st.reviews.length === 0} onClick={() => setStage('confirm')} data-testid="drill-reset-btn">Reset drill progress…</button>
+            </>
+          )
+          : (
+            <div className="confirm drill-confirm" role="alertdialog" data-testid="drill-reset-confirm">
+              <span>Erase progress on <strong>{studied}</strong> cards ({st.reviews.length} reviews)? You can undo this from this page.</span>
+              <button type="button" className="btn btn-danger btn-small" data-testid="drill-reset-yes"
+                onClick={() => { setLastReset(store.drillReset()); setStage('idle'); }}>Reset</button>
+              <button type="button" className="btn btn-quiet btn-small" onClick={() => setStage('idle')}>Cancel</button>
+            </div>
+          )}
+    </section>
   );
 }
 

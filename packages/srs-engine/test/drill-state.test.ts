@@ -178,6 +178,21 @@ describe('replayDrill', () => {
     assert.equal(s.cards.size, 0); assert.equal(s.reviews.length, 0);
   });
 
+  test('drill.undo of a reset restores everything (D85)', () => {
+    const d = device('d');
+    const log: AppEvent[] = [];
+    growTo(d, log, 'kw00001:f', 7, T);
+    log.push(d(rev('kw00002:f', 3), T + 1000));
+    const before = replayDrill(log);
+    const reset = d({ type: 'drill.reset' }, T + 30 * DAY);
+    const undo = d({ type: 'drill.undo', targetId: reset.id }, T + 30 * DAY + 1000);
+    const after = replayDrill([...log, reset, undo]);
+    assert.equal(after.cards.size, before.cards.size);
+    assert.equal(after.reviews.length, before.reviews.length);
+    assert.deepEqual(after.cards.get('kw00001:f'), before.cards.get('kw00001:f'));
+    assert.equal(applyDrillEvents(replayDrill([...log, reset]), [undo]), null); // undo forces a replay
+  });
+
   test('drill.retention is time-indexed: only later reviews use it', () => {
     const d = device('d');
     const before: AppEvent[] = [];

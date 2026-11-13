@@ -512,3 +512,19 @@ mark.ex-hit { background: var(--k-soft, var(--accent-soft)); color: inherit; bor
 .drill-states .stage-count { font-size: 1.15rem; }
 .drill-head kbd, .drill-foot kbd, .drill-back kbd, .drill-summary .btn-text kbd { font: inherit; font-size: .72em; opacity: .7; margin-left: 6px; padding: 0 5px; border: 1px solid currentColor; border-radius: 4px; }
 @media (hover: none) { .drill-head kbd, .drill-foot kbd, .drill-back kbd, .drill-summary .btn-text kbd { display: none; } }
+
+/* Drill: fill in the blank (D86). */
+.drill-cloze .drill-front { text-align: center; }
+.drill-cloze-ko { font-size: 1.35rem; line-height: var(--lh-ko); margin: 0.4em 0; }
+.drill-cloze-en { color: var(--text-2); margin: 0 0 0.6em; }
+.cloze-gap { display: inline-block; min-width: 3em; border-bottom: 2px solid var(--accent); color: transparent; }
+.cloze-fill { background: var(--accent-soft); color: var(--text); padding: 0 0.2em; border-radius: 4px; }
+.cloze-fill.v-correct { background: var(--ok-soft); }
+.cloze-fill.v-wrong, .cloze-fill.v-blank { background: var(--bad-soft); }
+.cloze-fill.v-close, .cloze-fill.v-headword { background: var(--warn-soft); }
+.drill-verdict { text-align: center; font-weight: 600; margin: 0.3em 0; }
+.drill-verdict.v-correct { color: var(--ok); }
+.drill-verdict.v-wrong { color: var(--bad); }
+.drill-verdict.v-close, .drill-verdict.v-headword { color: var(--warn); }
+.drill-verdict.v-blank { color: var(--text-2); }
+.drill-rate.is-suggested { outline: 2px solid var(--focus); outline-offset: 2px; }

@@ -138,7 +138,7 @@ function undone(sorted: readonly AppEvent[]): Set<string> {
   for (const e of sorted) {
     if (e.type !== 'drill.undo' || e.targetId === e.id) continue;
     const t = byId.get(e.targetId);
-    if (t && (t.type === 'drill.review' || t.type === 'drill.known')) out.add(t.id);
+    if (t && (t.type === 'drill.review' || t.type === 'drill.known' || t.type === 'drill.reset')) out.add(t.id);
   }
   return out;
 }
