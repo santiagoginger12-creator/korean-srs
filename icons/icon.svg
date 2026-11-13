@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="112" fill="#f7f6f2"/>
+  <g transform="translate(256 256) scale(1) translate(-256 -256)">
+    <text x="256" y="318" text-anchor="middle" font-family="Noto Sans CJK KR, Noto Sans KR, Apple SD Gothic Neo, sans-serif"
+          font-weight="600" font-size="270" fill="#3d4a5c">익</text>
+    <rect x="186" y="378" width="140" height="10" rx="5" fill="#4f9478"/>
+  </g>
+</svg>
