@@ -10,6 +10,7 @@ import { SYNC_UNAVAILABLE, useSync } from './SyncPage.tsx';
 import { ANSWER_MODES } from '../drill/modes/index.ts';
 import { KeyboardShortcuts } from './KeyboardShortcuts.tsx';
 import { keyLabel } from '../../state/hotkeys.tsx';
+import { LOOKS } from '../../theme/looks.ts';
 
 const SAMPLE = '천천히 또박또박 읽어 볼게요.';
 
@@ -47,7 +48,24 @@ export function Settings(): JSX.Element {
             {Array.from({ length: 24 }, (_, h) => <option key={h} value={h}>{String(h).padStart(2, '0')}:00</option>)}
           </select>
         </label>
-        <fieldset className="field"><legend>Theme</legend>
+        <fieldset className="field" data-testid="look-picker"><legend>Look</legend>
+          <div className="look-grid">
+            {LOOKS.map((l) => {
+              const on = (s['ui.look'] ?? 'classic') === l.id;
+              return (
+                <label key={l.id} className={`look-opt ${on ? 'on' : ''}`} data-look-opt={l.id}>
+                  <input type="radio" name="look" value={l.id} checked={on} onChange={() => void store.setAppSetting('ui.look', l.id)} />
+                  <span className="look-swatch" style={{ background: l.bg }} aria-hidden="true">
+                    <i style={{ background: l.ink, width: '40%' }} /><i style={{ background: l.accent, width: '22%' }} />
+                  </span>
+                  <span className="look-name">{l.label} <span className="muted small" lang="ko">{l.ko}</span></span>
+                  <span className="look-blurb">{l.blurb}</span>
+                </label>
+              );
+            })}
+          </div>
+        </fieldset>
+        <fieldset className="field"><legend>Theme {(s['ui.look'] ?? 'classic') !== 'classic' && <span className="muted small">(used by the Classic look)</span>}</legend>
           <div className="segmented">
             {(['system', 'light', 'dark'] as const).map((th) => (
               <label key={th} className={s.theme === th ? 'on' : ''}>

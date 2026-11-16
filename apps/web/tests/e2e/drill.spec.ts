@@ -375,3 +375,19 @@ test('D88: stats page shows forecast and tiers; suspend from the leech list; lis
   await expect(page.getByTestId('drill-listen-novoice')).toBeVisible();
   await expectCard(page, 'kw00002:f');
 });
+
+test('D89: Settings → Look applies a look to the page and remembers it across reloads', async ({ page }) => {
+  await setup(page);
+  await page.evaluate(() => { location.hash = '#/settings'; });
+  await expect(page.getByTestId('look-picker')).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.getAttribute('data-look'))).toBeNull();
+  await page.locator('[data-look-opt="dusk"]').click();
+  await expect(page.locator('html')).toHaveAttribute('data-look', 'dusk');
+  await expect(page.locator('[data-look-opt="dusk"]')).toHaveClass(/on/);
+  await flush(page);
+  await page.reload();
+  await expect(page.locator('html')).toHaveAttribute('data-look', 'dusk');
+  await page.evaluate(() => { location.hash = '#/settings'; });
+  await page.locator('[data-look-opt="classic"]').click();
+  await expect(page.locator('html')).not.toHaveAttribute('data-look', /.+/);
+});

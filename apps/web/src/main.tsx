@@ -7,6 +7,9 @@ import { sync } from './state/sync.ts';
 import { isArtifact } from './host.ts';
 import { scheduleExamplesLoad } from './data/examples.ts';
 import './styles.css';
+import { applyLook, storedLook } from './theme/looks.ts';
+
+applyLook(storedLook()); // paint in the last look before the log loads
 
 declare const __BASE__: string;
 declare const __DEV__: boolean;

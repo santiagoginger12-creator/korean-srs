@@ -87,7 +87,7 @@ main { max-width: 760px; margin: 0 auto; padding: 16px 16px 48px; }
 /* ---- buttons */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: var(--tap);
-  padding: 0 20px; border-radius: 999px; border: 1px solid transparent; font: inherit; font-weight: 600;
+  padding: 0 20px; border-radius: var(--btn-radius, 999px); border: 1px solid transparent; font: inherit; font-weight: 600;
   text-decoration: none; cursor: pointer; background: var(--surface-2); color: var(--text);
   transition: background-color .15s, opacity .15s;
 }
@@ -583,3 +583,92 @@ mark.ex-hit { background: var(--k-soft, var(--accent-soft)); color: inherit; bor
 .custom-grow select { flex: 1 1 auto; min-width: 0; width: 100%; }
 .custom-practice-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
 @media (max-width: 480px) { .stats-table .tier-name { display: none; } .stats-table th, .stats-table td { padding: 6px 5px; } }
+
+/* ---------------------------------------------------------------- D89: looks
+   Settings → Look. Each look is a fixed palette (Classic keeps the light/dark theme).
+   Fonts load on demand (theme/looks.ts) and fall back to system fonts offline. */
+h1, .headword, .prompt-ko, .drill-word { font-family: var(--font-display, inherit); }
+.tile-count, .stage-count, .drill-remaining, .rate-ivl, .big-stat { font-family: var(--font-num, inherit); }
+:root[data-look] body::before {
+  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: var(--grain, .05); mix-blend-mode: multiply;
+}
+
+:root[data-look="hanji"] {
+  --bg: #F3EEE3; --surface: #F8F4EB; --surface-2: #ECE5D7; --text: #1E1B18; --text-2: #5A524A; --muted: #675E55;
+  --line: #CFC5B4; --focus: #B23A2E; --primary: #B23A2E; --primary-text: #FBF7EE; --accent: #B23A2E; --accent-soft: #F2DED7;
+  --k-vocab: #2F6A86; --k-grammar: #3F7A5E; --k-expression: #9A6430;
+  --k-vocab-soft: #E3ECEF; --k-grammar-soft: #E4EDE6; --k-expression-soft: #F3E7D9;
+  --ok: #3A7A52; --ok-soft: #E2EEE3; --bad: #B23A2E; --bad-soft: #F5E0DB; --warn: #8E6614; --warn-soft: #F4EAD3;
+  --radius: 4px; --radius-s: 3px; --btn-radius: 4px; --shadow: none; --grain: .06;
+  --font-display: "Noto Serif KR", "Nanum Myeongjo", "AppleMyungjo", serif;
+  color-scheme: light;
+}
+:root[data-look="hanji"] h1 { font-weight: 600; letter-spacing: 0; }
+:root[data-look="hanji"] h3 { color: var(--accent); }
+
+:root[data-look="coast"] {
+  --bg: #F3F0E9; --surface: #FFFFFF; --surface-2: #E6DFD3; --text: #14303F; --text-2: #3E5563; --muted: #4E5E54;
+  --line: #DAD1C8; --focus: #3E79A3; --primary: #1F6E74; --primary-text: #FFFFFF; --accent: #3E79A3; --accent-soft: #DCE8EC;
+  --k-vocab: #2E6F98; --k-grammar: #1F6E74; --k-expression: #A0672F;
+  --k-vocab-soft: #DCE8EC; --k-grammar-soft: #D9ECEA; --k-expression-soft: #F1E5D6;
+  --ok: #2F7A57; --ok-soft: #DDEFE6; --bad: #B0493F; --bad-soft: #F6E1DE; --warn: #8D6A16; --warn-soft: #F3EAD2;
+  --radius: 18px; --radius-s: 12px; --btn-radius: 14px; --shadow: 0 1px 2px rgb(20 48 63 / 5%), 0 6px 20px rgb(20 48 63 / 6%); --grain: .05;
+  --font-display: "Gowun Batang", "Nanum Myeongjo", serif;
+  --font-num: "DM Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  color-scheme: light;
+}
+:root[data-look="coast"] .card, :root[data-look="coast"] .tile { border-color: transparent; }
+
+:root[data-look="tatami"] {
+  --bg: #F1ECE3; --surface: #FBF7F0; --surface-2: #E7DFD1; --text: #241C15; --text-2: #5E4E40; --muted: #6A594A;
+  --line: #DDD5C6; --focus: #A8402C; --primary: #A8402C; --primary-text: #FBF7F0; --accent: #A8402C; --accent-soft: #F1DFD6;
+  --k-vocab: #3F6E85; --k-grammar: #5A7A45; --k-expression: #A0602C;
+  --k-vocab-soft: #E4EAEA; --k-grammar-soft: #E8EDDD; --k-expression-soft: #F3E4D3;
+  --ok: #4D7A3E; --ok-soft: #E5EDDC; --bad: #A8402C; --bad-soft: #F3DFD8; --warn: #8A6517; --warn-soft: #F2E8D0;
+  --radius: 12px; --radius-s: 8px; --btn-radius: 999px; --shadow: none; --grain: .07;
+  --font-display: "Noto Serif KR", "Nanum Myeongjo", serif;
+  color-scheme: light;
+}
+:root[data-look="tatami"] .card { border-width: 0 0 0 3px; border-color: var(--line); border-radius: 0 var(--radius) var(--radius) 0; }
+
+:root[data-look="mono"] {
+  --bg: #F1F0F2; --surface: #F8F7F9; --surface-2: #E4E3E7; --text: #201C1C; --text-2: #3E3B3B; --muted: #5C5A5B;
+  --line: #AEADB0; --focus: #201C1C; --primary: #201C1C; --primary-text: #F1F0F2; --accent: #201C1C; --accent-soft: #D6D5DA;
+  --k-vocab: #33506A; --k-grammar: #3B5E4B; --k-expression: #6E5233;
+  --k-vocab-soft: #E1E4E9; --k-grammar-soft: #E1E7E3; --k-expression-soft: #ECE6DF;
+  --ok: #2F5E43; --ok-soft: #E0E8E2; --bad: #8E2F2A; --bad-soft: #F0E0DE; --warn: #6F5513; --warn-soft: #EEE8D8;
+  --radius: 0px; --radius-s: 0px; --btn-radius: 0px; --shadow: none; --grain: .1;
+  --font-ui: "IBM Plex Sans KR", "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", system-ui, sans-serif;
+  --font-num: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  color-scheme: light;
+}
+:root[data-look="mono"] .card, :root[data-look="mono"] .tile { border: 2px solid var(--text); }
+:root[data-look="mono"] h3 { font-family: var(--font-num); letter-spacing: .12em; color: var(--text); }
+
+:root[data-look="dusk"] {
+  --bg: #121411; --surface: #1F2524; --surface-2: #2C3434; --text: #E9E1D0; --text-2: #D0C3AB; --muted: #A89C8D;
+  --line: #3A4443; --focus: #F0A45C; --primary: #F0A45C; --primary-text: #121411; --accent: #F0A45C; --accent-soft: #3A2E22;
+  --k-vocab: #8FB8C9; --k-grammar: #9DC4A9; --k-expression: #E7B07A;
+  --k-vocab-soft: #1F2D33; --k-grammar-soft: #20302A; --k-expression-soft: #35291D;
+  --ok: #8FC9A0; --ok-soft: #1F3127; --bad: #EE9A8C; --bad-soft: #3A2320; --warn: #E2BA6A; --warn-soft: #362E1C;
+  --radius: 18px; --radius-s: 12px; --btn-radius: 12px; --shadow: none; --grain: .08;
+  --font-display: "Gowun Batang", "Nanum Myeongjo", serif;
+  --font-num: "DM Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  color-scheme: dark;
+}
+:root[data-look="dusk"] body::before { mix-blend-mode: screen; }
+:root[data-look="dusk"] .card, :root[data-look="dusk"] .tile { border-color: transparent; }
+
+/* Look picker (Settings) */
+.look-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+.look-opt { position: relative; display: flex; flex-direction: column; gap: 4px; padding: 10px; border: 2px solid var(--line); border-radius: var(--radius-s); cursor: pointer; background: var(--surface); }
+.look-opt input { position: absolute; opacity: 0; pointer-events: none; }
+.look-opt.on { border-color: var(--accent); }
+.look-opt:focus-within { outline: 3px solid var(--focus); outline-offset: 2px; }
+.look-swatch { height: 44px; border-radius: 6px; display: flex; align-items: flex-end; gap: 6px; padding: 6px 8px; border: 1px solid rgb(0 0 0 / 10%); }
+.look-swatch i { display: block; height: 10px; border-radius: 3px; }
+.look-name { font-weight: 650; font-size: .95rem; }
+.look-blurb { font-size: .8rem; color: var(--muted); line-height: 1.4; }

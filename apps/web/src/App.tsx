@@ -17,12 +17,15 @@ import { applyUpdate, updateReady } from './pwa/register.ts';
 import { useRoute } from './router.ts';
 import { useApp } from './state/hooks.ts';
 import { applyTheme } from './theme/theme.ts';
+import { applyLook, storedLook } from './theme/looks.ts';
 
 export function App(): JSX.Element {
   const app = useApp();
   const route = useRoute();
   const theme = app.derived?.settings.theme ?? app.bootTheme;
-  useEffect(() => applyTheme(theme), [theme]);
+  const look = app.derived?.settings['ui.look'] ?? storedLook();
+  // The look goes on after the theme so a fixed-palette look sets the browser's theme-color.
+  useEffect(() => { applyTheme(theme); applyLook(look); }, [theme, look]);
   const update = useSyncExternalStore(updateReady.subscribe, updateReady.get);
 
   let body: JSX.Element;

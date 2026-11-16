@@ -233,3 +233,9 @@ Append-only log of tradeoffs. Newest at the bottom.
 - New event `drill.suspend {cardIds, suspended}` (undoable via `drill.undo`; older apps quarantine it like other drill events). Suspended cards keep history and are excluded from queue and counts.
 - Stats (`#/drill/stats`): pure engine functions in `drill/stats.ts` (dueForecast, answersByDay, tierStats, leeches with Anki's 8-lapse threshold, missedToday, recentlyLearned).
 - Custom study: Study = normal scheduled session with `DrillSession.only` filter (tier / word type) plus N new cards; Practice = fixed list, writes no events, never reschedules.
+
+## D89 — Looks: the five design directions as a setting (2026-11-16)
+
+- `ui.look` (AppSetting, synced): classic | hanji | coast | tatami | mono | dusk. Applied as `data-look` on <html>; palettes, radii, grain and font variables (`--font-display`, `--font-num`) live in styles.css. Classic keeps the light/dark theme; the other looks are fixed palettes (Dusk is dark).
+- Fonts load on demand from Google Fonts per look and fall back to system fonts offline. The look is mirrored to localStorage so the next load paints in it before the log is read.
+- The film-photo headers from the design canvas are not included: the photos stay out of the public repo.
