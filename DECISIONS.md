@@ -226,3 +226,10 @@ Append-only log of tradeoffs. Newest at the bottom.
     - **Conflicts.** Each action lists the screens it is live on; two actions sharing a screen may not share a key (finish keys with each other and with drill Undo on the drill summary; drill session keys with each other). Actions that never coexist may share (lesson → and finish →; dashboard D and finish D). A clash shows the other action with Swap (only offered when the swapped set is itself valid) or Cancel. A row reset that would clash is refused with a message. Settings warns if two devices' writes ever leave a clash.
     - **UI.** Settings → Keyboard shortcuts, grouped (Lessons, Reviews and quizzes, Finish screens, Drill): chips, Change (capture mode: "Press a key… Esc to cancel"; the key is swallowed so it doesn't act), + Alternate / × remove, Reset, and Reset all with an in-page confirm. Keyboard-only usable; wraps at 390 px; on touch-only devices a note says shortcuts apply with a keyboard attached.
 
+## D88 — Drill audio, listening mode, stats, custom study, suspend (2026-11-16)
+
+- Audio: `drill.audio` setting ('default' follows `tts.autoplay` → speak on reveal; 'off'; 'reveal'; 'show' speaks Korean-side cards as they appear). Speech is started from the answer handler that advances the card, so iOS gesture rules are met except for a session's first card. Rebindable keys `drill.speak` (S) and `drill.speakExample` (E).
+- Listening mode is an answer mode (`listen`) that wraps Flip with an audio-only front for forward cards; reverse cards and devices without a Korean voice fall back to Flip with a notice.
+- New event `drill.suspend {cardIds, suspended}` (undoable via `drill.undo`; older apps quarantine it like other drill events). Suspended cards keep history and are excluded from queue and counts.
+- Stats (`#/drill/stats`): pure engine functions in `drill/stats.ts` (dueForecast, answersByDay, tierStats, leeches with Anki's 8-lapse threshold, missedToday, recentlyLearned).
+- Custom study: Study = normal scheduled session with `DrillSession.only` filter (tier / word type) plus N new cards; Practice = fixed list, writes no events, never reschedules.

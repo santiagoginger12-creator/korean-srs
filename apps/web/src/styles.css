@@ -550,3 +550,36 @@ mark.ex-hit { background: var(--k-soft, var(--accent-soft)); color: inherit; bor
 .key-conflict { background: var(--surface-2); border-radius: var(--radius-s); padding: 8px 10px; }
 .key-conflict p { margin: 0 0 6px; }
 .key-msg, .keys-warn { color: var(--bad); }
+
+/* D88: listening mode, stats, custom study */
+.drill-listen-front { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.drill-listen-play {
+  width: 96px; height: 96px; border-radius: 50%; border: 2px solid var(--line); background: var(--surface-2);
+  color: var(--text); display: grid; place-items: center; cursor: pointer; margin: 8px 0;
+}
+.drill-listen-play:hover { border-color: var(--accent); color: var(--accent); }
+.drill-listen-play:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.drill-custom-title { text-align: center; margin: 4px 0 0; }
+.bars { display: flex; align-items: flex-end; gap: 2px; height: 120px; padding-top: 4px; border-bottom: 1px solid var(--line); }
+.bar-col { flex: 1 1 0; height: 100%; display: flex; align-items: flex-end; min-width: 0; }
+.bar-stack { width: 100%; display: flex; flex-direction: column; min-height: 0; }
+.bar { display: block; background: var(--accent); min-height: 1px; border-radius: 2px 2px 0 0; }
+.bar-alt { background: var(--accent-soft); border: 1px solid var(--accent); border-bottom: none; }
+.bars-axis { display: flex; justify-content: space-between; margin: 4px 0 8px; }
+.stats-table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; font-size: .9rem; }
+.stats-table th, .stats-table td { padding: 6px 8px; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.stats-table th:first-child { text-align: left; }
+.leech-list { list-style: none; padding: 0; margin: 8px 0 0; }
+.leech-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.leech-word { flex: 1 1 200px; min-width: 0; }
+.leech-actions { display: flex; gap: 6px; }
+.drill-custom-filters { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-bottom: 8px; }
+.drill-custom-block { border-top: 1px solid var(--line); padding-top: 10px; margin-top: 10px; }
+.drill-custom-block > p { margin: 0 0 8px; }
+.custom-inline > span { white-space: nowrap; flex: none; }
+.custom-inline { display: flex; align-items: center; gap: 8px; color: var(--text-2); font-size: .9rem; min-width: 0; }
+.custom-inline input { width: 5em; }
+.custom-grow { flex: 1 1 auto; }
+.custom-grow select { flex: 1 1 auto; min-width: 0; width: 100%; }
+.custom-practice-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+@media (max-width: 480px) { .stats-table .tier-name { display: none; } .stats-table th, .stats-table td { padding: 6px 5px; } }

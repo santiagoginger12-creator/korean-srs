@@ -311,6 +311,11 @@ export class AppStore {
     return this.emitOne(cardIds ? { type: 'drill.reset', cardIds } : { type: 'drill.reset' });
   }
 
+  /** Suspends or unsuspends cards (D88). */
+  drillSuspend(cardIds: readonly string[], suspended: boolean): string {
+    return this.emitOne({ type: 'drill.suspend', cardIds: cardIds.slice(0, DRILL_CHUNK), suspended });
+  }
+
   setDrillActive(drillActive: boolean): void {
     if (this.state.drillActive !== drillActive) this.set({ drillActive });
   }

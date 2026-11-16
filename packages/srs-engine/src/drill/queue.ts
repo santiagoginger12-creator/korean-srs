@@ -16,7 +16,7 @@ export function tierOf(meta: DeckMeta, wordId: string): DeckTier | undefined {
   return meta.tiers.find((t) => wordId >= t.first && wordId <= t.last);
 }
 
-const active = (c: DrillCard) => !c.known && c.phase !== 'new';
+const active = (c: DrillCard) => !c.known && !c.suspended && c.phase !== 'new';
 const isLearning = (c: DrillCard) => c.phase === 'learning' || c.phase === 'relearning';
 const byDue = (a: DrillCard, b: DrillCard) => a.due - b.due || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
 
@@ -127,7 +127,7 @@ export interface DrillCounts {
   newReverse: number;
   reviewsToday: number;
   retention30: { pass: number; total: number; rate: number | null };
-  byState: { new: number; learning: number; young: number; mature: number; known: number };
+  byState: { new: number; learning: number; young: number; mature: number; known: number; suspended: number };
   startTier: number | null;
 }
 
@@ -137,9 +137,10 @@ export function drillCounts(st: DrillState, meta: DeckMeta, s: DrillSettingsView
   const startTier = effectiveStartTier(st, meta, s.startTier);
   const newForward = startTier === null ? 0 : Math.min(newLeftToday(st, s, day), unseenForward(st, meta, startTier));
   const newReverse = reverseNewIds(st, day, s.reverse).length;
-  const byState = { new: unseenForward(st, meta), learning: 0, young: 0, mature: 0, known: 0 };
+  const byState = { new: unseenForward(st, meta), learning: 0, young: 0, mature: 0, known: 0, suspended: 0 };
   for (const c of st.cards.values()) {
     if (c.known) byState.known++;
+    else if (c.suspended) byState.suspended++;
     else if (isLearning(c)) byState.learning++;
     else if (c.phase === 'review') { if (c.ivl >= MATURE_DAYS) byState.mature++; else byState.young++; }
     else if (c.dir === 'r') byState.new++;
@@ -185,6 +186,8 @@ export interface DrillSession {
   newQueue: string[];
   /** Reviews (non-new, non-learning answers) since the last new card. */
   sinceNew: number;
+  /** Custom study (D88): only cards passing this filter are picked (due or learning). */
+  only?: (cardId: string) => boolean;
 }
 
 export type PickSource = 'learning' | 'review' | 'new' | 'ahead';
@@ -205,18 +208,19 @@ function stillNew(st: DrillState, id: string): boolean {
  * learning cards remain, the session waits for them.
  */
 export function pickNext(st: DrillState, sess: DrillSession, now: number, day: DrillDay, learnAheadMs = LEARN_AHEAD_MS): DrillPick {
-  const lrn = dueLearning(st, now);
+  const ok = sess.only ?? (() => true);
+  const lrn = dueLearning(st, now).filter((c) => ok(c.id));
   if (lrn.length) return { kind: 'card', cardId: lrn[0]!.id, source: 'learning' };
-  const revs = dueReviews(st, day);
+  const revs = dueReviews(st, day).filter((c) => ok(c.id));
   const news = sess.newQueue.filter((id) => stillNew(st, id));
   if (revs.length || news.length) {
     const gap = Math.floor(revs.length / (news.length + 1));
     if (news.length && (!revs.length || sess.sinceNew >= gap)) return { kind: 'card', cardId: news[0]!, source: 'new' };
     return { kind: 'card', cardId: revs[0]!.id, source: 'review' };
   }
-  const ahead = dueLearning(st, now + learnAheadMs);
+  const ahead = dueLearning(st, now + learnAheadMs).filter((c) => ok(c.id));
   if (ahead.length) return { kind: 'card', cardId: ahead[0]!.id, source: 'ahead' };
-  const next = nextLearningDue(st, now);
+  const next = sess.only ? nextLearningDue({ ...st, cards: new Map([...st.cards].filter(([id]) => ok(id))) }, now) : nextLearningDue(st, now);
   if (next !== null && next < day.end) return { kind: 'wait', until: next };
   return { kind: 'done' };
 }
@@ -224,7 +228,7 @@ export function pickNext(st: DrillState, sess: DrillSession, now: number, day: D
 /** Session bookkeeping after answering a card picked from `source`. */
 export function afterAnswer(sess: DrillSession, st: DrillState, source: PickSource): DrillSession {
   const newQueue = sess.newQueue.filter((id) => stillNew(st, id));
-  if (source === 'new') return { newQueue, sinceNew: 0 };
-  if (source === 'review') return { newQueue, sinceNew: sess.sinceNew + 1 };
+  if (source === 'new') return { ...sess, newQueue, sinceNew: 0 };
+  if (source === 'review') return { ...sess, newQueue, sinceNew: sess.sinceNew + 1 };
   return { ...sess, newQueue };
 }

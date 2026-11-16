@@ -41,6 +41,8 @@ export interface ExtraSettings {
   'drill.reverse': boolean;
   /** Drill: tier new cards start from; 0 = the first tier with unseen cards. */
   'drill.startTier': number;
+  /** Drill audio (D88): 'default' follows tts.autoplay (speak on reveal); 'show' speaks the word as a Korean-side card appears. */
+  'drill.audio': 'default' | 'off' | 'reveal' | 'show';
   /** Keyboard shortcut overrides (D87): action id → 1–2 `KeyboardEvent.code`s. Only changed actions are stored. */
   'keys.bindings': HotkeyBindings;
 }
@@ -63,6 +65,7 @@ export const EXTRA_SETTING_DEFAULTS: Readonly<ExtraSettings> = Object.freeze({
   'drill.answerMode': 'flip',
   'drill.reverse': true,
   'drill.startTier': 0,
+  'drill.audio': 'default',
   'keys.bindings': {} as HotkeyBindings,
 });
 
@@ -92,6 +95,7 @@ export function coerceAppSetting(key: string, value: unknown): unknown {
     // Any well-formed mode name is kept, so a mode added by a newer app survives on an older one.
     case 'drill.answerMode': return typeof value === 'string' && /^[a-z][a-z0-9-]{0,31}$/.test(value) ? value : undefined;
     case 'drill.reverse': return typeof value === 'boolean' ? value : undefined;
+    case 'drill.audio': return value === 'default' || value === 'off' || value === 'reveal' || value === 'show' ? value : undefined;
     case 'drill.startTier': return typeof value === 'number' && Number.isInteger(value) && value >= 0 && value <= 99 ? value : undefined;
     // Unknown action ids and unsafe codes are dropped per entry; an app without D87 ignores the key.
     case 'keys.bindings': return coerceBindings(value);

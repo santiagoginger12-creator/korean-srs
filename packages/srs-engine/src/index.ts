@@ -95,3 +95,6 @@ export {
   LEARN_AHEAD_MS,
   type DeckMeta, type DeckTier, type DrillDay, type DrillCounts, type DrillSettingsView, type DrillSession, type DrillPick, type PickSource,
 } from './drill/queue.ts';
+export {
+  LEECH_LAPSES, dueForecast, answersByDay, tierStats, leeches, missedToday, recentlyLearned, type TierStats,
+} from './drill/stats.ts';

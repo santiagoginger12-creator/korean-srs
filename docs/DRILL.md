@@ -54,6 +54,8 @@ When you finish, the summary shows what you did, and the usual buttons: **→** 
 | Z, or Ctrl/⌘+Z | undo the last answer (also works from the summary) |
 | K | "I already know this": asks first; K or Enter confirms, Esc cancels |
 | T | show the example's English |
+| S | play the word (on an English → Korean card, only after the answer is shown) |
+| E | play the example sentence (after the answer is shown) |
 | D | open the drill (home screen, finish screens) |
 
 The keys work with the Korean keyboard on (ㅋ is Z, ㅏ is K), and holding a key down never answers
@@ -115,7 +117,38 @@ Settings → Drill → Answer mode → **Fill in the blank** swaps the flip card
 - Enter on an empty box just shows the answer.
 - You still grade yourself with 1–4. The suggested grade is outlined: Good after a correct answer, Hard after a close one, Again after a miss.
 - Latin letters typed with a Korean keyboard layout are understood, and the auto-convert setting applies.
-- Only words with an example sentence can be blanked. Today that's Beginner 1. Every other word falls back to the normal flip card until its tier gets original sentences.
+- Only words with an example sentence can be blanked: every tier except Beginner 2, which falls back to the normal flip card.
+
+## Audio (D88)
+
+Cards use the device's Korean voice (Web Speech API). Settings → Drill → **Audio**:
+
+- **Same as "speak after answering"** (default) follows the general audio setting.
+- **Off**: tap a speaker button or press **S** / **E**.
+- **Speak the word when the answer is shown.**
+- **Speak the word as soon as Korean appears**: Korean → English cards are read out as they appear; English → Korean cards when you flip them.
+
+On iPhone and iPad, speech has to start from a tap or key press, so the first card of a session may stay silent; tap the speaker or press S.
+
+## Listening mode (D88)
+
+Settings → Drill → Answer mode → **Listening**. A Korean → English card shows no text, only a play button, and the word is spoken as the card appears (**S** replays). Recall the meaning, flip, then grade as usual; the back shows the written word first. English → Korean cards stay normal. Without a Korean voice on the device, the card says so and shows the word.
+
+## Stats (D88)
+
+**Stats** on the drill page (`#/drill/stats`):
+
+- **Coming up**: cards due today, tomorrow, in 7 and 30 days, with a 30-day bar chart.
+- **Last 30 days**: answers per day (Again answers are the lighter top), days studied.
+- **By tier**: true retention (answers on graduated cards that weren't Again) for the last 30 days and all time, plus learning / young / mature / known counts.
+- **Leeches**: cards forgotten 8 or more times after graduating. **Suspend** takes a card out of the queue but keeps its history; **Unsuspend** puts it back; **Reset** starts it over as new. **Suspend all** can be undone right after. Other suspended cards are listed below.
+
+## Custom study (D88)
+
+On the drill page, pick a **tier** and/or **word type**, then:
+
+- **Study**: a normal session limited to those words: matching due cards plus up to N new ones. Answers are scheduled as usual, and new cards count toward today's limit.
+- **Practice**: go over a list again without changing the schedule (nothing is recorded): **Missed today**, **Leeches**, **Learned in the last 7 days**, or **Random studied cards** (up to 50). Again sends a card a few places back (up to 3 times); any other grade clears it.
 
 ## Reset
 

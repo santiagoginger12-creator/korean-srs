@@ -7,7 +7,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   afterAnswer, drillParams, formatInterval, newCardSched, parseCardId, pickNext, RATINGS, scheduleAll,
-  type DrillPick, type DrillSession as Sess, type PickSource, type Rating,
+  type AppSettings, type DrillPick, type DrillSession as Sess, type PickSource, type Rating,
 } from '@ksrs/srs-engine';
 import { NextSteps } from '../../components/NextSteps.tsx';
 import { now, tz } from '../../state/clock.ts';
@@ -27,16 +27,25 @@ interface UndoEntry { eventId: string; cardId: string; source: PickSource; sessB
 const EMPTY_TALLY: Tally = { answered: 0, again: 0, newSeen: 0, known: 0, ms: 0, ratings: { 1: 0, 2: 0, 3: 0, 4: 0 } };
 const MAX_DURATION_MS = 120_000;
 
-export function DrillSession({ deck, newQueue, onRestart, onHome }: {
+/** The drill's audio behaviour (D88): 'default' follows the global "speak after answering" setting. */
+export function drillAudio(s: AppSettings): 'off' | 'reveal' | 'show' {
+  const v = s['drill.audio'] ?? 'default';
+  return v === 'default' ? (s['tts.autoplay'] === true ? 'reveal' : 'off') : v;
+}
+
+export function DrillSession({ deck, newQueue, only, title, onRestart, onHome }: {
   deck: Deck;
   newQueue: string[];
+  /** Custom study (D88): only these cards are picked. */
+  only?: (cardId: string) => boolean;
+  title?: string;
   /** D on the finish screen: a fresh session in place. */
   onRestart: () => void;
   onHome: () => void;
 }): JSX.Element {
   const app = useApp();
   const settings = app.derived!.settings;
-  const [sess, setSess] = useState<Sess>(() => ({ newQueue, sinceNew: 0 }));
+  const [sess, setSess] = useState<Sess>(() => ({ newQueue, sinceNew: 0, ...(only ? { only } : {}) }));
   const [current, setCurrent] = useState<Current | null>(null);
   const [waitUntil, setWaitUntil] = useState<number | null>(null);
   const [finished, setFinished] = useState(false);
@@ -58,7 +67,14 @@ export function DrillSession({ deck, newQueue, onRestart, onHome }: {
     const pick: DrillPick = pickNext(store.getState().drill, s, t, drillDay(t, store.getState().derived!.settings, tz));
     setRevealed(false);
     setConfirmKnown(false);
-    if (pick.kind === 'card') { setCurrent({ cardId: pick.cardId, source: pick.source, shownAt: t }); setWaitUntil(null); setFinished(false); }
+    if (pick.kind === 'card') {
+      // Speak a Korean-side card as it appears. advance() runs inside the answer key/tap handler,
+      // so iOS allows the speech (the first card of a session may stay silent there).
+      const s0 = store.getState().derived!.settings;
+      const { wordId, dir: d0 } = parseCardId(pick.cardId);
+      const w = deck.byId.get(wordId);
+      if (w && d0 === 'f' && (drillAudio(s0) === 'show' || s0['drill.answerMode'] === 'listen')) speak(w.headword, ttsPrefs(s0));
+      setCurrent({ cardId: pick.cardId, source: pick.source, shownAt: t }); setWaitUntil(null); setFinished(false); }
     else if (pick.kind === 'wait') { setCurrent(null); setWaitUntil(pick.until); }
     else { setCurrent(null); setWaitUntil(null); setFinished(true); }
   };
@@ -75,8 +91,8 @@ export function DrillSession({ deck, newQueue, onRestart, onHome }: {
     if (!current || revealed || !word) return;
     setRevealed(true);
     // Inside the key/tap handler, so iOS allows speech.
-    const prefs = ttsPrefs(settings);
-    if (prefs.autoplay) speak(word.headword, prefs);
+    const audio = drillAudio(settings);
+    if (audio === 'reveal' || (audio === 'show' && dir === 'r')) speak(word.headword, ttsPrefs(settings));
   };
 
   const finishOrNext = (s: Sess) => { setSess(s); advance(s); };
@@ -118,8 +134,10 @@ export function DrillSession({ deck, newQueue, onRestart, onHome }: {
   };
 
   // Session-level keys (the answer mode handles reveal and grading).
-  const keys = useRef({ undoLast, markKnown, confirmKnown, setConfirmKnown, current });
-  keys.current = { undoLast, markKnown, confirmKnown, setConfirmKnown, current };
+  const speakWord = () => { if (word && (dir === 'f' || revealed)) speak(word.headword, ttsPrefs(settings)); };
+  const speakExample = () => { if (word?.example && revealed) speak(word.example.ko, ttsPrefs(settings)); };
+  const keys = useRef({ undoLast, markKnown, confirmKnown, setConfirmKnown, current, speakWord, speakExample });
+  keys.current = { undoLast, markKnown, confirmKnown, setConfirmKnown, current, speakWord, speakExample };
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       const tag = (e.target as HTMLElement | null)?.tagName;
@@ -141,7 +159,9 @@ export function DrillSession({ deck, newQueue, onRestart, onHome }: {
         else e.preventDefault();
         return;
       }
-      if (matches('drill.known', e) && k.current) { e.preventDefault(); k.setConfirmKnown(true); }
+      if (matches('drill.known', e) && k.current) { e.preventDefault(); k.setConfirmKnown(true); return; }
+      if (matches('drill.speak', e) && k.current) { e.preventDefault(); k.speakWord(); return; }
+      if (matches('drill.speakExample', e) && k.current) { e.preventDefault(); k.speakExample(); }
     };
     window.addEventListener('keydown', onKey, true);
     return () => window.removeEventListener('keydown', onKey, true);
@@ -154,7 +174,7 @@ export function DrillSession({ deck, newQueue, onRestart, onHome }: {
   const remaining = useMemo(() => {
     let learning = 0, review = 0;
     for (const c of st.cards.values()) {
-      if (c.known || c.phase === 'new') continue;
+      if (c.known || c.suspended || c.phase === 'new' || (only && !only(c.id))) continue;
       if ((c.phase === 'learning' || c.phase === 'relearning') && c.due < day.end) learning++;
       else if (c.phase === 'review' && c.due < day.end) review++;
     }
@@ -166,7 +186,7 @@ export function DrillSession({ deck, newQueue, onRestart, onHome }: {
     const mins = Math.round(tally.ms / 60_000);
     return (
       <div className="page narrow summary drill-summary" data-testid="drill-summary">
-        <h1>Drill complete</h1>
+        <h1>{title ? `${title}: done` : 'Drill complete'}</h1>
         <p className="big-stat"><span data-testid="drill-summary-answered">{tally.answered}</span> answered · <span>{tally.again}</span> again</p>
         <p className="muted">
           {tally.newSeen} new · {tally.known} marked known{mins > 0 ? ` · about ${mins} min` : ''}
@@ -198,6 +218,7 @@ export function DrillSession({ deck, newQueue, onRestart, onHome }: {
         <button type="button" className="btn-text" onClick={undoLast} disabled={!undo.length} data-testid="drill-undo" aria-keyshortcuts={undoLabel}>Undo <Kbd id="drill.undo" /></button>
       </header>
 
+      {title && <p className="drill-custom-title muted small" data-testid="drill-custom-title">{title}</p>}
       {waitUntil !== null && !current && (
         <div className="card drill-wait" data-testid="drill-wait">
           <p>Next learning card in <strong>{formatInterval(Math.max(0, waitUntil - tick))}</strong>.</p>

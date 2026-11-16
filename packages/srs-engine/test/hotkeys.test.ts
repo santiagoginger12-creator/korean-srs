@@ -16,6 +16,7 @@ test('registry defaults equal the pre-D87 hard-coded keys', () => {
     'drill.open': ['KeyD'], 'drill.start': ['Space', 'Enter'], 'drill.reveal': ['Space', 'Enter'],
     'drill.again': ['Digit1'], 'drill.hard': ['Digit2'], 'drill.good': ['Digit3'], 'drill.easy': ['Digit4'],
     'drill.undo': ['KeyZ'], 'drill.known': ['KeyK'], 'drill.translation': ['KeyT'],
+    'drill.speak': ['KeyS'], 'drill.speakExample': ['KeyE'], // D88
   });
   assert.deepEqual(findConflicts(d), [], 'the defaults are conflict-free');
   assert.equal(new Set(HOTKEY_ACTIONS.map((a) => a.id)).size, HOTKEY_ACTIONS.length);

@@ -310,3 +310,68 @@ test('reset clears drill progress after a confirm, and Undo reset brings it back
   await expect(page.getByTestId('drill-reviews-today')).toHaveText('2');
   await expect(page.getByTestId('drill-new')).toHaveText('0');
 });
+
+test('D88: custom practice over missed cards writes nothing; custom study is limited to a tier', async ({ page }) => {
+  await setup(page);
+  await setNewPerDay(page, 3);
+  await openDrill(page);
+  await page.getByTestId('drill-start').click();
+  await expectCard(page, 'kw00001:f');
+  await gradeCurrent(page, '1'); // miss kw00001
+  await page.getByTestId('drill-end').click();
+  await page.getByTestId('next-home').click();
+  await expect(page.getByTestId('drill-tile')).toBeVisible();
+  await openDrill(page);
+  const before = (await drillTypes(page)).length;
+
+  await page.getByTestId('custom-source').selectOption('missed');
+  await expect(page.getByTestId('custom-practice-start')).toHaveText('Practice 1');
+  await page.getByTestId('custom-practice-start').click();
+  await expect(page.getByTestId('practice-session')).toBeVisible();
+  await expectCard(page, 'kw00001:f');
+  await gradeCurrent(page, '3');
+  await expect(page.getByTestId('practice-summary')).toBeVisible();
+  await flush(page);
+  expect((await drillTypes(page)).length).toBe(before);
+  await page.getByTestId('practice-back').click();
+
+  // Custom study, tier 2 only: the session only shows tier-2 words.
+  await page.getByTestId('custom-tier').selectOption('2');
+  await page.getByTestId('custom-new').fill('2');
+  await expect(page.getByTestId('custom-study-start')).toHaveText('Study 0 due + 2 new');
+  await page.getByTestId('custom-study-start').click();
+  await expect(page.getByTestId('drill-custom-title')).toContainText('Tier 2');
+  await expectCard(page, 'kw00970:f');
+  await gradeCurrent(page, '4');
+  await expectCard(page, 'kw00971:f');
+});
+
+test('D88: stats page shows forecast and tiers; suspend from the leech list; listening mode falls back without a voice', async ({ page }) => {
+  await setup(page);
+  await setNewPerDay(page, 2);
+  await openDrill(page);
+  await page.getByTestId('drill-start').click();
+  await gradeCurrent(page, '4');
+  await page.getByTestId('drill-end').click();
+  await page.getByTestId('next-home').click();
+  await expect(page.getByTestId('drill-tile')).toBeVisible();
+  await page.evaluate(() => { location.hash = '#/drill/stats'; });
+  await expect(page.getByTestId('drill-stats')).toBeVisible();
+  await expect(page.getByTestId('stats-forecast')).toBeVisible();
+  await expect(page.getByTestId('stats-answered')).toHaveText('1');
+  await expect(page.getByTestId('stats-tiers').locator('tr[data-tier="1"] td').nth(3)).toHaveText('1'); // young
+  await expect(page.getByTestId('stats-leeches')).toContainText('No leeches');
+
+  // Suspend events round-trip through the store.
+  await page.evaluate(() => (window as any).__ksrs.store.drillSuspend(['kw00001:f'], true));
+  await flush(page);
+  expect(await drillTypes(page)).toContain('drill.suspend');
+
+  // Listening mode in headless Chromium (no Korean voice): the notice, then the normal front.
+  await page.evaluate(() => (window as any).__ksrs.store.setAppSetting('drill.answerMode', 'listen'));
+  await openDrill(page);
+  await page.getByTestId('drill-start').click();
+  await expect(page.getByTestId('drill-session')).toBeVisible();
+  await expect(page.getByTestId('drill-listen-novoice')).toBeVisible();
+  await expectCard(page, 'kw00002:f');
+});

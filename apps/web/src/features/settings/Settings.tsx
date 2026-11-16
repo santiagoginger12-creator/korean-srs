@@ -9,6 +9,7 @@ import { isArtifact } from '../../host.ts';
 import { SYNC_UNAVAILABLE, useSync } from './SyncPage.tsx';
 import { ANSWER_MODES } from '../drill/modes/index.ts';
 import { KeyboardShortcuts } from './KeyboardShortcuts.tsx';
+import { keyLabel } from '../../state/hotkeys.tsx';
 
 const SAMPLE = '천천히 또박또박 읽어 볼게요.';
 
@@ -125,6 +126,16 @@ function DrillSettings(): JSX.Element {
         <select value={ANSWER_MODES.some((m) => m.id === s['drill.answerMode']) ? s['drill.answerMode'] : 'flip'} data-testid="set-drill-mode"
           onChange={(e: { target: HTMLSelectElement }) => void store.setAppSetting('drill.answerMode', e.target.value)}>
           {ANSWER_MODES.map((m) => <option key={m.id} value={m.id}>{m.label}</option>)}
+        </select>
+      </label>
+      <p className="muted small" data-testid="set-drill-mode-desc">{(ANSWER_MODES.find((m) => m.id === s['drill.answerMode']) ?? ANSWER_MODES[0]!).description}</p>
+      <label className="field"><span>Audio</span>
+        <select value={s['drill.audio'] ?? 'default'} data-testid="set-drill-audio"
+          onChange={(e: { target: HTMLSelectElement }) => void store.setAppSetting('drill.audio', e.target.value as 'default' | 'off' | 'reveal' | 'show')}>
+          <option value="default">Same as "speak after answering" ({s['tts.autoplay'] ? 'on' : 'off'})</option>
+          <option value="off">Off (tap the speaker or press {keyLabel('drill.speak')})</option>
+          <option value="reveal">Speak the word when the answer is shown</option>
+          <option value="show">Speak the word as soon as Korean appears</option>
         </select>
       </label>
       <label className="check"><input type="checkbox" checked={s['drill.reverse'] !== false} data-testid="set-drill-reverse"

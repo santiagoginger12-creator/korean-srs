@@ -10,17 +10,24 @@ import { useApp, useNow } from '../../state/hooks.ts';
 import { store } from '../../state/store.ts';
 import { DECK_META, useDeck, type Deck } from './deck.ts';
 import { DrillSession } from './DrillSession.tsx';
+import { CustomStudy, type CustomStart } from './CustomStudy.tsx';
+import { DrillStats } from './DrillStats.tsx';
+import { PracticeSession } from './PracticeSession.tsx';
 import { Kbd, matches } from '../../state/hotkeys.tsx';
 
-export function DrillPage({ start }: { start: boolean }): JSX.Element {
+type Session =
+  | { kind: 'normal'; key: number; newQueue: string[] }
+  | ({ key: number } & CustomStart);
+
+export function DrillPage({ start, stats = false }: { start: boolean; stats?: boolean }): JSX.Element {
   const { deck, error } = useDeck();
   const app = useApp();
-  const [session, setSession] = useState<{ key: number; newQueue: string[] } | null>(null);
+  const [session, setSession] = useState<Session | null>(null);
   const autoStarted = useRef(false);
 
   const begin = (d: Deck) => {
     const s = store.getState();
-    setSession({ key: Date.now(), newQueue: sessionNewQueue(s.drill, d.words, DECK_META, s.derived!.settings, now(), tz) });
+    setSession({ kind: 'normal', key: Date.now(), newQueue: sessionNewQueue(s.drill, d.words, DECK_META, s.derived!.settings, now(), tz) });
   };
   useEffect(() => {
     if (start && deck && !autoStarted.current) {
@@ -32,16 +39,21 @@ export function DrillPage({ start }: { start: boolean }): JSX.Element {
 
   if (error) return <div className="page narrow"><p><a className="btn-text" href="#/">← Home</a></p><h1>Drill</h1><p className="notice">Couldn't load the word deck: {error}</p></div>;
   if (!deck) return <div className="page narrow"><h1>Drill</h1><p className="muted" aria-busy="true">Loading the deck…</p></div>;
+  if (session?.kind === 'practice') {
+    return <PracticeSession key={session.key} deck={deck} cardIds={session.cardIds} title={session.title} onDone={() => setSession(null)} />;
+  }
   if (session) {
     return <DrillSession key={session.key} deck={deck} newQueue={session.newQueue}
+      {...(session.kind === 'study' ? { only: session.only, title: session.title } : {})}
       onRestart={() => begin(deck)} onHome={() => setSession(null)} />;
   }
-  return <DrillHome deck={deck} onStart={() => begin(deck)} app={app} />;
+  if (stats) return <DrillStats deck={deck} />;
+  return <DrillHome deck={deck} onStart={() => begin(deck)} onCustom={(c) => setSession({ key: Date.now(), ...c })} app={app} />;
 }
 
 type Confirm = { kind: 'tier'; tier: number; ids: string[] } | { kind: 'anki'; ids: string[] } | null;
 
-function DrillHome({ deck, onStart, app }: { deck: Deck; onStart: () => void; app: ReturnType<typeof useApp> }): JSX.Element {
+function DrillHome({ deck, onStart, onCustom, app }: { deck: Deck; onStart: () => void; onCustom: (c: CustomStart) => void; app: ReturnType<typeof useApp> }): JSX.Element {
   const t = useNow();
   const d = app.derived!;
   const s = d.settings;
@@ -91,7 +103,10 @@ function DrillHome({ deck, onStart, app }: { deck: Deck; onStart: () => void; ap
           <p className="eyebrow" lang="ko">단어 드릴</p>
           <h1>Drill</h1>
         </div>
-        <a className="btn-text" href="#/settings" data-testid="drill-settings-link">Settings</a>
+        <span className="row">
+          <a className="btn-text" href="#/drill/stats" data-testid="drill-stats-link">Stats</a>
+          <a className="btn-text" href="#/settings" data-testid="drill-settings-link">Settings</a>
+        </span>
       </header>
 
       <section className="tile tile-drill drill-start-tile">
@@ -127,6 +142,8 @@ function DrillHome({ deck, onStart, app }: { deck: Deck; onStart: () => void; ap
           ))}
         </ul>
       </section>
+
+      <CustomStudy deck={deck} onStart={onCustom} />
 
       <section className="card drill-placement" data-testid="drill-placement">
         <h3>Placement</h3>

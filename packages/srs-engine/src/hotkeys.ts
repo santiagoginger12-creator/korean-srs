@@ -56,6 +56,9 @@ export const HOTKEY_ACTIONS: readonly HotkeyAction[] = Object.freeze([
   A('drill.known', 'I already know this (and confirm)', 'Drill', ['KeyK'], ['drill-session'],
     'In the confirm, Enter and Y also confirm; Esc and N cancel.'),
   A('drill.translation', 'Show example translation', 'Drill', ['KeyT'], ['drill-session']),
+  A('drill.speak', 'Play the word', 'Drill', ['KeyS'], ['drill-session'],
+    'On an English → Korean card, only after the answer is shown.'),
+  A('drill.speakExample', 'Play the example sentence', 'Drill', ['KeyE'], ['drill-session']),
 ]);
 
 export const HOTKEY_GROUPS: readonly HotkeyGroup[] = ['Lessons', 'Reviews and quizzes', 'Finish screens', 'Drill'];

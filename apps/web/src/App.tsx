@@ -40,7 +40,7 @@ export function App(): JSX.Element {
       case 'grammar': body = <GrammarPage />; break;
       case 'ghosts': body = <Ghosts />; break;
       case 'reviews': body = <Reviews />; break;
-      case 'drill': body = <DrillPage start={route.start === true} />; break;
+      case 'drill': body = <DrillPage start={route.start === true} stats={route.stats === true} />; break;
       case 'settings': body = <Settings />; break;
       case 'sync': body = <SyncPage />; break;
       case 'item': body = <ItemPage key={route.id} id={route.id} />; break;

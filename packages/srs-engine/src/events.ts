@@ -40,7 +40,8 @@ export type EventPayload =
   | { type: 'drill.review'; cardId: DrillCardId; rating: 1 | 2 | 3 | 4; durationMs?: number }
   | { type: 'drill.undo'; targetId: string } // voids one drill.review or drill.known
   | { type: 'drill.known'; cardIds: DrillCardId[]; reason?: string } // placement / "I already know this"
-  | { type: 'drill.reset'; cardIds?: DrillCardId[] }; // back to new; no cardIds = the whole drill
+  | { type: 'drill.reset'; cardIds?: DrillCardId[] } // back to new; no cardIds = the whole drill
+  | { type: 'drill.suspend'; cardIds: DrillCardId[]; suspended: boolean }; // D88: leeches etc. leave the queue, keep their history
 
 /** `<wordId>:f` (Korean → English) or `<wordId>:r` (English → Korean). */
 export type DrillCardId = string;
@@ -257,7 +258,7 @@ export function validateEvent(raw: unknown, lookup?: (id: string) => AppEvent | 
       if (!isNonEmptyStr(raw.targetId)) { err = 'missing targetId'; break; }
       if (raw.targetId === raw.id) { err = 'undo of itself'; break; }
       const t = lookup?.(raw.targetId);
-      if (t && t.type !== 'drill.review' && t.type !== 'drill.known') err = 'undo target is not a drill answer';
+      if (t && t.type !== 'drill.review' && t.type !== 'drill.known' && t.type !== 'drill.reset' && t.type !== 'drill.suspend') err = 'undo target is not a drill answer';
       break;
     }
     case 'drill.known':
@@ -265,6 +266,9 @@ export function validateEvent(raw: unknown, lookup?: (id: string) => AppEvent | 
       break;
     case 'drill.reset':
       err = raw.cardIds === undefined || isCardList(raw.cardIds, true) ? null : 'bad cardIds';
+      break;
+    case 'drill.suspend':
+      err = isCardList(raw.cardIds, false) ? (typeof raw.suspended === 'boolean' ? null : 'bad suspended') : 'bad cardIds';
       break;
     default:
       err = `unknown type ${String(raw.type)}`;

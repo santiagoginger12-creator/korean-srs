@@ -22,6 +22,8 @@ export interface DrillCard extends CardSched {
   dir: DrillDir;
   /** Marked known (placement or "I already know this"): never queued until reset or reviewed. */
   known: boolean;
+  /** Suspended (D88): kept with its history but never queued until unsuspended or reset. */
+  suspended: boolean;
   /** First review (ms) since the card was last new; counts toward the daily new limit. */
   firstAt: number | null;
 }
@@ -55,7 +57,7 @@ export interface DrillState {
   lastKey: { hlc: string; id: string } | null;
 }
 
-type DrillEvent = EventOf<'drill.review'> | EventOf<'drill.undo'> | EventOf<'drill.known'> | EventOf<'drill.reset'>;
+type DrillEvent = EventOf<'drill.review'> | EventOf<'drill.undo'> | EventOf<'drill.known'> | EventOf<'drill.reset'> | EventOf<'drill.suspend'>;
 
 export const isDrillEvent = (e: AppEvent): e is DrillEvent => e.type.startsWith('drill.');
 const isRetentionSetting = (e: AppEvent): boolean => e.type === 'settings.set' && e.key === ('drill.retention' as string);
@@ -74,7 +76,7 @@ export function emptyDrillState(): DrillState {
 
 function freshCard(id: DrillCardId): DrillCard {
   const { wordId, dir } = parseCardId(id);
-  return { ...newCardSched(), id, wordId, dir, known: false, firstAt: null };
+  return { ...newCardSched(), id, wordId, dir, known: false, suspended: false, firstAt: null };
 }
 
 /** FSRS params for a retention value (everything else is fixed, D79). */
@@ -113,6 +115,14 @@ function apply(w: Work, e: AppEvent): void {
       st.placements.push({ eventId: e.id, at: e.at, count: e.cardIds.length, reason: e.reason ?? '' });
       return;
     }
+    case 'drill.suspend': {
+      for (const id of e.cardIds) {
+        const prev = st.cards.get(id);
+        if (prev) st.cards.set(id, { ...prev, suspended: e.suspended });
+        else if (e.suspended) st.cards.set(id, { ...freshCard(id), suspended: true });
+      }
+      return;
+    }
     case 'drill.reset': {
       if (!e.cardIds) {
         st.cards.clear(); st.reviews.length = 0; st.reverseUnlockedAt.clear(); st.placements.length = 0;
@@ -138,7 +148,7 @@ function undone(sorted: readonly AppEvent[]): Set<string> {
   for (const e of sorted) {
     if (e.type !== 'drill.undo' || e.targetId === e.id) continue;
     const t = byId.get(e.targetId);
-    if (t && (t.type === 'drill.review' || t.type === 'drill.known' || t.type === 'drill.reset')) out.add(t.id);
+    if (t && (t.type === 'drill.review' || t.type === 'drill.known' || t.type === 'drill.reset' || t.type === 'drill.suspend')) out.add(t.id);
   }
   return out;
 }
